@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Grammar: Prepositions</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+        .prose h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            color: #334155;
+        }
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #334155;
+        }
+        .prose li {
+            margin-bottom: 0.4rem;
+            line-height: 1.6;
+        }
+        .prose .rule-box {
+            background: #f1f5f9;
+            border-left: 4px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            margin: 1.25rem 0;
+        }
+        .prose .rule-box strong {
+            color: #1e293b;
+        }
+        .prose .example {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 0.95rem;
+            color: #0f172a;
+        }
+        .prose .example .highlight {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+        .prose .example .highlight-green {
+            color: #059669;
+            font-weight: 600;
+        }
+        .prose .badge {
+            display: inline-block;
+            background: #6366f1;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.65rem;
+            border-radius: 9999px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .prose .badge-gold {
+            background: #f59e0b;
+        }
+        .prose .badge-green {
+            background: #22c55e;
+        }
+        .prose .badge-blue {
+            background: #3b82f6;
+        }
+        .prose .badge-rose {
+            background: #f43f5e;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .table-wrap th {
+            background: #f8fafc;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .table-wrap td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+        .anchor-link {
+            scroll-margin-top: 6rem;
+        }
+        .quiz-option {
+            transition: all 0.1s ease;
+            cursor: pointer;
+        }
+        .quiz-option:hover {
+            background: #f1f5f9;
+        }
+        .quiz-option.selected-correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .quiz-option.selected-wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+        .quiz-option.show-correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .quiz-card {
+            transition: all 0.15s ease;
+        }
+        .quiz-card:hover {
+            border-color: #a5b4fc;
+        }
+        .exercise-fill input,
+        .exercise-fill select {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            background: white;
+            width: 160px;
+        }
+        .exercise-fill select {
+            width: auto;
+            min-width: 120px;
+        }
+        .exercise-fill .fill-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .exercise-fill .fill-row:last-child {
+            border-bottom: none;
+        }
+        .exercise-fill .fill-row .num {
+            font-weight: 600;
+            color: #64748b;
+            min-width: 24px;
+        }
+        .exercise-fill .fill-row .sentence {
+            flex: 1;
+            min-width: 200px;
+        }
+        .exercise-fill .fill-row .sentence .blank {
+            display: inline-block;
+            min-width: 90px;
+            border-bottom: 2px dashed #94a3b8;
+            margin: 0 4px;
+            padding: 0 4px;
+            color: #6366f1;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .prose h2 {
+                font-size: 1.25rem;
+            }
+            .prose h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-bold text-indigo-600">📘</span>
+                <span class="font-semibold text-gray-800 text-lg hidden sm:block">Prep<span class="text-indigo-600">Master</span></span>
+            </div>
+            <div class="flex items-center gap-3 text-sm font-medium">
+                <a href="#overview" class="text-gray-600 hover:text-indigo-600 transition">Overview</a>
+                <a href="#types" class="text-gray-600 hover:text-indigo-600 transition">Types</a>
+                <a href="#inonat" class="text-gray-600 hover:text-indigo-600 transition">In/On/At</a>
+                <a href="#exercises" class="text-gray-600 hover:text-indigo-600 transition hidden sm:inline">Practice</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section class="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 border-b border-gray-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+            <div class="grid md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide">📚 ULTIMATE GRAMMAR GUIDE</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+                        <span class="text-indigo-600">Prepositions</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
+                        Master English prepositions: <strong>in, on, at</strong>, and more. Learn time, place, direction,
+                        and usage rules with clear examples and interactive practice.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="#overview" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
+                            Start Learning <span>→</span>
+                        </a>
+                        <a href="#exercises" class="bg-white hover:bg-gray-50 text-gray-700 font-medium px-6 py-2.5 rounded-full border border-gray-300 transition flex items-center gap-2">
+                            Practice <span>✏️</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 hidden md:flex justify-center">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 w-full max-w-xs">
+                        <div class="text-center">
+                            <div class="grid grid-cols-3 gap-1 text-xs font-medium">
+                                <div class="bg-amber-50 p-2 rounded border border-amber-200">in</div>
+                                <div class="bg-emerald-50 p-2 rounded border border-emerald-200">on</div>
+                                <div class="bg-blue-50 p-2 rounded border border-blue-200">at</div>
+                            </div>
+                            <p class="text-[10px] text-gray-400 mt-3">Prepositions of time &amp; place</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ============================================================ -->
+        <!--  SECTION: WHAT ARE PREPOSITIONS?                              -->
+        <!-- ============================================================ -->
+        <section id="overview" class="anchor-link prose max-w-none">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">🧩</span>
+                <h2 class="!mt-0">What Are Prepositions?</h2>
+            </div>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                <strong>Prepositions</strong> are small words that describe relationships with other words in a sentence,
+                such as <strong>where</strong> something took place (<em>in a park</em>), <strong>when</strong> (<em>at noon</em>),
+                <strong>why</strong> (<em>because of hard work</em>), or <strong>how</strong> something happens (<em>with ease</em>).
+            </p>
+            <div class="rule-box">
+                <p class="!mb-0"><strong>💡 Key idea:</strong> Prepositions are always followed by a noun (or pronoun) – the <strong>object of the preposition</strong> – forming a <strong>prepositional phrase</strong>.</p>
+                <div class="example">The book <span class="highlight">on</span> the table.</div>
+                <div class="example">She walked <span class="highlight">through</span> the park.</div>
+                <div class="example">We met <span class="highlight">at</span> noon.</div>
+            </div>
+            <p class="text-sm text-gray-500"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">Updated Feb 18, 2025</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: TYPES OF PREPOSITIONS                               -->
+        <!-- ============================================================ -->
+        <section id="types" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">📋</span>
+                <h2 class="!mt-0">Types of Prepositions</h2>
+            </div>
+
+            <!-- Prepositions of Place -->
+            <h3>Prepositions of Place</h3>
+            <p>Show where something is or where something happened.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="example">They're building an amusement park <span class="highlight">near</span> my apartment.</div>
+                <div class="example">I have a sandwich <span class="highlight">in</span> my bag.</div>
+                <div class="example">Meet me <span class="highlight">at</span> the restaurant.</div>
+                <div class="example">The cat is <span class="highlight">under</span> the table.</div>
+                <div class="example">The health food is <span class="highlight">between</span> the snacks and the sodas.</div>
+                <div class="example">I'm cleaning the dust <span class="highlight">above</span> the refrigerator.</div>
+            </div>
+
+            <!-- Prepositions of Time -->
+            <h3>Prepositions of Time</h3>
+            <p>Show when something happened or will happen.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="example">We have to be ready <span class="highlight">at</span> 5:00 pm.</div>
+                <div class="example">Don't eat <span class="highlight">before</span> bedtime.</div>
+                <div class="example">I get energy <span class="highlight">after</span> the sun sets.</div>
+                <div class="example">Your homework is due <span class="highlight">by</span> Monday.</div>
+                <div class="example">Our teacher fell asleep <span class="highlight">during</span> recess.</div>
+            </div>
+
+            <!-- Prepositions of Direction / Movement -->
+            <h3>Prepositions of Direction / Movement</h3>
+            <p>Show how something is moving or which way it's going.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="example">The dog ran <span class="highlight">across</span> the entire field.</div>
+                <div class="example">She took her first steps <span class="highlight">toward</span> her mother.</div>
+                <div class="example">He walked <span class="highlight">into</span> a river!</div>
+                <div class="example">It's easier to go <span class="highlight">through</span> the woods.</div>
+                <div class="example">He shot the ball <span class="highlight">over</span> his opponent's head.</div>
+            </div>
+
+            <!-- Prepositions of Manner, Cause, or Purpose -->
+            <h3>Prepositions of Manner, Cause, or Purpose</h3>
+            <p>Show how or why something happens.</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="example">He takes me to school <span class="highlight">by</span> car.</div>
+                <div class="example">She drives <span class="highlight">like</span> a maniac.</div>
+                <div class="example">He competes <span class="highlight">for</span> honor, not money.</div>
+                <div class="example">Everyone was eating <span class="highlight">in</span> silence.</div>
+                <div class="example">Ava reads <span class="highlight">with</span> difficulty.</div>
+            </div>
+
+            <!-- Additional types: possession, source, measurement -->
+            <h3>Additional Types</h3>
+            <ul>
+                <li><strong>Possession:</strong> <em>of, with</em> – The tree <span class="highlight">of</span> our neighbor; the dog <span class="highlight">with</span> black spots.</li>
+                <li><strong>Source:</strong> <em>from, by</em> – The message is <span class="highlight">from</span> outer space; made <span class="highlight">by</span> a mouse.</li>
+                <li><strong>Measurement:</strong> <em>of, by</em> – a cup <span class="highlight">of</span> flour; taffy sold <span class="highlight">by</span> the yard.</li>
+            </ul>
+
+            <p class="text-sm text-gray-500 mt-2"><span class="badge">Ginger</span> <span class="badge badge-blue ml-2">Types of Prepositions</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: IN, ON, AT – IN DEPTH                               -->
+        <!-- ============================================================ -->
+        <section id="inonat" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">🎯</span>
+                <h2 class="!mt-0"><em>In, On, At</em> – Prepositions of Time &amp; Place</h2>
+            </div>
+            <p>These three prepositions are the most common and often confusing. Here's a breakdown of their uses.</p>
+
+            <!-- TIME -->
+            <h3>As Prepositions of Time</h3>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-amber-700">IN</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• months: <em>in August</em></li>
+                        <li>• seasons: <em>in summer</em></li>
+                        <li>• years: <em>in 1982</em></li>
+                        <li>• centuries: <em>in the 20th century</em></li>
+                        <li>• times of day: <em>in the morning</em></li>
+                        <li>• periods: <em>in a few minutes</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">I was born <span class="highlight">in</span> 1982.</div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-emerald-700">ON</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• days: <em>on Monday</em></li>
+                        <li>• dates: <em>on July 4th</em></li>
+                        <li>• holidays: <em>on Christmas Day</em></li>
+                        <li>• weekend (AmE): <em>on the weekend</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">I was born <span class="highlight">on</span> July 4th.</div>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-blue-700">AT</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• clock times: <em>at 5 pm</em></li>
+                        <li>• mealtimes: <em>at dinner</em></li>
+                        <li>• specific times: <em>at dawn, at night</em></li>
+                        <li>• weekend (BrE): <em>at the weekend</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">I was born <span class="highlight">at</span> exactly 2am.</div>
+                </div>
+            </div>
+
+            <!-- PLACE -->
+            <h3>As Prepositions of Place</h3>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-amber-700">IN</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• inside something: <em>in the room</em></li>
+                        <li>• countries/cities: <em>in France</em></li>
+                        <li>• the sky: <em>in the sky</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">The cat is <span class="highlight">in</span> the kennel.</div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-emerald-700">ON</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• surface: <em>on the table</em></li>
+                        <li>• streets: <em>on Main Street</em></li>
+                        <li>• floors: <em>on the fifth floor</em></li>
+                        <li>• planets: <em>on Mars</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">The cat is <span class="highlight">on</span> the table.</div>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <h4 class="text-sm font-bold text-blue-700">AT</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• precise location: <em>at the bus stop</em></li>
+                        <li>• events: <em>at the concert</em></li>
+                        <li>• specific addresses: <em>at 720 Main Street</em></li>
+                    </ul>
+                    <div class="example text-sm mt-2">We can meet <span class="highlight">at</span> the crossroads.</div>
+                </div>
+            </div>
+
+            <div class="rule-box">
+                <p class="!mb-0"><strong>⚠️ Important:</strong> Do not use <em>in, on, at</em> with <strong>next</strong> or <strong>last</strong> when they are used as adjectives before a time period (e.g., <em>next Friday</em>, <em>last night</em>).</p>
+                <div class="example text-sm">Let's go <span class="line-through">on next Friday</span> → Let's go <span class="highlight-green">next Friday</span>.</div>
+                <div class="example text-sm">We stayed home <span class="line-through">at last night</span> → We stayed home <span class="highlight-green">last night</span>.</div>
+            </div>
+
+            <p class="text-sm text-gray-500"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">In, On, At</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: PREPOSITIONS LISTS & COLLOCATIONS                   -->
+        <!-- ============================================================ -->
+        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">📚</span>
+                <h2 class="!mt-0">Preposition List &amp; Collocations</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                    <h3 class="text-sm font-bold">Common Prepositions (A–Z)</h3>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm text-gray-700 max-h-60 overflow-y-auto">
+                        aboard, about, above, across, after, against, along, alongside, amid, among, around, as, at, before, behind, below, beneath, beside, between, beyond, but, by, concerning, despite, down, during, except, for, from, in, inside, into, like, near, of, off, on, onto, opposite, outside, over, past, per, plus, regarding, since, than, through, to, toward, under, underneath, unlike, until, up, upon, versus, via, with, within, without.
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold">Common Collocations (verb + prep)</h3>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm text-gray-700">
+                        <ul class="space-y-1">
+                            <li><strong>agree with</strong> – I agree with you.</li>
+                            <li><strong>believe in</strong> – Do you believe in ghosts?</li>
+                            <li><strong>depend on</strong> – It depends on the weather.</li>
+                            <li><strong>listen to</strong> – Listen to the music.</li>
+                            <li><strong>look at</strong> – Look at that picture.</li>
+                            <li><strong>wait for</strong> – I'm waiting for you.</li>
+                            <li><strong>apologize for</strong> – Apologize for your mistake.</li>
+                            <li><strong>suffer from</strong> – She suffers from allergies.</li>
+                            <li><strong>concentrate on</strong> – Concentrate on your work.</li>
+                            <li><strong>apply for</strong> – Apply for a job.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box mt-4">
+                <p class="!mb-0"><strong>💡 Tip:</strong> Many adjectives and nouns also have specific prepositions (e.g., <em>interested in</em>, <em>good at</em>, <em>afraid of</em>, <em>reason for</em>).</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: EXERCISES                                           -->
+        <!-- ============================================================ -->
+        <section id="exercises" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">✏️</span>
+                <h2 class="!mt-0">Practice Exercises</h2>
+            </div>
+            <p class="text-gray-600">Test your understanding of prepositions with these interactive exercises.</p>
+
+            <!-- Exercise 1: Fill in the blank with in/on/at -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">1</span> Fill in: <em>in, on, at</em>
+                </h3>
+                <div id="ex1" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">I was born <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> 1987.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">We go to school <select data-answer="on" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> Mondays.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">The cat is <select data-answer="on" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> the roof.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">We met <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> the station.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">5</span>
+                        <span class="sentence">The keys are <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> my bag.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">6</span>
+                        <span class="sentence">I'll see you <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="at">at</option>
+                            </select> 8:00 pm.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="checkEx1" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="resetEx1" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="resultEx1" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 2: Choose the correct preposition -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">2</span> Choose the correct preposition
+                </h3>
+                <div id="ex2" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">He's very good <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="at">at</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="of">of</option>
+                            </select> math.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">She's afraid <select data-answer="of" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="at">at</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="of">of</option>
+                            </select> spiders.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">I'm interested <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="at">at</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="for">for</option>
+                            </select> learning French.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">Please wait <select data-answer="for" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="at">at</option>
+                                <option value="in">in</option>
+                                <option value="on">on</option>
+                                <option value="for">for</option>
+                            </select> me.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">5</span>
+                        <span class="sentence">He apologized <select data-answer="for" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="at">at</option>
+                                <option value="in">in</option>
+                                <option value="for">for</option>
+                                <option value="of">of</option>
+                            </select> being late.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="checkEx2" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="resetEx2" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="resultEx2" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 3: Fill in the blank (mixed) -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">3</span> Fill in the blank (mixed prepositions)
+                </h3>
+                <div id="ex3" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">The dog ran <input type="text" data-answer="across" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> the field.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">We walked <input type="text" data-answer="through" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> the tunnel.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">She sat <input type="text" data-answer="beside" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> me.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">I'll finish the project <input type="text" data-answer="by" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> Friday.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">5</span>
+                        <span class="sentence">He lives <input type="text" data-answer="at" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> 25 Main Street.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="checkEx3" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="resetEx3" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="resultEx3" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+        </section>
+
+        <!-- ====== FOOTER ====== -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-400 pb-8">
+            <p class="mb-0">📘 PrepMaster &bull; Ultimate Prepositions Guide &bull; 2026</p>
+            <p class="text-xs mt-1">Built with ❤️ using HTML &amp; Tailwind CSS</p>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!--  JAVASCRIPT – EXERCISES                                       -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            // Helper: normalize
+            function normalize(s) {
+                return s.trim().toLowerCase().replace(/\s+/g, ' ');
+            }
+
+            // ---------- EXERCISE 1: in/on/at (select) ----------
+            const selects1 = document.querySelectorAll('#ex1 select');
+            const result1 = document.getElementById('resultEx1');
+            document.getElementById('checkEx1').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects1.length;
+                selects1.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects1).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result1.textContent = '⚠️ Please answer all questions.';
+                    result1.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result1.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result1.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result1.textContent += ' 🎉 Perfect!';
+                }
+                result1.classList.remove('hidden');
+            });
+            document.getElementById('resetEx1').addEventListener('click', function() {
+                selects1.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result1.classList.add('hidden');
+            });
+
+            // ---------- EXERCISE 2: choose correct (select) ----------
+            const selects2 = document.querySelectorAll('#ex2 select');
+            const result2 = document.getElementById('resultEx2');
+            document.getElementById('checkEx2').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects2.length;
+                selects2.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects2).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result2.textContent = '⚠️ Please answer all questions.';
+                    result2.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result2.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result2.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result2.textContent += ' 🎉 Perfect!';
+                }
+                result2.classList.remove('hidden');
+            });
+            document.getElementById('resetEx2').addEventListener('click', function() {
+                selects2.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result2.classList.add('hidden');
+            });
+
+            // ---------- EXERCISE 3: fill-in (input) ----------
+            const inputs3 = document.querySelectorAll('#ex3 input');
+            const result3 = document.getElementById('resultEx3');
+            document.getElementById('checkEx3').addEventListener('click', function() {
+                let correct = 0,
+                    total = inputs3.length;
+                inputs3.forEach(inp => {
+                    const user = inp.value.trim();
+                    const ans = inp.dataset.answer;
+                    if (normalize(user) === normalize(ans)) {
+                        correct++;
+                        inp.classList.remove('border-red-400', 'bg-red-50');
+                        inp.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        inp.classList.remove('border-green-500', 'bg-green-50');
+                        if (user !== '') {
+                            inp.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            inp.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allFilled = Array.from(inputs3).every(inp => inp.value.trim() !== '');
+                if (!allFilled) {
+                    result3.textContent = '⚠️ Please fill in all blanks.';
+                    result3.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result3.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result3.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result3.textContent += ' 🎉 Perfect!';
+                }
+                result3.classList.remove('hidden');
+            });
+            document.getElementById('resetEx3').addEventListener('click', function() {
+                inputs3.forEach(inp => {
+                    inp.value = '';
+                    inp.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result3.classList.add('hidden');
+            });
+
+            // Enter key support for input fields
+            document.querySelectorAll('.exercise-fill input').forEach(inp => {
+                inp.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        const parent = inp.closest('.bg-white');
+                        if (parent) {
+                            const btn = parent.querySelector('button[id^="check"]');
+                            if (btn) btn.click();
+                        }
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>

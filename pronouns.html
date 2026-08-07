@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Grammar: Pronouns</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            letter-spacing: -0.01em;
+        }
+        .prose h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            color: #334155;
+        }
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #334155;
+        }
+        .prose li {
+            margin-bottom: 0.4rem;
+            line-height: 1.6;
+        }
+        .prose .rule-box {
+            background: #f1f5f9;
+            border-left: 4px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            margin: 1.25rem 0;
+        }
+        .prose .rule-box strong {
+            color: #1e293b;
+        }
+        .prose .example {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 0.95rem;
+            color: #0f172a;
+        }
+        .prose .example .highlight {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+        .prose .example .highlight-green {
+            color: #059669;
+            font-weight: 600;
+        }
+        .prose .badge {
+            display: inline-block;
+            background: #6366f1;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.65rem;
+            border-radius: 9999px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .prose .badge-gold {
+            background: #f59e0b;
+        }
+        .prose .badge-green {
+            background: #22c55e;
+        }
+        .prose .badge-blue {
+            background: #3b82f6;
+        }
+        .prose .badge-rose {
+            background: #f43f5e;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .table-wrap th {
+            background: #f8fafc;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .table-wrap td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+        .anchor-link {
+            scroll-margin-top: 6rem;
+        }
+        .quiz-option {
+            transition: all 0.1s ease;
+            cursor: pointer;
+        }
+        .quiz-option:hover {
+            background: #f1f5f9;
+        }
+        .quiz-option.selected-correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .quiz-option.selected-wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+        .quiz-option.show-correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .quiz-card {
+            transition: all 0.15s ease;
+        }
+        .quiz-card:hover {
+            border-color: #a5b4fc;
+        }
+        .exercise-fill input,
+        .exercise-fill select {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            background: white;
+            width: 160px;
+        }
+        .exercise-fill select {
+            width: auto;
+            min-width: 120px;
+        }
+        .exercise-fill .fill-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .exercise-fill .fill-row:last-child {
+            border-bottom: none;
+        }
+        .exercise-fill .fill-row .num {
+            font-weight: 600;
+            color: #64748b;
+            min-width: 24px;
+        }
+        .exercise-fill .fill-row .sentence {
+            flex: 1;
+            min-width: 200px;
+        }
+        .exercise-fill .fill-row .sentence .blank {
+            display: inline-block;
+            min-width: 90px;
+            border-bottom: 2px dashed #94a3b8;
+            margin: 0 4px;
+            padding: 0 4px;
+            color: #6366f1;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .prose h2 {
+                font-size: 1.25rem;
+            }
+            .prose h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-bold text-indigo-600">📘</span>
+                <span class="font-semibold text-gray-800 text-lg hidden sm:block">Pronoun<span class="text-indigo-600">Master</span></span>
+            </div>
+            <div class="flex items-center gap-3 text-sm font-medium">
+                <a href="#types" class="text-gray-600 hover:text-indigo-600 transition">Types</a>
+                <a href="#specific" class="text-gray-600 hover:text-indigo-600 transition">Specific</a>
+                <a href="#exercises" class="text-gray-600 hover:text-indigo-600 transition hidden sm:inline">Practice</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section class="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 border-b border-gray-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+            <div class="grid md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-3">
+                    <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide">📚 ULTIMATE GRAMMAR GUIDE</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+                        <span class="text-indigo-600">Pronouns</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
+                        Master all types of pronouns: personal, possessive, reflexive, relative, indefinite, and more.
+                        Clear rules, examples, and interactive practice.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="#types" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
+                            Start Learning <span>→</span>
+                        </a>
+                        <a href="#exercises" class="bg-white hover:bg-gray-50 text-gray-700 font-medium px-6 py-2.5 rounded-full border border-gray-300 transition flex items-center gap-2">
+                            Practice <span>✏️</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 hidden md:flex justify-center">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 w-full max-w-xs">
+                        <div class="text-center">
+                            <div class="grid grid-cols-2 gap-1 text-xs font-medium">
+                                <div class="bg-blue-50 p-2 rounded">I / me</div>
+                                <div class="bg-blue-50 p-2 rounded">you</div>
+                                <div class="bg-blue-50 p-2 rounded">he / him</div>
+                                <div class="bg-blue-50 p-2 rounded">she / her</div>
+                                <div class="bg-blue-50 p-2 rounded">it</div>
+                                <div class="bg-blue-50 p-2 rounded">we / us</div>
+                                <div class="bg-blue-50 p-2 rounded">they / them</div>
+                                <div class="bg-blue-50 p-2 rounded">who / whom</div>
+                            </div>
+                            <p class="text-[10px] text-gray-400 mt-3">Personal &amp; relative pronouns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ============================================================ -->
+        <!--  SECTION: WHAT ARE PRONOUNS?                                  -->
+        <!-- ============================================================ -->
+        <section id="intro" class="anchor-link prose max-w-none">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">🔤</span>
+                <h2 class="!mt-0">What Are Pronouns?</h2>
+            </div>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                <strong>Pronouns</strong> are words (or phrases) you substitute for nouns when your reader or listener
+                already knows which noun you're referring to. They make communication faster and avoid repetition.
+            </p>
+            <div class="rule-box">
+                <p class="!mb-0"><strong>💡 Antecedent:</strong> The noun that a pronoun refers to is called its <strong>antecedent</strong>.</p>
+                <div class="example text-sm"><span class="highlight">Sarah</span> has always loved fashion. <span class="highlight-green">She</span> announced that <span class="highlight-green">she</span> wants to go to fashion school.</div>
+            </div>
+            <p class="text-sm text-gray-500"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">Updated Jan 16, 2024</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: TYPES OF PRONOUNS                                   -->
+        <!-- ============================================================ -->
+        <section id="types" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">📋</span>
+                <h2 class="!mt-0">Types of Pronouns</h2>
+            </div>
+
+            <!-- Personal -->
+            <h3>Personal Pronouns</h3>
+            <p>Change form based on person (first, second, third), number, and case (subject/object).</p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Person</th><th>Subject</th><th>Object</th></tr></thead>
+                    <tbody>
+                        <tr><td>1st singular</td><td>I</td><td>me</td></tr>
+                        <tr><td>2nd singular/plural</td><td>you</td><td>you</td></tr>
+                        <tr><td>3rd singular</td><td>he / she / it</td><td>him / her / it</td></tr>
+                        <tr><td>1st plural</td><td>we</td><td>us</td></tr>
+                        <tr><td>3rd plural</td><td>they</td><td>them</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="example"><span class="highlight">I</span> brought all the snacks. <span class="highlight">We</span> weren't planning on staying over.</div>
+
+            <!-- Possessive -->
+            <h3>Possessive Pronouns &amp; Adjectives</h3>
+            <p>Show ownership. Possessive adjectives modify nouns; possessive pronouns replace nouns.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Possessive Adjective</th><th>Possessive Pronoun</th></tr></thead>
+                    <tbody>
+                        <tr><td>my</td><td>mine</td></tr>
+                        <tr><td>your</td><td>yours</td></tr>
+                        <tr><td>his / her / its</td><td>his / hers / its</td></tr>
+                        <tr><td>our</td><td>ours</td></tr>
+                        <tr><td>their</td><td>theirs</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="example">That is <span class="highlight">my</span> book. That book is <span class="highlight-green">mine</span>.</div>
+
+            <!-- Reflexive & Intensive -->
+            <h3>Reflexive &amp; Intensive Pronouns</h3>
+            <p>End in <em>-self</em> or <em>-selves</em>. Reflexive: object refers back to subject. Intensive: adds emphasis.</p>
+            <div class="example">She checked <span class="highlight">herself</span> out of the hotel. (reflexive)</div>
+            <div class="example">I built this house <span class="highlight">myself</span>. (intensive)</div>
+
+            <!-- Demonstrative -->
+            <h3>Demonstrative Pronouns</h3>
+            <p>Point to specific things: <em>this, that, these, those</em>.</p>
+            <div class="example"><span class="highlight">This</span> has no return address. <span class="highlight">Those</span> aren't swans, they're geese.</div>
+
+            <!-- Indefinite -->
+            <h3>Indefinite Pronouns</h3>
+            <p>Refer to non-specific people or things: <em>anybody, everyone, nothing, some</em> etc.</p>
+            <div class="example"><span class="highlight">Everybody</span> was late to work. <span class="highlight">Nobody</span> knows the trouble I've seen.</div>
+
+            <!-- Relative -->
+            <h3>Relative Pronouns</h3>
+            <p>Introduce relative clauses: <em>who, whom, which, that, what</em>.</p>
+            <div class="example">The woman <span class="highlight">who</span> called earlier didn't leave a message.</div>
+            <div class="example">My car, <span class="highlight">which</span> is twenty years old, still runs well.</div>
+
+            <!-- Interrogative -->
+            <h3>Interrogative Pronouns</h3>
+            <p>Used in questions: <em>who, whom, whose, what, which</em>.</p>
+            <div class="example"><span class="highlight">Who</span> wants a bag of jelly beans? <span class="highlight">What</span> is your name?</div>
+
+            <!-- Reciprocal -->
+            <h3>Reciprocal Pronouns</h3>
+            <p><em>each other</em> and <em>one another</em> – show mutual relationships.</p>
+            <div class="example">Javier and Priya are competing with <span class="highlight">each other</span>.</div>
+
+            <!-- Distributive -->
+            <h3>Distributive Pronouns</h3>
+            <p>Refer to individuals in a group: <em>either, each, neither, any, none</em>.</p>
+            <div class="example">Peanut butter or chocolate? I'm good with <span class="highlight">either</span>.</div>
+            <div class="example">There were four cats, and <span class="highlight">none</span> had long hair.</div>
+
+            <p class="text-sm text-gray-500 mt-2"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">All types</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: SPECIFIC GRAMMAR POINTS (Units 82–91)               -->
+        <!-- ============================================================ -->
+        <section id="specific" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">⚡</span>
+                <h2 class="!mt-0">Specific Pronoun Usage</h2>
+            </div>
+
+            <!-- myself/yourself etc. -->
+            <h3>Reflexive / Intensive: <em>myself, yourself, himself</em> etc.</h3>
+            <div class="rule-box">
+                <p>Use reflexive pronouns when the subject and object are the same. Use intensive for emphasis.</p>
+                <div class="example">Steve introduced <span class="highlight">himself</span> to the other guests. (reflexive)</div>
+                <div class="example">I repaired it <span class="highlight">myself</span>. (intensive)</div>
+                <p class="text-sm text-gray-600 mt-2">Do not use reflexive after <em>feel, relax, concentrate, meet, wash, shave, dress</em> (normally).</p>
+            </div>
+
+            <!-- there and it -->
+            <h3><em>there</em> and <em>it</em></h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p class="font-semibold">There</p>
+                    <div class="example"><span class="highlight">There's</span> a new restaurant in Hill Street.</div>
+                    <div class="example"><span class="highlight">There</span> was a lot of traffic.</div>
+                </div>
+                <div>
+                    <p class="font-semibold">It</p>
+                    <div class="example"><span class="highlight">It's</span> very good. (the restaurant)</div>
+                    <div class="example"><span class="highlight">It</span> was a complete surprise.</div>
+                </div>
+            </div>
+            <p class="text-sm">Use <strong>there</strong> to say something exists. Use <strong>it</strong> for a specific thing, place, fact, situation.</p>
+
+            <!-- some and any -->
+            <h3><em>some</em> and <em>any</em></h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p class="font-semibold text-emerald-700">Some</p>
+                    <p>Positive sentences, offers, requests, when we expect "yes".</p>
+                    <div class="example">We bought <span class="highlight">some</span> flowers.</div>
+                    <div class="example">Can I have <span class="highlight">some</span> sugar?</div>
+                </div>
+                <div>
+                    <p class="font-semibold text-rose-700">Any</p>
+                    <p>Negative sentences, questions (most), <em>if</em> clauses, "it doesn't matter which".</p>
+                    <div class="example">We didn't buy <span class="highlight">any</span> flowers.</div>
+                    <div class="example">Do you have <span class="highlight">any</span> luggage?</div>
+                    <div class="example">You can take <span class="highlight">any</span> bus.</div>
+                </div>
+            </div>
+
+            <!-- no/none/any nothing/nobody -->
+            <h3><em>no, none, any, nothing, nobody</em></h3>
+            <div class="rule-box">
+                <p><strong>No</strong> + noun; <strong>none</strong> without noun; <strong>nothing/nobody/nowhere</strong> = not + anything/anybody/anywhere.</p>
+                <div class="example">We had <span class="highlight">no</span> bus. / We had <span class="highlight">none</span>. / I said <span class="highlight">nothing</span>.</div>
+                <div class="example"><span class="highlight">Nobody</span> knows. / <span class="highlight">Nowhere</span> to go.</div>
+            </div>
+
+            <!-- much/many/little/few -->
+            <h3><em>much, many, little, few</em></h3>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th></th><th>Countable</th><th>Uncountable</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>many / few</strong></td><td>many friends, few cars</td><td>—</td></tr>
+                        <tr><td><strong>much / little</strong></td><td>—</td><td>much time, little money</td></tr>
+                        <tr><td><strong>a lot of / plenty of</strong></td><td>a lot of friends, plenty of ideas</td><td>a lot of luck, plenty of time</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="example">We didn't spend <span class="highlight">much</span> money. / <span class="highlight">Many</span> people drive too fast.</div>
+            <div class="example">He has <span class="highlight">little</span> time. / She has <span class="highlight">few</span> friends.</div>
+
+            <!-- all/most/no/none etc. -->
+            <h3><em>all, most, no, none</em> etc. + of</h3>
+            <div class="rule-box">
+                <p>Use <strong>of</strong> before <em>the, my, these, those</em> and before pronouns (<em>us, you, them</em>).</p>
+                <div class="example"><span class="highlight">Some of</span> the people I work with are strange.</div>
+                <div class="example"><span class="highlight">None of</span> this money is mine.</div>
+                <div class="example"><span class="highlight">All of</span> us were late.</div>
+                <p class="text-sm text-gray-600 mt-1">But: <em>All cars have wheels</em> (no <em>of</em> before a noun without determiner).</p>
+            </div>
+
+            <!-- both/neither/either -->
+            <h3><em>both, neither, either</em> (for two)</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div><span class="font-semibold">both</span> = the two<br><span class="example text-sm">Both restaurants are good.</span></div>
+                <div><span class="font-semibold">neither</span> = not one nor the other<br><span class="example text-sm">Neither restaurant is expensive.</span></div>
+                <div><span class="font-semibold">either</span> = one or the other<br><span class="example text-sm">We can go to either restaurant.</span></div>
+            </div>
+            <div class="example"><span class="highlight">Both of</span> these restaurants are good. / <span class="highlight">Neither of</span> them was expensive.</div>
+
+            <!-- all/every/whole -->
+            <h3><em>all, every, whole</em></h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div><span class="font-semibold">all</span> + noun (or all of)<br><span class="example text-sm">All my friends were happy.</span></div>
+                <div><span class="font-semibold">every</span> + singular noun<br><span class="example text-sm">Every seat was taken.</span></div>
+                <div><span class="font-semibold">whole</span> + singular noun (complete)<br><span class="example text-sm">I read the whole book.</span></div>
+            </div>
+            <div class="example"><span class="highlight">Everybody</span> was happy. / <span class="highlight">Everything</span> went wrong.</div>
+
+            <!-- each and every -->
+            <h3><em>each</em> and <em>every</em></h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <p class="font-semibold">Each</p>
+                    <p>individual, one by one, for two or more.</p>
+                    <div class="example">Study <span class="highlight">each</span> sentence carefully.</div>
+                    <div class="example"><span class="highlight">Each</span> player has three cards.</div>
+                </div>
+                <div>
+                    <p class="font-semibold">Every</p>
+                    <p>group, all, for three or more, frequency.</p>
+                    <div class="example"><span class="highlight">Every</span> window was open.</div>
+                    <div class="example">I go there <span class="highlight">every</span> day.</div>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 mt-2"><span class="badge">Units 82–91</span> <span class="badge badge-blue ml-2">Grammar in Use</span></p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  SECTION: EXERCISES                                           -->
+        <!-- ============================================================ -->
+        <section id="exercises" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">✏️</span>
+                <h2 class="!mt-0">Practice Exercises</h2>
+            </div>
+            <p class="text-gray-600">Test your understanding of pronouns with these interactive exercises.</p>
+
+            <!-- Exercise 83.1 – of mine/yours -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">83.1</span> <em>… of mine / yours</em> etc.
+                </h3>
+                <div id="ex831" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">I'm meeting one of my friends tonight. → I'm meeting <input type="text" data-answer="a friend of mine" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-40 text-center">.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">We met one of your relatives. → We met <input type="text" data-answer="a relative of yours" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-44 text-center">.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">Jason borrowed one of my books. → Jason borrowed <input type="text" data-answer="a book of mine" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-40 text-center">.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check831" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset831" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result831" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 84.1 – there is / it is -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">84.1</span> <em>there is / it is</em>
+                </h3>
+                <div id="ex841" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">The journey took a long time. <select data-answer="There was" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="There was">There was</option>
+                                <option value="It was">It was</option>
+                            </select> a lot of traffic.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">What's the new restaurant like? <select data-answer="Is it" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="Is it">Is it</option>
+                                <option value="Is there">Is there</option>
+                            </select> good?</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">I wanted to visit the museum yesterday, but <select data-answer="there wasn't" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="there wasn't">there wasn't</option>
+                                <option value="it wasn't">it wasn't</option>
+                            </select> enough time.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence"><select data-answer="Is there" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="Is there">Is there</option>
+                                <option value="Is it">Is it</option>
+                            </select> a bridge across the river?</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check841" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset841" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result841" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 85.1 – some/any -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">85.1</span> <em>some / any</em>
+                </h3>
+                <div id="ex851" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">We didn't buy <select data-answer="any" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="some">some</option>
+                                <option value="any">any</option>
+                            </select> flowers.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">Tonight I'm going out with <select data-answer="some" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="some">some</option>
+                                <option value="any">any</option>
+                            </select> friends of mine.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">Have you seen <select data-answer="any" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="some">some</option>
+                                <option value="any">any</option>
+                            </select> good movies recently?</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">I'd like <select data-answer="some" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="some">some</option>
+                                <option value="any">any</option>
+                            </select> information about the town.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check851" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset851" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result851" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 86.1 – no/none/any -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">86.1</span> <em>no / none / any</em>
+                </h3>
+                <div id="ex861" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">It was a public holiday, so there were <select data-answer="no" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="no">no</option>
+                                <option value="none">none</option>
+                                <option value="any">any</option>
+                            </select> shops open.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">I don't have <select data-answer="any" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="no">no</option>
+                                <option value="none">none</option>
+                                <option value="any">any</option>
+                            </select> money. Can you lend me some?</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">‘How many eggs do we have?’ ‘<select data-answer="None" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="No">No</option>
+                                <option value="None">None</option>
+                                <option value="Any">Any</option>
+                            </select> . Shall I get some?’</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">We took a few pictures, but <select data-answer="none" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="no">no</option>
+                                <option value="none">none</option>
+                                <option value="any">any</option>
+                            </select> of them were very good.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check861" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset861" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result861" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 87.1 – much/many/little/few -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">87.1</span> <em>much / many / little / few</em>
+                </h3>
+                <div id="ex871" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">She isn't popular. She has <select data-answer="few" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="much">much</option>
+                                <option value="many">many</option>
+                                <option value="little">little</option>
+                                <option value="few">few</option>
+                            </select> friends.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">Anna is very busy these days. She has <select data-answer="little" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="much">much</option>
+                                <option value="many">many</option>
+                                <option value="little">little</option>
+                                <option value="few">few</option>
+                            </select> free time.</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">Did you take <select data-answer="many" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="much">much</option>
+                                <option value="many">many</option>
+                                <option value="little">little</option>
+                                <option value="few">few</option>
+                            </select> pictures at the wedding?</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">4</span>
+                        <span class="sentence">This is a modern city. There are <select data-answer="few" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="much">much</option>
+                                <option value="many">many</option>
+                                <option value="little">little</option>
+                                <option value="few">few</option>
+                            </select> old buildings.</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check871" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset871" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result871" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+            <!-- Exercise 89.1 – both/neither/either -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
+                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
+                    <span class="badge">89.1</span> <em>both / neither / either</em>
+                </h3>
+                <div id="ex891" class="exercise-fill mt-3">
+                    <div class="fill-row">
+                        <span class="num">1</span>
+                        <span class="sentence">‘Do you want tea or coffee?’ ‘<select data-answer="Either" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="Both">Both</option>
+                                <option value="Neither">Neither</option>
+                                <option value="Either">Either</option>
+                            </select> . I really don't mind.’</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">2</span>
+                        <span class="sentence">‘What day is it today – the 18th or the 19th?’ ‘<select data-answer="Neither" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="Both">Both</option>
+                                <option value="Neither">Neither</option>
+                                <option value="Either">Either</option>
+                            </select> . It's the 20th.’</span>
+                    </div>
+                    <div class="fill-row">
+                        <span class="num">3</span>
+                        <span class="sentence">‘Where did you go – Korea or Japan?’ ‘We went to <select data-answer="Both" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
+                                <option value="">—</option>
+                                <option value="Both">Both</option>
+                                <option value="Neither">Neither</option>
+                                <option value="Either">Either</option>
+                            </select> . A week in each.’</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button id="check891" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
+                    <button id="reset891" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+                </div>
+                <div id="result891" class="mt-4 text-sm font-medium hidden"></div>
+            </div>
+
+        </section>
+
+        <!-- ====== FOOTER ====== -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-400 pb-8">
+            <p class="mb-0">📘 PronounMaster &bull; Ultimate Pronouns Guide &bull; 2026</p>
+            <p class="text-xs mt-1">Built with ❤️ using HTML &amp; Tailwind CSS</p>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!--  JAVASCRIPT – EXERCISES                                       -->
+    <!-- ============================================================ -->
+    <script>
+        (function() {
+            // Helper: normalize
+            function normalize(s) {
+                return s.trim().toLowerCase().replace(/\s+/g, ' ');
+            }
+
+            // ---------- 83.1 ----------
+            const inputs831 = document.querySelectorAll('#ex831 input');
+            const result831 = document.getElementById('result831');
+            document.getElementById('check831').addEventListener('click', function() {
+                let correct = 0,
+                    total = inputs831.length;
+                inputs831.forEach(inp => {
+                    const user = inp.value.trim();
+                    const ans = inp.dataset.answer;
+                    if (normalize(user) === normalize(ans)) {
+                        correct++;
+                        inp.classList.remove('border-red-400', 'bg-red-50');
+                        inp.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        inp.classList.remove('border-green-500', 'bg-green-50');
+                        if (user !== '') {
+                            inp.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            inp.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allFilled = Array.from(inputs831).every(inp => inp.value.trim() !== '');
+                if (!allFilled) {
+                    result831.textContent = '⚠️ Please fill in all blanks.';
+                    result831.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result831.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result831.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result831.textContent += ' 🎉 Perfect!';
+                }
+                result831.classList.remove('hidden');
+            });
+            document.getElementById('reset831').addEventListener('click', function() {
+                inputs831.forEach(inp => {
+                    inp.value = '';
+                    inp.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result831.classList.add('hidden');
+            });
+
+            // ---------- 84.1 select ----------
+            const selects841 = document.querySelectorAll('#ex841 select');
+            const result841 = document.getElementById('result841');
+            document.getElementById('check841').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects841.length;
+                selects841.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects841).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result841.textContent = '⚠️ Please answer all questions.';
+                    result841.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result841.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result841.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result841.textContent += ' 🎉 Perfect!';
+                }
+                result841.classList.remove('hidden');
+            });
+            document.getElementById('reset841').addEventListener('click', function() {
+                selects841.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result841.classList.add('hidden');
+            });
+
+            // ---------- 85.1 select ----------
+            const selects851 = document.querySelectorAll('#ex851 select');
+            const result851 = document.getElementById('result851');
+            document.getElementById('check851').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects851.length;
+                selects851.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects851).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result851.textContent = '⚠️ Please answer all questions.';
+                    result851.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result851.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result851.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result851.textContent += ' 🎉 Perfect!';
+                }
+                result851.classList.remove('hidden');
+            });
+            document.getElementById('reset851').addEventListener('click', function() {
+                selects851.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result851.classList.add('hidden');
+            });
+
+            // ---------- 86.1 select ----------
+            const selects861 = document.querySelectorAll('#ex861 select');
+            const result861 = document.getElementById('result861');
+            document.getElementById('check861').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects861.length;
+                selects861.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects861).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result861.textContent = '⚠️ Please answer all questions.';
+                    result861.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result861.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result861.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result861.textContent += ' 🎉 Perfect!';
+                }
+                result861.classList.remove('hidden');
+            });
+            document.getElementById('reset861').addEventListener('click', function() {
+                selects861.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result861.classList.add('hidden');
+            });
+
+            // ---------- 87.1 select ----------
+            const selects871 = document.querySelectorAll('#ex871 select');
+            const result871 = document.getElementById('result871');
+            document.getElementById('check871').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects871.length;
+                selects871.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects871).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result871.textContent = '⚠️ Please answer all questions.';
+                    result871.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result871.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result871.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result871.textContent += ' 🎉 Perfect!';
+                }
+                result871.classList.remove('hidden');
+            });
+            document.getElementById('reset871').addEventListener('click', function() {
+                selects871.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result871.classList.add('hidden');
+            });
+
+            // ---------- 89.1 select ----------
+            const selects891 = document.querySelectorAll('#ex891 select');
+            const result891 = document.getElementById('result891');
+            document.getElementById('check891').addEventListener('click', function() {
+                let correct = 0,
+                    total = selects891.length;
+                selects891.forEach(sel => {
+                    const val = sel.value;
+                    const ans = sel.dataset.answer;
+                    if (val === ans) {
+                        correct++;
+                        sel.classList.remove('border-red-400', 'bg-red-50');
+                        sel.classList.add('border-green-500', 'bg-green-50');
+                    } else {
+                        sel.classList.remove('border-green-500', 'bg-green-50');
+                        if (val !== '') {
+                            sel.classList.add('border-red-400', 'bg-red-50');
+                        } else {
+                            sel.classList.remove('border-red-400', 'bg-red-50');
+                        }
+                    }
+                });
+                const allAnswered = Array.from(selects891).every(s => s.value !== '');
+                if (!allAnswered) {
+                    result891.textContent = '⚠️ Please answer all questions.';
+                    result891.className = 'mt-4 text-sm font-medium text-amber-600';
+                } else {
+                    result891.textContent = `✅ You got ${correct}/${total} correct.`;
+                    result891.className = 'mt-4 text-sm font-medium text-emerald-600';
+                    if (correct === total) result891.textContent += ' 🎉 Perfect!';
+                }
+                result891.classList.remove('hidden');
+            });
+            document.getElementById('reset891').addEventListener('click', function() {
+                selects891.forEach(sel => {
+                    sel.value = '';
+                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
+                });
+                result891.classList.add('hidden');
+            });
+
+            // Enter key support for fill inputs
+            document.querySelectorAll('.exercise-fill input').forEach(inp => {
+                inp.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        const parent = inp.closest('.bg-white');
+                        if (parent) {
+                            const btn = parent.querySelector('button[id^="check"]');
+                            if (btn) btn.click();
+                        }
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>

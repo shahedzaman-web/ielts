@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Resource Hub · Grammar · IELTS · Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #f6f9fc;
+        }
+        .resource-card {
+            transition: all 0.25s ease;
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem 1.5rem 1.75rem;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .resource-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #3b82f6;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            border-color: #dbeafe;
+        }
+        .resource-card:hover::after {
+            opacity: 1;
+        }
+        .resource-card .icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            flex-shrink: 0;
+        }
+        .resource-card .title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+        .resource-card .description {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        .resource-card .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: auto;
+        }
+        .resource-card .badge-group .badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.7rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .badge-grammar {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .badge-ielts {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .badge-vocab {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .badge-interactive {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+        .badge-strategy {
+            background: #fce7f3;
+            color: #9d174d;
+        }
+        .badge-advanced {
+            background: #f1f5f9;
+            color: #334155;
+        }
+        .resource-card .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #3b82f6;
+            margin-top: 0.5rem;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .resource-card .open-btn:hover {
+            color: #1d4ed8;
+        }
+        .resource-card .open-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+        .resource-card .open-btn:hover svg {
+            transform: translateX(3px);
+        }
+        .hero-gradient {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            text-align: center;
+        }
+        .stat-box .number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .stat-box .label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .footer-note {
+            background: #f1f5f9;
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            margin-top: 2.5rem;
+        }
+        @media (max-width: 640px) {
+            .resource-card {
+                padding: 1.25rem;
+            }
+            .stat-box .number {
+                font-size: 1.2rem;
+            }
+            .hero-gradient h1 {
+                font-size: 2rem;
+            }
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-title .count {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.1rem 0.7rem;
+            border-radius: 9999px;
+        }
+        .divider {
+            border: 0;
+            border-top: 2px dashed #e2e8f0;
+            margin: 2.5rem 0;
+        }
+        .search-box {
+            transition: all 0.2s;
+        }
+        .search-box:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        .nav-link {
+            color: #cbd5e1;
+            transition: color 0.15s;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .nav-link.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        #searchInput {
+            width: 100%;
+            max-width: 320px;
+        }
+        @media (max-width: 640px) {
+            #searchInput {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="bg-white border-b border-gray-200/80 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-bold text-blue-600">📘</span>
+                    <span class="font-semibold text-gray-800 text-lg hidden sm:block">Resource<span class="text-blue-600">Hub</span></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <input id="searchInput" type="text" placeholder="Search resources..." class="search-box border border-gray-300 rounded-full px-4 py-1.5 text-sm outline-none bg-gray-50 focus:bg-white w-full sm:w-64" />
+                    <span class="text-xs text-gray-400 hidden md:inline">10+ resources</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="md:w-2/3">
+                    <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4">
+                        📚 10+ Resources
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        English Grammar<br />
+                        <span class="text-blue-300">IELTS &amp; Vocabulary</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-blue-100/80 mt-4 max-w-2xl leading-relaxed">
+                        Your complete library of grammar guides, interactive exercises, IELTS writing strategies, and vocabulary reference — all in one place.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="#grammar" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+                            📖 Grammar <span>→</span>
+                        </a>
+                        <a href="#ielts" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
+                            🎯 IELTS <span>→</span>
+                        </a>
+                        <a href="#vocab" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+                            📚 Vocabulary <span>→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/3 flex flex-wrap justify-center gap-3 md:gap-4">
+                    <div class="stat-box">
+                        <div class="number">10</div>
+                        <div class="label">Resources</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">6</div>
+                        <div class="label">Grammar</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">4</div>
+                        <div class="label">IELTS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ============================================================ -->
+        <!--  GRAMMAR SECTION                                              -->
+        <!-- ============================================================ -->
+        <section id="grammar">
+            <div class="flex items-center justify-between mb-6">
+                <div class="section-title">
+                    📖 Grammar Resources
+                    <span class="count">6</span>
+                </div>
+                <span class="text-sm text-gray-400 hidden sm:inline">Master the rules · Practice interactively</span>
+            </div>
+
+            <div class="grid-cards" id="grammarGrid">
+
+                <!-- 1. Subject-Verb Agreement -->
+                <a href="subject_verb_agreement.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-blue-50 text-blue-600">🤝</div>
+                    <div class="title">Subject–Verb Agreement</div>
+                    <div class="description">Master the essential rule that your verb must match your subject in number and person. Clear rules, real examples, and a practice quiz.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Quiz</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 2. Verb Tenses -->
+                <a href="tense.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-amber-50 text-amber-600">⏳</div>
+                    <div class="title">Verb Tenses</div>
+                    <div class="description">Master all 12 English verb tenses with clear explanations, examples, and a complete practice section. Past · Present · Future.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Exercises</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 3. Articles & Nouns -->
+                <a href="article.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-emerald-50 text-emerald-600">📘</div>
+                    <div class="title">Articles &amp; Countable Nouns</div>
+                    <div class="description">Master a/an, the and the difference between countable and uncountable nouns. Clear rules, examples, and interactive practice exercises.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Practice</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 4. Prepositions -->
+                <a href="prepositions.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-purple-50 text-purple-600">🧩</div>
+                    <div class="title">Prepositions</div>
+                    <div class="description">Master English prepositions: in, on, at, and more. Learn time, place, direction, and usage rules with clear examples and interactive practice.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Exercises</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 5. Pronouns -->
+                <a href="pronouns.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-pink-50 text-pink-600">🔤</div>
+                    <div class="title">Pronouns</div>
+                    <div class="description">Master all types: personal, possessive, reflexive, relative, indefinite, and more. Clear rules, examples, and interactive practice exercises.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Practice</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 6. Essential Grammar (Interactive) -->
+                <a href="essential_grammar.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-indigo-50 text-indigo-600">📗</div>
+                    <div class="title">Essential Grammar in Use</div>
+                    <div class="description">An interactive grammar reference with 145+ units covering everything from present tenses to phrasal verbs. Search, practice, and track your progress.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-grammar">Grammar</span>
+                        <span class="badge badge-interactive">Interactive</span>
+                        <span class="badge badge-advanced">145+ Units</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ============================================================ -->
+        <!--  IELTS SECTION                                                 -->
+        <!-- ============================================================ -->
+        <section id="ielts">
+            <div class="flex items-center justify-between mb-6">
+                <div class="section-title">
+                    🎯 IELTS Resources
+                    <span class="count">4</span>
+                </div>
+                <span class="text-sm text-gray-400 hidden sm:inline">Band 7–9 strategies · Model essays</span>
+            </div>
+
+            <div class="grid-cards" id="ieltsGrid">
+
+                <!-- 1. Task 1 Complete Master Manual -->
+                <a href="task1_marged.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-blue-900/10 text-blue-700">📊</div>
+                    <div class="title">Task 1 · Complete Master Manual</div>
+                    <div class="description">From clauses to super sentences — everything you need for a Band 7+ in Grammatical Range &amp; Accuracy. 40+ sections, 20 templates, full essay analysis.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-ielts">IELTS</span>
+                        <span class="badge badge-strategy">Strategy</span>
+                        <span class="badge badge-advanced">Band 7–9</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 2. Rachel Mitchell Task 1 -->
+                <a href="rachel_mitchell_task1.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-green-50 text-green-700">📈</div>
+                    <div class="title">Task 1 · Rachel Mitchell</div>
+                    <div class="description">The ultimate guide with practice to get a target band score of 8.0+ in 10 minutes a day. Proven formulas, tips, strategies, structures, and model essays.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-ielts">IELTS</span>
+                        <span class="badge badge-strategy">Strategy</span>
+                        <span class="badge badge-advanced">8.0+</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 3. Rachel Mitchell Task 2 -->
+                <a href="rachel_mitchell_task2.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-amber-50 text-amber-700">✍️</div>
+                    <div class="title">Task 2 · Rachel Mitchell</div>
+                    <div class="description">The ultimate guide with practice to get a target band score of 8.0+ in 10 minutes a day. Proven formulas, tips, strategies, structures, vocabulary, and model essays.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-ielts">IELTS</span>
+                        <span class="badge badge-strategy">Strategy</span>
+                        <span class="badge badge-advanced">8.0+</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+                <!-- 4. Simon Task 2 -->
+                <a href="simon_task2.html" class="resource-card no-underline">
+                    <div class="icon-wrap bg-rose-50 text-rose-700">📝</div>
+                    <div class="title">Task 2 · Simon (Model Essays)</div>
+                    <div class="description">A comprehensive collection of band 9 model essays for all question types: agree/disagree, discuss both views, problem/solution, and two-part questions.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-ielts">IELTS</span>
+                        <span class="badge badge-strategy">Model Essays</span>
+                        <span class="badge badge-advanced">Band 9</span>
+                    </div>
+                    <span class="open-btn">
+                        Open Resource
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </span>
+                </a>
+
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ============================================================ -->
+        <!--  VOCABULARY SECTION                                            -->
+        <!-- ============================================================ -->
+        <section id="vocab">
+            <div class="flex items-center justify-between mb-6">
+                <div class="section-title">
+                    📚 Vocabulary Reference
+                    <span class="count">1</span>
+                </div>
+                <span class="text-sm text-gray-400 hidden sm:inline">Advanced · C1–C2 level</span>
+            </div>
+
+            <div class="grid-cards" id="vocabGrid">
+
+                <!-- 1. English Vocabulary in Use Advanced -->
+                <div class="resource-card">
+                    <div class="icon-wrap bg-yellow-50 text-yellow-700">📙</div>
+                    <div class="title">English Vocabulary in Use Advanced</div>
+                    <div class="description">Complete reference with over 3,000 words and phrases. Units on work, relationships, travel, environment, society, technology, and more. Includes answer key and phonemic guide.</div>
+                    <div class="badge-group">
+                        <span class="badge badge-vocab">Vocabulary</span>
+                        <span class="badge badge-advanced">C1–C2</span>
+                        <span class="badge badge-interactive">100+ Units</span>
+                    </div>
+                    <span class="open-btn" style="pointer-events:none; opacity:0.6;">
+                        📖 View content below
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Vocabulary content preview -->
+            <div class="mt-6 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">📖 English Vocabulary in Use Advanced — Unit Overview</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm text-gray-600">
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">1. Cramming for success</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">2. Education debates</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">3. Applying for a job</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">4. Job interviews</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">5. At work</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">6. Job satisfaction</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">7. Careers</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">8. Describing people</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">9. Appearance</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">10. Personality</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">11. Relationships</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">12. Ups and downs</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">13. Emotions</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">14. Negative feelings</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">15. Birth and death</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">16. Free time</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">17. Clothes &amp; fashion</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">18. Home styles</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">19. Socialising</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">20. Performance arts</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">21. Visual arts</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">22. Talking about books</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">23. Food</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">24. Entertaining &amp; eating out</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">25. Traffic &amp; driving</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">26. Travel &amp; accommodation</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">27. Attracting tourists</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">28. Describing the world</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">29. Weather &amp; climate</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">30. Brick walls &amp; glass ceilings</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">31. Taking root</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">32. The animal kingdom</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">33. Our endangered world</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">34. Customer service</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">35. Customs &amp; police</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">36. Beliefs</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">37. Festivals</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">38. Talking about language</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">39. History</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">40. The haves and have-nots</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">41. British politics</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">42. International politics</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">43. The letter of the law</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">44. War and peace</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">45. Economy &amp; finance</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">46. Personal finance</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">47. The media: in print</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">48. Internet &amp; email</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">49. Advertising</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">50. The news</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">51. Healthcare</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">52. Illness</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">53. Medical language</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">54. Diet, sport &amp; fitness</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">55. Industries</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">56. Technology impact</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">57. Future technology</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">58. Energy</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">59. Space</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">60. Time</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">61. Motion</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">62. Manner</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">63. Sounds</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">64. Weight &amp; density</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">65. Colours</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">66. Speed</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">67. Cause and effect</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">68. Comparisons</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">69. Difficulties</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">70. Modality</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">71. Number</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">72. Permission</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">73. Complaining</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">74. Apology &amp; regret</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">75. Complimenting</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">76. Promises &amp; bets</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">77. Reminiscences</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">78. Agreement</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">79. Academic writing</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">80. Text structure</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">81. Style &amp; format</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">82. Being indirect</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">83. Vague expressions</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">84. The way you say it</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">85. Abbreviations</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">86. Prefixes</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">87. Suffixes</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">88. Word-building</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">89. Global English</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">90. Easily confused</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">91. One word, many meanings</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">92. Collocation</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">93. Metaphor</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">94. Idioms</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">95. Phrasal verbs</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">96. Connotation</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">97. Register</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">98. British vs American</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">99. Language &amp; gender</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">100. Headlines</span>
+                    <span class="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">101. Red tape</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-4">Full content includes answer key, phonemic symbols, and index.</p>
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  QUICK START GUIDE                                             -->
+        <!-- ============================================================ -->
+        <hr class="divider" />
+
+        <section class="bg-white rounded-xl border border-gray-200 p-6 md:p-8 shadow-sm">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">🚀</span>
+                <h2 class="text-2xl font-extrabold text-gray-900 m-0">Quick Start Guide</h2>
+            </div>
+            <p class="text-gray-600 mb-4">Not sure where to begin? Here's a suggested learning path:</p>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div class="bg-blue-50 rounded-xl p-4 border border-blue-100">
+                    <span class="font-bold text-blue-800">Step 1 · Foundation</span>
+                    <ul class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
+                        <li><a href="subject_verb_agreement.html" class="text-blue-600 hover:underline">Subject–Verb Agreement</a></li>
+                        <li><a href="tense.html" class="text-blue-600 hover:underline">Verb Tenses</a></li>
+                        <li><a href="article.html" class="text-blue-600 hover:underline">Articles &amp; Nouns</a></li>
+                    </ul>
+                </div>
+                <div class="bg-emerald-50 rounded-xl p-4 border border-emerald-100">
+                    <span class="font-bold text-emerald-800">Step 2 · Intermediate</span>
+                    <ul class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
+                        <li><a href="prepositions.html" class="text-emerald-600 hover:underline">Prepositions</a></li>
+                        <li><a href="pronouns.html" class="text-emerald-600 hover:underline">Pronouns</a></li>
+                        <li><a href="essential_grammar.html" class="text-emerald-600 hover:underline">Essential Grammar (Interactive)</a></li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 rounded-xl p-4 border border-amber-100">
+                    <span class="font-bold text-amber-800">Step 3 · IELTS Mastery</span>
+                    <ul class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
+                        <li><a href="task1_marged.html" class="text-amber-600 hover:underline">Task 1 · Complete Manual</a></li>
+                        <li><a href="rachel_mitchell_task1.html" class="text-amber-600 hover:underline">Rachel Mitchell Task 1</a></li>
+                        <li><a href="rachel_mitchell_task2.html" class="text-amber-600 hover:underline">Rachel Mitchell Task 2</a></li>
+                        <li><a href="simon_task2.html" class="text-amber-600 hover:underline">Simon Task 2 (Model Essays)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!--  FOOTER                                                        -->
+        <!-- ============================================================ -->
+        <div class="footer-note">
+            <p class="font-medium">📚 English Grammar &amp; IELTS Resource Hub</p>
+            <p class="text-sm mt-1">All resources compiled for easy reference · Built with ❤️ using HTML &amp; Tailwind CSS</p>
+            <p class="text-xs text-gray-400 mt-2">© 2026 · Free to use for personal study</p>
+        </div>
+
+    </main>
+
+    <!-- ====== JAVASCRIPT – SEARCH ====== -->
+    <script>
+        (function() {
+            const searchInput = document.getElementById('searchInput');
+            const allCards = document.querySelectorAll('.resource-card');
+
+            function filterResources() {
+                const query = searchInput.value.trim().toLowerCase();
+                allCards.forEach(card => {
+                    const title = card.querySelector('.title')?.textContent?.toLowerCase() || '';
+                    const desc = card.querySelector('.description')?.textContent?.toLowerCase() || '';
+                    const badges = card.querySelectorAll('.badge');
+                    let badgeText = '';
+                    badges.forEach(b => badgeText += b.textContent.toLowerCase() + ' ');
+                    const match = title.includes(query) || desc.includes(query) || badgeText.includes(query);
+                    card.style.display = match ? 'flex' : 'none';
+                });
+            }
+
+            searchInput.addEventListener('input', filterResources);
+
+            // Also filter vocabulary unit list if needed
+            const vocabItems = document.querySelectorAll('#vocab .grid-cols-4 span');
+            // Not filtering vocab for simplicity, but can be added.
+
+        })();
+    </script>
+
+</body>
+</html>
