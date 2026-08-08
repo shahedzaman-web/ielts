@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Four Types of Conditionals – Complete Guide</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #f7f3eb;
+        }
+        .book-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 2rem 2.5rem;
+        }
+        .sidebar-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border-left: 3px solid transparent;
+            display: block;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .sidebar-item:hover {
+            background: #eef2ff;
+            border-left-color: #6366f1;
+        }
+        .sidebar-item.active {
+            background: #eef2ff;
+            border-left-color: #6366f1;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .practice-box {
+            background: #faf8f5;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border: 1px solid #e5dcd2;
+        }
+        .answer-hidden {
+            display: none;
+        }
+        .answer-revealed {
+            display: block;
+            background: #dcfce7;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #22c55e;
+            font-size: 0.95rem;
+        }
+        .btn-practice {
+            background: #6366f1;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-practice:hover {
+            background: #4f46e5;
+            transform: scale(1.02);
+        }
+        .btn-practice.outline {
+            background: transparent;
+            border: 2px solid #6366f1;
+            color: #4f46e5;
+        }
+        .btn-practice.outline:hover {
+            background: #eef2ff;
+        }
+        .example-box {
+            background: #f1ede8;
+            padding: 0.75rem 1.2rem;
+            border-left: 4px solid #9b7b5e;
+            font-style: italic;
+            margin: 0.75rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+        }
+        .grammar-tip {
+            background: #fef3c7;
+            border-radius: 8px;
+            padding: 14px 18px;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0;
+        }
+        .highlight-box {
+            background: #dbeafe;
+            border-radius: 8px;
+            padding: 14px 18px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0;
+        }
+        .footnote {
+            font-size: 0.85rem;
+            color: #5b4b3c;
+            border-top: 1px dashed #d6c9b8;
+            padding-top: 0.75rem;
+            margin-top: 1rem;
+        }
+        .unit-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+            color: #1a2a3a;
+            border-bottom: 2px solid #d6c9b8;
+            padding-bottom: 0.4rem;
+            margin-top: 0.5rem;
+        }
+        .section-head {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-top: 1.2rem;
+            color: #2c3e50;
+        }
+        .mobile-menu-btn {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .book-page {
+                padding: 1rem;
+            }
+            .sidebar {
+                display: none;
+            }
+            .sidebar.open {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: white;
+                z-index: 100;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            .mobile-menu-btn {
+                display: inline-block !important;
+            }
+        }
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+            width: 100%;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: #6366f1;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #6366f1;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            z-index: 50;
+        }
+        .scroll-top:hover {
+            transform: scale(1.08);
+            background: #4f46e5;
+        }
+        .unit-badge {
+            display: inline-block;
+            background: #6366f1;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .conditional-table td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        .conditional-table th {
+            padding: 0.6rem 0.8rem;
+            background: #e8e4de;
+            font-weight: 600;
+            text-align: left;
+        }
+        .conditional-table tr:hover td {
+            background-color: #f9fafb;
+        }
+        .answer-input {
+            border: none;
+            border-bottom: 2px dashed #9b7b5e;
+            background: transparent;
+            padding: 2px 6px;
+            width: 140px;
+            font-size: 0.95rem;
+            font-family: 'Georgia', serif;
+            color: #1a2a3a;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .answer-input:focus {
+            border-bottom-color: #6366f1;
+        }
+        .answer-input.correct {
+            border-bottom-color: #22c55e;
+            background: #dcfce7;
+        }
+        .answer-input.wrong {
+            border-bottom-color: #dc2626;
+            background: #fee2e2;
+        }
+        .book-cover {
+            background: linear-gradient(135deg, #1a2a3a, #2d3748);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .book-cover h1 {
+            font-family: 'Georgia', serif;
+        }
+        .book-cover .sub {
+            color: #b9926b;
+        }
+        .sidebar-title {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.5rem 1rem 0.25rem;
+            margin-top: 0.25rem;
+        }
+        .sidebar-section {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+        .practice-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .practice-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #475569;
+            margin: 2px 4px 2px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book-page" id="app">
+
+        <!-- Header -->
+        <header class="flex items-center justify-between border-b-2 border-[#d6c9b8] pb-4 mb-6 flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <button class="mobile-menu-btn text-gray-600 hover:text-gray-900 p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div>
+                    <span class="text-xs tracking-widest text-[#7a6b5b]">Grammar Guide</span>
+                    <h1 class="text-2xl font-bold text-[#1f2e3f]">Conditionals</h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:block">
+                    <input id="searchInput" type="text" placeholder="Search..." class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent w-48 lg:w-56" oninput="searchContent(this.value)">
+                </div>
+                <span id="progressText" class="text-xs text-gray-500 font-medium hidden sm:inline">0%</span>
+                <div class="hidden sm:block w-20">
+                    <div class="progress-bar"><div id="progressFill" class="fill" style="width:0%"></div></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile sidebar overlay -->
+        <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeMobileMenu()"></div>
+        <div id="mobileSidebar" class="fixed inset-0 z-50 bg-white w-72 p-4 overflow-y-auto hidden" style="transform:translateX(-100%);transition:transform 0.3s ease;">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-bold text-lg text-indigo-600">Conditionals</span>
+                <button onclick="closeMobileMenu()" class="p-2 text-gray-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileNavContent" class="space-y-1"></div>
+        </div>
+
+        <div class="flex gap-6">
+
+            <!-- Sidebar -->
+            <nav id="sidebar" class="sidebar w-64 flex-shrink-0">
+                <div class="sticky top-4 max-h-[calc(100vh-120px)] overflow-y-auto pr-2 space-y-1">
+                    <div class="sidebar-title">Overview</div>
+                    <div id="navOverview"></div>
+                    <div class="sidebar-section"></div>
+                    <div class="sidebar-title">Introduction</div>
+                    <div id="navIntro"></div>
+                    <div class="sidebar-section"></div>
+                    <div class="sidebar-title">The Four Types</div>
+                    <div id="navTypes"></div>
+                    <div class="sidebar-section"></div>
+                    <div class="sidebar-title">Mixed &amp; Advanced</div>
+                    <div id="navAdvanced"></div>
+                    <div class="sidebar-section"></div>
+                    <div class="sidebar-title">IELTS &amp; Practice</div>
+                    <div id="navIELTS"></div>
+                    <div class="sidebar-section"></div>
+                    <div class="sidebar-title">Resources</div>
+                    <div id="navResources"></div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="flex-1 min-w-0">
+
+                <!-- Home -->
+                <div id="section-home" class="content-section active">
+                    <div class="book-cover">
+                        <h1 class="text-4xl font-bold">The Four Types of</h1>
+                        <h1 class="text-5xl font-bold text-[#b9926b] mt-2">Conditionals</h1>
+                        <p class="text-xl text-gray-300 italic mt-2">and How to Use Them</p>
+                        <p class="text-gray-400 mt-4">A complete guide with explanations, examples, and practice</p>
+                        <div class="flex flex-wrap justify-center gap-3 mt-6">
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">📚 Zero, First, Second, Third</span>
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">📝 Mixed Conditionals</span>
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">✅ Interactive Practice</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">📖</div>
+                            <h3 class="font-semibold">Complete Guide</h3>
+                            <p class="text-sm text-gray-500">All four conditional types explained with formulas and examples.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">🧪</div>
+                            <h3 class="font-semibold">Interactive Practice</h3>
+                            <p class="text-sm text-gray-500">Test your knowledge with fill-in-the-blank and multiple-choice exercises.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <h3 class="font-semibold">IELTS Focus</h3>
+                            <p class="text-sm text-gray-500">Learn how conditionals boost your IELTS Writing and Speaking scores.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-lg mb-3">Quick Start</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="showSection('overview')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">📊 Overview Table</button>
+                            <button onclick="showSection('intro')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">What Are Conditionals?</button>
+                            <button onclick="showSection('zero')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Zero Conditional</button>
+                            <button onclick="showSection('first')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">First Conditional</button>
+                            <button onclick="showSection('second')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Second Conditional</button>
+                            <button onclick="showSection('third')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Third Conditional</button>
+                            <button onclick="showSection('mixed')" class="px-4 py-2 bg-green-50 text-green-700 rounded-lg text-sm font-medium hover:bg-green-100 transition">Mixed Conditionals</button>
+                            <button onclick="showSection('practice')" class="px-4 py-2 bg-amber-50 text-amber-700 rounded-lg text-sm font-medium hover:bg-amber-100 transition">Practice</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content container -->
+                <div id="contentContainer"></div>
+
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 border-t-2 border-[#d6c9b8] pt-4 text-xs text-[#7a6b5b] text-center">
+            <p>The Four Types of Conditionals — Complete Guide</p>
+            <p class="mt-1">All sections · Interactive practice · IELTS tips · Expert explanations</p>
+        </div>
+
+        <!-- Scroll to top -->
+        <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTopBtn" style="display:none;">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+        </button>
+
+    </div>
+
+    <script>
+        // ============================================================
+        // HELPER: generate exercise with reveal
+        // ============================================================
+        function ex(question, answer) {
+            return `
+                <div class="practice-box">
+                    <div class="text-sm">${question}</div>
+                    <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this, \`${answer}\`)">Check</button>
+                    <div class="answer-hidden"></div>
+                </div>
+            `;
+        }
+
+        function exInput(question, answer, placeholder = '___') {
+            return `
+                <div class="practice-box">
+                    <div class="text-sm">${question.replace(/_+/, `<input type="text" class="answer-input" data-answer="${answer}" placeholder="${placeholder}" onchange="checkInput(this)">`)}</div>
+                    <button class="btn-practice outline mt-2 text-xs" onclick="revealInputAnswer(this)">Check</button>
+                    <div class="answer-hidden"></div>
+                </div>
+            `;
+        }
+
+        function exSelect(question, options, answer) {
+            let opts = options.map(o => `<option value="${o}">${o}</option>`).join('');
+            return `
+                <div class="practice-box">
+                    <div class="text-sm">${question}</div>
+                    <div class="mt-2">
+                        <select class="answer-select border border-gray-300 rounded px-3 py-1.5 text-sm" data-answer="${answer}">
+                            <option value="">Select...</option>
+                            ${opts}
+                        </select>
+                        <button class="btn-practice outline ml-2 text-xs" onclick="checkSelect(this)">Check</button>
+                    </div>
+                    <div class="answer-hidden"></div>
+                </div>
+            `;
+        }
+
+        // ============================================================
+        // UNIT DATA
+        // ============================================================
+
+        const unitsData = {};
+
+        // ---- OVERVIEW TABLE ----
+        unitsData.overview = {
+            title: '📊 Conditional Sentences Overview',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">📊 Conditional Sentences Overview</div>
+
+                    <p class="text-sm leading-relaxed">This table provides a quick reference for all conditional types. Use it to compare structures and meanings at a glance.</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse text-sm conditional-table">
+                            <thead>
+                                <tr>
+                                    <th class="px-3 py-2">Type</th>
+                                    <th class="px-3 py-2">Use</th>
+                                    <th class="px-3 py-2">If-clause</th>
+                                    <th class="px-3 py-2">Main clause</th>
+                                    <th class="px-3 py-2">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-blue-700">Zero</td>
+                                    <td>General truths, facts, habits</td>
+                                    <td><code>if + present simple</code></td>
+                                    <td><code>present simple</code></td>
+                                    <td><em>If you heat ice, it melts.</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-green-700">First</td>
+                                    <td>Real/possible future events</td>
+                                    <td><code>if + present simple</code></td>
+                                    <td><code>will + infinitive</code></td>
+                                    <td><em>If it rains, I will stay home.</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-orange-600">Second</td>
+                                    <td>Unlikely or hypothetical present/future</td>
+                                    <td><code>if + past simple</code></td>
+                                    <td><code>would + infinitive</code></td>
+                                    <td><em>If I won the lottery, I would travel.</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-red-700">Third</td>
+                                    <td>Unreal past (impossible to change)</td>
+                                    <td><code>if + past perfect</code></td>
+                                    <td><code>would have + past participle</code></td>
+                                    <td><em>If I had studied, I would have passed.</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-purple-700">Mixed<br>(Past → Present)</td>
+                                    <td>Past condition, present result</td>
+                                    <td><code>if + past perfect</code></td>
+                                    <td><code>would + infinitive</code></td>
+                                    <td><em>If I had studied medicine, I would be a doctor now.</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-purple-700">Mixed<br>(Present → Past)</td>
+                                    <td>Present condition, past result</td>
+                                    <td><code>if + past simple</code></td>
+                                    <td><code>would have + past participle</code></td>
+                                    <td><em>If I were braver, I would have asked.</em></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 Key Reminders:</p>
+                        <ul class="text-sm list-disc pl-5 space-y-1">
+                            <li>The <strong>zero conditional</strong> is the only type where "when" can freely replace "if."</li>
+                            <li>In the <strong>second conditional</strong>, use "were" for all subjects in formal English (<em>If I were you...</em>).</li>
+                            <li>The <strong>third conditional</strong> expresses regret or criticism about the past.</li>
+                            <li><strong>Mixed conditionals</strong> connect different time periods for complex meanings.</li>
+                            <li>Never use "will" or "would" in the if-clause.</li>
+                        </ul>
+                    </div>
+
+                    ${ex('0.1 Which conditional is used for general truths?', 'Zero conditional')}
+                    ${ex('0.2 Which conditional uses "would have + past participle" in the main clause?', 'Third conditional')}
+                    ${ex('0.3 Which conditional connects a past condition with a present result?', 'Mixed conditional (Past → Present)')}
+                </div>
+            `
+        };
+
+        // ---- INTRO ----
+        unitsData.intro = {
+            title: 'What Are Conditionals?',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">What Are Conditionals?</div>
+
+                    <p class="text-sm leading-relaxed">Conditionals are sentences that describe the result of a condition: <strong>if one thing happens, another thing happens</strong>. Conditional sentences are often called "if clauses" because most of them begin with the word "if."</p>
+
+                    <div class="example-box">
+                        <p><strong>General truth:</strong> If I eat breakfast, I feel good all day.</p>
+                        <p><strong>Future event:</strong> If I have a test tomorrow, I will study tonight.</p>
+                        <p><strong>Hypothetical situation:</strong> If I had a million dollars, I would buy a boat!</p>
+                        <p><strong>Hypothetical outcome:</strong> If I had prepared for the interview, I would have gotten the job.</p>
+                    </div>
+
+                    <p class="text-sm leading-relaxed">Note that "if" does not have to be the first word of the sentence. The if-clause can also come second: <em>"I will study tonight if I have a test tomorrow."</em> In some cases, "when" can replace "if" (more on that below).</p>
+
+                    <div class="highlight-box">
+                        <p><strong>What Can You Use Conditionals For?</strong></p>
+                        <ul class="text-sm list-disc pl-5 space-y-1">
+                            <li>Hypothetical situations (unreal or imagined events)</li>
+                            <li>Events that are likely to happen in the future</li>
+                            <li>Events that are unlikely to happen in the future</li>
+                            <li>General truths or habits</li>
+                            <li>Impossible scenarios</li>
+                        </ul>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 Key Insight:</p>
+                        <p class="text-sm">Conditionals allow you to go far beyond the limitations of standard English verb tenses. They are essential for expressing possibilities, hypothetical scenarios, and consequences in daily conversations and writing.</p>
+                    </div>
+
+                    ${ex('1.1 What is a conditional sentence?', 'A sentence that describes the result of a condition: if one thing happens, another thing happens.')}
+                    ${ex('1.2 What word do most conditional sentences begin with?', 'if')}
+                    ${ex('1.3 Can the if-clause come second in a sentence?', 'Yes, e.g. "I will study tonight if I have a test tomorrow."')}
+                </div>
+            `
+        };
+
+        // ---- ZERO CONDITIONAL ----
+        unitsData.zero = {
+            title: 'Zero Conditional — Facts & General Truths',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Zero Conditional — Facts & General Truths</div>
+
+                    <p class="text-sm leading-relaxed">The <strong>zero conditional</strong> expresses a universal truth, or a situation where one action always follows another.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Formula:</p>
+                        <p class="text-lg font-mono">if (or when) + present simple → present simple</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p>If the temperature reaches zero degrees Celsius, water freezes.</p>
+                        <p>If you mix red and yellow, you get orange.</p>
+                        <p>When I drink coffee at night, I sleep badly.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">📌 Notes:</p>
+                        <ul class="text-sm list-disc pl-5 space-y-1">
+                            <li>The zero conditional is the <strong>only type</strong> in which "when" can freely replace "if" without changing the meaning.</li>
+                            <li>You can use the same pattern in the past to describe past habits: <em>When I did my homework, my teacher was happy.</em></li>
+                            <li>If you move "if" or "when" to the middle of the sentence, you must remove the comma.</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 Zero Conditional Practice</p>
+                        ${exInput('If you ___ (heat) ice, it melts.', 'heat')}
+                        ${exInput('If you mix blue and yellow, you ___ (get) green.', 'get')}
+                        ${exInput('If it ___ (be) a weekday, I go to work.', 'is')}
+                        ${exInput('If you don\'t eat, you ___ (get) hungry.', 'get')}
+                    </div>
+
+                    <div class="footnote">➜ The zero conditional is all about facts and general truths. It's not about specific situations or possibilities.</div>
+                </div>
+            `
+        };
+
+        // ---- FIRST CONDITIONAL ----
+        unitsData.first = {
+            title: 'First Conditional — Real Possibilities',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">First Conditional — Real Possibilities</div>
+
+                    <p class="text-sm leading-relaxed">The <strong>first conditional</strong> expresses a future scenario that might really occur. If the condition is fulfilled, the outcome is likely to happen.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Formula:</p>
+                        <p class="text-lg font-mono">if + present simple → will (may/might/can/could/should) + infinitive</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p><strong>Will</strong> — If I get paid today, I <strong>will</strong> go shopping.</p>
+                        <p><strong>Could</strong> — We <strong>could</strong> go to Paris if we save enough money.</p>
+                        <p><strong>Might</strong> — If she knows the truth, she <strong>might</strong> not be happy.</p>
+                        <p><strong>Can</strong> — They <strong>can</strong> do it if they try.</p>
+                        <p><strong>May</strong> — If I see the man, I <strong>may</strong> say something to him.</p>
+                        <p><strong>Should</strong> — He <strong>should</strong> get a dog if he is lonely.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 How is this different from the zero conditional?</p>
+                        <p class="text-sm">The <strong>zero conditional</strong> describes general truths. The <strong>first conditional</strong> describes specific situations that are likely to really happen.</p>
+                        <p class="text-sm mt-2">Though "will" is the most common choice, you can also use "may," "might," "can," "could," or "should." Each modal verb changes the meaning slightly.</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 First Conditional Practice</p>
+                        ${exInput('If it rains, I ___ (stay) home.', 'will stay')}
+                        ${exInput('If you study hard, you ___ (pass) the exam.', 'will pass')}
+                        ${exInput('If I see her, I ___ (say) hello.', 'will say')}
+                        ${exInput('If they don\'t hurry, they ___ (miss) the train.', 'will miss')}
+                    </div>
+
+                    <div class="footnote">➜ The first conditional is all about real possibilities in the future and what might happen.</div>
+                </div>
+            `
+        };
+
+        // ---- SECOND CONDITIONAL ----
+        unitsData.second = {
+            title: 'Second Conditional — Unreal or Improbable Situations',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Second Conditional — Unreal or Improbable Situations</div>
+
+                    <p class="text-sm leading-relaxed">The <strong>second conditional</strong> refers to either future events that are unlikely to happen or present situations that are untrue or impossible.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Formula:</p>
+                        <p class="text-lg font-mono">if + past simple → would (might/could) + infinitive</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p>If I <strong>were</strong> rich, I <strong>would</strong> travel the world.</p>
+                        <p>If she <strong>were</strong> to try harder, she <strong>might</strong> get better grades.</p>
+                        <p>They <strong>might</strong> be able to see it if they <strong>were</strong> more observant.</p>
+                        <p>If I <strong>met</strong> the President, I <strong>would</strong> be too nervous to speak.</p>
+                        <p>He <strong>could</strong> get the promotion if he <strong>knew</strong> the right people.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">📌 Important:</p>
+                        <p class="text-sm">In formal English, <strong>"were"</strong> is used for all subjects in the second conditional: <em>if I were, if she were, if they were</em>. This form is called the <strong>past subjunctive</strong>, and it's the safer choice in IELTS Writing.</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 Second Conditional Practice</p>
+                        ${exInput('If I ___ (be) you, I would take the job.', 'were')}
+                        ${exInput('If I ___ (win) the lottery, I would travel the world.', 'won')}
+                        ${exInput('If it ___ (snow) in the Sahara, it would be a miracle.', 'snowed')}
+                        ${exInput('If they ___ (know) the truth, they would be shocked.', 'knew')}
+                    </div>
+
+                    <div class="footnote">➜ The second conditional is about unreal or improbable situations. It's not about what will happen but what could happen in an alternate reality.</div>
+                </div>
+            `
+        };
+
+        // ---- THIRD CONDITIONAL ----
+        unitsData.third = {
+            title: 'Third Conditional — Past Hypotheticals',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Third Conditional — Past Hypotheticals</div>
+
+                    <p class="text-sm leading-relaxed">The <strong>third conditional</strong> expresses an unreal situation in the past, together with the hypothetical past outcome.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Formula:</p>
+                        <p class="text-lg font-mono">if + past perfect → would (could/might) have + past participle</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p>If I <strong>had known</strong> how you were going to react, I <strong>would have kept</strong> my mouth shut.</p>
+                        <p>If you <strong>had seen</strong> the movie, we <strong>could have talked</strong> about the ending.</p>
+                        <p>We <strong>might have crossed</strong> paths if I <strong>had left</strong> the house on time.</p>
+                        <p>If I <strong>had studied</strong> harder, I <strong>would have passed</strong> the exam.</p>
+                        <p>If she <strong>had seen</strong> the sign, she <strong>wouldn't have parked</strong> there.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 Key Difference:</p>
+                        <p class="text-sm">Both the second and third conditionals can refer to impossible events. The difference is <strong>time</strong>.</p>
+                        <p class="text-sm mt-1">The <strong>second conditional</strong> refers to impossibilities in the present: <em>"If I were you..."</em></p>
+                        <p class="text-sm mt-1">The <strong>third conditional</strong> refers to impossibilities in the past. The situations cannot be changed because they already happened (or failed to happen).</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 Third Conditional Practice</p>
+                        ${exInput('If I had studied harder, I ___ (pass) the exam.', 'would have passed')}
+                        ${exInput('If she had seen the sign, she ___ (not park) there.', 'wouldn\'t have parked')}
+                        ${exInput('If we had left earlier, we ___ (catch) the train.', 'would have caught')}
+                        ${exInput('If he hadn\'t forgotten his wallet, he ___ (pay) the bill.', 'would have paid')}
+                    </div>
+
+                    <div class="footnote">➜ The third conditional is about unreal situations in the past. It's not about what did happen but what could have happened in a different past.</div>
+                </div>
+            `
+        };
+
+        // ---- MIXED CONDITIONALS ----
+        unitsData.mixed = {
+            title: 'Mixed Conditionals',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Mixed Conditionals</div>
+
+                    <p class="text-sm leading-relaxed">Real life doesn't always fit neatly into four boxes. <strong>Mixed conditionals</strong> combine a condition from one time period with a result from another.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Pattern 1: Past condition → Present result</p>
+                        <p class="text-lg font-mono">third conditional if-clause + second conditional result</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p>If I <strong>had studied</strong> medicine, I <strong>would be</strong> a doctor now.</p>
+                        <p>If we <strong>had left</strong> earlier, we <strong>wouldn't be</strong> stuck in traffic.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Pattern 2: Present condition → Past result</p>
+                        <p class="text-lg font-mono">second conditional if-clause + third conditional result</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p>If I <strong>were</strong> braver, I <strong>would have asked</strong> the question.</p>
+                        <p>If he <strong>didn't trust</strong> you, he <strong>would not have lent</strong> you the car.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 Native speakers mix conditionals all the time in conversation.</p>
+                        <p class="text-sm">Mixed conditionals allow you to express complex relationships between past actions and present consequences, or present states and past results.</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 Mixed Conditional Practice</p>
+                        ${exInput('If I had studied medicine, I ___ (be) a doctor now.', 'would be')}
+                        ${exInput('If I were braver, I ___ (ask) the question.', 'would have asked')}
+                        ${exInput('If we had left earlier, we ___ (not be) stuck in traffic.', 'wouldn\'t be')}
+                    </div>
+
+                    <div class="footnote">➜ Mixed conditionals let you combine different time periods in one sentence for more precise meaning.</div>
+                </div>
+            `
+        };
+
+        // ---- ADVANCED ----
+        unitsData.advanced = {
+            title: 'Exceptions & Special Cases',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Exceptions & Special Cases</div>
+
+                    <p class="text-sm leading-relaxed">Conditional sentences aren't always straightforward. Here are some exceptions and special cases to consider.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Inverted Conditionals</p>
+                        <p class="text-sm">Inverted conditionals have a more formal structure. They invert the subject and auxiliary verb in the if clause.</p>
+                        <div class="example-box">
+                            <p><strong>Standard:</strong> If I had known, I would have acted differently.</p>
+                            <p><strong>Inverted:</strong> <span class="font-bold">Had I known</span>, I would have acted differently.</p>
+                        </div>
+                        <p class="text-sm mt-1">These structures are more common in written English and formal situations.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p class="font-bold text-blue-700">Common Mistakes</p>
+                        <ul class="text-sm list-disc pl-5 space-y-2">
+                            <li><strong>Using "will" in the if-clause:</strong><br>
+                                ✗ If I will see him, I will tell him.<br>
+                                ✓ If I see him, I will tell him.
+                            </li>
+                            <li><strong>Using "would" in the if-clause:</strong><br>
+                                ✗ If you would have told me, I would have helped.<br>
+                                ✓ If you had told me, I would have helped.
+                            </li>
+                            <li><strong>Writing "would of" instead of "would have":</strong><br>
+                                ✗ I would of passed.<br>
+                                ✓ I would have passed.
+                            </li>
+                            <li><strong>Comma errors:</strong><br>
+                                Use a comma when the if-clause comes first. Drop the comma when the if-clause comes second.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 Spot the Mistake</p>
+                        <p class="text-sm text-red-600">✗ If I will see him, I will tell him.</p>
+                        <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this, '✓ <strong>If I see him, I will tell him.</strong> (The if-clause stays in present simple, even though the meaning is future.)')">Check</button>
+                        <div class="answer-hidden"></div>
+                        <p class="text-sm text-red-600 mt-3">✗ If you would have told me, I would have helped.</p>
+                        <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this, '✓ <strong>If you had told me, I would have helped.</strong> ("Would" belongs in the result clause, not the if-clause.)')">Check</button>
+                        <div class="answer-hidden"></div>
+                    </div>
+
+                    <div class="footnote">➜ Mastering these exceptions will help you sound more natural and accurate in your English usage.</div>
+                </div>
+            `
+        };
+
+        // ---- IELTS ----
+        unitsData.ielts = {
+            title: 'Conditionals and Your IELTS Band Score',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">Conditionals and Your IELTS Band Score</div>
+
+                    <p class="text-sm leading-relaxed">If you're preparing for the IELTS, conditionals are not just a grammar exercise. They directly affect your score.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold">Grammatical Range and Accuracy</p>
+                        <p class="text-sm">This is one of the four criteria examiners use to score your Writing and Speaking, and it counts for <strong>25%</strong> of each.</p>
+                        <ul class="text-sm list-disc pl-5 space-y-1 mt-2">
+                            <li><strong>Band 6:</strong> uses "a mix of simple and complex sentence forms"</li>
+                            <li><strong>Band 7:</strong> uses "a variety of complex structures" with frequent error-free sentences</li>
+                        </ul>
+                        <p class="text-sm mt-2">Conditionals are one of the clearest examples of a complex structure.</p>
+                    </div>
+
+                    <div class="grammar-tip">
+                        <p class="font-bold">💡 Where Conditionals Fit on Test Day:</p>
+                        <ul class="text-sm list-disc pl-5 space-y-2">
+                            <li><strong>Speaking Part 3:</strong> The examiner asks abstract and hypothetical questions, such as "How would cities change if cars were banned?" A correct second conditional is exactly what this question invites.</li>
+                            <li><strong>Writing Task 2:</strong> Many IELTS Writing Task 2 questions ask you to evaluate solutions or imagine outcomes. Sentences like "If governments invested more in public transport, traffic congestion would decrease" show the examiner real grammatical range.</li>
+                            <li><strong>Speaking Part 2:</strong> When you describe a past experience, a third conditional adds depth: "If I had practiced more, the performance would have gone better."</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p class="font-bold">Pro Tip:</p>
+                        <p class="text-sm">Don't force conditionals into every answer. Examiners reward <strong>natural, flexible grammar</strong>. One well-placed conditional in Speaking Part 3 sounds far better than a memorized phrase repeated in every response.</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <p class="font-semibold">📝 IELTS-Style Practice</p>
+                        <p class="text-sm text-gray-600">Complete the conditional sentence as you would in IELTS Speaking Part 3:</p>
+                        <p class="text-sm">"If cars were banned in city centres, ___"</p>
+                        <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this, '✅ Possible answer: <strong>...traffic congestion would decrease and air quality would improve.</strong>')">Check</button>
+                        <div class="answer-hidden"></div>
+                    </div>
+
+                    <div class="footnote">➜ Range only helps if the grammar is accurate. One correct conditional helps your score more than three broken ones. Aim for control first, variety second.</div>
+                </div>
+            `
+        };
+
+        // ---- PRACTICE ----
+        unitsData.practice = {
+            title: '📝 Interactive Practice',
+            content: `
+                <div class="space-y-4">
+                    <div class="unit-title">📝 Interactive Practice</div>
+
+                    <p class="text-sm leading-relaxed">Test your understanding of all four conditional types. Fill in the blanks with the correct form of the verb.</p>
+
+                    <div class="highlight-box">
+                        <p class="font-bold">Quick Reference</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse text-sm conditional-table">
+                                <tr><th>Type</th><th>Use</th><th>Formula</th></tr>
+                                <tr><td><strong>Zero</strong></td><td>General truths</td><td>if + present simple → present simple</td></tr>
+                                <tr><td><strong>First</strong></td><td>Real future possibilities</td><td>if + present simple → will + infinitive</td></tr>
+                                <tr><td><strong>Second</strong></td><td>Unlikely/imagined situations</td><td>if + past simple → would + infinitive</td></tr>
+                                <tr><td><strong>Third</strong></td><td>Unreal past situations</td><td>if + past perfect → would have + past participle</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="section-head">Zero Conditional</div>
+                    ${exInput('If you ___ (heat) water to 100°C, it boils.', 'heat')}
+                    ${exInput('If you mix red and yellow, you ___ (get) orange.', 'get')}
+                    ${exInput('When I drink coffee at night, I ___ (sleep) badly.', 'sleep')}
+
+                    <div class="section-head">First Conditional</div>
+                    ${exInput('If it rains, I ___ (stay) home.', 'will stay')}
+                    ${exInput('If you study hard, you ___ (pass) the exam.', 'will pass')}
+                    ${exInput('If they don\'t hurry, they ___ (miss) the train.', 'will miss')}
+
+                    <div class="section-head">Second Conditional</div>
+                    ${exInput('If I ___ (be) you, I would take the job.', 'were')}
+                    ${exInput('If I won the lottery, I ___ (travel) the world.', 'would travel')}
+                    ${exInput('If they knew the truth, they ___ (be) shocked.', 'would be')}
+
+                    <div class="section-head">Third Conditional</div>
+                    ${exInput('If I had studied harder, I ___ (pass) the exam.', 'would have passed')}
+                    ${exInput('If she had seen the sign, she ___ (not park) there.', 'wouldn\'t have parked')}
+                    ${exInput('If we had left earlier, we ___ (catch) the train.', 'would have caught')}
+
+                    <div class="section-head">Mixed Conditionals</div>
+                    ${exInput('If I had studied medicine, I ___ (be) a doctor now.', 'would be')}
+                    ${exInput('If I were braver, I ___ (ask) the question.', 'would have asked')}
+
+                    <div class="footnote">➜ Practice makes perfect! Try creating your own sentences using each conditional type.</div>
+                </div>
+            `
+        };
+
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
+
+        const unitKeys = Object.keys(unitsData);
+        const navKeys = unitKeys.filter(k => k !== 'practice' && k !== 'advanced' && k !== 'ielts' && k !== 'overview');
+
+        // Define navigation categories
+        const overviewNav = ['overview'];
+        const introNav = ['intro'];
+        const typesNav = ['zero', 'first', 'second', 'third'];
+        const advancedNav = ['mixed', 'advanced'];
+        const ieltsNav = ['ielts'];
+        const resourcesNav = ['practice'];
+
+        function buildSidebar() {
+            const navOverview = document.getElementById('navOverview');
+            navOverview.innerHTML = '';
+            overviewNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navOverview.appendChild(div);
+            });
+
+            const navIntro = document.getElementById('navIntro');
+            navIntro.innerHTML = '';
+            introNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navIntro.appendChild(div);
+            });
+
+            const navTypes = document.getElementById('navTypes');
+            navTypes.innerHTML = '';
+            typesNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navTypes.appendChild(div);
+            });
+
+            const navAdvanced = document.getElementById('navAdvanced');
+            navAdvanced.innerHTML = '';
+            advancedNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navAdvanced.appendChild(div);
+            });
+
+            const navIELTS = document.getElementById('navIELTS');
+            navIELTS.innerHTML = '';
+            ieltsNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navIELTS.appendChild(div);
+            });
+
+            const navResources = document.getElementById('navResources');
+            navResources.innerHTML = '';
+            resourcesNav.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                navResources.appendChild(div);
+            });
+        }
+
+        function buildMobileNav() {
+            const container = document.getElementById('mobileNavContent');
+            container.innerHTML = '';
+
+            const sections = [
+                { label: 'Overview', keys: overviewNav },
+                { label: 'Introduction', keys: introNav },
+                { label: 'The Four Types', keys: typesNav },
+                { label: 'Mixed & Advanced', keys: advancedNav },
+                { label: 'IELTS & Practice', keys: ieltsNav },
+                { label: 'Resources', keys: resourcesNav }
+            ];
+
+            sections.forEach(section => {
+                const label = document.createElement('div');
+                label.className = 'text-xs font-semibold text-gray-400 uppercase tracking-wider mt-3 mb-1';
+                label.textContent = section.label;
+                container.appendChild(label);
+                section.keys.forEach(key => {
+                    const div = document.createElement('div');
+                    div.className = 'sidebar-item';
+                    div.textContent = unitsData[key].title;
+                    div.onclick = () => { showSection(key);
+                        closeMobileMenu(); };
+                    container.appendChild(div);
+                });
+            });
+        }
+
+        // ============================================================
+        // SHOW SECTION
+        // ============================================================
+
+        let currentSection = 'home';
+        const completed = new Set();
+
+        function showSection(key) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+
+            if (key === 'home') {
+                document.getElementById('section-home').classList.add('active');
+                currentSection = 'home';
+                updateActiveNav(null);
+                return;
+            }
+
+            let container = document.getElementById('contentContainer');
+            let section = document.getElementById('section-' + key);
+
+            if (!section) {
+                section = document.createElement('div');
+                section.id = 'section-' + key;
+                section.className = 'content-section';
+                container.appendChild(section);
+            }
+
+            let data = unitsData[key];
+            if (data) {
+                section.innerHTML = `
+                    <div class="mb-4">
+                        <span class="unit-badge">${key === 'practice' ? 'Practice' : 'Section'}</span>
+                        <h2 class="text-2xl font-bold text-gray-800 mt-2">${data.title}</h2>
+                    </div>
+                    ${data.content}
+                `;
+            }
+
+            section.classList.add('active');
+            currentSection = key;
+            updateActiveNav(key);
+
+            if (key !== 'practice' && key !== 'advanced' && key !== 'ielts' && key !== 'overview') {
+                completed.add(key);
+                updateProgress();
+            }
+
+            document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateActiveNav(key) {
+            document.querySelectorAll('.sidebar-item').forEach(el => {
+                el.classList.toggle('active', el.dataset.key === key);
+            });
+        }
+
+        // ============================================================
+        // PROGRESS
+        // ============================================================
+
+        function updateProgress() {
+            const total = navKeys.length;
+            const done = completed.size;
+            const pct = Math.round((done / total) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressText').textContent = pct + '%';
+        }
+
+        // ============================================================
+        // REVEAL ANSWER
+        // ============================================================
+
+        function revealAnswer(btn, answer) {
+            const parent = btn.parentElement;
+            let answerDiv = parent.querySelector('.answer-hidden');
+            if (!answerDiv) {
+                answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-hidden';
+                parent.appendChild(answerDiv);
+            }
+            if (answerDiv.classList.contains('answer-revealed')) {
+                answerDiv.classList.remove('answer-revealed');
+                answerDiv.classList.add('answer-hidden');
+                btn.textContent = 'Check';
+                return;
+            }
+            answerDiv.innerHTML = answer;
+            answerDiv.className = 'answer-revealed';
+            btn.textContent = 'Hide';
+        }
+
+        function revealInputAnswer(btn) {
+            const parent = btn.parentElement;
+            const input = parent.querySelector('.answer-input');
+            let answerDiv = parent.querySelector('.answer-hidden');
+            if (!answerDiv) {
+                answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-hidden';
+                parent.appendChild(answerDiv);
+            }
+            const correct = input.dataset.answer || '';
+            if (answerDiv.classList.contains('answer-revealed')) {
+                answerDiv.classList.remove('answer-revealed');
+                answerDiv.classList.add('answer-hidden');
+                btn.textContent = 'Check';
+                return;
+            }
+            answerDiv.innerHTML = `✅ Correct answer: <strong>${correct}</strong>`;
+            answerDiv.className = 'answer-revealed';
+            btn.textContent = 'Hide';
+        }
+
+        function checkInput(input) {
+            const correct = input.dataset.answer || '';
+            const val = input.value.trim().toLowerCase();
+            const isCorrect = val === correct.toLowerCase();
+            input.classList.remove('correct', 'wrong');
+            if (isCorrect && val.length > 0) {
+                input.classList.add('correct');
+            } else if (val.length > 0) {
+                input.classList.add('wrong');
+            }
+        }
+
+        function checkSelect(btn) {
+            const parent = btn.parentElement;
+            const select = parent.querySelector('.answer-select');
+            let answerDiv = parent.querySelector('.answer-hidden');
+            if (!answerDiv) {
+                answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-hidden';
+                parent.appendChild(answerDiv);
+            }
+            const correct = select.dataset.answer || '';
+            const val = select.value;
+            if (answerDiv.classList.contains('answer-revealed')) {
+                answerDiv.classList.remove('answer-revealed');
+                answerDiv.classList.add('answer-hidden');
+                btn.textContent = 'Check';
+                return;
+            }
+            const isCorrect = val === correct;
+            answerDiv.innerHTML = isCorrect ? `✅ Correct!` : `❌ The correct answer is: <strong>${correct}</strong>`;
+            answerDiv.className = 'answer-revealed';
+            btn.textContent = 'Hide';
+        }
+
+        // ============================================================
+        // SEARCH
+        // ============================================================
+
+        function searchContent(query) {
+            const q = query.toLowerCase().trim();
+            const items = document.querySelectorAll('.sidebar-item');
+            if (!q) {
+                items.forEach(el => el.style.display = '');
+                return;
+            }
+            items.forEach(el => {
+                const text = el.textContent.toLowerCase();
+                el.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+
+        // ============================================================
+        // MOBILE MENU
+        // ============================================================
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const isOpen = sidebar.classList.contains('open');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                sidebar.classList.add('open');
+                sidebar.style.transform = 'translateX(0)';
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            sidebar.classList.remove('open');
+            sidebar.style.transform = 'translateX(-100%)';
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // ============================================================
+        // SCROLL TO TOP
+        // ============================================================
+
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 400) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+
+        buildSidebar();
+        buildMobileNav();
+        updateProgress();
+
+        document.getElementById('section-home').classList.add('active');
+
+        if (window.location.hash) {
+            const key = window.location.hash.replace('#', '');
+            if (unitsData[key]) {
+                setTimeout(() => showSection(key), 100);
+            }
+        }
+
+        window.showSection = showSection;
+        window.revealAnswer = revealAnswer;
+        window.revealInputAnswer = revealInputAnswer;
+        window.checkInput = checkInput;
+        window.checkSelect = checkSelect;
+        window.searchContent = searchContent;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.closeMobileMenu = closeMobileMenu;
+
+        console.log('📚 The Four Types of Conditionals — Complete Guide');
+        console.log(`📖 ${navKeys.length} sections loaded`);
+        console.log('💡 Click any section to start learning!');
+    </script>
+
+</body>
+</html>
