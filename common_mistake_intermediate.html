@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Intermediate - Common Mistakes & How to Avoid Them</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+        }
+
+        .sidebar-item {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-item:hover {
+            background: #eef2ff;
+            border-left-color: #6366f1;
+        }
+
+        .sidebar-item.active {
+            background: #eef2ff;
+            border-left-color: #6366f1;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .practice-box {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid #6366f1;
+        }
+
+        .answer-hidden {
+            display: none;
+        }
+
+        .answer-revealed {
+            display: block;
+            background: #dcfce7;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #22c55e;
+        }
+
+        .btn-practice {
+            background: #6366f1;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-practice:hover {
+            background: #4f46e5;
+            transform: scale(1.02);
+        }
+
+        .btn-practice.outline {
+            background: transparent;
+            border: 2px solid #6366f1;
+            color: #4f46e5;
+        }
+
+        .btn-practice.outline:hover {
+            background: #eef2ff;
+        }
+
+        .test-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .test-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .grammar-tip {
+            background: #fef3c7;
+            border-radius: 8px;
+            padding: 14px 18px;
+            border-left: 4px solid #f59e0b;
+            margin: 12px 0;
+        }
+
+        .grammar-tip strong {
+            color: #92400e;
+        }
+
+        .highlight-box {
+            background: #dbeafe;
+            border-radius: 8px;
+            padding: 14px 18px;
+            border-left: 4px solid #3b82f6;
+            margin: 12px 0;
+        }
+
+        .example-box {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .example-box .wrong {
+            color: #dc2626;
+            text-decoration: line-through;
+        }
+
+        .example-box .right {
+            color: #16a34a;
+        }
+
+        .search-highlight {
+            background: #fef08a;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: #6366f1;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .unit-badge {
+            display: inline-block;
+            background: #6366f1;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .answer-key-item {
+            background: white;
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin: 6px 0;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .answer-key-item .q {
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .sidebar.open {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: white;
+                z-index: 100;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            .mobile-menu-btn {
+                display: block !important;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #6366f1;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            z-index: 50;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.08);
+            background: #4f46e5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #475569;
+            margin: 2px 4px 2px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeMobileMenu()"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <button class="mobile-menu-btn text-gray-600 hover:text-gray-900 p-2" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-2">
+                              <a href="/" class="flex items-center gap-2">
+                       <span class="text-2xl font-bold text-indigo-600">📘</span>
+                       </a>
+                        <span class="text-indigo-600 font-extrabold text-xl tracking-tight">IELTS</span>
+                        <span class="text-gray-700 font-semibold text-lg">Intermediate</span>
+                    </div>
+                    <span class="hidden sm:inline-block text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium">Common Mistakes</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative hidden sm:block">
+                        <input id="searchInput" type="text" placeholder="Search units, tests..." class="w-48 lg:w-64 px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent" oninput="searchContent(this.value)">
+                        <svg class="absolute right-3 top-2.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <span id="progressText" class="text-xs text-gray-500 font-medium hidden sm:inline">0%</span>
+                    <div class="hidden sm:block w-24">
+                        <div class="progress-bar"><div id="progressFill" class="fill" style="width:0%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex gap-6">
+
+            <!-- Sidebar -->
+            <nav id="sidebar" class="sidebar w-64 flex-shrink-0">
+                <div class="sticky top-20 max-h-[calc(100vh-100px)] overflow-y-auto pr-2 space-y-1">
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 pt-2 pb-1">Units</div>
+
+                    <!-- Units 1-30 -->
+                    <div id="unitNav"></div>
+
+                    <div class="border-t border-gray-200 my-3"></div>
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 pt-1 pb-1">Tests</div>
+                    <div id="testNav"></div>
+
+                    <div class="border-t border-gray-200 my-3"></div>
+                    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 pt-1 pb-1">Resources</div>
+                    <div class="sidebar-item" onclick="showSection('answerKey')">📖 Answer Key</div>
+                    <div class="sidebar-item" onclick="showSection('allPractice')">✏️ All Practice</div>
+                </div>
+            </nav>
+
+            <!-- Mobile sidebar -->
+            <div id="mobileSidebar" class="fixed inset-0 z-50 bg-white w-72 p-4 overflow-y-auto hidden" style="transform:translateX(-100%);transition:transform 0.3s ease;">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold text-lg text-indigo-600">IELTS</span>
+                    <button onclick="closeMobileMenu()" class="p-2 text-gray-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-1" id="mobileNavContent"></div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="flex-1 min-w-0">
+
+                <!-- Welcome / Home -->
+                <div id="section-home" class="content-section active">
+                    <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-2xl p-8 text-white mb-8">
+                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Common Mistakes at IELTS Intermediate</h1>
+                        <p class="text-indigo-100 text-lg mt-2 max-w-2xl">...and how to avoid them. Based on analysis of thousands of exam scripts.</p>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">📚 30 Units</span>
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">📝 10 Tests</span>
+                            <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">✅ Answer Key</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">📖</div>
+                            <h3 class="font-semibold">30 Grammar Units</h3>
+                            <p class="text-sm text-gray-500">From articles to verb tenses, covering all key topics.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">🧪</div>
+                            <h3 class="font-semibold">10 Practice Tests</h3>
+                            <p class="text-sm text-gray-500">Test your knowledge with mixed exercises.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md transition">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <h3 class="font-semibold">Interactive Practice</h3>
+                            <p class="text-sm text-gray-500">Reveal answers, track progress, and learn actively.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-lg mb-3">Quick Start</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="showSection('unit1')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Unit 1: The</button>
+                            <button onclick="showSection('unit4')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Unit 4: Present Simple</button>
+                            <button onclick="showSection('unit10')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Unit 10: Modal Verbs</button>
+                            <button onclick="showSection('unit19')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Unit 19: Passive</button>
+                            <button onclick="showSection('test1')" class="px-4 py-2 bg-green-50 text-green-700 rounded-lg text-sm font-medium hover:bg-green-100 transition">Test 1</button>
+                            <button onclick="showSection('answerKey')" class="px-4 py-2 bg-amber-50 text-amber-700 rounded-lg text-sm font-medium hover:bg-amber-100 transition">Answer Key</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content container -->
+                <div id="contentContainer"></div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTopBtn">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        // ============================================================
+        // DATA — ALL CONTENT FROM THE BOOK
+        // ============================================================
+
+        const unitsData = {
+            unit1: {
+                title: 'Unit 1 — When do I use the?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use <strong>the</strong>:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>with countries or places where the name refers to a group of islands or states: <strong>the United States, the Middle East, the United Arab Emirates, the UK</strong></li>
+                            <li>with superlatives: <strong>the best, the longest, the highest</strong></li>
+                            <li>with cardinal numbers: <strong>the first, the second, the third</strong></li>
+                            <li>when there is only one in the world: <strong>the environment, the internet, the sun</strong></li>
+                            <li>to refer to the only one in this particular area: <strong>the government, the police, the river</strong></li>
+                            <li>in the phrase: <strong>the same as</strong></li>
+                        </ul>
+                        <div class="grammar-tip">
+                            <strong>⚠️ We don't use the</strong> with a single country or place: America, England, China. To talk about something in general, use the plural.
+                        </div>
+                        <div class="highlight-box">
+                            <strong>Compare:</strong><br>
+                            <span class="text-sm">People with reading difficulties often have problems with numbers.</span><br>
+                            <span class="text-sm">The number eight is considered lucky in some countries.</span>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Practice — Tick the correct sentence</p>
+                            <div class="mt-2 space-y-2">
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">1.</span>
+                                    <div><span class="text-sm">a) In the USA this situation is totally different</span><br>
+                                    <span class="text-sm">b) In USA this situation is totally different</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ a) In <strong>the</strong> USA...')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">2.</span>
+                                    <div><span class="text-sm">a) The table shows number of people working in Britain in 1976.</span><br>
+                                    <span class="text-sm">b) The table shows the number of people working in Britain in 1976.</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ b) ...<strong>the</strong> number...')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistake</p>
+                            <p class="text-sm text-gray-600 italic">Your hairstyle is <span class="text-red-500 line-through">not the same like</span> mine.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>not the same as</strong> mine.')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Complete the sentences</p>
+                            <p class="text-sm text-gray-600">1. The main advantage of <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> internet is that it gives us access to information from all over the world.</p>
+                            <p class="text-sm text-gray-600">2. My father has fished in <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> all over Australia.</p>
+                            <p class="text-sm text-gray-600">3. Life in <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> is very different from life in my country.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>the</strong> internet  |  2. <strong>rivers</strong>  |  3. <strong>America</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit2: {
+                title: 'Unit 2 — Singular or plural?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">If you use a plural noun, you must use a plural verb. The verb must 'agree' with the noun:</p>
+                        <div class="example-box">In my country there are very few cars that use leaded petrol. <span class="text-sm text-gray-500">(plural verb + plural noun)</span></div>
+                        <div class="example-box">I like studying during the day but my friend prefers studying at night. <span class="text-sm text-gray-500">(singular noun + singular verb)</span></div>
+
+                        <div class="grammar-tip">
+                            <strong>We use a plural noun with:</strong> plural verbs (are, were, have, do), numbers greater than one, <strong>many</strong>, <strong>the number of</strong>.<br>
+                            <strong>We use a singular noun with:</strong> singular verbs (is, was, has, does), <strong>a/an</strong> or <strong>one</strong>.
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>📌 Note:</strong> Some nouns can look plural but are singular (<em>news, mathematics</em>) and some nouns have a different form in the plural (<em>children, men, women, people</em>).
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Tick the correct sentence</p>
+                            <div class="mt-2 space-y-2">
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">1.</span>
+                                    <div><span class="text-sm">a) There are several problem with this idea.</span><br>
+                                    <span class="text-sm">b) There are several problems with this idea.</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ b) <strong>problems</strong>')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">2.</span>
+                                    <div><span class="text-sm">a) Many charity organisations provide a great deal of help.</span><br>
+                                    <span class="text-sm">b) Many charity organisation provides a great deal of help.</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ a) <strong>organisations provide</strong>')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Underline the correct word</p>
+                            <p class="text-sm text-gray-600">1. The childs / <u>children</u> are playing in the street.</p>
+                            <p class="text-sm text-gray-600">2. The number of men / man studying science has decreased.</p>
+                            <p class="text-sm text-gray-600">3. There are a lot of persons / people in my class.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. children  2. men  3. people')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit3: {
+                title: 'Unit 3 — Which nouns don\'t have a plural form?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Some nouns in English are 'uncountable'. This means they do not have a plural form.</p>
+                        <div class="highlight-box">
+                            <strong>Common uncountable nouns:</strong> advice, advertising, food, furniture, garbage, information, knowledge, money, shopping, time, traffic, travel.
+                        </div>
+                        <p class="text-gray-700">With uncountable nouns, use the singular form, <strong>a little / amount of / much / some</strong>, and a singular verb.</p>
+                        <div class="grammar-tip">
+                            <strong>❌ Cannot use:</strong> plural form, a/an, a few / many / number of, a number, plural verb.
+                        </div>
+                        <div class="highlight-box">
+                            <strong>💡 To add a number to an uncountable noun:</strong> a piece of / some / a few pieces of — <em>a piece of advice, three pieces of furniture</em>.
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. My tutor gave me one very good advice about how to study.</p>
+                            <p class="text-sm text-gray-600">2. I was surprised by the number of times it took us to reach the castle.</p>
+                            <p class="text-sm text-gray-600">3. You need a great deal of knowledges to become a doctor.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>a very good piece of advice</strong>  2. <strong>the amount of time</strong>  3. <strong>a great deal of knowledge</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit4: {
+                title: 'Unit 4 — When do I use the present simple tense?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use the present simple tense:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>to make general statements about our world: <strong>The earth moves around the sun.</strong></li>
+                            <li>to show a pattern or general truth: <strong>People work in order to meet their basic needs.</strong></li>
+                            <li>with adverbs of frequency: <strong>always, usually, often, sometimes, never</strong></li>
+                            <li>with expressions such as: <strong>nowadays, these days, today</strong> (with a general meaning)</li>
+                            <li>for verbs showing opinions or feelings: <strong>believe, think, hope</strong></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>Form:</strong> base form + s/es for 3rd person singular.<br>
+                            <span class="text-sm">I play / you play / he/she/it plays / we play / they play</span>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Choose the correct sentence</p>
+                            <div class="mt-2 space-y-2">
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">1.</span>
+                                    <div><span class="text-sm">a) Nowadays, our bodies becoming 'old' much later than 100 years ago.</span><br>
+                                    <span class="text-sm">b) Nowadays, our bodies become 'old' much later than 100 years ago.</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ b) <strong>become</strong>')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                                <div class="flex items-start gap-2"><span class="font-medium text-sm">2.</span>
+                                    <div><span class="text-sm">a) Children lost their freedom if they have too many responsibilities.</span><br>
+                                    <span class="text-sm">b) Children lose their freedom if they have too many responsibilities.</span>
+                                    <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ b) <strong>lose</strong>')">Check</button>
+                                    <div class="answer-hidden"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. People should act according to what they are believing.</p>
+                            <p class="text-sm text-gray-600">2. In general, I think our government spent too much money on space travel.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>what they believe</strong>  2. <strong>spends</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit5: {
+                title: 'Unit 5 — How do I write large numbers?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">When we talk about a specific large number, we do <strong>not</strong> add <strong>s</strong> to the number:</p>
+                        <div class="example-box">200,000 = <strong>two hundred thousand</strong> (not <span class="wrong">two hundreds thousand</span>)</div>
+                        <div class="example-box">10,000,000 = <strong>ten million</strong> (not <span class="wrong">ten millions</span>)</div>
+                        <p class="text-gray-700">The noun that follows is always plural:</p>
+                        <div class="example-box">There must have been at least three thousand <strong>students</strong> at the protest.</div>
+                        <p class="text-gray-700">We use the plural form of large numbers + <strong>of</strong> to give an approximate idea:</p>
+                        <div class="example-box">There must have been <strong>thousands of</strong> students at the protest.</div>
+                        <div class="grammar-tip">
+                            <strong>💡 Fractions:</strong> half a (million); a/one third of a (million); three quarters of a (million); one and a quarter (million).
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Underline the correct number</p>
+                            <p class="text-sm text-gray-600">1. The skeleton had remained hidden for a thousands / <u>thousands of</u> years.</p>
+                            <p class="text-sm text-gray-600">2. The chart shows that three hundreds / three hundred whales were seen here in 1990.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>thousands of</strong>  2. <strong>three hundred</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit6: {
+                title: 'Unit 6 — There is / there are',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use <strong>there</strong> to say that something exists. We use <strong>there is</strong> with a singular subject and <strong>there are</strong> with a plural subject:</p>
+                        <div class="example-box">There is an oak tree in my garden. <span class="text-sm text-gray-500">(not <span class="wrong">It is an oak tree</span>)</span></div>
+                        <div class="example-box">There are some great movies on at the cinema. <span class="text-sm text-gray-500">(not <span class="wrong">They are some great movies</span>)</span></div>
+                        <p class="text-gray-700">We use <strong>there is</strong> and <strong>there are</strong> to give new information. We use <strong>it is</strong> or <strong>they are</strong> for something already mentioned.</p>
+                        <div class="highlight-box">
+                            <strong>Compare:</strong><br>
+                            <span class="text-sm">There is a present for you on the table. <em>(first time mentioned)</em></span><br>
+                            <span class="text-sm">Mary: What is that you're carrying? John: It's a present for my sister. <em>(already referred to)</em></span>
+                        </div>
+                        <div class="grammar-tip">
+                            <strong>⚠️</strong> We do not use the auxiliary verb <strong>do</strong> to form questions and negatives with <strong>there is/are</strong>.<br>
+                            <span class="text-sm">Are there any clean glasses? There isn't a map in the car.</span>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistake</p>
+                            <p class="text-sm text-gray-600 italic">Before they built the supermarket, <span class="text-red-500 line-through">there had</span> a lot more little shops in the high street.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>there were</strong> a lot more...')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit7: {
+                title: 'Unit 7 — Which relative pronoun should I use?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Relative pronouns (<strong>that, who</strong>, etc.) are used to connect two separate clauses:</p>
+                        <div class="example-box">There are several factors <strong>that</strong> are important in achieving happiness.</div>
+                        <p class="text-gray-700">When information is essential:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>that</strong> — to refer to things or people: <em>The chart that is on page 10 shows...</em></li>
+                            <li><strong>who</strong> — to refer to people: <em>The number of women who were enrolled...</em></li>
+                            <li><strong>what</strong> — to refer to 'the thing that': <em>The government should show us what must be done.</em></li>
+                        </ul>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> The relative pronoun can be left out if it refers to the object of a verb, but not if it refers to the subject.
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistake</p>
+                            <p class="text-sm text-gray-600 italic">I need to find someone <span class="text-red-500 line-through">can play</span> the piano for our assembly next month.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ someone <strong>who/that can play</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit8: {
+                title: 'Unit 8 — How do I choose between and, but and or?',
+                content: `
+                    <div class="space-y-4">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>and</strong> — to join two similar ideas: <em>Would you like some tea and biscuits?</em> (both)</li>
+                            <li><strong>but</strong> — to show contrast: <em>I have tea but I don't have any coffee.</em></li>
+                            <li><strong>or</strong> — to give an alternative: <em>Would you like some tea or coffee?</em> (choose one)</li>
+                        </ul>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> To join two negative ideas, use <strong>or</strong> if the subject and verb are the same.<br>
+                            <span class="text-sm">I don't have tea <strong>or</strong> coffee. <span class="text-gray-400">(not <span class="wrong">and</span>)</span></span>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks with and / but / or / or not</p>
+                            <p class="text-sm text-gray-600">1. The town was quite small; it had no university <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> college.</p>
+                            <p class="text-sm text-gray-600">2. What shall we do tomorrow? We could go to the beach <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> see a movie.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>or</strong>  2. <strong>or</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit9: {
+                title: 'Unit 9 — Auxiliary verbs',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700"><strong>Do, be</strong> and <strong>have</strong> are called auxiliary verbs. They help to change the main verb.</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Do</strong> — used with the infinitive to make negatives or questions: <em>I don't agree. Do you agree?</em></li>
+                            <li><strong>Be</strong> — used with -ing verb forms to make continuous tenses: <em>I am studying English.</em></li>
+                            <li><strong>Have</strong> — used with the past participle to make perfect tenses: <em>I have been here for three months.</em></li>
+                        </ul>
+                        <div class="grammar-tip">
+                            <strong>⚠️</strong> The auxiliary verb must agree with the subject: <em>Does your mother drink tea?</em> (not <span class="wrong">Do your mother</span>)
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Underline the correct auxiliary verb</p>
+                            <p class="text-sm text-gray-600">1. What do / <u>does</u> your friend like to eat?</p>
+                            <p class="text-sm text-gray-600">2. Where do / are you going?</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>does</strong>  2. <strong>are</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit10: {
+                title: 'Unit 10 — How do I use modal verbs?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">The following modal auxiliary verbs are followed by the infinitive <strong>without to</strong>: <strong>can, could, may, might, must, shall, should, will, would</strong>.</p>
+                        <div class="example-box">When travelling, we <strong>should respect</strong> the customs of the countries we visit. <span class="text-sm text-gray-500">(not <span class="wrong">should to respect</span>)</span></div>
+                        <p class="text-gray-700">Modal verbs form questions and negatives without using <strong>do</strong>:</p>
+                        <div class="example-box">Can I help you? <span class="text-sm text-gray-500">(not <span class="wrong">Do I can help you?</span>)</span></div>
+                        <div class="example-box">You mustn't worry about me. <span class="text-sm text-gray-500">(not <span class="wrong">You do not must worry</span>)</span></div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> When we talk about obligation or necessity using <strong>have</strong> or <strong>need</strong>, we use <strong>to + infinitive</strong>: <em>I have to finish my assignment.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. Nowadays, you can to find internet facilities in most hotels.</p>
+                            <p class="text-sm text-gray-600">2. We do not should accept this situation any longer.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>you can find</strong>  2. <strong>We should not accept</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit11: {
+                title: 'Unit 11 — -ing or to + infinitive?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use <strong>to + infinitive</strong> after: <strong>ask, afford, decide, deserve, help, hope, learn, offer, prepare, promise, refuse, seem, want, would like</strong>.</p>
+                        <div class="example-box">Summer seems to arrive later and later these days.</div>
+                        <p class="text-gray-700">We use <strong>-ing</strong> after: <strong>avoid, carry on, consider, deny, enjoy, finish, give up, imagine, involve, keep, like, mind, practise, recommend, resist, suggest</strong>.</p>
+                        <div class="example-box">I really enjoy watching movies at the cinema. <span class="text-sm text-gray-500">(not <span class="wrong">enjoy to watch</span>)</span></div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> <strong>Look forward to</strong> is followed by -ing: <em>I look forward to hearing your reply.</em><br>
+                            <strong>📌</strong> <strong>Spend money/time</strong> is followed by -ing: <em>We spent a lot of money buying CDs.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the gaps</p>
+                            <p class="text-sm text-gray-600">1. When I was a student, we couldn't afford <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center"> new textbooks. (buy)</p>
+                            <p class="text-sm text-gray-600">2. I was 13 when I first learnt how <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center">. (ice skate)</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>to buy</strong>  2. <strong>to ice skate</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit12: {
+                title: 'Unit 12 — Verbs after adjectives and prepositions',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">With <strong>feel + adjective</strong> we use the <strong>-ing</strong> form:</p>
+                        <div class="example-box">New students do not always feel comfortable speaking English to other people.</div>
+                        <p class="text-gray-700">After <strong>be + adjective, too + adjective</strong> and <strong>adjective + enough</strong>, we use <strong>to + infinitive</strong>:</p>
+                        <div class="example-box">I was happy to see her when she arrived. <span class="text-sm text-gray-500">(not <span class="wrong">happy seeing</span>)</span></div>
+                        <p class="text-gray-700">After all prepositions (<strong>about, by, from, for, in, of, without</strong>, etc.) we use the <strong>-ing</strong> form:</p>
+                        <div class="example-box">He opened the door without thinking about what would happen next.</div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> <strong>Despite, in spite of</strong> and <strong>instead of</strong> are prepositions: <em>He did not get the job despite getting excellent grades.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Underline the correct word</p>
+                            <p class="text-sm text-gray-600">1. It was easy understanding / <u>to understand</u> why they liked living close to the beach.</p>
+                            <p class="text-sm text-gray-600">2. When they finally arrived, the students were too tired cooking / to cook anything.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>to understand</strong>  2. <strong>to cook</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit13: {
+                title: 'Unit 13 — Gerund or infinitive after allow, advise, make, suggest?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Some verbs are followed by <strong>-ing</strong> if there is no object and by <strong>to + infinitive</strong> if there is a direct object — <strong>advise, allow, forbid, permit</strong>.</p>
+                        <div class="example-box">The teacher allowed talking as long as it was in English. <span class="text-sm text-gray-500">(no direct object)</span></div>
+                        <div class="example-box">The teacher allowed us to talk as long as it was in English. <span class="text-sm text-gray-500">(us is the direct object)</span></div>
+                        <p class="text-gray-700"><strong>Make</strong> is followed by the infinitive <strong>without to</strong>:</p>
+                        <div class="example-box">My boss made me wear a horrible uniform. <span class="text-sm text-gray-500">(not <span class="wrong">made me to wear</span>)</span></div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> <strong>Suggest</strong> can be followed by -ing without a direct object: <em>John suggested going to a movie.</em><br>
+                            With a direct object: <em>John suggested we go to a movie.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. I suggest you going and doing your homework now if you want to watch TV later.</p>
+                            <p class="text-sm text-gray-600">2. My parents always made me to clean up my room when I was young.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>I suggest you go</strong>  2. <strong>made me clean</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit14: {
+                title: 'Unit 14 — Stop, try, forget and remember',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Some verbs have a different meaning when followed by <strong>-ing</strong> or <strong>to + infinitive</strong>.</p>
+                        <div class="highlight-box">
+                            <strong>Stop + -ing</strong> = stop an activity.<br>
+                            <strong>Stop + to + infinitive</strong> = stop to do something else.
+                        </div>
+                        <div class="example-box">The boys stopped playing. <span class="text-sm text-gray-500">(stopped the activity)</span></div>
+                        <div class="example-box">The boys stopped to watch a large truck. <span class="text-sm text-gray-500">(stopped playing to watch)</span></div>
+                        <div class="highlight-box">
+                            <strong>Try + -ing</strong> = attempt to solve a problem.<br>
+                            <strong>Try + to + infinitive</strong> = attempt and fail.
+                        </div>
+                        <div class="highlight-box">
+                            <strong>Forget/remember + -ing</strong> = thinking back to the past.<br>
+                            <strong>Forget/remember + to + infinitive</strong> = thinking about the future.
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. Nowadays many people want to stop <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> too hard and enjoy life. (work)</p>
+                            <p class="text-sm text-gray-600">2. Did you remember <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> candles for the birthday cake? (buy)</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>working</strong>  2. <strong>to buy</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit15: {
+                title: 'Unit 15 — Prepositions after adjectives and nouns',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Some adjectives are always followed by a specific preposition.</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>At</strong> — good at, bad at, surprised at</li>
+                            <li><strong>About / with</strong> — angry about/with, pleased about/with</li>
+                            <li><strong>About</strong> — worried about</li>
+                        </ul>
+                        <p class="text-gray-700">Some nouns are always followed by a specific preposition.</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>In</strong> — decrease in, drop in, fall in, increase in, rise in</li>
+                            <li><strong>Between</strong> — difference between</li>
+                            <li><strong>Of</strong> — advantage of, disadvantage of, example of, number of, percentage of, use of</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. I've never been very good <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> painting or drawing.</p>
+                            <p class="text-sm text-gray-600">2. One advantage <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> saving money is that you will be able to enjoy your retirement.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>at</strong>  2. <strong>of</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit16: {
+                title: 'Unit 16 — Prepositions after verbs',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Some verbs must be followed by a specific preposition.</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Agree with</strong> — a person or idea: <em>I agree with the government's decision.</em></li>
+                            <li><strong>Agree to</strong> — consent to something: <em>Both sides agreed to the ceasefire.</em></li>
+                            <li><strong>Apologise to</strong> — someone: <em>I apologised to my neighbour.</em></li>
+                            <li><strong>Apologise for</strong> — something: <em>I apologised for breaking the window.</em></li>
+                            <li><strong>Think about/of</strong> — opinions or future plans</li>
+                            <li><strong>Look at</strong> — fix eyes on something</li>
+                            <li><strong>Look for</strong> — search for something</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. I don't know very much <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> ancient history.</p>
+                            <p class="text-sm text-gray-600">2. The manager agreed <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> an increase in staff holidays.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>about</strong>  2. <strong>to</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit17: {
+                title: 'Unit 17 — Prepositions of time and place',
+                content: `
+                    <div class="space-y-4">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>in</strong> — year, month, part of the day: <em>in 1988, in June, in the afternoon</em></li>
+                            <li><strong>on</strong> — day or date: <em>on 1st October, on Sunday</em></li>
+                            <li><strong>at</strong> — time, weekend, night: <em>at 8:00, at the weekend, at night</em></li>
+                            <li><strong>for</strong> — length of time: <em>for 18 years</em></li>
+                            <li><strong>in</strong> — cities, countries, places: <em>in London, in Australia</em></li>
+                            <li><strong>at</strong> — school, college, university, work, home, buildings: <em>at work, at the cinema</em></li>
+                            <li><strong>to</strong> — destination: <em>going to the library</em></li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. I started high school <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> 1985.</p>
+                            <p class="text-sm text-gray-600">2. Shall we meet <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> the library and then go in together?</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>in</strong>  2. <strong>at</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit18: {
+                title: 'Unit 18 — The preposition of',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">The preposition <strong>of</strong> is used in common expressions:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>cost of living</strong>, <strong>letter of complaint</strong>, <strong>quality of life</strong>, <strong>standard of living</strong></li>
+                            <li>After some nouns: <strong>government, group, importance, lack, leader, type</strong></li>
+                            <li>To talk about quantities: <strong>amount, number, a lot, lots, plenty</strong></li>
+                            <li>In prepositions: <strong>in front of, instead of</strong></li>
+                            <li>After <strong>because</strong> and <strong>as a result</strong> when followed by a noun or gerund</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. It is difficult for very old people to have a good quality for life.</p>
+                            <p class="text-sm text-gray-600">2. The lakes remained empty for a long period time during the drought.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>quality of life</strong>  2. <strong>period of time</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit19: {
+                title: 'Unit 19 — How do I make a verb passive?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">The passive is formed with the verb <strong>to be</strong> + the <strong>past participle</strong> of the verb:</p>
+                        <div class="example-box">Nowadays, a great deal of money <strong>is spent</strong> on advertising.</div>
+                        <p class="text-gray-700">The verb <strong>to be</strong> changes into the correct tense:</p>
+                        <div class="highlight-box">
+                            <strong>Present simple:</strong> is spent &nbsp;|&nbsp; <strong>Present continuous:</strong> is being spent<br>
+                            <strong>Simple past:</strong> was spent &nbsp;|&nbsp; <strong>Past continuous:</strong> was being spent<br>
+                            <strong>Present perfect:</strong> has been spent &nbsp;|&nbsp; <strong>Past perfect:</strong> had been spent
+                        </div>
+                        <p class="text-gray-700">To make the negative, put <strong>not</strong> between the verb <strong>to be</strong> and the past participle:</p>
+                        <div class="example-box">We <strong>were not</strong> told that the rules had changed.</div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> After modal verbs, use the passive infinitive without <strong>to</strong>: <em>Children should be seen and not heard.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. The house was sell for over one million dollars.</p>
+                            <p class="text-sm text-gray-600">2. Smoking do not allow in any part of the aeroplane.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>was sold</strong>  2. <strong>is not allowed</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit20: {
+                title: 'Unit 20 — When do I use the passive?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use the passive:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>when we want to make the object the focus: <em>The books were sold for a small profit.</em></li>
+                            <li>when the context tells us who carried out the action: <em>A law was introduced to help protect people.</em></li>
+                            <li>when it is not important who carried out the action: <em>The shoes are cleaned and packed into boxes.</em></li>
+                        </ul>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> We can include the 'subject' by adding <strong>by</strong> + the person/group: <em>A lot of waste materials could be recycled by large manufacturers.</em>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Change from active to passive</p>
+                            <p class="text-sm text-gray-600">1. A factory worker checks each box for quality. → Each box <input type="text" placeholder="___" class="border-b border-gray-300 w-32 text-center"></p>
+                            <p class="text-sm text-gray-600">2. The government does not permit children under 16 to work. → Children <input type="text" placeholder="___" class="border-b border-gray-300 w-32 text-center"></p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>is checked for quality</strong>  2. <strong>under 16 are not permitted to work</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit21: {
+                title: 'Unit 21 — What is register?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">'Register' means using the right word in the right context. For formal essay writing, use a <strong>formal register</strong>.</p>
+                        <p class="text-gray-700">You should <strong>not</strong> use:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>informal vocabulary: <span class="wrong">kids, bucks, heaps</span> → <strong>children, money, many/a great deal</strong></li>
+                            <li>symbols: <span class="wrong">%, $, &, @</span> → <strong>percent, money, and, at</strong></li>
+                            <li>abbreviations: <span class="wrong">m, yrs, kgs, no</span> → <strong>million, years, kilos, number</strong></li>
+                            <li>all capital letters: <span class="wrong">NOWADAYS</span></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>Compare:</strong><br>
+                            <span class="text-sm">Companies waste <span class="wrong">heaps of bucks</span> on advertising. → <strong>waste a great deal of money</strong></span>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the register errors</p>
+                            <p class="text-sm text-gray-600">1. Some people believe it is ok to hit small children.</p>
+                            <p class="text-sm text-gray-600">2. Kids today are much more comfortable using technology than older people.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>it is acceptable/all right</strong>  2. <strong>Children</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit22: {
+                title: 'Unit 22 — Adjectives and adverbs',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700"><strong>Adjectives</strong> describe a noun: <em>Today life is very complicated.</em></p>
+                        <p class="text-gray-700"><strong>Adverbs</strong> describe a verb: <em>We must act quickly.</em> or an adjective: <em>This chart is significantly different.</em></p>
+                        <p class="text-gray-700">We use adverbs such as <strong>unfortunately</strong> to show how we feel about something.</p>
+                        <div class="grammar-tip">
+                            <strong>⚠️</strong> Some adverbs are irregular: <strong>fast, hard, well</strong> — <em>He ran as fast as he could.</em> (not <span class="wrong">fastly</span>)
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Underline the correct words</p>
+                            <p class="text-sm text-gray-600">1. I didn't play very good / <u>well</u> in our last football match.</p>
+                            <p class="text-sm text-gray-600">2. In 1980, this figure increased sharp / sharply to 75%.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>well</strong>  2. <strong>sharply</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit23: {
+                title: 'Unit 23 — Noun or adjective?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Commonly confused nouns and adjectives:</p>
+                        <div class="grid grid-cols-2 gap-2 text-sm bg-white p-4 rounded-xl border border-gray-200">
+                            <div><strong>Noun</strong></div><div><strong>Adjective</strong></div>
+                            <div>age</div><div>aged</div>
+                            <div>development</div><div>developed</div>
+                            <div>difference</div><div>different</div>
+                            <div>education</div><div>educational</div>
+                            <div>happiness</div><div>happy</div>
+                            <div>health</div><div>healthy</div>
+                            <div>maturity</div><div>mature</div>
+                            <div>nature</div><div>natural</div>
+                            <div>noise</div><div>noisy</div>
+                            <div>responsibility</div><div>responsible</div>
+                            <div>significance</div><div>significant</div>
+                            <div>silence</div><div>silent</div>
+                            <div>sport</div><div>sports</div>
+                            <div>truth</div><div>true</div>
+                            <div>value</div><div>valuable</div>
+                            <div>youth</div><div>young</div>
+                        </div>
+                        <div class="grammar-tip">
+                            <strong>📌</strong> <strong>Invaluable</strong> means <em>very valuable</em>!<br>
+                            <strong>Men/women</strong> = nouns &nbsp;|&nbsp; <strong>Male/female</strong> = adjectives
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. I can't tell the different between the fake designer goods and the real ones.</p>
+                            <p class="text-sm text-gray-600">2. The advice my tutor gave me was unvaluable in the exam.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>difference</strong>  2. <strong>invaluable</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit24: {
+                title: 'Unit 24 — Verb confusion 1 — courses and study',
+                content: `
+                    <div class="space-y-4">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Know</strong> — memorised or certain: <em>I know all the irregular verbs.</em></li>
+                            <li><strong>Learn</strong> — activity of memorising: <em>I am learning irregular verbs.</em></li>
+                            <li><strong>Study</strong> — whole subject area: <em>My daughter is studying economics.</em></li>
+                            <li><strong>Take</strong> — similar to study: <em>I am taking a course in marketing.</em></li>
+                            <li><strong>Enrol</strong> — listed in official records: <em>I have just enrolled in an art course.</em></li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Choose the correct verb</p>
+                            <p class="text-sm text-gray-600">1. We're learning / <u>studying</u> about Ancient Rome this term.</p>
+                            <p class="text-sm text-gray-600">2. I've decided to enrol in / learn a photography course this summer.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>learning</strong>  2. <strong>enrol in</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit25: {
+                title: 'Unit 25 — Verb confusion 2 — describing charts and figures',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Describing charts:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Show</strong> — graphs and charts can show facts</li>
+                            <li><strong>Indicate</strong> — draw a conclusion about figures</li>
+                            <li><strong>Illustrate</strong> — refer to evidence or proof</li>
+                        </ul>
+                        <p class="text-gray-700">Describing figures:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Increase / rise</strong> — figures go up</li>
+                            <li><strong>Decrease / fall</strong> — figures go down</li>
+                            <li><strong>Remain steady / show little change</strong> — figures stay the same</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Choose the correct verb</p>
+                            <p class="text-sm text-gray-600">1. The figures illustrate / <u>indicate</u> that enormous changes have occurred.</p>
+                            <p class="text-sm text-gray-600">2. The greatest increase / decrease was in 1997, when it peaked at 56 tonnes.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>indicate</strong>  2. <strong>increase</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit26: {
+                title: 'Unit 26 — Verb confusion 3 — money and problems',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700"><strong>Money:</strong></p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Buy</strong> — what or where: <em>I bought a new jumper. Where did you buy it?</em></li>
+                            <li><strong>Spend</strong> — money: <em>I spent over $250 on mobile phone calls.</em></li>
+                        </ul>
+                        <p class="text-gray-700"><strong>Problems:</strong></p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Fix / repair</strong> — something broken: <em>I took my watch to get it fixed.</em></li>
+                            <li><strong>Solve</strong> — problems: <em>We must solve the unemployment problem.</em></li>
+                            <li><strong>Resolve</strong> — difficult situations: <em>What can we do to resolve this situation?</em></li>
+                            <li><strong>Prevent</strong> — stop from happening: <em>We need to prevent this from happening.</em></li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. It is important to teach children how to save money as well as how to <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> it.</p>
+                            <p class="text-sm text-gray-600">2. How much did you <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> on video games last year?</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>spend</strong>  2. <strong>spend</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit27: {
+                title: 'Unit 27 — Noun confusion 1 — money and work',
+                content: `
+                    <div class="space-y-4">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Salary</strong> — professional person's annual pay</li>
+                            <li><strong>Wage</strong> — casual/manual weekly/monthly pay</li>
+                            <li><strong>Money</strong> — general sense</li>
+                            <li><strong>Job</strong> — type of work or a task</li>
+                            <li><strong>Work</strong> — general noun or verb</li>
+                            <li><strong>Workplace</strong> — place where you work</li>
+                            <li><strong>Knowledge</strong> — facts studied over time</li>
+                            <li><strong>Skills</strong> — practical ability</li>
+                            <li><strong>Employment / unemployment</strong> — general work trends</li>
+                            <li><strong>Employee</strong> = worker, <strong>Employer</strong> = boss</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. I paid more tax last week because of the extra <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center"> I earned.</p>
+                            <p class="text-sm text-gray-600">2. Joe's <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center"> gave him a promotion and a higher salary.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>money</strong>  2. <strong>employer</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit28: {
+                title: 'Unit 28 — Noun confusion 2 — advertising, travel and young people',
+                content: `
+                    <div class="space-y-4">
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Advertise</strong> (verb) / <strong>advertisement/advert</strong> (noun) / <strong>commercial</strong> (TV ad) / <strong>advertising</strong> (industry)</li>
+                            <li><strong>Journey / trip</strong> — getting from A to B</li>
+                            <li><strong>Travel</strong> — verb and uncountable noun (general)</li>
+                            <li><strong>Trip</strong> — holiday or excursion</li>
+                            <li><strong>Youth</strong> — stage of life; <strong>young person/people</strong> for people</li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Fill in the blanks</p>
+                            <p class="text-sm text-gray-600">1. Have you packed any snacks for the train <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center">?</p>
+                            <p class="text-sm text-gray-600">2. I'll apply for a job in <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center"> when I finish my marketing course.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>journey/trip</strong>  2. <strong>advertising</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit29: {
+                title: 'Unit 29 — When do I need to use an apostrophe?',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">We use apostrophes:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>to shorten words: <strong>can't, couldn't, don't, he'll, won't, she'd</strong></li>
+                            <li>after people/animals to show possession: <strong>Mary's hat, the cat's food dish</strong></li>
+                        </ul>
+                        <p class="text-gray-700">We do <strong>not</strong> use an apostrophe:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>with possessive pronouns: <strong>its, ours, theirs, yours</strong></li>
+                            <li>to make plurals: <strong>CDs, TVs</strong></li>
+                            <li>to show possession with things: use <strong>of the</strong> — <em>the leg of the chair</em></li>
+                        </ul>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the mistakes</p>
+                            <p class="text-sm text-gray-600">1. I put Jack coat on a hanger in the cupboard.</p>
+                            <p class="text-sm text-gray-600">2. The dog wagged it's tail when it saw the children.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>Jack\'s coat</strong>  2. <strong>its tail</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            unit30: {
+                title: 'Unit 30 — Common spelling errors',
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-700">Commonly confused words:</p>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>to</strong> (direction) / <strong>too</strong> (as well/excess)</li>
+                            <li><strong>there</strong> (place) / <strong>their</strong> (possessive)</li>
+                            <li><strong>though</strong> (although) / <strong>through</strong> (via)</li>
+                        </ul>
+                        <p class="text-gray-700">British vs American spelling: <strong>programme</strong> (UK) / <strong>program</strong> (US)</p>
+                        <div class="grammar-tip">
+                            <strong>⚠️</strong> Use either British or American spellings, but do not mix them!
+                        </div>
+                        <p class="text-gray-700">Words with double letters: accommodation, advertisement, always, benefit, beginning, business, commercial, country, different, environment, government, nowadays, occurred, passenger, restaurant, teacher, which</p>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">📝 Correct the spelling mistakes</p>
+                            <p class="text-sm text-gray-600">1. The goverment of my contry has introduced a new system to encourage recycling.</p>
+                            <p class="text-sm text-gray-600">2. Nowdays you need to be sure to read advertisments carefully.</p>
+                            <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this,'1. <strong>government, country</strong>  2. <strong>Nowadays, advertisements</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Tests 1-10 data
+        const testsData = {
+            test1: {
+                title: 'Test 1 — Units 1-3',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 1 — Mixed practice</p>
+                            <p class="text-sm text-amber-700">Underline the correct word or phrase in the following sentences.</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">1. The garbage is / <u>are</u> collected every Tuesday.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>is</strong> (garbage is uncountable)')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">2. Advertising in the school newsletter is / are a waste of time.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>is</strong> (advertising is uncountable)')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">3. A lot of food in restaurants is / are thrown away every day.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>is</strong> (food is uncountable)')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">4. Many idea / <u>ideas</u> for new products never reach the manufacturing stage.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>ideas</strong> (plural countable noun)')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">5. My sister gave me lots of advice / advices that was / were very useful.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>advice, was</strong> (uncountable)')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-4 mt-4">
+                            <p class="font-semibold text-green-800">✅ All answers:</p>
+                            <p class="text-sm text-green-700">1. is &nbsp;|&nbsp; 2. is &nbsp;|&nbsp; 3. is &nbsp;|&nbsp; 4. ideas &nbsp;|&nbsp; 5. advice, was</p>
+                        </div>
+                    </div>
+                `
+            },
+            test2: {
+                title: 'Test 2 — Units 4-6',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 2 — Present simple, numbers, there is/are</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the gaps with the correct form of the verbs in brackets.</p>
+                            <p class="text-sm text-gray-600">1. My father always <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> (get up) first because he <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> (start) work at 7 o'clock.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>gets up, starts</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Match the amount to the written equivalent.</p>
+                            <p class="text-sm text-gray-600">$3,500,000 → <input type="text" placeholder="___" class="border-b border-gray-300 w-40 text-center"></p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>three and a half million dollars</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the mistake:</p>
+                            <p class="text-sm text-gray-600 italic">Before they built the supermarket, <span class="text-red-500 line-through">there had</span> a lot more little shops in the high street.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>there were</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test3: {
+                title: 'Test 3 — Units 7-9',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 3 — Relative pronouns, conjunctions, auxiliary verbs</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Add a relative pronoun:</p>
+                            <p class="text-sm text-gray-600">The students <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> struggle the most are those without any maths qualifications.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>who/that</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in with and/but/or:</p>
+                            <p class="text-sm text-gray-600">The town was quite small; it had no university <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> college.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>or</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the auxiliary verb:</p>
+                            <p class="text-sm text-gray-600 italic">What time <span class="text-red-500 line-through">you get</span> home last night?</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>did you get</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test4: {
+                title: 'Test 4 — Units 10-12',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 4 — Modal verbs, -ing vs to + infinitive, verbs after adjectives</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Complete the questions and answers:</p>
+                            <p class="text-sm text-gray-600">A: <input type="text" placeholder="___" class="border-b border-gray-300 w-40 text-center"> stamps at the newsagent's? (can/buy)</p>
+                            <p class="text-sm text-gray-600">B: Yes, <input type="text" placeholder="___" class="border-b border-gray-300 w-40 text-center"> to the post office. (not/have to/go)</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ A: <strong>Can you buy</strong>  B: <strong>you can. You don\'t have to go</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Join the sentences using the words in brackets:</p>
+                            <p class="text-sm text-gray-600">They went to the cinema. They didn't go to school. (instead of)</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>They went to the cinema instead of going to school.</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test5: {
+                title: 'Test 5 — Units 13-15',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 5 — Gerund/infinitive, stop/try/forget, prepositions</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the blanks with the correct form:</p>
+                            <p class="text-sm text-gray-600">1. I didn't mind washing the dishes. I was <input type="text" placeholder="___" class="border-b border-gray-300 w-32 text-center"> (happy / do) it.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>happy to do</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in with the correct preposition:</p>
+                            <p class="text-sm text-gray-600">I've never been very good <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> painting or drawing.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>at</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test6: {
+                title: 'Test 6 — Units 16-18',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 6 — Prepositions after verbs, prepositions of time/place, the preposition of</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the blanks with the correct preposition:</p>
+                            <p class="text-sm text-gray-600">1. I don't know very much <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> ancient history.</p>
+                            <p class="text-sm text-gray-600">2. The manager agreed <input type="text" placeholder="___" class="border-b border-gray-300 w-16 text-center"> an increase in staff holidays.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ 1. <strong>about</strong>  2. <strong>to</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the mistake:</p>
+                            <p class="text-sm text-gray-600 italic">I will start my course <span class="text-red-500 line-through">on</span> June.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>in</strong> June')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test7: {
+                title: 'Test 7 — Units 19-21',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 7 — Passive, register</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Change from active to passive:</p>
+                            <p class="text-sm text-gray-600">A factory worker checks each box for quality. → Each box <input type="text" placeholder="___" class="border-b border-gray-300 w-40 text-center"></p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>is checked for quality</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the register error:</p>
+                            <p class="text-sm text-gray-600 italic">The new hospital cost over 200 million <span class="text-red-500 line-through">bucks</span> to build.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>dollars</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test8: {
+                title: 'Test 8 — Units 22-24',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 8 — Adjectives/adverbs, noun/adjective, verb confusion</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the blanks with the correct form:</p>
+                            <p class="text-sm text-gray-600">1. The figures in the two charts are <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center"> different. (significant)</p>
+                            <p class="text-sm text-gray-600">2. In 2002 the number of houses sold increased <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center">. (slight)</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ 1. <strong>significantly</strong>  2. <strong>slightly</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the mistake:</p>
+                            <p class="text-sm text-gray-600 italic">I can't tell the <span class="text-red-500 line-through">different</span> between the fake designer goods and the real ones.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>difference</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test9: {
+                title: 'Test 9 — Units 25-27',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 9 — Charts/figures, money/problems, money/work</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Choose the correct word:</p>
+                            <p class="text-sm text-gray-600">1. The figures illustrate / <u>indicate</u> that enormous changes have occurred.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>indicate</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the blanks:</p>
+                            <p class="text-sm text-gray-600">1. It is important to teach children how to save money as well as how to <input type="text" placeholder="___" class="border-b border-gray-300 w-20 text-center"> it.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>spend</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            },
+            test10: {
+                title: 'Test 10 — Units 28-30',
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">📝 Test 10 — Advertising/travel, apostrophes, spelling</p>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Fill in the blanks:</p>
+                            <p class="text-sm text-gray-600">1. Have you packed any snacks for the train <input type="text" placeholder="___" class="border-b border-gray-300 w-24 text-center">?</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>journey/trip</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the apostrophe error:</p>
+                            <p class="text-sm text-gray-600 italic">The dog wagged <span class="text-red-500 line-through">it's</span> tail when it saw the children.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>its</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+
+                        <div class="practice-box">
+                            <p class="font-semibold">Correct the spelling:</p>
+                            <p class="text-sm text-gray-600 italic">The goverment of my contry has introduced a new system.</p>
+                            <button class="btn-practice outline mt-1 text-xs" onclick="revealAnswer(this,'✅ <strong>government, country</strong>')">Check</button>
+                            <div class="answer-hidden"></div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Answer Key data (condensed but complete)
+        const answerKeyData = {
+            title: 'Answer Key',
+            content: `
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-xl p-6 text-white mb-6">
+                        <h2 class="text-2xl font-bold">📖 Answer Key</h2>
+                        <p class="text-emerald-100">Complete answers for all units and tests.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 1</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>1. a) In <strong>the</strong> USA</div>
+                                <div>2. b) ...<strong>the</strong> number...</div>
+                                <div>Correction: <strong>not the same as</strong> mine</div>
+                                <div>3. 1. <strong>the</strong> internet  2. <strong>rivers</strong>  3. <strong>America</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 2</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>1. b) <strong>problems</strong></div>
+                                <div>2. a) <strong>organisations provide</strong></div>
+                                <div>Correction: <strong>women</strong> studying science increased</div>
+                                <div>3. 1. children  2. men  3. people</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 3</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>amount of garbage</strong></div>
+                                <div>1. <strong>a very good piece of advice</strong></div>
+                                <div>2. <strong>the amount of time</strong></div>
+                                <div>3. <strong>a great deal of knowledge</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 4</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>1. b) <strong>become</strong></div>
+                                <div>2. b) <strong>lose</strong></div>
+                                <div>Corrections: 1. <strong>what they believe</strong>  2. <strong>spends</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 5</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>Thousands of</strong> people</div>
+                                <div>1. <strong>thousands of</strong>  2. <strong>three hundred</strong></div>
+                                <div>3. <strong>three and a half billion</strong></div>
+                                <div>4. <strong>six hundred dollars</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 6</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>there were</strong> a lot more</div>
+                                <div>1. <strong>there are many</strong></div>
+                                <div>2. <strong>There is no clear trend</strong></div>
+                                <div>3. <strong>there are no factories</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 7</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>who/that can play</strong></div>
+                                <div>1. <strong>problems that can occur</strong></div>
+                                <div>2. <strong>teacher who/that inspired</strong></div>
+                                <div>3. <strong>teenagers who/that do not feel</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 8</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>1. <strong>or</strong>  2. <strong>or</strong></div>
+                                <div>3. <strong>or</strong>  4. <strong>but</strong></div>
+                                <div>5. <strong>or</strong>  6. <strong>or not</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 9</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>1. <strong>does</strong>  2. <strong>are</strong></div>
+                                <div>3. <strong>—</strong> (no auxiliary)</div>
+                                <div>4. <strong>have</strong>  5. <strong>do</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 10</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>can't smoke</strong></div>
+                                <div>1. <strong>you can find</strong></div>
+                                <div>2. <strong>We should not accept</strong></div>
+                                <div>3. <strong>we must try</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 11</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>buying</strong> food</div>
+                                <div>1. <strong>to buy</strong>  2. <strong>to ice skate</strong></div>
+                                <div>3. <strong>doing</strong>  4. <strong>stirring</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 12</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>in spite of being</strong></div>
+                                <div>1. <strong>to understand</strong></div>
+                                <div>2. <strong>to cook</strong></div>
+                                <div>3. <strong>presenting</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 13</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>not allowed to skateboard</strong></div>
+                                <div>1. <strong>I suggest you go</strong></div>
+                                <div>2. <strong>made me clean</strong></div>
+                                <div>3. <strong>allowed to use</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 14</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>to tie</strong> my shoelace</div>
+                                <div>1. <strong>working</strong>  2. <strong>to buy</strong></div>
+                                <div>3. <strong>to open</strong>  4. <strong>to send</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 15</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>pleased about</strong></div>
+                                <div>1. <strong>at</strong>  2. <strong>between</strong></div>
+                                <div>3. <strong>of</strong>  4. <strong>in</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 16</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>looking for</strong></div>
+                                <div>1. <strong>about</strong>  2. <strong>to</strong></div>
+                                <div>3. <strong>for</strong>  4. <strong>about</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 17</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>walk to work</strong></div>
+                                <div>1. <strong>in</strong>  2. <strong>at</strong></div>
+                                <div>3. <strong>for</strong>  4. <strong>on</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 18</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>in front of</strong></div>
+                                <div>1. <strong>quality of life</strong></div>
+                                <div>2. <strong>period of time</strong></div>
+                                <div>3. <strong>as a result of my illness</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 19</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>was given</strong></div>
+                                <div>1. <strong>was sold</strong></div>
+                                <div>2. <strong>is not allowed</strong></div>
+                                <div>3. <strong>are carried, are washed, are peeled</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 20</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>should be worn</strong></div>
+                                <div>1. <strong>is checked</strong></div>
+                                <div>2. <strong>under 16 are not permitted</strong></div>
+                                <div>3. <strong>are being washed</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 21</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>dollars</strong></div>
+                                <div>1. <strong>acceptable/all right</strong></div>
+                                <div>2. <strong>Children</strong></div>
+                                <div>3. <strong>great deal/large number</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 22</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>hard</strong></div>
+                                <div>1. <strong>well</strong>  2. <strong>sharply</strong></div>
+                                <div>3. <strong>gradual</strong>  4. <strong>clear, easily</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 23</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>sports</strong> shoes</div>
+                                <div>1. <strong>difference</strong></div>
+                                <div>2. <strong>invaluable</strong></div>
+                                <div>3. <strong>healthy</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 24</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>to enrol in</strong></div>
+                                <div>1. <strong>learning</strong>  2. <strong>enrol in</strong></div>
+                                <div>3. <strong>know</strong>  4. <strong>study</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 25</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>illustrate</strong></div>
+                                <div>1. <strong>indicate</strong></div>
+                                <div>2. <strong>increase</strong></div>
+                                <div>3. <strong>illustrates</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 26</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>fix/repair</strong></div>
+                                <div>1. <strong>spend</strong>  2. <strong>resolve</strong></div>
+                                <div>3. <strong>prevent</strong>  4. <strong>solve</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 27</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>employees</strong> decided</div>
+                                <div>1. <strong>money</strong>  2. <strong>employer</strong></div>
+                                <div>3. <strong>unemployment</strong></div>
+                                <div>4. <strong>job</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 28</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>to read on the trip/journey</strong></div>
+                                <div>1. <strong>trip/journey</strong></div>
+                                <div>2. <strong>advertising</strong></div>
+                                <div>3. <strong>young people</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 29</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>its</strong> young</div>
+                                <div>1. <strong>Jack's coat</strong></div>
+                                <div>2. <strong>can't, don't</strong></div>
+                                <div>3. <strong>CDs</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 30</h3>
+                            <div class="text-sm space-y-1 text-gray-600">
+                                <div>Correction: <strong>accommodation, restaurant</strong></div>
+                                <div>1. <strong>government, country</strong></div>
+                                <div>2. <strong>Nowadays, advertisements</strong></div>
+                                <div>3. <strong>commercial, business</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 mt-4">
+                        <h3 class="font-bold text-lg mb-3">📝 Tests Answer Key</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div><strong>Test 1:</strong> 1. is  2. is  3. is  4. ideas  5. advice, was</div>
+                            <div><strong>Test 2:</strong> gets up, starts; three and a half million; there were</div>
+                            <div><strong>Test 3:</strong> who/that; or; did you get</div>
+                            <div><strong>Test 4:</strong> Can you buy; you can. You don't have to go; They went ... instead of going</div>
+                            <div><strong>Test 5:</strong> happy to do; at</div>
+                            <div><strong>Test 6:</strong> about; to; in</div>
+                            <div><strong>Test 7:</strong> is checked; dollars</div>
+                            <div><strong>Test 8:</strong> significantly; slightly; difference</div>
+                            <div><strong>Test 9:</strong> indicate; spend</div>
+                            <div><strong>Test 10:</strong> journey/trip; its; government, country</div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // All practice compilation
+        const allPracticeData = {
+            title: '✏️ All Practice Exercises',
+            content: `
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl p-6 text-white mb-6">
+                        <h2 class="text-2xl font-bold">✏️ All Practice Exercises</h2>
+                        <p class="text-purple-100">Compiled practice from all 30 units. Click "Check" to reveal answers.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 1 — The</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Correct: <strong>In the USA</strong> this situation is totally different.</p>
+                                <p>✅ Correct: The table shows <strong>the number</strong> of people...</p>
+                                <p>📝 Your hairstyle is <strong>not the same as</strong> mine.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 2 — Singular/Plural</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ There are several <strong>problems</strong> with this idea.</p>
+                                <p>✅ Many charity <strong>organisations provide</strong> a great deal of help.</p>
+                                <p>📝 The number of <strong>women</strong> studying science increased dramatically.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 3 — Uncountable nouns</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ My tutor gave me <strong>a very good piece of advice</strong>.</p>
+                                <p>✅ I was surprised by <strong>the amount of time</strong> it took us.</p>
+                                <p>✅ You need <strong>a great deal of knowledge</strong> to become a doctor.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 4 — Present simple</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Nowadays, our bodies <strong>become</strong> 'old' much later.</p>
+                                <p>✅ Children <strong>lose</strong> their freedom if they have too many responsibilities.</p>
+                                <p>📝 People should act according to <strong>what they believe</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 5 — Large numbers</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ The skeleton had remained hidden for <strong>thousands of</strong> years.</p>
+                                <p>✅ The chart shows that <strong>three hundred</strong> whales were seen.</p>
+                                <p>✅ <strong>Millions of</strong> dollars are spent on space exploration each year.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 6 — There is/are</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Before they built the supermarket, <strong>there were</strong> a lot more little shops.</p>
+                                <p>📝 In developed countries <strong>there are many</strong> possible solutions.</p>
+                                <p>📝 <strong>There is no clear trend</strong> in the data shown in graph 1.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 7 — Relative pronouns</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I need to find someone <strong>who/that can play</strong> the piano.</p>
+                                <p>✅ This is one of the problems <strong>that can occur</strong>.</p>
+                                <p>✅ The teacher <strong>who/that inspired</strong> me most was called Miss Gillies.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 8 — And/But/Or</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ The town was quite small; it had no university <strong>or</strong> college.</p>
+                                <p>✅ What shall we do? We could go to the beach <strong>or</strong> see a movie.</p>
+                                <p>✅ I enjoy playing football <strong>but</strong> I don't really like watching it.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 9 — Auxiliary verbs</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ What <strong>does</strong> your friend like to eat?</p>
+                                <p>✅ Where <strong>are</strong> you going?</p>
+                                <p>✅ I <strong>do</strong> not believe this.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 10 — Modal verbs</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Nowadays, <strong>you can find</strong> internet facilities in most hotels.</p>
+                                <p>✅ <strong>We should not accept</strong> this situation any longer.</p>
+                                <p>✅ If we want to fix this problem, <strong>we must try</strong> our best.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 11 — -ing or to + infinitive</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ We've spent over $300 <strong>buying</strong> food for the party.</p>
+                                <p>✅ When I was a student, we couldn't afford <strong>to buy</strong> new textbooks.</p>
+                                <p>✅ I was 13 when I first learnt how <strong>to ice skate</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 12 — Verbs after adjectives</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Alice won the tournament <strong>in spite of being</strong> the youngest player.</p>
+                                <p>✅ It was easy <strong>to understand</strong> why they liked living close to the beach.</p>
+                                <p>✅ The students were too tired <strong>to cook</strong> anything.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 13 — Allow/Advise/Make/Suggest</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ <strong>I suggest you go</strong> and do your homework now.</p>
+                                <p>✅ My parents always <strong>made me clean</strong> up my room.</p>
+                                <p>✅ People should not be <strong>allowed to use</strong> mobile phones in the cinema.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 14 — Stop/Try/Forget/Remember</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I lost the race because I had <strong>to tie</strong> my shoelace.</p>
+                                <p>✅ Nowadays many people want to stop <strong>working</strong> too hard.</p>
+                                <p>✅ Did you remember <strong>to buy</strong> candles for the birthday cake?</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 15 — Prepositions after adjectives/nouns</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I've never been very good <strong>at</strong> painting or drawing.</p>
+                                <p>✅ One advantage <strong>of</strong> saving money is that you can enjoy retirement.</p>
+                                <p>✅ The most dramatic <strong>increase in</strong> numbers occurred in 1997.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 16 — Prepositions after verbs</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I don't know very much <strong>about</strong> ancient history.</p>
+                                <p>✅ The manager agreed <strong>to</strong> an increase in staff holidays.</p>
+                                <p>✅ The airline apologised <strong>for</strong> losing my luggage.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 17 — Prepositions of time/place</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I started high school <strong>in</strong> 1985.</p>
+                                <p>✅ Shall we meet <strong>at</strong> the library and then go in together?</p>
+                                <p>✅ I have been studying English <strong>for</strong> 3 years.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 18 — The preposition of</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ It is difficult to have a good <strong>quality of life</strong>.</p>
+                                <p>✅ The lakes remained empty for a long <strong>period of time</strong>.</p>
+                                <p>✅ I wrote a <strong>letter of complaint</strong> to the airline.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 19 — Passive</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ The house <strong>was sold</strong> for over one million dollars.</p>
+                                <p>✅ Smoking <strong>is not allowed</strong> in any part of the aeroplane.</p>
+                                <p>✅ The potatoes <strong>are carried</strong> along a conveyor belt.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 20 — When to use passive</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Each box <strong>is checked</strong> for quality.</p>
+                                <p>✅ Children under 16 <strong>are not permitted</strong> to work.</p>
+                                <p>✅ Your clothes <strong>are being washed</strong> at the moment.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 21 — Register</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Some people believe it is <strong>acceptable/all right</strong> to hit small children.</p>
+                                <p>✅ <strong>Children</strong> today are much more comfortable using technology.</p>
+                                <p>✅ The government needs to create <strong>a great deal of</strong> jobs.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 22 — Adjectives/Adverbs</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I didn't play very <strong>well</strong> in our last match.</p>
+                                <p>✅ In 1980, this figure increased <strong>sharply</strong> to 75%.</p>
+                                <p>✅ There was a <strong>gradual</strong> increase in numbers between 1990 and 1995.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 23 — Noun/Adjective</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I can't tell the <strong>difference</strong> between the fake designer goods.</p>
+                                <p>✅ The advice my tutor gave me was <strong>invaluable</strong> in the exam.</p>
+                                <p>✅ It is important to eat a <strong>healthy</strong> diet.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 24 — Courses/Study</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ We're <strong>learning</strong> about Ancient Rome this term.</p>
+                                <p>✅ I've decided to <strong>enrol in</strong> a photography course.</p>
+                                <p>✅ In high school you <strong>study</strong> many different subjects.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 25 — Charts/Figures</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ The figures <strong>indicate</strong> that enormous changes have occurred.</p>
+                                <p>✅ The greatest <strong>increase</strong> was in 1997.</p>
+                                <p>✅ The pie chart <strong>illustrates</strong> how serious this problem has become.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 26 — Money/Problems</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ It took me two hours to <strong>fix/repair</strong> the oil leak.</p>
+                                <p>✅ How much did you <strong>spend</strong> on video games last year?</p>
+                                <p>✅ We must take action to <strong>resolve</strong> this issue.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 27 — Money/Work</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Conditions were so bad that the <strong>employees</strong> decided to go on strike.</p>
+                                <p>✅ Joe's <strong>employer</strong> gave him a promotion and a higher salary.</p>
+                                <p>✅ The problem of <strong>unemployment</strong> is a key issue.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 28 — Advertising/Travel</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ Have you packed any snacks for the train <strong>journey/trip</strong>?</p>
+                                <p>✅ I'll apply for a job in <strong>advertising</strong>.</p>
+                                <p>✅ We need to give the <strong>young people</strong> more opportunities.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 29 — Apostrophes</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ I put <strong>Jack's</strong> coat on a hanger.</p>
+                                <p>✅ The dog wagged <strong>its</strong> tail.</p>
+                                <p>✅ I bought three new <strong>CDs</strong> this week.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-5 border border-gray-200">
+                            <h3 class="font-bold text-indigo-600">Unit 30 — Spelling</h3>
+                            <div class="text-sm space-y-2 text-gray-600">
+                                <p>✅ The <strong>government</strong> of my <strong>country</strong> has introduced a new system.</p>
+                                <p>✅ <strong>Nowadays</strong> you need to read <strong>advertisements</strong> carefully.</p>
+                                <p>✅ It makes good <strong>commercial</strong> sense to invest in your <strong>business</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
+
+        const unitKeys = Object.keys(unitsData);
+        const testKeys = Object.keys(testsData);
+
+        function buildSidebar() {
+            const unitNav = document.getElementById('unitNav');
+            unitNav.innerHTML = '';
+            unitKeys.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                unitNav.appendChild(div);
+            });
+
+            const testNav = document.getElementById('testNav');
+            testNav.innerHTML = '';
+            testKeys.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = testsData[key].title;
+                div.dataset.key = key;
+                div.onclick = () => showSection(key);
+                testNav.appendChild(div);
+            });
+        }
+
+        function buildMobileNav() {
+            const container = document.getElementById('mobileNavContent');
+            container.innerHTML = '';
+            // Units
+            const unitLabel = document.createElement('div');
+            unitLabel.className = 'text-xs font-semibold text-gray-400 uppercase tracking-wider mt-2 mb-1';
+            unitLabel.textContent = 'Units';
+            container.appendChild(unitLabel);
+            unitKeys.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = unitsData[key].title;
+                div.onclick = () => { showSection(key);
+                    closeMobileMenu(); };
+                container.appendChild(div);
+            });
+            // Tests
+            const testLabel = document.createElement('div');
+            testLabel.className = 'text-xs font-semibold text-gray-400 uppercase tracking-wider mt-4 mb-1';
+            testLabel.textContent = 'Tests';
+            container.appendChild(testLabel);
+            testKeys.forEach(key => {
+                const div = document.createElement('div');
+                div.className = 'sidebar-item';
+                div.textContent = testsData[key].title;
+                div.onclick = () => { showSection(key);
+                    closeMobileMenu(); };
+                container.appendChild(div);
+            });
+            // Resources
+            const resLabel = document.createElement('div');
+            resLabel.className = 'text-xs font-semibold text-gray-400 uppercase tracking-wider mt-4 mb-1';
+            resLabel.textContent = 'Resources';
+            container.appendChild(resLabel);
+            const ak = document.createElement('div');
+            ak.className = 'sidebar-item';
+            ak.textContent = '📖 Answer Key';
+            ak.onclick = () => { showSection('answerKey');
+                closeMobileMenu(); };
+            container.appendChild(ak);
+            const ap = document.createElement('div');
+            ap.className = 'sidebar-item';
+            ap.textContent = '✏️ All Practice';
+            ap.onclick = () => { showSection('allPractice');
+                closeMobileMenu(); };
+            container.appendChild(ap);
+        }
+
+        // ============================================================
+        // SHOW SECTION
+        // ============================================================
+
+        let currentSection = 'home';
+        const completed = new Set();
+
+        function showSection(key) {
+            // Hide all
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+
+            // Show home if key is home
+            if (key === 'home') {
+                document.getElementById('section-home').classList.add('active');
+                currentSection = 'home';
+                updateActiveNav(null);
+                return;
+            }
+
+            // Find or create container
+            let container = document.getElementById('contentContainer');
+            let section = document.getElementById('section-' + key);
+
+            if (!section) {
+                section = document.createElement('div');
+                section.id = 'section-' + key;
+                section.className = 'content-section';
+                container.appendChild(section);
+            }
+
+            // Populate content
+            let data = null;
+            let type = '';
+            if (unitsData[key]) { data = unitsData[key];
+                type = 'unit'; } else if (testsData[key]) { data = testsData[key];
+                type = 'test'; } else if (key === 'answerKey') { data = answerKeyData;
+                type = 'key'; } else if (key === 'allPractice') { data = allPracticeData;
+                type = 'practice'; }
+
+            if (data) {
+                section.innerHTML = `
+                    <div class="mb-4">
+                        <span class="unit-badge">${type === 'unit' ? 'Unit' : type === 'test' ? 'Test' : type === 'key' ? 'Answer Key' : 'Practice'}</span>
+                        <h2 class="text-2xl font-bold text-gray-800 mt-2">${data.title}</h2>
+                    </div>
+                    ${data.content}
+                `;
+            }
+
+            section.classList.add('active');
+            currentSection = key;
+            updateActiveNav(key);
+
+            // Mark as completed
+            if (type === 'unit' || type === 'test') {
+                completed.add(key);
+                updateProgress();
+            }
+
+            // Scroll to top of content
+            document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateActiveNav(key) {
+            document.querySelectorAll('.sidebar-item').forEach(el => {
+                el.classList.toggle('active', el.dataset.key === key);
+            });
+        }
+
+        // ============================================================
+        // PROGRESS
+        // ============================================================
+
+        function updateProgress() {
+            const total = unitKeys.length + testKeys.length;
+            const done = completed.size;
+            const pct = Math.round((done / total) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressText').textContent = pct + '%';
+        }
+
+        // ============================================================
+        // REVEAL ANSWER
+        // ============================================================
+
+        function revealAnswer(btn, answer) {
+            const parent = btn.parentElement;
+            let answerDiv = parent.querySelector('.answer-hidden');
+            if (!answerDiv) {
+                answerDiv = document.createElement('div');
+                answerDiv.className = 'answer-hidden';
+                parent.appendChild(answerDiv);
+            }
+            if (answerDiv.classList.contains('answer-revealed')) {
+                answerDiv.classList.remove('answer-revealed');
+                answerDiv.classList.add('answer-hidden');
+                btn.textContent = 'Check';
+                return;
+            }
+            answerDiv.innerHTML = answer;
+            answerDiv.className = 'answer-revealed';
+            btn.textContent = 'Hide';
+        }
+
+        // ============================================================
+        // SEARCH
+        // ============================================================
+
+        function searchContent(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                document.querySelectorAll('.sidebar-item').forEach(el => el.style.display = '');
+                return;
+            }
+            const items = document.querySelectorAll('.sidebar-item');
+            items.forEach(el => {
+                const text = el.textContent.toLowerCase();
+                el.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+
+        // ============================================================
+        // MOBILE MENU
+        // ============================================================
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const isOpen = sidebar.classList.contains('open');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                sidebar.classList.add('open');
+                sidebar.style.transform = 'translateX(0)';
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            sidebar.classList.remove('open');
+            sidebar.style.transform = 'translateX(-100%)';
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // ============================================================
+        // SCROLL TO TOP
+        // ============================================================
+
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 400) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+
+        buildSidebar();
+        buildMobileNav();
+        updateProgress();
+
+        // Show home by default
+        document.getElementById('section-home').classList.add('active');
+
+        // Handle hash on load
+        if (window.location.hash) {
+            const key = window.location.hash.replace('#', '');
+            if (unitsData[key] || testsData[key] || key === 'answerKey' || key === 'allPractice') {
+                setTimeout(() => showSection(key), 100);
+            }
+        }
+
+        // Expose functions globally
+        window.showSection = showSection;
+        window.revealAnswer = revealAnswer;
+        window.searchContent = searchContent;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.closeMobileMenu = closeMobileMenu;
+
+        console.log('📚 IELTS Intermediate — Common Mistakes');
+        console.log(`📖 ${unitKeys.length} units, ${testKeys.length} tests loaded`);
+        console.log('💡 Click any unit or test to start learning!');
+    </script>
+
+</body>
+</html>
