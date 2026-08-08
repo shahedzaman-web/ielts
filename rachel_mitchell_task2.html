@@ -419,8 +419,8 @@
                     <div class="sidebar-title">Sample Essays</div>
                     <div id="navSamples"></div>
                     <div class="sidebar-section"></div>
-                    <div class="sidebar-title">Resources</div>
-                    <div id="navResources"></div>
+                    <div class="sidebar-title">Conclusion</div>
+                    <div id="navConclusion"></div>
                 </div>
             </nav>
 
@@ -468,7 +468,6 @@
                             <button onclick="showSection('argument-led')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Argument Led</button>
                             <button onclick="showSection('thesis-led')" class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Thesis Led</button>
                             <button onclick="showSection('samples')" class="px-4 py-2 bg-green-50 text-green-700 rounded-lg text-sm font-medium hover:bg-green-100 transition">Sample Essays</button>
-                            <button onclick="showSection('practice')" class="px-4 py-2 bg-amber-50 text-amber-700 rounded-lg text-sm font-medium hover:bg-amber-100 transition">Practice Options</button>
                         </div>
                     </div>
                 </div>
@@ -1778,54 +1777,6 @@
             `
         };
 
-        // ---- PRACTICE OPTIONS ----
-        unitsData.practice = {
-            title: '📚 Practice & Review Options',
-            content: `
-                <div class="space-y-4">
-                    <div class="unit-title">📚 Practice & Review Options</div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="practice-card p-6 border border-gray-200 bg-white rounded-xl shadow-sm">
-                            <h3 class="text-xl font-bold text-[#b9926b]">📝 Essay Structure Practice</h3>
-                            <p class="text-sm text-gray-700 mt-2">Test your knowledge of essay structures. Practice identifying the correct structure for each essay type.</p>
-                            <button class="mt-4 bg-[#2d3748] text-white px-4 py-2 rounded hover:bg-[#1a202c] transition text-sm" onclick="showSection('argument-led')">Start Practice</button>
-                        </div>
-                        <div class="practice-card p-6 border border-gray-200 bg-white rounded-xl shadow-sm">
-                            <h3 class="text-xl font-bold text-[#b9926b]">📖 Language Review</h3>
-                            <p class="text-sm text-gray-700 mt-2">Review essential language for Task 2: impersonal opinion, personal opinion, examples, cause and effect, and more.</p>
-                            <button class="mt-4 bg-[#2d3748] text-white px-4 py-2 rounded hover:bg-[#1a202c] transition text-sm" onclick="showSection('impersonal-opinion')">Review Language</button>
-                        </div>
-                        <div class="practice-card p-6 border border-gray-200 bg-white rounded-xl shadow-sm">
-                            <h3 class="text-xl font-bold text-[#b9926b]">🎯 Sample Essay Analysis</h3>
-                            <p class="text-sm text-gray-700 mt-2">Study model essays with examiner comments. Understand what makes a Band 8.0+ essay.</p>
-                            <button class="mt-4 bg-[#2d3748] text-white px-4 py-2 rounded hover:bg-[#1a202c] transition text-sm" onclick="showSection('argument-led-sample')">View Samples</button>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 bg-gray-100 p-6 rounded-lg border border-gray-300">
-                        <h3 class="text-xl font-bold text-[#2d3748]">💡 Study Tip</h3>
-                        <p class="text-gray-700">Try writing a practice essay for each type: Argument Led, Thesis Led, Advantages & Disadvantages, Problem & Solution, and Two-Part Question.</p>
-                        <p class="text-gray-700 mt-2">Use the <span class="font-bold">structures</span> provided in this book to organize your essays. Practice using <span class="font-bold">cautious language</span> and <span class="font-bold">linking phrases</span> to improve your coherence and cohesion.</p>
-                    </div>
-
-                    <div class="practice-box">
-                        <p class="font-semibold">📝 Quick Essay Planner</p>
-                        <p class="text-sm text-gray-600">For each essay type, remember the key structure:</p>
-                        <ul class="text-sm list-disc pl-5 space-y-1 mt-2">
-                            <li><strong>Argument Led:</strong> Introduction (context + 2 opinions) → Body 1 (opinion 1) → Body 2 (opinion 2) → Conclusion</li>
-                            <li><strong>Thesis Led:</strong> Introduction (context + personal opinion) → Body 1 (2-3 points) → Body 2 (2-3 points) → Conclusion</li>
-                            <li><strong>Advantages & Disadvantages:</strong> Introduction → Body 1 (advantages) → Body 2 (disadvantages) → Conclusion</li>
-                            <li><strong>Problem & Solution:</strong> Introduction (problem) → Body 1 (problem) → Body 2 (solution) → Conclusion</li>
-                            <li><strong>Two-Part Question:</strong> Introduction → Body 1 (answer 1) → Body 2 (answer 2) → Conclusion</li>
-                        </ul>
-                        <button class="btn-practice outline mt-2 text-xs" onclick="revealAnswer(this, '✅ All structures are covered in the units above. Review each section for detailed explanations and examples.')">Show All</button>
-                        <div class="answer-hidden"></div>
-                    </div>
-                </div>
-            `
-        };
-
         // ---- SAMPLES OVERVIEW ----
         unitsData.samples = {
             title: '📝 Sample Essays Overview',
@@ -1894,14 +1845,14 @@
         // ============================================================
 
         const unitKeys = Object.keys(unitsData);
-        const navKeys = unitKeys.filter(k => k !== 'practice' && k !== 'samples');
+        const navKeys = unitKeys.filter(k => k !== 'samples' && k !== 'conclusion');
 
         // Define navigation categories
         const introNav = ['intro', 'task2-intro', 'mistakes'];
         const languageNav = ['impersonal-opinion', 'personal-opinion', 'intro-examples', 'add-points', 'contrasting', 'balance', 'reality', 'emphasize', 'cause', 'result', 'cautious', 'adverbs-frequency', 'adverbs-probability', 'modal-verbs', 'synonyms'];
         const essayTypesNav = ['time-management', 'argument-led', 'thesis-led', 'advantages-disadvantages', 'two-part', 'problem-solution'];
         const samplesNav = ['argument-led-sample', 'thesis-led-sample1', 'thesis-led-sample2', 'thesis-led-sample3', 'advantages-sample', 'two-part-sample1', 'two-part-sample2', 'problem-sample', 'samples'];
-        const resourcesNav = ['practice', 'conclusion'];
+        const conclusionNav = ['conclusion'];
 
         function buildSidebar() {
             const navIntro = document.getElementById('navIntro');
@@ -1949,15 +1900,15 @@
                 navSamples.appendChild(div);
             });
 
-            const navResources = document.getElementById('navResources');
-            navResources.innerHTML = '';
-            resourcesNav.forEach(key => {
+            const navConclusion = document.getElementById('navConclusion');
+            navConclusion.innerHTML = '';
+            conclusionNav.forEach(key => {
                 const div = document.createElement('div');
                 div.className = 'sidebar-item';
                 div.textContent = unitsData[key].title;
                 div.dataset.key = key;
                 div.onclick = () => showSection(key);
-                navResources.appendChild(div);
+                navConclusion.appendChild(div);
             });
         }
 
@@ -1970,7 +1921,7 @@
                 { label: 'Essential Language', keys: languageNav },
                 { label: 'Essay Types', keys: essayTypesNav },
                 { label: 'Sample Essays', keys: samplesNav },
-                { label: 'Resources', keys: resourcesNav }
+                { label: 'Conclusion', keys: conclusionNav }
             ];
 
             sections.forEach(section => {
@@ -2020,7 +1971,7 @@
             if (data) {
                 section.innerHTML = `
                     <div class="mb-4">
-                        <span class="unit-badge">${key.startsWith('unit') ? 'Unit' : key === 'practice' ? 'Practice' : key === 'samples' ? 'Samples' : 'Section'}</span>
+                        <span class="unit-badge">${key.startsWith('unit') ? 'Unit' : key === 'samples' ? 'Samples' : 'Section'}</span>
                         <h2 class="text-2xl font-bold text-gray-800 mt-2">${data.title}</h2>
                     </div>
                     ${data.content}
@@ -2031,7 +1982,7 @@
             currentSection = key;
             updateActiveNav(key);
 
-            if (!key.startsWith('practice') && !key.startsWith('samples')) {
+            if (!key.startsWith('samples')) {
                 completed.add(key);
                 updateProgress();
             }
@@ -2194,10 +2145,6 @@
         window.searchContent = searchContent;
         window.toggleMobileMenu = toggleMobileMenu;
         window.closeMobileMenu = closeMobileMenu;
-
-        console.log('📚 IELTS Writing Task 2 — The Ultimate Guide');
-        console.log(`📖 ${navKeys.length} sections loaded`);
-        console.log('💡 Click any section to start learning!');
     </script>
 
 </body>
