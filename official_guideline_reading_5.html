@@ -165,16 +165,34 @@ body.focus-mode .exit-focus{display:block;}
   background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
 .toast.show{opacity:1;}
 
-@media(max-width:900px){
-  :root{--bottom-h:300px;}
-  .main-split{flex-direction:column;height:auto;min-height:600px;}
-  .passages,.questions{flex:1 1 auto;width:100%;}
-  .resizer{display:none;}
-  .app-header h1{display:none;}
-  .part-tabs{flex-direction:column;}
-  .ielts-reading-question-palette{gap:4px 14px;}
-  .ielts-reading-palette-item{width:24px;height:24px;font-size:11px;}
-}
+ /* Highlight styles */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+
+/* Floating highlight popup */
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+
+/* Note popup */
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+
+/* Global floating highlighter toggle button */
+#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
+  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
+  transition:.15s;border:none;cursor:pointer;}
+#hl-fab:hover{transform:scale(1.08);}
+#hl-fab.active{background:#facc15;color:#0f172a;}
+body.focus-mode #hl-fab{bottom:20px;}
 </style>
 </head>
 <body>
@@ -200,7 +218,7 @@ body.focus-mode .exit-focus{display:block;}
 </header>
 
 <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-
+<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
 <div class="main-split" id="mainSplit">
   <div class="pane passages" id="passagesPane">
 
@@ -504,6 +522,26 @@ body.focus-mode .exit-focus{display:block;}
   </div>
 </div>
 
+<!-- HIGHLIGHT TOOLBAR -->
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+
+<!-- NOTE POPUP -->
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -786,6 +824,7 @@ document.getElementById("quiz").addEventListener("change", refreshPaletteAnswere
   });
 })();
 
+
 /* TIMER */
 let seconds = 0;
 setInterval(() => {
@@ -795,6 +834,302 @@ setInterval(() => {
   const s = String(seconds%60).padStart(2,"0");
   document.getElementById("timer").textContent = `${h}:${m}:${s}`;
 }, 1000);
+
+/* ============================================
+   HIGHLIGHT / NOTE FEATURE
+   Works in BOTH passages pane and questions pane
+   ============================================ */
+const hlPopup = document.getElementById("hl-popup");
+const notePopup = document.getElementById("note-popup");
+const mainSplit = document.getElementById("mainSplit");
+const passagesEl = document.getElementById("passagesPane");
+const questionsEl = document.getElementById("questionsPane");
+const fab = document.getElementById("hl-fab");
+
+let savedRange = null;
+let pendingNoteRange = null;
+let highlighterOn = false;
+
+/* Toggle highlighter mode via the floating FAB */
+fab.addEventListener("click", () => {
+  highlighterOn = !highlighterOn;
+  fab.classList.toggle("active", highlighterOn);
+  toast(highlighterOn
+    ? "Highlighter ON — select text or click a word"
+    : "Highlighter OFF — normal selection");
+});
+
+function showPopupAt(rect){
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
+  hlPopup.classList.add("show");
+}
+
+function isEditableTarget(el){
+  return el && (el.closest("input") || el.closest("select") ||
+                el.closest("button") || el.closest("label") ||
+                el.closest(".transcript-toggle"));
+}
+
+/* ----- SELECTION (mouseup) ----- */
+document.addEventListener("mouseup", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+
+  // Small delay to allow selection to be finalized
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        if (isEditableTarget(e.target)) return;
+        savedRange = range.cloneRange();
+        showPopupAt(range.getBoundingClientRect());
+        return;
+      }
+    }
+    if (highlighterOn) {
+      // In highlighter mode, if user clicked (no selection), highlight the word
+      // handled by click listener below
+    } else {
+      // Small delay so it doesn't hide during drag
+    }
+  }, 0);
+});
+
+/* ----- SINGLE-CLICK ON A WORD → Highlight in highlighter mode OR show popup ----- */
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+  if (isEditableTarget(e.target)) return;
+
+  const inP = e.target.closest(".passages");
+  const inQ = e.target.closest(".questions");
+  if (!inP && !inQ) return;
+
+  // Clicking on an existing <mark> — show the popup with "Clear" option
+  const existingMark = e.target.tagName === "MARK" ? e.target :
+                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
+  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
+
+  if (existingNote) {
+    const note = existingNote.dataset.note || "";
+    document.getElementById("note-text").value = note;
+    pendingNoteRange = null;
+    notePopup.classList.add("show");
+    noteSaveTarget = existingNote;
+    return;
+  }
+
+  if (existingMark) {
+    savedRange = null;
+    currentMark = existingMark;
+    showPopupAt(existingMark.getBoundingClientRect());
+    return;
+  }
+
+  // If highlighter mode is active and user clicked a word, highlight the word
+  if (highlighterOn) {
+    const sel = window.getSelection();
+    let range = null;
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      range = sel.getRangeAt(0);
+    } else {
+      // Build a range around the clicked word
+      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
+      if (wordRange) range = wordRange;
+    }
+    if (range) {
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        highlightRange(range);
+        window.getSelection().removeAllRanges();
+        hlPopup.classList.remove("show");
+        savedRange = null;
+      }
+    }
+  }
+});
+
+/* Get word range at given point using caretRangeFromPoint + expand to word bounds */
+function getWordRangeFromPoint(x, y){
+  let node, offset;
+  if (document.caretRangeFromPoint){
+    const r = document.caretRangeFromPoint(x, y);
+    if (!r) return null;
+    node = r.startContainer; offset = r.startOffset;
+  } else if (document.caretPositionFromPoint){
+    const pos = document.caretPositionFromPoint(x, y);
+    if (!pos) return null;
+    node = pos.offsetNode; offset = pos.offset;
+  } else return null;
+  if (!node || node.nodeType !== 3) return null;
+  const text = node.textContent;
+  if (!text || !text.trim()) return null;
+  // Expand from offset to word boundaries
+  let start = offset, end = offset;
+  const isWord = c => /[\w'’\-]/i.test(c);
+  while (start > 0 && isWord(text[start-1])) start--;
+  while (end < text.length && isWord(text[end])) end++;
+  if (start === end) {
+    // No word found — skip a single char
+    if (offset < text.length) end = offset + 1;
+  }
+  if (start >= end) return null;
+  const range = document.createRange();
+  try {
+    range.setStart(node, start);
+    range.setEnd(node, end);
+  } catch(err){ return null; }
+  return range;
+}
+
+let currentMark = null;
+let noteSaveTarget = null;
+
+/* Highlight button */
+document.getElementById("hl-highlight").addEventListener("click", () => {
+  if (currentMark) { hlPopup.classList.remove("show"); return; }
+  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
+  highlightRange(savedRange);
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove("show");
+  savedRange = null;
+  toast("Text highlighted");
+});
+
+/* Clear button */
+document.getElementById("hl-dehighlight").addEventListener("click", () => {
+  if (currentMark){
+    const parent = currentMark.parentNode;
+    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
+    parent.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove("show");
+    toast("Highlight removed");
+    return;
+  }
+  if (savedRange){
+    clearHighlightInRange(savedRange);
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove("show");
+    savedRange = null;
+    toast("Highlight removed");
+  } else {
+    hlPopup.classList.remove("show");
+  }
+});
+
+/* Note button */
+document.getElementById("hl-note").addEventListener("click", () => {
+  if (!savedRange) { toast("Select text first"); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById("note-text").value = "";
+  notePopup.classList.add("show");
+  hlPopup.classList.remove("show");
+});
+
+/* Flashcard button */
+document.getElementById("hl-flashcard").addEventListener("click", () => {
+  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
+  if (!text) { toast("Select text first"); return; }
+  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
+  hlPopup.classList.remove("show");
+});
+
+/* Core highlight function */
+function highlightRange(range){
+  try {
+    const mark = document.createElement("mark");
+    mark.className = "hl-user";
+    mark.appendChild(range.extractContents());
+    range.insertNode(mark);
+  } catch(err){
+    console.warn("Highlight failed:", err);
+  }
+}
+
+function clearHighlightInRange(range){
+  const container = range.commonAncestorContainer;
+  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
+  if (!root || !root.querySelectorAll) return;
+  const marks = root.querySelectorAll("mark.hl-user");
+  marks.forEach(m => {
+    try {
+      if (range.intersectsNode(m)) {
+        const parent = m.parentNode;
+        while (m.firstChild) parent.insertBefore(m.firstChild, m);
+        parent.removeChild(m);
+      }
+    } catch(err){}
+  });
+}
+
+/* NOTE popup handlers */
+document.getElementById("note-cancel").addEventListener("click", () => {
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById("note-save").addEventListener("click", () => {
+  const noteText = document.getElementById("note-text").value.trim();
+
+  // Editing an existing note
+  if (noteSaveTarget){
+    if (noteText){
+      noteSaveTarget.dataset.note = noteText;
+      noteSaveTarget.title = "Note: " + noteText;
+      toast("Note updated");
+    } else {
+      // Empty note → convert back to plain text
+      const parent = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      parent.removeChild(noteSaveTarget);
+      toast("Note removed");
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove("show");
+    document.getElementById("note-text").value = "";
+    return;
+  }
+
+  // Creating a new note
+  if (!noteText || !pendingNoteRange) {
+    notePopup.classList.remove("show");
+    pendingNoteRange = null;
+    return;
+  }
+  try {
+    const span = document.createElement("span");
+    span.className = "hl-note";
+    span.title = "Note: " + noteText;
+    span.dataset.note = noteText;
+    span.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(span);
+    toast("Note saved");
+  } catch(err){
+    console.warn("Note failed:", err);
+  }
+  document.getElementById("note-text").value = "";
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+});
+
+/* Clear highlights from menu */
+document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (!confirm("Remove all highlights and notes from this test?")) return;
+  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
+    const parent = el.parentNode;
+    while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    parent.removeChild(el);
+  });
+  toast("Highlights cleared");
+});
+
 
 /* SUBMIT */
 document.getElementById("submitBtn").addEventListener("click", () => {

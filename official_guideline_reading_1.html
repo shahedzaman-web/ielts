@@ -192,185 +192,66 @@ input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:point
 }
 .bottom-inner{max-width:1600px;margin:0 auto;}
 
-/* --- Part tabs --- */
-.part-tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:8px;
-}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
 .part-tab{
-  flex:1;
-  background:#f8fafc;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:7px 12px;
-  text-align:left;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  gap:10px;
-  transition:.15s;
-  opacity:.85;
+  flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;
+  padding:7px 12px;text-align:left;display:flex;flex-direction:row;
+  align-items:center;gap:10px;transition:.15s;opacity:.85;
 }
 .part-tab:hover{opacity:1;background:#f1f5f9;}
-.part-tab.active{
-  opacity:1;
-  background:#fff;
-  border-color:var(--accent);
-  box-shadow:inset 0 0 0 1px var(--accent);
-}
-.part-tab .tab-part-name{
-  font-size:13px;
-  font-weight:700;
-  color:var(--accent);
-  white-space:nowrap;
-}
-.part-tab .tab-qcount{
-  font-size:11px;
-  color:var(--muted);
-  white-space:nowrap;
-  flex:1;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
 .skim-btn{
   font-size:10px;font-weight:700;color:#0369a1;
   background:#e0f2fe;border-radius:999px;padding:3px 9px;
-  white-space:nowrap;
-  flex:0 0 auto;
+  white-space:nowrap;flex:0 0 auto;
 }
 .skim-btn:hover{background:#bae6fd;}
 .skim-btn.on{background:var(--accent);color:#fff;}
 
-/* --- Palette row --- */
 .ielts-reading-question-palette{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px 22px;
-  align-items:flex-start;
-  margin-bottom:8px;
-  padding-top:8px;
-  border-top:1px solid #f1f5f9;
-  min-height:36px;
+  display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;
+  margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;
 }
-.ielts-reading-palette-section{
-  display:none;                /* hide by default */
-  align-items:center;
-  flex-wrap:wrap;
-  gap:5px;
-  padding:2px 0;
-}
-.ielts-reading-palette-section.active{
-  display:flex;                /* only active part is shown */
-}
-.ielts-reading-palette-section-part{
-  font-size:13px;
-  font-weight:700;
-  color:var(--accent);
-  margin-right:4px;
-  white-space:nowrap;
-}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
 .ielts-reading-palette-item{
-  width:27px;height:27px;
-  border-radius:5px;
-  background:#f1f5f9;
-  color:#475569;
-  font-size:12px;
-  font-weight:600;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid transparent;
-  transition:all .12s;
-  cursor:pointer;
-  padding:0;
+  width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;
+  font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+  border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;
 }
 .ielts-reading-palette-item:hover{background:#e2e8f0;}
-.ielts-reading-palette-item.answered{
-  background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;
-}
-.ielts-reading-palette-item.current{
-  background:var(--accent);color:#fff;border-color:var(--accent);
-  box-shadow:0 0 0 2px rgba(224,0,0,.18);
-}
-.ielts-reading-palette-item.correct{
-  background:var(--good);color:#fff;border-color:var(--good);
-}
-.ielts-reading-palette-item.wrong{
-  background:var(--bad);color:#fff;border-color:var(--bad);
-}
-.ielts-reading-palette-section-question-count{
-  font-size:11px;
-  color:var(--muted);
-  font-style:italic;
-  margin-left:6px;
-  white-space:nowrap;
-}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
 
-/* --- Controls row --- */
 .ielts-reading-bottom-controls{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  border-top:1px solid #f1f5f9;
-  padding-top:8px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;
 }
-.ielts-reading-question-control-buttons{
-  display:flex;
-  gap:6px;
-  flex:0 0 auto;
-}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
 .ielts-reading-question-control-buttons button{
-  width:40px;height:34px;
-  border-radius:6px;
-  background:#fff;
-  border:1px solid var(--line);
-  color:#334155;
-  font-size:15px;
-  display:flex;align-items:center;justify-content:center;
-  transition:.12s;
+  width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;
 }
-.ielts-reading-question-control-buttons button:hover:not(:disabled){
-  background:#f1f5f9;
-  border-color:#cbd5e1;
-}
-.ielts-reading-question-control-buttons button:disabled{
-  opacity:.35;cursor:not-allowed;
-}
-.ielts-reading-test-control-buttons{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex:0 0 auto;
-}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
 .ielts-reading-review-button{
-  background:#fff;
-  border:1px solid var(--line);
-  color:#334155;
-  border-radius:6px;
-  padding:8px 18px;
-  font-size:13px;
-  font-weight:600;
-  display:flex;align-items:center;gap:7px;
-  transition:.12s;
+  background:#fff;border:1px solid var(--line);color:#334155;
+  border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:7px;transition:.12s;
 }
-.ielts-reading-review-button:hover{
-  background:#f1f5f9;
-  border-color:#cbd5e1;
-}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
 .ielts-reading-submit-button{
-  background:var(--accent);
-  color:#fff;
-  border-radius:6px;
-  padding:8px 24px;
-  font-size:13px;
-  font-weight:700;
-  display:flex;align-items:center;gap:8px;
-  transition:.12s;
+  background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;
+  font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s;
 }
-.ielts-reading-submit-button:hover{
-  background:#b80000;
-  box-shadow:0 4px 12px rgba(224,0,0,.25);
-}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
 
 /* ================= OVERLAYS ================= */
 .overlay{
@@ -392,16 +273,11 @@ input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:point
 .close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
 .close-x:hover{color:var(--text);}
 .overlay-body{padding:18px 22px;overflow-y:auto;}
-.score-summary{
-  background:#0f172a;color:#fff;border-radius:8px;
-  padding:16px;text-align:center;margin-bottom:16px;
-}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
 .score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
 .score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
 table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-table.result-tbl th,table.result-tbl td{
-  border:1px solid var(--line);padding:7px 9px;text-align:left;
-}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
 table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
 table.result-tbl td.correct{color:var(--good);font-weight:700;}
 table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
@@ -411,9 +287,7 @@ table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
 body.focus-mode .app-header,
 body.focus-mode .bottom-panel{display:none;}
 body.focus-mode{padding-bottom:0;}
-body.focus-mode .main-split{
-  height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;
-}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
 .exit-focus{
   display:none;position:fixed;top:14px;right:14px;z-index:300;
   background:var(--accent);color:#fff;border-radius:6px;
@@ -430,25 +304,43 @@ body.focus-mode .exit-focus{display:block;}
 }
 .toast.show{opacity:1;}
 
-@media(max-width:900px){
-  :root{--bottom-h:300px;}
-  .main-split{flex-direction:column;height:auto;min-height:600px;}
-  .passages,.questions{flex:1 1 auto;width:100%;}
-  .resizer{display:none;}
-  .app-header h1{display:none;}
-  .part-tabs{flex-direction:column;}
-  .ielts-reading-question-palette{gap:4px 14px;}
-  .ielts-reading-palette-item{width:24px;height:24px;font-size:11px;}
+/* ================= HIGHLIGHT / NOTE ================= */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+
+#hl-fab{
+  position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;
+  background:#e00000;color:#fff;border-radius:50%;
+  width:52px;height:52px;font-size:22px;
+  box-shadow:0 6px 18px rgba(224,0,0,.35);
+  display:flex;align-items:center;justify-content:center;
+  transition:.15s;border:none;cursor:pointer;
 }
+#hl-fab:hover{transform:scale(1.08);}
+#hl-fab.active{background:#facc15;color:#0f172a;}
+body.focus-mode #hl-fab{bottom:20px;}
 </style>
 </head>
 <body>
 
 <!-- ================= HEADER ================= -->
 <header class="app-header">
-      <a href="/" target="_blank">
-        📚
-      </a>
+  <a href="/" >📚</a>
   <h1>Official Cambridge Guide to IELTS Academic Reading Test 1</h1>
   <div class="header-right">
     <button class="icon-btn" id="focusBtn">⛶ Focus</button>
@@ -458,6 +350,7 @@ body.focus-mode .exit-focus{display:block;}
       <button class="icon-btn" id="menuBtn">☰</button>
       <div class="menu-pop" id="menuPop">
         <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
         <a href="#" id="resetLink">↺ Reset Test</a>
         <a href="#" id="gotoTop">↑ Back to Top</a>
       </div>
@@ -466,6 +359,7 @@ body.focus-mode .exit-focus{display:block;}
 </header>
 
 <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button><button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
 
 <!-- ================= SPLIT VIEW ================= -->
 <div class="main-split" id="mainSplit">
@@ -651,7 +545,6 @@ body.focus-mode .exit-focus{display:block;}
 <div class="bottom-panel">
   <div class="bottom-inner">
 
-    <!-- Part tabs row -->
     <div class="part-tabs">
       <button class="part-tab active" data-part="1">
         <span class="tab-part-name">Part 1</span>
@@ -670,10 +563,8 @@ body.focus-mode .exit-focus{display:block;}
       </button>
     </div>
 
-    <!-- Palette row (only active part shown) -->
     <div class="ielts-reading-question-palette" id="palette"></div>
 
-    <!-- Controls row -->
     <div class="ielts-reading-bottom-controls">
       <div class="ielts-reading-question-control-buttons">
         <button id="prevBtn" title="Previous question">←</button>
@@ -723,6 +614,26 @@ body.focus-mode .exit-focus{display:block;}
         <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
         <tbody id="previewBody"></tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HIGHLIGHT TOOLBAR ================= -->
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+
+<!-- ================= NOTE POPUP ================= -->
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
     </div>
   </div>
 </div>
@@ -847,7 +758,6 @@ function switchPart(part){
   document.querySelectorAll(".q-section").forEach(s =>
     s.classList.toggle("active", s.dataset.part === String(part)));
 
-  // >>> Only show the active part's palette section <<<
   document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
     p.classList.toggle("active", p.dataset.part === String(part)));
 
@@ -949,7 +859,6 @@ document.getElementById("nextBtn").addEventListener("click", () => {
   else if (currentPart < 3) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
 });
 
-/* track focus */
 document.querySelectorAll(".q").forEach(qEl => {
   qEl.addEventListener("focusin", () => {
     currentQuestion = parseInt(qEl.dataset.q,10);
@@ -1014,6 +923,284 @@ setInterval(() => {
   const s = String(seconds%60).padStart(2,"0");
   document.getElementById("timer").textContent = `${h}:${m}:${s}`;
 }, 1000);
+
+/* =========================================================
+   HIGHLIGHT / NOTE FEATURE
+   ========================================================= */
+const hlPopup = document.getElementById("hl-popup");
+const notePopup = document.getElementById("note-popup");
+const passagesEl = document.getElementById("passagesPane");
+const questionsEl = document.getElementById("questionsPane");
+const fab = document.getElementById("hl-fab");
+
+let savedRange = null;
+let pendingNoteRange = null;
+let highlighterOn = false;
+let currentMark = null;
+let noteSaveTarget = null;
+
+/* Toggle highlighter mode via the floating FAB */
+fab.addEventListener("click", () => {
+  highlighterOn = !highlighterOn;
+  fab.classList.toggle("active", highlighterOn);
+  toast(highlighterOn
+    ? "Highlighter ON — select text or click a word"
+    : "Highlighter OFF — normal selection");
+});
+
+function showPopupAt(rect){
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
+  hlPopup.classList.add("show");
+}
+
+function isEditableTarget(el){
+  return el && (el.closest("input") || el.closest("select") ||
+                el.closest("button") || el.closest("label") ||
+                el.closest(".transcript-toggle"));
+}
+
+/* SELECTION (mouseup) */
+document.addEventListener("mouseup", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        if (isEditableTarget(e.target)) return;
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+        return;
+      }
+    }
+  }, 0);
+});
+
+/* SINGLE-CLICK ON A WORD */
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+  if (isEditableTarget(e.target)) return;
+
+  const inP = e.target.closest(".passages");
+  const inQ = e.target.closest(".questions");
+  if (!inP && !inQ) return;
+
+  const existingMark = e.target.tagName === "MARK" ? e.target :
+                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
+  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
+
+  if (existingNote) {
+    const note = existingNote.dataset.note || "";
+    document.getElementById("note-text").value = note;
+    pendingNoteRange = null;
+    notePopup.classList.add("show");
+    noteSaveTarget = existingNote;
+    return;
+  }
+
+  if (existingMark) {
+    savedRange = null;
+    currentMark = existingMark;
+    showPopupAt(existingMark.getBoundingClientRect());
+    return;
+  }
+
+  if (highlighterOn) {
+    const sel = window.getSelection();
+    let range = null;
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      range = sel.getRangeAt(0);
+    } else {
+      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
+      if (wordRange) range = wordRange;
+    }
+    if (range) {
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        highlightRange(range);
+        window.getSelection().removeAllRanges();
+        hlPopup.classList.remove("show");
+        savedRange = null;
+      }
+    }
+  }
+});
+
+/* Get word range at given point */
+function getWordRangeFromPoint(x, y){
+  let node, offset;
+  if (document.caretRangeFromPoint){
+    const r = document.caretRangeFromPoint(x, y);
+    if (!r) return null;
+    node = r.startContainer; offset = r.startOffset;
+  } else if (document.caretPositionFromPoint){
+    const pos = document.caretPositionFromPoint(x, y);
+    if (!pos) return null;
+    node = pos.offsetNode; offset = pos.offset;
+  } else return null;
+  if (!node || node.nodeType !== 3) return null;
+  const text = node.textContent;
+  if (!text || !text.trim()) return null;
+  let start = offset, end = offset;
+  const isWord = c => /[\w'’\-]/i.test(c);
+  while (start > 0 && isWord(text[start-1])) start--;
+  while (end < text.length && isWord(text[end])) end++;
+  if (start === end) {
+    if (offset < text.length) end = offset + 1;
+  }
+  if (start >= end) return null;
+  const range = document.createRange();
+  try {
+    range.setStart(node, start);
+    range.setEnd(node, end);
+  } catch(err){ return null; }
+  return range;
+}
+
+/* Highlight button */
+document.getElementById("hl-highlight").addEventListener("click", () => {
+  if (currentMark) { hlPopup.classList.remove("show"); return; }
+  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
+  highlightRange(savedRange);
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove("show");
+  savedRange = null;
+  toast("Text highlighted");
+});
+
+/* Clear button */
+document.getElementById("hl-dehighlight").addEventListener("click", () => {
+  if (currentMark){
+    const parent = currentMark.parentNode;
+    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
+    parent.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove("show");
+    toast("Highlight removed");
+    return;
+  }
+  if (savedRange){
+    clearHighlightInRange(savedRange);
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove("show");
+    savedRange = null;
+    toast("Highlight removed");
+  } else {
+    hlPopup.classList.remove("show");
+  }
+});
+
+/* Note button */
+document.getElementById("hl-note").addEventListener("click", () => {
+  if (!savedRange) { toast("Select text first"); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById("note-text").value = "";
+  notePopup.classList.add("show");
+  hlPopup.classList.remove("show");
+});
+
+/* Flashcard button */
+document.getElementById("hl-flashcard").addEventListener("click", () => {
+  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
+  if (!text) { toast("Select text first"); return; }
+  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
+  hlPopup.classList.remove("show");
+});
+
+/* Core highlight function */
+function highlightRange(range){
+  try {
+    const mark = document.createElement("mark");
+    mark.className = "hl-user";
+    mark.appendChild(range.extractContents());
+    range.insertNode(mark);
+  } catch(err){
+    console.warn("Highlight failed:", err);
+  }
+}
+
+function clearHighlightInRange(range){
+  const container = range.commonAncestorContainer;
+  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
+  if (!root || !root.querySelectorAll) return;
+  const marks = root.querySelectorAll("mark.hl-user");
+  marks.forEach(m => {
+    try {
+      if (range.intersectsNode(m)) {
+        const parent = m.parentNode;
+        while (m.firstChild) parent.insertBefore(m.firstChild, m);
+        parent.removeChild(m);
+      }
+    } catch(err){}
+  });
+}
+
+/* NOTE popup handlers */
+document.getElementById("note-cancel").addEventListener("click", () => {
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById("note-save").addEventListener("click", () => {
+  const noteText = document.getElementById("note-text").value.trim();
+
+  if (noteSaveTarget){
+    if (noteText){
+      noteSaveTarget.dataset.note = noteText;
+      noteSaveTarget.title = "Note: " + noteText;
+      toast("Note updated");
+    } else {
+      const parent = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      parent.removeChild(noteSaveTarget);
+      toast("Note removed");
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove("show");
+    document.getElementById("note-text").value = "";
+    return;
+  }
+
+  if (!noteText || !pendingNoteRange) {
+    notePopup.classList.remove("show");
+    pendingNoteRange = null;
+    return;
+  }
+  try {
+    const span = document.createElement("span");
+    span.className = "hl-note";
+    span.title = "Note: " + noteText;
+    span.dataset.note = noteText;
+    span.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(span);
+    toast("Note saved");
+  } catch(err){
+    console.warn("Note failed:", err);
+  }
+  document.getElementById("note-text").value = "";
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+});
+
+/* Clear highlights from menu */
+document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (!confirm("Remove all highlights and notes from this test?")) return;
+  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
+    const parent = el.parentNode;
+    while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    parent.removeChild(el);
+  });
+  toast("Highlights cleared");
+});
 
 /* =========================================================
    SUBMIT
@@ -1081,7 +1268,6 @@ document.getElementById("reviewBtn").addEventListener("click", () => {
   document.getElementById("previewOverlay").classList.add("show");
 });
 
-/* close overlays */
 document.querySelectorAll("[data-close]").forEach(btn =>
   btn.addEventListener("click", () =>
     document.getElementById(btn.dataset.close).classList.remove("show")));
@@ -1090,8 +1276,11 @@ document.querySelectorAll(".overlay").forEach(ov =>
     if (e.target === ov) ov.classList.remove("show");
   }));
 document.addEventListener("keydown", e => {
-  if (e.key === "Escape")
+  if (e.key === "Escape"){
     document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+    hlPopup.classList.remove("show");
+    notePopup.classList.remove("show");
+  }
 });
 
 /* =========================================================

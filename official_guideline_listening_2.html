@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Cambridge Guide to IELTS Academic Listening Test 2</title>
+<style>
+:root{
+  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
+  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 40%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:22px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
+  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage em{color:var(--muted);}
+
+.audio-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(15,23,42,.04);}
+.audio-card h3{margin:0 0 4px;font-size:16px;color:var(--accent);font-weight:700;}
+.audio-card .audio-desc{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.audio-card audio{width:100%;height:42px;outline:none;}
+.audio-tip{font-size:12px;color:var(--muted);margin-top:10px;background:#f8fafc;padding:8px 12px;border-radius:6px;border-left:3px solid var(--accent);}
+.audio-tip i{color:var(--accent);}
+
+.transcript-toggle{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.transcript-toggle:hover{background:#f8fafc;}
+.transcript-toggle span{font-size:13px;font-weight:600;}
+.transcript-body{display:none;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;line-height:1.7;max-height:400px;overflow-y:auto;margin-bottom:14px;}
+.transcript-body.show{display:block;}
+.transcript-body p{margin:0 0 8px;}
+
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+/* Highlight styles */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
+  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
+  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
+  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
+  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
+  font-weight:700;display:flex;align-items:center;gap:8px;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+
+/* Floating highlight popup */
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+
+/* Note popup */
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+
+/* Global floating highlighter toggle button */
+#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
+  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
+  transition:.15s;border:none;cursor:pointer;}
+#hl-fab:hover{transform:scale(1.08);}
+#hl-fab.active{background:#facc15;color:#0f172a;}
+body.focus-mode #hl-fab{bottom:20px;}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="/" target="_blank">
+        📚
+      </a>
+  <h1>Official Cambridge Guide to IELTS Academic Listening Test 2</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button><button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
+
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PART 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>Short Story Competition</h2>
+      <p><em>Listen and answer questions 1–10.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 1</h3>
+        <div class="audio-desc">Telephone conversation between the organiser of a short story competition and someone who wishes to take part in the competition.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131434-official_cambridge_guide_to_ielts_academic_listening_test_2_1.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_2_1.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>A: Good morning. Dave speaking.</p>
+        <p>B: Oh hi. I'm phoning about a short story competition. Um, I saw an advert in a magazine and I was just calling to get some details.</p>
+        <p>A: Yes – certainly. I'm the competition organiser so I should be able to help. What kind of details are you looking for?</p>
+        <p>B: Well – erm – does it cost anything to enter?</p>
+        <p>A: Yes – there's an entry fee of five pounds.</p>
+        <p>B: OK – that should be fine.</p>
+        <p>B: It's a short story competition – so how many words is that?</p>
+        <p>A: Well – we want to give people a reasonable amount of freedom but the guidelines are around 3,000 words.</p>
+        <p>B: Oh – that sounds quite a lot.</p>
+        <p>A: Well – it's not as much as it used to be. We did have a limit of 5,000 words but some people thought that was too many so this year we've reduced it.</p>
+        <p>B: Right – and does the story need to be about anything in particular?</p>
+        <p>A: No – you can write about any topic you like. But the main point of the competition is that it has to have a surprise ending.</p>
+        <p>B: Oh – I see. That sounds interesting. I don't think I've ever written a story like that before.</p>
+        <p>A: Yes – it's something we've introduced for this year's competition.</p>
+        <p>B: Right. Um – I'm eighteen. Is there any age limit?</p>
+        <p>A: Yes – you need to be sixteen or over, so if you're eighteen that's fine.</p>
+        <p>B: Great. So you have the competition once a year. Is that right?</p>
+        <p>A: Yes – we start advertising in January and the competition takes up a lot of the year. We give people a few months to write their story and then it takes quite a long time to judge all the entries and to announce the winners.</p>
+        <p>B: I see. So when is the closing date for the competition? It's already April – I hope I'm not too late.</p>
+        <p>A: No you've still got plenty of time. You need to submit your entry by the 1st of August. After then it will be too late, although you can always enter next year's competition!</p>
+        <p>B: OK good. So how do I enter?</p>
+        <p>A: Well we have a website and the best way to enter is to complete the entry form online. We also have more details of the competition on the site. Shall I give you the web address?</p>
+        <p>B: Yes please.</p>
+        <p>A: OK – it's www dot C – O – M – P – 4 – S – S dot com. And that's the number four not the word four.</p>
+        <p>B: OK – thanks. I've got that. So – I can complete the entry form online but how do I send the story? Do I print it out and send it to you?</p>
+        <p>A: Well you may want to print the story out so you can review it but don't post it to us. When you've finished your story you will need to email it to us. The email address is on the website I gave you.</p>
+        <p>B: OK – that's fine. Um can you tell me a bit about how the competition is judged and what the prizes are?</p>
+        <p>A: Yes of course. Well, once we have all the entries I send them to all the judges. Our competition is quite popular so we are lucky to be able to use famous authors who are very interested in the competition.</p>
+        <p>B: That's fantastic. It's great to know that someone famous will be reading my story!</p>
+        <p>A: Yes that's right. It takes them quite a while to read through the entries but eventually they decide on the top five stories.</p>
+        <p>B: I see – and what happens then?</p>
+        <p>A: Well, they will be published online so everyone can read them. They will not be in any order at this point. They will just be the five stories that the judges think are the best.</p>
+        <p>B: And do all the top five stories get prizes?</p>
+        <p>A: No – it's just the top story and the runner-up.</p>
+        <p>B: So how is the top story decided?</p>
+        <p>A: Well once the top five stories are available, it will be the public who will vote for their favourite story.</p>
+        <p>B: Right – I see. So I need to get all my friends to vote for me then!</p>
+        <p>A: Er, yes – that's a good idea.</p>
+        <p>B: And what is the prize?</p>
+        <p>A: Well, the runner-up gets a prize of £300, but the winner gets a trip to Spain to attend a workshop for writers.</p>
+        <p>B: Wow – that's brilliant! I'd better get writing straight away.</p>
+        <p>A: Yes – good luck!</p>
+        <p>B: Thanks.</p>
+      </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>Sea Life Centre</h2>
+      <p><em>Listen and answer questions 11–20.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 2</h3>
+        <div class="audio-desc">A guide talking about a Sea Life Centre.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131435-official_cambridge_guide_to_ielts_academic_listening_test_2_2.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_2_2.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>OK – so hi everybody and welcome to the Sea Life Centre. Before you start on your tour I'd just like to give you some information about things to look out for as you go. Well first of all, I guess some of you may have been here before and may be surprised to see the name has changed. We are not called World of Water any more – since the beginning of this summer we've been renamed, and we've also made a few other changes. However, the main attractions like the aquarium, the crocodiles, the penguins and so on are still here. But we have a new restaurant and picnic area and the latest thing that we have – and it was only finished last week – is the splash ride. This is an exciting new area of the centre and is pretty scary and of course you do get a bit wet so make sure you're not wearing your best clothes!</p>
+        <p>As I said, the main attractions are still here and the most popular thing that everyone wants to see is feeding time, especially for the crocodiles and the seals. We used to have the main feeding time in the afternoon at around 3 pm but we found that some of the animals got a bit hungry waiting until then and so we now have it at noon. They seem much happier with the new time – although it's a bit difficult to know what they're thinking!</p>
+        <p>Now – I'd like to mention something new that we've introduced this year that we're very excited about. It's called a VIP ticket. The VIP ticket costs an extra £2 per person and you will be amazed at what it allows you to do. With this you'll be allowed to feed the sharks. Now I know that for some people this might be quite a frightening thing to do, but it is perfectly safe. For those of you who are a bit unsure, we do have a video you can watch to see what happens. It's a great experience and your friends will be very impressed!</p>
+        <p>Speaking of friends, I'd just like to remind you that the Sea Life Centre will be more than happy to organise a birthday party for you and your family and friends. If you need more details you can speak to me afterwards and there are also forms at the entrance that you can fill in.</p>
+        <p>I'd also like to bring your attention to the good work that the Sea Life Centre is doing in support of animal conservation. I am sure you're all aware of the worrying situation with a large number of species facing extinction. Here at the Sea Life Centre we're taking action by asking as many people as possible to sign a petition. Once we have over 5,000 signatures we are planning to send it to the government in the hope that more people will begin to take it seriously.</p>
+        <p>Right – well there's obviously a lot going on at the Centre, and a lot of things to discover. At all the attractions there is helpful information so please read as much as you can and, if you want to see what you've remembered, please do the quiz after your visit. There are no prizes of course, but I'm sure you'll be surprised by how much you've learnt.</p>
+        <p>So before I leave you all to start your tour, I've just got a few tips. There are a large number of attractions and you may not have time to see them all. Of course, there are the old favourites like the Aquarium and the Crocodile Cave but if you don't have time to see everything make sure you visit Turtle Town, which is beyond the Aquarium and the Seal Centre. This is very special and has a large number of endangered species, and as it's at the far corner of the Sea Life Centre it often gets overlooked. I also have to apologise for the Penguin Park. This has needed some urgent work to be done and so will not be open for the next week. We are very sorry about this but I'm sure you'll find the Seal Centre which is directly opposite it will keep you entertained just as much – if not more!</p>
+        <p>We're also very busy today as you may have noticed on your way in. Everyone starts here at the Aquarium but as it's so big, there's no waiting to get in. But today we're expecting a lot of people to want to see the Crocodile Cave as a couple of eggs have hatched out. So expect delays there and, if you like, move on to the Seal Centre first and then go back when things are quieter, towards the end of the day.</p>
+        <p>So I'll leave you now but if you have any questions I won't be far away and have a great time at the Sea Life Centre!</p>
+      </div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>University Studies Conversation</h2>
+      <p><em>Listen and answer questions 21–30.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 3</h3>
+        <div class="audio-desc">Two students talking about their university studies.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131436-official_cambridge_guide_to_ielts_academic_listening_test_2_3.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_2_3.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>Martina: Oh hi George, how's it going?</p>
+        <p>George: Hi Martina, it's going well. How about you? How's university life?</p>
+        <p>Martina: Well it's great – apart from the studying of course.</p>
+        <p>George: Yeah – me too! What are you studying? I seem to remember that you were going to do Art. That was your best subject, wasn't it?</p>
+        <p>Martina: No – not really – I just liked the teacher. He was French and had an amazing accent. My favourite subject was History but I couldn't see what career that would give me.</p>
+        <p>George: Ah, right. So what did you choose?</p>
+        <p>Martina: Well I found it really difficult to decide. I was really good at Science but I must admit I never really enjoyed studying it. So, in the end I decided to opt for English which was my second favourite subject and I thought it would be more useful to me than studying anything else. So – that's what I'm doing. Um – how are you finding university?</p>
+        <p>George: Well – it's a bit of a challenge I suppose.</p>
+        <p>Martina: Are you finding it difficult?</p>
+        <p>George: Well, some of it. I'm doing Mechanical Engineering which is really interesting but it covers quite a lot of areas like materials science, machine design, physics and of course mechanics – and they're all fine. But it's maths that I'm struggling with. It's a lot harder than it was at school.</p>
+        <p>Martina: I can believe it. It all sounds very difficult to me. But then I never was very good at mechanical things. I suppose it must involve some practical work?</p>
+        <p>George: Well – not at the moment. Currently, it's nearly all theory, so it's a bit heavy-going.</p>
+        <p>Martina: I guess you need to start with that so that you can get a grasp of the concepts and learn a few facts before you start putting it into practice. It must be a lot different to the course that I'm taking.</p>
+        <p>George: Yes – but in a few weeks we'll be having a lot more practical experience. In fact, I've got a great assignment this term working on jet engines which means I'll be going on a few field trips to a nearby airport.</p>
+        <p>Martina: Oh – that's great. It sounds like you're going to be very busy.</p>
+        <p>George: Yes I'm not sure how I'm going to cope with the work. We have a lot of lectures – and that's fine. The lecturers are very knowledgeable and I learn a lot from them. But we also have a lot of seminars and I find with so many people expressing their views it can get quite frustrating. It would be better if we didn't have so many of those.</p>
+        <p>Martina: Yes – it's the same for me. Um – how are the students at your place?</p>
+        <p>George: Well I haven't really met anyone yet. They all seem a bit quiet.</p>
+        <p>Martina: Perhaps they're working hard – they don't appear to be very studious here, but they are very friendly. I must say I've been doing a lot of sitting around and chatting over the last week or so.</p>
+        <p>George: Well, that's good. The only person I've spoken to really is my tutor. He's very approachable and seems to understand how difficult it can be starting university.</p>
+        <p>Martina: It's good to have someone you can talk to. And he may help you meet other students.</p>
+        <p>George: Actually that doesn't bother me. I'm bound to get to know some people sooner or later. It's more a question of finding out what I need to do, where to go and so on. I hope he can help me with that.</p>
+        <p>Martina: Oh I would have thought so. Well we certainly have a lot of work ahead of us. It seems like a long time, doesn't it – studying for three years.</p>
+        <p>George: Yes it does – but I'm sure it'll go quickly. You know I'm really dreading the first assessment.</p>
+        <p>Martina: Yes – for the course I'm doing we have to hand our first one in at the end of next month.</p>
+        <p>George: Really – so have you got the topic yet?</p>
+        <p>Martina: No – but we'll get it soon. I'm not sure how much we have to write yet – not too much, I hope!</p>
+        <p>George: I know what you mean. And it's hard to study especially where I am now.</p>
+        <p>Martina: Oh – where are you living?</p>
+        <p>George: I'm living in a hall of residence. I thought that would be a good idea as there'd be a lot of people around but I'm finding it a bit noisy. I can see that I'm going to have problems when I really need to get down to some work.</p>
+        <p>Martina: So I guess you need to be somewhere on your own then?</p>
+        <p>George: Yes – well I do like to have some people around me, so I'd prefer to live with a family somewhere in a house not too far from the university.</p>
+        <p>Martina: Well good luck with that.</p>
+        <p>George: Yes thanks – and good luck to you as well. I have to dash now. I've another lecture in ten minutes. Bye for now.</p>
+        <p>Martina: Bye.</p>
+      </div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="passage" data-part="4">
+      <span class="part-label">Part 4</span>
+      <h2>Preparing and Giving a Presentation</h2>
+      <p><em>Listen and answer questions 31–40.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 4</h3>
+        <div class="audio-desc">Someone talking about creating a presentation.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131433-official_cambridge_guide_to_ielts_academic_listening_test_2_4.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_2_4.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>Hello everyone. You've all been given an assignment for your Sociology course which will involve giving a presentation to the rest of the group. And so, today, I'm going to be giving you a few tips on how to prepare your presentations. This should help you with your current assignment – but a lot of the principles I'll be putting across will be general principles which will, of course, help you with all your future presentations.</p>
+        <p>So first of all, the most important thing to consider is your audience and in this instance, your audience are the other students in your group. There are three points to bear in mind. Firstly, you need to ask yourself what they need to know; secondly, it's useful to consider whether they'll be supportive or not; and thirdly – will it be a small group, say three or four, a moderate gathering of twenty or so people (as for your current assignment) or will there be hundreds of people?</p>
+        <p>Having said all that, what I'm about to tell you will apply equally to any audience.</p>
+        <p>So – how do you structure your presentation? Right at the beginning, you should tell them something that forces them to pay attention. This could be something surprising or even shocking but it needs to be relevant! After that, you need a list of items or topics showing them what you'll be covering – rather like an agenda – and then the main part of the presentation will follow. This main part will be the detailed information you'll be presenting and could include facts, statistics, personal experiences, etc. After this you should summarise what you've presented and close with what I call 'next steps'. For this assignment, you could simply point the group to other Sociology reference material. In other cases, you may want to suggest some actions that people can take.</p>
+        <p>Now – what about the design of the slides for your laptop? Well the important thing here is to be consistent. You need to have the same type of font and use the same colour and size for the same elements. For example, all headers need to look the same, all bullet points need to be presented in the same way. And don't just stick to words. Bring the presentation to life by adding graphics. These could be in several forms such as pictures, flow-charts, diagrams, histograms and so on.</p>
+        <p>And so – let's move on now to presenting. You have your presentation prepared and you're ready to start. Well – it's important to give a good impression from the start. So take three deep breaths, look at the audience, no matter how frightening they may be, and be enthusiastic and energetic. As you go through the presentation remember to provide some variety in the way you speak. So, for example, you can talk fairly rapidly for information that may be familiar, but then slow down for more unfamiliar sections. And change your tone as you speak – don't keep it at the same level all the way through. As I mentioned, look at your audience. Er, a good tip is to pick people out and look at them for around five seconds. Not looking at the audience gives the impression that you're either not interested in them or terrified of them. Looking too long at one particular person may make them feel rather uncomfortable. There may be points in your presentation that you want your audience to really absorb and in order to make important points stand out you may consider adding silence right after these. It will give people time to reflect on what you've just said. Also – you may be presenting complicated ideas or technical details but try to keep everything as simple as possible. Use simple words and as few as possible. And be clear. If you say something like 'this appears to be', it implies uncertainty. So using weak verbs such as 'appears', 'seems', 'could be', etc. needs to be avoided.</p>
+        <p>I'll just finish off with a few thoughts on questions and interruptions from the audience. You may choose to invite questions from the audience as you go or ask them to wait until the end. Either way, questions should be encouraged as it provides you with some feedback on how interested the audience is and how well they're understanding you. When a question is asked you need to provide an answer that is as accurate as possible. So initially, my tip is to repeat it. This will ensure you have heard it correctly and will give you a few seconds to gather your thoughts.</p>
+        <p>Interruptions, on the other hand, can be unwelcome and you may get them for a variety of reasons. It's likely, however, that there's something in your presentation that's unclear or confusing. So my advice is to reduce problems by reading through your presentation beforehand and predicting potential points which could cause interruptions. You may then want to change that part of your presentation or, at least, you will be prepared if someone does interrupt you.</p>
+        <p>Now, do you have any questions ...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 -->
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–6</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 4px;">Short Story Competition</p>
+          <p style="font-weight:700;margin:0 0 12px;">Entry Details</p>
+          <p style="font-size:13px;color:var(--muted);margin:0 0 8px;"><em>Example: Cost of entry: £5</em></p>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Length of story: approximately <input type="text" name="q1" aria-label="Q1"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>Story must include: a <input type="text" name="q2" aria-label="Q2"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>Minimum age: <input type="text" name="q3" aria-label="Q3"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>Last entry date: 1st <input type="text" name="q4" aria-label="Q4"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>Web address: www. <input type="text" name="q5" aria-label="Q5"> .com</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Don't: <input type="text" name="q6" aria-label="Q6"> the story to the organisers</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 7–10</h3>
+          <div class="q-instr">
+            <p>Complete the sentences below.</p>
+            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+          </div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>The competition is judged by <input type="text" name="q7" aria-label="Q7">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>The top five stories will be available <input type="text" name="q8" aria-label="Q8">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>The top story will be chosen by the <input type="text" name="q9" aria-label="Q9">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>The first prize is a place at a writers' workshop in <input type="text" name="q10" aria-label="Q10">.</p><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section class="q-section" data-part="2">
+        <div class="q-group">
+          <h3>Questions 11–17</h3>
+          <div class="q-instr">
+            <p>Answer the questions below.</p>
+            <p>Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+          </div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>What was the Sea Life Centre previously called?</p><input type="text" name="q11" aria-label="Q11" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>What is the newest attraction called?</p><input type="text" name="q12" aria-label="Q12" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>When is the main feeding time?</p><input type="text" name="q13" aria-label="Q13" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>What can you do with a VIP ticket?</p><input type="text" name="q14" aria-label="Q14" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>What special event will the Sea Life Centre arrange for you?</p><input type="text" name="q15" aria-label="Q15" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>Where will the petition for animal conservation be sent to?</p><input type="text" name="q16" aria-label="Q16" style="min-width:200px;"><div class="feedback"></div></div></div>
+          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>What can you use to test what you have learnt?</p><input type="text" name="q17" aria-label="Q17" style="min-width:200px;"><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 18–20</h3>
+          <div class="q-instr">
+            <p>What does the guide say about each attraction?</p>
+            <p>Choose <strong>THREE</strong> answers from the box and write the correct letter, <strong>A–E</strong>, next to Questions 18–20.</p>
+            <p><strong>A.</strong> Aquarium &nbsp; <strong>B.</strong> Crocodile Cave &nbsp; <strong>C.</strong> Penguin Park &nbsp; <strong>D.</strong> Seal Centre &nbsp; <strong>E.</strong> Turtle Town</p>
+          </div>
+          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>must not miss</p><select name="q18" aria-label="Q18"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>temporarily closed</p><select name="q19" aria-label="Q19"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>large queues</p><select name="q20" aria-label="Q20"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section class="q-section" data-part="3">
+        <div class="q-group">
+          <h3>Questions 21–22</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
+            <p>Which TWO subjects did Martina like best before going to university?</p>
+          </div>
+          <div class="q" data-q="21">
+            <div class="q-num">21</div>
+            <div class="q-body">
+              <div class="options stack">
+                <label><input type="checkbox" name="q21" value="A"> A. Art</label>
+                <label><input type="checkbox" name="q21" value="B"> B. English</label>
+                <label><input type="checkbox" name="q21" value="C"> C. French</label>
+                <label><input type="checkbox" name="q21" value="D"> D. History</label>
+                <label><input type="checkbox" name="q21" value="E"> E. Science</label>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+          <div class="q" data-q="22" style="display:none;"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 23–26</h3>
+          <div class="q-instr">
+            <p>Complete the summary below.</p>
+            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">George's experience of university</p>
+          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>George is studying Mechanical Engineering which involves several disciplines. He is finding <input type="text" name="q23" aria-label="Q23"> the most difficult.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>At the moment, his course is mainly <input type="text" name="q24" aria-label="Q24">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>He will soon have an assignment which involves a study of <input type="text" name="q25" aria-label="Q25">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>He thinks there are too many <input type="text" name="q26" aria-label="Q26"> and would like less of them.</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 27–30</h3>
+          <div class="q-instr">
+            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+          </div>
+          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>Martina thinks the students at her university are</p><div class="options stack"><label><input type="radio" name="q27" value="A"> A. sociable.</label><label><input type="radio" name="q27" value="B"> B. intelligent.</label><label><input type="radio" name="q27" value="C"> C. energetic.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>George hopes that his tutor will help him</p><div class="options stack"><label><input type="radio" name="q28" value="A"> A. lose his shyness.</label><label><input type="radio" name="q28" value="B"> B. settle into university.</label><label><input type="radio" name="q28" value="C"> C. get to know his subject better.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>What does Martina know about her first assignment?</p><div class="options stack"><label><input type="radio" name="q29" value="A"> A. the topic</label><label><input type="radio" name="q29" value="B"> B. the length</label><label><input type="radio" name="q29" value="C"> C. the deadline</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>George would like to live</p><div class="options stack"><label><input type="radio" name="q30" value="A"> A. in a hall of residence.</label><label><input type="radio" name="q30" value="B"> B. in a flat on his own.</label><label><input type="radio" name="q30" value="C"> C. with a host family.</label></div><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 4 -->
+      <section class="q-section" data-part="4">
+        <div class="q-group">
+          <h3>Questions 31–40</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">Preparing and Giving a Presentation</p>
+          <p style="font-weight:700;margin:6px 0 4px;">Initial thoughts</p>
+          <p style="margin:0 0 8px;">Most important consideration: your audience</p>
+          <p style="margin:0 0 4px;">Three points to bear in mind:</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>what they need to know</li>
+            <li>how <strong>31</strong> <input type="text" name="q31" aria-label="Q31" style="min-width:140px;"> they will be</li>
+            <li>how big the audience will be</li>
+          </ul>
+          <p style="font-weight:700;margin:12px 0 6px;">Structure</p>
+          <p style="margin:0 0 8px;">Start with information that makes the audience <strong>32</strong> <input type="text" name="q32" aria-label="Q32" style="min-width:140px;"></p>
+          <p style="margin:0 0 8px;">End with <strong>33</strong> <input type="text" name="q33" aria-label="Q33" style="min-width:140px;"></p>
+          <p style="font-weight:700;margin:12px 0 6px;">Design</p>
+          <p style="margin:0 0 8px;">The presentation needs to be <strong>34</strong> <input type="text" name="q34" aria-label="Q34" style="min-width:140px;"></p>
+          <p style="margin:0 0 8px;">Vary content by using a mix of words and <strong>35</strong> <input type="text" name="q35" aria-label="Q35" style="min-width:140px;"></p>
+          <p style="font-weight:700;margin:12px 0 6px;">Presenting</p>
+          <p style="margin:0 0 8px;">Look at the audience, be enthusiastic and energetic</p>
+          <p style="margin:0 0 8px;">Voice – vary speed and <strong>36</strong> <input type="text" name="q36" aria-label="Q36" style="min-width:140px;"></p>
+          <p style="margin:0 0 8px;">Occasionally add <strong>37</strong> <input type="text" name="q37" aria-label="Q37" style="min-width:140px;"> for greater impact</p>
+          <p style="margin:0 0 8px;">Do not use <strong>38</strong> <input type="text" name="q38" aria-label="Q38" style="min-width:140px;"> (e.g. <em>appears</em>, <em>seems</em>)</p>
+          <p style="font-weight:700;margin:12px 0 6px;">Questions and Interruptions</p>
+          <p style="margin:0 0 8px;">When asked a question, first of all you should <strong>39</strong> <input type="text" name="q39" aria-label="Q39" style="min-width:140px;"></p>
+          <p style="margin:0 0 8px;">Minimise interruptions by <strong>40</strong> <input type="text" name="q40" aria-label="Q40" style="min-width:140px;"> them</p>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1">
+        <span class="tab-part-name">Part 1</span>
+        <span class="tab-qcount">Questions 1–10</span>
+      </button>
+      <button class="part-tab" data-part="2">
+        <span class="tab-part-name">Part 2</span>
+        <span class="tab-qcount">Questions 11–20</span>
+      </button>
+      <button class="part-tab" data-part="3">
+        <span class="tab-part-name">Part 3</span>
+        <span class="tab-qcount">Questions 21–30</span>
+      </button>
+      <button class="part-tab" data-part="4">
+        <span class="tab-part-name">Part 4</span>
+        <span class="tab-qcount">Questions 31–40</span>
+      </button>
+    </div>
+
+    <div class="ielts-reading-question-palette" id="palette"></div>
+
+    <div class="ielts-reading-bottom-controls">
+      <div class="ielts-reading-question-control-buttons">
+        <button id="prevBtn" title="Previous question">←</button>
+        <button id="nextBtn" title="Next question">→</button>
+      </div>
+      <div class="ielts-reading-test-control-buttons">
+        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Your Results</h3>
+      <button class="close-x" data-close="resultOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row">
+        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
+      </div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Review Your Answers</h3>
+      <button class="close-x" data-close="previewOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT TOOLBAR -->
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+
+<!-- NOTE POPUP -->
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ANSWER KEY */
+const ANSWER_KEY = {
+  1:["3,000 words","3000 words","3,000","3000","three thousand words"],
+  2:["surprise ending"],
+  3:["16","sixteen"],
+  4:["August"],
+  5:["comp4ss","comp 4 ss"],
+  6:["post"],
+  7:["famous authors"],
+  8:["online"],
+  9:["public"],
+  10:["Spain"],
+  11:["World of Water","world of water"],
+  12:["splash ride"],
+  13:["noon","12 pm","12pm","midday"],
+  14:["feed the sharks","feed sharks"],
+  15:["birthday party","a birthday party"],
+  16:["government","the government"],
+  17:["quiz","the quiz"],
+  18:["E"],
+  19:["C"],
+  20:["B"],
+  21:[], // checkbox group
+  22:[],
+  23:["maths","math"],
+  24:["theory"],
+  25:["jet engines"],
+  26:["seminars"],
+  27:["A"],
+  28:["B"],
+  29:["C"],
+  30:["C"],
+  31:["supportive"],
+  32:["pay attention"],
+  33:["next steps"],
+  34:["consistent"],
+  35:["graphics"],
+  36:["tone"],
+  37:["silence"],
+  38:["weak verbs"],
+  39:["repeat it","repeat"],
+  40:["predicting"]
+};
+
+const CHECKBOX_GROUPS = {
+  21: { name:"q21", correct:["B","D"] },
+  22: { name:"q21", correct:["B","D"] }
+};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:10},(_,i)=>i+1),
+  2: Array.from({length:10},(_,i)=>i+11),
+  3: Array.from({length:10},(_,i)=>i+21),
+  4: Array.from({length:10},(_,i)=>i+31)
+};
+
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()£]/g,"").replace(/\s+/g," ");
+}
+function getUserAnswer(n){
+  if (CHECKBOX_GROUPS[n]){
+    const checked = Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`))
+      .map(cb => cb.value).sort().join(",");
+    return checked;
+  }
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const s = document.querySelector(`select[name=q${n}]`);
+  if (s) return s.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+function isCorrect(n, ua){
+  if (CHECKBOX_GROUPS[n]){
+    const correct = CHECKBOX_GROUPS[n].correct;
+    const user = ua.split(",").filter(Boolean).sort();
+    const corr = correct.slice().sort();
+    return user.length === corr.length && user.every((v,i)=>v===corr[i]);
+  }
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function estimateBand(score){
+  if (score>=39) return "9.0"; if (score>=37) return "8.5";
+  if (score>=35) return "8.0"; if (score>=32) return "7.5";
+  if (score>=30) return "7.0"; if (score>=26) return "6.5";
+  if (score>=23) return "6.0"; if (score>=18) return "5.5";
+  if (score>=16) return "5.0"; if (score>=13) return "4.5";
+  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
+  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
+  return "2.0 or below";
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+function toggleTranscript(el){
+  const body = el.nextElementSibling;
+  const arrow = el.querySelector("span:last-child");
+  body.classList.toggle("show");
+  arrow.textContent = body.classList.contains("show") ? "▲" : "▼";
+  el.querySelector("span:first-child").textContent = body.classList.contains("show") ? "📄 Hide Transcript" : "📄 Show Transcript";
+}
+
+/* BUILD PALETTE */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Part ${part}:`;
+  section.appendChild(label);
+
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+
+  palette.appendChild(section);
+});
+
+/* PART SWITCHING */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", () => switchPart(tab.dataset.part));
+});
+
+/* NAVIGATION */
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>40) return;
+  let part = 1;
+  for (const p of [1,2,3,4]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===4);
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else if (currentPart > 1){
+    const prev = PART_QUESTIONS[currentPart-1];
+    goToQuestion(prev[prev.length-1]);
+  }
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else if (currentPart < 4) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
+});
+
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* CHECKBOX LIMIT (2 for Q21) */
+document.querySelectorAll('input[type=checkbox][name="q21"]').forEach(cb => {
+  cb.addEventListener("change", () => {
+    const name = cb.name;
+    const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
+    if (checked.length > 2){
+      cb.checked = false;
+      toast("You can only select 2 options.");
+    }
+    refreshPaletteAnswered();
+  });
+});
+
+/* RESIZER */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(20, Math.min(70, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+
+/* TIMER */
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  const s = String(seconds%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* ============================================
+   HIGHLIGHT / NOTE FEATURE
+   Works in BOTH passages pane and questions pane
+   ============================================ */
+const hlPopup = document.getElementById("hl-popup");
+const notePopup = document.getElementById("note-popup");
+const passagesEl = document.getElementById("passagesPane");
+const questionsEl = document.getElementById("questionsPane");
+const fab = document.getElementById("hl-fab");
+
+let savedRange = null;
+let pendingNoteRange = null;
+let highlighterOn = false;
+let currentMark = null;
+let noteSaveTarget = null;
+
+/* Toggle highlighter mode via the floating FAB */
+fab.addEventListener("click", () => {
+  highlighterOn = !highlighterOn;
+  fab.classList.toggle("active", highlighterOn);
+  toast(highlighterOn
+    ? "Highlighter ON — select text or click a word"
+    : "Highlighter OFF — normal selection");
+});
+
+function showPopupAt(rect){
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
+  hlPopup.classList.add("show");
+}
+
+function isEditableTarget(el){
+  return el && (el.closest("input") || el.closest("select") ||
+                el.closest("button") || el.closest("label") ||
+                el.closest(".transcript-toggle"));
+}
+
+/* ----- SELECTION (mouseup) ----- */
+document.addEventListener("mouseup", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        if (isEditableTarget(e.target)) return;
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+        return;
+      }
+    }
+  }, 0);
+});
+
+/* ----- SINGLE-CLICK ON A WORD ----- */
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+  if (isEditableTarget(e.target)) return;
+
+  const inP = e.target.closest(".passages");
+  const inQ = e.target.closest(".questions");
+  if (!inP && !inQ) return;
+
+  // Clicking on an existing <mark> — show the popup with "Clear" option
+  const existingMark = e.target.tagName === "MARK" ? e.target :
+                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
+  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
+
+  if (existingNote) {
+    const note = existingNote.dataset.note || "";
+    document.getElementById("note-text").value = note;
+    pendingNoteRange = null;
+    notePopup.classList.add("show");
+    noteSaveTarget = existingNote;
+    return;
+  }
+
+  if (existingMark) {
+    savedRange = null;
+    currentMark = existingMark;
+    showPopupAt(existingMark.getBoundingClientRect());
+    return;
+  }
+
+  // If highlighter mode is active and user clicked a word, highlight the word
+  if (highlighterOn) {
+    const sel = window.getSelection();
+    let range = null;
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      range = sel.getRangeAt(0);
+    } else {
+      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
+      if (wordRange) range = wordRange;
+    }
+    if (range) {
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        highlightRange(range);
+        window.getSelection().removeAllRanges();
+        hlPopup.classList.remove("show");
+        savedRange = null;
+      }
+    }
+  }
+});
+
+/* Get word range at given point using caretRangeFromPoint + expand to word bounds */
+function getWordRangeFromPoint(x, y){
+  let node, offset;
+  if (document.caretRangeFromPoint){
+    const r = document.caretRangeFromPoint(x, y);
+    if (!r) return null;
+    node = r.startContainer; offset = r.startOffset;
+  } else if (document.caretPositionFromPoint){
+    const pos = document.caretPositionFromPoint(x, y);
+    if (!pos) return null;
+    node = pos.offsetNode; offset = pos.offset;
+  } else return null;
+  if (!node || node.nodeType !== 3) return null;
+  const text = node.textContent;
+  if (!text || !text.trim()) return null;
+  let start = offset, end = offset;
+  const isWord = c => /[\w'’\-]/i.test(c);
+  while (start > 0 && isWord(text[start-1])) start--;
+  while (end < text.length && isWord(text[end])) end++;
+  if (start === end) {
+    if (offset < text.length) end = offset + 1;
+  }
+  if (start >= end) return null;
+  const range = document.createRange();
+  try {
+    range.setStart(node, start);
+    range.setEnd(node, end);
+  } catch(err){ return null; }
+  return range;
+}
+
+/* Highlight button */
+document.getElementById("hl-highlight").addEventListener("click", () => {
+  if (currentMark) { hlPopup.classList.remove("show"); return; }
+  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
+  highlightRange(savedRange);
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove("show");
+  savedRange = null;
+  toast("Text highlighted");
+});
+
+/* Clear button */
+document.getElementById("hl-dehighlight").addEventListener("click", () => {
+  if (currentMark){
+    const parent = currentMark.parentNode;
+    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
+    parent.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove("show");
+    toast("Highlight removed");
+    return;
+  }
+  if (savedRange){
+    clearHighlightInRange(savedRange);
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove("show");
+    savedRange = null;
+    toast("Highlight removed");
+  } else {
+    hlPopup.classList.remove("show");
+  }
+});
+
+/* Note button */
+document.getElementById("hl-note").addEventListener("click", () => {
+  if (!savedRange) { toast("Select text first"); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById("note-text").value = "";
+  notePopup.classList.add("show");
+  hlPopup.classList.remove("show");
+});
+
+/* Flashcard button */
+document.getElementById("hl-flashcard").addEventListener("click", () => {
+  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
+  if (!text) { toast("Select text first"); return; }
+  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
+  hlPopup.classList.remove("show");
+});
+
+/* Core highlight function */
+function highlightRange(range){
+  try {
+    const mark = document.createElement("mark");
+    mark.className = "hl-user";
+    mark.appendChild(range.extractContents());
+    range.insertNode(mark);
+  } catch(err){
+    console.warn("Highlight failed:", err);
+  }
+}
+
+function clearHighlightInRange(range){
+  const container = range.commonAncestorContainer;
+  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
+  if (!root || !root.querySelectorAll) return;
+  const marks = root.querySelectorAll("mark.hl-user");
+  marks.forEach(m => {
+    try {
+      if (range.intersectsNode(m)) {
+        const parent = m.parentNode;
+        while (m.firstChild) parent.insertBefore(m.firstChild, m);
+        parent.removeChild(m);
+      }
+    } catch(err){}
+  });
+}
+
+/* NOTE popup handlers */
+document.getElementById("note-cancel").addEventListener("click", () => {
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById("note-save").addEventListener("click", () => {
+  const noteText = document.getElementById("note-text").value.trim();
+
+  if (noteSaveTarget){
+    if (noteText){
+      noteSaveTarget.dataset.note = noteText;
+      noteSaveTarget.title = "Note: " + noteText;
+      toast("Note updated");
+    } else {
+      const parent = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      parent.removeChild(noteSaveTarget);
+      toast("Note removed");
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove("show");
+    document.getElementById("note-text").value = "";
+    return;
+  }
+
+  if (!noteText || !pendingNoteRange) {
+    notePopup.classList.remove("show");
+    pendingNoteRange = null;
+    return;
+  }
+  try {
+    const span = document.createElement("span");
+    span.className = "hl-note";
+    span.title = "Note: " + noteText;
+    span.dataset.note = noteText;
+    span.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(span);
+    toast("Note saved");
+  } catch(err){
+    console.warn("Note failed:", err);
+  }
+  document.getElementById("note-text").value = "";
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+});
+
+/* Clear highlights from menu */
+document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (!confirm("Remove all highlights and notes from this test?")) return;
+  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
+    const parent = el.parentNode;
+    while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    parent.removeChild(el);
+  });
+  toast("Highlights cleared");
+});
+
+
+/* SUBMIT */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=40; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      let key = "";
+      if (CHECKBOX_GROUPS[n]) {
+        key = CHECKBOX_GROUPS[n].correct.join(", ");
+      } else {
+        key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
+      }
+      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    let displayKey = "";
+    if (CHECKBOX_GROUPS[n]) {
+      displayKey = CHECKBOX_GROUPS[n].correct.join(", ");
+    } else {
+      displayKey = (ANSWER_KEY[n]||[])[0] || "";
+    }
+    rows.push({ n, ua: ua.trim() || "—", key: displayKey });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / 40`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(score);
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+});
+
+/* REVIEW */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=40; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+    hlPopup.classList.remove("show");
+    notePopup.classList.remove("show");
+  }
+});
+
+/* MENU */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  document.querySelectorAll(".transcript-body").forEach(t => t.classList.remove("show"));
+  document.querySelectorAll(".transcript-toggle").forEach(t => {
+    t.querySelector("span:first-child").textContent = "📄 Show Transcript";
+    t.querySelector("span:last-child").textContent = "▼";
+  });
+  switchPart(1);
+  toast("Test reset. Good luck!");
+}
+
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+
+</script>
+
+</body>
+</html>

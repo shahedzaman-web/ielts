@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Cambridge Guide to IELTS Academic Listening Test 8</title>
+<style>
+:root{
+  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
+  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 40%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:22px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
+  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage em{color:var(--muted);}
+
+.audio-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(15,23,42,.04);}
+.audio-card h3{margin:0 0 4px;font-size:16px;color:var(--accent);font-weight:700;}
+.audio-card .audio-desc{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.audio-card audio{width:100%;height:42px;outline:none;}
+.audio-tip{font-size:12px;color:var(--muted);margin-top:10px;background:#f8fafc;padding:8px 12px;border-radius:6px;border-left:3px solid var(--accent);}
+.audio-tip i{color:var(--accent);}
+
+.transcript-toggle{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.transcript-toggle:hover{background:#f8fafc;}
+.transcript-toggle span{font-size:13px;font-weight:600;}
+.transcript-body{display:none;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;line-height:1.7;max-height:400px;overflow-y:auto;margin-bottom:14px;}
+.transcript-body.show{display:block;}
+.transcript-body p{margin:0 0 8px;}
+
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
+  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
+  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
+  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
+  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
+  font-weight:700;display:flex;align-items:center;gap:8px;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+
+#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
+  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
+  transition:.15s;border:none;cursor:pointer;}
+#hl-fab:hover{transform:scale(1.08);}
+#hl-fab.active{background:#facc15;color:#0f172a;}
+body.focus-mode #hl-fab{bottom:20px;}
+
+.plan-img{max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:6px;}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="/" >📚</a>
+  <h1>Official Cambridge Guide to IELTS Academic Listening Test 8</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
+
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PART 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>Hilary Lodge Retirement Home</h2>
+      <p><em>Listen and answer questions 1–10.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 1</h3>
+        <div class="audio-desc">A phone conversation between two people, Cathy and John. John is hoping to volunteer at a retirement home.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131587-official_cambridge_guide_to_ielts_academic_listening_test_8_1.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_8_1.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>Cathy: Hello, Hilary Lodge retirement home, Cathy speaking.</p>
+        <p>John: Hello, my name's John Shepherd. Could I ask if you're the manager of the home?</p>
+        <p>Cathy: That's right.</p>
+        <p>John: Oh, good. Hello, Cathy. A friend of mine is a volunteer at Hilary Lodge, and I'd like to help out, too, if you need more people. I work part-time, so I have quite a lot of free time.</p>
+        <p>Cathy: We're always glad of more help, John. Shall I tell you about some of the activities that volunteers get involved in?</p>
+        <p>John: Please.</p>
+        <p>Cathy: Well, on Monday evenings we organise computer training. We've got six laptops, and five or six residents come to the sessions regularly. They're all now fine at writing and sending emails, but our trainer has just moved away, and we need two or three volunteers who can help the residents create documents. Just simple things, really.</p>
+        <p>John: I'd certainly be interested in doing that.</p>
+        <p>Cathy: Great. Then on Tuesday afternoons we have an informal singing class, which most of the residents attend. We've got a keyboard, and someone who plays, but if you'd like to join in the singing, you'd be very welcome.</p>
+        <p>John: I work on Tuesdays at the moment, though that might change. I'll have to give it a miss for now, I'm afraid.</p>
+        <p>Cathy: OK. Then on Thursday mornings we generally have a session in our garden. Several of our residents enjoy learning about flowers, where they grow best, how to look after them, and so on. Is that something you're keen on?</p>
+        <p>John: I'm no expert, but I enjoy gardening, so yes, I'd like to get involved. Do you have your own tools at the home?</p>
+        <p>Cathy: We've got a few, but not very many.</p>
+        <p>John: I could bring some in with me when I come.</p>
+        <p>Cathy: Thank you very much. One very important thing for volunteers is that we hold a monthly meeting where they all get together with the staff. It's a chance to make sure we're working well together, and that everyone knows how the residents are, and what's going on in the home.</p>
+        <p>John: Uhuh.</p>
+        <p>Cathy: Now obviously we'd need to get to know you before you become one of our volunteers.</p>
+        <p>John: Of course.</p>
+        <p>Cathy: Could you come in for an informal interview – later this week, maybe?</p>
+        <p>John: I'm busy the next couple of days, but would Saturday be possible?</p>
+        <p>Cathy: Certainly. Just drop in any time during the day. I won't be working then, so you'll see my assistant, Mairead.</p>
+        <p>John: Sorry, how do you spell that?</p>
+        <p>Cathy: It's M-A-I-R-E-A-D. Mairead.</p>
+        <p>John: OK, got that. It's not a name I'm familiar with.</p>
+        <p>Cathy: It's an Irish name. She comes from Dublin.</p>
+        <p>John: Right. And the road that Hilary Lodge is in is called Bridge Road, isn't it?</p>
+        <p>Cathy: That's right. Number 73.</p>
+        <p>John: Fine.</p>
+        <p>Cathy: Oh, one other thing you might be interested in – we're holding a couple of 'open house' days, and still need a few volunteers, if you're available.</p>
+        <p>John: What are the dates?</p>
+        <p>Cathy: There's one on April 9th, and another on 14th May. They're both Saturdays, and all-day events.</p>
+        <p>John: I can certainly manage May 14th. I've got another commitment on April 9th, though.</p>
+        <p>Cathy: That would be a great help. We're having several guest entertainers - singers, a brass band, and so on - and we're expecting a lot of visitors. So one possibility is to help look after the entertainers, or you could spend an hour or so organising people as they arrive, and then just be part of the team making sure everything's going smoothly.</p>
+        <p>John: Well, shall I show people where they can park?</p>
+        <p>Cathy: Lovely. Thank you. One reason for holding the open house days is to get publicity for Hilary Lodge locally. So you may find you have someone from a newspaper wanting to interview you. They'll want to find out from two or three people why they volunteer to help at the home. We're trying to get a TV station to come, too, but they don't seem very interested.</p>
+        <p>John: I don't mind being interviewed.</p>
+        <p>Cathy: Good. Well, if you come in for a chat, as we arranged, we'll take it from there. Thank you very much for calling.</p>
+        <p>John: My pleasure. Goodbye.</p>
+        <p>Cathy: Bye.</p>
+      </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>Learning Resource Centre</h2>
+      <p><em>Listen and answer questions 11–20.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 2</h3>
+        <div class="audio-desc">The head of a centre which offers evening classes for adults explaining some recent changes made to the centre.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131588-official_cambridge_guide_to_ielts_academic_listening_test_8_2.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_8_2.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>Hello. As some of you know, I'm Elaine Marriott, the head of the college's Learning Resource Centre. We've invited all of you taking evening classes and leisure activities to come and see the changes we've made to the Centre in the last month.</p>
+        <p>One major change we've made here on the ground floor is to the layout - as you can see from looking around you. I'm sure you'll recognise the desk - that's still in the same place, as it has to be just inside the door. But you'll see that there are now periodicals on the shelves in the corner behind the desk. We've brought them nearer the entrance because so many people like to come in just to read magazines. We now stock a far wider range of periodicals than we used to, so we've decided to separate them from newspapers. This means the newspapers are now just the other side of the stairs, near the study area.</p>
+        <p>Now, another thing is that we've brought the computers downstairs - people used to complain about having to go upstairs to use them. So they're now at the far side of the building on the right, in the corner overlooking the car park.</p>
+        <p>We've now got an extra photocopier, so as well as the one upstairs, there's one down here. You can see it right opposite the entrance, by the wall on the far side.</p>
+        <p>The biggest change, though, and one I'm sure many of you will welcome, is that we now have a café at last - we've been asking for one for years. If you turn right as soon as you get past the desk, you'll see the door ahead of you. It became possible to have a café because the building has been extended, and we've now got a new office and storeroom area.</p>
+        <p>What else should I tell you about before we walk round? Oh yes, we've had so many requests for books on sport that we've bought a lot more, and they're all together immediately to the right of the entrance.</p>
+        <p>OK, that's enough on the new layout. We'll walk round in a moment, but before we do, something about the people who are here to help you. Of course all the staff will do their best to answer your questions, but now we're each going to specialise in certain areas. So if you ask a staff member about something, and they don't think they can help you enough, they'll direct you to our specialist.</p>
+        <p>Jenny Reed is the person to see if there are any films you'd like us to stock, as she's taken over responsibility for purchasing those. I'd better warn you that our budget is limited, so I'm afraid we can't promise to buy everything you ask for!</p>
+        <p>Phil Penshurst can help you to improve your writing if you need to produce reports for your course. You can book a half-hour session with Phil to start with, then if you want more help, he'll arrange follow-up sessions with you.</p>
+        <p>I must mention Tom Salisbury. Many people are interested in doing research or just reading about this region - the people, occupations, changes over the years, and so on. Tom is a specialist in this particular field, so if you want any help, he can point you in the right direction - we've got a large collection of relevant documents, from old maps to studies of the wildlife.</p>
+        <p>We have a new member of staff, Saeed Aktar. I'm sure you'll meet him soon, and will find him very helpful. If you're unemployed and want some advice on the practical aspects of looking for a job, Saeed is the person to talk to. He's also written a very useful book on the subject, which of course we've got on our shelves!</p>
+        <p>Many of you will know Shilpa Desai, who's been working here for about five years. Shilpa now has the additional responsibility of giving information and advice on anything to do with housing, such as finding out what's available, or whether you're eligible for financial help.</p>
+        <p>Right, well that's quite enough from me, so let's walk round the library.</p>
+      </div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>Stewart's Work Placement</h2>
+      <p><em>Listen and answer questions 21–30.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 3</h3>
+        <div class="audio-desc">A tutor and a student discussing a project the student is working on.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131589-official_cambridge_guide_to_ielts_academic_listening_test_8_3.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_8_3.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>Tutor: Right Stewart, well I've read your draft report on your work placement at the Central Museum Association. Sounds as if you had an interesting time. So you ended up making a film for them?</p>
+        <p>Stewart: Yeah. It was a film to train the employees in different museums in the techniques they should use for labelling ancient objects without damaging them. Some of them are really fragile.</p>
+        <p>Tutor: OK. So in your report you go through the main stages in making the film. Let's discuss that in a little more detail. You had to find a location - somewhere to shoot the film.</p>
+        <p>Stewart: That took quite a few days, because I had to look at different museums all over the country, but I'd allowed time for it. And even though it was the middle of winter, there wasn't any snow, so I didn't have any transport problems.</p>
+        <p>Tutor: Right. Did you have to decide what equipment you'd need for the filming?</p>
+        <p>Stewart: Yes. I think they were quite surprised at how well I managed that. It was just the luck of the draw actually, I'd done that project with you last year.</p>
+        <p>Tutor: Oh, on recording technology? So you knew a bit about it from that, right.</p>
+        <p>Stewart: Yeah. What I found really hard was actually writing the script. I had a deadline for that but the Association had to extend it. I couldn't have done it otherwise.</p>
+        <p>Tutor: Would it have helped if you'd had some training there?</p>
+        <p>Stewart: I think you're right, I probably needed that, yeah.</p>
+        <p>Tutor: Right. Now from your draft report it sounds as if you had one or two problems deciding who was going to actually appear in the video.</p>
+        <p>Stewart: The casting? Yeah. I'd expected that the people who worked for the Association would be really keen on taking part ...</p>
+        <p>Tutor: But they weren't?</p>
+        <p>Stewart: The thing was, they were all so busy. And it did mean some of them had to travel. But Janice King, who I was reporting to for the project, she was great. She arranged for people to have time off and for their work to be covered. So that was a big help for me.</p>
+        <p>Tutor: Right. And it sounds like the filming itself went well. I gather you found a company who provided an online introduction to the techniques.</p>
+        <p>Stewart: Yeah. It was really informative, and very user-friendly. I learned a lot from it.</p>
+        <p>Tutor: And then the editing?</p>
+        <p>Stewart: For that, the Association put me in touch with someone who works for one of the big movie companies and I went down to the studio and sat with him in front of his computer for a day, learning how to cut and paste, and deal with the soundtrack and so on.</p>
+        <p>Tutor: So was that all?</p>
+        <p>Stewart: No, I didn't include this in my draft report but I had to design the cover for the DVD as well... the lettering and everything.</p>
+        <p>Tutor: Have you done any of that sort of design work before?</p>
+        <p>Stewart: No, but I did a rough draft and then talked it through with a couple of my mates and they gave me some more ideas, and when I'd finished it, I showed it to the people who worked at the Association and they really liked it.</p>
+        <p>Tutor: Excellent.</p>
+        <p>Tutor: Now as well as your own draft report, I've also received some written evaluation from the Association on the work you did during your placement, and how it was of benefit to them. I noticed that you haven't included anything on that in your report yet.</p>
+        <p>Stewart: How my project benefited the Association, you mean? So do I have to include that?</p>
+        <p>Tutor: Yes.</p>
+        <p>Stewart: Well, let's think... I suppose if I hadn't made the film for them, they'd have had to get an outside company to do it. But because I was actually working for the Association, I'd got much more of a feeling for what their aims are. Things like their responsibility for the conservation of the exhibits. I don't think an outside company would have had that understanding, they'd have been more detached.</p>
+        <p>Tutor: Right. And the Association also said that because of your background, you had a good idea of where to go to get the best deal for the equipment you needed. They said the saving in expense made it worthwhile even though sourcing it took quite a bit of time.</p>
+        <p>Stewart: Yes, that's true.</p>
+        <p>Tutor: The Association also said making the film had a very positive effect in getting staff to work together more closely.</p>
+        <p>Stewart: Oh. I hadn't heard that. That's good. And certainly, people weren't afraid to tell me what they thought about it as I was making it, so I was able to get lots of feedback at every stage. That was useful for me but it also meant the final product worked better for them.</p>
+        <p>Tutor: Can you think of any other benefits?</p>
+        <p>Stewart: Well, I don't think they'd really thought out what they'd do with the film once it was made. I made quite a few suggestions for the distribution - other people we could send it to as well as museum staff.</p>
+        <p>Tutor: Yes, they mentioned that. OK, good, well it sounds like they certainly ...</p>
+      </div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="passage" data-part="4">
+      <span class="part-label">Part 4</span>
+      <h2>New Caledonian Crows — Lecture</h2>
+      <p><em>Listen and answer questions 31–40.</em></p>
+
+      <div class="audio-card">
+        <h3>🎧 Audio — Part 4</h3>
+        <div class="audio-desc">A lecture about a species of bird called the New Caledonian crow.</div>
+        <audio controls preload="metadata">
+          <source src="https://ielts-listening-audio.engnovatemedia.com/3131590-official_cambridge_guide_to_ielts_academic_listening_test_8_4.mp3" type="audio/mpeg">
+          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_8_4.mp3" type="audio/mpeg">
+        </audio>
+        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
+      </div>
+
+      <div class="transcript-toggle" onclick="toggleTranscript(this)">
+        <span>📄 Show Transcript</span>
+        <span>▼</span>
+      </div>
+      <div class="transcript-body">
+        <p>I'm going to talk today about research into a particular species of bird, the New Caledonian crow, whose natural habitat is small islands in the Pacific Ocean. And it seems that these crows are exceptionally resourceful.</p>
+        <p>Using sticks or other tools to find food isn't unknown among birds and animals. Some chimpanzees, for example, are known to bang nuts on stones, in order to break the shell and get at the edible kernel inside. One New Caledonian crow, called Betty, bent some straight wire into a hook and used it to lift a small bucket of her favourite food from a vertical pipe. This experiment was the first time she'd been presented with wire, which makes it very impressive. Another crow, called Barney, has demonstrated his skill at using sticks to forage for food.</p>
+        <p>In one research project, scientists from New Zealand and Oxford set captive New Caledonian crows a three-stage problem: if they wanted to extract food from a hole, the crows first had to pull up a string to get a short stick, then use that short stick to remove a long stick from a toolbox, and finally use the long stick to reach the food. Amazingly, they worked out how to do this successfully.</p>
+        <p>Further experiments carried out at Oxford suggest that crows can also use sticks as tools to inspect all sorts of objects, possibly to assess whether or not they present a danger. The idea for the experiment came from observing the birds using tools to pick at random objects, such as a picture of a spider that was printed on some cloth. In this research, five pairs of crows - including Barney - underwent tests to see how they would react to a variety of objects, which were carefully chosen so the birds wouldn't be tempted to view them as a possible source of food. As a further precaution, all the crows had been fed beforehand.</p>
+        <p>On eight occasions, a bird's first contact was by using a tool. In all three trials, Barney began by using a stick for inspection. One involved a rubber snake. First he approached it, but didn't touch it, then retreated to pick up a stick. He then prodded it with the stick. After some more investigation, he discarded the stick and carried on pecking at the snake more confidently - apparently convinced that it wouldn't move.</p>
+        <p>In other experiments, two different birds, called Pierre and Corbeau, also made a first approach with tools on three separate occasions. Pierre used a short piece of woodchip to touch a light which was flashing, and Corbeau was seen prodding a metal toad with a stick.</p>
+        <p>Significantly, the crows tended to use the sticks only to make their first contact with the object. Subsequently, they either ignored the object or dropped the tool and pecked at the object - which is very different from using the tool to get access to food.</p>
+        <p>So what conclusions can be drawn from the research? Evidence is building up from experiments such as these that the birds are able to plan their actions in advance, which is very interesting for understanding their cognition. They don't seem to be responding in a pre-programmed sort of way: it may even be possible that they're able to view a problem and work out what the answer is. However, a major difficulty is assessing whether this tool-using behaviour is a sign of intelligence. To some extent, this is related to the ecological circumstances in which the animal is found.</p>
+        <p>So scientists want to find out much more about how the crows behave in their native habitat, and a team from Exeter and Oxford universities is carrying out research in New Caledonia. They're looking into whether the birds' way of searching for food gives them any possible evolutionary advantage. The birds are hard to observe, as they live in a region of mountainous forest, so the researchers have attached tiny cameras to the tails of some birds, as one method of investigating their behaviour.</p>
+        <p>The birds are masters at using sticks to find their food, in particular beetle larvae from the trees. It's possible that the birds can derive so much energy from these grubs that they only need to eat a few each day. This would mean that they wouldn't have to spend most of their waking time searching for food, as most animals do.</p>
+        <p>The beetle larvae have a distinct chemical make-up, which can be traced through the feathers and blood of birds that eat them. Scientists have collected samples from crows in order to estimate the proportion of larvae in their diet. They should then be able to gauge the extent to which individual birds depend on using sticks to feed themselves.</p>
+        <p>We've learnt a great deal about the ability of New Caledonian crows to use tools, and some very interesting research is being carried out into them.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 -->
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–10</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 4px;">Hilary Lodge Retirement Home</p>
+          <p style="font-size:13px;margin:0 0 8px;"><em>Example: The name of the <u>manager</u> is Cathy</em></p>
+
+          <p style="font-weight:700;margin:8px 0 4px;">Activities programme involving volunteers</p>
+          <p style="margin:0 0 6px;font-size:14px;">Monday evenings: computer training</p>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Training needed in how to produce <input type="text" name="q1" aria-label="Q1" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+
+          <p style="margin:10px 0 6px;font-size:14px;">Tuesday afternoons: singing</p>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>The home has a <input type="text" name="q2" aria-label="Q2" style="min-width:160px;"> and someone to play it</p><div class="feedback"></div></div></div>
+
+          <p style="margin:10px 0 6px;font-size:14px;">Thursday mornings: growing <input type="text" name="q3" aria-label="Q3" style="min-width:140px;"></p>
+          <div class="q" data-q="3" style="display:none;"><div class="q-num">3</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>The home doesn't have many <input type="text" name="q4" aria-label="Q4" style="min-width:160px;"> for gardening</p><div class="feedback"></div></div></div>
+
+          <p style="margin:10px 0 6px;font-size:14px;">Once a month: meeting for volunteers and staff</p>
+
+          <p style="font-weight:700;margin:12px 0 4px;">Interview</p>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>Go in on <input type="text" name="q5" aria-label="Q5" style="min-width:160px;">, any time</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Interview with assistant called <input type="text" name="q6" aria-label="Q6" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>Address of home: 73 <input type="text" name="q7" aria-label="Q7" style="min-width:160px;"> Road</p><div class="feedback"></div></div></div>
+
+          <p style="font-weight:700;margin:12px 0 4px;">'Open house' days</p>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>Agreed to help on <input type="text" name="q8" aria-label="Q8" style="min-width:180px;"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>Will show visitors where to <input type="text" name="q9" aria-label="Q9" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>Possibility of talking to a <input type="text" name="q10" aria-label="Q10" style="min-width:160px;"> reporter</p><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section class="q-section" data-part="2">
+        <div class="q-group">
+          <h3>Questions 11–15</h3>
+          <div class="q-instr">
+            <p>Label the plan below.</p>
+            <p>Write the correct letter, <strong>A–H</strong>, next to Questions 11–15.</p>
+          </div>
+          <p><img class="plan-img" src="https://engnovate.com/wp-content/uploads/2026/04/official-cambridge-guide-to-ielts-academic-listening-test-8-2-diagram-69e2361d53dd5.jpg" alt="Learning Resource Centre plan"></p>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>Newspapers <select name="q11" aria-label="Q11"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>Computers <select name="q12" aria-label="Q12"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>Photocopier <select name="q13" aria-label="Q13"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Café <select name="q14" aria-label="Q14"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Sports books <select name="q15" aria-label="Q15"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 16–20</h3>
+          <div class="q-instr">
+            <p>Complete the table below.</p>
+            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 4px;">New staff responsibilities</p>
+          <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px;">
+            <thead>
+              <tr style="background:#f8fafc;">
+                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">Name</th>
+                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">New responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Jenny Reed</td>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Buying <input type="text" name="q16" aria-label="Q16" style="min-width:130px;"> for the Centre</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Phil Penshurst</td>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Help with writing <input type="text" name="q17" aria-label="Q17" style="min-width:130px;"> for courses</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Tom Salisbury</td>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Information on topics related to the <input type="text" name="q18" aria-label="Q18" style="min-width:130px;"></td>
+              </tr>
+              <tr>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Saeed Aktar</td>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Finding a <input type="text" name="q19" aria-label="Q19" style="min-width:130px;"></td>
+              </tr>
+              <tr>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Shilpa Desai</td>
+                <td style="border:1px solid var(--line);padding:6px 8px;">Help with <input type="text" name="q20" aria-label="Q20" style="min-width:130px;"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="q" data-q="16" style="display:none;"><div class="q-num">16</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="17" style="display:none;"><div class="q-num">17</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="18" style="display:none;"><div class="q-num">18</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="19" style="display:none;"><div class="q-num">19</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="20" style="display:none;"><div class="q-num">20</div><div class="q-body"><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section class="q-section" data-part="3">
+        <div class="q-group">
+          <h3>Questions 21–27</h3>
+          <div class="q-instr">
+            <p>What helped Stewart with each of the following stages in making his training film for museum employees?</p>
+            <p>Choose <strong>SEVEN</strong> answers from the box and write the correct letter, <strong>A–I</strong>, next to Questions 21–27.</p>
+            <p><strong>A</strong> advice from friends &nbsp; <strong>B</strong> information on a website &nbsp; <strong>C</strong> being allowed extra time &nbsp; <strong>D</strong> meeting a professional film maker &nbsp; <strong>E</strong> good weather conditions &nbsp; <strong>F</strong> getting a better computer &nbsp; <strong>G</strong> support of a manager &nbsp; <strong>H</strong> help from a family member &nbsp; <strong>I</strong> work on a previous assignment</p>
+          </div>
+          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>finding a location <select name="q21" aria-label="Q21"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>deciding on equipment <select name="q22" aria-label="Q22"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>writing the script <select name="q23" aria-label="Q23"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>casting <select name="q24" aria-label="Q24"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>filming <select name="q25" aria-label="Q25"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>editing <select name="q26" aria-label="Q26"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>designing the DVD cover <select name="q27" aria-label="Q27"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 28–30</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 4px;">Stewart's work placement: benefits to the Central Museum Association</p>
+          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>his understanding of the Association's <input type="text" name="q28" aria-label="Q28" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+          <p style="margin:0 0 6px;font-size:14px;">• the reduction in expense</p>
+          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>increased co-operation between <input type="text" name="q29" aria-label="Q29" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>continuous <input type="text" name="q30" aria-label="Q30" style="min-width:160px;"> which led to a better product</p><div class="feedback"></div></div></div>
+          <p style="margin:6px 0 0;font-size:14px;">• ideas for distribution of the film</p>
+        </div>
+      </section>
+
+      <!-- PART 4 -->
+      <section class="q-section" data-part="4">
+        <div class="q-group">
+          <h3>Questions 31–40</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">New Caledonian crows and the use of tools</p>
+
+          <p style="font-weight:700;margin:8px 0 4px;">Examples of animals using tools</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>some chimpanzees use stones to break nuts</li>
+            <li>Betty (New Caledonian crow) made a <strong>31</strong> <input type="text" name="q31" aria-label="Q31" style="min-width:150px;"> out of wire to move a bucket of food</li>
+            <li>Barney (New Caledonian crow) used sticks to find food</li>
+          </ul>
+
+          <p style="font-weight:700;margin:8px 0 4px;">New Zealand and Oxford experiment</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>three stages: crows needed to move a <strong>32</strong> <input type="text" name="q32" aria-label="Q32" style="min-width:150px;"> in order to reach a short stick; then use the short stick to reach a long stick; then use the long stick to reach food</li>
+          </ul>
+
+          <p style="font-weight:700;margin:8px 0 4px;">Oxford research</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>crows used sticks to investigate whether there was any <strong>33</strong> <input type="text" name="q33" aria-label="Q33" style="min-width:150px;"> from an object</li>
+            <li>research was inspired by seeing crows using tools on a piece of cloth to investigate a spider design</li>
+            <li>Barney used a stick to investigate a snake made of <strong>34</strong> <input type="text" name="q34" aria-label="Q34" style="min-width:150px;"></li>
+            <li>Pierre used a stick to investigate a <strong>35</strong> <input type="text" name="q35" aria-label="Q35" style="min-width:150px;"></li>
+            <li>Corbeau used a stick to investigate a metal toad</li>
+            <li>the crows only used sticks for the first contact</li>
+          </ul>
+
+          <p style="font-weight:700;margin:8px 0 4px;">Conclusions of above research</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>ability to plan provides interesting evidence of the birds' cognition</li>
+            <li>unclear whether this is evidence of the birds' <strong>36</strong> <input type="text" name="q36" aria-label="Q36" style="min-width:150px;"></li>
+          </ul>
+
+          <p style="font-weight:700;margin:8px 0 4px;">Exeter and Oxford research in New Caledonia</p>
+          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
+            <li>scientists have attached very small cameras to birds' <strong>37</strong> <input type="text" name="q37" aria-label="Q37" style="min-width:150px;"></li>
+            <li>food in the form of beetle larvae provides plenty of <strong>38</strong> <input type="text" name="q38" aria-label="Q38" style="min-width:150px;"> for the birds</li>
+            <li>larvae's specific <strong>39</strong> <input type="text" name="q39" aria-label="Q39" style="min-width:150px;"> composition can be identified in birds that feed on them</li>
+            <li>scientists will analyse what the birds include in their <strong>40</strong> <input type="text" name="q40" aria-label="Q40" style="min-width:150px;"></li>
+          </ul>
+
+          <div class="q" data-q="31" style="display:none;"><div class="q-num">31</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="32" style="display:none;"><div class="q-num">32</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="33" style="display:none;"><div class="q-num">33</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="34" style="display:none;"><div class="q-num">34</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="35" style="display:none;"><div class="q-num">35</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="36" style="display:none;"><div class="q-num">36</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="37" style="display:none;"><div class="q-num">37</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="38" style="display:none;"><div class="q-num">38</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="39" style="display:none;"><div class="q-num">39</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="40" style="display:none;"><div class="q-num">40</div><div class="q-body"><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1">
+        <span class="tab-part-name">Part 1</span>
+        <span class="tab-qcount">Questions 1–10</span>
+      </button>
+      <button class="part-tab" data-part="2">
+        <span class="tab-part-name">Part 2</span>
+        <span class="tab-qcount">Questions 11–20</span>
+      </button>
+      <button class="part-tab" data-part="3">
+        <span class="tab-part-name">Part 3</span>
+        <span class="tab-qcount">Questions 21–30</span>
+      </button>
+      <button class="part-tab" data-part="4">
+        <span class="tab-part-name">Part 4</span>
+        <span class="tab-qcount">Questions 31–40</span>
+      </button>
+    </div>
+
+    <div class="ielts-reading-question-palette" id="palette"></div>
+
+    <div class="ielts-reading-bottom-controls">
+      <div class="ielts-reading-question-control-buttons">
+        <button id="prevBtn" title="Previous question">←</button>
+        <button id="nextBtn" title="Next question">→</button>
+      </div>
+      <div class="ielts-reading-test-control-buttons">
+        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Your Results</h3>
+      <button class="close-x" data-close="resultOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row">
+        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
+      </div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Review Your Answers</h3>
+      <button class="close-x" data-close="previewOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT TOOLBAR -->
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+
+<!-- NOTE POPUP -->
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ANSWER KEY */
+const ANSWER_KEY = {
+  1:["documents","document"],
+  2:["keyboard"],
+  3:["flowers","flower"],
+  4:["tools","tool"],
+  5:["saturday"],
+  6:["mairead"],
+  7:["bridge"],
+  8:["may 14th","14th may","may 14","14 may","14th of may","may the 14th"],
+  9:["park"],
+  10:["newspaper"],
+  11:["D"],
+  12:["G"],
+  13:["C"],
+  14:["F"],
+  15:["B"],
+  16:["films","film"],
+  17:["reports","report"],
+  18:["region"],
+  19:["job"],
+  20:["housing"],
+  21:["E"],
+  22:["I"],
+  23:["C"],
+  24:["G"],
+  25:["B"],
+  26:["D"],
+  27:["A"],
+  28:["aims","aim"],
+  29:["staff"],
+  30:["feedback"],
+  31:["hook"],
+  32:["string"],
+  33:["danger"],
+  34:["rubber"],
+  35:["light"],
+  36:["intelligence"],
+  37:["tails","tail"],
+  38:["energy"],
+  39:["chemical"],
+  40:["diet"]
+};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:10},(_,i)=>i+1),
+  2: Array.from({length:10},(_,i)=>i+11),
+  3: Array.from({length:10},(_,i)=>i+21),
+  4: Array.from({length:10},(_,i)=>i+31)
+};
+
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()£$]/g,"").replace(/\s+/g," ");
+}
+
+function getUserAnswer(n){
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const s = document.querySelector(`select[name=q${n}]`);
+  if (s) return s.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+
+function isCorrect(n, ua){
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+
+function estimateBand(score){
+  if (score>=39) return "9.0"; if (score>=37) return "8.5";
+  if (score>=35) return "8.0"; if (score>=32) return "7.5";
+  if (score>=30) return "7.0"; if (score>=26) return "6.5";
+  if (score>=23) return "6.0"; if (score>=18) return "5.5";
+  if (score>=16) return "5.0"; if (score>=13) return "4.5";
+  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
+  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
+  return "2.0 or below";
+}
+
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+function toggleTranscript(el){
+  const body = el.nextElementSibling;
+  const arrow = el.querySelector("span:last-child");
+  body.classList.toggle("show");
+  arrow.textContent = body.classList.contains("show") ? "▲" : "▼";
+  el.querySelector("span:first-child").textContent = body.classList.contains("show") ? "📄 Hide Transcript" : "📄 Show Transcript";
+}
+
+/* BUILD PALETTE */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Part ${part}:`;
+  section.appendChild(label);
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+  palette.appendChild(section);
+});
+
+/* PART SWITCHING */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", () => switchPart(tab.dataset.part));
+});
+
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>40) return;
+  let part = 1;
+  for (const p of [1,2,3,4]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===4);
+}
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else if (currentPart > 1){
+    const prev = PART_QUESTIONS[currentPart-1];
+    goToQuestion(prev[prev.length-1]);
+  }
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else if (currentPart < 4) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
+});
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* RESIZER */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(20, Math.min(70, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+/* TIMER */
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  const s = String(seconds%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* ============================================
+   HIGHLIGHT / NOTE FEATURE
+   ============================================ */
+const hlPopup = document.getElementById("hl-popup");
+const notePopup = document.getElementById("note-popup");
+const passagesEl = document.getElementById("passagesPane");
+const questionsEl = document.getElementById("questionsPane");
+const fab = document.getElementById("hl-fab");
+
+let savedRange = null;
+let pendingNoteRange = null;
+let highlighterOn = false;
+let currentMark = null;
+let noteSaveTarget = null;
+
+fab.addEventListener("click", () => {
+  highlighterOn = !highlighterOn;
+  fab.classList.toggle("active", highlighterOn);
+  toast(highlighterOn
+    ? "Highlighter ON — select text or click a word"
+    : "Highlighter OFF — normal selection");
+});
+
+function showPopupAt(rect){
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
+  hlPopup.classList.add("show");
+}
+
+function isEditableTarget(el){
+  return el && (el.closest("input") || el.closest("select") ||
+                el.closest("button") || el.closest("label") ||
+                el.closest(".transcript-toggle"));
+}
+
+document.addEventListener("mouseup", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        if (isEditableTarget(e.target)) return;
+        savedRange = range.cloneRange();
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 0);
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
+  if (isEditableTarget(e.target)) return;
+
+  const inP = e.target.closest(".passages");
+  const inQ = e.target.closest(".questions");
+  if (!inP && !inQ) return;
+
+  const existingMark = e.target.tagName === "MARK" ? e.target :
+                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
+  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
+
+  if (existingNote) {
+    const note = existingNote.dataset.note || "";
+    document.getElementById("note-text").value = note;
+    pendingNoteRange = null;
+    notePopup.classList.add("show");
+    noteSaveTarget = existingNote;
+    return;
+  }
+
+  if (existingMark) {
+    savedRange = null;
+    currentMark = existingMark;
+    showPopupAt(existingMark.getBoundingClientRect());
+    return;
+  }
+
+  if (highlighterOn) {
+    const sel = window.getSelection();
+    let range = null;
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      range = sel.getRangeAt(0);
+    } else {
+      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
+      if (wordRange) range = wordRange;
+    }
+    if (range) {
+      const container = range.commonAncestorContainer;
+      const el = container.nodeType === 1 ? container : container.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        highlightRange(range);
+        window.getSelection().removeAllRanges();
+        hlPopup.classList.remove("show");
+        savedRange = null;
+      }
+    }
+  }
+});
+
+function getWordRangeFromPoint(x, y){
+  let node, offset;
+  if (document.caretRangeFromPoint){
+    const r = document.caretRangeFromPoint(x, y);
+    if (!r) return null;
+    node = r.startContainer; offset = r.startOffset;
+  } else if (document.caretPositionFromPoint){
+    const pos = document.caretPositionFromPoint(x, y);
+    if (!pos) return null;
+    node = pos.offsetNode; offset = pos.offset;
+  } else return null;
+  if (!node || node.nodeType !== 3) return null;
+  const text = node.textContent;
+  if (!text || !text.trim()) return null;
+  let start = offset, end = offset;
+  const isWord = c => /[\w'’\-]/i.test(c);
+  while (start > 0 && isWord(text[start-1])) start--;
+  while (end < text.length && isWord(text[end])) end++;
+  if (start === end) {
+    if (offset < text.length) end = offset + 1;
+  }
+  if (start >= end) return null;
+  const range = document.createRange();
+  try {
+    range.setStart(node, start);
+    range.setEnd(node, end);
+  } catch(err){ return null; }
+  return range;
+}
+
+document.getElementById("hl-highlight").addEventListener("click", () => {
+  if (currentMark) { hlPopup.classList.remove("show"); return; }
+  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
+  highlightRange(savedRange);
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove("show");
+  savedRange = null;
+  toast("Text highlighted");
+});
+
+document.getElementById("hl-dehighlight").addEventListener("click", () => {
+  if (currentMark){
+    const parent = currentMark.parentNode;
+    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
+    parent.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove("show");
+    toast("Highlight removed");
+    return;
+  }
+  if (savedRange){
+    clearHighlightInRange(savedRange);
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove("show");
+    savedRange = null;
+    toast("Highlight removed");
+  } else {
+    hlPopup.classList.remove("show");
+  }
+});
+
+document.getElementById("hl-note").addEventListener("click", () => {
+  if (!savedRange) { toast("Select text first"); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById("note-text").value = "";
+  notePopup.classList.add("show");
+  hlPopup.classList.remove("show");
+});
+
+document.getElementById("hl-flashcard").addEventListener("click", () => {
+  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
+  if (!text) { toast("Select text first"); return; }
+  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
+  hlPopup.classList.remove("show");
+});
+
+function highlightRange(range){
+  try {
+    const mark = document.createElement("mark");
+    mark.className = "hl-user";
+    mark.appendChild(range.extractContents());
+    range.insertNode(mark);
+  } catch(err){
+    console.warn("Highlight failed:", err);
+  }
+}
+
+function clearHighlightInRange(range){
+  const container = range.commonAncestorContainer;
+  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
+  if (!root || !root.querySelectorAll) return;
+  const marks = root.querySelectorAll("mark.hl-user");
+  marks.forEach(m => {
+    try {
+      if (range.intersectsNode(m)) {
+        const parent = m.parentNode;
+        while (m.firstChild) parent.insertBefore(m.firstChild, m);
+        parent.removeChild(m);
+      }
+    } catch(err){}
+  });
+}
+
+document.getElementById("note-cancel").addEventListener("click", () => {
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById("note-save").addEventListener("click", () => {
+  const noteText = document.getElementById("note-text").value.trim();
+
+  if (noteSaveTarget){
+    if (noteText){
+      noteSaveTarget.dataset.note = noteText;
+      noteSaveTarget.title = "Note: " + noteText;
+      toast("Note updated");
+    } else {
+      const parent = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      parent.removeChild(noteSaveTarget);
+      toast("Note removed");
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove("show");
+    document.getElementById("note-text").value = "";
+    return;
+  }
+
+  if (!noteText || !pendingNoteRange) {
+    notePopup.classList.remove("show");
+    pendingNoteRange = null;
+    return;
+  }
+  try {
+    const span = document.createElement("span");
+    span.className = "hl-note";
+    span.title = "Note: " + noteText;
+    span.dataset.note = noteText;
+    span.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(span);
+    toast("Note saved");
+  } catch(err){
+    console.warn("Note failed:", err);
+  }
+  document.getElementById("note-text").value = "";
+  notePopup.classList.remove("show");
+  pendingNoteRange = null;
+});
+
+document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (!confirm("Remove all highlights and notes from this test?")) return;
+  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
+    const parent = el.parentNode;
+    while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    parent.removeChild(el);
+  });
+  toast("Highlights cleared");
+});
+
+/* SUBMIT */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=40; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      const key = (ANSWER_KEY[n]||[])[0];
+      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / 40`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(score);
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+});
+
+/* REVIEW */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=40; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+    hlPopup.classList.remove("show");
+    notePopup.classList.remove("show");
+  }
+});
+
+/* MENU */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  document.querySelectorAll(".transcript-body").forEach(t => t.classList.remove("show"));
+  document.querySelectorAll(".transcript-toggle").forEach(t => {
+    t.querySelector("span:first-child").textContent = "📄 Show Transcript";
+    t.querySelector("span:last-child").textContent = "▼";
+  });
+  switchPart(1);
+  toast("Test reset. Good luck!");
+}
+
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+</script>
+
+</body>
+</html>
