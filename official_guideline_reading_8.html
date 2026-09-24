@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Cambridge Guide to IELTS Academic Reading Test 8</title>
+<style>
+:root{
+  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
+  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
+  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage .subhead{font-size:18px;font-weight:700;margin:18px 0 12px;}
+.passage em{color:var(--muted);}
+
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:10px;margin-bottom:12px;}
+.word-bank span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:13px;}
+.people-list{list-style:none;padding:12px 16px;margin:0 0 14px;font-size:13px;background:#f8fafc;border-radius:8px;}
+.people-list li{margin-bottom:3px;}
+.people-list li:last-child{margin-bottom:0;}
+
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
+  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto;}
+.skim-btn:hover{background:#bae6fd;}
+.skim-btn.on{background:var(--accent);color:#fff;}
+
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
+  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
+  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
+  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
+  font-weight:700;display:flex;align-items:center;gap:8px;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+
+@media(max-width:900px){
+  :root{--bottom-h:300px;}
+  .main-split{flex-direction:column;height:auto;min-height:600px;}
+  .passages,.questions{flex:1 1 auto;width:100%;}
+  .resizer{display:none;}
+  .app-header h1{display:none;}
+  .part-tabs{flex-direction:column;}
+  .ielts-reading-question-palette{gap:4px 14px;}
+  .ielts-reading-palette-item{width:24px;height:24px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="/" target="_blank">
+        📚
+      </a>
+  <h1>Official Cambridge Guide to IELTS Academic Reading Test 8</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PASSAGE 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>The Phoenicians: an almost forgotten people</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 1 below.</em></p>
+
+      <p>The Phoenicians inhabited the region of modern Lebanon and Syria from about 3000 BC. They became the greatest traders of the pre-classical world, and were the first people to establish a large colonial network. Both of these activities were based on seafaring, an ability the Phoenicians developed from the example of their maritime predecessors, the Minoans of Crete.</p>
+
+      <p>An Egyptian narrative of about 1080 BC, the <em>Story of Wen-Amen</em>, provides an insight into the scale of their trading activity. One of the characters is Wereket-El, a Phoenician merchant living at Tanis in Egypt's Nile delta. As many as 50 ships carry out his business, plying back and forth between the Nile and the Phoenician port of Sidon.</p>
+
+      <p>The most prosperous period for Phoenicia was the 10th century BC, when the surrounding region was stable. Hiram, the king of the Phoenician city of Tyre, was an ally and business partner of Solomon, King of Israel. For Solomon's temple in Jerusalem, Hiram provided craftsmen with particular skills that were needed for this major construction project. He also supplied materials – particularly timber, including cedar from the forests of Lebanon. And the two kings went into trade in partnership. They sent out Phoenician vessels on long expeditions (of up to three years for the return trip) to bring back gold, sandalwood, ivory, monkeys and peacocks from Ophir. This is an unidentified place, probably on the east coast of Africa or the west coast of India.</p>
+
+      <p>Phoenicia was famous for its luxury goods. The cedar wood was not only exported as top-quality timber for architecture and shipbuilding. It was also carved by the Phoenicians, and the same skill was adapted to even more precious work in ivory. The rare and expensive dye for cloth, Tyrian purple, complemented another famous local product, fine linen. The metalworkers of the region, particularly those working in gold, were famous. Tyre and Sidon were also known for their glass.</p>
+
+      <p>These were the main products which the Phoenicians exported. In addition, as traders and middlemen, they took a commission on a much greater range of precious goods that they transported from elsewhere.</p>
+
+      <p>The extensive trade of Phoenicia required much book-keeping and correspondence, and it was in the field of writing that the Phoenicians made their most lasting contribution to world history. The scripts in use in the world up to the second millennium BC (in Egypt, Mesopotamia or China) all required the writer to learn a large number of separate characters – each of them expressing either a whole word or an element of its meaning. By contrast, the Phoenicians, in about 1500 BC, developed an entirely new approach to writing. The marks made (with a pointed tool called a stylus, on damp clay) now attempted to capture the sound of a word. This required an alphabet of individual letters.</p>
+
+      <p>The trading and seafaring skills of the Phoenicians resulted in a network of colonies, spreading westwards through the Mediterranean. The first was probably Citium, in Cyprus, established in the 9th century BC. But the main expansion came from the 8th century BC onwards, when pressure from Assyria to the east disrupted the patterns of trade on the Phoenician coast.</p>
+
+      <p>Trading colonies were developed on the string of islands in the centre of the Mediterranean – Crete, Sicily, Malta, Sardinia, Ibiza – and also on the coast of north Africa. The African colonies clustered in particular around the great promontory which, with Sicily opposite, forms the narrowest channel on the main Mediterranean sea route. This is the site of Carthage.</p>
+
+      <p>Carthage was the largest of the towns founded by the Phoenicians on the north African coast, and it rapidly assumed a leading position among the neighbouring colonies. The traditional date of its founding is 814 BC, but archaeological evidence suggests that it was probably settled a little over a century later.</p>
+
+      <p>The subsequent spread and growth of Phoenician colonies in the western Mediterranean, and even out to the Atlantic coasts of Africa and Spain, was as much the achievement of Carthage as of the original Phoenician trading cities such as Tyre and Sidon. But no doubt links were maintained with the homeland, and new colonists continued to travel west.</p>
+
+      <p>From the 8th century BC, many of the coastal cities of Phoenicia came under the control of a succession of imperial powers, each of them defeated and replaced in the region by the next: first the Assyrians, then the Babylonians, Persians and Macedonian Greeks.</p>
+
+      <p>In 64 BC, the area of Phoenicia became part of the Roman province of Syria. The Phoenicians as an identifiable people then faded from history, merging into the populations of modern Lebanon and northern Syria.</p>
+    </div>
+
+    <!-- PASSAGE 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>The Hollywood Film Industry</h2>
+      <p><em>You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2 on the following pages.</em></p>
+
+      <p><strong>A.</strong> This chapter examines the 'Golden Age' of the Hollywood film studio system and explores how a particular kind of filmmaking developed during this period in US film history. It also focuses on the two key elements which influenced the emergence of the classic Hollywood studio system: the advent of sound and the business ideal of vertical integration. In addition to its historical interest, inspecting the growth of the studio system may offer clues regarding the kinds of struggles that accompany the growth of any new medium. It might, in fact, be intriguing to examine which changes occurred during the growth of the Hollywood studio, and compare those changes to contemporary struggles in which production companies are trying to define and control emerging industries, such as online film and interactive television.</p>
+
+      <p><strong>B.</strong> The shift of the industry away from 'silent' films began during the late 1920s. Warner Bros.' 1927 film <em>The Jazz Singer</em> was the first to feature synchronized speech, and with it came a period of turmoil for the industry. Studios now had proof that 'talkie' films would make them money, but the financial investment this kind of filmmaking would require, from new camera equipment to new projection facilities, made the studios hesitant to invest at first. In the end, the power of cinematic sound to both move audiences and enhance the story persuaded studios that talkies were worth investing in. Overall, the use of sound in film was well-received by audiences, but there were still many technical factors to consider. Although full integration of sound into movies was complete by 1930, it would take somewhat longer for them to regain their stylistic elegance and dexterity. The camera now had to be encased in a big, clumsy, unmoveable soundproof box. In addition, actors struggled, having to direct their speech to awkwardly-hidden microphones in huge plants, telephones or even costumes.</p>
+
+      <p><strong>C.</strong> Vertical integration is the other key component in the rise of the Hollywood studio system. The major studios realized they could increase their profits by handling each stage of a film's life: production (making the film), distribution (getting the film out to people) and exhibition (owning the theaters in major cities where films were shown first). Five studios, 'The Big Five', worked to achieve vertical integration through the late 1940s, owning vast real estate on which to construct elaborate sets. In addition, these studios set the exact terms of films' release dates and patterns. Warner Bros., Paramount, 20th Century Fox, MGM and RKO formed this exclusive club. 'The Little Three' studios – Universal, Columbia and United Artists – also made pictures, but each lacked one of the crucial elements of vertical integration. Together these eight companies operated as a mature oligopoly, essentially running the entire market.</p>
+
+      <p><strong>D.</strong> During the Golden Age, the studios were remarkably consistent and stable enterprises, due in large part to long-term management heads – the infamous 'movie moguls' who ruled their kingdoms with iron fists. At MGM, Warner Bros. and Columbia, the same men ran their studios for decades. The rise of the studio system also hinges on the treatment of stars, who were constructed and exploited to suit a studio's image and schedule. Actors were bound up in seven-year contracts to a single studio, and the studio boss generally held all the options. Stars could be loaned out to other production companies at any time. Studio bosses could also force bad roles on actors, and manipulate every single detail of stars' images with their mammoth in-house publicity departments. Some have compared the Hollywood studio system to a factory, and it is useful to remember that studios were out to make money first and art second.</p>
+
+      <p><strong>E.</strong> On the other hand, studios also had to cultivate flexibility, in addition to consistent factory output. Studio heads realized that they couldn't make virtually the same film over and over again with the same cast of stars and still expect to keep turning a profit. They also had to create product differentiation. Examining how each production company tried to differentiate itself has led to loose characterizations of individual studios' styles. MGM tended to put out a lot of all-star productions while Paramount excelled in comedy and Warner Bros. developed a reputation for gritty social realism. 20th Century Fox forged the musical and a great deal of prestige biographies, while Universal specialized in classic horror movies.</p>
+
+      <p><strong>F.</strong> In 1948, struggling independent movie producers and exhibitors finally triumphed in their battle against the big studios' monopolistic behavior. In the United States versus Paramount federal decree of that year, the studios were ordered to give up their theaters in what is commonly referred to as 'divestiture' – opening the market to smaller producers. This, coupled with the advent of television in the 1950s, seriously compromised the studio system's influence and profits. Hence, 1930 and 1948 are generally considered bookends to Hollywood's Golden Age.</p>
+    </div>
+
+    <!-- PASSAGE 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>Left or right?</h2>
+      <p><em>An overview of some research into lateralisation: the dominance of one side of the body over the other</em></p>
+
+      <p><strong>A.</strong> Creatures across the animal kingdom have a preference for one foot, eye or even antenna. The cause of this trait, called lateralisation, is fairly simple: one side of the brain, which generally controls the opposite side of the body, is more dominant than the other when processing certain tasks. This does, on some occasions, let the animal down: such as when a toad fails to escape from a snake approaching from the right, just because its right eye is worse at spotting danger than its left. So why would animals evolve a characteristic that seems to endanger them?</p>
+
+      <p><strong>B.</strong> For many years it was assumed that lateralisation was a uniquely human trait, but this notion rapidly fell apart as researchers started uncovering evidence of lateralisation in all sorts of animals. For example, in the 1970s, Lesley Rogers, now at the University of New England in Australia, was studying memory and learning in chicks. She had been injecting a chemical into chicks' brains to stop them learning how to spot grains of food among distracting pebbles, and was surprised to observe that the chemical only worked when applied to the left hemisphere of the brain. That strongly suggested that the right side of the chick's brain played little or no role in the learning of such behaviours. Similar evidence appeared in songbirds and rats around the same time, and since then, researchers have built up an impressive catalogue of animal lateralisation.</p>
+
+      <p><strong>C.</strong> In some animals, lateralisation is simply a preference for a single paw or foot, while in others it appears in more general patterns of behaviour. The left side of most vertebrate brains, for example, seems to process and control feeding. Since the left hemisphere processes input from the right side of the body, that means animals as diverse as fish, toads and birds are more likely to attack prey or food items viewed with their right eye. Even humpback whales prefer to use the right side of their jaws to scrape sand eels from the ocean floor.</p>
+
+      <p><strong>D.</strong> Genetics plays a part in determining lateralisation, but environmental factors have an impact too. Rogers found that a chick's lateralisation depends on whether it is exposed to light before hatching from its egg – if it is kept in the dark during this period, neither hemisphere becomes dominant. In 2004, Rogers used this observation to test the advantages of brain bias in chicks faced with the challenge of multitasking. She hatched chicks with either strong or weak lateralisation, then presented the two groups with food hidden among small pebbles and the threatening shape of a fake predator flying overhead. As predicted, the birds incubated in the light looked for food mainly with their right eye, while using the other to check out the predator. The weakly-lateralised chicks, meanwhile, had difficulty performing these two activities simultaneously.</p>
+
+      <p><strong>E.</strong> Similar results probably hold true for many other animals. In 2006, Angelo Bisazza at the University of Padua set out to observe the differences in feeding behaviour between strongly-lateralised and weakly-lateralised fish. He found that strongly-lateralised individuals were able to feed twice as fast as weakly-lateralised ones when there was a threat of a predator looming above them. Assigning different jobs to different brain halves may be especially advantageous for animals such as birds or fish, whose eyes are placed on the sides of their heads. This enables them to process input from each side separately, with different tasks in mind.</p>
+
+      <p><strong>F.</strong> And what of those animals who favour a specific side for almost all tasks? In 2009, Maria Magat and Culum Brown at Macquarie University in Australia wanted to see if there was general cognitive advantage in lateralisation. To investigate, they turned to parrots, which can be either strongly right- or left-footed, or ambidextrous (without dominance). The parrots were given the intellectually demanding task of pulling a snack on a string up to their beaks, using a co-ordinated combination of claws and beak. The results showed that the parrots with the strongest foot preferences worked out the puzzle far more quickly than their ambidextrous peers.</p>
+
+      <p><strong>G.</strong> A further puzzle is why are there always a few exceptions, like left-handed humans, who are wired differently from the majority of the population? Giorgio Vallortigara and Stefano Ghirlanda of Stockholm University seem to have found the answer via mathematical models. These have shown that a group of fish is likely to survive a shark attack with the fewest casualties if the majority turn together in one direction while a very small proportion of the group escape in the direction that the predator is not expecting.</p>
+
+      <p><strong>H.</strong> This imbalance of lateralisation within populations may also have advantages for individuals. Whereas most co-operative interactions require participants to react similarly, there are some situations – such as aggressive interactions – where it can benefit an individual to launch an attack from an unexpected quarter. Perhaps this can partly explain the existence of left-handers in human societies. It has been suggested that when it comes to hand-to-hand fighting, left-handers may have the advantage over the right-handed majority. Where survival depends on the element of surprise, it may indeed pay to be different.</p>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 -->
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–8</h3>
+          <div class="q-instr">
+            <p>Complete the sentences below.</p>
+            <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">The Phoenicians' trading activities</p>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>The Phoenicians' skill at <input type="text" name="q1" aria-label="Q1"> helped them to trade.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>In an ancient story, a <input type="text" name="q2" aria-label="Q2"> from Phoenicia, who lived in Egypt, owned 50 ships.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>A king of Israel built a <input type="text" name="q3" aria-label="Q3"> using supplies from Phoenicia.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>Phoenicia supplied Solomon with skilled <input type="text" name="q4" aria-label="Q4">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>The main material that Phoenicia sent to Israel was <input type="text" name="q5" aria-label="Q5">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>The kings of Phoenicia and Israel formed a business <input type="text" name="q6" aria-label="Q6"> in order to carry out trade.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>Phoenicians carved <input type="text" name="q7" aria-label="Q7">, as well as cedar.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>The Phoenicians also earned a <input type="text" name="q8" aria-label="Q8"> for shipping goods.</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 9–13</h3>
+          <div class="q-instr">
+            <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+            <p><strong>TRUE</strong> if the statement agrees with the information</p>
+            <p><strong>FALSE</strong> if the statement contradicts the information</p>
+            <p><strong>NOT GIVEN</strong> if there is no information on this</p>
+          </div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>Problems with Assyria led to the establishment of a number of Phoenician colonies.</p><div class="options"><label><input type="radio" name="q9" value="TRUE"> TRUE</label><label><input type="radio" name="q9" value="FALSE"> FALSE</label><label><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>Carthage was an enemy town which the Phoenicians won in battle.</p><div class="options"><label><input type="radio" name="q10" value="TRUE"> TRUE</label><label><input type="radio" name="q10" value="FALSE"> FALSE</label><label><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>Phoenicians reached the Atlantic ocean.</p><div class="options"><label><input type="radio" name="q11" value="TRUE"> TRUE</label><label><input type="radio" name="q11" value="FALSE"> FALSE</label><label><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>Parts of Phoenicia were conquered by a series of empires.</p><div class="options"><label><input type="radio" name="q12" value="TRUE"> TRUE</label><label><input type="radio" name="q12" value="FALSE"> FALSE</label><label><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>The Phoenicians welcomed Roman control of the area.</p><div class="options"><label><input type="radio" name="q13" value="TRUE"> TRUE</label><label><input type="radio" name="q13" value="FALSE"> FALSE</label><label><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section class="q-section" data-part="2">
+        <div class="q-group">
+          <h3>Questions 14–19</h3>
+          <div class="q-instr">
+            <p>Reading Passage 2 has six paragraphs, A–F.</p>
+            <p>Choose the correct heading for each paragraph from the list of headings below.</p>
+          </div>
+          <div class="word-bank">
+            <span>i. The power within each studio</span>
+            <span>ii. The movie industry adapts to innovation</span>
+            <span>iii. Contrasts between cinema and other media of the time</span>
+            <span>iv. The value of studying Hollywood's Golden Age</span>
+            <span>v. Distinguishing themselves from the rest of the market</span>
+            <span>vi. A double attack on film studios' power</span>
+            <span>vii. Gaining control of the industry</span>
+            <span>viii. The top movies of Hollywood's Golden Age</span>
+          </div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Paragraph A</p><select name="q14" aria-label="Q14"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Paragraph B</p><select name="q15" aria-label="Q15"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>Paragraph C</p><select name="q16" aria-label="Q16"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>Paragraph D</p><select name="q17" aria-label="Q17"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>Paragraph E</p><select name="q18" aria-label="Q18"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>Paragraph F</p><select name="q19" aria-label="Q19"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option></select><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 20–23</h3>
+          <div class="q-instr">
+            <p>Do the following statements agree with the information given in Reading Passage 2?</p>
+            <p><strong>TRUE</strong> if the statement agrees with the information</p>
+            <p><strong>FALSE</strong> if the statement contradicts the information</p>
+            <p><strong>NOT GIVEN</strong> if there is no information on this</p>
+          </div>
+          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>After The Jazz Singer came out, other studios immediately began making movies with synchronized sound.</p><div class="options"><label><input type="radio" name="q20" value="TRUE"> TRUE</label><label><input type="radio" name="q20" value="FALSE"> FALSE</label><label><input type="radio" name="q20" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>There were some drawbacks to recording movie actors' voices in the early 1930s.</p><div class="options"><label><input type="radio" name="q21" value="TRUE"> TRUE</label><label><input type="radio" name="q21" value="FALSE"> FALSE</label><label><input type="radio" name="q21" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>There was intense competition between actors for contracts with the leading studios.</p><div class="options"><label><input type="radio" name="q22" value="TRUE"> TRUE</label><label><input type="radio" name="q22" value="FALSE"> FALSE</label><label><input type="radio" name="q22" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>Studios had total control over how their actors were perceived by the public.</p><div class="options"><label><input type="radio" name="q23" value="TRUE"> TRUE</label><label><input type="radio" name="q23" value="FALSE"> FALSE</label><label><input type="radio" name="q23" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 24–26</h3>
+          <div class="q-instr">
+            <p>Complete the summary below.</p>
+            <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">THE HOLLYWOOD STUDIOS</p>
+          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>Throughout its Golden Age, the Hollywood movie industry was controlled by a handful of studios. Using a system known as <input type="text" name="q24" aria-label="Q24">, the biggest studios not only made movies, but handled their distribution and then finally showed them in their own theaters.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>These studios were often run by autocratic bosses – men known as <input type="text" name="q25" aria-label="Q25">, who often remained at the head of organisations for decades.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>However, the domination of the industry by the leading studios came to an end in 1948, when they were forced to open the market to smaller producers – a process known as <input type="text" name="q26" aria-label="Q26">.</p><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section class="q-section" data-part="3">
+        <div class="q-group">
+          <h3>Questions 27–30</h3>
+          <div class="q-instr">
+            <p>Complete each sentence with the correct ending, A–F, below.</p>
+          </div>
+          <div class="word-bank">
+            <span>A. lateralisation is more common in some species than in others.</span>
+            <span>B. it benefits a population if some members have a different lateralisation than the majority.</span>
+            <span>C. lateralisation helps animals do two things at the same time.</span>
+            <span>D. lateralisation is not confined to human beings.</span>
+            <span>E. the greater an animal's lateralisation, the better it is at problem-solving.</span>
+            <span>F. strong lateralisation may sometimes put groups of animals in danger.</span>
+          </div>
+          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>In the 1970s, Lesley Rogers discovered that <select name="q27" aria-label="Q27"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>Angelo Bisazza's experiments revealed that <select name="q28" aria-label="Q28"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>Magat and Brown's studies show that <select name="q29" aria-label="Q29"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>Vallortigara and Ghirlanda's research findings suggest that <select name="q30" aria-label="Q30"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 31–35</h3>
+          <div class="q-instr">
+            <p>Complete the summary below.</p>
+            <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">Lesley Rogers' 2004 Experiment</p>
+          <div class="q" data-q="31"><div class="q-num">31</div><div class="q-body"><p>Lateralisation is determined by both genetic and <input type="text" name="q31" aria-label="Q31"> influences.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="32"><div class="q-num">32</div><div class="q-body"><p>Rogers found that chicks whose eggs are given <input type="text" name="q32" aria-label="Q32"> during the incubation period tend to have a stronger lateralisation.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="33"><div class="q-num">33</div><div class="q-body"><p>Her 2004 experiment set out to prove that these chicks were better at <input type="text" name="q33" aria-label="Q33"> than weakly lateralised chicks.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="34"><div class="q-num">34</div><div class="q-body"><p>As expected, the strongly lateralised birds in the experiment were more able to locate <input type="text" name="q34" aria-label="Q34"> using their right eye, while using their left eye to monitor an imitation <input type="text" name="q35" aria-label="Q35"> located above them.</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 36–40</h3>
+          <div class="q-instr">
+            <p>Reading Passage 3 has eight paragraphs, A–H.</p>
+            <p>Which paragraph contains the following information?</p>
+            <p><strong>NB</strong> You may use any letter more than once.</p>
+          </div>
+          <div class="q" data-q="36"><div class="q-num">36</div><div class="q-body"><p>description of a study which supports another scientist's findings</p><select name="q36" aria-label="Q36"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="37"><div class="q-num">37</div><div class="q-body"><p>the suggestion that a person could gain from having an opposing lateralisation to most of the population</p><select name="q37" aria-label="Q37"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="38"><div class="q-num">38</div><div class="q-body"><p>reference to the large amount of knowledge of animal lateralisation that has accumulated</p><select name="q38" aria-label="Q38"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="39"><div class="q-num">39</div><div class="q-body"><p>research findings that were among the first to contradict a previous belief</p><select name="q39" aria-label="Q39"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="40"><div class="q-num">40</div><div class="q-body"><p>a suggestion that lateralisation would seem to disadvantage animals</p><select name="q40" aria-label="Q40"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1">
+        <span class="tab-part-name">Part 1</span>
+        <span class="tab-qcount">Questions 1–13</span>
+        <span class="skim-btn" data-part="1">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="2">
+        <span class="tab-part-name">Part 2</span>
+        <span class="tab-qcount">Questions 14–26</span>
+        <span class="skim-btn" data-part="2">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="3">
+        <span class="tab-part-name">Part 3</span>
+        <span class="tab-qcount">Questions 27–40</span>
+        <span class="skim-btn" data-part="3">Skim (1x)</span>
+      </button>
+    </div>
+
+    <div class="ielts-reading-question-palette" id="palette"></div>
+
+    <div class="ielts-reading-bottom-controls">
+      <div class="ielts-reading-question-control-buttons">
+        <button id="prevBtn" title="Previous question">←</button>
+        <button id="nextBtn" title="Next question">→</button>
+      </div>
+      <div class="ielts-reading-test-control-buttons">
+        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Your Results</h3>
+      <button class="close-x" data-close="resultOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row">
+        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
+      </div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Review Your Answers</h3>
+      <button class="close-x" data-close="previewOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ANSWER KEY */
+const ANSWER_KEY = {
+  1:["seafaring"],
+  2:["merchant"],
+  3:["temple"],
+  4:["craftsmen"],
+  5:["timber"],
+  6:["partnership"],
+  7:["ivory"],
+  8:["commission"],
+  9:["TRUE"],
+  10:["FALSE"],
+  11:["TRUE"],
+  12:["TRUE"],
+  13:["NOT GIVEN"],
+  14:["iv"],
+  15:["ii"],
+  16:["vii"],
+  17:["i"],
+  18:["v"],
+  19:["vi"],
+  20:["FALSE"],
+  21:["TRUE"],
+  22:["NOT GIVEN"],
+  23:["TRUE"],
+  24:["vertical integration","verticalintegration"],
+  25:["movie moguls","movie mogul","moguls"],
+  26:["divestiture"],
+  27:["D"],
+  28:["C"],
+  29:["E"],
+  30:["B"],
+  31:["environmental"],
+  32:["light"],
+  33:["multitasking"],
+  34:["food"],
+  35:["predator"],
+  36:["E"],
+  37:["H"],
+  38:["B"],
+  39:["B"],
+  40:["A"]
+};
+
+/* Checkbox groups (none for this test) */
+const CHECKBOX_GROUPS = {};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:13},(_,i)=>i+1),
+  2: Array.from({length:13},(_,i)=>i+14),
+  3: Array.from({length:14},(_,i)=>i+27)
+};
+
+/* HELPERS */
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");
+}
+function getUserAnswer(n){
+  if (CHECKBOX_GROUPS[n]){
+    const checked = Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`))
+      .map(cb => cb.value).sort().join(",");
+    return checked;
+  }
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const s = document.querySelector(`select[name=q${n}]`);
+  if (s) return s.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+function isCorrect(n, ua){
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function estimateBand(score){
+  if (score>=39) return "9.0"; if (score>=37) return "8.5";
+  if (score>=35) return "8.0"; if (score>=33) return "7.5";
+  if (score>=30) return "7.0"; if (score>=27) return "6.5";
+  if (score>=23) return "6.0"; if (score>=19) return "5.5";
+  if (score>=15) return "5.0"; if (score>=13) return "4.5";
+  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
+  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
+  return "2.0 or below";
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+/* BUILD PALETTE */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Part ${part}:`;
+  section.appendChild(label);
+
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+
+  palette.appendChild(section);
+});
+
+/* PART SWITCHING */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", (e) => {
+    if (e.target.closest(".skim-btn")) return;
+    switchPart(tab.dataset.part);
+  });
+});
+
+/* SKIMMING */
+let skimInterval=null, skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const part = btn.dataset.part;
+    if (skimInterval && skimPart === part){
+      clearInterval(skimInterval); skimInterval=null; skimPart=null;
+      btn.classList.remove("on"); btn.textContent="Skim (1x)";
+      toast("Skimming stopped."); return;
+    }
+    if (skimInterval){
+      clearInterval(skimInterval);
+      document.querySelectorAll(".skim-btn").forEach(b=>{
+        b.classList.remove("on"); b.textContent="Skim (1x)";
+      });
+    }
+    if (String(currentPart) !== String(part)) switchPart(part);
+    const pane = document.getElementById("passagesPane");
+    pane.scrollTop = 0;
+    skimPart = part;
+    btn.classList.add("on"); btn.textContent="Stop";
+    skimInterval = setInterval(() => {
+      pane.scrollTop += 1.2;
+      if (pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2){
+        clearInterval(skimInterval); skimInterval=null; skimPart=null;
+        btn.classList.remove("on"); btn.textContent="Skim (1x)";
+        toast("Skimming complete.");
+      }
+    }, 28);
+    toast("Skimming started — read quickly.");
+  });
+});
+
+/* NAVIGATION */
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>40) return;
+  let part = 1;
+  for (const p of [1,2,3]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===3);
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else if (currentPart > 1){
+    const prev = PART_QUESTIONS[currentPart-1];
+    goToQuestion(prev[prev.length-1]);
+  }
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else if (currentPart < 3) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
+});
+
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+/* PALETTE ANSWERED STATE */
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* RESIZER */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+/* TIMER */
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  const s = String(seconds%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* SUBMIT */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=40; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
+      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / 40`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(score);
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+});
+
+/* REVIEW */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=40; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+/* close overlays */
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape")
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+});
+
+/* MENU */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+/* RESET */
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  switchPart(1);
+  toast("Test reset. Good luck!");
+}
+
+/* FOCUS MODE */
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+/* INIT */
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+</script>
+
+</body>
+</html>

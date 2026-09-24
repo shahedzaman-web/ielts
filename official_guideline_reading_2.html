@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Cambridge Guide to IELTS Academic Reading Test 2</title>
+<style>
+:root{
+  --bg:#eef1f6;
+  --card:#fff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --line:#dfe5ee;
+  --accent:#e00000;
+  --accent-soft:#fee2e2;
+  --good:#16a34a;
+  --good-soft:#dcfce7;
+  --bad:#dc2626;
+  --bad-soft:#fee2e2;
+  --header-h:56px;
+  --bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;
+  padding-bottom:var(--bottom-h);
+}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+/* HEADER */
+.app-header{
+  position:sticky;top:0;z-index:60;
+  height:var(--header-h);
+  background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;
+  box-shadow:0 1px 4px rgba(15,23,42,.05);
+}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{
+  font-size:14px;font-weight:600;margin:0;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{
+  background:#0f172a;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;
+  opacity:.35;
+}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{
+  background:#0f172a;color:#fff;font-size:13px;font-weight:700;
+  padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;gap:6px;
+}
+.icon-btn{
+  background:#fff;border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;
+}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{
+  display:none;position:absolute;right:0;top:calc(100% + 8px);
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;
+  z-index:100;
+}
+.menu-pop.show{display:block;}
+.menu-pop a{
+  display:block;padding:10px 14px;font-size:13px;color:var(--text);
+  text-decoration:none;border-bottom:1px solid #f1f5f9;
+}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+/* SPLIT */
+.main-split{
+  display:flex;
+  max-width:1600px;margin:16px auto 0;
+  height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{
+  flex:0 0 7px;background:#e2e8f0;cursor:col-resize;
+  display:flex;align-items:center;justify-content:center;
+}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{
+  display:inline-block;background:var(--accent-soft);color:var(--accent);
+  font-size:11px;font-weight:700;letter-spacing:.06em;
+  padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;
+}
+.passage p{margin:0 0 14px;}
+.passage .subhead{font-size:18px;font-weight:700;margin:18px 0 12px;}
+.passage em{color:var(--muted);}
+
+/* QUESTIONS */
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{
+  font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--accent);margin:0 0 8px;font-weight:700;
+}
+.q-instr{
+  font-size:13px;color:var(--muted);
+  background:#f8fafc;border-left:3px solid var(--line);
+  padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;
+}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{
+  flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;
+}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{
+  border:1px solid var(--line);border-radius:6px;padding:5px 9px;
+  font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;
+}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{
+  border:1px solid var(--line);border-radius:6px;padding:5px 8px;
+  font-size:14px;font-family:inherit;background:#fff;
+}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{
+  display:inline-flex;align-items:center;gap:6px;font-size:14px;
+  cursor:pointer;padding:3px 7px;border-radius:6px;
+}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.word-bank{
+  display:flex;flex-wrap:wrap;gap:7px;background:#f8fafc;
+  border:1px dashed var(--line);border-radius:8px;padding:10px;margin-bottom:12px;
+}
+.word-bank span{
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:2px 11px;font-size:13px;
+}
+.people-list{
+  list-style:none;padding:12px 16px;margin:0 0 14px;
+  font-size:13px;background:#f8fafc;border-radius:8px;
+}
+.people-list li{margin-bottom:3px;}
+.people-list li:last-child{margin-bottom:0;}
+
+/* result states */
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+/* BOTTOM PANEL */
+.bottom-panel{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:#fff;
+  border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);
+  padding:10px 22px 10px;
+  overflow-y:auto;
+  max-height:var(--bottom-h);
+}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+
+.part-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:8px;
+}
+.part-tab{
+  flex:1;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:7px 12px;
+  text-align:left;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+  transition:.15s;
+  opacity:.85;
+}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{
+  opacity:1;
+  background:#fff;
+  border-color:var(--accent);
+  box-shadow:inset 0 0 0 1px var(--accent);
+}
+.part-tab .tab-part-name{
+  font-size:13px;
+  font-weight:700;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.part-tab .tab-qcount{
+  font-size:11px;
+  color:var(--muted);
+  white-space:nowrap;
+  flex:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.skim-btn{
+  font-size:10px;font-weight:700;color:#0369a1;
+  background:#e0f2fe;border-radius:999px;padding:3px 9px;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+.skim-btn:hover{background:#bae6fd;}
+.skim-btn.on{background:var(--accent);color:#fff;}
+
+.ielts-reading-question-palette{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 22px;
+  align-items:flex-start;
+  margin-bottom:8px;
+  padding-top:8px;
+  border-top:1px solid #f1f5f9;
+  min-height:36px;
+}
+.ielts-reading-palette-section{
+  display:none;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:5px;
+  padding:2px 0;
+}
+.ielts-reading-palette-section.active{
+  display:flex;
+}
+.ielts-reading-palette-section-part{
+  font-size:13px;
+  font-weight:700;
+  color:var(--accent);
+  margin-right:4px;
+  white-space:nowrap;
+}
+.ielts-reading-palette-item{
+  width:27px;height:27px;
+  border-radius:5px;
+  background:#f1f5f9;
+  color:#475569;
+  font-size:12px;
+  font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid transparent;
+  transition:all .12s;
+  cursor:pointer;
+  padding:0;
+}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{
+  background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;
+}
+.ielts-reading-palette-item.current{
+  background:var(--accent);color:#fff;border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(224,0,0,.18);
+}
+.ielts-reading-palette-item.correct{
+  background:var(--good);color:#fff;border-color:var(--good);
+}
+.ielts-reading-palette-item.wrong{
+  background:var(--bad);color:#fff;border-color:var(--bad);
+}
+.ielts-reading-palette-section-question-count{
+  font-size:11px;
+  color:var(--muted);
+  font-style:italic;
+  margin-left:6px;
+  white-space:nowrap;
+}
+
+.ielts-reading-bottom-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-top:1px solid #f1f5f9;
+  padding-top:8px;
+}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{
+  width:40px;height:34px;
+  border-radius:6px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#334155;
+  font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  transition:.12s;
+}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){
+  background:#f1f5f9;border-color:#cbd5e1;
+}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{
+  background:#fff;border:1px solid var(--line);color:#334155;
+  border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:7px;
+}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{
+  background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 24px;font-size:13px;font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+/* OVERLAYS */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(15,23,42,.55);
+  align-items:center;justify-content:center;padding:24px;
+}
+.overlay.show{display:flex;}
+.overlay-card{
+  background:#fff;border-radius:12px;width:100%;max-width:640px;
+  max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;
+}
+.overlay-head{
+  padding:18px 22px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{
+  background:#0f172a;color:#fff;border-radius:8px;
+  padding:16px;text-align:center;margin-bottom:16px;
+}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{
+  border:1px solid var(--line);padding:7px 9px;text-align:left;
+}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+/* FOCUS MODE */
+body.focus-mode .app-header,
+body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{
+  height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;
+}
+.exit-focus{
+  display:none;position:fixed;top:14px;right:14px;z-index:300;
+  background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;
+}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{
+  position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);
+  transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;
+  font-size:13px;font-weight:600;opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.toast.show{opacity:1;}
+
+@media(max-width:900px){
+  :root{--bottom-h:300px;}
+  .main-split{flex-direction:column;height:auto;min-height:600px;}
+  .passages,.questions{flex:1 1 auto;width:100%;}
+  .resizer{display:none;}
+  .app-header h1{display:none;}
+  .part-tabs{flex-direction:column;}
+  .ielts-reading-question-palette{gap:4px 14px;}
+  .ielts-reading-palette-item{width:24px;height:24px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="/" target="_blank">
+        📚
+      </a>
+  <h1>Official Cambridge Guide to IELTS Academic Reading Test 2</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PASSAGE 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>The Flavor of Pleasure</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 1 below.</em></p>
+      <p>When it comes to celebrating the flavor of food, our mouth gets all the credit. But in truth, it is the nose that knows.</p>
+      <p>No matter how much we talk about tasting our favorite flavors, relishing them really depends on a combined input from our senses that we experience through mouth, tongue and nose. The taste, texture, and feel of food are what we tend to focus on, but most important are the slight puffs of air as we chew our food what scientists call 'retronasal smell'.</p>
+      <p>Certainly, our mouths and tongues have taste buds, which are receptors for the five basic flavors: sweet, salty, sour, bitter, and umami, or what is more commonly referred to as savory. But our tongues are inaccurate instruments as far as flavor is concerned. They evolved to recognise only a few basic tastes in order to quickly identify toxins, which in nature are often quite bitter or acidly sour.</p>
+      <p>All the complexity, nuance, and pleasure of flavor come from the sense of smell operating in the back of the nose. It is there that a kind of alchemy occurs when we breathe up and out the passing whiffs of our chewed food. Unlike a hound's skull with its extra long nose, which evolved specifically to detect external smells, our noses have evolved to detect internal scents. Primates specialise in savoring the many millions of flavor combinations that they can create for their mouths.</p>
+      <p>Taste without retronasal smell is not much help in recognising flavor. Smell has been the most poorly understood of our senses, and only recently has neuroscience, led by Yale University's Gordon Shepherd, begun to shed light on its workings. Shepherd has come up with the term 'neurogastronomy' to link the disciplines of food science, neurology, psychology, and anthropology with the savory elements of eating, one of the most enjoyed of human experiences.</p>
+      <p>In many ways, he is discovering that smell is rather like face recognition. The visual system detects patterns of light and dark and, building on experience, the brain creates a spatial map. It uses this to interpret the interrelationship of the patterns and draw conclusions that allow us to identify people and places. In the same way, we use patterns and ratios to detect both new and familiar flavors. As we eat, specialised receptors in the back of the nose detect the air molecules in our meals. From signals sent by the receptors, the brain understands smells as complex spatial patterns. Using these, as well as input from the other senses, it constructs the idea of specific flavors.</p>
+      <p>This ability to appreciate specific aromas turns out to be central to the pleasure we get from food, much as our ability to recognise individuals is central to the pleasures of social life. The process is so embedded in our brains that our sense of smell is critical to our enjoyment of life at large. Recent studies show that people who lose the ability to smell become socially insecure, and their overall level of happiness plummets.</p>
+      <p>Working out the role of smell in flavor interests food scientists, psychologists, and cooks alike. The relatively new discipline of molecular gastronomy, especially, relies on understanding the mechanics of aroma to manipulate flavor for maximum impact. In this discipline, chefs use their knowledge of the chemical changes that take place during cooking to produce eating pleasures that go beyond the 'ordinary'.</p>
+      <p>However, whereas molecular gastronomy is concerned primarily with the food or 'smell' molecules, neurogastronomy is more focused on the receptor molecules and the brain's spatial images for smell. Smell stimuli form what Shepherd terms 'odor objects', stored as memories, and these have a direct link with our emotions. The brain creates images of unfamiliar smells by relating them to other more familiar smells. Go back in history and this was part of our survival repertoire; like most animals, we drew on our sense of smell, when visual information was scarce, to single out prey.</p>
+      <p>Thus the brain's flavor-recognition system is a highly complex perceptual mechanism that puts all five senses to work in various combinations. Visual and sound cues contribute, such as crunching, as does touch, including the texture and feel of food on our lips and in our mouths. Then there are the taste receptors, and finally, the smell, activated when we inhale. The engagement of our emotions can be readily illustrated when we picture some of the wide-ranging facial expressions that are elicited by various foods - many of them hard-wired into our brains at birth. Consider the response to the sharpness of a lemon and compare that with the face that is welcoming the smooth wonder of chocolate.</p>
+      <p>The flavor-sensing system, ever receptive to new combinations, helps to keep our brains active and flexible. It also has the power to shape our desires and ultimately our bodies. On the horizon we have the positive application of neurogastronomy: manipulating flavor to curb our appetites.</p>
+    </div>
+
+    <!-- PASSAGE 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>Dawn of the robots</h2>
+      <p><em>You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2 on the following pages.</em></p>
+      <p>They're already here – driving cars, vacuuming carpets and feeding hospital patients. They may not be walking, talking, human-like sentient beings, but they are clever... and a little creepy.</p>
+
+      <p><strong>A</strong> At first sight it looked like a typical suburban road accident. A Land Rover approached a Chevy Tahoe estate car that had stopped at a kerb; the Land Rover pulled out and tried to pass the Tahoe just as it started off again. There was a crack of fenders and the sound of paintwork being scraped, the kind of minor mishap that occurs on roads thousands of times every day. Normally drivers get out, gesticulate, exchange insurance details and then drive off. But not on this occasion. No one got out of the cars for the simple reason that they had no humans inside them; the Tahoe and Land Rover were being controlled by computers competing in November's DARPA (the U.S. Defence Advanced Research Projects Agency) Urban Challenge.</p>
+
+      <p><strong>B</strong> The idea that machines could perform to such standards is startling. Driving is a complex task that takes humans a long time to perfect. Yet here, each car had its on-board computer loaded with a digital map and route plans, and was instructed to negotiate busy roads; differentiate between pedestrians and stationary objects; determine whether other vehicles were parked or moving off; and handle various parking manoeuvres, which robots turn out to be unexpectedly adept at. Even more striking was the fact that the collision between the robot Land Rover, built by researchers at the Massachusetts Institute of Technology, and the Tahoe, fitted out by Cornell University Artificial Intelligence (AI) experts, was the only scrape in the entire competition. Yet only three years earlier, at DARPA's previous driverless car race, every robot competitor – directed to navigate across a stretch of open desert – either crashed or seized up before getting near the finishing line.</p>
+
+      <p><strong>C</strong> It is a remarkable transition that has clear implications for the car of the future. More importantly, it demonstrates how robotics sciences and Artificial Intelligence have progressed in the past few years – a point stressed by Bill Gates, the Microsoft boss who is a convert to these causes. 'The robotics industry is developing in much the same way the computer business did 30 years ago,' he argues. As he points out, electronics companies make toys that mimic pets and children with increasing sophistication. 'I can envision a future in which robotic devices will become a nearly ubiquitous part of our day-to-day lives,' says Gates. 'We may be on the verge of a new era, when the PC will get up off the desktop and allow us to see, hear, touch and manipulate objects in places where we are not physically present.'</p>
+
+      <p><strong>D</strong> What is the potential for robots and computers in the near future? 'The fact is we still have a way to go before real robots catch up with their science fiction counterparts,' Gates says. So what are the stumbling blocks? One key difficulty is getting robots to know their place. This has nothing to do with class or etiquette, but concerns the simple issue of positioning. Humans orient themselves with other objects in a room very easily. Robots find the task almost impossible. 'Even something as simple as telling the difference between an open door and a window can be tricky for a robot,' says Gates. This has, until recently, reduced robots to fairly static and cumbersome roles.</p>
+
+      <p><strong>E</strong> For a long time, researchers tried to get round the problem by attempting to re-create the visual processing that goes on in the human cortex. However, that challenge has proved to be singularly exacting and complex. So scientists have turned to simpler alternatives: 'We have become far more pragmatic in our work,' says Nello Cristianini, Professor of Artificial Intelligence at the University of Bristol in England and associate editor of the Journal of Artificial Intelligence Research. 'We are no longer trying to re-create human functions. Instead, we are looking for simpler solutions with basic electronic sensors, for example.' This approach is exemplified by vacuuming robots such as the Electrolux Trilobite. The Trilobite scuttles around homes emitting ultrasound signals to create maps of rooms, which are remembered for future cleaning. Technology like this is now changing the face of robotics, says philosopher Ron Chrisley, director of the Centre for Research in Cognitive Science at the University of Sussex in England.</p>
+
+      <p><strong>F</strong> Last year, a new Hong Kong restaurant, Robot Kitchen, opened with a couple of sensor-laden humanoid machines directing customers to their seats. Each possesses a touch-screen on which orders can be keyed in. The robot then returns with the correct dishes. In Japan, University of Tokyo researchers recently unveiled a kitchen 'android' that could wash dishes, pour tea and make a few limited meals. The ultimate aim is to provide robot home helpers for the sick and the elderly, a key concern in a country like Japan where 22 per cent of the population is 65 or older. Over US$1 billion a year is spent on research into robots that will be able to care for the elderly. 'Robots first learn basic competence – how to move around a house without bumping into things. Then we can think about teaching them how to interact with humans,' Chrisley said. Machines such as these take researchers into the field of socialised robotics: how to make robots act in a way that does not scare or offend individuals. 'We need to study how robots should approach people, how they should appear. That is going to be a key area for future research,' adds Chrisley.</p>
+    </div>
+
+    <!-- PASSAGE 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>It's your choice! – Or is it really?</h2>
+      <p><em>You should spend about 20 minutes on Questions 27–40, which are based on Reading Passage 3 below.</em></p>
+      <p>As we move from the industrial age to the information age, societal demands on our mental capabilities are no less taxing ...</p>
+      <p>We are constantly required to process a wide range of information to make decisions. Sometimes, these decisions are trivial, such as what marmalade to buy. At other times, the stakes are higher, such as deciding which symptoms to report to the doctor. However, the fact that we are accustomed to processing large amounts of information does not mean that we are better at it (Chabris &amp; Simons, 2009). Our sensory and cognitive systems have systematic ways of failing of which we are often, perhaps blissfully, unaware.</p>
+      <p>Imagine that you are taking a walk in your local city park when a tourist approaches you asking for directions. During the conversation, two men carrying a door pass between the two of you. If the person asking for directions had changed places with one of the people carrying the door, would you notice? Research suggests that you might not. Harvard psychologists Simons and Levi (1998) conducted a field study using this exact set-up and found that the change in identity went unnoticed by 7 (46.6%) of the 15 participants. This phenomenon has been termed 'change blindness' and refers to the difficulty that observers have in noticing changes to visual scenes (e.g. the person swap), when the changes are accompanied by some other visual disturbance (e.g. the passing of the door).</p>
+      <p>Over the past decade, the change blindness phenomenon has been replicated many times. Especially noteworthy is an experiment by Davies and Hine (2007) who studied whether change blindness affects eyewitness identification. Specifically, participants were presented with a video enactment of a burglary. In the video, a man entered a house, walking through the different rooms and putting valuables into a knapsack. However, the identity of the burglar changed after the first half of the film while the initial burglar was out of sight. Out of the 80 participants, 49 (61%) did not notice the change of the burglar's identity, suggesting that change blindness may have serious implications for criminal proceedings.</p>
+      <p>To most of us, it seems bizarre that people could miss such obvious changes while they are paying active attention. However, to catch those changes, attention must be targeted to the changing feature. In the study described above, participants were likely not to have been expecting the change to happen, and so their attention may have been focused on the valuables the burglar was stealing, rather than the burglar.</p>
+      <p>Drawing from change blindness research, scientists have come to the conclusion that we perceive the world in much less detail than previously thought (Johansson, Hall, &amp; Sikström, 2008). Rather than monitoring all of the visual details that surround us, we seem to focus our attention only on those features that are currently meaningful or important, ignoring those that are irrelevant to our current needs and goals. Thus at any given time, our representation of the world surrounding us is crude and incomplete, making it possible for changes or manipulations to go undetected (Chabris &amp; Simons, 2010).</p>
+      <p>Given the difficulty people have in noticing changes to visual stimuli, one may wonder what would happen if these changes concerned the decisions people make. To examine choice blindness, Hall and colleagues (2010) invited supermarket customers to sample two different kinds of jams and teas. After participants had tasted or smelled both samples, they indicated which one they preferred. Subsequently, they were purportedly given another sample of their preferred choice. On half of the trials, however, these were samples of the non-chosen jam or tea. As expected, only about one-third of the participants detected this manipulation. Based on these findings, Hall and colleagues proposed that choice blindness is a phenomenon that occurs not only for choices involving visual material, but also for choices involving gustatory and olfactory information.</p>
+      <p>Recently, the phenomenon has also been replicated for choices involving auditory stimuli (Sauerland, Sagana, &amp; Otgaar, 2012). Specifically, participants had to listen to three pairs of voices and decide for each pair which voice they found more sympathetic or more criminal. The voice was then presented again; however, the outcome was manipulated for the second voice pair and participants were presented with the non-chosen voice. Replicating the findings by Hall and colleagues, only 29% of the participants detected this change.</p>
+      <p>Merckelbach, Jelicic, and Pieters (2011) investigated choice blindness for intensity ratings of one's own psychological symptoms. Their participants had to rate the frequency with which they experienced 90 common symptoms (e.g. anxiety, lack of concentration, stress, headaches etc.) on a 5-point scale. Prior to a follow-up interview, the researchers inflated ratings for two symptoms by two points. For example, when participants had rated their feelings of shyness, as 2 (i.e. occasionally), it was changed to 4 (i.e. all the time). This time, more than half (57%) of the 28 participants were blind to the symptom rating escalation and accepted it as their own symptom intensity rating. This demonstrates that blindness is not limited to recent preference selections, but can also occur for intensity and frequency.</p>
+      <p>Together, these studies suggest that choice blindness can occur in a wide variety of situations and can have serious implications for medical and judicial outcomes. Future research is needed to determine how, in those situations, choice blindness can be avoided.</p>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 -->
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–5</h3>
+          <div class="q-instr">
+            <p>Complete the sentences below.</p>
+            <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the text for each answer.</p>
+          </div>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>According to scientists, the term <input type="text" name="q1" aria-label="Q1"> characterises the most critical factor in appreciating flavour.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>'Savoury' is a better-known word for <input type="text" name="q2" aria-label="Q2">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>The tongue was originally developed to recognise the unpleasant taste of <input type="text" name="q3" aria-label="Q3">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>Human nasal cavities recognise <input type="text" name="q4" aria-label="Q4"> much better than external ones.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>Gordon Shepherd uses the word 'neurogastronomy' to draw together a number of <input type="text" name="q5" aria-label="Q5"> related to the enjoyment of eating.</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 6–9</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the text for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">Face recognition vs. Smell</p>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p><strong>Face recognition:</strong> patterns of dark and light are used to put together a <input type="text" name="q6" aria-label="Q6"> → the brain identifies faces</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>Facial recognition is key to our enjoyment of <input type="text" name="q7" aria-label="Q7">.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p><strong>Smell:</strong> receptors recognise the <input type="text" name="q8" aria-label="Q8"> in food</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>→ the brain identifies certain <input type="text" name="q9" aria-label="Q9"> → smell is key to our enjoyment of food</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 10–13</h3>
+          <div class="q-instr">
+            <p>Answer the questions below.</p>
+            <p>Choose <strong>NO MORE THAN ONE WORD</strong> from the text for each answer.</p>
+          </div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>In what form does the brain store 'odor objects'?</p><input type="text" name="q10" aria-label="Q10"><div class="feedback"></div></div></div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>When seeing was difficult, what did we use our sense of smell to find?</p><input type="text" name="q11" aria-label="Q11"><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>Which food item illustrates how flavour and positive emotion are linked?</p><input type="text" name="q12" aria-label="Q12"><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>What could be controlled in the future through flavour manipulation?</p><input type="text" name="q13" aria-label="Q13"><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section class="q-section" data-part="2">
+        <div class="q-group">
+          <h3>Questions 14–19</h3>
+          <div class="q-instr">
+            <p>The text has six paragraphs, A–F.</p>
+            <p>Choose the correct heading for each paragraph from the list of headings (i–ix) below.</p>
+          </div>
+          <div class="word-bank">
+            <span>i. Tackling the issue using a different approach</span>
+            <span>ii. A significant improvement on last time</span>
+            <span>iii. How robots can save human lives</span>
+            <span>iv. Examples of robots at work</span>
+            <span>v. Not what it seemed to be</span>
+            <span>vi. Why timescales are impossible to predict</span>
+            <span>vii. The reason why robots rarely move</span>
+            <span>viii. Following the pattern of an earlier development</span>
+            <span>ix. The ethical issues of robotics</span>
+          </div>
+
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Paragraph A</p><select name="q14" aria-label="Q14"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Paragraph B</p><select name="q15" aria-label="Q15"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>Paragraph C</p><select name="q16" aria-label="Q16"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>Paragraph D</p><select name="q17" aria-label="Q17"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>Paragraph E</p><select name="q18" aria-label="Q18"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>Paragraph F</p><select name="q19" aria-label="Q19"><option value="">—</option><option>i</option><option>ii</option><option>iii</option><option>iv</option><option>v</option><option>vi</option><option>vii</option><option>viii</option><option>ix</option></select><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 20–23</h3>
+          <div class="q-instr">
+            <p>Look at the following statements and the list of people below.</p>
+            <p>Match each statement with the correct person, A, B or C.</p>
+            <p><em>NB You may use any letter more than once.</em></p>
+          </div>
+          <ul class="people-list">
+            <li><strong>A.</strong> Bill Gates</li>
+            <li><strong>B.</strong> Nello Cristianini</li>
+            <li><strong>C.</strong> Ron Chrisley</li>
+          </ul>
+          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>An important concern for scientists is to ensure that robots do not seem frightening.</p><select name="q20" aria-label="Q20"><option value="">—</option><option>A</option><option>B</option><option>C</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>We have stopped trying to enable robots to perceive objects as humans do.</p><select name="q21" aria-label="Q21"><option value="">—</option><option>A</option><option>B</option><option>C</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>It will take considerable time for modern robots to match the ones we have created in films and books.</p><select name="q22" aria-label="Q22"><option value="">—</option><option>A</option><option>B</option><option>C</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>We need to enable robots to move freely before we think about trying to communicate with them.</p><select name="q23" aria-label="Q23"><option value="">—</option><option>A</option><option>B</option><option>C</option></select><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 24–26</h3>
+          <div class="q-instr">
+            <p>Complete the notes below.</p>
+            <p>Choose <strong>NO MORE THAN THREE WORDS</strong> from the text for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">Robot features</p>
+          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p><strong>DARPA race cars:</strong> <input type="text" name="q24" aria-label="Q24"> provides maps and plans for route</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p><strong>Electrolux Trilobite:</strong> builds an image of a room by sending out <input type="text" name="q25" aria-label="Q25"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p><strong>Robot Kitchen humanoids:</strong> have a <input type="text" name="q26" aria-label="Q26"> to take orders</p><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section class="q-section" data-part="3">
+        <div class="q-group">
+          <h3>Questions 27–31</h3>
+          <div class="q-instr">
+            <p>Do the following statements agree with the claims of the writer in the text?</p>
+            <p>Write <strong>YES</strong> if the statement agrees with the claims of the writer, <strong>NO</strong> if the statement contradicts the claims of the writer, <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p>
+          </div>
+          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>Doctors make decisions according to the symptoms that a patient describes.</p><div class="options"><label><input type="radio" name="q27" value="YES"> YES</label><label><input type="radio" name="q27" value="NO"> NO</label><label><input type="radio" name="q27" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>Our ability to deal with a lot of input material has improved over time.</p><div class="options"><label><input type="radio" name="q28" value="YES"> YES</label><label><input type="radio" name="q28" value="NO"> NO</label><label><input type="radio" name="q28" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>We tend to know when we have made an error of judgement.</p><div class="options"><label><input type="radio" name="q29" value="YES"> YES</label><label><input type="radio" name="q29" value="NO"> NO</label><label><input type="radio" name="q29" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>A legal trial could be significantly affected by change blindness.</p><div class="options"><label><input type="radio" name="q30" value="YES"> YES</label><label><input type="radio" name="q30" value="NO"> NO</label><label><input type="radio" name="q30" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="31"><div class="q-num">31</div><div class="q-body"><p>Scientists have concluded that we try to take in as much detail as possible from our surroundings.</p><div class="options"><label><input type="radio" name="q31" value="YES"> YES</label><label><input type="radio" name="q31" value="NO"> NO</label><label><input type="radio" name="q31" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 32–36</h3>
+          <div class="q-instr">
+            <p>Complete the table below.</p>
+            <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the text for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">Experiments in change blindness</p>
+
+          <div class="q" data-q="32"><div class="q-num">32</div><div class="q-body"><p><strong>Simons &amp; Levi, 1998</strong> — to illustrate change blindness caused by a <input type="text" name="q32" aria-label="Q32"> such as an object</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="33"><div class="q-num">33</div><div class="q-body"><p>Situation for participants: giving <input type="text" name="q33" aria-label="Q33"> to a stranger</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="34"><div class="q-num">34</div><div class="q-body"><p>Focus of participants' attention: the movement of <input type="text" name="q34" aria-label="Q34"> (46.6% unaware)</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="35"><div class="q-num">35</div><div class="q-body"><p><strong>Davies &amp; Hine, 2007</strong> — to assess the impact of change blindness on <input type="text" name="q35" aria-label="Q35"> by eyewitnesses</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="36"><div class="q-num">36</div><div class="q-body"><p>Focus of participants' attention: the collection of <input type="text" name="q36" aria-label="Q36"> (61% unaware)</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 37–38</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, A–E.</p>
+            <p>Which TWO statements are true for both the supermarket and voice experiments?</p>
+          </div>
+          <div class="q" data-q="37">
+            <div class="q-num">37</div>
+            <div class="q-body">
+              <div class="options stack">
+                <label><input type="checkbox" name="q37" value="A"> A. The researchers focused on non-visual material.</label>
+                <label><input type="checkbox" name="q37" value="B"> B. The participants were asked to explain their preferences.</label>
+                <label><input type="checkbox" name="q37" value="C"> C. Some of the choices made by participants were altered.</label>
+                <label><input type="checkbox" name="q37" value="D"> D. The participants were influenced by each other's choices.</label>
+                <label><input type="checkbox" name="q37" value="E"> E. Percentage results were surprisingly low.</label>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+          <div class="q" data-q="38" style="display:none;"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 39–40</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, A–E.</p>
+            <p>Which TWO statements are true for the psychology experiment conducted by Merckelbach, Jelicic, and Pieters?</p>
+          </div>
+          <div class="q" data-q="39">
+            <div class="q-num">39</div>
+            <div class="q-body">
+              <div class="options stack">
+                <label><input type="checkbox" name="q39" value="A"> A. The participants had to select their two most common symptoms.</label>
+                <label><input type="checkbox" name="q39" value="B"> B. The participants gave each symptom a 1–5 rating.</label>
+                <label><input type="checkbox" name="q39" value="C"> C. Shyness proved to be the most highly rated symptom.</label>
+                <label><input type="checkbox" name="q39" value="D"> D. The participants changed their minds about some of their ratings.</label>
+                <label><input type="checkbox" name="q39" value="E"> E. The researchers focused on the strength and regularity of symptoms.</label>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+          <div class="q" data-q="40" style="display:none;"></div>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1">
+        <span class="tab-part-name">Part 1</span>
+        <span class="tab-qcount">Questions 1–13</span>
+        <span class="skim-btn" data-part="1">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="2">
+        <span class="tab-part-name">Part 2</span>
+        <span class="tab-qcount">Questions 14–26</span>
+        <span class="skim-btn" data-part="2">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="3">
+        <span class="tab-part-name">Part 3</span>
+        <span class="tab-qcount">Questions 27–40</span>
+        <span class="skim-btn" data-part="3">Skim (1x)</span>
+      </button>
+    </div>
+
+    <div class="ielts-reading-question-palette" id="palette"></div>
+
+    <div class="ielts-reading-bottom-controls">
+      <div class="ielts-reading-question-control-buttons">
+        <button id="prevBtn" title="Previous question">←</button>
+        <button id="nextBtn" title="Next question">→</button>
+      </div>
+      <div class="ielts-reading-test-control-buttons">
+        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Your Results</h3>
+      <button class="close-x" data-close="resultOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row">
+        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
+      </div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Review Your Answers</h3>
+      <button class="close-x" data-close="previewOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ANSWER KEY */
+const ANSWER_KEY = {
+  1:["retronasal smell","retronasal"],
+  2:["umami"],
+  3:["toxins","toxin"],
+  4:["internal scents","internal scent"],
+  5:["disciplines","discipline"],
+  6:["spatial map"],
+  7:["social life"],
+  8:["air molecules","air molecule"],
+  9:["flavors","flavours","flavor","flavour"],
+  10:["memories","memory"],
+  11:["prey"],
+  12:["chocolate"],
+  13:["appetites","appetite"],
+  14:["v"],
+  15:["ii"],
+  16:["viii"],
+  17:["vii"],
+  18:["i"],
+  19:["iv"],
+  20:["C"],
+  21:["B"],
+  22:["A"],
+  23:["C"],
+  24:["on-board computer","onboard computer","on board computer"],
+  25:["ultrasound signals","ultrasound signal"],
+  26:["touch-screen","touch screen","touchscreen"],
+  27:["NOT GIVEN"],
+  28:["NO"],
+  29:["NO"],
+  30:["YES"],
+  31:["NO"],
+  32:["visual disturbance","visual distraction"],
+  33:["directions","direction"],
+  34:["a door","the door","door"],
+  35:["eyewitness identification","eyewitness identification"],
+  36:["valuables","valuable"],
+  37:["A,C","C,A"],
+  38:["A,C","C,A"],
+  39:["B,E","E,B"],
+  40:["B,E","E,B"]
+};
+
+/* For checkbox questions 37-40, we map Q37/Q38 to the same checkbox group, and Q39/Q40 likewise */
+const CHECKBOX_GROUPS = {
+  37: { name:"q37", correct:["A","C"] },
+  38: { name:"q37", correct:["A","C"] },
+  39: { name:"q39", correct:["B","E"] },
+  40: { name:"q39", correct:["B","E"] }
+};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:13},(_,i)=>i+1),
+  2: Array.from({length:13},(_,i)=>i+14),
+  3: Array.from({length:14},(_,i)=>i+27)
+};
+
+/* HELPERS */
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");
+}
+function getUserAnswer(n){
+  // checkbox groups
+  if (CHECKBOX_GROUPS[n]){
+    const checked = Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`))
+      .map(cb => cb.value).sort().join(",");
+    return checked;
+  }
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const s = document.querySelector(`select[name=q${n}]`);
+  if (s) return s.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+function isCorrect(n, ua){
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function estimateBand(score){
+  if (score>=39) return "9.0"; if (score>=37) return "8.5";
+  if (score>=35) return "8.0"; if (score>=33) return "7.5";
+  if (score>=30) return "7.0"; if (score>=27) return "6.5";
+  if (score>=23) return "6.0"; if (score>=19) return "5.5";
+  if (score>=15) return "5.0"; if (score>=13) return "4.5";
+  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
+  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
+  return "2.0 or below";
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+/* BUILD PALETTE */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Part ${part}:`;
+  section.appendChild(label);
+
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+
+  palette.appendChild(section);
+});
+
+/* PART SWITCHING */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", (e) => {
+    if (e.target.closest(".skim-btn")) return;
+    switchPart(tab.dataset.part);
+  });
+});
+
+/* SKIMMING */
+let skimInterval=null, skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const part = btn.dataset.part;
+    if (skimInterval && skimPart === part){
+      clearInterval(skimInterval); skimInterval=null; skimPart=null;
+      btn.classList.remove("on"); btn.textContent="Skim (1x)";
+      toast("Skimming stopped."); return;
+    }
+    if (skimInterval){
+      clearInterval(skimInterval);
+      document.querySelectorAll(".skim-btn").forEach(b=>{
+        b.classList.remove("on"); b.textContent="Skim (1x)";
+      });
+    }
+    if (String(currentPart) !== String(part)) switchPart(part);
+    const pane = document.getElementById("passagesPane");
+    pane.scrollTop = 0;
+    skimPart = part;
+    btn.classList.add("on"); btn.textContent="Stop";
+    skimInterval = setInterval(() => {
+      pane.scrollTop += 1.2;
+      if (pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2){
+        clearInterval(skimInterval); skimInterval=null; skimPart=null;
+        btn.classList.remove("on"); btn.textContent="Skim (1x)";
+        toast("Skimming complete.");
+      }
+    }, 28);
+    toast("Skimming started — read quickly.");
+  });
+});
+
+/* NAVIGATION */
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>40) return;
+  let part = 1;
+  for (const p of [1,2,3]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===3);
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else if (currentPart > 1){
+    const prev = PART_QUESTIONS[currentPart-1];
+    goToQuestion(prev[prev.length-1]);
+  }
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else if (currentPart < 3) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
+});
+
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+/* PALETTE ANSWERED STATE */
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* RESIZER */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+/* TIMER */
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  const s = String(seconds%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* SUBMIT */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=40; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
+      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / 40`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(score);
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+});
+
+/* REVIEW */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=40; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+/* close overlays */
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape")
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+});
+
+/* MENU */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+/* RESET */
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  switchPart(1);
+  toast("Test reset. Good luck!");
+}
+
+/* FOCUS MODE */
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+/* CHECKBOX LIMIT */
+document.querySelectorAll('input[type=checkbox][data-limit]').forEach(cb => {
+  cb.addEventListener("change", () => {
+    const name = cb.name;
+    const limit = parseInt(cb.dataset.limit,10);
+    const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
+    if (checked.length > limit){
+      cb.checked = false;
+      toast(`You can only select ${limit} options.`);
+    }
+  });
+});
+
+/* INIT */
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Cambridge Guide to IELTS Academic Reading Test 4</title>
+<style>
+:root{
+  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
+  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
+  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage .subhead{font-size:18px;font-weight:700;margin:18px 0 12px;}
+.passage em{color:var(--muted);}
+
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:10px;margin-bottom:12px;}
+.word-bank span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:13px;}
+.people-list{list-style:none;padding:12px 16px;margin:0 0 14px;font-size:13px;background:#f8fafc;border-radius:8px;}
+.people-list li{margin-bottom:3px;}
+.people-list li:last-child{margin-bottom:0;}
+
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
+  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto;}
+.skim-btn:hover{background:#bae6fd;}
+.skim-btn.on{background:var(--accent);color:#fff;}
+
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
+  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
+  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
+  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
+  font-weight:700;display:flex;align-items:center;gap:8px;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+
+@media(max-width:900px){
+  :root{--bottom-h:300px;}
+  .main-split{flex-direction:column;height:auto;min-height:600px;}
+  .passages,.questions{flex:1 1 auto;width:100%;}
+  .resizer{display:none;}
+  .app-header h1{display:none;}
+  .part-tabs{flex-direction:column;}
+  .ielts-reading-question-palette{gap:4px 14px;}
+  .ielts-reading-palette-item{width:24px;height:24px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="/" target="_blank">
+        📚
+      </a>
+  <h1>Official Cambridge Guide to IELTS Academic Reading Test 4</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PASSAGE 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>South Pole Adventurer</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 1 below.</em></p>
+      <p><em>In the race to the South Pole, there was a Japanese team attempting to be first, led by heroic explorer Nobu Shirase</em></p>
+
+      <p>FOR a few weeks in January 1912, Antarctica was full of explorers. Norwegian Roald Amundsen had reached the South Pole on 14 December and was speeding back to the coast. On 17 January, Robert Scott and the men of the British Antarctic expedition had arrived at the pole to find they had been beaten to it. Just then, a third man arrived; Japanese explorer Nobu Shirase. However, his part in one of the greatest adventure stories of the 20th century is hardly known outside his own country, even by fellow explorers. Yet as Scott was nearing the pole and with the rest of the world still unaware of Amundsen's triumph, Shirase and his team sailed into Antarctica's Bay of Whales in the smallest ship ever to try its luck in these dangerous waters.</p>
+
+      <p>Since boyhood Shirase had dreamed of becoming a polar explorer. Like Amundsen, he initially set his sights on the North Pole. But after the American Robert Peary claimed to have reached it in 1909, both men hastily altered their plans. Instead they would aim for the last big prize: the South Pole. In January 1910, Shirase put his plans before Japanese government officials, promising to raise the flag at the South Pole within three years. For many of them, the question wasn't could he do it but why would it be worth doing? 15 years earlier the International Geographical Congress had said that as the last unknown continent the Antarctic offered the chance to add to knowledge in almost every branch of science. So, like the British, Shirase presented his expedition as a search for knowledge: he would bring back fossils, make meteorological measurements and explore unknown parts of the continent.</p>
+
+      <p>The response from the government was cool, however, and Shirase struggled to raise funds. Fortunately, a few months later, Japan's former prime minister Shigenobu Okuma came to Shirase's rescue. With Okuma's backing, Shirase got together just enough money to buy and equip a small ship. He eventually acquired a scientist, too, called Terutaro Takeda. At the end of November 1910, his ship the <em>Kainan Maru</em> finally left Tokyo with 27 men and 28 Siberian dogs on board. Before leaving, Shirase confidently outlined his plans to the media. He would sail to New Zealand, then reach Antarctica in February, during the southern summer, and then proceed to the pole the following spring. This was not to be, however. Bad weather delayed the expedition and they didn't reach New Zealand until 8 February; Amundsen and Scott had already been in Antarctica for a month, preparing for winter.</p>
+
+      <p>In New Zealand local reporters were astonished: the ship was half the size of Amundsen's ship. True, it was reinforced with iron plate and extra wood, but the ship had only the feeblest engine to help force its way through ice. Few doubted Shirase's courage, but most reckoned the expedition to be ill-prepared as the Japanese had only lightweight sledges for transport across the ice, made of bamboo and wood.</p>
+
+      <p>But Shirase's biggest challenge was time. Antarctica is only accessible by sea for a few weeks in summer and expeditions usually aimed to arrive in January or February. 'Even with their determination and daring, our Japanese friends are running it rather fine,' wrote local reporters. Nevertheless, on 11 February the <em>Kainan Maru</em> left New Zealand and sailed straight into the worst weather the captain had ever seen. Then, on 6 March, they approached the coastline of Antarctica's Ross Sea, looking for a place to land. The ice began to close in, threatening to trap them for the winter, an experience no one was likely to survive. With a remarkable piece of seamanship, the captain steered the ship out of the ice and turned north. They would have to wait out the winter in a warmer climate.</p>
+
+      <p>A year later than planned, Shirase and six men finally reached Antarctica. Catching up with Scott or Amundsen was out of the question and he had said he would stick to science this time. Yet Shirase still felt the pull of the pole and eventually decided he would head southward to experience the thrills and hardships of polar exploration he had always dreamed of. With provisions for 20 days, he and four men would see how far they could get.</p>
+
+      <p>Shirase set off on 20 January 1912 with Takeda and two dog handlers, leaving two men at the edge of the ice shelf to make meteorological measurements. For a week they struggled through one blizzard after another, holing up in their tents during the worst of the weather. The temperature fell to -25°C, and frostbite claimed some of the dogs. On 26 January, Shirase estimated there were enough provisions to continue for two more days. Two days later, he announced it was time to turn back. Takeda calculated they had reached 80° 5 south and had travelled 250 kilometres. The men hoisted the Japanese flag.</p>
+
+      <p>On 3 February, all the men were heading home. The ship reached Tokyo in June 1912 - and Shirase was greeted like a hero despite the fact that he never reached the pole. Nor did he contribute much to science - but then nor did Amundsen, whose only interest was in being first to the pole. Yet Shirase's expedition was heroic. They travelled beyond 80° south, one of only four teams to have gone so far south at the time. Furthermore, they did it all without the advantages of the other teams and with no previous experience.</p>
+    </div>
+
+    <!-- PASSAGE 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>The rise of the agribots</h2>
+      <p><em>You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2 below.</em></p>
+      <p><em>The use of robots and automation in the farming industry</em></p>
+
+      <p>The next time you stand at the supermarket checkout, spare a thought for the farmers who helped fill your shopping basket as life is hard for them right now. This, in turn, inevitably means bigger grocery bills for consumers, and greater hardship for the millions in countries where food shortages are a matter of life and death. Worse, studies suggest that the world will need twice as much food by 2050. Yet while farmers must squeeze more out of the land, they must also address the necessity of reducing their impact on the soil, waterways and atmosphere. All this means rethinking how agriculture is practiced, and taking automation to a whole new level. On the new model farms of the future, precision will be key. Why dose a whole field with chemicals if you can spray only where they are needed? Each plant could get exactly the right amount of everything, no more or less, an approach that could slash chemical use and improve yields in one move. But this is easier said than done; the largest farms in Europe and the U.S. can cover thousands of acres. That's why automation is key to precision farming. Specifically, say agricultural engineers, precision farming needs robot farmers.</p>
+
+      <p>One day, we might see fields with 'agribots' (agricultural robots) that can identify individual seedlings and encourage them along with drops of fertilizer. Other machines would distinguish problem weeds from crops and eliminate them with shots from high-power lasers or a microdot of pesticide. These machines will also be able to identify and harvest all kinds of vegetables. More than a century of mechanization has already turned farming into an industrial-scale activity in much of the world, with farms that grow cereals being the most heavily automated.</p>
+
+      <p>But a variety of other crops, including oranges and tomatoes destined to become processed foods, are also picked mechanically, albeit to a slightly lesser extent. Yet the next wave of autonomous farm machinery is already at work. You probably haven't even noticed, for these robots are disguised as tractors. Many are self-steering, use GPS to cross a field, and can even 'talk' to their implements – a plough or sprayer, for example. And the implements can talk back, telling the tractor that it's going too fast or needs to move to the left. This kind of communication is also being developed in other farm vehicles. A new system allows a combine harvester, say, to send a call over to a tractor-trailer so the driver can unload the grain as and when necessary.</p>
+
+      <p>However, when fully autonomous systems take to the field, they'll look nothing like tractors. With their enormous size and weight, today's farm machines have significant downsides: they compact the soil, reducing porosity and killing beneficial life, meaning crops don't grow so well. Simon Blackmore, who researches agricultural technology at Harper Adams University College in England believes that fleets of lightweight autonomous robots have the potential to solve this problem and that replacing brute force with precision is key. 'A seed only needs one cubic centimeter of soil to grow. If we cultivate just that we only put tiny amounts of energy in and the plants still grow nicely.' There is another reason why automation may be the way forward according to Eldert van Henten, a robotics researcher at Wageningen University in the Netherlands. 'While the population is growing and needs to be fed, a rapidly shrinking number of people are willing to work in agriculture,' he points out.</p>
+
+      <p>Other researchers such as Linda Calvin, an economist at the U.S. Department of Agriculture, and Philip Martin at the University of California, Davis, have studied trends in mechanization to predict how US farms might fare. Calvin and Martin have observed how rising employment costs have led to the adoption of labour-saving farm technology in the past, citing the raisin industry as an example. In 2000, a bumper harvest crashed prices and, with profits squeezed, farmers looked for a solution. With labour one of their biggest costs – 42 percent of production expenses on U.S. farms, on average – they started using a mechanical harvester adapted from a machine used by wine makers. By 2007, almost half of California's raisins were mechanically harvested and a labour force once numbering 50,000 had shrunk to 30,000.</p>
+
+      <p>As well as having an impact on the job market, the widespread adoption of agribots might bring changes at the supermarket. Lewis Holloway, who studies agriculture at the University of Hull, UK, says that robotic milking is likely to influence the genetics of dairy herds as farmers opt for 'robot-friendly' cows, with udder shape, and even attitudes, suited to automated milking. Similarly, he says, it's conceivable that agribots could influence what fruit or vegetable varieties get to the shops, since farmers may prefer to grow those with, say, leaf shapes that are easier for their robots to discriminate from weeds. Almost inevitably, these machines will eventually alter the landscape, too. The real tipping point for robot agriculture will come when farms are being designed with agribots in mind, says Salah Sukkarieh, a robotics researcher at the Australian Center for Field Robotics, Sydney. This could mean a return to smaller fields, with crops planted in grids rather than rows and fruit trees pruned into two-dimensional shapes to make harvesting easier. This alien terrain tended by robots is still a while away, he says 'but it will happen.'</p>
+    </div>
+
+    <!-- PASSAGE 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>Homer's Literary Legacy</h2>
+      <p><em>You should spend about 20 minutes on Questions 27–40, which are based on Reading Passage 3 below.</em></p>
+      <p><em>Why was the work of Homer, famous author of ancient Greece, so full of clichés?</em></p>
+
+      <p><strong>A</strong> Until the last tick of history's clock, cultural transmission meant oral transmission and poetry, passed from mouth to ear, was the principal medium of moving information across space and from one generation to the next. Oral poetry was not simply a way of telling lovely or important stories, or of flexing the imagination. It was, argues the classicist Eric Havelock, a "massive repository of useful knowledge, a sort of encyclopedia of ethics, politics, history and technology which the effective citizen was required to learn as the core of his educational equipment". The great oral works transmitted a shared cultural heritage, held in common not on bookshelves, but in brains. In India, an entire class of priests was charged with memorizing the Vedas with perfect fidelity. In pre-Islamic Arabia, people known as Rawis were often attached to poets as official memorizers. The Buddha's teachings were passed down in an unbroken chain of oral tradition for four centuries until they were committed to writing in Sri Lanka in the first century B.C.</p>
+
+      <p><strong>B</strong> The most famous of the Western tradition's oral works, and the first to have been systematically studied, were Homer's <em>Odyssey</em> and <em>Iliad</em>. These two poems – possibly the first to have been written down in the Greek alphabet – had long been held up as literary archetypes. However, even as they were celebrated as the models to which all literature should aspire, Homer's masterworks had also long been the source of scholarly unease. The earliest modern critics sensed that they were somehow qualitatively different from everything that came after – even a little strange. For one thing, both poems were oddly repetitive in the way they referred to characters. Odysseus was always "clever Odysseus". Dawn was always "rosy-fingered". Why would someone write that? Sometimes the epithets seemed completely off-key. Why call the murderer of Agamemnon "blameless Aegisthos"? Why refer to "swift-footed Achilles" even when he was sitting down? Or to "laughing Aphrodite" even when she was in tears? In terms of both structure and theme, the <em>Odyssey</em> and <em>Iliad</em> were also oddly formulaic, to the point of predictability. The same narrative units – gathering armies, heroic shields, challenges between rivals – pop up again and again, only with different characters and different circumstances. In the context of such finely spun, deliberate masterpieces, these quirks seemed hard to explain.</p>
+
+      <p><strong>C</strong> At the heart of the unease about these earliest works of literature were two fundamental questions: first, how could Greek literature have been born ex nihilo with two masterpieces? Surely a few less perfect stories must have come before, and yet these two were among the first on record. And second, who exactly was their author? Or was it authors? There were no historical records of Homer, and no trustworthy biography of the man exists beyond a few self-referential hints embedded in the texts themselves.</p>
+
+      <p><strong>D</strong> Jean-Jacques Rousseau was one of the first modern critics to suggest that Homer might not have been an author in the contemporary sense of a single person who sat down and wrote a story and then published it for others to read. In his 1781 Essay on the Origin of Languages, the Swiss philosopher suggested that the <em>Odyssey</em> and <em>Iliad</em> might have been "written only in men's memories. Somewhat later they were laboriously collected in writing" – though that was about as far as his enquiry into the matter went.</p>
+
+      <p><strong>E</strong> In 1795, the German philologist Friedrich August Wolf argued for the first time that not only were Homer's works not written down by Homer, but they weren't even by Homer. They were, rather, a loose collection of songs transmitted by generations of Greek bards, and only redacted in their present form at some later date. In 1920, an eighteen-year-old scholar named Milman Parry took up the question of Homeric authorship as his Master's thesis at the University of California, Berkeley. He suggested that the reason Homer's epics seemed unlike other literature was because they were unlike other literature. Parry had discovered what Wood and Wolf had missed: the evidence that the poems had been transmitted orally was right there in the text itself. All those stylistic quirks, including the formulaic and recurring plot elements and the bizarrely repetitive epithets – "clever Odysseus" and "gray-eyed Athena" – that had always perplexed readers were actually like thumbprints left by a potter: material evidence of how the poems had been crafted. They were mnemonic aids that helped the bard(s) fit the meter and pattern of the line, and remember the essence of the poems.</p>
+
+      <p><strong>F</strong> The greatest author of antiquity was actually, Parry argued, just "one of a long tradition of oral poets that ... composed wholly without the aid of writing". Parry realised that if you were setting out to create memorable poems, the <em>Odyssey</em> and the <em>Iliad</em> were exactly the kind of poems you'd create. It's said that clichés are the worst sin a writer can commit, but to an oral bard, they were essential. The very reason that clichés so easily seep into our speech and writing – their insidious memorability – is exactly why they played such an important role in oral storytelling. The principles that the oral bards discovered as they sharpened their stories through telling and retelling were the same mnemonic principles that psychologists rediscovered when they began conducting their first scientific experiments on memory around the turn of the twentieth century. Words that rhyme are much more memorable than words that don't, and concrete nouns are easier to remember than abstract ones. Finding patterns and structure in information is how our brains extract meaning from the world, and putting words to music and rhyme is a way of adding extra levels of pattern and structure to language.</p>
+
+      <p><strong>Glossary</strong></p>
+      <p><em>quirk</em>: behaviour or a habit which seems to be unique to one person<br>
+      <em>ex nihilo</em>: a Latin phrase used to express the idea of 'creation out of nothing'<br>
+      <em>bard</em>: a person who composed and recited long, heroic poems<br>
+      <em>redacted</em>: published<br>
+      <em>mnemonic</em>: a sentence or short poem used for helping someone to remember something<br>
+      <em>cliché</em>: a phrase or idea that is unoriginal because people use it very frequently</p>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 -->
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–8</h3>
+          <div class="q-instr">
+            <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+            <p>Write <strong>TRUE</strong> if the statement agrees with the information, <strong>FALSE</strong> if the statement contradicts the information, <strong>NOT GIVEN</strong> if there is no information on this.</p>
+          </div>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Shirase's trip to the South Pole is well-known to other explorers.</p><div class="options"><label><input type="radio" name="q1" value="TRUE"> TRUE</label><label><input type="radio" name="q1" value="FALSE"> FALSE</label><label><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>Since Shirase arrived in Antarctica, smaller ships have also made the journey.</p><div class="options"><label><input type="radio" name="q2" value="TRUE"> TRUE</label><label><input type="radio" name="q2" value="FALSE"> FALSE</label><label><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>Shirase's original ambition was to travel to the North Pole.</p><div class="options"><label><input type="radio" name="q3" value="TRUE"> TRUE</label><label><input type="radio" name="q3" value="FALSE"> FALSE</label><label><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>Some Japanese officials thought Shirase's intention to travel to the South Pole was pointless.</p><div class="options"><label><input type="radio" name="q4" value="TRUE"> TRUE</label><label><input type="radio" name="q4" value="FALSE"> FALSE</label><label><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>The British team announced their decision to carry out scientific research in Antarctica before Shirase.</p><div class="options"><label><input type="radio" name="q5" value="TRUE"> TRUE</label><label><input type="radio" name="q5" value="FALSE"> FALSE</label><label><input type="radio" name="q5" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Shirase found it easy to raise the money he needed for his trip to the South Pole.</p><div class="options"><label><input type="radio" name="q6" value="TRUE"> TRUE</label><label><input type="radio" name="q6" value="FALSE"> FALSE</label><label><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>A previous prime minister of Japan persuaded a scientist to go with Shirase.</p><div class="options"><label><input type="radio" name="q7" value="TRUE"> TRUE</label><label><input type="radio" name="q7" value="FALSE"> FALSE</label><label><input type="radio" name="q7" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>The weather that slowed down Shirase's progress to New Zealand was unusually bad for the season.</p><div class="options"><label><input type="radio" name="q8" value="TRUE"> TRUE</label><label><input type="radio" name="q8" value="FALSE"> FALSE</label><label><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 9–13</h3>
+          <div class="q-instr"><p>Choose the correct letter, A, B, C or D.</p></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>When reporters in New Zealand met Shirase, they were</p><div class="options stack"><label><input type="radio" name="q9" value="A"> A. concerned about the quality of his equipment.</label><label><input type="radio" name="q9" value="B"> B. impressed with the design of his ship.</label><label><input type="radio" name="q9" value="C"> C. certain he was unaware of the dangers ahead.</label><label><input type="radio" name="q9" value="D"> D. surprised by the bravery he demonstrated.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>What are we told about the captain of the Kainan Maru in the fifth paragraph?</p><div class="options stack"><label><input type="radio" name="q10" value="A"> A. He had given Shirase some poor advice.</label><label><input type="radio" name="q10" value="B"> B. His skill at sailing saved the boat and crew.</label><label><input type="radio" name="q10" value="C"> C. He refused to listen to the warnings of others.</label><label><input type="radio" name="q10" value="D"> D. He was originally confident they could reach Antarctica.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>After Shirase finally reached Antarctica he realised that</p><div class="options stack"><label><input type="radio" name="q11" value="A"> A. he was unsure of the direction he should follow.</label><label><input type="radio" name="q11" value="B"> B. he would have to give up on fulfilling his personal ambition.</label><label><input type="radio" name="q11" value="C"> C. he might not have enough food to get to the South Pole.</label><label><input type="radio" name="q11" value="D"> D. he still wanted to compete in the race against the other teams.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>What is the writer doing in the seventh paragraph?</p><div class="options stack"><label><input type="radio" name="q12" value="A"> A. criticising a decision concerning scientific research.</label><label><input type="radio" name="q12" value="B"> B. explaining why a particular mistake had occurred.</label><label><input type="radio" name="q12" value="C"> C. describing the conditions that the expedition faced.</label><label><input type="radio" name="q12" value="D"> D. rejecting the idea that Shirase was poorly prepared.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>What is the writer's main point in the final paragraph?</p><div class="options stack"><label><input type="radio" name="q13" value="A"> A. Considering the problems Shirase had to deal with, his achievement was incredible.</label><label><input type="radio" name="q13" value="B"> B. In Japan, the reaction to Shirase's adventure in Antarctica came as a surprise to him.</label><label><input type="radio" name="q13" value="C"> C. It was obvious that Amundsen would receive more attention as an explorer than Shirase.</label><label><input type="radio" name="q13" value="D"> D. Shirase had achieved more on the Antarctic expedition than even he had expected.</label></div><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section class="q-section" data-part="2">
+        <div class="q-group">
+          <h3>Questions 14–17</h3>
+          <div class="q-instr">
+            <p>Do the following statements agree with the claims of the writer in Reading Passage 2?</p>
+            <p>Write <strong>YES</strong> if the statement agrees with the claims of the writer, <strong>NO</strong> if the statement contradicts the claims of the writer, <strong>NOT GIVEN</strong> if it is impossible to say.</p>
+          </div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Governments should do more to ensure that food is generally affordable.</p><div class="options"><label><input type="radio" name="q14" value="YES"> YES</label><label><input type="radio" name="q14" value="NO"> NO</label><label><input type="radio" name="q14" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Farmers need to reduce the harm they do to the environment.</p><div class="options"><label><input type="radio" name="q15" value="YES"> YES</label><label><input type="radio" name="q15" value="NO"> NO</label><label><input type="radio" name="q15" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>In the future, farmers are likely to increase their dependency on chemicals.</p><div class="options"><label><input type="radio" name="q16" value="YES"> YES</label><label><input type="radio" name="q16" value="NO"> NO</label><label><input type="radio" name="q16" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>Farms in Europe and the US may find it hard to adapt to precision farming.</p><div class="options"><label><input type="radio" name="q17" value="YES"> YES</label><label><input type="radio" name="q17" value="NO"> NO</label><label><input type="radio" name="q17" value="NOT GIVEN"> NOT GIVEN</label></div><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 18–21</h3>
+          <div class="q-instr"><p>Complete the sentences below.</p><p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p></div>
+          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>In the future, agribots will provide <input type="text" name="q18" aria-label="Q18"> to young plants.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>Some machines will use chemicals or <input type="text" name="q19" aria-label="Q19"> to get rid of unwanted plants.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>It is the production of <input type="text" name="q20" aria-label="Q20"> which currently uses most machinery on farms.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p><input type="text" name="q21" aria-label="Q21"> between machines such as tractors is making farming more efficient.</p><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 22–26</h3>
+          <div class="q-instr">
+            <p>Look at the following researchers and the list of statements below.</p>
+            <p>Match each researcher with the correct statement, A–H.</p>
+          </div>
+          <div class="word-bank">
+            <span>A. The use of automation might impact on the development of particular animal and plant species.</span>
+            <span>B. We need to consider the effect on employment that increased automation will have.</span>
+            <span>C. We need machines of the future to be exact, not more powerful.</span>
+            <span>D. As farming becomes more automated the appearance of farmland will change.</span>
+            <span>E. New machinery may require more investment than certain farmers can afford.</span>
+            <span>F. There is a shortage of employees in the farming industry.</span>
+            <span>G. There are limits to the environmental benefits of automation.</span>
+            <span>H. Economic factors are often the driving force behind the development of machinery.</span>
+          </div>
+          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>Simon Blackmore</p><select name="q22" aria-label="Q22"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>Eldert van Henten</p><select name="q23" aria-label="Q23"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>Linda Calvin and Philip Martin</p><select name="q24" aria-label="Q24"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>Lewis Holloway</p><select name="q25" aria-label="Q25"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>Salah Sukkarieh</p><select name="q26" aria-label="Q26"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section class="q-section" data-part="3">
+        <div class="q-group">
+          <h3>Questions 27–32</h3>
+          <div class="q-instr">
+            <p>Reading Passage 3 has six paragraphs, A–F.</p>
+            <p>Which paragraph contains the following information?</p>
+            <p><em>NB You may use any letter more than once.</em></p>
+          </div>
+          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>the claim that the Odyssey and Iliad were not poems in their original form.</p><select name="q27" aria-label="Q27"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>a theory involving the reinterpretation of the term 'author'</p><select name="q28" aria-label="Q28"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>references to the fact that little is known about Homer's life</p><select name="q29" aria-label="Q29"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>a comparison between the construction of Homer's poems and another art form</p><select name="q30" aria-label="Q30"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="31"><div class="q-num">31</div><div class="q-body"><p>examples of the kinds of people employed to recall language</p><select name="q31" aria-label="Q31"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="32"><div class="q-num">32</div><div class="q-body"><p>doubts regarding Homer's apparently inappropriate descriptions</p><select name="q32" aria-label="Q32"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select><div class="feedback"></div></div></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 33–34</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, A–E.</p>
+            <p>Which TWO of these points are made by the writer of the text about the Odyssey and the Iliad?</p>
+          </div>
+          <div class="q" data-q="33">
+            <div class="q-num">33</div>
+            <div class="q-body">
+              <div class="options stack">
+                <label><input type="checkbox" name="q33" value="A"> A. They are sometimes historically inaccurate.</label>
+                <label><input type="checkbox" name="q33" value="B"> B. It is uncertain which century they were written in.</label>
+                <label><input type="checkbox" name="q33" value="C"> C. Their content is very similar.</label>
+                <label><input type="checkbox" name="q33" value="D"> D. Later writers referred to them as ideal examples of writing.</label>
+                <label><input type="checkbox" name="q33" value="E"> E. There are stylistic differences between them.</label>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+          <div class="q" data-q="34" style="display:none;"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 35–36</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, A–E.</p>
+            <p>Which TWO of the following theories does the writer of the text refer to?</p>
+          </div>
+          <div class="q" data-q="35">
+            <div class="q-num">35</div>
+            <div class="q-body">
+              <div class="options stack">
+                <label><input type="checkbox" name="q35" value="A"> A. Homer wrote his work during a period of captivity.</label>
+                <label><input type="checkbox" name="q35" value="B"> B. Neither the Odyssey nor the Iliad were written by Homer.</label>
+                <label><input type="checkbox" name="q35" value="C"> C. Homer created the Odyssey and Iliad without writing them down.</label>
+                <label><input type="checkbox" name="q35" value="D"> D. Homer may have suffered from a failing memory in later life.</label>
+                <label><input type="checkbox" name="q35" value="E"> E. The oral and written versions of Homer's work may not be identical.</label>
+              </div>
+              <div class="feedback"></div>
+            </div>
+          </div>
+          <div class="q" data-q="36" style="display:none;"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 37–40</h3>
+          <div class="q-instr">
+            <p>Complete the summary below.</p>
+            <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+          </div>
+          <p style="font-weight:700;margin:6px 0 12px;">The importance of the spoken word and how words are remembered</p>
+          <div class="q" data-q="37"><div class="q-num">37</div><div class="q-body"><p>Spoken poetry was once the means by which each <input type="text" name="q37" aria-label="Q37"> of a particular culture or community could pass on its knowledge.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="38"><div class="q-num">38</div><div class="q-body"><p>Indeed, it has been suggested that it was the duty of a <input type="text" name="q38" aria-label="Q38"> to know poetry so they would be informed about subjects such as politics and history.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="39"><div class="q-num">39</div><div class="q-body"><p>Psychologists now know that when people are trying to remember information, they may find it difficult to remember words that express <input type="text" name="q39" aria-label="Q39"> ideas.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="40"><div class="q-num">40</div><div class="q-body"><p>It is easier to remember words which sound similar or go together with <input type="text" name="q40" aria-label="Q40">.</p><div class="feedback"></div></div></div>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1">
+        <span class="tab-part-name">Part 1</span>
+        <span class="tab-qcount">Questions 1–13</span>
+        <span class="skim-btn" data-part="1">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="2">
+        <span class="tab-part-name">Part 2</span>
+        <span class="tab-qcount">Questions 14–26</span>
+        <span class="skim-btn" data-part="2">Skim (1x)</span>
+      </button>
+      <button class="part-tab" data-part="3">
+        <span class="tab-part-name">Part 3</span>
+        <span class="tab-qcount">Questions 27–40</span>
+        <span class="skim-btn" data-part="3">Skim (1x)</span>
+      </button>
+    </div>
+
+    <div class="ielts-reading-question-palette" id="palette"></div>
+
+    <div class="ielts-reading-bottom-controls">
+      <div class="ielts-reading-question-control-buttons">
+        <button id="prevBtn" title="Previous question">←</button>
+        <button id="nextBtn" title="Next question">→</button>
+      </div>
+      <div class="ielts-reading-test-control-buttons">
+        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Your Results</h3>
+      <button class="close-x" data-close="resultOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row">
+        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
+      </div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head">
+      <h3>Review Your Answers</h3>
+      <button class="close-x" data-close="previewOverlay">×</button>
+    </div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ANSWER KEY */
+const ANSWER_KEY = {
+  1:["FALSE"],2:["NOT GIVEN"],3:["TRUE"],4:["TRUE"],
+  5:["NOT GIVEN"],6:["FALSE"],7:["NOT GIVEN"],8:["NOT GIVEN"],
+  9:["A"],10:["B"],11:["B"],12:["C"],13:["A"],
+  14:["NOT GIVEN"],15:["YES"],16:["NO"],17:["YES"],
+  18:["fertilizer","fertiliser","fertilisers","fertilizers"],
+  19:["lasers","laser"],
+  20:["cereals","cereal"],
+  21:["communication"],
+  22:["C"],23:["F"],24:["H"],25:["A"],26:["D"],
+  27:["E"],28:["D"],29:["C"],30:["E"],31:["A"],32:["B"],
+  33:["C,D","D,C"],
+  34:["C,D","D,C"],
+  35:["B,C","C,B"],
+  36:["B,C","C,B"],
+  37:["generation"],
+  38:["citizen"],
+  39:["abstract"],
+  40:["rhyme","rhymes"]
+};
+
+/* Checkbox groups: Q33-34 share q33, Q35-36 share q35 */
+const CHECKBOX_GROUPS = {
+  33: { name:"q33", correct:["C","D"] },
+  34: { name:"q33", correct:["C","D"] },
+  35: { name:"q35", correct:["B","C"] },
+  36: { name:"q35", correct:["B","C"] }
+};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:13},(_,i)=>i+1),
+  2: Array.from({length:13},(_,i)=>i+14),
+  3: Array.from({length:14},(_,i)=>i+27)
+};
+
+/* HELPERS */
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");
+}
+function getUserAnswer(n){
+  if (CHECKBOX_GROUPS[n]){
+    const checked = Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`))
+      .map(cb => cb.value).sort().join(",");
+    return checked;
+  }
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const s = document.querySelector(`select[name=q${n}]`);
+  if (s) return s.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+function isCorrect(n, ua){
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function estimateBand(score){
+  if (score>=39) return "9.0"; if (score>=37) return "8.5";
+  if (score>=35) return "8.0"; if (score>=33) return "7.5";
+  if (score>=30) return "7.0"; if (score>=27) return "6.5";
+  if (score>=23) return "6.0"; if (score>=19) return "5.5";
+  if (score>=15) return "5.0"; if (score>=13) return "4.5";
+  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
+  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
+  return "2.0 or below";
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+/* BUILD PALETTE */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Part ${part}:`;
+  section.appendChild(label);
+
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+
+  palette.appendChild(section);
+});
+
+/* PART SWITCHING */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", (e) => {
+    if (e.target.closest(".skim-btn")) return;
+    switchPart(tab.dataset.part);
+  });
+});
+
+/* SKIMMING */
+let skimInterval=null, skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const part = btn.dataset.part;
+    if (skimInterval && skimPart === part){
+      clearInterval(skimInterval); skimInterval=null; skimPart=null;
+      btn.classList.remove("on"); btn.textContent="Skim (1x)";
+      toast("Skimming stopped."); return;
+    }
+    if (skimInterval){
+      clearInterval(skimInterval);
+      document.querySelectorAll(".skim-btn").forEach(b=>{
+        b.classList.remove("on"); b.textContent="Skim (1x)";
+      });
+    }
+    if (String(currentPart) !== String(part)) switchPart(part);
+    const pane = document.getElementById("passagesPane");
+    pane.scrollTop = 0;
+    skimPart = part;
+    btn.classList.add("on"); btn.textContent="Stop";
+    skimInterval = setInterval(() => {
+      pane.scrollTop += 1.2;
+      if (pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2){
+        clearInterval(skimInterval); skimInterval=null; skimPart=null;
+        btn.classList.remove("on"); btn.textContent="Skim (1x)";
+        toast("Skimming complete.");
+      }
+    }, 28);
+    toast("Skimming started — read quickly.");
+  });
+});
+
+/* NAVIGATION */
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>40) return;
+  let part = 1;
+  for (const p of [1,2,3]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===3);
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else if (currentPart > 1){
+    const prev = PART_QUESTIONS[currentPart-1];
+    goToQuestion(prev[prev.length-1]);
+  }
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else if (currentPart < 3) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
+});
+
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+/* PALETTE ANSWERED STATE */
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* CHECKBOX LIMIT (2 for Q33/Q35) */
+document.querySelectorAll('input[type=checkbox][name="q33"],input[type=checkbox][name="q35"]').forEach(cb => {
+  cb.addEventListener("change", () => {
+    const name = cb.name;
+    const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
+    if (checked.length > 2){
+      cb.checked = false;
+      toast("You can only select 2 options.");
+    }
+    refreshPaletteAnswered();
+  });
+});
+
+/* RESIZER */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+/* TIMER */
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  const s = String(seconds%60).padStart(2,"0");
+  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* SUBMIT */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=40; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
+      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / 40`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(score);
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+});
+
+/* REVIEW */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=40; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+/* close overlays */
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape")
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+});
+
+/* MENU */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+/* RESET */
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll(".q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  switchPart(1);
+  toast("Test reset. Good luck!");
+}
+
+/* FOCUS MODE */
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+/* INIT */
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+</script>
+
+</body>
+</html>
