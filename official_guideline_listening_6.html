@@ -1,1360 +1,972 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Official Cambridge Guide to IELTS Academic Listening Test 6</title>
-<style>
-:root{
-  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
-  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
-  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
-}
-*{box-sizing:border-box;}
-html,body{height:100%;}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
-button{font-family:inherit;cursor:pointer;border:none;}
-
-.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
-.app-header .logo{height:34px;display:block;}
-.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.header-right{display:flex;align-items:center;gap:10px;}
-.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
-.band-chip.show{opacity:1;background:#16a34a;}
-.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
-.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
-.icon-btn:hover{background:#f1f5f9;}
-.menu-wrap{position:relative;}
-.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
-  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
-.menu-pop.show{display:block;}
-.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
-.menu-pop a:last-child{border-bottom:none;}
-.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
-
-.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
-  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-.pane{overflow-y:auto;padding:24px 30px;}
-.passages{flex:0 0 40%;background:#fcfdff;}
-.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
-.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
-.resizer:hover{background:#cbd5e1;}
-.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
-
-.passage{display:none;}
-.passage.active{display:block;}
-.passage h2{font-size:22px;margin:0 0 6px;font-weight:700;}
-.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
-  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
-.passage p{margin:0 0 14px;}
-.passage em{color:var(--muted);}
-
-.audio-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(15,23,42,.04);}
-.audio-card h3{margin:0 0 4px;font-size:16px;color:var(--accent);font-weight:700;}
-.audio-card .audio-desc{font-size:13px;color:var(--muted);margin-bottom:14px;}
-.audio-card audio{width:100%;height:42px;outline:none;}
-.audio-tip{font-size:12px;color:var(--muted);margin-top:10px;background:#f8fafc;padding:8px 12px;border-radius:6px;border-left:3px solid var(--accent);}
-.audio-tip i{color:var(--accent);}
-
-.transcript-toggle{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:12px;
-  display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
-.transcript-toggle:hover{background:#f8fafc;}
-.transcript-toggle span{font-size:13px;font-weight:600;}
-.transcript-body{display:none;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;line-height:1.7;max-height:400px;overflow-y:auto;margin-bottom:14px;}
-.transcript-body.show{display:block;}
-.transcript-body p{margin:0 0 8px;}
-
-.q-section{display:none;}
-.q-section.active{display:block;}
-.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
-.q-group:last-child{border-bottom:none;margin-bottom:0;}
-.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
-.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
-.q-instr p{margin:0 0 3px;}
-.q-instr p:last-child{margin:0;}
-
-.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
-.q:last-child{border-bottom:none;}
-.q.highlight{background:#fffbeb;}
-.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-.q-body{flex:1;min-width:0;}
-.q-body p{margin:0 0 7px;}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Official Cambridge Guide to IELTS Academic Listening Test 6</title>
+    <style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1e293b;--muted:#64748b;--brand:#0f766e;--brand-dark:#0d5c56;--ok:#16a34a;--bad:#c2410c;--line:#e2e8f0;--soft:#f8fafc;--hl:#fef08a;--bbh:80px;--header-h:58px;--text:#1e293b;--accent:#0f766e;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:calc(var(--bbh) + 20px);}
+body.bb-off{padding-bottom:20px}.wrap{max-width:940px;margin:0 auto;padding:0 16px}::selection{background:var(--hl);color:#111}
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.topbar .wrap{display:flex;align-items:center;gap:10px;height:58px}
+.brand{font-weight:700;color:var(--brand);letter-spacing:.2px;white-space:nowrap}.brand span{color:var(--muted);font-weight:400}
+.spacer{flex:1}.timer{font-variant-numeric:tabular-nums;font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:15px;}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:.15s;white-space:nowrap;}
+.btn:hover{background:var(--soft)}.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-dark);border-color:var(--brand-dark)}.btn.ghost{background:transparent}
+.btn.small{padding:6px 11px;font-size:13px}.btn.hl-btn{background:#fef3c7;border-color:#fcd34d;color:#78350f}.btn.hl-btn:hover{background:#fde68a}
+h1{font-size:26px;margin:24px 0 6px}.lead{color:var(--muted);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+.card h2{font-size:20px;margin:0 0 4px}.card h3{font-size:17px;margin:18px 0 8px}.card p{margin:8px 0}
+audio{width:100%;margin:10px 0 6px}
+.part{display:none}.part.current{display:block}
+.part-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:14px;}
+.part-badge{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px;letter-spacing:.3px;}
+.part-desc{color:var(--muted);font-size:14px;font-weight:600}.part-audio-label{font-size:13px;color:var(--muted);font-weight:600;margin-left:auto}
+.notes{list-style:none;padding:0;margin:0}.notes li{padding:9px 0 9px 4px;border-bottom:1px dashed var(--line)}.notes li:last-child{border-bottom:none}
+.q{white-space:nowrap}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin-right:5px;background:#e2e8f0;color:#334155;border-radius:6px;font-size:13px;font-weight:700;vertical-align:middle;}
 input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
-input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
-select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
-.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
-.options.stack{display:block;}
-.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
-.options.stack label{display:flex;margin-bottom:3px;}
-.options label:hover{background:#f8fafc;}
-input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-
-.q.correct .q-num{background:var(--good-soft);color:var(--good);}
-.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
-.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
-.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
-.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
-.q.correct .feedback,.q.wrong .feedback{display:block;}
-.q.correct .feedback{color:var(--good);}
-.q.wrong .feedback{color:var(--bad);}
-
-mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
-.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
-
-.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
-  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
-.bottom-inner{max-width:1600px;margin:0 auto;}
-.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
-.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
-  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
-.part-tab:hover{opacity:1;background:#f1f5f9;}
-.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
-.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
-.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
-
-.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
-  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
-.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
-.ielts-reading-palette-section.active{display:flex;}
-.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
-.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
-  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
-.ielts-reading-palette-item:hover{background:#e2e8f0;}
-.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
-.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
-.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
-.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
-.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
-
-.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px solid #f1f5f9;padding-top:8px;}
-.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
-.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
-  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
-.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
-.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
-.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
-  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
-.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
-  font-weight:700;display:flex;align-items:center;gap:8px;}
-.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
-
-.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
-.overlay.show{display:flex;}
-.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
-  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
-.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
-.overlay-head h3{margin:0;font-size:18px;}
-.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
-.close-x:hover{color:var(--text);}
-.overlay-body{padding:18px 22px;overflow-y:auto;}
-.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
-.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
-.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
-table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
-table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
-table.result-tbl td.correct{color:var(--good);font-weight:700;}
-table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
-.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
-
-body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
-body.focus-mode{padding-bottom:0;}
-body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
-.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
-  padding:8px 14px;font-size:13px;font-weight:700;}
-body.focus-mode .exit-focus{display:block;}
-
-.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
-  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
-.toast.show{opacity:1;}
-
-#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
-#hl-popup.show{display:flex;gap:3px;}
-#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
-#hl-popup button:hover{background:#1e293b;}
-
-#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
-#note-popup.show{display:flex;}
-#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
-#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
-#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
-#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
-#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
-#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
-#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
-
-#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
-  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
-  transition:.15s;border:none;cursor:pointer;}
-#hl-fab:hover{transform:scale(1.08);}
-#hl-fab.active{background:#facc15;color:#0f172a;}
-body.focus-mode #hl-fab{bottom:20px;}
-
-.plan-img{max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:6px;}
+input[type=text]:focus{outline:2px solid #99f6e4;border-color:#5eead4;}
+input[type=text].is-right{border-color:#86efac;background:#f0fdf4}input[type=text].is-wrong{border-color:#fdba74;background:#ffedd5}
+.mcq{margin:10px 0 16px;padding:4px 6px;border-radius:8px}.mcq .stem{font-weight:600}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;cursor:pointer;border-radius:6px}.opt:hover{background:var(--soft)}
+.opt input{margin-top:5px;accent-color:var(--brand)}.opt .ltr{font-weight:700;color:var(--brand);min-width:16px}
+.opt.picked-ok{background:#f0fdf4}.opt.picked-no{background:#ffedd5}.opt.key{outline:1px dashed #86efac}
+select{font:inherit;font-size:15px;padding:4px 8px;border-radius:6px;border:1px solid #cbd5e1;border-bottom:2px solid #94a3b8;background:#fff;outline:none;}
+select:focus{border-color:var(--brand)}select.is-right{border-color:#86efac;background:#f0fdf4}select.is-wrong{border-color:#fdba74;background:#ffedd5}
+.matchlist{list-style:none;padding:0;margin:6px 0 0}.matchlist li{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);flex-wrap:wrap}.matchlist li:last-child{border-bottom:none}
+.optbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px;}
+.optbox b{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 16px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--soft);font-size:14px}td input[type=text]{min-width:120px}
+.feedback{font-size:13px;font-weight:700;margin-left:6px;white-space:nowrap}.feedback.ok{color:var(--ok)}.feedback.no{color:var(--bad)}
+.feedback.no em{font-style:normal;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:5px}
+.post-submit{display:none}body.graded .post-submit{display:block}.resultcard{display:none}.resultcard.show{display:block}
+.score{font-size:34px;font-weight:800;color:var(--brand);margin:0}.band{color:var(--muted);margin:2px 0 6px}
+.result-note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:10px;padding:10px 14px;font-size:14px;margin:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table.result td.wrong{color:var(--bad);font-weight:600}table.result td.right{color:var(--ok);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}.pill.ok{background:#dcfce7;color:#166534}.pill.no{background:#ffedd5;color:#9a3412}
+details.transcript{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+details.transcript summary{cursor:pointer;font-weight:700;color:var(--brand)}details.transcript[open] summary{margin-bottom:8px}
+details.transcript p{margin:10px 0;font-size:15px;color:#334155}
+mark.hl{background:var(--hl);color:inherit;padding:0 1px;border-radius:3px;cursor:pointer;box-shadow:inset 0 -2px 0 #f59e0b;}mark.hl:hover{background:#fde047}
+#hlBar{position:absolute;z-index:90;display:none;background:#1e293b;border-radius:10px;padding:6px;box-shadow:0 10px 30px rgba(2,6,23,.42);font-size:13px;gap:4px;align-items:center;transform:translate(-50%,-100%);animation:hlpop .12s ease-out;}
+@keyframes hlpop{from{opacity:0;transform:translate(-50%,-90%) scale(.92);}to{opacity:1;transform:translate(-50%,-100%) scale(1);}}
+#hlBar.on{display:flex}#hlBar button{background:transparent;border:none;color:#fff;cursor:pointer;font:inherit;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+#hlBar button:hover{background:rgba(255,255,255,.16)}#hlBar .hl-main{background:#facc15;color:#422006}#hlBar .hl-main:hover{background:#fde047}
+#hlBar .sep{width:1px;height:20px;background:rgba(255,255,255,.22);margin:0 2px}
+#hlHint{position:fixed;right:16px;top:calc(var(--header-h) + 16px);z-index:55;background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(120,53,15,.12);display:flex;align-items:center;gap:7px;cursor:default;transition:.2s;}
+#hlHint.flash{background:#fde68a;transform:scale(1.06)}
+#hlHint .dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.8);}}
+body.bb-off #hlHint{top:calc(var(--header-h) + 16px)}
+.bottombar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);box-shadow:0 -3px 16px rgba(15,23,42,.08);transition:transform .25s ease;}
+.bottombar.off{transform:translateY(110%)}
+.bb-inner{max-width:1000px;margin:0 auto;padding:8px 12px;display:flex;flex-direction:column;gap:6px;}
+.bb-top{display:flex;align-items:center;gap:10px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:thin;}
+.bb-top::-webkit-scrollbar{height:6px}.bb-top::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+.bb-tabs{display:flex;gap:4px;flex:0 0 auto;padding-right:10px;border-right:1px solid var(--line);}
+.bb-tab{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:.12s;}
+.bb-tab:hover{border-color:var(--brand);color:var(--brand)}.bb-tab.current{background:var(--brand);border-color:var(--brand);color:#fff}
+.bb-palette{display:flex;gap:4px;flex:1;flex-wrap:nowrap;align-items:center;min-width:0;}
+.chip{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.12s;padding:0;}
+.chip:hover{border-color:var(--brand);color:var(--brand)}.chip.answered{background:#ccfbf1;border-color:#5eead4;color:#115e59}
+.chip.ok{background:#dcfce7;border-color:#86efac;color:#166534}.chip.no{background:#ffedd5;border-color:#fdba74;color:#9a3412}.chip.active{outline:2px solid var(--brand);outline-offset:1px}
+.bb-bottom{display:flex;align-items:center;gap:10px;padding-top:6px;border-top:1px dashed var(--line);}
+.bb-actions{display:flex;gap:8px;align-items:center;margin-left:auto}.bb-progress{font-size:13px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.bb-hide{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;}
+.bb-hide:hover{background:var(--soft);color:var(--ink)}
+#bbShow{position:fixed;right:16px;bottom:16px;z-index:71;display:none;background:var(--brand);color:#fff;border:none;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 22px rgba(15,118,110,.32);}
+#bbShow.on{display:block}
+footer{color:var(--muted);font-size:14px;text-align:center;padding:26px 16px 40px}footer a{color:var(--muted)}
+@media (max-width:600px){.brand span{display:none}.bb-progress{display:none}.bb-inner{padding:6px 8px;gap:4px}.card{padding:18px 16px}h1{font-size:22px}.bb-tab{padding:5px 9px;font-size:10px}.chip{width:28px;height:28px;font-size:12px}#hlHint{font-size:12px;padding:6px 10px;right:10px;}}
+@media print{.topbar,.app-header,.bottombar,#bbShow,#hlBar,#hlHint{display:none!important}body{padding-bottom:0}.part{display:block!important}.card{break-inside:avoid;box-shadow:none}.post-submit{display:block!important}details.transcript{display:block}details.transcript > *{display:block!important}}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header > a:first-child{font-size:20px;line-height:1;text-decoration:none;width:38px;height:38px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--soft);border:1px solid var(--line);transition:.15s;}
+.app-header > a:first-child:hover{background:#ccfbf1;border-color:#5eead4}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;transition:.2s;}
+.band-chip.show{opacity:1;background:#0f766e;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.12s;}
+.icon-btn:hover{background:#f1f5f9;}.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}.menu-pop a:last-child{border-bottom:none;}.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+@media (max-width:600px){.app-header{padding:0 10px;gap:8px}.app-header h1{font-size:12px}.timer-chip{padding:4px 8px;font-size:12px}.icon-btn{padding:4px 8px;font-size:12px}.band-chip{display:none}}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<header class="app-header">
-  <a href="/" >📚</a>
-  <h1>Official Cambridge Guide to IELTS Academic Listening Test 6</h1>
-  <div class="header-right">
-    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
-    <div class="band-chip" id="bandChip">--</div>
-    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
-    <div class="menu-wrap">
-      <button class="icon-btn" id="menuBtn">☰</button>
-      <div class="menu-pop" id="menuPop">
-        <a href="#" id="exportLink">📄 Export as PDF</a>
-        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
-        <a href="#" id="resetLink">↺ Reset Test</a>
-        <a href="#" id="gotoTop">↑ Back to Top</a>
+    <header class="app-header">
+      <a href="./index.html" title="Home">📚</a>
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 6</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="focusBtn" type="button">⛶ Focus</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn" type="button">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
-<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
+    <div id="hlHint" title="Select any text to highlight it"><span
+        class="dot"></span><span>Highlight mode ON</span></div>
 
-<div class="main-split" id="mainSplit">
-  <div class="pane passages" id="passagesPane">
-
-    <!-- PART 1 -->
-    <div class="passage active" data-part="1">
-      <span class="part-label">Part 1</span>
-      <h2>Accommodation Form: Rental Properties</h2>
-      <p><em>Listen and answer questions 1–10.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 1</h3>
-        <div class="audio-desc">A phone conversation between an estate agent and a woman wishing to rent accommodation.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131576-official_cambridge_guide_to_ielts_academic_listening_test_6_1.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_6_1.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Agent: Fairfield Rentals. Andrew Williams. How can I help you?</p>
-        <p>Woman: Oh hello. I'm calling from the UK - um, my family are moving to Canada early next year, and we're hoping to find somewhere to rent in Fairfield for the first six months while we settle in.</p>
-        <p>Agent: Right, I see. Well, let's get your details.</p>
-        <p>Woman: Yes, my name's Jane Ryder.</p>
-        <p>Agent: OK, Jane. And can I have a phone number - the best number to get you on?</p>
-        <p>Woman: Well, that'd probably be our home number so 0044 for the UK, and then it's 208 613 2978.</p>
-        <p>Agent: Alright. And an email address, please, so we can send you out all the information and forms.</p>
-        <p>Woman: I think it's best if I give you my husband's email – he's sitting in front of a computer all day so he can print stuff off and get it back to you sooner than I could. It's richard@visiontech.co.uk. I'll just spell the company name for you. That's V-I-S-I-O-N-T-E-C-H.</p>
-        <p>Agent: Great. And we have a question here about occupation.</p>
-        <p>Woman: Richard's an IT specialist for an advertising company. They're transferring him to their Fairfield branch.</p>
-        <p>Agent: Actually, just your job for now, thanks.</p>
-        <p>Woman: Me? I'm a doctor at the hospital in our town.</p>
-        <p>Agent: OK, I'll put that down. Now, what kind of accommodation are you looking for? House, apartment?</p>
-        <p>Woman: An apartment, probably, as long as it has two bedrooms. There'll be me, my husband and our ten-year- old son.</p>
-        <p>Agent: And so with an apartment, you're less likely to get a garden.</p>
-        <p>Woman: That's OK.</p>
-        <p>Agent: But what about a garage - is that something you'll want the apartment to have?</p>
-        <p>Woman: Yes, that's definitely important.</p>
-        <p>Agent: OK, just a moment, I'll just make a note of that.</p>
-        <p>Woman: But - er before we go on - I should probably say now that what we don't need is any furniture - because we'll be shipping all that over, and I don't really want to pay for storage while we're waiting to buy a house.</p>
-        <p>Agent: Not a problem. I'll make a note of that.</p>
-        <p>Woman: Actually, though, just thinking about the kitchen, what can I expect from a rental property? I mean, what kind of equipment is provided?</p>
-        <p>Agent: Well, the normal thing is that you get a stove - I think that's a cooker in British English.</p>
-        <p>Woman: OK, good to know, but how about a fridge? We'll be selling ours before we come, so if possible, we'd like the apartment to have one for when we arrive.</p>
-        <p>Agent: I can certainly add that to the form. If there's any other whiteware that you need - like a dishwasher for example, there are plenty of stores here that'll arrange delivery on the same day as purchase.</p>
-        <p>Woman: Thanks. Hopefully we won't need to buy too many things.</p>
-        <p>Agent: Now, how about location? Have you done any research into the Fairfield area?</p>
-        <p>Woman: Not that much so far.</p>
-        <p>Agent: Well, you mentioned you have a boy - I imagine you'd like to be fairly close to a school.</p>
-        <p>Woman: Good idea. That would help. What's public transport like in Fairfield? Is it easy to get around?</p>
-        <p>Agent: The bus service is pretty comprehensive - there are plenty of local routes, services into the city and out of town.</p>
-        <p>Woman: OK, and for a two-bedroom apartment - what sort of rent should we expect to pay?</p>
-        <p>Agent: Well, looking at the properties we have at the moment, prices start from around £730 per month, and depending on the area can go up to £1,200.</p>
-        <p>Woman: That's too much. Something halfway would be better.</p>
-        <p>Agent: So, would your limit be, say, £950?</p>
-        <p>Woman: I'd say so, yes.</p>
-        <p>Agent: Can I ask if you smoke or if you have any pets?</p>
-        <p>Woman: No to both questions. But I do have one more request, please.</p>
-        <p>Agent: Yes?</p>
-        <p>Woman: Well, I've also been offered a job - at Victoria General Hospital - and I suspect I'll be working nights occasionally - so what I really need from any apartment is for it to be quiet - so I can catch up on sleep if necessary during the day.</p>
-        <p>Agent: Congratulations on the job offer. I'll add your request to the form. Well, what I'll do is compile a list of suitable properties for you and send them via email. Um, can I just ask - how did you hear about us? Obviously not from our commercials if you're living in the UK.</p>
-        <p>Woman: Actually, it was a friend of ours. He spent a few months in Fairfield a couple of years ago and he pointed us in the direction of your website.</p>
-        <p>Agent: Well, it's good to be recommended. So, what I'll do is ...</p>
-      </div>
-    </div>
-
-    <!-- PART 2 -->
-    <div class="passage" data-part="2">
-      <span class="part-label">Part 2</span>
-      <h2>Police Officer: Crime Prevention</h2>
-      <p><em>Listen and answer questions 11–20.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 2</h3>
-        <div class="audio-desc">A police officer giving advice on protection against local crime.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131577-official_cambridge_guide_to_ielts_academic_listening_test_6_2.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_6_2.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Well, good afternoon. I'm Constable James McDonald, and as you may know, I'm the community police officer for the local area. That means that as part of my job - I try to get out in the community as much as possible - talk to the people that live in this neighbourhood - people like yourselves - and make sure there's an effective level of communication between the public and the police - hence the reason for this meeting. There have been several burglaries in the area in the last few weeks and I'd like to talk about ways you can keep your home and property safe.</p>
-        <p>So, I'd suggest that a good way to start is by talking to your neighbours and exchanging contact details with them. This'll allow you to get in touch immediately if there's anything suspicious happening next door. Then, make sure you have a good discussion about the best course of action to take in case of emergency - make sure everyone is clear about what to do and who to call. If you plan ahead, this'll prevent uncertainty and even panic should anything happen later. Another thing that I would advise you to do is always leave your radio playing - even when you go out. And if you keep your curtains closed, burglars are less likely to try and break in because they can't be sure whether someone's home or not. Now, none of us want to be in the situation where we can't get into our own home, but do take time to think where the best and safest place is to leave your spare keys. Putting them under the door mat or anywhere near the front door is just asking for trouble. You'd be surprised how many people actually do this - and it makes life really easy for burglars. All these things will help keep your community safe and will cost you nothing. However, if you are going to spend some money, what I'd recommend more than anything else is that you invest in some well-made window locks for your house. This will give you peace of mind.</p>
-        <p>OK, moving on. Unfortunately, there's been an increase in the number of minor crimes and anti-social behaviour in the general area and I want to talk about some specific prevention measures that are being proposed. First of all, the skate park. As you probably know, it's well used by younger people in our community but unfortunately we're getting more and more reports of broken glass - making it especially dangerous for younger children. One possible solution here is to get rid of some of the trees and bushes around the park - making it more visible to passersby and vehicles. If the vandals know they're being watched, this might act as a deterrent. As you will have heard, a couple of local primary schools have also been vandalised recently - despite the presence of security guards. The schools don't have the funds for video surveillance so we need people in the neighbourhood to call their nearest police station and report any suspicious activity immediately. Please don't hesitate to do this. I expect most of you are familiar with the problems facing Abbotsford Street. It seems that no amount of warning signs or speed cameras will slow speeding drivers down. I'm happy to say, however, that the council have agreed to begin work over the next few months to put in a new roundabout. What else? Oh, yes. The newsagent and the gift shop on Victoria Street were both broken into last week, and although no money was taken, the properties have suffered some serious damage. Access was gained to these shops through the small alleyway at the back of the properties - it's dark and as you can imagine, no one saw the thief or thieves in action. So, we've been advising shop owners along there about what kind of video recording equipment they can have put in - we'll then be able to get evidence of any criminal activity on film. The supermarket car park is also on our list of problem areas. We've talked to the supermarket managers and council authorities and we've advised them to get graffiti cleaned off immediately and get the smashed lights replaced. If you don't deal with this sort of thing at once, there's a strong possibility that the activity will increase and spread, and then it becomes ...</p>
-      </div>
-    </div>
-
-    <!-- PART 3 -->
-    <div class="passage" data-part="3">
-      <span class="part-label">Part 3</span>
-      <h2>Biofuels — Student Discussion</h2>
-      <p><em>Listen and answer questions 21–30.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 3</h3>
-        <div class="audio-desc">Two students discussing their assignments on biofuels.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131578-official_cambridge_guide_to_ielts_academic_listening_test_6_3.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_6_3.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Karina: Hi, Mike. How's it going?</p>
-        <p>Mike: Actually, I was up last night with an assignment so - yeah, I'm tired, but I guess we'd better sort this presentation out.</p>
-        <p>Karina: Well, we've done enough background reading, but I think we need to organise exactly what we're going to say about biofuels during the presentation, and the order.</p>
-        <p>Mike: I thought we could start by asking our audience what car engines were first designed to run on fossil fuels or biofuels.</p>
-        <p>Karina: Nice idea.</p>
-        <p>Mike: Yes, when most people think about cars and fuel, they think about all the carbon dioxide that's produced, but they don't realise that that wasn't always the case.</p>
-        <p>Karina: You're probably right. The earliest car engines ran on fuel made from corn and peanut oil, didn't they?</p>
-        <p>Mike: Yes. The manufacturers used the corn and peanut oil and turned them into a kind of very pure alcohol.</p>
-        <p>Karina: You mean ethanol?</p>
-        <p>Mike: Yes. In fact, most biofuels are still based on ethanol. Actually, I've got some notes here about the process of turning plant-matter into ethanol - the chemical reactions and the fermentation stages and ...</p>
-        <p>Karina: It's interesting - the other students would appreciate it, but different biofuels use different processes and if we give a general description, there's a risk we'll get it wrong, and then the tutor might mark us down. I'd rather we focus on the environmental issues.</p>
-        <p>Mike: Fair enough. So, um the main plants that are used for biofuel production now are sugar cane, corn</p>
-        <p>Karina: And canola. Of all of them, canola is probably the least harmful because machines that use it don't produce as much carbon monoxide.</p>
-        <p>Mike: Sugar cane seems to be controversial. It doesn't require as much fertilizer as corn does to grow, but when they burn the sugar cane fields, that releases loads of greenhouse gases.</p>
-        <p>Karina: Yes, but some critics have suggested that the production of corn ethanol uses up more fossil fuel energy than the biofuel energy it eventually produces. For that reason, I'd say it was more harmful to the environment.</p>
-        <p>Mike: I see what you mean. You're probably right. It's interesting how everyone saw the biofuel industry as the answer to our energy problems, but in some ways, biofuels have created new problems.</p>
-        <p>Karina: Well, in the USA, I wouldn't say that farmers are having problems - the biofuel industry for them has turned out to be really profitable.</p>
-        <p>Mike: I think, though, that even in the USA, ethanol is still only used as an additive to gasoline, or petrol. The problem is that it still has to be transported by trucks or rail because they haven't built any pipelines to move it. Once they do, it'll be cheaper and the industry might move forward.</p>
-        <p>Karina: That'll have to happen one day. At least the government are in favour of biofuel development.</p>
-        <p>Mike: Yes. But Brazil's probably in the lead as far as biofuels are concerned - they've got to the point where they don't need to import any oil now.</p>
-        <p>Karina: Which is great, and the industry in Brazil employs a huge number of people, but is it sustainable? I mean, as the population grows, and there are more vehicles on the roads and there's more machinery, surely they can't depend so much on sugar cane? At some point, there has to be a limit on how much land can be used for sugar cane production - certainly if you want to preserve natural habitats and native wildlife.</p>
-        <p>Mike: I think that whatever problems Brazil's facing now the same will be true for any country - you have to weigh up the pros and cons.</p>
-        <p>Karina: Well, we probably won't see an increase in biofuel use - I mean, they won't replace fossil fuels until we can find ways to produce them cheaply and quickly and with less cost to the environment.</p>
-        <p>Mike: ... making sure they require minimal energy to produce.</p>
-        <p>Karina: Exactly. And in a way that means they have to cost less than fossil fuels - certainly when you're filling up your car.</p>
-        <p>Mike: Yes, and whatever other kind of engines use fossil fuels at the moment.</p>
-        <p>Karina: Alright, so in the last section of the presentation, what problems are we focusing on?</p>
-        <p>Mike: Well, we've already had a look at different types of pollution in the first section, so we can leave that out, but the biggest issue related to biofuels is that land is now being used to grow biofuels crops - and that's contributing to global hunger.</p>
-        <p>Karina: Indeed. It doesn't seem right we're using corn to run cars when people can't afford to buy it to eat. Yes, let's talk about that. The other thing is that in some countries, the way that biofuel crops are grown and harvested still produces a great deal of pollution – really damaging to the atmosphere.</p>
-        <p>Mike: OK, that's definitely an issue we should look at.</p>
-        <p>Karina: Let's not finish on a negative note, though. Why don't we talk about the potential new sources of biofuel so rather than corn and sugar cane what other plants could be used?</p>
-        <p>Mike: Good. Some companies are exploring the possibility of using wood, and seeing how that can be used to make ethanol.</p>
-        <p>Karina: Yes, and algae is another possibility. You can grow it in any water and it absorbs pollutants, too.</p>
-        <p>Mike: I read that. And grasses. They're another plant that researchers are investigating as a biofuel.</p>
-        <p>Karina: And these kind of plants aren't used as food, which is why ...</p>
-      </div>
-    </div>
-
-    <!-- PART 4 -->
-    <div class="passage" data-part="4">
-      <span class="part-label">Part 4</span>
-      <h2>Technology and Social Interaction — Lecture</h2>
-      <p><em>Listen and answer questions 31–40.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 4</h3>
-        <div class="audio-desc">A lecture about how technology affects human interaction.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131579-official_cambridge_guide_to_ielts_academic_listening_test_6_4.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_6_4.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Good morning. Today we're thinking about the way that technology is influencing our social structures and the way we interact with one another. Humans, as we know, have always lived in groups; without this arrangement, our species would have died out long ago. But now, the way we see and define our group is changing.</p>
-        <p>I'd like to start by mentioning the research of American sociologist Mark Granovetter in 1973. It was Granovetter who first coined the term 'weak-ties', which he used to refer to people's loose acquaintances - in other words, friends-of-friends. His research showed that weak-ties had a significant effect on the behaviour and choices of populations – and this influence was something highly important in the fields of information science and politics, and as you can imagine, marketing also. So, these friends-of-friends, people we might spend time with at social or work gatherings, might not be like us but they can still have a positive influence because we share the same sort of interests. That's enough to make a connection - and this connection can turn out to be more beneficial than we might suspect. An example of this, an example of how the connection can influence us, is when our weak-ties get in touch and pass on details about jobs they think might be suitable for us. Well, since Granovetter first came up with this theory, his work has been cited in over 19,000 papers. Some of these studies have looked at how weak-tie networks are useful to us in other ways, and one thing that seems to improve as a result of weak-tie influence is our health.</p>
-        <p>Today, our number of weak-tie acquaintances has exploded due to the Internet - to the phenomenon of online social networking. This is still a relatively new way of communication - something that has a huge amount of potential - but also, as with any invention, it brings with it a new set of problems. Let's start with the benefits. Without question, online social networking allows us to pass on the latest news to be up-to-date with local and global events and for many, this information comes from sources more trustworthy than local media. So, this is one clear point in favour of online social networking. I know that it's also being used by students as a means of increasing their chances of success - in the way that lecture notes can be shared and ideas discussed. I think, personally speaking, that we need some further research before we can definitively say whether it helps or not. There's also been a great increase in the number of networking sites devoted to sharing advice on health issues but there are as yet no studies to prove the reliability of that advice. Now, what we do have clear evidence for is that people are developing friendships and professional networks in a way that wasn't possible before - the process is faster. I'm not talking about quality here, but simply that they exist. And it's debatable whether the number of online friends that you have increases your level of self-confidence - that's perhaps an area of research some of you might be interested in following up.</p>
-        <p>Turning to the problems, there are any number of articles connecting online activity to falling levels of physical fitness but it's too easy to blame the Internet for our social problems. The poor grades of school children are also frequently linked to the time spent on social networking sites, but it would be naive to believe there are no other contributing factors. One real concern, however, is the increase in the amount of fraud. Where for example, people are using the personal data of others, which they've put online, for criminal purposes. This kind of activity seems likely to continue. And then, certainly for employers, online social networking sites have provided a great time-wasting opportunity – reducing productivity like never before, and I doubt they can put a stop to this habit, no matter what restrictions are in place.</p>
-        <p>We'll come back to these issues in a minute, but I'd like to say something about the theories of Robin Dunbar an anthropologist at Oxford University. Dunbar has found that the human brain has evolved in a way that means we can only give real attention to a particular number of people. 150, apparently. So, for example, if the number of friends on your online network is greater than that, according to Dunbar, this would imply the relationships are only superficial. Dunbar is not against online relationships, but he maintains that face-to-face interaction is essential for the initial creation of true friendship and connections. He's concerned that for young people if their only experience of forming relationships is online - this doesn't allow them to form the ability or acquire the strategies for maintaining relationships, for example, in situations where negotiation or diplomacy is required, or where it's essential for ...</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="resizer" id="resizer"></div>
-
-  <div class="pane questions" id="questionsPane">
-    <form id="quiz" onsubmit="return false;">
+    <main class="wrap">
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 6</h1>
+      <p class="lead">4 parts · 40 questions · switch parts with the tabs at the
+        bottom.</p>
 
       <!-- PART 1 -->
-      <section class="q-section active" data-part="1">
-        <div class="q-group">
-          <h3>Questions 1–10</h3>
-          <div class="q-instr">
-            <p>Complete the notes below.</p>
-            <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 4px;">ACCOMMODATION FORM: RENTAL PROPERTIES</p>
-          <p style="font-size:13px;margin:0 0 8px;"><em>Example: Name: Jane <u>Ryder</u></em></p>
-
-          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Contact phone number: (0044) <input type="text" name="q1" aria-label="Q1" style="min-width:200px;"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>Email address: richard@ <input type="text" name="q2" aria-label="Q2" style="min-width:160px;"> .co.uk</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>Occupation: a local <input type="text" name="q3" aria-label="Q3" style="min-width:160px;"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>Type of accommodation: a 2-bedroom apartment wanted (must have its own <input type="text" name="q4" aria-label="Q4" style="min-width:160px;">)</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>no <input type="text" name="q5" aria-label="Q5" style="min-width:160px;"> required (family bringing theirs)</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>a <input type="text" name="q6" aria-label="Q6" style="min-width:160px;"> in the kitchen is preferable</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>Preferred location: near a <input type="text" name="q7" aria-label="Q7" style="min-width:160px;"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>Maximum rent: £<input type="text" name="q8" aria-label="Q8" style="min-width:160px;"> per month</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>Other requests: the accommodation has to be <input type="text" name="q9" aria-label="Q9" style="min-width:160px;"> in the daytime</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>How did you first hear about us? through a <input type="text" name="q10" aria-label="Q10" style="min-width:160px;"></p><div class="feedback"></div></div></div>
+      <section class="card part current hlable" id="part1" data-part="1">
+        <div class="part-head">
+          <span class="part-badge">Part 1</span>
+          <span class="part-desc">Questions 1–10 · Note completion</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131576-official_cambridge_guide_to_ielts_academic_listening_test_6_1.mp3"></audio>
+
+        <h3>Questions 1–10</h3>
+        <p>Complete the notes below.<br>Write <strong>ONE WORD AND/OR A
+            NUMBER</strong> for each answer.</p>
+        <p><strong>ACCOMMODATION FORM: RENTAL
+            PROPERTIES</strong><br><em>Example: Name: Jane <u>Ryder</u></em></p>
+        <ul class="notes">
+          <li>Contact phone number: (0044) <span class="q"><span
+                class="num">1</span><input type="text" data-q="1"
+                style="min-width:200px"></span></li>
+          <li>Email address: richard@ <span class="q"><span
+                class="num">2</span><input type="text" data-q="2"
+                style="min-width:150px"></span> .co.uk</li>
+          <li>Occupation: a local <span class="q"><span
+                class="num">3</span><input type="text" data-q="3"></span></li>
+          <li>Type of accommodation: a 2-bedroom apartment wanted (must have its
+            own <span class="q"><span class="num">4</span><input type="text"
+                data-q="4"></span>)</li>
+          <li>no <span class="q"><span class="num">5</span><input type="text"
+                data-q="5"></span> required (family bringing theirs)</li>
+          <li>a <span class="q"><span class="num">6</span><input type="text"
+                data-q="6"></span> in the kitchen is preferable</li>
+          <li>Preferred location: near a <span class="q"><span
+                class="num">7</span><input type="text" data-q="7"></span></li>
+          <li>Maximum rent: £<span class="q"><span class="num">8</span><input
+                type="text" data-q="8"></span> per month</li>
+          <li>Other requests: the accommodation has to be <span class="q"><span
+                class="num">9</span><input type="text" data-q="9"></span> in the
+            daytime</li>
+          <li>How did you first hear about us? through a <span class="q"><span
+                class="num">10</span><input type="text" data-q="10"></span></li>
+        </ul>
       </section>
 
       <!-- PART 2 -->
-      <section class="q-section" data-part="2">
-        <div class="q-group">
-          <h3>Questions 11–15</h3>
-          <div class="q-instr">
-            <p>Complete the sentences below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
-          </div>
-          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>The police officer suggests neighbours give each other their <input type="text" name="q11" aria-label="Q11" style="min-width:180px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>Neighbours should discuss what to do if there's any kind of <input type="text" name="q12" aria-label="Q12" style="min-width:180px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>It's a good idea to leave on the <input type="text" name="q13" aria-label="Q13" style="min-width:180px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Think carefully about where you put any <input type="text" name="q14" aria-label="Q14" style="min-width:180px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>It's a good idea to buy good-quality <input type="text" name="q15" aria-label="Q15" style="min-width:180px;">.</p><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part2" data-part="2">
+        <div class="part-head">
+          <span class="part-badge">Part 2</span>
+          <span class="part-desc">Questions 11–20 · Sentences &amp;
+            matching</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131577-official_cambridge_guide_to_ielts_academic_listening_test_6_2.mp3"></audio>
 
-        <div class="q-group">
-          <h3>Questions 16–20</h3>
-          <div class="q-instr">
-            <p>Which crime prevention measure is proposed for each area affected by crime?</p>
-            <p>Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>.</p>
-            <p><strong>A</strong> install more lighting &nbsp; <strong>B</strong> have more police officers on patrol &nbsp; <strong>C</strong> remove surrounding vegetation &nbsp; <strong>D</strong> contact local police &nbsp; <strong>E</strong> fix damage quickly &nbsp; <strong>F</strong> change road design &nbsp; <strong>G</strong> use security cameras</p>
+        <h3>Questions 11–15</h3>
+        <p>Complete the sentences below.<br>Write <strong>NO MORE THAN TWO
+            WORDS</strong> for each answer.</p>
+        <ul class="notes">
+          <li>The police officer suggests neighbours give each other their <span
+              class="q"><span class="num">11</span><input type="text"
+                data-q="11" style="min-width:180px"></span>.</li>
+          <li>Neighbours should discuss what to do if there's any kind of <span
+              class="q"><span class="num">12</span><input type="text"
+                data-q="12" style="min-width:180px"></span>.</li>
+          <li>It's a good idea to leave on the <span class="q"><span
+                class="num">13</span><input type="text" data-q="13"
+                style="min-width:180px"></span>.</li>
+          <li>Think carefully about where you put any <span class="q"><span
+                class="num">14</span><input type="text" data-q="14"
+                style="min-width:180px"></span>.</li>
+          <li>It's a good idea to buy good-quality <span class="q"><span
+                class="num">15</span><input type="text" data-q="15"
+                style="min-width:180px"></span>.</li>
+        </ul>
+
+        <h3>Questions 16–20</h3>
+        <p>Which crime prevention measure is proposed for each area affected by
+          crime?<br>
+          Choose <strong>FIVE</strong> answers from the box and write the
+          correct letter, <strong>A–G</strong>.</p>
+        <div class="optbox">
+          <b>Measures</b>
+          <div class="optgrid">
+            <div><strong>A</strong> install more lighting</div>
+            <div><strong>B</strong> have more police officers on patrol</div>
+            <div><strong>C</strong> remove surrounding vegetation</div>
+            <div><strong>D</strong> contact local police</div>
+            <div><strong>E</strong> fix damage quickly</div>
+            <div><strong>F</strong> change road design</div>
+            <div><strong>G</strong> use security cameras</div>
           </div>
-          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>skate park <select name="q16" aria-label="Q16"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>local primary schools <select name="q17" aria-label="Q17"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>Abbotsford Street <select name="q18" aria-label="Q18"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>shops on Victoria Street <select name="q19" aria-label="Q19"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>supermarket car park <select name="q20" aria-label="Q20"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
         </div>
+        <ul class="matchlist">
+          <li><span>skate park</span><span class="num">16</span><select
+              data-q="16"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>local primary schools</span><span
+              class="num">17</span><select data-q="17"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>Abbotsford Street</span><span class="num">18</span><select
+              data-q="18"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>shops on Victoria Street</span><span
+              class="num">19</span><select data-q="19"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>supermarket car park</span><span
+              class="num">20</span><select data-q="20"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+        </ul>
       </section>
 
       <!-- PART 3 -->
-      <section class="q-section" data-part="3">
-        <div class="q-group">
-          <h3>Questions 21–26</h3>
-          <div class="q-instr">
-            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
-          </div>
-          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>Mike suggests they begin their presentation by</p><div class="options stack"><label><input type="radio" name="q21" value="A"> A. explaining what kind of harm is caused by fossil fuels.</label><label><input type="radio" name="q21" value="B"> B. pointing out that biofuels were in use before fossil fuels.</label><label><input type="radio" name="q21" value="C"> C. ensuring students know the difference between fossil fuels and biofuels.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>Karina doesn't want to discuss the production of ethanol because</p><div class="options stack"><label><input type="radio" name="q22" value="A"> A. other students will already be familiar with the process.</label><label><input type="radio" name="q22" value="B"> B. there will not be time to cover more important information.</label><label><input type="radio" name="q22" value="C"> C. they may not provide an accurate description.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>Which source of biofuel do the students agree is least environmentally friendly?</p><div class="options stack"><label><input type="radio" name="q23" value="A"> A. sugar cane</label><label><input type="radio" name="q23" value="B"> B. corn</label><label><input type="radio" name="q23" value="C"> C. canola</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>What is the main problem facing the development of the biofuel industry in the USA?</p><div class="options stack"><label><input type="radio" name="q24" value="A"> A. inadequate infrastructure for transporting ethanol</label><label><input type="radio" name="q24" value="B"> B. not enough farmers growing biofuel crops</label><label><input type="radio" name="q24" value="C"> C. little government support of biofuel development</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>Karina doubts that sugar cane production in Brazil will</p><div class="options stack"><label><input type="radio" name="q25" value="A"> A. lead to the loss of wildlife habitats.</label><label><input type="radio" name="q25" value="B"> B. create a large number of jobs in the biofuel sector.</label><label><input type="radio" name="q25" value="C"> C. continue to provide enough energy for the country's needs.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>Karina and Mike conclude that in order to increase the use of biofuels</p><div class="options stack"><label><input type="radio" name="q26" value="A"> A. the price of fossil fuels must go up.</label><label><input type="radio" name="q26" value="B"> B. more machinery must be adapted to use them.</label><label><input type="radio" name="q26" value="C"> C. production methods must be more energy-efficient.</label></div><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part3" data-part="3">
+        <div class="part-head">
+          <span class="part-badge">Part 3</span>
+          <span class="part-desc">Questions 21–30 · Multiple choice &amp;
+            question completion</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131578-official_cambridge_guide_to_ielts_academic_listening_test_6_3.mp3"></audio>
+
+        <h3>Questions 21–26</h3>
+        <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or
+          <strong>C</strong>.</p>
+        <div class="mcq">
+          <div class="stem"><span class="num">21</span> Mike suggests they begin
+            their presentation by</div>
+          <label class="opt"><input type="radio" name="q21" value="A"><span
+              class="ltr">A</span><span>explaining what kind of harm is caused
+              by fossil fuels.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="B"><span
+              class="ltr">B</span><span>pointing out that biofuels were in use
+              before fossil fuels.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="C"><span
+              class="ltr">C</span><span>ensuring students know the difference
+              between fossil fuels and biofuels.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">22</span> Karina doesn't want to
+            discuss the production of ethanol because</div>
+          <label class="opt"><input type="radio" name="q22" value="A"><span
+              class="ltr">A</span><span>other students will already be familiar
+              with the process.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="B"><span
+              class="ltr">B</span><span>there will not be time to cover more
+              important information.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="C"><span
+              class="ltr">C</span><span>they may not provide an accurate
+              description.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">23</span> Which source of biofuel
+            do the students agree is least environmentally friendly?</div>
+          <label class="opt"><input type="radio" name="q23" value="A"><span
+              class="ltr">A</span><span>sugar cane</span></label>
+          <label class="opt"><input type="radio" name="q23" value="B"><span
+              class="ltr">B</span><span>corn</span></label>
+          <label class="opt"><input type="radio" name="q23" value="C"><span
+              class="ltr">C</span><span>canola</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">24</span> What is the main problem
+            facing the development of the biofuel industry in the USA?</div>
+          <label class="opt"><input type="radio" name="q24" value="A"><span
+              class="ltr">A</span><span>inadequate infrastructure for
+              transporting ethanol</span></label>
+          <label class="opt"><input type="radio" name="q24" value="B"><span
+              class="ltr">B</span><span>not enough farmers growing biofuel
+              crops</span></label>
+          <label class="opt"><input type="radio" name="q24" value="C"><span
+              class="ltr">C</span><span>little government support of biofuel
+              development</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">25</span> Karina doubts that sugar
+            cane production in Brazil will</div>
+          <label class="opt"><input type="radio" name="q25" value="A"><span
+              class="ltr">A</span><span>lead to the loss of wildlife
+              habitats.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="B"><span
+              class="ltr">B</span><span>create a large number of jobs in the
+              biofuel sector.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="C"><span
+              class="ltr">C</span><span>continue to provide enough energy for
+              the country's needs.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">26</span> Karina and Mike conclude
+            that in order to increase the use of biofuels</div>
+          <label class="opt"><input type="radio" name="q26" value="A"><span
+              class="ltr">A</span><span>the price of fossil fuels must go
+              up.</span></label>
+          <label class="opt"><input type="radio" name="q26" value="B"><span
+              class="ltr">B</span><span>more machinery must be adapted to use
+              them.</span></label>
+          <label class="opt"><input type="radio" name="q26" value="C"><span
+              class="ltr">C</span><span>production methods must be more
+              energy-efficient.</span></label>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 27–30</h3>
-          <div class="q-instr">
-            <p>Answer the questions below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 8px;">What TWO biofuel-related problems do Mike and Karina decide to focus on in the last section of their presentation?</p>
-          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>• <input type="text" name="q27" aria-label="Q27" style="min-width:200px;"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>• <input type="text" name="q28" aria-label="Q28" style="min-width:200px;"></p><div class="feedback"></div></div></div>
-          <p style="font-weight:700;margin:14px 0 8px;">Which two sources of biofuel do Mike and Karina say are being tried out?</p>
-          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>• <input type="text" name="q29" aria-label="Q29" style="min-width:200px;"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>• <input type="text" name="q30" aria-label="Q30" style="min-width:200px;"></p><div class="feedback"></div></div></div>
-        </div>
+        <h3>Questions 27–30</h3>
+        <p>Answer the questions below.<br>Write <strong>NO MORE THAN TWO
+            WORDS</strong> for each answer.</p>
+        <p><strong>What TWO biofuel-related problems do Mike and Karina decide
+            to focus on in the last section of their presentation?</strong></p>
+        <ul class="notes">
+          <li>• <span class="q"><span class="num">27</span><input type="text"
+                data-q="27" style="min-width:200px"></span></li>
+          <li>• <span class="q"><span class="num">28</span><input type="text"
+                data-q="28" style="min-width:200px"></span></li>
+        </ul>
+        <p><strong>Which two sources of biofuel do Mike and Karina say are being
+            tried out?</strong></p>
+        <ul class="notes">
+          <li>• <span class="q"><span class="num">29</span><input type="text"
+                data-q="29" style="min-width:200px"></span></li>
+          <li>• <span class="q"><span class="num">30</span><input type="text"
+                data-q="30" style="min-width:200px"></span></li>
+        </ul>
       </section>
 
       <!-- PART 4 -->
-      <section class="q-section" data-part="4">
-        <div class="q-group">
-          <h3>Questions 31–34</h3>
-          <div class="q-instr">
-            <p>Complete the summary below.</p>
-            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 12px;">The 'weak-tie' theory: how friends-of-friends influence us</p>
-          <p style="font-size:14px;">In 1973, Mark Granovetter claimed that the influence of 'weak-ties' can affect the behaviour of populations in the fields of information science, politics and <strong>31</strong> <input type="text" name="q31" aria-label="Q31" style="min-width:150px;">. Although friends-of-friends may be unlike us, they have similar enough <strong>32</strong> <input type="text" name="q32" aria-label="Q32" style="min-width:150px;"> to have a beneficial effect on our lives. An example of this influence is when we hear about <strong>33</strong> <input type="text" name="q33" aria-label="Q33" style="min-width:150px;"> because information about them is provided by weak-ties. Since Granovetter proposed his theory, other studies have shown that weak-tie networks also benefit our <strong>34</strong> <input type="text" name="q34" aria-label="Q34" style="min-width:150px;">.</p>
-          <div class="q" data-q="31" style="display:none;"><div class="q-num">31</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="32" style="display:none;"><div class="q-num">32</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="33" style="display:none;"><div class="q-num">33</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="34" style="display:none;"><div class="q-num">34</div><div class="q-body"><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part4" data-part="4">
+        <div class="part-head">
+          <span class="part-badge">Part 4</span>
+          <span class="part-desc">Questions 31–40 · Summary &amp;
+            multi-select</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131579-official_cambridge_guide_to_ielts_academic_listening_test_6_4.mp3"></audio>
+
+        <h3>Questions 31–34</h3>
+        <p>Complete the summary below.<br>Write <strong>ONE WORD ONLY</strong>
+          for each answer.</p>
+        <p><strong>The 'weak-tie' theory: how friends-of-friends influence
+            us</strong></p>
+        <p style="font-size:15px;">In 1973, Mark Granovetter claimed that the
+          influence of 'weak-ties' can affect the behaviour of populations in
+          the fields of information science, politics and <span class="q"><span
+              class="num">31</span><input type="text" data-q="31"
+              style="min-width:150px"></span>. Although friends-of-friends may
+          be unlike us, they have similar enough <span class="q"><span
+              class="num">32</span><input type="text" data-q="32"
+              style="min-width:150px"></span> to have a beneficial effect on our
+          lives. An example of this influence is when we hear about <span
+            class="q"><span class="num">33</span><input type="text" data-q="33"
+              style="min-width:150px"></span> because information about them is
+          provided by weak-ties. Since Granovetter proposed his theory, other
+          studies have shown that weak-tie networks also benefit our <span
+            class="q"><span class="num">34</span><input type="text" data-q="34"
+              style="min-width:150px"></span>.</p>
+
+        <h3>Questions 35–36</h3>
+        <p>Which does the speaker believe are <strong>TWO</strong> real benefits
+          of online social networking?</p>
+        <div class="mcq">
+          <label class="opt"><input type="checkbox" name="q35_36" value="A"
+              data-limit="2"><span class="ltr">A</span><span>people can gain
+              higher self-esteem</span></label>
+          <label class="opt"><input type="checkbox" name="q35_36" value="B"
+              data-limit="2"><span class="ltr">B</span><span>people can access
+              useful medical information</span></label>
+          <label class="opt"><input type="checkbox" name="q35_36" value="C"
+              data-limit="2"><span class="ltr">C</span><span>people can form
+              relationships more quickly</span></label>
+          <label class="opt"><input type="checkbox" name="q35_36" value="D"
+              data-limit="2"><span class="ltr">D</span><span>people can improve
+              academic performance</span></label>
+          <label class="opt"><input type="checkbox" name="q35_36" value="E"
+              data-limit="2"><span class="ltr">E</span><span>people can be
+              reliably informed about current affairs</span></label>
+          <div class="feedback"></div>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 35–36</h3>
-          <div class="q-instr">
-            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
-          </div>
-          <div class="q" data-q="35" data-q2="36">
-            <div class="q-num">35–36</div>
-            <div class="q-body">
-              <p>Which does the speaker believe are <strong>TWO</strong> real benefits of online social networking?</p>
-              <div class="options stack">
-                <label><input type="checkbox" name="q35_36" value="A" data-limit="2"> A. people can gain higher self-esteem</label>
-                <label><input type="checkbox" name="q35_36" value="B" data-limit="2"> B. people can access useful medical information</label>
-                <label><input type="checkbox" name="q35_36" value="C" data-limit="2"> C. people can form relationships more quickly</label>
-                <label><input type="checkbox" name="q35_36" value="D" data-limit="2"> D. people can improve academic performance</label>
-                <label><input type="checkbox" name="q35_36" value="E" data-limit="2"> E. people can be reliably informed about current affairs</label>
-              </div>
-              <div class="feedback"></div>
-            </div>
-          </div>
+        <h3>Questions 37–38</h3>
+        <p>Which <strong>TWO</strong> problems related to online social
+          networking will increase, according to the speaker?</p>
+        <div class="mcq">
+          <label class="opt"><input type="checkbox" name="q37_38" value="A"
+              data-limit="2"><span class="ltr">A</span><span>criminal
+              activity</span></label>
+          <label class="opt"><input type="checkbox" name="q37_38" value="B"
+              data-limit="2"><span class="ltr">B</span><span>poorer grades at
+              school</span></label>
+          <label class="opt"><input type="checkbox" name="q37_38" value="C"
+              data-limit="2"><span class="ltr">C</span><span>a decline in
+              physical fitness</span></label>
+          <label class="opt"><input type="checkbox" name="q37_38" value="D"
+              data-limit="2"><span class="ltr">D</span><span>less work done by
+              employees</span></label>
+          <label class="opt"><input type="checkbox" name="q37_38" value="E"
+              data-limit="2"><span class="ltr">E</span><span>loss of career
+              prospects</span></label>
+          <div class="feedback"></div>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 37–38</h3>
-          <div class="q-instr">
-            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
-          </div>
-          <div class="q" data-q="37" data-q2="38">
-            <div class="q-num">37–38</div>
-            <div class="q-body">
-              <p>Which <strong>TWO</strong> problems related to online social networking will increase, according to the speaker?</p>
-              <div class="options stack">
-                <label><input type="checkbox" name="q37_38" value="A" data-limit="2"> A. criminal activity</label>
-                <label><input type="checkbox" name="q37_38" value="B" data-limit="2"> B. poorer grades at school</label>
-                <label><input type="checkbox" name="q37_38" value="C" data-limit="2"> C. a decline in physical fitness</label>
-                <label><input type="checkbox" name="q37_38" value="D" data-limit="2"> D. less work done by employees</label>
-                <label><input type="checkbox" name="q37_38" value="E" data-limit="2"> E. loss of career prospects</label>
-              </div>
-              <div class="feedback"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="q-group">
-          <h3>Questions 39–40</h3>
-          <div class="q-instr">
-            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
-          </div>
-          <div class="q" data-q="39" data-q2="40">
-            <div class="q-num">39–40</div>
-            <div class="q-body">
-              <p>Which <strong>TWO</strong> claims are made by Robin Dunbar about social networking sites?</p>
-              <div class="options stack">
-                <label><input type="checkbox" name="q39_40" value="A" data-limit="2"> A. They are not helpful for developing certain social skills.</label>
-                <label><input type="checkbox" name="q39_40" value="B" data-limit="2"> B. They cannot fully reveal a person's real character.</label>
-                <label><input type="checkbox" name="q39_40" value="C" data-limit="2"> C. They are not a good starting point for building new relationships.</label>
-                <label><input type="checkbox" name="q39_40" value="D" data-limit="2"> D. They do not encourage people to widen their social circle.</label>
-                <label><input type="checkbox" name="q39_40" value="E" data-limit="2"> E. They will not retain their popularity with the young generation.</label>
-              </div>
-              <div class="feedback"></div>
-            </div>
-          </div>
+        <h3>Questions 39–40</h3>
+        <p>Which <strong>TWO</strong> claims are made by Robin Dunbar about
+          social networking sites?</p>
+        <div class="mcq">
+          <label class="opt"><input type="checkbox" name="q39_40" value="A"
+              data-limit="2"><span class="ltr">A</span><span>They are not
+              helpful for developing certain social skills.</span></label>
+          <label class="opt"><input type="checkbox" name="q39_40" value="B"
+              data-limit="2"><span class="ltr">B</span><span>They cannot fully
+              reveal a person's real character.</span></label>
+          <label class="opt"><input type="checkbox" name="q39_40" value="C"
+              data-limit="2"><span class="ltr">C</span><span>They are not a good
+              starting point for building new relationships.</span></label>
+          <label class="opt"><input type="checkbox" name="q39_40" value="D"
+              data-limit="2"><span class="ltr">D</span><span>They do not
+              encourage people to widen their social circle.</span></label>
+          <label class="opt"><input type="checkbox" name="q39_40" value="E"
+              data-limit="2"><span class="ltr">E</span><span>They will not
+              retain their popularity with the young generation.</span></label>
+          <div class="feedback"></div>
         </div>
       </section>
 
-    </form>
-  </div>
-</div>
+      <!-- RESULT -->
+      <section class="card resultcard" id="resultCard">
+        <h2>Your result</h2>
+        <p class="score" id="scoreLine">0 / 40</p>
+        <p class="band" id="bandLine"></p>
+        <div class="result-note">
+          <strong>Audioscript and full answer key are now available
+            below.</strong>
+          <button class="btn small" id="jumpScript" type="button">Jump to
+            audioscript ↓</button>
+          <button class="btn small" id="retakeBtn" type="button">Reset &amp;
+            retake</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="result">
+            <thead><tr><th>#</th><th>Your answer</th><th>Correct
+                  answer</th><th></th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+        </div>
+      </section>
 
-<!-- BOTTOM PANEL -->
-<div class="bottom-panel">
-  <div class="bottom-inner">
-    <div class="part-tabs">
-      <button class="part-tab active" data-part="1">
-        <span class="tab-part-name">Part 1</span>
-        <span class="tab-qcount">Questions 1–10</span>
-      </button>
-      <button class="part-tab" data-part="2">
-        <span class="tab-part-name">Part 2</span>
-        <span class="tab-qcount">Questions 11–20</span>
-      </button>
-      <button class="part-tab" data-part="3">
-        <span class="tab-part-name">Part 3</span>
-        <span class="tab-qcount">Questions 21–30</span>
-      </button>
-      <button class="part-tab" data-part="4">
-        <span class="tab-part-name">Part 4</span>
-        <span class="tab-qcount">Questions 31–40</span>
-      </button>
-    </div>
+      <!-- ANSWER KEY -->
+      <section class="card post-submit hlable" id="answers">
+        <h2>Answer key</h2>
+        <div class="optbox"><b>Part 1</b>1 208 613 2978 · 2 visiontech · 3
+          doctor · 4 garage · 5 furniture<br>6 fridge · 7 school · 8 950 · 9
+          quiet · 10 friend</div>
+        <div class="optbox"><b>Part 2</b>11 contact details · 12 emergency · 13
+          radio · 14 spare keys · 15 window locks<br>16 C · 17 D · 18 F · 19 G ·
+          20 E</div>
+        <div class="optbox"><b>Part 3</b>21 B · 22 C · 23 B · 24 A · 25 C · 26
+          C<br>27 global hunger · 28 pollution · 29 wood (or algae / grasses) ·
+          30 wood (or algae / grasses)</div>
+        <div class="optbox"><b>Part 4</b>31 marketing · 32 interests · 33 jobs ·
+          34 health<br>35–36 C, E · 37–38 A, D · 39–40 A, C</div>
+      </section>
 
-    <div class="ielts-reading-question-palette" id="palette"></div>
+      <!-- TRANSCRIPTS -->
+      <section class="card post-submit hlable" id="transcripts">
+        <h2>Audioscript</h2>
+        <p class="lead" style="margin:0 0 12px">Select any text and press
+          <strong>Highlight</strong> to mark it. Click a highlight to remove
+          it.</p>
 
-    <div class="ielts-reading-bottom-controls">
-      <div class="ielts-reading-question-control-buttons">
-        <button id="prevBtn" title="Previous question">←</button>
-        <button id="nextBtn" title="Next question">→</button>
+        <details class="transcript hlable" id="script1">
+          <summary>Part 1 — Accommodation Form: Rental Properties</summary>
+          <p>Agent: Fairfield Rentals. Andrew Williams. How can I help you?</p>
+          <p>Woman: Oh hello. I'm calling from the UK - um, my family are moving
+            to Canada early next year, and we're hoping to find somewhere to
+            rent in Fairfield for the first six months while we settle in.</p>
+          <p>Agent: Right, I see. Well, let's get your details.</p>
+          <p>Woman: Yes, my name's Jane Ryder.</p>
+          <p>Agent: OK, Jane. And can I have a phone number - the best number to
+            get you on?</p>
+          <p>Woman: Well, that'd probably be our home number so 0044 for the UK,
+            and then it's 208 613 2978.</p>
+          <p>Agent: Alright. And an email address, please, so we can send you
+            out all the information and forms.</p>
+          <p>Woman: I think it's best if I give you my husband's email – he's
+            sitting in front of a computer all day so he can print stuff off and
+            get it back to you sooner than I could. It's
+            richard@visiontech.co.uk. I'll just spell the company name for you.
+            That's V-I-S-I-O-N-T-E-C-H.</p>
+          <p>Agent: Great. And we have a question here about occupation.</p>
+          <p>Woman: Richard's an IT specialist for an advertising company.
+            They're transferring him to their Fairfield branch.</p>
+          <p>Agent: Actually, just your job for now, thanks.</p>
+          <p>Woman: Me? I'm a doctor at the hospital in our town.</p>
+          <p>Agent: OK, I'll put that down. Now, what kind of accommodation are
+            you looking for? House, apartment?</p>
+          <p>Woman: An apartment, probably, as long as it has two bedrooms.
+            There'll be me, my husband and our ten-year-old son.</p>
+          <p>Agent: And so with an apartment, you're less likely to get a
+            garden.</p>
+          <p>Woman: That's OK.</p>
+          <p>Agent: But what about a garage - is that something you'll want the
+            apartment to have?</p>
+          <p>Woman: Yes, that's definitely important.</p>
+          <p>Agent: OK, just a moment, I'll just make a note of that.</p>
+          <p>Woman: But - er before we go on - I should probably say now that
+            what we don't need is any furniture - because we'll be shipping all
+            that over, and I don't really want to pay for storage while we're
+            waiting to buy a house.</p>
+          <p>Agent: Not a problem. I'll make a note of that.</p>
+          <p>Woman: Actually, though, just thinking about the kitchen, what can
+            I expect from a rental property? I mean, what kind of equipment is
+            provided?</p>
+          <p>Agent: Well, the normal thing is that you get a stove - I think
+            that's a cooker in British English.</p>
+          <p>Woman: OK, good to know, but how about a fridge? We'll be selling
+            ours before we come, so if possible, we'd like the apartment to have
+            one for when we arrive.</p>
+          <p>Agent: I can certainly add that to the form. If there's any other
+            whiteware that you need - like a dishwasher for example, there are
+            plenty of stores here that'll arrange delivery on the same day as
+            purchase.</p>
+          <p>Woman: Thanks. Hopefully we won't need to buy too many things.</p>
+          <p>Agent: Now, how about location? Have you done any research into the
+            Fairfield area?</p>
+          <p>Woman: Not that much so far.</p>
+          <p>Agent: Well, you mentioned you have a boy - I imagine you'd like to
+            be fairly close to a school.</p>
+          <p>Woman: Good idea. That would help. What's public transport like in
+            Fairfield? Is it easy to get around?</p>
+          <p>Agent: The bus service is pretty comprehensive - there are plenty
+            of local routes, services into the city and out of town.</p>
+          <p>Woman: OK, and for a two-bedroom apartment - what sort of rent
+            should we expect to pay?</p>
+          <p>Agent: Well, looking at the properties we have at the moment,
+            prices start from around £730 per month, and depending on the area
+            can go up to £1,200.</p>
+          <p>Woman: That's too much. Something halfway would be better.</p>
+          <p>Agent: So, would your limit be, say, £950?</p>
+          <p>Woman: I'd say so, yes.</p>
+          <p>Agent: Can I ask if you smoke or if you have any pets?</p>
+          <p>Woman: No to both questions. But I do have one more request,
+            please.</p>
+          <p>Agent: Yes?</p>
+          <p>Woman: Well, I've also been offered a job - at Victoria General
+            Hospital - and I suspect I'll be working nights occasionally - so
+            what I really need from any apartment is for it to be quiet - so I
+            can catch up on sleep if necessary during the day.</p>
+          <p>Agent: Congratulations on the job offer. I'll add your request to
+            the form. Well, what I'll do is compile a list of suitable
+            properties for you and send them via email. Um, can I just ask - how
+            did you hear about us? Obviously not from our commercials if you're
+            living in the UK.</p>
+          <p>Woman: Actually, it was a friend of ours. He spent a few months in
+            Fairfield a couple of years ago and he pointed us in the direction
+            of your website.</p>
+          <p>Agent: Well, it's good to be recommended. So, what I'll do is
+            ...</p>
+        </details>
+
+        <details class="transcript hlable" id="script2">
+          <summary>Part 2 — Police Officer: Crime Prevention</summary>
+          <p>Well, good afternoon. I'm Constable James McDonald, and as you may
+            know, I'm the community police officer for the local area. That
+            means that as part of my job - I try to get out in the community as
+            much as possible - talk to the people that live in this
+            neighbourhood - people like yourselves - and make sure there's an
+            effective level of communication between the public and the police -
+            hence the reason for this meeting. There have been several
+            burglaries in the area in the last few weeks and I'd like to talk
+            about ways you can keep your home and property safe.</p>
+          <p>So, I'd suggest that a good way to start is by talking to your
+            neighbours and exchanging contact details with them. This'll allow
+            you to get in touch immediately if there's anything suspicious
+            happening next door. Then, make sure you have a good discussion
+            about the best course of action to take in case of emergency - make
+            sure everyone is clear about what to do and who to call. If you plan
+            ahead, this'll prevent uncertainty and even panic should anything
+            happen later. Another thing that I would advise you to do is always
+            leave your radio playing - even when you go out. And if you keep
+            your curtains closed, burglars are less likely to try and break in
+            because they can't be sure whether someone's home or not. Now, none
+            of us want to be in the situation where we can't get into our own
+            home, but do take time to think where the best and safest place is
+            to leave your spare keys. Putting them under the door mat or
+            anywhere near the front door is just asking for trouble. You'd be
+            surprised how many people actually do this - and it makes life
+            really easy for burglars. All these things will help keep your
+            community safe and will cost you nothing. However, if you are going
+            to spend some money, what I'd recommend more than anything else is
+            that you invest in some well-made window locks for your house. This
+            will give you peace of mind.</p>
+          <p>OK, moving on. Unfortunately, there's been an increase in the
+            number of minor crimes and anti-social behaviour in the general area
+            and I want to talk about some specific prevention measures that are
+            being proposed. First of all, the skate park. As you probably know,
+            it's well used by younger people in our community but unfortunately
+            we're getting more and more reports of broken glass - making it
+            especially dangerous for younger children. One possible solution
+            here is to get rid of some of the trees and bushes around the park -
+            making it more visible to passersby and vehicles. If the vandals
+            know they're being watched, this might act as a deterrent. As you
+            will have heard, a couple of local primary schools have also been
+            vandalised recently - despite the presence of security guards. The
+            schools don't have the funds for video surveillance so we need
+            people in the neighbourhood to call their nearest police station and
+            report any suspicious activity immediately. Please don't hesitate to
+            do this. I expect most of you are familiar with the problems facing
+            Abbotsford Street. It seems that no amount of warning signs or speed
+            cameras will slow speeding drivers down. I'm happy to say, however,
+            that the council have agreed to begin work over the next few months
+            to put in a new roundabout. What else? Oh, yes. The newsagent and
+            the gift shop on Victoria Street were both broken into last week,
+            and although no money was taken, the properties have suffered some
+            serious damage. Access was gained to these shops through the small
+            alleyway at the back of the properties - it's dark and as you can
+            imagine, no one saw the thief or thieves in action. So, we've been
+            advising shop owners along there about what kind of video recording
+            equipment they can have put in - we'll then be able to get evidence
+            of any criminal activity on film. The supermarket car park is also
+            on our list of problem areas. We've talked to the supermarket
+            managers and council authorities and we've advised them to get
+            graffiti cleaned off immediately and get the smashed lights
+            replaced. If you don't deal with this sort of thing at once, there's
+            a strong possibility that the activity will increase and spread, and
+            then it becomes ...</p>
+        </details>
+
+        <details class="transcript hlable" id="script3">
+          <summary>Part 3 — Biofuels: Student Discussion</summary>
+          <p>Karina: Hi, Mike. How's it going?</p>
+          <p>Mike: Actually, I was up last night with an assignment so - yeah,
+            I'm tired, but I guess we'd better sort this presentation out.</p>
+          <p>Karina: Well, we've done enough background reading, but I think we
+            need to organise exactly what we're going to say about biofuels
+            during the presentation, and the order.</p>
+          <p>Mike: I thought we could start by asking our audience what car
+            engines were first designed to run on fossil fuels or biofuels.</p>
+          <p>Karina: Nice idea.</p>
+          <p>Mike: Yes, when most people think about cars and fuel, they think
+            about all the carbon dioxide that's produced, but they don't realise
+            that that wasn't always the case.</p>
+          <p>Karina: You're probably right. The earliest car engines ran on fuel
+            made from corn and peanut oil, didn't they?</p>
+          <p>Mike: Yes. The manufacturers used the corn and peanut oil and
+            turned them into a kind of very pure alcohol.</p>
+          <p>Karina: You mean ethanol?</p>
+          <p>Mike: Yes. In fact, most biofuels are still based on ethanol.
+            Actually, I've got some notes here about the process of turning
+            plant-matter into ethanol - the chemical reactions and the
+            fermentation stages and ...</p>
+          <p>Karina: It's interesting - the other students would appreciate it,
+            but different biofuels use different processes and if we give a
+            general description, there's a risk we'll get it wrong, and then the
+            tutor might mark us down. I'd rather we focus on the environmental
+            issues.</p>
+          <p>Mike: Fair enough. So, um the main plants that are used for biofuel
+            production now are sugar cane, corn</p>
+          <p>Karina: And canola. Of all of them, canola is probably the least
+            harmful because machines that use it don't produce as much carbon
+            monoxide.</p>
+          <p>Mike: Sugar cane seems to be controversial. It doesn't require as
+            much fertilizer as corn does to grow, but when they burn the sugar
+            cane fields, that releases loads of greenhouse gases.</p>
+          <p>Karina: Yes, but some critics have suggested that the production of
+            corn ethanol uses up more fossil fuel energy than the biofuel energy
+            it eventually produces. For that reason, I'd say it was more harmful
+            to the environment.</p>
+          <p>Mike: I see what you mean. You're probably right. It's interesting
+            how everyone saw the biofuel industry as the answer to our energy
+            problems, but in some ways, biofuels have created new problems.</p>
+          <p>Karina: Well, in the USA, I wouldn't say that farmers are having
+            problems - the biofuel industry for them has turned out to be really
+            profitable.</p>
+          <p>Mike: I think, though, that even in the USA, ethanol is still only
+            used as an additive to gasoline, or petrol. The problem is that it
+            still has to be transported by trucks or rail because they haven't
+            built any pipelines to move it. Once they do, it'll be cheaper and
+            the industry might move forward.</p>
+          <p>Karina: That'll have to happen one day. At least the government are
+            in favour of biofuel development.</p>
+          <p>Mike: Yes. But Brazil's probably in the lead as far as biofuels are
+            concerned - they've got to the point where they don't need to import
+            any oil now.</p>
+          <p>Karina: Which is great, and the industry in Brazil employs a huge
+            number of people, but is it sustainable? I mean, as the population
+            grows, and there are more vehicles on the roads and there's more
+            machinery, surely they can't depend so much on sugar cane? At some
+            point, there has to be a limit on how much land can be used for
+            sugar cane production - certainly if you want to preserve natural
+            habitats and native wildlife.</p>
+          <p>Mike: I think that whatever problems Brazil's facing now the same
+            will be true for any country - you have to weigh up the pros and
+            cons.</p>
+          <p>Karina: Well, we probably won't see an increase in biofuel use - I
+            mean, they won't replace fossil fuels until we can find ways to
+            produce them cheaply and quickly and with less cost to the
+            environment.</p>
+          <p>Mike: ... making sure they require minimal energy to produce.</p>
+          <p>Karina: Exactly. And in a way that means they have to cost less
+            than fossil fuels - certainly when you're filling up your car.</p>
+          <p>Mike: Yes, and whatever other kind of engines use fossil fuels at
+            the moment.</p>
+          <p>Karina: Alright, so in the last section of the presentation, what
+            problems are we focusing on?</p>
+          <p>Mike: Well, we've already had a look at different types of
+            pollution in the first section, so we can leave that out, but the
+            biggest issue related to biofuels is that land is now being used to
+            grow biofuels crops - and that's contributing to global hunger.</p>
+          <p>Karina: Indeed. It doesn't seem right we're using corn to run cars
+            when people can't afford to buy it to eat. Yes, let's talk about
+            that. The other thing is that in some countries, the way that
+            biofuel crops are grown and harvested still produces a great deal of
+            pollution – really damaging to the atmosphere.</p>
+          <p>Mike: OK, that's definitely an issue we should look at.</p>
+          <p>Karina: Let's not finish on a negative note, though. Why don't we
+            talk about the potential new sources of biofuel so rather than corn
+            and sugar cane what other plants could be used?</p>
+          <p>Mike: Good. Some companies are exploring the possibility of using
+            wood, and seeing how that can be used to make ethanol.</p>
+          <p>Karina: Yes, and algae is another possibility. You can grow it in
+            any water and it absorbs pollutants, too.</p>
+          <p>Mike: I read that. And grasses. They're another plant that
+            researchers are investigating as a biofuel.</p>
+          <p>Karina: And these kind of plants aren't used as food, which is why
+            ...</p>
+        </details>
+
+        <details class="transcript hlable" id="script4">
+          <summary>Part 4 — Technology and Social Interaction: Lecture</summary>
+          <p>Good morning. Today we're thinking about the way that technology is
+            influencing our social structures and the way we interact with one
+            another. Humans, as we know, have always lived in groups; without
+            this arrangement, our species would have died out long ago. But now,
+            the way we see and define our group is changing.</p>
+          <p>I'd like to start by mentioning the research of American
+            sociologist Mark Granovetter in 1973. It was Granovetter who first
+            coined the term 'weak-ties', which he used to refer to people's
+            loose acquaintances - in other words, friends-of-friends. His
+            research showed that weak-ties had a significant effect on the
+            behaviour and choices of populations – and this influence was
+            something highly important in the fields of information science and
+            politics, and as you can imagine, marketing also. So, these
+            friends-of-friends, people we might spend time with at social or
+            work gatherings, might not be like us but they can still have a
+            positive influence because we share the same sort of interests.
+            That's enough to make a connection - and this connection can turn
+            out to be more beneficial than we might suspect. An example of this,
+            an example of how the connection can influence us, is when our
+            weak-ties get in touch and pass on details about jobs they think
+            might be suitable for us. Well, since Granovetter first came up with
+            this theory, his work has been cited in over 19,000 papers. Some of
+            these studies have looked at how weak-tie networks are useful to us
+            in other ways, and one thing that seems to improve as a result of
+            weak-tie influence is our health.</p>
+          <p>Today, our number of weak-tie acquaintances has exploded due to the
+            Internet - to the phenomenon of online social networking. This is
+            still a relatively new way of communication - something that has a
+            huge amount of potential - but also, as with any invention, it
+            brings with it a new set of problems. Let's start with the benefits.
+            Without question, online social networking allows us to pass on the
+            latest news to be up-to-date with local and global events and for
+            many, this information comes from sources more trustworthy than
+            local media. So, this is one clear point in favour of online social
+            networking. I know that it's also being used by students as a means
+            of increasing their chances of success - in the way that lecture
+            notes can be shared and ideas discussed. I think, personally
+            speaking, that we need some further research before we can
+            definitively say whether it helps or not. There's also been a great
+            increase in the number of networking sites devoted to sharing advice
+            on health issues but there are as yet no studies to prove the
+            reliability of that advice. Now, what we do have clear evidence for
+            is that people are developing friendships and professional networks
+            in a way that wasn't possible before - the process is faster. I'm
+            not talking about quality here, but simply that they exist. And it's
+            debatable whether the number of online friends that you have
+            increases your level of self-confidence - that's perhaps an area of
+            research some of you might be interested in following up.</p>
+          <p>Turning to the problems, there are any number of articles
+            connecting online activity to falling levels of physical fitness but
+            it's too easy to blame the Internet for our social problems. The
+            poor grades of school children are also frequently linked to the
+            time spent on social networking sites, but it would be naive to
+            believe there are no other contributing factors. One real concern,
+            however, is the increase in the amount of fraud. Where for example,
+            people are using the personal data of others, which they've put
+            online, for criminal purposes. This kind of activity seems likely to
+            continue. And then, certainly for employers, online social
+            networking sites have provided a great time-wasting opportunity –
+            reducing productivity like never before, and I doubt they can put a
+            stop to this habit, no matter what restrictions are in place.</p>
+          <p>We'll come back to these issues in a minute, but I'd like to say
+            something about the theories of Robin Dunbar an anthropologist at
+            Oxford University. Dunbar has found that the human brain has evolved
+            in a way that means we can only give real attention to a particular
+            number of people. 150, apparently. So, for example, if the number of
+            friends on your online network is greater than that, according to
+            Dunbar, this would imply the relationships are only superficial.
+            Dunbar is not against online relationships, but he maintains that
+            face-to-face interaction is essential for the initial creation of
+            true friendship and connections. He's concerned that for young
+            people if their only experience of forming relationships is online -
+            this doesn't allow them to form the ability or acquire the
+            strategies for maintaining relationships, for example, in situations
+            where negotiation or diplomacy is required, or where it's essential
+            for ...</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>Local copy for personal study. Test material © its original rights
+      holders — please support the original site.</footer>
+
+    <div class="bottombar" id="bottombar">
+      <div class="bb-inner">
+        <div class="bb-top">
+          <div class="bb-tabs" id="bbTabs"></div>
+          <div class="bb-palette" id="bbPalette"></div>
+        </div>
+        <div class="bb-bottom">
+          <span class="bb-progress" id="bbProgress">0 / 40 answered</span>
+          <div class="bb-actions">
+            <button class="btn primary small" id="bbSubmit"
+              type="button">Submit</button>
+            <button class="bb-hide" id="bbHide" type="button"
+              title="Hide bar">✕</button>
+          </div>
+        </div>
       </div>
-      <div class="ielts-reading-test-control-buttons">
-        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
-        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
-      </div>
     </div>
-  </div>
-</div>
+    <button id="bbShow" type="button">Show question bar</button>
 
-<!-- RESULT OVERLAY -->
-<div class="overlay" id="resultOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Your Results</h3>
-      <button class="close-x" data-close="resultOverlay">×</button>
+    <div id="hlBar" role="toolbar" aria-label="Highlight actions">
+      <button type="button" class="hl-main"
+        data-act="hl"><span>🖍️</span><span>Highlight</span></button>
+      <div class="sep"></div>
+      <button type="button" data-act="clear">Clear all</button>
     </div>
-    <div class="overlay-body">
-      <div class="score-summary">
-        <div class="big" id="resultScore">0 / 40</div>
-        <div class="sub" id="resultSub">Band estimate: —</div>
-      </div>
-      <div class="legend-row">
-        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
-      </div>
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
-        <tbody id="resultBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- PREVIEW OVERLAY -->
-<div class="overlay" id="previewOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Review Your Answers</h3>
-      <button class="close-x" data-close="previewOverlay">×</button>
-    </div>
-    <div class="overlay-body">
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-        <tbody id="previewBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- HIGHLIGHT TOOLBAR -->
-<div id="hl-popup">
-  <button id="hl-highlight">🖍 Highlight</button>
-  <button id="hl-dehighlight">🧽 Clear</button>
-  <button id="hl-note">📝 Note</button>
-  <button id="hl-flashcard">🃏 Flashcard</button>
-</div>
-
-<!-- NOTE POPUP -->
-<div id="note-popup">
-  <div class="np-card">
-    <h4>Add a note</h4>
-    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
-    <div class="np-actions">
-      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
-      <button type="button" class="np-save" id="note-save">Save Note</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* ANSWER KEY */
-const ANSWER_KEY = {
-  1:["208 613 2978","2086132978","208 6132978","208613 2978"],
-  2:["visiontech","vision tech"],
-  3:["doctor"],
-  4:["garage"],
-  5:["furniture"],
-  6:["fridge"],
-  7:["school"],
-  8:["950"],
-  9:["quiet"],
-  10:["friend"],
-  11:["contact details","contact detail"],
-  12:["emergency"],
-  13:["radio"],
-  14:["spare keys","spare key"],
-  15:["window locks","window lock"],
-  16:["C"],
-  17:["D"],
-  18:["F"],
-  19:["G"],
-  20:["E"],
-  21:["B"],
-  22:["C"],
-  23:["B"],
-  24:["A"],
-  25:["C"],
-  26:["C"],
-  27:["global hunger","hunger"],
-  28:["pollution"],
-  29:["wood","algae","grasses","grass"],
-  30:["wood","algae","grasses","grass"],
-  31:["marketing"],
-  32:["interests"],
-  33:["jobs"],
-  34:["health"],
-  35:["c,e"],
-  36:["c,e"],
-  37:["a,d"],
-  38:["a,d"],
-  39:["a,c"],
-  40:["a,c"]
-};
-
-const PART_QUESTIONS = {
-  1: Array.from({length:10},(_,i)=>i+1),
-  2: Array.from({length:10},(_,i)=>i+11),
-  3: Array.from({length:10},(_,i)=>i+21),
-  4: Array.from({length:10},(_,i)=>i+31)
-};
-
-function normalize(s){
-  return (s||"").toString().trim().toLowerCase()
-    .replace(/[.,;:!?'"()£]/g,"").replace(/\s+/g," ");
-}
-
-function getCheckedValues(name){
-  const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
-  return Array.from(checked).map(c => c.value.toLowerCase()).sort().join(",");
-}
-
-function getUserAnswer(n){
-  if (n === 35 || n === 36) return getCheckedValues("q35_36");
-  if (n === 37 || n === 38) return getCheckedValues("q37_38");
-  if (n === 39 || n === 40) return getCheckedValues("q39_40");
-  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
-  if (r) return r.value;
-  const s = document.querySelector(`select[name=q${n}]`);
-  if (s) return s.value;
-  const t = document.querySelector(`input[type=text][name=q${n}]`);
-  if (t) return t.value;
-  return "";
-}
-
-function isCorrect(n, ua){
-  const keys = ANSWER_KEY[n] || [];
-  const v = normalize(ua);
-  if (!v) return false;
-  if (n === 35 || n === 36 || n === 37 || n === 38 || n === 39 || n === 40) {
-    return keys.some(k => normalize(k) === v);
-  }
-  return keys.some(k => normalize(k) === v);
-}
-
-function estimateBand(score){
-  if (score>=39) return "9.0"; if (score>=37) return "8.5";
-  if (score>=35) return "8.0"; if (score>=32) return "7.5";
-  if (score>=30) return "7.0"; if (score>=26) return "6.5";
-  if (score>=23) return "6.0"; if (score>=18) return "5.5";
-  if (score>=16) return "5.0"; if (score>=13) return "4.5";
-  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
-  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
-  return "2.0 or below";
-}
-
-let toastTimer=null;
-function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg; el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
-}
-
-function toggleTranscript(el){
-  const body = el.nextElementSibling;
-  const arrow = el.querySelector("span:last-child");
-  body.classList.toggle("show");
-  arrow.textContent = body.classList.contains("show") ? "▲" : "▼";
-  el.querySelector("span:first-child").textContent = body.classList.contains("show") ? "📄 Hide Transcript" : "📄 Show Transcript";
-}
-
-/* BUILD PALETTE */
-const palette = document.getElementById("palette");
-Object.keys(PART_QUESTIONS).forEach(part => {
-  const section = document.createElement("div");
-  section.className = "ielts-reading-palette-section";
-  section.dataset.part = part;
-  const label = document.createElement("strong");
-  label.className = "ielts-reading-palette-section-part";
-  label.textContent = `Part ${part}:`;
-  section.appendChild(label);
-  PART_QUESTIONS[part].forEach(n => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "ielts-reading-palette-item";
-    btn.dataset.q = n;
-    btn.textContent = n;
-    btn.addEventListener("click", () => goToQuestion(n));
-    section.appendChild(btn);
-  });
-  const count = document.createElement("em");
-  count.className = "ielts-reading-palette-section-question-count";
-  count.textContent = `${PART_QUESTIONS[part].length} questions`;
-  section.appendChild(count);
-  palette.appendChild(section);
-});
-
-/* PART SWITCHING */
-let currentPart = 1;
-let currentQuestion = 1;
-
-function switchPart(part){
-  currentPart = parseInt(part,10);
-  document.querySelectorAll(".part-tab").forEach(t =>
-    t.classList.toggle("active", t.dataset.part === String(part)));
-  document.querySelectorAll(".passage").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-  document.querySelectorAll(".q-section").forEach(s =>
-    s.classList.toggle("active", s.dataset.part === String(part)));
-  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-  currentQuestion = PART_QUESTIONS[part][0];
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-
-document.querySelectorAll(".part-tab").forEach(tab => {
-  tab.addEventListener("click", () => switchPart(tab.dataset.part));
-});
-
-function goToQuestion(n){
-  n = parseInt(n,10);
-  if (!n || n<1 || n>40) return;
-  let part = 1;
-  for (const p of [1,2,3,4]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
-  if (part !== currentPart) switchPart(part);
-  currentQuestion = n;
-  const qEl = document.querySelector(`.q[data-q="${n}"]`);
-  if (qEl){
-    qEl.scrollIntoView({behavior:"smooth", block:"center"});
-    qEl.classList.add("highlight");
-    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
-  }
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-function updatePaletteCurrent(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
-}
-function updateNavButtons(){
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
-  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===4);
-}
-document.getElementById("prevBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx > 0) goToQuestion(all[idx-1]);
-  else if (currentPart > 1){
-    const prev = PART_QUESTIONS[currentPart-1];
-    goToQuestion(prev[prev.length-1]);
-  }
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx < all.length-1) goToQuestion(all[idx+1]);
-  else if (currentPart < 4) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
-});
-document.querySelectorAll(".q").forEach(qEl => {
-  qEl.addEventListener("focusin", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-  qEl.addEventListener("click", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-});
-
-function refreshPaletteAnswered(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
-    const n = parseInt(b.dataset.q,10);
-    const ua = getUserAnswer(n);
-    b.classList.toggle("answered", ua.trim() !== "");
-  });
-}
-document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
-document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
-
-/* Limit multi-select checkboxes to 2 */
-document.querySelectorAll('input[type=checkbox][data-limit="2"]').forEach(cb => {
-  cb.addEventListener("change", () => {
-    const name = cb.name;
-    const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
-    if (checked.length > 2) {
-      cb.checked = false;
-      toast("Choose only TWO options");
-    }
-  });
-});
-
-/* RESIZER */
+    <script>
 (function(){
-  const resizer = document.getElementById("resizer");
-  const passagesPane = document.getElementById("passagesPane");
-  const questionsPane = document.getElementById("questionsPane");
-  let dragging = false;
-  resizer.addEventListener("mousedown", e => {
-    e.preventDefault(); dragging = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
-  });
-  document.addEventListener("mousemove", e => {
-    if (!dragging) return;
-    const rect = document.getElementById("mainSplit").getBoundingClientRect();
-    let pct = ((e.clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(20, Math.min(70, pct));
-    passagesPane.style.flex = `0 0 ${pct}%`;
-    questionsPane.style.flex = "1 1 auto";
-  });
-  document.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    document.body.style.cursor = "";
-    document.body.style.userSelect = "";
+  "use strict";
+  var KEY = {
+    1:["208 613 2978","2086132978","208 6132978","208613 2978"],2:["visiontech","vision tech"],3:["doctor"],4:["garage"],5:["furniture"],
+    6:["fridge"],7:["school"],8:["950"],9:["quiet"],10:["friend"],
+    11:["contact details","contact detail"],12:["emergency"],13:["radio"],14:["spare keys","spare key"],15:["window locks","window lock"],
+    16:["C"],17:["D"],18:["F"],19:["G"],20:["E"],
+    21:["B"],22:["C"],23:["B"],24:["A"],25:["C"],26:["C"],
+    27:["global hunger","hunger"],28:["pollution"],29:["wood","algae","grasses","grass"],30:["wood","algae","grasses","grass"],
+    31:["marketing"],32:["interests"],33:["jobs"],34:["health"],
+    35:["c,e"],36:["c,e"],37:["a,d"],38:["a,d"],39:["a,c"],40:["a,c"]
+  };
+  var LABEL = {
+    1:"208 613 2978",2:"visiontech",3:"doctor",4:"garage",5:"furniture",6:"fridge",7:"school",8:"950",9:"quiet",10:"friend",
+    11:"contact details",12:"emergency",13:"radio",14:"spare keys",15:"window locks",
+    16:"C",17:"D",18:"F",19:"G",20:"E",21:"B",22:"C",23:"B",24:"A",25:"C",26:"C",
+    27:"global hunger",28:"pollution",29:"wood (or algae / grasses)",30:"wood (or algae / grasses)",
+    31:"marketing",32:"interests",33:"jobs",34:"health",
+    35:"C, E",36:"C, E",37:"A, D",38:"A, D",39:"A, C",40:"A, C"
+  };
+  var PARTS=[{n:1,from:1,to:10,name:"Part 1"},{n:2,from:11,to:20,name:"Part 2"},{n:3,from:21,to:30,name:"Part 3"},{n:4,from:31,to:40,name:"Part 4"}];
+  var PAIRED={35:"q35_36",36:"q35_36",37:"q37_38",38:"q37_38",39:"q39_40",40:"q39_40"};
+  function norm(s){return String(s==null?"":s).toLowerCase().replace(/[£$€]/g,"").replace(/[^a-z0-9\s]/g," ").replace(/^\s*(the|a|an)\s+/,"").replace(/\s+/g," ").trim().replace(/\s+/g,"");}
+  function correctLabel(q){return LABEL[q]||KEY[q][0];}
+  function qInput(q){return document.querySelector('[data-q="'+q+'"]');}
+  function qRadios(q){return document.querySelectorAll('input[name="q'+q+'"]');}
+  function qCheckboxes(name){return document.querySelectorAll('input[type=checkbox][name="'+name+'"]');}
+  function isChoice(q){if(PAIRED[q])return true;var el=qInput(q);return (el&&el.tagName==="SELECT")||qRadios(q).length>0;}
+  function getUserAnswer(q){if(PAIRED[q]){var cb=qCheckboxes(PAIRED[q]);var arr=[];cb.forEach(function(c){if(c.checked)arr.push(c.value.toLowerCase());});return arr.sort().join(",");}var el=qInput(q);if(el)return el.value;var r=document.querySelector('input[name="q'+q+'"]:checked');return r?r.value:"";}
+  function hasAnswer(q){if(PAIRED[q]){var cb=qCheckboxes(PAIRED[q]);var n=0;cb.forEach(function(c){if(c.checked)n++;});return n>0;}var el=qInput(q);if(el)return !!el.value;return !!document.querySelector('input[name="q'+q+'"]:checked');}
+  function isCorrect(q,raw){if(!raw)return false;if(isChoice(q))return KEY[q].indexOf(String(raw).toUpperCase())!==-1;var u=norm(raw);if(!u)return false;for(var i=0;i<KEY[q].length;i++)if(norm(KEY[q][i])===u)return true;return false;}
+  function bandFor(s){if(s>=39)return "Band 9.0";if(s>=37)return "Band 8.5";if(s>=35)return "Band 8.0";if(s>=32)return "Band 7.5";if(s>=30)return "Band 7.0";if(s>=26)return "Band 6.5";if(s>=23)return "Band 6.0";if(s>=18)return "Band 5.5";if(s>=16)return "Band 5.0";if(s>=13)return "Band 4.5";if(s>=10)return "Band 4.0";return "Band 3.5 or below";}
+  var bbTabs=document.getElementById("bbTabs"),bbPalette=document.getElementById("bbPalette"),bbProgress=document.getElementById("bbProgress");
+  var chipMap={},currentPart=1;
+  PARTS.forEach(function(p){var t=document.createElement("button");t.type="button";t.className="bb-tab"+(p.n===currentPart?" current":"");t.dataset.part=p.n;t.textContent=p.name;t.addEventListener("click",function(){switchPart(p.n);});bbTabs.appendChild(t);});
+  function renderPalette(n){bbPalette.innerHTML="";chipMap={};var part=null;for(var i=0;i<PARTS.length;i++)if(PARTS[i].n===n){part=PARTS[i];break;}if(!part)return;for(var q=part.from;q<=part.to;q++){(function(qq){var b=document.createElement("button");b.type="button";b.className="chip";b.dataset.q=qq;b.textContent=qq;b.addEventListener("click",function(){scrollToQ(qq);});bbPalette.appendChild(b);chipMap[qq]=b;})(q);}refreshPalette();}
+  function refreshPalette(){var done=0,graded=document.body.classList.contains("graded");var counted={};for(var q=1;q<=40;q++){if(PAIRED[q]){if(counted[PAIRED[q]])continue;counted[PAIRED[q]]=true;if(hasAnswer(q))done++;}else{if(hasAnswer(q))done++;}var chip=chipMap[q];if(!chip)continue;chip.classList.remove("ok","no","answered");if(graded){var ok=isCorrect(q,getUserAnswer(q));chip.classList.add(ok?"ok":"no");}else if(hasAnswer(q))chip.classList.add("answered");}bbProgress.textContent=done+" / 40 answered";}
+  function switchPart(n){currentPart=n;document.querySelectorAll(".part").forEach(function(el){el.classList.toggle("current",parseInt(el.dataset.part,10)===n);});document.querySelectorAll(".bb-tab").forEach(function(t){t.classList.toggle("current",parseInt(t.dataset.part,10)===n);});renderPalette(n);var t=document.querySelector('.part[data-part="'+n+'"]');if(t){var top=t.getBoundingClientRect().top+window.scrollY-76;window.scrollTo({top:top,behavior:"smooth"});}}
+  function anchorFor(q){if(PAIRED[q])return qCheckboxes(PAIRED[q])[0].closest(".mcq");var el=qInput(q);if(el)return el;var r=document.querySelector('input[name="q'+q+'"]');if(r)return r.closest(".mcq")||r;return null;}
+  function scrollToQ(q){var el=anchorFor(q);if(!el)return;el.scrollIntoView({behavior:"smooth",block:"center"});var chip=chipMap[q];if(chip){chip.classList.add("active");setTimeout(function(){chip.classList.remove("active");},1200);}}
+  document.addEventListener("input",function(e){if(e.target.matches("[data-q]"))refreshPalette();});
+  document.addEventListener("change",function(e){if(e.target.matches("[data-q]")||e.target.matches('input[type=radio]')||e.target.matches('input[type=checkbox]'))refreshPalette();});
+  document.querySelectorAll('input[type=checkbox][data-limit="2"]').forEach(function(cb){cb.addEventListener("change",function(){var n=cb.name;var checked=document.querySelectorAll('input[type=checkbox][name="'+n+'"]:checked');if(checked.length>2){cb.checked=false;}});});
+  renderPalette(currentPart);
+  var bb=document.getElementById("bottombar"),bbShow=document.getElementById("bbShow");
+  document.getElementById("bbHide").addEventListener("click",function(){bb.classList.add("off");bbShow.classList.add("on");document.body.classList.add("bb-off");});
+  bbShow.addEventListener("click",function(){bb.classList.remove("off");bbShow.classList.remove("on");document.body.classList.remove("bb-off");});
+  function clearFeedback(){document.querySelectorAll(".feedback").forEach(function(n){n.textContent="";});document.querySelectorAll(".is-right,.is-wrong,.picked-ok,.picked-no,.key").forEach(function(n){n.classList.remove("is-right","is-wrong","picked-ok","picked-no","key");});}
+  function placeFeedback(q,ok,text){if(PAIRED[q]){var box=qCheckboxes(PAIRED[q])[0].closest(".mcq");var fb=box?box.querySelector(".feedback"):null;if(fb){var s=document.createElement("span");s.className="feedback "+(ok?"ok":"no");s.textContent=ok?"✓ Correct":"✗ Correct answer: "+text;fb.appendChild(s);}var k=KEY[q][0].split(",");qCheckboxes(PAIRED[q]).forEach(function(c){var lab=c.closest(".opt");if(!lab)return;if(k.indexOf(c.value.toLowerCase())>=0)lab.classList.add("key");if(c.checked)lab.classList.add(k.indexOf(c.value.toLowerCase())>=0?"picked-ok":"picked-no");});return;}
+    var el=qInput(q);var span=document.createElement("span");span.className="feedback "+(ok?"ok":"no");if(ok)span.textContent="✓";else span.innerHTML="✗ <em>"+text+"</em>";if(el){el.classList.add(ok?"is-right":"is-wrong");el.insertAdjacentElement("afterend",span);return;}
+    var radios=qRadios(q);if(radios.length){var mcq=radios[0].closest(".mcq");var stem=mcq?mcq.querySelector(".stem"):null;if(stem)stem.appendChild(span);var kk=KEY[q][0];radios.forEach(function(r){var lab=r.closest(".opt");if(!lab)return;if(r.value===kk)lab.classList.add("key");if(r.checked)lab.classList.add(r.value===kk?"picked-ok":"picked-no");});}}
+  var resultBody=document.getElementById("resultBody"),resultCard=document.getElementById("resultCard");
+  function openAllScripts(){document.querySelectorAll("details.transcript").forEach(function(d){d.open=true;});}
+  function submit(){clearFeedback();document.body.classList.add("graded");openAllScripts();var score=0;resultBody.innerHTML="";var counted={};
+    for(var q=1;q<=40;q++){if(PAIRED[q]){if(counted[PAIRED[q]])continue;counted[PAIRED[q]]=true;}var raw=getUserAnswer(q);var ok=isCorrect(q,raw);if(ok)score++;placeFeedback(q,ok,correctLabel(q));
+      var tr=document.createElement("tr");var tdNum=document.createElement("td");tdNum.textContent=(q===35?"35–36":q===37?"37–38":q===39?"39–40":q);var tdUser=document.createElement("td");tdUser.textContent=raw?raw:"—";if(raw)tdUser.className=ok?"right":"wrong";var tdKey=document.createElement("td");tdKey.textContent=correctLabel(q);var tdMark=document.createElement("td");var pill=document.createElement("span");pill.className="pill "+(ok?"ok":"no");pill.textContent=ok?"✓":"✗";tdMark.appendChild(pill);tr.appendChild(tdNum);tr.appendChild(tdUser);tr.appendChild(tdKey);tr.appendChild(tdMark);resultBody.appendChild(tr);}
+    document.getElementById("scoreLine").textContent=score+" / 40";document.getElementById("bandLine").textContent="Estimated IELTS Listening band: "+bandFor(score);var bc=document.getElementById("bandChip");if(bc){bc.textContent=bandFor(score).replace("Band ","");bc.classList.add("show");}resultCard.classList.add("show");refreshPalette();resultCard.scrollIntoView({behavior:"smooth",block:"start"});}
+  function resetAll(){document.querySelectorAll("[data-q]").forEach(function(el){el.value="";});document.querySelectorAll("input[type=radio]").forEach(function(r){r.checked=false;});document.querySelectorAll("input[type=checkbox]").forEach(function(c){c.checked=false;});clearFeedback();resultCard.classList.remove("show");resultBody.innerHTML="";document.body.classList.remove("graded");document.querySelectorAll("details.transcript").forEach(function(d){d.open=false;});for(var q=1;q<=40;q++){var chip=chipMap[q];if(chip)chip.classList.remove("ok","no","answered");}var bc=document.getElementById("bandChip");if(bc){bc.textContent="--";bc.classList.remove("show");}currentPart=0;switchPart(1);refreshPalette();window.scrollTo({top:0,behavior:"smooth"});}
+  document.getElementById("bbSubmit").addEventListener("click",submit);
+  document.getElementById("retakeBtn").addEventListener("click",resetAll);
+  document.getElementById("jumpScript").addEventListener("click",function(){document.getElementById("transcripts").scrollIntoView({behavior:"smooth",block:"start"});});
+  var HL_STORE="ielts-listening-highlights-"+(document.title||"test");
+  var hlBar=document.getElementById("hlBar"),hlHint=document.getElementById("hlHint");
+  var activeContainer=null,savedRange=null,containers=[];
+  document.querySelectorAll(".hlable").forEach(function(el,i){if(!el.dataset.hlId)el.dataset.hlId="hlc-"+i;containers.push(el);});
+  function textNodesIn(root){var out=[],n;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(node){if(!node.nodeValue||!node.nodeValue.length)return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}});while((n=w.nextNode()))out.push(n);return out;}
+  function nodeOffsetMap(c){var nodes=textNodesIn(c),map=new Map(),pos=0;nodes.forEach(function(n){map.set(n,pos);pos+=n.nodeValue.length;});return map;}
+  function unwrapMarks(c){c.querySelectorAll("mark.hl").forEach(function(m){var p=m.parentNode;if(!p)return;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);});if(c.normalize)c.normalize();}
+  function markOffsets(c){var map=nodeOffsetMap(c),res=[];c.querySelectorAll("mark.hl").forEach(function(m){var inner=textNodesIn(m);if(!inner.length)return;var first=inner[0],last=inner[inner.length-1];var s=map.get(first),e=map.get(last);if(s==null||e==null)return;e+=last.nodeValue.length;if(e>s)res.push([s,e]);});res.sort(function(a,b){return a[0]-b[0];});return res;}
+  function wrapOffsets(c,s,e){var nodes=textNodesIn(c),pos=0,segs=[];for(var i=0;i<nodes.length;i++){var n=nodes[i],len=n.nodeValue.length;var ns=pos,ne=pos+len;var ss=Math.max(s,ns),ee=Math.min(e,ne);if(ee>ss)segs.push([n,ss-ns,ee-ns]);pos=ne;if(pos>=e)break;}
+    segs.forEach(function(seg){var node=seg[0],so=seg[1],eo=seg[2];var r=document.createRange();try{r.setStart(node,so);r.setEnd(node,eo);var m=document.createElement("mark");m.className="hl";r.surroundContents(m);}catch(err){}});}
+  function applyOffsets(c,ranges){unwrapMarks(c);ranges.slice().sort(function(a,b){return b[0]-a[0];}).forEach(function(r){wrapOffsets(c,r[0],r[1]);});}
+  function rangeToOffsets(c,range){var nodes=textNodesIn(c),pos=0,s=null,e=null;for(var i=0;i<nodes.length;i++){var n=nodes[i],len=n.nodeValue.length;if(n===range.startContainer)s=pos+range.startOffset;if(n===range.endContainer)e=pos+range.endOffset;pos+=len;}if(s==null||e==null||e<=s)return null;return [s,e];}
+  function saveHighlights(){var data={};containers.forEach(function(c){var o=markOffsets(c);if(o.length)data[c.dataset.hlId]=o;});try{localStorage.setItem(HL_STORE,JSON.stringify(data));}catch(e){}}
+  function loadHighlights(){var raw;try{raw=localStorage.getItem(HL_STORE);}catch(e){return;}if(!raw)return;var data;try{data=JSON.parse(raw);}catch(e){return;}containers.forEach(function(c){var o=data[c.dataset.hlId];if(o&&o.length)applyOffsets(c,o);});}
+  function clearAllHighlights(){containers.forEach(function(c){unwrapMarks(c);});try{localStorage.removeItem(HL_STORE);}catch(e){}flashHint("Highlights cleared");}
+  function flashHint(t){hlHint.classList.add("flash");var s=hlHint.querySelector("span:last-child"),o=s.textContent;s.textContent=t;setTimeout(function(){hlHint.classList.remove("flash");s.textContent=o;},1200);}
+  var cHl=document.getElementById("clearHighlightsLink");if(cHl)cHl.addEventListener("click",function(e){e.preventDefault();clearAllHighlights();var mp=document.getElementById("menuPop");if(mp)mp.classList.remove("show");});
+  document.addEventListener("click",function(e){var m=e.target.closest&&e.target.closest("mark.hl");if(!m)return;var p=m.parentNode;if(!p)return;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);if(p.normalize)p.normalize();saveHighlights();});
+  function hideHlBar(){hlBar.classList.remove("on");savedRange=null;activeContainer=null;}
+  function findContainer(node){var el=node.nodeType===1?node:node.parentElement;if(!el)return null;return el.closest(".hlable");}
+  function applyHighlight(){if(!savedRange||!activeContainer)return false;var o=rangeToOffsets(activeContainer,savedRange);if(!o)return false;var ex=markOffsets(activeContainer);ex.push(o);applyOffsets(activeContainer,ex);saveHighlights();var sel=window.getSelection();if(sel)sel.removeAllRanges();hideHlBar();flashHint("Highlighted");return true;}
+  document.addEventListener("mouseup",function(e){if(e.target.closest&&e.target.closest("#hlBar"))return;setTimeout(function(){var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount){hideHlBar();return;}var range=sel.getRangeAt(0);var c=findContainer(range.commonAncestorContainer);if(!c){hideHlBar();return;}var rect=range.getBoundingClientRect();if(!rect||(!rect.width&&!rect.height)){hideHlBar();return;}activeContainer=c;savedRange=range.cloneRange();hlBar.style.top=(rect.top+window.scrollY-10)+"px";hlBar.style.left=(rect.left+rect.width/2+window.scrollX)+"px";hlBar.classList.add("on");},10);});
+  document.addEventListener("mousedown",function(e){if(e.target.closest&&e.target.closest("#hlBar"))e.preventDefault();});
+  document.addEventListener("scroll",hideHlBar,{passive:true});window.addEventListener("resize",hideHlBar);
+  hlBar.addEventListener("click",function(e){var b=e.target.closest("button[data-act]");if(!b)return;if(b.dataset.act==="clear"){clearAllHighlights();hideHlBar();return;}if(b.dataset.act==="hl")applyHighlight();});
+  loadHighlights();
+  var secs=0,tEl=document.getElementById("timer");
+  function fmt(n){var h=Math.floor(n/3600),m=Math.floor((n%3600)/60),s=n%60;return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;}
+  setInterval(function(){secs++;if(tEl)tEl.textContent=fmt(secs);},1000);
+  var menuBtn=document.getElementById("menuBtn"),menuPop=document.getElementById("menuPop");
+  if(menuBtn&&menuPop){menuBtn.addEventListener("click",function(e){e.stopPropagation();menuPop.classList.toggle("show");});document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".menu-wrap"))menuPop.classList.remove("show");});}
+  var fb2=document.getElementById("focusBtn");if(fb2)fb2.addEventListener("click",function(){if(!document.fullscreenElement){if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen();}else if(document.exitFullscreen)document.exitFullscreen();});
+  var ex2=document.getElementById("exportLink");if(ex2)ex2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");window.print();});
+  var rl2=document.getElementById("resetLink");if(rl2)rl2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");if(confirm("Reset the test? All answers will be cleared."))resetAll();});
+  var gt2=document.getElementById("gotoTop");if(gt2)gt2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");window.scrollTo({top:0,behavior:"smooth"});});
+  document.addEventListener("keydown",function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){e.preventDefault();submit();return;}
+    if(e.key==="Escape"){hideHlBar();return;}
+    if(e.altKey&&e.key>="1"&&e.key<="4"){e.preventDefault();switchPart(parseInt(e.key,10));return;}
+    if(e.key==="h"||e.key==="H"){var tag=(e.target.tagName||"").toLowerCase();if(tag==="input"||tag==="textarea"||tag==="select")return;var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;var range=sel.getRangeAt(0);var c=findContainer(range.commonAncestorContainer);if(!c)return;activeContainer=c;savedRange=range.cloneRange();applyHighlight();}
   });
 })();
-
-/* TIMER */
-let seconds = 0;
-setInterval(() => {
-  seconds++;
-  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
-  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
-  const s = String(seconds%60).padStart(2,"0");
-  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-/* ============================================
-   HIGHLIGHT / NOTE FEATURE
-   ============================================ */
-const hlPopup = document.getElementById("hl-popup");
-const notePopup = document.getElementById("note-popup");
-const passagesEl = document.getElementById("passagesPane");
-const questionsEl = document.getElementById("questionsPane");
-const fab = document.getElementById("hl-fab");
-
-let savedRange = null;
-let pendingNoteRange = null;
-let highlighterOn = false;
-let currentMark = null;
-let noteSaveTarget = null;
-
-fab.addEventListener("click", () => {
-  highlighterOn = !highlighterOn;
-  fab.classList.toggle("active", highlighterOn);
-  toast(highlighterOn
-    ? "Highlighter ON — select text or click a word"
-    : "Highlighter OFF — normal selection");
-});
-
-function showPopupAt(rect){
-  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
-  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
-  hlPopup.classList.add("show");
-}
-
-function isEditableTarget(el){
-  return el && (el.closest("input") || el.closest("select") ||
-                el.closest("button") || el.closest("label") ||
-                el.closest(".transcript-toggle"));
-}
-
-document.addEventListener("mouseup", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  setTimeout(() => {
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      const range = sel.getRangeAt(0);
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        if (isEditableTarget(e.target)) return;
-        savedRange = range.cloneRange();
-        showPopupAt(range.getBoundingClientRect());
-      }
-    }
-  }, 0);
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  if (isEditableTarget(e.target)) return;
-
-  const inP = e.target.closest(".passages");
-  const inQ = e.target.closest(".questions");
-  if (!inP && !inQ) return;
-
-  const existingMark = e.target.tagName === "MARK" ? e.target :
-                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
-  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
-
-  if (existingNote) {
-    const note = existingNote.dataset.note || "";
-    document.getElementById("note-text").value = note;
-    pendingNoteRange = null;
-    notePopup.classList.add("show");
-    noteSaveTarget = existingNote;
-    return;
-  }
-
-  if (existingMark) {
-    savedRange = null;
-    currentMark = existingMark;
-    showPopupAt(existingMark.getBoundingClientRect());
-    return;
-  }
-
-  if (highlighterOn) {
-    const sel = window.getSelection();
-    let range = null;
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      range = sel.getRangeAt(0);
-    } else {
-      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
-      if (wordRange) range = wordRange;
-    }
-    if (range) {
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        highlightRange(range);
-        window.getSelection().removeAllRanges();
-        hlPopup.classList.remove("show");
-        savedRange = null;
-      }
-    }
-  }
-});
-
-function getWordRangeFromPoint(x, y){
-  let node, offset;
-  if (document.caretRangeFromPoint){
-    const r = document.caretRangeFromPoint(x, y);
-    if (!r) return null;
-    node = r.startContainer; offset = r.startOffset;
-  } else if (document.caretPositionFromPoint){
-    const pos = document.caretPositionFromPoint(x, y);
-    if (!pos) return null;
-    node = pos.offsetNode; offset = pos.offset;
-  } else return null;
-  if (!node || node.nodeType !== 3) return null;
-  const text = node.textContent;
-  if (!text || !text.trim()) return null;
-  let start = offset, end = offset;
-  const isWord = c => /[\w'’\-]/i.test(c);
-  while (start > 0 && isWord(text[start-1])) start--;
-  while (end < text.length && isWord(text[end])) end++;
-  if (start === end) {
-    if (offset < text.length) end = offset + 1;
-  }
-  if (start >= end) return null;
-  const range = document.createRange();
-  try {
-    range.setStart(node, start);
-    range.setEnd(node, end);
-  } catch(err){ return null; }
-  return range;
-}
-
-document.getElementById("hl-highlight").addEventListener("click", () => {
-  if (currentMark) { hlPopup.classList.remove("show"); return; }
-  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
-  highlightRange(savedRange);
-  window.getSelection().removeAllRanges();
-  hlPopup.classList.remove("show");
-  savedRange = null;
-  toast("Text highlighted");
-});
-
-document.getElementById("hl-dehighlight").addEventListener("click", () => {
-  if (currentMark){
-    const parent = currentMark.parentNode;
-    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
-    parent.removeChild(currentMark);
-    currentMark = null;
-    hlPopup.classList.remove("show");
-    toast("Highlight removed");
-    return;
-  }
-  if (savedRange){
-    clearHighlightInRange(savedRange);
-    window.getSelection().removeAllRanges();
-    hlPopup.classList.remove("show");
-    savedRange = null;
-    toast("Highlight removed");
-  } else {
-    hlPopup.classList.remove("show");
-  }
-});
-
-document.getElementById("hl-note").addEventListener("click", () => {
-  if (!savedRange) { toast("Select text first"); return; }
-  pendingNoteRange = savedRange.cloneRange();
-  noteSaveTarget = null;
-  document.getElementById("note-text").value = "";
-  notePopup.classList.add("show");
-  hlPopup.classList.remove("show");
-});
-
-document.getElementById("hl-flashcard").addEventListener("click", () => {
-  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
-  if (!text) { toast("Select text first"); return; }
-  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
-  hlPopup.classList.remove("show");
-});
-
-function highlightRange(range){
-  try {
-    const mark = document.createElement("mark");
-    mark.className = "hl-user";
-    mark.appendChild(range.extractContents());
-    range.insertNode(mark);
-  } catch(err){
-    console.warn("Highlight failed:", err);
-  }
-}
-
-function clearHighlightInRange(range){
-  const container = range.commonAncestorContainer;
-  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
-  if (!root || !root.querySelectorAll) return;
-  const marks = root.querySelectorAll("mark.hl-user");
-  marks.forEach(m => {
-    try {
-      if (range.intersectsNode(m)) {
-        const parent = m.parentNode;
-        while (m.firstChild) parent.insertBefore(m.firstChild, m);
-        parent.removeChild(m);
-      }
-    } catch(err){}
-  });
-}
-
-document.getElementById("note-cancel").addEventListener("click", () => {
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-  noteSaveTarget = null;
-});
-
-document.getElementById("note-save").addEventListener("click", () => {
-  const noteText = document.getElementById("note-text").value.trim();
-
-  if (noteSaveTarget){
-    if (noteText){
-      noteSaveTarget.dataset.note = noteText;
-      noteSaveTarget.title = "Note: " + noteText;
-      toast("Note updated");
-    } else {
-      const parent = noteSaveTarget.parentNode;
-      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
-      parent.removeChild(noteSaveTarget);
-      toast("Note removed");
-    }
-    noteSaveTarget = null;
-    notePopup.classList.remove("show");
-    document.getElementById("note-text").value = "";
-    return;
-  }
-
-  if (!noteText || !pendingNoteRange) {
-    notePopup.classList.remove("show");
-    pendingNoteRange = null;
-    return;
-  }
-  try {
-    const span = document.createElement("span");
-    span.className = "hl-note";
-    span.title = "Note: " + noteText;
-    span.dataset.note = noteText;
-    span.appendChild(pendingNoteRange.extractContents());
-    pendingNoteRange.insertNode(span);
-    toast("Note saved");
-  } catch(err){
-    console.warn("Note failed:", err);
-  }
-  document.getElementById("note-text").value = "";
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-});
-
-document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (!confirm("Remove all highlights and notes from this test?")) return;
-  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
-    const parent = el.parentNode;
-    while (el.firstChild) parent.insertBefore(el.firstChild, el);
-    parent.removeChild(el);
-  });
-  toast("Highlights cleared");
-});
-
-/* SUBMIT */
-document.getElementById("submitBtn").addEventListener("click", () => {
-  let score = 0, answered = 0;
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong"));
-
-  const rows = [];
-  const grouped = new Set();
-  for (let n=1; n<=40; n++){
-    if (grouped.has(n)) continue;
-    const qEl = document.querySelector(`.q[data-q="${n}"]`);
-    if (!qEl) continue;
-    const ua = getUserAnswer(n);
-    if (ua.trim() !== "") answered++;
-    const ok = isCorrect(n, ua);
-    if (ok) score++;
-    qEl.classList.add(ok ? "correct" : "wrong");
-    const fb = qEl.querySelector(".feedback");
-    if (fb){
-      const key = (ANSWER_KEY[n]||[]).join(" / ");
-      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
-    }
-    const q2 = qEl.dataset.q2;
-    [n, q2].forEach(num => {
-      if (!num) return;
-      const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${num}"]`);
-      if (pal) pal.classList.add(ok ? "correct" : "wrong");
-      if (num !== n) grouped.add(parseInt(num,10));
-    });
-    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
-  }
-
-  document.getElementById("resultScore").textContent = `${score} / 40`;
-  document.getElementById("resultSub").textContent =
-    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
-
-  const tbody = document.getElementById("resultBody");
-  tbody.innerHTML = "";
-  rows.forEach(r => {
-    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
-    const tr = document.createElement("tr");
-    const label = r.n===35?"35–36":r.n===37?"37–38":r.n===39?"39–40":r.n;
-    tr.innerHTML = `<td>${label}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
-    tbody.appendChild(tr);
-  });
-
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "Band " + estimateBand(score);
-  chip.classList.add("show");
-
-  document.getElementById("resultOverlay").classList.add("show");
-});
-
-/* REVIEW */
-document.getElementById("reviewBtn").addEventListener("click", () => {
-  const tbody = document.getElementById("previewBody");
-  tbody.innerHTML = "";
-  for (let n=1; n<=40; n++){
-    const ua = getUserAnswer(n);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
-    tbody.appendChild(tr);
-  }
-  document.getElementById("previewOverlay").classList.add("show");
-});
-
-document.querySelectorAll("[data-close]").forEach(btn =>
-  btn.addEventListener("click", () =>
-    document.getElementById(btn.dataset.close).classList.remove("show")));
-document.querySelectorAll(".overlay").forEach(ov =>
-  ov.addEventListener("click", e => {
-    if (e.target === ov) ov.classList.remove("show");
-  }));
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
-    hlPopup.classList.remove("show");
-    notePopup.classList.remove("show");
-  }
-});
-
-/* MENU */
-const menuPop = document.getElementById("menuPop");
-document.getElementById("menuBtn").addEventListener("click", e => {
-  e.stopPropagation(); menuPop.classList.toggle("show");
-});
-document.addEventListener("click", () => menuPop.classList.remove("show"));
-menuPop.addEventListener("click", e => e.stopPropagation());
-
-document.getElementById("exportLink").addEventListener("click", e => {
-  e.preventDefault(); window.print();
-});
-document.getElementById("resetLink").addEventListener("click", e => {
-  e.preventDefault(); doReset();
-});
-document.getElementById("gotoTop").addEventListener("click", e => {
-  e.preventDefault();
-  window.scrollTo({top:0, behavior:"smooth"});
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-});
-
-function doReset(){
-  if (!confirm("Clear all answers and reset the test?")) return;
-  document.getElementById("quiz").reset();
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong","answered"));
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "--"; chip.classList.remove("show");
-  document.getElementById("resultOverlay").classList.remove("show");
-  document.getElementById("previewOverlay").classList.remove("show");
-  document.querySelectorAll(".transcript-body").forEach(t => t.classList.remove("show"));
-  document.querySelectorAll(".transcript-toggle").forEach(t => {
-    t.querySelector("span:first-child").textContent = "📄 Show Transcript";
-    t.querySelector("span:last-child").textContent = "▼";
-  });
-  switchPart(1);
-  toast("Test reset. Good luck!");
-}
-
-document.getElementById("focusBtn").addEventListener("click", () =>
-  document.body.classList.add("focus-mode"));
-document.getElementById("exitFocusBtn").addEventListener("click", () =>
-  document.body.classList.remove("focus-mode"));
-
-switchPart(1);
-refreshPaletteAnswered();
-updateNavButtons();
 </script>
-
-</body>
+  </body>
 </html>

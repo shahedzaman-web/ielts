@@ -1,1345 +1,1404 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Official Cambridge Guide to IELTS Academic Listening Test 1</title>
-<style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Official Cambridge Guide to IELTS Academic Listening Test 1</title>
+    <style>
 :root{
-  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
-  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
-  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
+  --bg:#eef2f6; --card:#fff; --ink:#1e293b; --muted:#64748b;
+  --brand:#0f766e; --brand-dark:#0d5c56;
+  --ok:#16a34a; --bad:#c2410c;
+  --line:#e2e8f0; --soft:#f8fafc; --hl:#fef08a;
+  --bbh:80px; --header-h:58px;
+  --text:#1e293b; --accent:#0f766e;
 }
-*{box-sizing:border-box;}
-html,body{height:100%;}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
-button{font-family:inherit;cursor:pointer;border:none;}
-
-.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
-.app-header .logo{height:34px;display:block;}
-.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:calc(var(--bbh) + 20px);
+}
+body.bb-off{padding-bottom:20px}
+.wrap{max-width:940px;margin:0 auto;padding:0 16px}
+::selection{background:var(--hl);color:#111}
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.topbar .wrap{display:flex;align-items:center;gap:10px;height:58px}
+.brand{font-weight:700;color:var(--brand);letter-spacing:.2px;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:400}
+.spacer{flex:1}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:15px;}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:.15s;white-space:nowrap;}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-dark);border-color:var(--brand-dark)}
+.btn.ghost{background:transparent}
+.btn.small{padding:6px 11px;font-size:13px}
+.btn.hl-btn{background:#fef3c7;border-color:#fcd34d;color:#78350f}
+.btn.hl-btn:hover{background:#fde68a}
+h1{font-size:26px;margin:24px 0 6px}
+.lead{color:var(--muted);margin:0 0 14px}
+.hl-banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:14px;color:#78350f;}
+.hl-banner .hl-icon{font-size:20px;line-height:1}
+.hl-banner .hl-text{flex:1;min-width:180px}
+.hl-banner strong{color:#92400e}
+.hl-banner kbd{background:#fde68a;border:1px solid #f59e0b;border-radius:5px;padding:1px 6px;font-size:12px;font-family:inherit;font-weight:700;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+.card h2{font-size:20px;margin:0 0 4px}
+.card h3{font-size:17px;margin:18px 0 8px}
+.card p{margin:8px 0}
+audio{width:100%;margin:10px 0 6px}
+.part{display:none}
+.part.current{display:block}
+.part-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:14px;}
+.part-badge{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px;letter-spacing:.3px;}
+.part-desc{color:var(--muted);font-size:14px;font-weight:600}
+.part-audio-label{font-size:13px;color:var(--muted);font-weight:600;margin-left:auto}
+.notes{list-style:none;padding:0;margin:0}
+.notes li{padding:9px 0 9px 4px;border-bottom:1px dashed var(--line)}
+.notes li:last-child{border-bottom:none}
+.q{white-space:nowrap}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin-right:5px;background:#e2e8f0;color:#334155;border-radius:6px;font-size:13px;font-weight:700;vertical-align:middle;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #99f6e4;border-color:#5eead4;}
+input[type=text].is-right{border-color:#86efac;background:#f0fdf4}
+input[type=text].is-wrong{border-color:#fdba74;background:#ffedd5}
+.mcq{margin:10px 0 16px;padding:4px 6px;border-radius:8px}
+.mcq .stem{font-weight:600}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;cursor:pointer;border-radius:6px}
+.opt:hover{background:var(--soft)}
+.opt input{margin-top:5px;accent-color:var(--brand)}
+.opt .ltr{font-weight:700;color:var(--brand);min-width:16px}
+.opt.picked-ok{background:#f0fdf4}
+.opt.picked-no{background:#ffedd5}
+.opt.key{outline:1px dashed #86efac}
+select{font:inherit;font-size:15px;padding:4px 8px;border-radius:6px;border:1px solid #cbd5e1;border-bottom:2px solid #94a3b8;background:#fff;outline:none;}
+select:focus{border-color:var(--brand)}
+select.is-right{border-color:#86efac;background:#f0fdf4}
+select.is-wrong{border-color:#fdba74;background:#ffedd5}
+.matchlist{list-style:none;padding:0;margin:6px 0 0}
+.matchlist li{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+.matchlist li:last-child{border-bottom:none}
+.optbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px;}
+.optbox b{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 16px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-size:14px}
+td input[type=text]{min-width:120px}
+.diagram{width:100%;max-width:520px;display:block;margin:10px auto;border-radius:10px;border:1px solid var(--line)}
+.diagram-note{text-align:center;color:var(--muted);font-size:14px}
+.feedback{font-size:13px;font-weight:700;margin-left:6px;white-space:nowrap}
+.feedback.ok{color:var(--ok)}
+.feedback.no{color:var(--bad)}
+.feedback.no em{font-style:normal;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:5px}
+.post-submit{display:none}
+body.graded .post-submit{display:block}
+.resultcard{display:none}
+.resultcard.show{display:block}
+.score{font-size:34px;font-weight:800;color:var(--brand);margin:0}
+.band{color:var(--muted);margin:2px 0 6px}
+.result-note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:10px;padding:10px 14px;font-size:14px;margin:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table.result td.wrong{color:var(--bad);font-weight:600}
+table.result td.right{color:var(--ok);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
+.pill.ok{background:#dcfce7;color:#166534}
+.pill.no{background:#ffedd5;color:#9a3412}
+details.transcript{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+details.transcript summary{cursor:pointer;font-weight:700;color:var(--brand)}
+details.transcript[open] summary{margin-bottom:8px}
+details.transcript p{margin:10px 0;font-size:15px;color:#334155}
+mark.hl{background:var(--hl);color:inherit;padding:0 1px;border-radius:3px;cursor:pointer;box-shadow:inset 0 -2px 0 #f59e0b;}
+mark.hl:hover{background:#fde047}
+#hlBar{position:absolute;z-index:90;display:none;background:#1e293b;border-radius:10px;padding:6px;box-shadow:0 10px 30px rgba(2,6,23,.42);font-size:13px;gap:4px;align-items:center;transform:translate(-50%,-100%);animation:hlpop .12s ease-out;}
+@keyframes hlpop{from{opacity:0;transform:translate(-50%,-90%) scale(.92);}to{opacity:1;transform:translate(-50%,-100%) scale(1);}}
+#hlBar.on{display:flex}
+#hlBar button{background:transparent;border:none;color:#fff;cursor:pointer;font:inherit;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+#hlBar button:hover{background:rgba(255,255,255,.16)}
+#hlBar .hl-main{background:#facc15;color:#422006}
+#hlBar .hl-main:hover{background:#fde047}
+#hlBar .sep{width:1px;height:20px;background:rgba(255,255,255,.22);margin:0 2px}
+#hlHint{position:fixed;right:16px;top:calc(var(--header-h) + 16px);z-index:55;background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(120,53,15,.12);display:flex;align-items:center;gap:7px;cursor:default;transition:.2s;}
+#hlHint.flash{background:#fde68a;transform:scale(1.06)}
+#hlHint .dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.8);}}
+body.bb-off #hlHint{top:calc(var(--header-h) + 16px)}
+.bottombar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);box-shadow:0 -3px 16px rgba(15,23,42,.08);transition:transform .25s ease;}
+.bottombar.off{transform:translateY(110%)}
+.bb-inner{max-width:1000px;margin:0 auto;padding:8px 12px;display:flex;flex-direction:column;gap:6px;}
+.bb-top{display:flex;align-items:center;gap:10px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:thin;}
+.bb-top::-webkit-scrollbar{height:6px}
+.bb-top::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+.bb-tabs{display:flex;gap:4px;flex:0 0 auto;padding-right:10px;border-right:1px solid var(--line);}
+.bb-tab{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:.12s;}
+.bb-tab:hover{border-color:var(--brand);color:var(--brand)}
+.bb-tab.current{background:var(--brand);border-color:var(--brand);color:#fff}
+.bb-palette{display:flex;gap:4px;flex:1;flex-wrap:nowrap;align-items:center;min-width:0;}
+.chip{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.12s;padding:0;}
+.chip:hover{border-color:var(--brand);color:var(--brand)}
+.chip.answered{background:#ccfbf1;border-color:#5eead4;color:#115e59}
+.chip.ok{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.no{background:#ffedd5;border-color:#fdba74;color:#9a3412}
+.chip.active{outline:2px solid var(--brand);outline-offset:1px}
+.bb-bottom{display:flex;align-items:center;gap:10px;padding-top:6px;border-top:1px dashed var(--line);}
+.bb-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
+.bb-progress{font-size:13px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.bb-hide{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;}
+.bb-hide:hover{background:var(--soft);color:var(--ink)}
+#bbShow{position:fixed;right:16px;bottom:16px;z-index:71;display:none;background:var(--brand);color:#fff;border:none;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 22px rgba(15,118,110,.32);}
+#bbShow.on{display:block}
+footer{color:var(--muted);font-size:14px;text-align:center;padding:26px 16px 40px}
+footer a{color:var(--muted)}
+@media (max-width:600px){
+  .brand span{display:none}
+  .bb-progress{display:none}
+  .bb-inner{padding:6px 8px;gap:4px}
+  .card{padding:18px 16px}
+  h1{font-size:22px}
+  .bb-tab{padding:5px 9px;font-size:10px}
+  .chip{width:28px;height:28px;font-size:12px}
+  #hlHint{font-size:12px;padding:6px 10px;right:10px;}
+}
+@media print{
+  .topbar,.app-header,.bottombar,#bbShow,#hlBar,#hlHint{display:none!important}
+  body{padding-bottom:0}
+  .part{display:block!important}
+  .card{break-inside:avoid;box-shadow:none}
+  .post-submit{display:block!important}
+  details.transcript{display:block}
+  details.transcript > *{display:block!important}
+}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header > a:first-child{font-size:20px;line-height:1;text-decoration:none;width:38px;height:38px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--soft);border:1px solid var(--line);transition:.15s;}
+.app-header > a:first-child:hover{background:#ccfbf1;border-color:#5eead4}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
 .header-right{display:flex;align-items:center;gap:10px;}
-.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
-.band-chip.show{opacity:1;background:#16a34a;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;transition:.2s;}
+.band-chip.show{opacity:1;background:#0f766e;}
 .timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
-.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.12s;}
 .icon-btn:hover{background:#f1f5f9;}
 .menu-wrap{position:relative;}
-.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
-  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
 .menu-pop.show{display:block;}
 .menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
 .menu-pop a:last-child{border-bottom:none;}
 .menu-pop a:hover{background:#f8fafc;color:var(--accent);}
-
-.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
-  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-.pane{overflow-y:auto;padding:24px 30px;}
-.passages{flex:0 0 40%;background:#fcfdff;}
-.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
-.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
-.resizer:hover{background:#cbd5e1;}
-.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
-
-.passage{display:none;}
-.passage.active{display:block;}
-.passage h2{font-size:22px;margin:0 0 6px;font-weight:700;}
-.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
-  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
-.passage p{margin:0 0 14px;}
-.passage em{color:var(--muted);}
-
-.audio-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(15,23,42,.04);}
-.audio-card h3{margin:0 0 4px;font-size:16px;color:var(--accent);font-weight:700;}
-.audio-card .audio-desc{font-size:13px;color:var(--muted);margin-bottom:14px;}
-.audio-card audio{width:100%;height:42px;outline:none;}
-.audio-tip{font-size:12px;color:var(--muted);margin-top:10px;background:#f8fafc;padding:8px 12px;border-radius:6px;border-left:3px solid var(--accent);}
-.audio-tip i{color:var(--accent);}
-
-.transcript-toggle{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:12px;
-  display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
-.transcript-toggle:hover{background:#f8fafc;}
-.transcript-toggle span{font-size:13px;font-weight:600;}
-.transcript-body{display:none;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;line-height:1.7;max-height:400px;overflow-y:auto;margin-bottom:14px;}
-.transcript-body.show{display:block;}
-.transcript-body p{margin:0 0 8px;}
-
-.q-section{display:none;}
-.q-section.active{display:block;}
-.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
-.q-group:last-child{border-bottom:none;margin-bottom:0;}
-.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
-.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
-.q-instr p{margin:0 0 3px;}
-.q-instr p:last-child{margin:0;}
-
-.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
-.q:last-child{border-bottom:none;}
-.q.highlight{background:#fffbeb;}
-.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-.q-body{flex:1;min-width:0;}
-.q-body p{margin:0 0 7px;}
-input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
-input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
-select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
-.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
-.options.stack{display:block;}
-.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
-.options.stack label{display:flex;margin-bottom:3px;}
-.options label:hover{background:#f8fafc;}
-input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-
-.q.correct .q-num{background:var(--good-soft);color:var(--good);}
-.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
-.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
-.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
-.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
-.q.correct .feedback,.q.wrong .feedback{display:block;}
-.q.correct .feedback{color:var(--good);}
-.q.wrong .feedback{color:var(--bad);}
-
-/* Highlight styles */
-mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
-.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
-
-.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
-  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
-.bottom-inner{max-width:1600px;margin:0 auto;}
-.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
-.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
-  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
-.part-tab:hover{opacity:1;background:#f1f5f9;}
-.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
-.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
-.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
-
-.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
-  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
-.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
-.ielts-reading-palette-section.active{display:flex;}
-.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
-.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
-  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
-.ielts-reading-palette-item:hover{background:#e2e8f0;}
-.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
-.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
-.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
-.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
-.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
-
-.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px solid #f1f5f9;padding-top:8px;}
-.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
-.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
-  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
-.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
-.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
-.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
-  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
-.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
-  font-weight:700;display:flex;align-items:center;gap:8px;}
-.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
-
-.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
-.overlay.show{display:flex;}
-.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
-  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
-.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
-.overlay-head h3{margin:0;font-size:18px;}
-.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
-.close-x:hover{color:var(--text);}
-.overlay-body{padding:18px 22px;overflow-y:auto;}
-.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
-.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
-.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
-table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
-table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
-table.result-tbl td.correct{color:var(--good);font-weight:700;}
-table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
-.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
-
-body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
-body.focus-mode{padding-bottom:0;}
-body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
-.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
-  padding:8px 14px;font-size:13px;font-weight:700;}
-body.focus-mode .exit-focus{display:block;}
-
-.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
-  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
-.toast.show{opacity:1;}
-
-/* Floating highlight popup */
-#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
-#hl-popup.show{display:flex;gap:3px;}
-#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
-#hl-popup button:hover{background:#1e293b;}
-
-/* Note popup */
-#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
-#note-popup.show{display:flex;}
-#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
-#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
-#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
-#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
-#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
-#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
-#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
-
-/* Global floating highlighter toggle button */
-#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
-  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
-  transition:.15s;border:none;cursor:pointer;}
-#hl-fab:hover{transform:scale(1.08);}
-#hl-fab.active{background:#facc15;color:#0f172a;}
-body.focus-mode #hl-fab{bottom:20px;}
+@media (max-width:600px){
+  .app-header{padding:0 10px;gap:8px}
+  .app-header h1{font-size:12px}
+  .timer-chip{padding:4px 8px;font-size:12px}
+  .icon-btn{padding:4px 8px;font-size:12px}
+  .band-chip{display:none}
+}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<header class="app-header">
-  <a href="/" >📚</a>
-  <h1>Official Cambridge Guide to IELTS Academic Listening Test 1</h1>
-  <div class="header-right">
-    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
-    <div class="band-chip" id="bandChip">--</div>
-    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
-    <div class="menu-wrap">
-      <button class="icon-btn" id="menuBtn">☰</button>
-      <div class="menu-pop" id="menuPop">
-        <a href="#" id="exportLink">📄 Export as PDF</a>
-        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
-        <a href="#" id="resetLink">↺ Reset Test</a>
-        <a href="#" id="gotoTop">↑ Back to Top</a>
+    <header class="app-header">
+      <a href="./index.html" title="Home">📚</a>
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 1</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="focusBtn" type="button">⛶ Focus</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn" type="button">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
-<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button><button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
-
-<div class="main-split" id="mainSplit">
-  <div class="pane passages" id="passagesPane">
-
-    <!-- PART 1 -->
-    <div class="passage active" data-part="1">
-      <span class="part-label">Part 1</span>
-      <h2>Preston Park Run</h2>
-      <p><em>Listen and answer questions 1–10.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 1</h3>
-        <div class="audio-desc">Conversation between the organiser of a park run and a woman who wishes to take part.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131415-official_cambridge_guide_to_ielts_academic_listening_test_1_1.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_1_1.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>A: Good morning - Dave Smith speaking.</p>
-        <p>B: Hi - could I speak to the organiser of the Preston Park Run?</p>
-        <p>A: Yes that's me.</p>
-        <p>B: Great - um - I was talking to some friends of mine about the run and they suggested I contact you to get some more details.</p>
-        <p>A: Sure - what would you like to know?</p>
-        <p>B: Well - they said it takes place every Saturday, is that right?</p>
-        <p>A: Yes it does.</p>
-        <p>B: OK - great!</p>
-        <p>A: Do you know where the park is?</p>
-        <p>B: Oh yes I've been there before. But it's quite big and I'm not sure where to go.</p>
-        <p>A: Well there's a circular track that goes right around the park. The run starts at the café, goes past the tennis courts then twice around the lake and finishes back where it started.</p>
-        <p>B: OK and what time is the run?</p>
-        <p>A: Well the actual run begins at 9 am but the runners start arriving at about 8.45.</p>
-        <p>B: OK - so I need to get up early Saturday morning then. And how long is the run?</p>
-        <p>A: Well it used to be three kilometres but most people wanted to do a bit more than that so we lengthened it to five kilometres - we now go round the lake twice and that adds an extra two kilometres.</p>
-        <p>B: Right - not sure I've ever run that far so I'd better start doing a bit of training.</p>
-        <p>A: That's a good idea. But it's not a race, it's really just for fun and the best thing would be to take it easy the first few times you do it and then see if you can gradually improve your time.</p>
-        <p>B: Is the run timed then? How do I know how well I've done?</p>
-        <p>A: When you cross the finish line you'll be given a bar code and you take this to one of the run volunteers, who will scan it. Then you can get your time online when you go home.</p>
-        <p>B: Oh - I see. You collect all the results.</p>
-        <p>A: Exactly.</p>
-        <p>B: I see - that's great. So how do I register?</p>
-        <p>A: Well there are several ways. I could take your details over the phone but it's much easier if you do it using the website.</p>
-        <p>B: OK - good. Um, I think that's probably all I need to know for now. Oh yes - does it cost anything to register or do you collect money each week?</p>
-        <p>A: Well it doesn't cost anything to register but we do charge for the run. In fact we have just increased the charge to £1.50. It used to be a pound but because we were making a bit of a loss we have had to increase it by 50p.</p>
-        <p>B: OK thanks. I think I have enough information on taking part in the run.</p>
-        <p>[pause]</p>
-        <p>B: Um - you mentioned volunteers. I have a friend who is interested in helping out. Can you give me some details so I can pass them on to her?</p>
-        <p>A: Sure - well you need to ask your friend to contact Pete Maughan. He manages all the volunteers.</p>
-        <p>B: OK - I didn't quite catch his surname - was it Morn - M-O-R-N?</p>
-        <p>A: No - just a bit more complicated - it's M-A-U-G-H-A-N.</p>
-        <p>B: Right - thanks. And could you give me his phone number?</p>
-        <p>A: Yes - just a moment. It's here somewhere - let me just find it. Ah I've two numbers for him. I think the one that begins 0-1-2-7-3 is an old one so use this one: it's 0-1-4-double 4-7-3-2-9-double zero.</p>
-        <p>B: OK - got that. Can you tell me anything about the volunteering? Like what kind of activities it involves?</p>
-        <p>A: Sure - well we need volunteers for basic stuff like setting up the course. We have to do that before all the runners arrive.</p>
-        <p>B: OK - so that's a really early start!</p>
-        <p>A: Yes that's right. But if your friend would prefer to arrive a bit later she can also help with guiding the runners so they don't go the wrong way.</p>
-        <p>B: I see. I believe you do a report on some of the races.</p>
-        <p>A: Yes that's right. In fact we do a weekly report on each race and we always try to illustrate it.</p>
-        <p>B: OK - well my friend really likes taking photographs. She's just bought a new camera.</p>
-        <p>A: Actually that would be great. I don't know whether Pete has anyone to take photographs this week.</p>
-        <p>B: Oh, I'll let her know.</p>
-        <p>A: OK good. Could you ask your friend to phone Pete and let him know?</p>
-        <p>B: Yes I will.</p>
-        <p>A: OK thanks. Goodbye.</p>
-        <p>B: Goodbye.</p>
-      </div>
+    <div id="hlHint" title="Select any text to highlight it">
+      <span class="dot"></span>
+      <span>Highlight mode ON</span>
     </div>
 
-    <!-- PART 2 -->
-    <div class="passage" data-part="2">
-      <span class="part-label">Part 2</span>
-      <h2>Pacton-on-Sea Bus Tour</h2>
-      <p><em>Listen and answer questions 11–20.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 2</h3>
-        <div class="audio-desc">A recorded message about a bus tour in Pacton-on-Sea.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131416-official_cambridge_guide_to_ielts_academic_listening_test_1_2.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_1_2.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Thank you for calling the phoneline for the Pacton-on-Sea bus tour. This is a recorded message lasting approximately four minutes and it provides general information on the town bus tour.</p>
-        <p>Pacton-on-Sea is a beautiful west coast town and has attracted tourists for many years. One of the best ways of getting to know the town is to take the bus tour, which provides a wonderful viewing experience from one of our open-top buses. The tour is a round-trip of the town and there are a total of 4 stops where passengers can get on and off the bus. A lot of people start at the first stop which is at the train station as this is where many tourists arrive in the town. The next stop after the station is the aquarium which is famous for its dolphin show and which has recently expanded to include sharks. This is well worth a visit and is very reasonably priced. Leaving the aquarium, the bus tour goes along the coast road and after a few kilometres comes to the Old Fishing Village where you can get off to stroll along the waterfront. There are some original buildings here but most of the area has been modernised and is now used as a harbour for all kinds of sea craft including yachts and some amazing power boats. The tour then heads off to the last stop and this is where most of the shops are. So for those of you keen to do a bit of shopping this is the place for you. Our advice is to go to this part of the town in the morning when it is relatively quiet. It does get very busy in the afternoons, especially at the height of the season. This area of the town includes an ancient water fountain where many people like to have their photograph taken - so do look out for this.</p>
-        <p>[pause]</p>
-        <p>Now some details of the costs and timings. A family ticket, which includes two adults and up to three children, costs £30. An adult ticket costs £15, children under the age of fifteen are £5 and student tickets are £10 as long as you have a student card. All tickets are valid for 24 hours, which means that you can get on and off the bus as many times as you like within a 24-hour period. So you could, for example, start the tour in the afternoon and complete it the following morning. The first bus of the day leaves the station at 10 am and the last one of the day leaves at 6 pm. Buses leave every thirty minutes and each tour takes a total of fifty minutes. There are many attractions at each of the stops, so wherever you get off the bus there will be plenty to do. The bus tour tickets do not include entrance to any of these attractions apart from the museum which is located near the aquarium. Some buses have local guides, who will point out places of interest and will provide information on the town. However, we cannot guarantee that every bus will have a guide and so we also have an audio commentary that has been specially recorded for the bus tour by the tourist office. Headphones are available on the bus and these are easy to operate. There is no extra charge for these - just plug in, select the required language and adjust the volume.</p>
-        <p>Due to the winter months being rather cold and wet in Pacton-on-Sea, the bus tours only operate from March to September. The weather is usually warm and sunny during these months so remember to bring some sun protection, especially on hot days. And of course, it does occasionally rain here in the summer so if the weather looks bad, remember to bring some rainwear. The bus tours are available no matter what the weather.</p>
-        <p>At the height of the summer the tours can get very busy so you are advised to book. You can book tickets online, over the phone and also at the station and at any of the other tour stops. When booking over the phone you can collect your tickets at any of the stops at the start of your tour. When you do it online you can print your e-ticket which you must remember to bring with you.</p>
-        <p>Thank you for calling the Pacton-on-Sea phoneline and we look forward to seeing you soon on one of our tour buses.</p>
-      </div>
-    </div>
-
-    <!-- PART 3 -->
-    <div class="passage" data-part="3">
-      <span class="part-label">Part 3</span>
-      <h2>Computer System Conversation</h2>
-      <p><em>Listen and answer questions 21–30.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 3</h3>
-        <div class="audio-desc">Conversation between an admissions officer and a manager from the university's technologies department.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131417-official_cambridge_guide_to_ielts_academic_listening_test_1_3.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_1_3.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Randhir: Hello - I'm Randhir Ghotra from the technologies department.</p>
-        <p>Dave: Ah yes. Good. I'm Dave Hadley. Thanks for coming to see me.</p>
-        <p>Randhir: That's OK. I believe you want us to do some work for you?</p>
-        <p>Dave: Yes that's right. Um, I'm responsible for student admissions to the college and I use a computer system to help process student enrolments and to do the timetabling. But it really doesn't suit the way we work these days. It's over ten years old and although it was fine when it was first introduced, it is just not good enough now.</p>
-        <p>Randhir: OK - what problems are you experiencing?</p>
-        <p>Dave: Well, 20 years ago, the college was quite small and we didn't have the numbers of students or tutors that we have now.</p>
-        <p>Randhir: So the system can't handle the increasing volumes ...</p>
-        <p>Dave: Well, there's a lot more data now and it sometimes seems the system has crashed but, in fact, it just takes ages to go from one screen to the next.</p>
-        <p>Randhir: Right. Is that the only problem?</p>
-        <p>Dave: Well that's the main one, but there are others. In the past, doing the timetabling was quite simple but now we have a lot more courses and what's made it complicated is that many of them have options.</p>
-        <p>Randhir: Right - but the system should allow you to include those.</p>
-        <p>Dave: Well no, it doesn't. It was supposed to - and a few years ago we did ask someone from the technologies department to fix it, but they never seemed to have the time.</p>
-        <p>Randhir: Hmm - are there any other issues with the system?</p>
-        <p>Dave: Well - I've been given extra responsibilities and so I have even less time to do the timetabling. If there was anything you could do, Randhir, to make the process more efficient, that would be really helpful.</p>
-        <p>Randhir: Well it sounds like you could do with an assistant but that's obviously not possible, so what about having an online system that students can use to do their scheduling?</p>
-        <p>Dave: How would that work?</p>
-        <p>Randhir: Well - it may mean less choice for students but we could create a fixed schedule of all the courses and options and they could then view what was available ...</p>
-        <p>Dave: ... and work it out for themselves - that sounds great.</p>
-        <p>Randhir: OK, so ... um ... we'll need to decide whether or not to improve the existing system or to build a completely new system.</p>
-        <p>Dave: Well I'd much prefer to have a new system. Quite frankly, I've had enough of the old one.</p>
-        <p>Randhir: OK - that'll probably take longer although it may save you money in the long run. When were you hoping to have this in place?</p>
-        <p>Dave: Well it's January now and the new intake of students will be in September. We need to start processing admissions - in the next few weeks really.</p>
-        <p>Randhir: Well it will take more than a few weeks, I'm afraid. As an initial estimate I think we'll be looking at April or May to improve the existing system but for a new system it would take at least nine months. That would be October at the earliest.</p>
-        <p>[pause]</p>
-        <p>Dave: What are the next steps if we are to have a new system?</p>
-        <p>Randhir: Well, the first question is - do you have support from your senior management?</p>
-        <p>Dave: Yes, I've already discussed it with them and they're also keen to get this work done.</p>
-        <p>Randhir: OK, because I was going to say, that's the first thing you need to do and without that we can't go ahead.</p>
-        <p>Dave: Yes, I've done that.</p>
-        <p>Randhir: That's good.</p>
-        <p>Dave: Actually, they mentioned that there's probably a form I need to complete to formally start the project.</p>
-        <p>Randhir: Yes – that's the next thing you need to do. I'll send you an email with a link so you can fill it in online. It's called a 'project request form'.</p>
-        <p>Dave: OK, great. And then what happens?</p>
-        <p>Randhir: Well, I have a list of things but I think the third thing you should do is see Samir. He's our analyst who will look at the system and identify what needs to be done.</p>
-        <p>Dave: OK - can you send me his contact details and I'll set up a meeting with him.</p>
-        <p>Randhir: OK that's good, so we should soon be able to get a team together to start the work. Some members of our team work in different locations so it's not easy to have face-to-face meetings.</p>
-        <p>Dave: That's OK - I'm used to having conference calls providing they are not late at night.</p>
-        <p>Randhir: Right - so I'll send you details of the team and if you could set up a call that would be great.</p>
-        <p>Dave: OK, I'll do that.</p>
-        <p>Randhir: Thanks.</p>
-      </div>
-    </div>
-
-    <!-- PART 4 -->
-    <div class="passage" data-part="4">
-      <span class="part-label">Part 4</span>
-      <h2>Lecture on Ceramics</h2>
-      <p><em>Listen and answer questions 31–40.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 4</h3>
-        <div class="audio-desc">A lecture about how the production of ceramics, such as plates, pots and glass, first began.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131418-official_cambridge_guide_to_ielts_academic_listening_test_1_4.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_1_4.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Hi everyone - today I'm going to be talking about the origins of ceramics. So, first of all, let's start off with - what is a ceramic? Well, generally speaking, ceramics are what you get when you apply heat to certain inorganic, non-metallic solids and then allow them to cool. And examples of ceramics are everyday things like earthenware pots, crockery, glassware and even concrete.</p>
-        <p>So how did it all begin? Well it all started around 29,000 years ago when humans discovered that if you dig up some soft clay from the ground, mould it into a shape and then heat it up to a very high temperature, when it cools the clay has been transformed into something hard and rigid. And so - what did those first humans do with their discovery? Well - they created figurines which were small statues and which depicted animals or gods or any shape that the clay could be moulded into. And all this activity was centred around southern Europe where there is also evidence of ceramics that were created much later.</p>
-        <p>The early humans also found a practical use for their discovery, such as storing things like grain - although there were drawbacks. The pots were porous so that, although they could carry water in them, it wasn't possible to store it over a long period. And also, they were quite brittle and shattered very easily if they were dropped.</p>
-        <p>But despite these problems, it was many thousands of years before there were any improvements. In China at around 200 BC, they discovered that by adding minerals to the clay they could improve both the appearance and the strength of the ceramics. But it took nearly a thousand years before they perfected the process to produce high-quality ceramics known as porcelain. And once they had perfected the process, they kept it a secret - for another thousand years! Compared to the first ceramics, porcelain was lighter, finer, harder and whiter and became an important commodity in China's trading with the rest of the world for hundreds of years. In fact, it became so valuable that it was known as white gold and spies were sent to China to discover what they did to the clay to produce such high-quality merchandise.</p>
-        <p>It wasn't until the eighteenth century that the secret began to unravel. A German alchemist called Johann Friedrich Bottger was asked by the king to make gold out of lead. Unfortunately, Bottger failed to achieve this and soon gave up, but in order to please the king he attempted to make high-quality porcelain. And after many years of experimentation, he discovered that by adding quartz and a material called china stone to very high-quality clay he managed to get the same results that the Chinese had been achieving for the last 1,000 years.</p>
-        <p>We'll now look at another ceramic which is made from mixing sand with minerals and heating to over 600 degrees Celsius. When this mixture cools the result is of course glass. The main difference between ceramics made from clay and glass is that clay is made up of crystalline plates which become locked together in the cooling process whereas glass cools too quickly for crystals to form. Apart from that, the process of heating up naturally occurring materials to transform them is the same.</p>
-        <p>The origins of glass date back to 3500 BC but it wasn't until the Roman Empire, 2,000 years ago, that the art of glass-blowing and the practical uses of glass became more widespread. One of the more innovative uses was to use it in windows as, up until then, they had just been holes in walls. It must have been very draughty in those days!</p>
-        <p>The Romans were also responsible for inventing concrete. And although the origins are uncertain, experts think that this is largely due to the high level of volcanic activity in the area. The Romans observed that, when volcanic ash mixes with water and then cools, it gets extremely hard and almost impossible to break up. The chemical reaction that follows is very complex and continues for many years, and the concrete just keeps getting harder. Evidence of this is the numerous Roman remains that are still standing, many of which are almost completely intact.</p>
-        <p>One of the most important facts about concrete for the Romans was that it can be created underwater. As the Roman Empire grew, the Romans needed to take control of the seas and for this they needed to build harbours capable of holding a fleet of ships. Pouring concrete mixture into the sea immediately started the hardening process and rather than just dissolving in the mass of water, the substance was tough and long-lasting. This strange characteristic of concrete made a significant contribution to the success of the Roman Empire.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="resizer" id="resizer"></div>
-
-  <div class="pane questions" id="questionsPane">
-    <form id="quiz" onsubmit="return false;">
+    <main class="wrap">
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 1</h1>
+      <p class="lead">4 parts · 40 questions · switch parts with the tabs at the
+        bottom.</p>
 
       <!-- PART 1 -->
-      <section class="q-section active" data-part="1">
-        <div class="q-group">
-          <h3>Questions 1–6</h3>
-          <div class="q-instr">
-            <p>Complete the notes below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 4px;">PRESTON PARK RUN</p>
-          <p style="font-weight:700;margin:0 0 12px;">Details of run</p>
-          <p style="font-size:13px;color:var(--muted);margin:0 0 8px;"><em>Example: Day of Park Run: Saturday</em></p>
-          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Start of run: in front of the <input type="text" name="q1" aria-label="Q1"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>Time of start: <input type="text" name="q2" aria-label="Q2"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>Length of run: <input type="text" name="q3" aria-label="Q3"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>At end of run: volunteer scans <input type="text" name="q4" aria-label="Q4"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>Best way to register: on the <input type="text" name="q5" aria-label="Q5"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Cost of run: £ <input type="text" name="q6" aria-label="Q6"></p><div class="feedback"></div></div></div>
+      <section class="card part current hlable" id="part1" data-part="1">
+        <div class="part-head">
+          <span class="part-badge">Part 1</span>
+          <span class="part-desc">Questions 1–10 · Complete the notes</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 7–10</h3>
-          <div class="q-instr">
-            <p>Complete the notes below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 12px;">Volunteering</p>
-          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>Contact name: Pete <input type="text" name="q7" aria-label="Q7"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>Phone number: <input type="text" name="q8" aria-label="Q8"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>Activities: setting up course, <input type="text" name="q9" aria-label="Q9"> the runners</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p><input type="text" name="q10" aria-label="Q10"> for the weekly report</p><div class="feedback"></div></div></div>
-        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131415-official_cambridge_guide_to_ielts_academic_listening_test_1_1.mp3"></audio>
+
+        <p>Complete the notes below.<br>
+          Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each
+          answer.</p>
+
+        <h3>PRESTON PARK RUN</h3>
+        <p><em>Example: Day of Park Run: Saturday</em></p>
+        <p><strong>Details of run</strong></p>
+        <ul class="notes">
+          <li>Start of run: in front of the <span class="q"><span
+                class="num">1</span><input type="text" data-q="1"
+                aria-label="Question 1" autocomplete="off"
+                spellcheck="false"></span></li>
+          <li>Time of start: <span class="q"><span class="num">2</span><input
+                type="text" data-q="2" aria-label="Question 2"
+                autocomplete="off" spellcheck="false"></span></li>
+          <li>Length of run: <span class="q"><span class="num">3</span><input
+                type="text" data-q="3" aria-label="Question 3"
+                autocomplete="off" spellcheck="false"></span></li>
+          <li>At end of run: volunteer scans <span class="q"><span
+                class="num">4</span><input type="text" data-q="4"
+                aria-label="Question 4" autocomplete="off"
+                spellcheck="false"></span></li>
+          <li>Best way to register: on the <span class="q"><span
+                class="num">5</span><input type="text" data-q="5"
+                aria-label="Question 5" autocomplete="off"
+                spellcheck="false"></span></li>
+          <li>Cost of run: £ <span class="q"><span class="num">6</span><input
+                type="text" data-q="6" aria-label="Question 6"
+                autocomplete="off" spellcheck="false"></span></li>
+        </ul>
+
+        <p><strong>Volunteering</strong></p>
+        <ul class="notes">
+          <li>Contact name: Pete <span class="q"><span
+                class="num">7</span><input type="text" data-q="7"
+                aria-label="Question 7" autocomplete="off"
+                spellcheck="false"></span></li>
+          <li>Phone number: <span class="q"><span class="num">8</span><input
+                type="text" data-q="8" aria-label="Question 8"
+                autocomplete="off" spellcheck="false"></span></li>
+          <li>Activities: setting up course, <span class="q"><span
+                class="num">9</span><input type="text" data-q="9"
+                aria-label="Question 9" autocomplete="off"
+                spellcheck="false"></span> the runners</li>
+          <li><span class="q"><span class="num">10</span><input type="text"
+                data-q="10" aria-label="Question 10" autocomplete="off"
+                spellcheck="false"></span> for the weekly report</li>
+        </ul>
       </section>
 
       <!-- PART 2 -->
-      <section class="q-section" data-part="2">
-        <div class="q-group">
-          <h3>Questions 11–14</h3>
-          <div class="q-instr">
-            <p>Complete the table below.</p>
-            <p>Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 12px;">PACTON-ON-SEA BUS TOUR</p>
-          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:12px;">
-            <thead>
-              <tr style="background:#f1f5f9;">
-                <th style="border:1px solid var(--line);padding:8px;text-align:left;">Bus stops</th>
-                <th style="border:1px solid var(--line);padding:8px;text-align:left;">Location</th>
-                <th style="border:1px solid var(--line);padding:8px;text-align:left;">Things to see</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="border:1px solid var(--line);padding:8px;">Bus stop 1</td>
-                <td style="border:1px solid var(--line);padding:8px;">train station</td>
-                <td style="border:1px solid var(--line);padding:8px;">start of tour</td>
-              </tr>
-              <tr>
-                <td style="border:1px solid var(--line);padding:8px;">Bus stop 2</td>
-                <td style="border:1px solid var(--line);padding:8px;">the aquarium</td>
-                <td style="border:1px solid var(--line);padding:8px;">dolphins and <strong>11</strong> <input type="text" name="q11" aria-label="Q11" style="min-width:100px;"></td>
-              </tr>
-              <tr>
-                <td style="border:1px solid var(--line);padding:8px;">Bus stop 3</td>
-                <td style="border:1px solid var(--line);padding:8px;"><strong>12</strong> <input type="text" name="q12" aria-label="Q12" style="min-width:100px;"></td>
-                <td style="border:1px solid var(--line);padding:8px;">yachts and power boats</td>
-              </tr>
-              <tr>
-                <td style="border:1px solid var(--line);padding:8px;">Bus stop 4</td>
-                <td style="border:1px solid var(--line);padding:8px;"><strong>13</strong> <input type="text" name="q13" aria-label="Q13" style="min-width:100px;"> centre</td>
-                <td style="border:1px solid var(--line);padding:8px;">very old <strong>14</strong> <input type="text" name="q14" aria-label="Q14" style="min-width:100px;"></td>
-              </tr>
-            </tbody>
-          </table>
+      <section class="card part hlable" id="part2" data-part="2">
+        <div class="part-head">
+          <span class="part-badge">Part 2</span>
+          <span class="part-desc">Questions 11–20 · Table &amp; sentence
+            completion</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 15–20</h3>
-          <div class="q-instr">
-            <p>Complete the sentences below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>You need to have a <input type="text" name="q15" aria-label="Q15"> to buy a ticket for £10.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>The bus tour lasts <input type="text" name="q16" aria-label="Q16"> in total.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>The cost of the bus ticket includes entrance to the <input type="text" name="q17" aria-label="Q17">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>You can listen to an audio commentary which has been made by the <input type="text" name="q18" aria-label="Q18">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>If the weather is wet, it is a good idea to bring <input type="text" name="q19" aria-label="Q19">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>Don't forget to bring your <input type="text" name="q20" aria-label="Q20"> when you book online.</p><div class="feedback"></div></div></div>
-        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131416-official_cambridge_guide_to_ielts_academic_listening_test_1_2.mp3"></audio>
+
+        <h3>Questions 11–14</h3>
+        <p>Complete the table below.<br>
+          Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for
+          each answer.</p>
+        <p><strong>PACTON-ON-SEA BUS TOUR</strong></p>
+
+        <table>
+          <thead>
+            <tr><th>Bus stops</th><th>Location</th><th>Things to see</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bus stop 1</td><td>train station</td><td>start of
+                tour</td></tr>
+            <tr><td>Bus stop 2</td><td>the aquarium</td><td>dolphins and <span
+                  class="num">11</span><input type="text" data-q="11"
+                  style="min-width:100px"></td></tr>
+            <tr><td>Bus stop 3</td><td><span class="num">12</span><input
+                  type="text" data-q="12"
+                  style="min-width:100px"></td><td>yachts and power
+                boats</td></tr>
+            <tr><td>Bus stop 4</td><td><span class="num">13</span><input
+                  type="text" data-q="13" style="min-width:100px">
+                centre</td><td>very old <span class="num">14</span><input
+                  type="text" data-q="14" style="min-width:100px"></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Questions 15–20</h3>
+        <p>Complete the sentences below.<br>
+          Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each
+          answer.</p>
+        <ul class="notes">
+          <li>You need to have a <span class="q"><span
+                class="num">15</span><input type="text" data-q="15"></span> to
+            buy a ticket for £10.</li>
+          <li>The bus tour lasts <span class="q"><span
+                class="num">16</span><input type="text" data-q="16"></span> in
+            total.</li>
+          <li>The cost of the bus ticket includes entrance to the <span
+              class="q"><span class="num">17</span><input type="text"
+                data-q="17"></span>.</li>
+          <li>You can listen to an audio commentary which has been made by the
+            <span class="q"><span class="num">18</span><input type="text"
+                data-q="18"></span>.</li>
+          <li>If the weather is wet, it is a good idea to bring <span
+              class="q"><span class="num">19</span><input type="text"
+                data-q="19"></span>.</li>
+          <li>Don't forget to bring your <span class="q"><span
+                class="num">20</span><input type="text" data-q="20"></span> when
+            you book online.</li>
+        </ul>
       </section>
 
       <!-- PART 3 -->
-      <section class="q-section" data-part="3">
-        <div class="q-group">
-          <h3>Questions 21–26</h3>
-          <div class="q-instr">
-            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
-          </div>
-          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>Dave Hadley says that the computer system has</p><div class="options stack"><label><input type="radio" name="q21" value="A"> A. too many users.</label><label><input type="radio" name="q21" value="B"> B. never worked well.</label><label><input type="radio" name="q21" value="C"> C. become outdated.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>The main problem with the computer system is that it</p><div class="options stack"><label><input type="radio" name="q22" value="A"> A. is too slow.</label><label><input type="radio" name="q22" value="B"> B. stops working.</label><label><input type="radio" name="q22" value="C"> C. displays incorrect data.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>Timetabling has become an issue because</p><div class="options stack"><label><input type="radio" name="q23" value="A"> A. there is not enough time for anyone to do it.</label><label><input type="radio" name="q23" value="B"> B. the system does not handle course options.</label><label><input type="radio" name="q23" value="C"> C. the courses are constantly changing.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>To solve the timetabling issues, Randhir suggests that</p><div class="options stack"><label><input type="radio" name="q24" value="A"> A. students should create their own timetables.</label><label><input type="radio" name="q24" value="B"> B. Dave should have someone to assist him.</label><label><input type="radio" name="q24" value="C"> C. the number of courses should be reduced.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>Randhir says that a new system may</p><div class="options stack"><label><input type="radio" name="q25" value="A"> A. need to be trialled.</label><label><input type="radio" name="q25" value="B"> B. still have problems.</label><label><input type="radio" name="q25" value="C"> C. be more economical.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>Improving the existing system will take</p><div class="options stack"><label><input type="radio" name="q26" value="A"> A. a few weeks.</label><label><input type="radio" name="q26" value="B"> B. four or five months.</label><label><input type="radio" name="q26" value="C"> C. nine months.</label></div><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part3" data-part="3">
+        <div class="part-head">
+          <span class="part-badge">Part 3</span>
+          <span class="part-desc">Questions 21–30 · Multiple choice &amp;
+            flow-chart</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 27–30</h3>
-          <div class="q-instr">
-            <p>Complete the flow-chart below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 12px;">Next steps</p>
-          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>Get approval from <input type="text" name="q27" aria-label="Q27"></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>Complete a <input type="text" name="q28" aria-label="Q28"> form</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>Book a <input type="text" name="q29" aria-label="Q29"> with the systems analyst</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>Set up a <input type="text" name="q30" aria-label="Q30"> with technologies team</p><div class="feedback"></div></div></div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131417-official_cambridge_guide_to_ielts_academic_listening_test_1_3.mp3"></audio>
+
+        <h3>Questions 21–26</h3>
+        <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or
+          <strong>C</strong>.</p>
+
+        <div class="mcq">
+          <div class="stem"><span class="num">21</span> Dave Hadley says that
+            the computer system has</div>
+          <label class="opt"><input type="radio" name="q21" value="A"><span
+              class="ltr">A</span><span>too many users.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="B"><span
+              class="ltr">B</span><span>never worked well.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="C"><span
+              class="ltr">C</span><span>become outdated.</span></label>
         </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">22</span> The main problem with
+            the computer system is that it</div>
+          <label class="opt"><input type="radio" name="q22" value="A"><span
+              class="ltr">A</span><span>is too slow.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="B"><span
+              class="ltr">B</span><span>stops working.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="C"><span
+              class="ltr">C</span><span>displays incorrect data.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">23</span> Timetabling has become
+            an issue because</div>
+          <label class="opt"><input type="radio" name="q23" value="A"><span
+              class="ltr">A</span><span>there is not enough time for anyone to
+              do it.</span></label>
+          <label class="opt"><input type="radio" name="q23" value="B"><span
+              class="ltr">B</span><span>the system does not handle course
+              options.</span></label>
+          <label class="opt"><input type="radio" name="q23" value="C"><span
+              class="ltr">C</span><span>the courses are constantly
+              changing.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">24</span> To solve the timetabling
+            issues, Randhir suggests that</div>
+          <label class="opt"><input type="radio" name="q24" value="A"><span
+              class="ltr">A</span><span>students should create their own
+              timetables.</span></label>
+          <label class="opt"><input type="radio" name="q24" value="B"><span
+              class="ltr">B</span><span>Dave should have someone to assist
+              him.</span></label>
+          <label class="opt"><input type="radio" name="q24" value="C"><span
+              class="ltr">C</span><span>the number of courses should be
+              reduced.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">25</span> Randhir says that a new
+            system may</div>
+          <label class="opt"><input type="radio" name="q25" value="A"><span
+              class="ltr">A</span><span>need to be trialled.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="B"><span
+              class="ltr">B</span><span>still have problems.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="C"><span
+              class="ltr">C</span><span>be more economical.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">26</span> Improving the existing
+            system will take</div>
+          <label class="opt"><input type="radio" name="q26" value="A"><span
+              class="ltr">A</span><span>a few weeks.</span></label>
+          <label class="opt"><input type="radio" name="q26" value="B"><span
+              class="ltr">B</span><span>four or five months.</span></label>
+          <label class="opt"><input type="radio" name="q26" value="C"><span
+              class="ltr">C</span><span>nine months.</span></label>
+        </div>
+
+        <h3>Questions 27–30</h3>
+        <p>Complete the flow-chart below.<br>
+          Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+        <p><strong>Next steps</strong></p>
+        <ul class="notes">
+          <li>Get approval from <span class="q"><span
+                class="num">27</span><input type="text" data-q="27"></span></li>
+          <li>Complete a <span class="q"><span class="num">28</span><input
+                type="text" data-q="28"></span> form</li>
+          <li>Book a <span class="q"><span class="num">29</span><input
+                type="text" data-q="29"></span> with the systems analyst</li>
+          <li>Set up a <span class="q"><span class="num">30</span><input
+                type="text" data-q="30"></span> with technologies team</li>
+        </ul>
       </section>
 
       <!-- PART 4 -->
-      <section class="q-section" data-part="4">
-        <div class="q-group">
-          <h3>Questions 31–40</h3>
-          <div class="q-instr">
-            <p>Complete the sentences below.</p>
-            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <div class="q" data-q="31"><div class="q-num">31</div><div class="q-body"><p>Ceramics date back approximately <input type="text" name="q31" aria-label="Q31">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="32"><div class="q-num">32</div><div class="q-body"><p>The first figurines were made in the area of <input type="text" name="q32" aria-label="Q32">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="33"><div class="q-num">33</div><div class="q-body"><p>Early humans could not use their pots to store <input type="text" name="q33" aria-label="Q33">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="34"><div class="q-num">34</div><div class="q-body"><p>The Chinese improved the quality of ceramics by mixing <input type="text" name="q34" aria-label="Q34"> with the clay.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="35"><div class="q-num">35</div><div class="q-body"><p>Chinese porcelain was also called <input type="text" name="q35" aria-label="Q35">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="36"><div class="q-num">36</div><div class="q-body"><p>Bottger added quartz and <input type="text" name="q36" aria-label="Q36"> to clay to make porcelain.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="37"><div class="q-num">37</div><div class="q-body"><p>Glass production is similar to clay ceramics apart from the rate of <input type="text" name="q37" aria-label="Q37">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="38"><div class="q-num">38</div><div class="q-body"><p>The Romans introduced the use of glass to make <input type="text" name="q38" aria-label="Q38">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="39"><div class="q-num">39</div><div class="q-body"><p>The discovery of concrete is probably due to observing reactions of water and <input type="text" name="q39" aria-label="Q39">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="40"><div class="q-num">40</div><div class="q-body"><p>The ability to build large <input type="text" name="q40" aria-label="Q40"> contributed to the success of the Roman Empire.</p><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part4" data-part="4">
+        <div class="part-head">
+          <span class="part-badge">Part 4</span>
+          <span class="part-desc">Questions 31–40 · Sentence completion</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131418-official_cambridge_guide_to_ielts_academic_listening_test_1_4.mp3"></audio>
+
+        <h3>Questions 31–40</h3>
+        <p>Complete the sentences below.<br>
+          Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each
+          answer.</p>
+        <ul class="notes">
+          <li>Ceramics date back approximately <span class="q"><span
+                class="num">31</span><input type="text"
+                data-q="31"></span>.</li>
+          <li>The first figurines were made in the area of <span class="q"><span
+                class="num">32</span><input type="text"
+                data-q="32"></span>.</li>
+          <li>Early humans could not use their pots to store <span
+              class="q"><span class="num">33</span><input type="text"
+                data-q="33"></span>.</li>
+          <li>The Chinese improved the quality of ceramics by mixing <span
+              class="q"><span class="num">34</span><input type="text"
+                data-q="34"></span> with the clay.</li>
+          <li>Chinese porcelain was also called <span class="q"><span
+                class="num">35</span><input type="text"
+                data-q="35"></span>.</li>
+          <li>Bottger added quartz and <span class="q"><span
+                class="num">36</span><input type="text" data-q="36"></span> to
+            clay to make porcelain.</li>
+          <li>Glass production is similar to clay ceramics apart from the rate
+            of <span class="q"><span class="num">37</span><input type="text"
+                data-q="37"></span>.</li>
+          <li>The Romans introduced the use of glass to make <span
+              class="q"><span class="num">38</span><input type="text"
+                data-q="38"></span>.</li>
+          <li>The discovery of concrete is probably due to observing reactions
+            of water and <span class="q"><span class="num">39</span><input
+                type="text" data-q="39"></span>.</li>
+          <li>The ability to build large <span class="q"><span
+                class="num">40</span><input type="text" data-q="40"></span>
+            contributed to the success of the Roman Empire.</li>
+        </ul>
+      </section>
+
+      <!-- RESULT -->
+      <section class="card resultcard" id="resultCard">
+        <h2>Your result</h2>
+        <p class="score" id="scoreLine">0 / 40</p>
+        <p class="band" id="bandLine"></p>
+        <div class="result-note">
+          <strong>Audioscript and full answer key are now available
+            below.</strong>
+          <button class="btn small" id="jumpScript" type="button">Jump to
+            audioscript ↓</button>
+          <button class="btn small" id="retakeBtn" type="button">Reset &amp;
+            retake</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="result">
+            <thead><tr><th>#</th><th>Your answer</th><th>Correct
+                  answer</th><th></th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
         </div>
       </section>
 
-    </form>
-  </div>
-</div>
+      <!-- ANSWER KEY -->
+      <section class="card post-submit hlable" id="answers">
+        <h2>Answer key</h2>
+        <div class="optbox"><b>Part 1</b>
+          1 cafe · 2 9 am · 3 5 km · 4 bar code · 5 website · 6 1.50<br>
+          7 Maughan · 8 01444732900 · 9 guiding · 10 photographs
+        </div>
+        <div class="optbox"><b>Part 2</b>
+          11 sharks · 12 old fishing village · 13 shopping · 14 water
+          fountain<br>
+          15 student card · 16 50 minutes · 17 museum · 18 tourist office · 19
+          rainwear · 20 e-ticket
+        </div>
+        <div class="optbox"><b>Part 3</b>
+          21 C · 22 A · 23 B · 24 A · 25 C · 26 B<br>
+          27 senior management · 28 project request · 29 meeting · 30 conference
+          call
+        </div>
+        <div class="optbox"><b>Part 4</b>
+          31 29,000 years · 32 southern Europe · 33 water · 34 minerals · 35
+          white gold<br>
+          36 china stone · 37 cooling · 38 windows · 39 volcanic ash · 40
+          harbours
+        </div>
+      </section>
 
-<!-- BOTTOM PANEL -->
-<div class="bottom-panel">
-  <div class="bottom-inner">
-    <div class="part-tabs">
-      <button class="part-tab active" data-part="1">
-        <span class="tab-part-name">Part 1</span>
-        <span class="tab-qcount">Questions 1–10</span>
-      </button>
-      <button class="part-tab" data-part="2">
-        <span class="tab-part-name">Part 2</span>
-        <span class="tab-qcount">Questions 11–20</span>
-      </button>
-      <button class="part-tab" data-part="3">
-        <span class="tab-part-name">Part 3</span>
-        <span class="tab-qcount">Questions 21–30</span>
-      </button>
-      <button class="part-tab" data-part="4">
-        <span class="tab-part-name">Part 4</span>
-        <span class="tab-qcount">Questions 31–40</span>
-      </button>
-    </div>
+      <!-- TRANSCRIPTS -->
+      <section class="card post-submit hlable" id="transcripts">
+        <h2>Audioscript</h2>
+        <p class="lead" style="margin:0 0 12px">Select any text and press
+          <strong>Highlight</strong> to mark it. Click a highlight to remove
+          it.</p>
 
-    <div class="ielts-reading-question-palette" id="palette"></div>
+        <details class="transcript hlable" id="script1">
+          <summary>Part 1 — Preston Park Run</summary>
+          <p>A: Good morning - Dave Smith speaking.</p>
+          <p>B: Hi - could I speak to the organiser of the Preston Park Run?</p>
+          <p>A: Yes that's me.</p>
+          <p>B: Great - um - I was talking to some friends of mine about the run
+            and they suggested I contact you to get some more details.</p>
+          <p>A: Sure - what would you like to know?</p>
+          <p>B: Well - they said it takes place every Saturday, is that
+            right?</p>
+          <p>A: Yes it does.</p>
+          <p>B: OK - great!</p>
+          <p>A: Do you know where the park is?</p>
+          <p>B: Oh yes I've been there before. But it's quite big and I'm not
+            sure where to go.</p>
+          <p>A: Well there's a circular track that goes right around the park.
+            The run starts at the café, goes past the tennis courts then twice
+            around the lake and finishes back where it started.</p>
+          <p>B: OK and what time is the run?</p>
+          <p>A: Well the actual run begins at 9 am but the runners start
+            arriving at about 8.45.</p>
+          <p>B: OK - so I need to get up early Saturday morning then. And how
+            long is the run?</p>
+          <p>A: Well it used to be three kilometres but most people wanted to do
+            a bit more than that so we lengthened it to five kilometres - we now
+            go round the lake twice and that adds an extra two kilometres.</p>
+          <p>B: Right - not sure I've ever run that far so I'd better start
+            doing a bit of training.</p>
+          <p>A: That's a good idea. But it's not a race, it's really just for
+            fun and the best thing would be to take it easy the first few times
+            you do it and then see if you can gradually improve your time.</p>
+          <p>B: Is the run timed then? How do I know how well I've done?</p>
+          <p>A: When you cross the finish line you'll be given a bar code and
+            you take this to one of the run volunteers, who will scan it. Then
+            you can get your time online when you go home.</p>
+          <p>B: Oh - I see. You collect all the results.</p>
+          <p>A: Exactly.</p>
+          <p>B: I see - that's great. So how do I register?</p>
+          <p>A: Well there are several ways. I could take your details over the
+            phone but it's much easier if you do it using the website.</p>
+          <p>B: OK - good. Um, I think that's probably all I need to know for
+            now. Oh yes - does it cost anything to register or do you collect
+            money each week?</p>
+          <p>A: Well it doesn't cost anything to register but we do charge for
+            the run. In fact we have just increased the charge to £1.50. It used
+            to be a pound but because we were making a bit of a loss we have had
+            to increase it by 50p.</p>
+          <p>B: OK thanks. I think I have enough information on taking part in
+            the run.</p>
+          <p>[pause]</p>
+          <p>B: Um - you mentioned volunteers. I have a friend who is interested
+            in helping out. Can you give me some details so I can pass them on
+            to her?</p>
+          <p>A: Sure - well you need to ask your friend to contact Pete Maughan.
+            He manages all the volunteers.</p>
+          <p>B: OK - I didn't quite catch his surname - was it Morn -
+            M-O-R-N?</p>
+          <p>A: No - just a bit more complicated - it's M-A-U-G-H-A-N.</p>
+          <p>B: Right - thanks. And could you give me his phone number?</p>
+          <p>A: Yes - just a moment. It's here somewhere - let me just find it.
+            Ah I've two numbers for him. I think the one that begins 0-1-2-7-3
+            is an old one so use this one: it's 0-1-4-double 4-7-3-2-9-double
+            zero.</p>
+          <p>B: OK - got that. Can you tell me anything about the volunteering?
+            Like what kind of activities it involves?</p>
+          <p>A: Sure - well we need volunteers for basic stuff like setting up
+            the course. We have to do that before all the runners arrive.</p>
+          <p>B: OK - so that's a really early start!</p>
+          <p>A: Yes that's right. But if your friend would prefer to arrive a
+            bit later she can also help with guiding the runners so they don't
+            go the wrong way.</p>
+          <p>B: I see. I believe you do a report on some of the races.</p>
+          <p>A: Yes that's right. In fact we do a weekly report on each race and
+            we always try to illustrate it.</p>
+          <p>B: OK - well my friend really likes taking photographs. She's just
+            bought a new camera.</p>
+          <p>A: Actually that would be great. I don't know whether Pete has
+            anyone to take photographs this week.</p>
+          <p>B: Oh, I'll let her know.</p>
+          <p>A: OK good. Could you ask your friend to phone Pete and let him
+            know?</p>
+          <p>B: Yes I will.</p>
+          <p>A: OK thanks. Goodbye.</p>
+          <p>B: Goodbye.</p>
+        </details>
 
-    <div class="ielts-reading-bottom-controls">
-      <div class="ielts-reading-question-control-buttons">
-        <button id="prevBtn" title="Previous question">←</button>
-        <button id="nextBtn" title="Next question">→</button>
+        <details class="transcript hlable" id="script2">
+          <summary>Part 2 — Pacton-on-Sea Bus Tour</summary>
+          <p>Thank you for calling the phoneline for the Pacton-on-Sea bus tour.
+            This is a recorded message lasting approximately four minutes and it
+            provides general information on the town bus tour.</p>
+          <p>Pacton-on-Sea is a beautiful west coast town and has attracted
+            tourists for many years. One of the best ways of getting to know the
+            town is to take the bus tour, which provides a wonderful viewing
+            experience from one of our open-top buses. The tour is a round-trip
+            of the town and there are a total of 4 stops where passengers can
+            get on and off the bus. A lot of people start at the first stop
+            which is at the train station as this is where many tourists arrive
+            in the town. The next stop after the station is the aquarium which
+            is famous for its dolphin show and which has recently expanded to
+            include sharks. This is well worth a visit and is very reasonably
+            priced. Leaving the aquarium, the bus tour goes along the coast road
+            and after a few kilometres comes to the Old Fishing Village where
+            you can get off to stroll along the waterfront. There are some
+            original buildings here but most of the area has been modernised and
+            is now used as a harbour for all kinds of sea craft including yachts
+            and some amazing power boats. The tour then heads off to the last
+            stop and this is where most of the shops are. So for those of you
+            keen to do a bit of shopping this is the place for you. Our advice
+            is to go to this part of the town in the morning when it is
+            relatively quiet. It does get very busy in the afternoons,
+            especially at the height of the season. This area of the town
+            includes an ancient water fountain where many people like to have
+            their photograph taken - so do look out for this.</p>
+          <p>[pause]</p>
+          <p>Now some details of the costs and timings. A family ticket, which
+            includes two adults and up to three children, costs £30. An adult
+            ticket costs £15, children under the age of fifteen are £5 and
+            student tickets are £10 as long as you have a student card. All
+            tickets are valid for 24 hours, which means that you can get on and
+            off the bus as many times as you like within a 24-hour period. So
+            you could, for example, start the tour in the afternoon and complete
+            it the following morning. The first bus of the day leaves the
+            station at 10 am and the last one of the day leaves at 6 pm. Buses
+            leave every thirty minutes and each tour takes a total of fifty
+            minutes. There are many attractions at each of the stops, so
+            wherever you get off the bus there will be plenty to do. The bus
+            tour tickets do not include entrance to any of these attractions
+            apart from the museum which is located near the aquarium. Some buses
+            have local guides, who will point out places of interest and will
+            provide information on the town. However, we cannot guarantee that
+            every bus will have a guide and so we also have an audio commentary
+            that has been specially recorded for the bus tour by the tourist
+            office. Headphones are available on the bus and these are easy to
+            operate. There is no extra charge for these - just plug in, select
+            the required language and adjust the volume.</p>
+          <p>Due to the winter months being rather cold and wet in
+            Pacton-on-Sea, the bus tours only operate from March to September.
+            The weather is usually warm and sunny during these months so
+            remember to bring some sun protection, especially on hot days. And
+            of course, it does occasionally rain here in the summer so if the
+            weather looks bad, remember to bring some rainwear. The bus tours
+            are available no matter what the weather.</p>
+          <p>At the height of the summer the tours can get very busy so you are
+            advised to book. You can book tickets online, over the phone and
+            also at the station and at any of the other tour stops. When booking
+            over the phone you can collect your tickets at any of the stops at
+            the start of your tour. When you do it online you can print your
+            e-ticket which you must remember to bring with you.</p>
+          <p>Thank you for calling the Pacton-on-Sea phoneline and we look
+            forward to seeing you soon on one of our tour buses.</p>
+        </details>
+
+        <details class="transcript hlable" id="script3">
+          <summary>Part 3 — Computer System Conversation</summary>
+          <p>Randhir: Hello - I'm Randhir Ghotra from the technologies
+            department.</p>
+          <p>Dave: Ah yes. Good. I'm Dave Hadley. Thanks for coming to see
+            me.</p>
+          <p>Randhir: That's OK. I believe you want us to do some work for
+            you?</p>
+          <p>Dave: Yes that's right. Um, I'm responsible for student admissions
+            to the college and I use a computer system to help process student
+            enrolments and to do the timetabling. But it really doesn't suit the
+            way we work these days. It's over ten years old and although it was
+            fine when it was first introduced, it is just not good enough
+            now.</p>
+          <p>Randhir: OK - what problems are you experiencing?</p>
+          <p>Dave: Well, 20 years ago, the college was quite small and we didn't
+            have the numbers of students or tutors that we have now.</p>
+          <p>Randhir: So the system can't handle the increasing volumes ...</p>
+          <p>Dave: Well, there's a lot more data now and it sometimes seems the
+            system has crashed but, in fact, it just takes ages to go from one
+            screen to the next.</p>
+          <p>Randhir: Right. Is that the only problem?</p>
+          <p>Dave: Well that's the main one, but there are others. In the past,
+            doing the timetabling was quite simple but now we have a lot more
+            courses and what's made it complicated is that many of them have
+            options.</p>
+          <p>Randhir: Right - but the system should allow you to include
+            those.</p>
+          <p>Dave: Well no, it doesn't. It was supposed to - and a few years ago
+            we did ask someone from the technologies department to fix it, but
+            they never seemed to have the time.</p>
+          <p>Randhir: Hmm - are there any other issues with the system?</p>
+          <p>Dave: Well - I've been given extra responsibilities and so I have
+            even less time to do the timetabling. If there was anything you
+            could do, Randhir, to make the process more efficient, that would be
+            really helpful.</p>
+          <p>Randhir: Well it sounds like you could do with an assistant but
+            that's obviously not possible, so what about having an online system
+            that students can use to do their scheduling?</p>
+          <p>Dave: How would that work?</p>
+          <p>Randhir: Well - it may mean less choice for students but we could
+            create a fixed schedule of all the courses and options and they
+            could then view what was available ...</p>
+          <p>Dave: ... and work it out for themselves - that sounds great.</p>
+          <p>Randhir: OK, so ... um ... we'll need to decide whether or not to
+            improve the existing system or to build a completely new system.</p>
+          <p>Dave: Well I'd much prefer to have a new system. Quite frankly,
+            I've had enough of the old one.</p>
+          <p>Randhir: OK - that'll probably take longer although it may save you
+            money in the long run. When were you hoping to have this in
+            place?</p>
+          <p>Dave: Well it's January now and the new intake of students will be
+            in September. We need to start processing admissions - in the next
+            few weeks really.</p>
+          <p>Randhir: Well it will take more than a few weeks, I'm afraid. As an
+            initial estimate I think we'll be looking at April or May to improve
+            the existing system but for a new system it would take at least nine
+            months. That would be October at the earliest.</p>
+          <p>[pause]</p>
+          <p>Dave: What are the next steps if we are to have a new system?</p>
+          <p>Randhir: Well, the first question is - do you have support from
+            your senior management?</p>
+          <p>Dave: Yes, I've already discussed it with them and they're also
+            keen to get this work done.</p>
+          <p>Randhir: OK, because I was going to say, that's the first thing you
+            need to do and without that we can't go ahead.</p>
+          <p>Dave: Yes, I've done that.</p>
+          <p>Randhir: That's good.</p>
+          <p>Dave: Actually, they mentioned that there's probably a form I need
+            to complete to formally start the project.</p>
+          <p>Randhir: Yes – that's the next thing you need to do. I'll send you
+            an email with a link so you can fill it in online. It's called a
+            'project request form'.</p>
+          <p>Dave: OK, great. And then what happens?</p>
+          <p>Randhir: Well, I have a list of things but I think the third thing
+            you should do is see Samir. He's our analyst who will look at the
+            system and identify what needs to be done.</p>
+          <p>Dave: OK - can you send me his contact details and I'll set up a
+            meeting with him.</p>
+          <p>Randhir: OK that's good, so we should soon be able to get a team
+            together to start the work. Some members of our team work in
+            different locations so it's not easy to have face-to-face
+            meetings.</p>
+          <p>Dave: That's OK - I'm used to having conference calls providing
+            they are not late at night.</p>
+          <p>Randhir: Right - so I'll send you details of the team and if you
+            could set up a call that would be great.</p>
+          <p>Dave: OK, I'll do that.</p>
+          <p>Randhir: Thanks.</p>
+        </details>
+
+        <details class="transcript hlable" id="script4">
+          <summary>Part 4 — Lecture on Ceramics</summary>
+          <p>Hi everyone - today I'm going to be talking about the origins of
+            ceramics. So, first of all, let's start off with - what is a
+            ceramic? Well, generally speaking, ceramics are what you get when
+            you apply heat to certain inorganic, non-metallic solids and then
+            allow them to cool. And examples of ceramics are everyday things
+            like earthenware pots, crockery, glassware and even concrete.</p>
+          <p>So how did it all begin? Well it all started around 29,000 years
+            ago when humans discovered that if you dig up some soft clay from
+            the ground, mould it into a shape and then heat it up to a very high
+            temperature, when it cools the clay has been transformed into
+            something hard and rigid. And so - what did those first humans do
+            with their discovery? Well - they created figurines which were small
+            statues and which depicted animals or gods or any shape that the
+            clay could be moulded into. And all this activity was centred around
+            southern Europe where there is also evidence of ceramics that were
+            created much later.</p>
+          <p>The early humans also found a practical use for their discovery,
+            such as storing things like grain - although there were drawbacks.
+            The pots were porous so that, although they could carry water in
+            them, it wasn't possible to store it over a long period. And also,
+            they were quite brittle and shattered very easily if they were
+            dropped.</p>
+          <p>But despite these problems, it was many thousands of years before
+            there were any improvements. In China at around 200 BC, they
+            discovered that by adding minerals to the clay they could improve
+            both the appearance and the strength of the ceramics. But it took
+            nearly a thousand years before they perfected the process to produce
+            high-quality ceramics known as porcelain. And once they had
+            perfected the process, they kept it a secret - for another thousand
+            years! Compared to the first ceramics, porcelain was lighter, finer,
+            harder and whiter and became an important commodity in China's
+            trading with the rest of the world for hundreds of years. In fact,
+            it became so valuable that it was known as white gold and spies were
+            sent to China to discover what they did to the clay to produce such
+            high-quality merchandise.</p>
+          <p>It wasn't until the eighteenth century that the secret began to
+            unravel. A German alchemist called Johann Friedrich Bottger was
+            asked by the king to make gold out of lead. Unfortunately, Bottger
+            failed to achieve this and soon gave up, but in order to please the
+            king he attempted to make high-quality porcelain. And after many
+            years of experimentation, he discovered that by adding quartz and a
+            material called china stone to very high-quality clay he managed to
+            get the same results that the Chinese had been achieving for the
+            last 1,000 years.</p>
+          <p>We'll now look at another ceramic which is made from mixing sand
+            with minerals and heating to over 600 degrees Celsius. When this
+            mixture cools the result is of course glass. The main difference
+            between ceramics made from clay and glass is that clay is made up of
+            crystalline plates which become locked together in the cooling
+            process whereas glass cools too quickly for crystals to form. Apart
+            from that, the process of heating up naturally occurring materials
+            to transform them is the same.</p>
+          <p>The origins of glass date back to 3500 BC but it wasn't until the
+            Roman Empire, 2,000 years ago, that the art of glass-blowing and the
+            practical uses of glass became more widespread. One of the more
+            innovative uses was to use it in windows as, up until then, they had
+            just been holes in walls. It must have been very draughty in those
+            days!</p>
+          <p>The Romans were also responsible for inventing concrete. And
+            although the origins are uncertain, experts think that this is
+            largely due to the high level of volcanic activity in the area. The
+            Romans observed that, when volcanic ash mixes with water and then
+            cools, it gets extremely hard and almost impossible to break up. The
+            chemical reaction that follows is very complex and continues for
+            many years, and the concrete just keeps getting harder. Evidence of
+            this is the numerous Roman remains that are still standing, many of
+            which are almost completely intact.</p>
+          <p>One of the most important facts about concrete for the Romans was
+            that it can be created underwater. As the Roman Empire grew, the
+            Romans needed to take control of the seas and for this they needed
+            to build harbours capable of holding a fleet of ships. Pouring
+            concrete mixture into the sea immediately started the hardening
+            process and rather than just dissolving in the mass of water, the
+            substance was tough and long-lasting. This strange characteristic of
+            concrete made a significant contribution to the success of the Roman
+            Empire.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>Local copy for personal study. Test material © its original rights
+      holders — please support the original site.</footer>
+
+    <div class="bottombar" id="bottombar">
+      <div class="bb-inner">
+        <div class="bb-top">
+          <div class="bb-tabs" id="bbTabs"></div>
+          <div class="bb-palette" id="bbPalette"></div>
+        </div>
+        <div class="bb-bottom">
+          <span class="bb-progress" id="bbProgress">0 / 40 answered</span>
+          <div class="bb-actions">
+            <button class="btn primary small" id="bbSubmit"
+              type="button">Submit</button>
+            <button class="bb-hide" id="bbHide" type="button"
+              title="Hide bar">✕</button>
+          </div>
+        </div>
       </div>
-      <div class="ielts-reading-test-control-buttons">
-        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
-        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
-      </div>
     </div>
-  </div>
-</div>
+    <button id="bbShow" type="button">Show question bar</button>
 
-<!-- RESULT OVERLAY -->
-<div class="overlay" id="resultOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Your Results</h3>
-      <button class="close-x" data-close="resultOverlay">×</button>
+    <div id="hlBar" role="toolbar" aria-label="Highlight actions">
+      <button type="button" class="hl-main"
+        data-act="hl"><span>🖍️</span><span>Highlight</span></button>
+      <div class="sep"></div>
+      <button type="button" data-act="clear">Clear all</button>
     </div>
-    <div class="overlay-body">
-      <div class="score-summary">
-        <div class="big" id="resultScore">0 / 40</div>
-        <div class="sub" id="resultSub">Band estimate: —</div>
-      </div>
-      <div class="legend-row">
-        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
-      </div>
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
-        <tbody id="resultBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- PREVIEW OVERLAY -->
-<div class="overlay" id="previewOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Review Your Answers</h3>
-      <button class="close-x" data-close="previewOverlay">×</button>
-    </div>
-    <div class="overlay-body">
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-        <tbody id="previewBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
+    <script>
+(function () {
+  "use strict";
 
-<!-- HIGHLIGHT TOOLBAR -->
-<div id="hl-popup">
-  <button id="hl-highlight">🖍 Highlight</button>
-  <button id="hl-dehighlight">🧽 Clear</button>
-  <button id="hl-note">📝 Note</button>
-  <button id="hl-flashcard">🃏 Flashcard</button>
-</div>
+  var KEY = {
+    1:["cafe","café"], 2:["9 am","9am","nine am","9.00 am","9:00 am","9.00am","9:00am","nine"],
+    3:["5 kilometres","five kilometres","5 kilometers","five kilometers","5 km","five km"],
+    4:["bar code","barcode"], 5:["website"], 6:["1.50","£1.50","1.5","1.50p"],
+    7:["maughan"], 8:["01444732900","01444 732900","01444-732900"], 9:["guiding"],
+    10:["photographs","photos"],
+    11:["sharks"], 12:["old fishing village","fishing village","the old fishing village"],
+    13:["shopping"], 14:["water fountain","fountain"], 15:["student card"],
+    16:["50 minutes","fifty minutes"], 17:["museum"], 18:["tourist office"],
+    19:["rainwear","rain wear"], 20:["e-ticket","eticket","e ticket"],
+    21:["C"], 22:["A"], 23:["B"], 24:["A"], 25:["C"], 26:["B"],
+    27:["senior management"], 28:["project request"], 29:["meeting"], 30:["conference call"],
+    31:["29,000 years","29000 years","29 000 years","twenty nine thousand years"],
+    32:["southern europe"], 33:["water"], 34:["minerals"], 35:["white gold"],
+    36:["china stone"], 37:["cooling"], 38:["windows"], 39:["volcanic ash"],
+    40:["harbours","harbors"]
+  };
 
-<!-- NOTE POPUP -->
-<div id="note-popup">
-  <div class="np-card">
-    <h4>Add a note</h4>
-    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
-    <div class="np-actions">
-      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
-      <button type="button" class="np-save" id="note-save">Save Note</button>
-    </div>
-  </div>
-</div>
+  var LABEL = {
+    1:"cafe", 2:"9 am", 3:"5 km", 4:"bar code", 5:"website", 6:"1.50",
+    7:"Maughan", 8:"01444732900", 9:"guiding", 10:"photographs",
+    11:"sharks", 12:"old fishing village", 13:"shopping", 14:"water fountain",
+    15:"student card", 16:"50 minutes", 17:"museum", 18:"tourist office",
+    19:"rainwear", 20:"e-ticket",
+    21:"C", 22:"A", 23:"B", 24:"A", 25:"C", 26:"B",
+    27:"senior management", 28:"project request", 29:"meeting", 30:"conference call",
+    31:"29,000 years", 32:"southern Europe", 33:"water", 34:"minerals", 35:"white gold",
+    36:"china stone", 37:"cooling", 38:"windows", 39:"volcanic ash", 40:"harbours"
+  };
 
-<div class="toast" id="toast"></div>
+  var PARTS = [
+    { n: 1, from: 1,  to: 10, name: "Part 1" },
+    { n: 2, from: 11, to: 20, name: "Part 2" },
+    { n: 3, from: 21, to: 30, name: "Part 3" },
+    { n: 4, from: 31, to: 40, name: "Part 4" }
+  ];
 
-<script>
-/* ANSWER KEY */
-const ANSWER_KEY = {
-  1:["cafe","café"],
-  2:["9 am","9am","nine am","9.00 am","9:00 am","9.00am","9:00am","nine"],
-  3:["5 kilometres","five kilometres","5 kilometers","five kilometers","5 km","five km"],
-  4:["bar code","barcode"],
-  5:["website"],
-  6:["1.50","£1.50","1.5","1.50p"],
-  7:["maughan"],
-  8:["01444732900","01444 732900","01444-732900"],
-  9:["guiding"],
-  10:["photographs","photos"],
-  11:["sharks"],
-  12:["old fishing village","fishing village","the old fishing village"],
-  13:["shopping"],
-  14:["water fountain","fountain"],
-  15:["student card"],
-  16:["50 minutes","fifty minutes"],
-  17:["museum"],
-  18:["tourist office"],
-  19:["rainwear","rain wear","rainwear"],
-  20:["e-ticket","eticket","e ticket"],
-  21:["C"],
-  22:["A"],
-  23:["B"],
-  24:["A"],
-  25:["C"],
-  26:["B"],
-  27:["senior management"],
-  28:["project request"],
-  29:["meeting"],
-  30:["conference call"],
-  31:["29,000 years","29000 years","29 000 years","twenty nine thousand years"],
-  32:["southern europe"],
-  33:["water"],
-  34:["minerals"],
-  35:["white gold"],
-  36:["china stone"],
-  37:["cooling"],
-  38:["windows"],
-  39:["volcanic ash"],
-  40:["harbours","harbors"]
-};
-
-const PART_QUESTIONS = {
-  1: Array.from({length:10},(_,i)=>i+1),
-  2: Array.from({length:10},(_,i)=>i+11),
-  3: Array.from({length:10},(_,i)=>i+21),
-  4: Array.from({length:10},(_,i)=>i+31)
-};
-
-/* HELPERS */
-function normalize(s){
-  return (s||"").toString().trim().toLowerCase()
-    .replace(/[.,;:!?'"()£]/g,"").replace(/\s+/g," ");
-}
-function getUserAnswer(n){
-  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
-  if (r) return r.value;
-  const t = document.querySelector(`input[type=text][name=q${n}]`);
-  if (t) return t.value;
-  return "";
-}
-function isCorrect(n, ua){
-  const keys = ANSWER_KEY[n] || [];
-  const v = normalize(ua);
-  if (!v) return false;
-  return keys.some(k => normalize(k) === v);
-}
-function estimateBand(score){
-  if (score>=39) return "9.0"; if (score>=37) return "8.5";
-  if (score>=35) return "8.0"; if (score>=32) return "7.5";
-  if (score>=30) return "7.0"; if (score>=26) return "6.5";
-  if (score>=23) return "6.0"; if (score>=18) return "5.5";
-  if (score>=16) return "5.0"; if (score>=13) return "4.5";
-  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
-  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
-  return "2.0 or below";
-}
-let toastTimer=null;
-function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg; el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
-}
-
-function toggleTranscript(el){
-  const body = el.nextElementSibling;
-  const arrow = el.querySelector("span:last-child");
-  body.classList.toggle("show");
-  arrow.textContent = body.classList.contains("show") ? "▲" : "▼";
-  el.querySelector("span:first-child").textContent = body.classList.contains("show") ? "📄 Hide Transcript" : "📄 Show Transcript";
-}
-
-/* BUILD PALETTE */
-const palette = document.getElementById("palette");
-Object.keys(PART_QUESTIONS).forEach(part => {
-  const section = document.createElement("div");
-  section.className = "ielts-reading-palette-section";
-  section.dataset.part = part;
-
-  const label = document.createElement("strong");
-  label.className = "ielts-reading-palette-section-part";
-  label.textContent = `Part ${part}:`;
-  section.appendChild(label);
-
-  PART_QUESTIONS[part].forEach(n => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "ielts-reading-palette-item";
-    btn.dataset.q = n;
-    btn.textContent = n;
-    btn.addEventListener("click", () => goToQuestion(n));
-    section.appendChild(btn);
-  });
-
-  const count = document.createElement("em");
-  count.className = "ielts-reading-palette-section-question-count";
-  count.textContent = `${PART_QUESTIONS[part].length} questions`;
-  section.appendChild(count);
-
-  palette.appendChild(section);
-});
-
-/* PART SWITCHING */
-let currentPart = 1;
-let currentQuestion = 1;
-
-function switchPart(part){
-  currentPart = parseInt(part,10);
-
-  document.querySelectorAll(".part-tab").forEach(t =>
-    t.classList.toggle("active", t.dataset.part === String(part)));
-
-  document.querySelectorAll(".passage").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-
-  document.querySelectorAll(".q-section").forEach(s =>
-    s.classList.toggle("active", s.dataset.part === String(part)));
-
-  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-
-  currentQuestion = PART_QUESTIONS[part][0];
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-
-document.querySelectorAll(".part-tab").forEach(tab => {
-  tab.addEventListener("click", () => switchPart(tab.dataset.part));
-});
-
-/* NAVIGATION */
-function goToQuestion(n){
-  n = parseInt(n,10);
-  if (!n || n<1 || n>40) return;
-  let part = 1;
-  for (const p of [1,2,3,4]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
-  if (part !== currentPart) switchPart(part);
-  currentQuestion = n;
-  const qEl = document.querySelector(`.q[data-q="${n}"]`);
-  if (qEl){
-    qEl.scrollIntoView({behavior:"smooth", block:"center"});
-    qEl.classList.add("highlight");
-    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  function norm(s) {
+    return String(s == null ? "" : s).toLowerCase().replace(/[£$€]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ").replace(/^\s*(the|a|an)\s+/, "")
+      .replace(/\s+/g, " ").trim().replace(/\s+/g, "");
   }
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-function updatePaletteCurrent(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
-}
-function updateNavButtons(){
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
-  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===4);
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx > 0) goToQuestion(all[idx-1]);
-  else if (currentPart > 1){
-    const prev = PART_QUESTIONS[currentPart-1];
-    goToQuestion(prev[prev.length-1]);
+  function correctLabel(q) { return LABEL[q] || KEY[q][0]; }
+  function qInput(q) { return document.querySelector('[data-q="' + q + '"]'); }
+  function qRadios(q) { return document.querySelectorAll('input[name="q' + q + '"]'); }
+  function isChoice(q) { var el = qInput(q); return (el && el.tagName === "SELECT") || qRadios(q).length > 0; }
+  function getUserAnswer(q) {
+    var el = qInput(q);
+    if (el) return el.value;
+    var r = document.querySelector('input[name="q' + q + '"]:checked');
+    return r ? r.value : "";
   }
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx < all.length-1) goToQuestion(all[idx+1]);
-  else if (currentPart < 4) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
-});
+  function hasAnswer(q) { var el = qInput(q); if (el) return !!el.value; return !!document.querySelector('input[name="q' + q + '"]:checked'); }
+  function isCorrect(q, raw) {
+    if (!raw) return false;
+    if (isChoice(q)) return KEY[q].indexOf(String(raw).toUpperCase()) !== -1;
+    var u = norm(raw);
+    if (!u) return false;
+    for (var i = 0; i < KEY[q].length; i++) if (norm(KEY[q][i]) === u) return true;
+    return false;
+  }
+  function bandFor(score) {
+    if (score>=39) return "Band 9.0"; if (score>=37) return "Band 8.5";
+    if (score>=35) return "Band 8.0"; if (score>=32) return "Band 7.5";
+    if (score>=30) return "Band 7.0"; if (score>=26) return "Band 6.5";
+    if (score>=23) return "Band 6.0"; if (score>=18) return "Band 5.5";
+    if (score>=16) return "Band 5.0"; if (score>=13) return "Band 4.5";
+    if (score>=10) return "Band 4.0"; return "Band 3.5 or below";
+  }
 
-document.querySelectorAll(".q").forEach(qEl => {
-  qEl.addEventListener("focusin", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-  qEl.addEventListener("click", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-});
+  var bbTabs = document.getElementById("bbTabs");
+  var bbPalette = document.getElementById("bbPalette");
+  var bbProgress = document.getElementById("bbProgress");
+  var chipMap = {};
+  var currentPart = 1;
 
-function refreshPaletteAnswered(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
-    const n = parseInt(b.dataset.q,10);
-    const ua = getUserAnswer(n);
-    b.classList.toggle("answered", ua.trim() !== "");
+  PARTS.forEach(function (p) {
+    var t = document.createElement("button");
+    t.type = "button";
+    t.className = "bb-tab" + (p.n === currentPart ? " current" : "");
+    t.dataset.part = p.n;
+    t.textContent = p.name;
+    t.title = "Switch to " + p.name;
+    t.addEventListener("click", function () { switchPart(p.n); });
+    bbTabs.appendChild(t);
   });
-}
-document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
-document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
 
-/* RESIZER */
-(function(){
-  const resizer = document.getElementById("resizer");
-  const passagesPane = document.getElementById("passagesPane");
-  const questionsPane = document.getElementById("questionsPane");
-  let dragging = false;
-  resizer.addEventListener("mousedown", e => {
-    e.preventDefault(); dragging = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
+  function renderPalette(n) {
+    bbPalette.innerHTML = "";
+    chipMap = {};
+    var part = null;
+    for (var i = 0; i < PARTS.length; i++) if (PARTS[i].n === n) { part = PARTS[i]; break; }
+    if (!part) return;
+    for (var q = part.from; q <= part.to; q++) {
+      (function (qq) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip";
+        b.dataset.q = qq;
+        b.textContent = qq;
+        b.title = "Go to question " + qq;
+        b.addEventListener("click", function () { scrollToQ(qq); });
+        bbPalette.appendChild(b);
+        chipMap[qq] = b;
+      })(q);
+    }
+    refreshPalette();
+  }
+
+  function refreshPalette() {
+    var done = 0, graded = document.body.classList.contains("graded");
+    for (var q = 1; q <= 40; q++) {
+      if (hasAnswer(q)) done++;
+      var chip = chipMap[q];
+      if (!chip) continue;
+      chip.classList.remove("ok", "no", "answered");
+      if (graded) {
+        var ok = isCorrect(q, getUserAnswer(q));
+        chip.classList.add(ok ? "ok" : "no");
+      } else if (hasAnswer(q)) {
+        chip.classList.add("answered");
+      }
+    }
+    bbProgress.textContent = done + " / 40 answered";
+  }
+
+  function switchPart(n) {
+    currentPart = n;
+    document.querySelectorAll(".part").forEach(function (el) {
+      el.classList.toggle("current", parseInt(el.dataset.part, 10) === n);
+    });
+    document.querySelectorAll(".bb-tab").forEach(function (t) {
+      t.classList.toggle("current", parseInt(t.dataset.part, 10) === n);
+    });
+    renderPalette(n);
+    var target = document.querySelector('.part[data-part="' + n + '"]');
+    if (target) {
+      var top = target.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    }
+  }
+
+  function anchorFor(q) {
+    var el = qInput(q);
+    if (el) return el;
+    var r = document.querySelector('input[name="q' + q + '"]');
+    if (r) return r.closest(".mcq") || r;
+    return null;
+  }
+
+  function scrollToQ(q) {
+    var el = anchorFor(q);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    var chip = chipMap[q];
+    if (chip) { chip.classList.add("active"); setTimeout(function () { chip.classList.remove("active"); }, 1200); }
+    setTimeout(function () {
+      var focusable = qInput(q) || document.querySelector('input[name="q' + q + '"]:checked') || document.querySelector('input[name="q' + q + '"]');
+      if (focusable && focusable.focus) {
+        try { focusable.focus({ preventScroll: true }); } catch (e) { focusable.focus(); }
+      }
+    }, 420);
+  }
+
+  document.addEventListener("input", function (e) { if (e.target.matches("[data-q]")) refreshPalette(); });
+  document.addEventListener("change", function (e) {
+    if (e.target.matches("[data-q]") || e.target.matches('input[type=radio]')) refreshPalette();
   });
-  document.addEventListener("mousemove", e => {
-    if (!dragging) return;
-    const rect = document.getElementById("mainSplit").getBoundingClientRect();
-    let pct = ((e.clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(20, Math.min(70, pct));
-    passagesPane.style.flex = `0 0 ${pct}%`;
-    questionsPane.style.flex = "1 1 auto";
+
+  renderPalette(currentPart);
+
+  var bb = document.getElementById("bottombar");
+  var bbShow = document.getElementById("bbShow");
+  document.getElementById("bbHide").addEventListener("click", function () {
+    bb.classList.add("off"); bbShow.classList.add("on"); document.body.classList.add("bb-off");
   });
-  document.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    document.body.style.cursor = "";
-    document.body.style.userSelect = "";
+  bbShow.addEventListener("click", function () {
+    bb.classList.remove("off"); bbShow.classList.remove("on"); document.body.classList.remove("bb-off");
+  });
+
+  function clearFeedback() {
+    document.querySelectorAll(".feedback").forEach(function (n) { n.remove(); });
+    document.querySelectorAll(".is-right,.is-wrong,.picked-ok,.picked-no,.key").forEach(function (n) {
+      n.classList.remove("is-right", "is-wrong", "picked-ok", "picked-no", "key");
+    });
+  }
+
+  function placeFeedback(q, ok, text) {
+    var el = qInput(q);
+    var span = document.createElement("span");
+    span.className = "feedback " + (ok ? "ok" : "no");
+    if (ok) span.textContent = "✓";
+    else span.innerHTML = "✗ <em>" + text + "</em>";
+    if (el) {
+      el.classList.add(ok ? "is-right" : "is-wrong");
+      el.insertAdjacentElement("afterend", span);
+      return;
+    }
+    var radios = qRadios(q);
+    if (radios.length) {
+      var mcq = radios[0].closest(".mcq");
+      var stem = mcq ? mcq.querySelector(".stem") : null;
+      if (stem) stem.appendChild(span);
+      var keyLetter = KEY[q][0];
+      radios.forEach(function (r) {
+        var lab = r.closest(".opt");
+        if (!lab) return;
+        if (r.value === keyLetter) lab.classList.add("key");
+        if (r.checked) lab.classList.add(r.value === keyLetter ? "picked-ok" : "picked-no");
+      });
+    }
+  }
+
+  var resultBody = document.getElementById("resultBody");
+  var resultCard = document.getElementById("resultCard");
+
+  function openAllScripts() {
+    document.querySelectorAll("details.transcript").forEach(function (d) { d.open = true; });
+  }
+
+  function submit() {
+    clearFeedback();
+    document.body.classList.add("graded");
+    openAllScripts();
+    var score = 0;
+    resultBody.innerHTML = "";
+    for (var q = 1; q <= 40; q++) {
+      var raw = getUserAnswer(q);
+      var ok = isCorrect(q, raw);
+      if (ok) score++;
+      placeFeedback(q, ok, correctLabel(q));
+      var tr = document.createElement("tr");
+      var tdNum = document.createElement("td"); tdNum.textContent = q;
+      var tdUser = document.createElement("td");
+      tdUser.textContent = raw ? raw : "—";
+      if (raw) tdUser.className = ok ? "right" : "wrong";
+      var tdKey = document.createElement("td"); tdKey.textContent = correctLabel(q);
+      var tdMark = document.createElement("td");
+      var pill = document.createElement("span");
+      pill.className = "pill " + (ok ? "ok" : "no");
+      pill.textContent = ok ? "✓" : "✗";
+      tdMark.appendChild(pill);
+      tr.appendChild(tdNum); tr.appendChild(tdUser); tr.appendChild(tdKey); tr.appendChild(tdMark);
+      resultBody.appendChild(tr);
+    }
+    document.getElementById("scoreLine").textContent = score + " / 40";
+    document.getElementById("bandLine").textContent = "Estimated IELTS Listening band: " + bandFor(score);
+    var bandChip = document.getElementById("bandChip");
+    if (bandChip) { bandChip.textContent = bandFor(score).replace("Band ", ""); bandChip.classList.add("show"); }
+    resultCard.classList.add("show");
+    refreshPalette();
+    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function resetAll() {
+    document.querySelectorAll("[data-q]").forEach(function (el) { el.value = ""; });
+    document.querySelectorAll("input[type=radio]").forEach(function (r) { r.checked = false; });
+    clearFeedback();
+    resultCard.classList.remove("show");
+    resultBody.innerHTML = "";
+    document.body.classList.remove("graded");
+    document.querySelectorAll("details.transcript").forEach(function (d) { d.open = false; });
+    for (var q = 1; q <= 40; q++) { var chip = chipMap[q]; if (chip) chip.classList.remove("ok", "no", "answered"); }
+    var bandChip = document.getElementById("bandChip");
+    if (bandChip) { bandChip.textContent = "--"; bandChip.classList.remove("show"); }
+    currentPart = 0;
+    switchPart(1);
+    refreshPalette();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.getElementById("bbSubmit").addEventListener("click", submit);
+  document.getElementById("retakeBtn").addEventListener("click", resetAll);
+  document.getElementById("jumpScript").addEventListener("click", function () {
+    document.getElementById("transcripts").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  var HL_STORE = "ielts-listening-highlights-" + (document.title || "test");
+  var hlBar = document.getElementById("hlBar");
+  var hlHint = document.getElementById("hlHint");
+  var activeContainer = null;
+  var savedRange = null;
+  var containers = [];
+  document.querySelectorAll(".hlable").forEach(function (el, i) {
+    if (!el.dataset.hlId) el.dataset.hlId = "hlc-" + i;
+    containers.push(el);
+  });
+
+  function textNodesIn(root) {
+    var out = [], n;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !node.nodeValue.length) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    while ((n = walker.nextNode())) out.push(n);
+    return out;
+  }
+  function nodeOffsetMap(container) {
+    var nodes = textNodesIn(container), map = new Map(), pos = 0;
+    nodes.forEach(function (n) { map.set(n, pos); pos += n.nodeValue.length; });
+    return map;
+  }
+  function unwrapMarks(container) {
+    container.querySelectorAll("mark.hl").forEach(function (m) {
+      var parent = m.parentNode; if (!parent) return;
+      while (m.firstChild) parent.insertBefore(m.firstChild, m);
+      parent.removeChild(m);
+    });
+    if (container.normalize) container.normalize();
+  }
+  function markOffsets(container) {
+    var map = nodeOffsetMap(container), res = [];
+    container.querySelectorAll("mark.hl").forEach(function (m) {
+      var inner = textNodesIn(m);
+      if (!inner.length) return;
+      var first = inner[0], last = inner[inner.length - 1];
+      var start = map.get(first), end = map.get(last);
+      if (start == null || end == null) return;
+      end += last.nodeValue.length;
+      if (end > start) res.push([start, end]);
+    });
+    res.sort(function (a, b) { return a[0] - b[0]; });
+    return res;
+  }
+  function wrapOffsets(container, start, end) {
+    var nodes = textNodesIn(container), pos = 0, segs = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i], len = n.nodeValue.length;
+      var ns = pos, ne = pos + len;
+      var s = Math.max(start, ns), e = Math.min(end, ne);
+      if (e > s) segs.push([n, s - ns, e - ns]);
+      pos = ne;
+      if (pos >= end) break;
+    }
+    segs.forEach(function (seg) {
+      var node = seg[0], so = seg[1], eo = seg[2];
+      var r = document.createRange();
+      try {
+        r.setStart(node, so); r.setEnd(node, eo);
+        var mark = document.createElement("mark"); mark.className = "hl";
+        r.surroundContents(mark);
+      } catch (err) {}
+    });
+  }
+  function applyOffsets(container, ranges) {
+    unwrapMarks(container);
+    ranges.slice().sort(function (a, b) { return b[0] - a[0]; }).forEach(function (r) { wrapOffsets(container, r[0], r[1]); });
+  }
+  function rangeToOffsets(container, range) {
+    var nodes = textNodesIn(container), pos = 0, start = null, end = null;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i], len = n.nodeValue.length;
+      if (n === range.startContainer) start = pos + range.startOffset;
+      if (n === range.endContainer) end = pos + range.endOffset;
+      pos += len;
+    }
+    if (start == null || end == null || end <= start) return null;
+    return [start, end];
+  }
+  function saveHighlights() {
+    var data = {};
+    containers.forEach(function (c) { var offs = markOffsets(c); if (offs.length) data[c.dataset.hlId] = offs; });
+    try { localStorage.setItem(HL_STORE, JSON.stringify(data)); } catch (e) {}
+  }
+  function loadHighlights() {
+    var raw; try { raw = localStorage.getItem(HL_STORE); } catch (e) { return; }
+    if (!raw) return;
+    var data; try { data = JSON.parse(raw); } catch (e) { return; }
+    containers.forEach(function (c) { var offs = data[c.dataset.hlId]; if (offs && offs.length) applyOffsets(c, offs); });
+  }
+  function clearAllHighlights() {
+    containers.forEach(function (c) { unwrapMarks(c); });
+    try { localStorage.removeItem(HL_STORE); } catch (e) {}
+    flashHint("Highlights cleared");
+  }
+  function flashHint(text) {
+    hlHint.classList.add("flash");
+    var span = hlHint.querySelector("span:last-child");
+    var old = span.textContent;
+    span.textContent = text;
+    setTimeout(function () { hlHint.classList.remove("flash"); span.textContent = old; }, 1200);
+  }
+  var clearHlEl = document.getElementById("clearHighlightsLink");
+  if (clearHlEl) {
+    clearHlEl.addEventListener("click", function (e) {
+      e.preventDefault(); clearAllHighlights();
+      var mp = document.getElementById("menuPop"); if (mp) mp.classList.remove("show");
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var m = e.target.closest && e.target.closest("mark.hl");
+    if (!m) return;
+    var parent = m.parentNode; if (!parent) return;
+    while (m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+    if (parent.normalize) parent.normalize();
+    saveHighlights();
+  });
+  function hideHlBar() { hlBar.classList.remove("on"); savedRange = null; activeContainer = null; }
+  function findContainer(node) {
+    var el = node.nodeType === 1 ? node : node.parentElement;
+    if (!el) return null;
+    return el.closest(".hlable");
+  }
+  function applyHighlight() {
+    if (!savedRange || !activeContainer) return false;
+    var offs = rangeToOffsets(activeContainer, savedRange);
+    if (!offs) return false;
+    var existing = markOffsets(activeContainer);
+    existing.push(offs);
+    applyOffsets(activeContainer, existing);
+    saveHighlights();
+    var sel = window.getSelection(); if (sel) sel.removeAllRanges();
+    hideHlBar(); flashHint("Highlighted");
+    return true;
+  }
+  document.addEventListener("mouseup", function (e) {
+    if (e.target.closest && e.target.closest("#hlBar")) return;
+    setTimeout(function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.rangeCount) { hideHlBar(); return; }
+      var range = sel.getRangeAt(0);
+      var container = findContainer(range.commonAncestorContainer);
+      if (!container) { hideHlBar(); return; }
+      var rect = range.getBoundingClientRect();
+      if (!rect || (!rect.width && !rect.height)) { hideHlBar(); return; }
+      activeContainer = container; savedRange = range.cloneRange();
+      hlBar.style.top = (rect.top + window.scrollY - 10) + "px";
+      hlBar.style.left = (rect.left + rect.width / 2 + window.scrollX) + "px";
+      hlBar.classList.add("on");
+    }, 10);
+  });
+  document.addEventListener("mousedown", function (e) { if (e.target.closest && e.target.closest("#hlBar")) e.preventDefault(); });
+  document.addEventListener("scroll", hideHlBar, { passive: true });
+  window.addEventListener("resize", hideHlBar);
+  hlBar.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-act]"); if (!btn) return;
+    if (btn.dataset.act === "clear") { clearAllHighlights(); hideHlBar(); return; }
+    if (btn.dataset.act === "hl") { applyHighlight(); }
+  });
+  loadHighlights();
+
+  var seconds = 0, running = true;
+  var timerEl = document.getElementById("timer");
+  function fmt(n) {
+    var h = Math.floor(n / 3600), m = Math.floor((n % 3600) / 60), s = n % 60;
+    return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+  }
+  setInterval(function () { if (!running) return; seconds++; if (timerEl) timerEl.textContent = fmt(seconds); }, 1000);
+
+  var menuBtn = document.getElementById("menuBtn");
+  var menuPop = document.getElementById("menuPop");
+  if (menuBtn && menuPop) {
+    menuBtn.addEventListener("click", function (e) { e.stopPropagation(); menuPop.classList.toggle("show"); });
+    document.addEventListener("click", function (e) { if (!e.target.closest || !e.target.closest(".menu-wrap")) menuPop.classList.remove("show"); });
+  }
+  var focusBtn = document.getElementById("focusBtn");
+  if (focusBtn) {
+    focusBtn.addEventListener("click", function () {
+      if (!document.fullscreenElement) { if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); }
+      else if (document.exitFullscreen) document.exitFullscreen();
+    });
+  }
+  var exportLink = document.getElementById("exportLink");
+  if (exportLink) exportLink.addEventListener("click", function (e) { e.preventDefault(); if (menuPop) menuPop.classList.remove("show"); window.print(); });
+  var resetLink = document.getElementById("resetLink");
+  if (resetLink) resetLink.addEventListener("click", function (e) { e.preventDefault(); if (menuPop) menuPop.classList.remove("show"); if (confirm("Reset the test? All answers will be cleared.")) resetAll(); });
+  var gotoTop = document.getElementById("gotoTop");
+  if (gotoTop) gotoTop.addEventListener("click", function (e) { e.preventDefault(); if (menuPop) menuPop.classList.remove("show"); window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); submit(); return; }
+    if (e.key === "Escape") { hideHlBar(); return; }
+    if (e.altKey && e.key >= "1" && e.key <= "4") { e.preventDefault(); switchPart(parseInt(e.key, 10)); return; }
+    if (e.key === "h" || e.key === "H") {
+      var tag = (e.target.tagName || "").toLowerCase();
+      if (tag === "input" || tag === "textarea" || tag === "select") return;
+      var sel = window.getSelection(); if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+      var range = sel.getRangeAt(0);
+      var container = findContainer(range.commonAncestorContainer); if (!container) return;
+      activeContainer = container; savedRange = range.cloneRange(); applyHighlight();
+    }
   });
 })();
-
-/* TIMER */
-let seconds = 0;
-setInterval(() => {
-  seconds++;
-  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
-  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
-  const s = String(seconds%60).padStart(2,"0");
-  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-/* ============================================
-   HIGHLIGHT / NOTE FEATURE
-   ============================================ */
-const hlPopup = document.getElementById("hl-popup");
-const notePopup = document.getElementById("note-popup");
-const passagesEl = document.getElementById("passagesPane");
-const questionsEl = document.getElementById("questionsPane");
-const fab = document.getElementById("hl-fab");
-
-let savedRange = null;
-let pendingNoteRange = null;
-let highlighterOn = false;
-let currentMark = null;
-let noteSaveTarget = null;
-
-/* Toggle highlighter mode via the floating FAB */
-fab.addEventListener("click", () => {
-  highlighterOn = !highlighterOn;
-  fab.classList.toggle("active", highlighterOn);
-  toast(highlighterOn
-    ? "Highlighter ON — select text or click a word"
-    : "Highlighter OFF — normal selection");
-});
-
-function showPopupAt(rect){
-  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
-  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
-  hlPopup.classList.add("show");
-}
-
-function isEditableTarget(el){
-  return el && (el.closest("input") || el.closest("select") ||
-                el.closest("button") || el.closest("label") ||
-                el.closest(".transcript-toggle"));
-}
-
-/* ----- SELECTION (mouseup) ----- */
-document.addEventListener("mouseup", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-
-  setTimeout(() => {
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      const range = sel.getRangeAt(0);
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        if (isEditableTarget(e.target)) return;
-        savedRange = range.cloneRange();
-        currentMark = null;
-        showPopupAt(range.getBoundingClientRect());
-        return;
-      }
-    }
-  }, 0);
-});
-
-/* ----- SINGLE-CLICK ON A WORD ----- */
-document.addEventListener("click", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  if (isEditableTarget(e.target)) return;
-
-  const inP = e.target.closest(".passages");
-  const inQ = e.target.closest(".questions");
-  if (!inP && !inQ) return;
-
-  const existingMark = e.target.tagName === "MARK" ? e.target :
-                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
-  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
-
-  if (existingNote) {
-    const note = existingNote.dataset.note || "";
-    document.getElementById("note-text").value = note;
-    pendingNoteRange = null;
-    notePopup.classList.add("show");
-    noteSaveTarget = existingNote;
-    return;
-  }
-
-  if (existingMark) {
-    savedRange = null;
-    currentMark = existingMark;
-    showPopupAt(existingMark.getBoundingClientRect());
-    return;
-  }
-
-  if (highlighterOn) {
-    const sel = window.getSelection();
-    let range = null;
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      range = sel.getRangeAt(0);
-    } else {
-      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
-      if (wordRange) range = wordRange;
-    }
-    if (range) {
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        highlightRange(range);
-        window.getSelection().removeAllRanges();
-        hlPopup.classList.remove("show");
-        savedRange = null;
-      }
-    }
-  }
-});
-
-/* Get word range at given point */
-function getWordRangeFromPoint(x, y){
-  let node, offset;
-  if (document.caretRangeFromPoint){
-    const r = document.caretRangeFromPoint(x, y);
-    if (!r) return null;
-    node = r.startContainer; offset = r.startOffset;
-  } else if (document.caretPositionFromPoint){
-    const pos = document.caretPositionFromPoint(x, y);
-    if (!pos) return null;
-    node = pos.offsetNode; offset = pos.offset;
-  } else return null;
-  if (!node || node.nodeType !== 3) return null;
-  const text = node.textContent;
-  if (!text || !text.trim()) return null;
-  let start = offset, end = offset;
-  const isWord = c => /[\w'’\-]/i.test(c);
-  while (start > 0 && isWord(text[start-1])) start--;
-  while (end < text.length && isWord(text[end])) end++;
-  if (start === end) {
-    if (offset < text.length) end = offset + 1;
-  }
-  if (start >= end) return null;
-  const range = document.createRange();
-  try {
-    range.setStart(node, start);
-    range.setEnd(node, end);
-  } catch(err){ return null; }
-  return range;
-}
-
-/* Highlight button */
-document.getElementById("hl-highlight").addEventListener("click", () => {
-  if (currentMark) { hlPopup.classList.remove("show"); return; }
-  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
-  highlightRange(savedRange);
-  window.getSelection().removeAllRanges();
-  hlPopup.classList.remove("show");
-  savedRange = null;
-  toast("Text highlighted");
-});
-
-/* Clear button */
-document.getElementById("hl-dehighlight").addEventListener("click", () => {
-  if (currentMark){
-    const parent = currentMark.parentNode;
-    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
-    parent.removeChild(currentMark);
-    currentMark = null;
-    hlPopup.classList.remove("show");
-    toast("Highlight removed");
-    return;
-  }
-  if (savedRange){
-    clearHighlightInRange(savedRange);
-    window.getSelection().removeAllRanges();
-    hlPopup.classList.remove("show");
-    savedRange = null;
-    toast("Highlight removed");
-  } else {
-    hlPopup.classList.remove("show");
-  }
-});
-
-/* Note button */
-document.getElementById("hl-note").addEventListener("click", () => {
-  if (!savedRange) { toast("Select text first"); return; }
-  pendingNoteRange = savedRange.cloneRange();
-  noteSaveTarget = null;
-  document.getElementById("note-text").value = "";
-  notePopup.classList.add("show");
-  hlPopup.classList.remove("show");
-});
-
-/* Flashcard button */
-document.getElementById("hl-flashcard").addEventListener("click", () => {
-  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
-  if (!text) { toast("Select text first"); return; }
-  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
-  hlPopup.classList.remove("show");
-});
-
-/* Core highlight function */
-function highlightRange(range){
-  try {
-    const mark = document.createElement("mark");
-    mark.className = "hl-user";
-    mark.appendChild(range.extractContents());
-    range.insertNode(mark);
-  } catch(err){
-    console.warn("Highlight failed:", err);
-  }
-}
-
-function clearHighlightInRange(range){
-  const container = range.commonAncestorContainer;
-  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
-  if (!root || !root.querySelectorAll) return;
-  const marks = root.querySelectorAll("mark.hl-user");
-  marks.forEach(m => {
-    try {
-      if (range.intersectsNode(m)) {
-        const parent = m.parentNode;
-        while (m.firstChild) parent.insertBefore(m.firstChild, m);
-        parent.removeChild(m);
-      }
-    } catch(err){}
-  });
-}
-
-/* NOTE popup handlers */
-document.getElementById("note-cancel").addEventListener("click", () => {
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-  noteSaveTarget = null;
-});
-
-document.getElementById("note-save").addEventListener("click", () => {
-  const noteText = document.getElementById("note-text").value.trim();
-
-  if (noteSaveTarget){
-    if (noteText){
-      noteSaveTarget.dataset.note = noteText;
-      noteSaveTarget.title = "Note: " + noteText;
-      toast("Note updated");
-    } else {
-      const parent = noteSaveTarget.parentNode;
-      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
-      parent.removeChild(noteSaveTarget);
-      toast("Note removed");
-    }
-    noteSaveTarget = null;
-    notePopup.classList.remove("show");
-    document.getElementById("note-text").value = "";
-    return;
-  }
-
-  if (!noteText || !pendingNoteRange) {
-    notePopup.classList.remove("show");
-    pendingNoteRange = null;
-    return;
-  }
-  try {
-    const span = document.createElement("span");
-    span.className = "hl-note";
-    span.title = "Note: " + noteText;
-    span.dataset.note = noteText;
-    span.appendChild(pendingNoteRange.extractContents());
-    pendingNoteRange.insertNode(span);
-    toast("Note saved");
-  } catch(err){
-    console.warn("Note failed:", err);
-  }
-  document.getElementById("note-text").value = "";
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-});
-
-/* Clear highlights from menu (safe if element missing) */
-document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (!confirm("Remove all highlights and notes from this test?")) return;
-  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
-    const parent = el.parentNode;
-    while (el.firstChild) parent.insertBefore(el.firstChild, el);
-    parent.removeChild(el);
-  });
-  toast("Highlights cleared");
-});
-
-/* SUBMIT */
-document.getElementById("submitBtn").addEventListener("click", () => {
-  let score = 0, answered = 0;
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong"));
-
-  const rows = [];
-  for (let n=1; n<=40; n++){
-    const qEl = document.querySelector(`.q[data-q="${n}"]`);
-    if (!qEl) continue;
-    const ua = getUserAnswer(n);
-    if (ua.trim() !== "") answered++;
-    const ok = isCorrect(n, ua);
-    if (ok) score++;
-    qEl.classList.add(ok ? "correct" : "wrong");
-    const fb = qEl.querySelector(".feedback");
-    if (fb){
-      const key = (ANSWER_KEY[n]||[]).slice(0,2).join(" / ");
-      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
-    }
-    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
-    if (pal) pal.classList.add(ok ? "correct" : "wrong");
-    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
-  }
-
-  document.getElementById("resultScore").textContent = `${score} / 40`;
-  document.getElementById("resultSub").textContent =
-    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
-
-  const tbody = document.getElementById("resultBody");
-  tbody.innerHTML = "";
-  rows.forEach(r => {
-    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
-    tbody.appendChild(tr);
-  });
-
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "Band " + estimateBand(score);
-  chip.classList.add("show");
-
-  document.getElementById("resultOverlay").classList.add("show");
-});
-
-/* REVIEW */
-document.getElementById("reviewBtn").addEventListener("click", () => {
-  const tbody = document.getElementById("previewBody");
-  tbody.innerHTML = "";
-  for (let n=1; n<=40; n++){
-    const ua = getUserAnswer(n);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
-    tbody.appendChild(tr);
-  }
-  document.getElementById("previewOverlay").classList.add("show");
-});
-
-document.querySelectorAll("[data-close]").forEach(btn =>
-  btn.addEventListener("click", () =>
-    document.getElementById(btn.dataset.close).classList.remove("show")));
-document.querySelectorAll(".overlay").forEach(ov =>
-  ov.addEventListener("click", e => {
-    if (e.target === ov) ov.classList.remove("show");
-  }));
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape"){
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
-    hlPopup.classList.remove("show");
-    notePopup.classList.remove("show");
-  }
-});
-
-/* MENU */
-const menuPop = document.getElementById("menuPop");
-document.getElementById("menuBtn").addEventListener("click", e => {
-  e.stopPropagation(); menuPop.classList.toggle("show");
-});
-document.addEventListener("click", () => menuPop.classList.remove("show"));
-menuPop.addEventListener("click", e => e.stopPropagation());
-
-document.getElementById("exportLink").addEventListener("click", e => {
-  e.preventDefault(); window.print();
-});
-document.getElementById("resetLink").addEventListener("click", e => {
-  e.preventDefault(); doReset();
-});
-document.getElementById("gotoTop").addEventListener("click", e => {
-  e.preventDefault();
-  window.scrollTo({top:0, behavior:"smooth"});
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-});
-
-function doReset(){
-  if (!confirm("Clear all answers and reset the test?")) return;
-  document.getElementById("quiz").reset();
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong","answered"));
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "--"; chip.classList.remove("show");
-  document.getElementById("resultOverlay").classList.remove("show");
-  document.getElementById("previewOverlay").classList.remove("show");
-  document.querySelectorAll(".transcript-body").forEach(t => t.classList.remove("show"));
-  document.querySelectorAll(".transcript-toggle").forEach(t => {
-    t.querySelector("span:first-child").textContent = "📄 Show Transcript";
-    t.querySelector("span:last-child").textContent = "▼";
-  });
-  switchPart(1);
-  toast("Test reset. Good luck!");
-}
-
-document.getElementById("focusBtn").addEventListener("click", () =>
-  document.body.classList.add("focus-mode"));
-document.getElementById("exitFocusBtn").addEventListener("click", () =>
-  document.body.classList.remove("focus-mode"));
-
-switchPart(1);
-refreshPaletteAnswered();
-updateNavButtons();
 </script>
-
-</body>
+  </body>
 </html>

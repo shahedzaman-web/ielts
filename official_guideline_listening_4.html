@@ -1,1388 +1,982 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Official Cambridge Guide to IELTS Academic Listening Test 4</title>
-<style>
-:root{
-  --bg:#eef1f6;--card:#fff;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
-  --accent:#e00000;--accent-soft:#fee2e2;--good:#16a34a;--good-soft:#dcfce7;
-  --bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;
-}
-*{box-sizing:border-box;}
-html,body{height:100%;}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
-button{font-family:inherit;cursor:pointer;border:none;}
-
-.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
-.app-header .logo{height:34px;display:block;}
-.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.header-right{display:flex;align-items:center;gap:10px;}
-.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
-.band-chip.show{opacity:1;background:#16a34a;}
-.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
-.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;}
-.icon-btn:hover{background:#f1f5f9;}
-.menu-wrap{position:relative;}
-.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;
-  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
-.menu-pop.show{display:block;}
-.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
-.menu-pop a:last-child{border-bottom:none;}
-.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
-
-.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
-  min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-.pane{overflow-y:auto;padding:24px 30px;}
-.passages{flex:0 0 40%;background:#fcfdff;}
-.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
-.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
-.resizer:hover{background:#cbd5e1;}
-.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
-
-.passage{display:none;}
-.passage.active{display:block;}
-.passage h2{font-size:22px;margin:0 0 6px;font-weight:700;}
-.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;
-  letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
-.passage p{margin:0 0 14px;}
-.passage em{color:var(--muted);}
-
-.audio-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(15,23,42,.04);}
-.audio-card h3{margin:0 0 4px;font-size:16px;color:var(--accent);font-weight:700;}
-.audio-card .audio-desc{font-size:13px;color:var(--muted);margin-bottom:14px;}
-.audio-card audio{width:100%;height:42px;outline:none;}
-.audio-tip{font-size:12px;color:var(--muted);margin-top:10px;background:#f8fafc;padding:8px 12px;border-radius:6px;border-left:3px solid var(--accent);}
-.audio-tip i{color:var(--accent);}
-
-.transcript-toggle{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:12px;
-  display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
-.transcript-toggle:hover{background:#f8fafc;}
-.transcript-toggle span{font-size:13px;font-weight:600;}
-.transcript-body{display:none;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:13px;line-height:1.7;max-height:400px;overflow-y:auto;margin-bottom:14px;}
-.transcript-body.show{display:block;}
-.transcript-body p{margin:0 0 8px;}
-
-.q-section{display:none;}
-.q-section.active{display:block;}
-.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
-.q-group:last-child{border-bottom:none;margin-bottom:0;}
-.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
-.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
-.q-instr p{margin:0 0 3px;}
-.q-instr p:last-child{margin:0;}
-
-.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
-.q:last-child{border-bottom:none;}
-.q.highlight{background:#fffbeb;}
-.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-.q-body{flex:1;min-width:0;}
-.q-body p{margin:0 0 7px;}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Official Cambridge Guide to IELTS Academic Listening Test 4</title>
+    <style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1e293b;--muted:#64748b;--brand:#0f766e;--brand-dark:#0d5c56;--ok:#16a34a;--bad:#c2410c;--line:#e2e8f0;--soft:#f8fafc;--hl:#fef08a;--bbh:80px;--header-h:58px;--text:#1e293b;--accent:#0f766e;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:calc(var(--bbh) + 20px);}
+body.bb-off{padding-bottom:20px}.wrap{max-width:940px;margin:0 auto;padding:0 16px}::selection{background:var(--hl);color:#111}
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.topbar .wrap{display:flex;align-items:center;gap:10px;height:58px}
+.brand{font-weight:700;color:var(--brand);letter-spacing:.2px;white-space:nowrap}.brand span{color:var(--muted);font-weight:400}
+.spacer{flex:1}.timer{font-variant-numeric:tabular-nums;font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:15px;}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:.15s;white-space:nowrap;}
+.btn:hover{background:var(--soft)}.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-dark);border-color:var(--brand-dark)}.btn.ghost{background:transparent}
+.btn.small{padding:6px 11px;font-size:13px}.btn.hl-btn{background:#fef3c7;border-color:#fcd34d;color:#78350f}
+.btn.hl-btn:hover{background:#fde68a}
+h1{font-size:26px;margin:24px 0 6px}.lead{color:var(--muted);margin:0 0 14px}
+.hl-banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:14px;color:#78350f;}
+.hl-banner .hl-icon{font-size:20px;line-height:1}.hl-banner .hl-text{flex:1;min-width:180px}
+.hl-banner strong{color:#92400e}
+.hl-banner kbd{background:#fde68a;border:1px solid #f59e0b;border-radius:5px;padding:1px 6px;font-size:12px;font-family:inherit;font-weight:700;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+.card h2{font-size:20px;margin:0 0 4px}.card h3{font-size:17px;margin:18px 0 8px}.card p{margin:8px 0}
+audio{width:100%;margin:10px 0 6px}
+.part{display:none}.part.current{display:block}
+.part-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:14px;}
+.part-badge{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:999px;letter-spacing:.3px;}
+.part-desc{color:var(--muted);font-size:14px;font-weight:600}.part-audio-label{font-size:13px;color:var(--muted);font-weight:600;margin-left:auto}
+.notes{list-style:none;padding:0;margin:0}.notes li{padding:9px 0 9px 4px;border-bottom:1px dashed var(--line)}.notes li:last-child{border-bottom:none}
+.q{white-space:nowrap}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin-right:5px;background:#e2e8f0;color:#334155;border-radius:6px;font-size:13px;font-weight:700;vertical-align:middle;}
 input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
-input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
-select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;}
-.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
-.options.stack{display:block;}
-.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
-.options.stack label{display:flex;margin-bottom:3px;}
-.options label:hover{background:#f8fafc;}
-input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-
-.q.correct .q-num{background:var(--good-soft);color:var(--good);}
-.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
-.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
-.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
-.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
-.q.correct .feedback,.q.wrong .feedback{display:block;}
-.q.correct .feedback{color:var(--good);}
-.q.wrong .feedback{color:var(--bad);}
-
-/* Highlight styles */
-mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
-.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
-
-.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
-  box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
-.bottom-inner{max-width:1600px;margin:0 auto;}
-.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
-.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;
-  display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
-.part-tab:hover{opacity:1;background:#f1f5f9;}
-.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
-.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
-.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
-
-.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;
-  padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
-.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
-.ielts-reading-palette-section.active{display:flex;}
-.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
-.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;
-  font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
-.ielts-reading-palette-item:hover{background:#e2e8f0;}
-.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
-.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(224,0,0,.18);}
-.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
-.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
-.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
-
-.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px solid #f1f5f9;padding-top:8px;}
-.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
-.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
-  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
-.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
-.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
-.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;
-  font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;}
-.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;
-  font-weight:700;display:flex;align-items:center;gap:8px;}
-.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
-
-.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
-.overlay.show{display:flex;}
-.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;
-  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
-.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
-.overlay-head h3{margin:0;font-size:18px;}
-.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
-.close-x:hover{color:var(--text);}
-.overlay-body{padding:18px 22px;overflow-y:auto;}
-.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
-.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
-.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
-table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
-table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
-table.result-tbl td.correct{color:var(--good);font-weight:700;}
-table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
-.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
-
-body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
-body.focus-mode{padding-bottom:0;}
-body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
-.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;
-  padding:8px 14px;font-size:13px;font-weight:700;}
-body.focus-mode .exit-focus{display:block;}
-
-.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;
-  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
-.toast.show{opacity:1;}
-
-/* Floating highlight popup */
-#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
-#hl-popup.show{display:flex;gap:3px;}
-#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
-#hl-popup button:hover{background:#1e293b;}
-
-/* Note popup */
-#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
-#note-popup.show{display:flex;}
-#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
-#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
-#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
-#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
-#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
-#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
-#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
-
-/* Global floating highlighter toggle button */
-#hl-fab{position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;background:#e00000;color:#fff;border-radius:50%;
-  width:52px;height:52px;font-size:22px;box-shadow:0 6px 18px rgba(224,0,0,.35);display:flex;align-items:center;justify-content:center;
-  transition:.15s;border:none;cursor:pointer;}
-#hl-fab:hover{transform:scale(1.08);}
-#hl-fab.active{background:#facc15;color:#0f172a;}
-body.focus-mode #hl-fab{bottom:20px;}
-
+input[type=text]:focus{outline:2px solid #99f6e4;border-color:#5eead4;}
+input[type=text].is-right{border-color:#86efac;background:#f0fdf4}input[type=text].is-wrong{border-color:#fdba74;background:#ffedd5}
+.mcq{margin:10px 0 16px;padding:4px 6px;border-radius:8px}.mcq .stem{font-weight:600}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;cursor:pointer;border-radius:6px}.opt:hover{background:var(--soft)}
+.opt input{margin-top:5px;accent-color:var(--brand)}.opt .ltr{font-weight:700;color:var(--brand);min-width:16px}
+.opt.picked-ok{background:#f0fdf4}.opt.picked-no{background:#ffedd5}.opt.key{outline:1px dashed #86efac}
+select{font:inherit;font-size:15px;padding:4px 8px;border-radius:6px;border:1px solid #cbd5e1;border-bottom:2px solid #94a3b8;background:#fff;outline:none;}
+select:focus{border-color:var(--brand)}select.is-right{border-color:#86efac;background:#f0fdf4}select.is-wrong{border-color:#fdba74;background:#ffedd5}
+.matchlist{list-style:none;padding:0;margin:6px 0 0}.matchlist li{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);flex-wrap:wrap}.matchlist li:last-child{border-bottom:none}
+.optbox{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px;}
+.optbox b{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 16px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--soft);font-size:14px}td input[type=text]{min-width:120px}
+.diagram{width:100%;max-width:520px;display:block;margin:10px auto;border-radius:10px;border:1px solid var(--line)}
+.diagram-note{text-align:center;color:var(--muted);font-size:14px}
+.feedback{font-size:13px;font-weight:700;margin-left:6px;white-space:nowrap}.feedback.ok{color:var(--ok)}.feedback.no{color:var(--bad)}
+.feedback.no em{font-style:normal;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:5px}
+.post-submit{display:none}body.graded .post-submit{display:block}.resultcard{display:none}.resultcard.show{display:block}
+.score{font-size:34px;font-weight:800;color:var(--brand);margin:0}.band{color:var(--muted);margin:2px 0 6px}
+.result-note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:10px;padding:10px 14px;font-size:14px;margin:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table.result td.wrong{color:var(--bad);font-weight:600}table.result td.right{color:var(--ok);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}.pill.ok{background:#dcfce7;color:#166534}.pill.no{background:#ffedd5;color:#9a3412}
+details.transcript{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+details.transcript summary{cursor:pointer;font-weight:700;color:var(--brand)}details.transcript[open] summary{margin-bottom:8px}
+details.transcript p{margin:10px 0;font-size:15px;color:#334155}
+mark.hl{background:var(--hl);color:inherit;padding:0 1px;border-radius:3px;cursor:pointer;box-shadow:inset 0 -2px 0 #f59e0b;}mark.hl:hover{background:#fde047}
+#hlBar{position:absolute;z-index:90;display:none;background:#1e293b;border-radius:10px;padding:6px;box-shadow:0 10px 30px rgba(2,6,23,.42);font-size:13px;gap:4px;align-items:center;transform:translate(-50%,-100%);animation:hlpop .12s ease-out;}
+@keyframes hlpop{from{opacity:0;transform:translate(-50%,-90%) scale(.92);}to{opacity:1;transform:translate(-50%,-100%) scale(1);}}
+#hlBar.on{display:flex}#hlBar button{background:transparent;border:none;color:#fff;cursor:pointer;font:inherit;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+#hlBar button:hover{background:rgba(255,255,255,.16)}#hlBar .hl-main{background:#facc15;color:#422006}#hlBar .hl-main:hover{background:#fde047}
+#hlBar .sep{width:1px;height:20px;background:rgba(255,255,255,.22);margin:0 2px}
+#hlHint{position:fixed;right:16px;top:calc(var(--header-h) + 16px);z-index:55;background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(120,53,15,.12);display:flex;align-items:center;gap:7px;cursor:default;transition:.2s;}
+#hlHint.flash{background:#fde68a;transform:scale(1.06)}
+#hlHint .dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.8);}}
+body.bb-off #hlHint{top:calc(var(--header-h) + 16px)}
+.bottombar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);box-shadow:0 -3px 16px rgba(15,23,42,.08);transition:transform .25s ease;}
+.bottombar.off{transform:translateY(110%)}
+.bb-inner{max-width:1000px;margin:0 auto;padding:8px 12px;display:flex;flex-direction:column;gap:6px;}
+.bb-top{display:flex;align-items:center;gap:10px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:thin;}
+.bb-top::-webkit-scrollbar{height:6px}.bb-top::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+.bb-tabs{display:flex;gap:4px;flex:0 0 auto;padding-right:10px;border-right:1px solid var(--line);}
+.bb-tab{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:.12s;}
+.bb-tab:hover{border-color:var(--brand);color:var(--brand)}.bb-tab.current{background:var(--brand);border-color:var(--brand);color:#fff}
+.bb-palette{display:flex;gap:4px;flex:1;flex-wrap:nowrap;align-items:center;min-width:0;}
+.chip{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:.12s;padding:0;}
+.chip:hover{border-color:var(--brand);color:var(--brand)}.chip.answered{background:#ccfbf1;border-color:#5eead4;color:#115e59}
+.chip.ok{background:#dcfce7;border-color:#86efac;color:#166534}.chip.no{background:#ffedd5;border-color:#fdba74;color:#9a3412}.chip.active{outline:2px solid var(--brand);outline-offset:1px}
+.bb-bottom{display:flex;align-items:center;gap:10px;padding-top:6px;border-top:1px dashed var(--line);}
+.bb-actions{display:flex;gap:8px;align-items:center;margin-left:auto}.bb-progress{font-size:13px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.bb-hide{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;}
+.bb-hide:hover{background:var(--soft);color:var(--ink)}
+#bbShow{position:fixed;right:16px;bottom:16px;z-index:71;display:none;background:var(--brand);color:#fff;border:none;border-radius:999px;padding:11px 18px;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 22px rgba(15,118,110,.32);}
+#bbShow.on{display:block}
+footer{color:var(--muted);font-size:14px;text-align:center;padding:26px 16px 40px}footer a{color:var(--muted)}
+@media (max-width:600px){.brand span{display:none}.bb-progress{display:none}.bb-inner{padding:6px 8px;gap:4px}.card{padding:18px 16px}h1{font-size:22px}.bb-tab{padding:5px 9px;font-size:10px}.chip{width:28px;height:28px;font-size:12px}#hlHint{font-size:12px;padding:6px 10px;right:10px;}}
+@media print{.topbar,.app-header,.bottombar,#bbShow,#hlBar,#hlHint{display:none!important}body{padding-bottom:0}.part{display:block!important}.card{break-inside:avoid;box-shadow:none}.post-submit{display:block!important}details.transcript{display:block}details.transcript > *{display:block!important}}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header > a:first-child{font-size:20px;line-height:1;text-decoration:none;width:38px;height:38px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--soft);border:1px solid var(--line);transition:.15s;}
+.app-header > a:first-child:hover{background:#ccfbf1;border-color:#5eead4}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;transition:.2s;}
+.band-chip.show{opacity:1;background:#0f766e;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.12s;}
+.icon-btn:hover{background:#f1f5f9;}.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}.menu-pop a:last-child{border-bottom:none;}.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+@media (max-width:600px){.app-header{padding:0 10px;gap:8px}.app-header h1{font-size:12px}.timer-chip{padding:4px 8px;font-size:12px}.icon-btn{padding:4px 8px;font-size:12px}.band-chip{display:none}}
 .plan-img{max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:6px;}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<header class="app-header">
-  <a href="/" >📚</a>
-  <h1>Official Cambridge Guide to IELTS Academic Listening Test 4</h1>
-  <div class="header-right">
-    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
-    <div class="band-chip" id="bandChip">--</div>
-    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
-    <div class="menu-wrap">
-      <button class="icon-btn" id="menuBtn">☰</button>
-      <div class="menu-pop" id="menuPop">
-        <a href="#" id="exportLink">📄 Export as PDF</a>
-        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
-        <a href="#" id="resetLink">↺ Reset Test</a>
-        <a href="#" id="gotoTop">↑ Back to Top</a>
+    <header class="app-header">
+      <a href="./index.html" title="Home">📚</a>
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 4</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="focusBtn" type="button">⛶ Focus</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn" type="button">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
-<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-<button id="hl-fab" title="Toggle Highlighter (select text or click a word)">🖍</button>
+    <div id="hlHint" title="Select any text to highlight it"><span
+        class="dot"></span><span>Highlight mode ON</span></div>
 
-<div class="main-split" id="mainSplit">
-  <div class="pane passages" id="passagesPane">
-
-    <!-- PART 1 -->
-    <div class="passage active" data-part="1">
-      <span class="part-label">Part 1</span>
-      <h2>Eastwood Community Centre — Evening Classes</h2>
-      <p><em>Listen and answer questions 1–10.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 1</h3>
-        <div class="audio-desc">Conversation between an assistant at a community centre and a man who wants to join some evening classes.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131555-official_cambridge_guide_to_ielts_academic_listening_test_4_1.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_4_1.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Woman: Hello. Eastwood Community Centre.</p>
-        <p>Man: Oh, hello. My name's Andrew Dyson. I'm calling about the evening classes you offer.</p>
-        <p>Woman: OK, Mr Dyson, are there any classes in particular that you're interested in?</p>
-        <p>Man: Yes, you've got a class called 'Painting with watercolours', I believe.</p>
-        <p>Woman: That's right. It's a popular class so this term it'll be moving to the hall, so they've got more room.</p>
-        <p>Man: Right. I know it's on Tuesdays but what time exactly?</p>
-        <p>Woman: It was 6.30 last term, but let me just have a look at the details. OK, it'll be 7.30 this time, probably it suits more people.</p>
-        <p>Man: Well, it's my wife who's really interested and that'll be good for her because she's home from work by 7.15 - that'll give her just enough time to get there. Um, what does she need to bring?</p>
-        <p>Woman: OK, well paints are provided by the tutor, I know that. Um, the information says she'll need just a jar for water and some pencils for drawing. There are also lots of aprons here, so she needn't worry what she's wearing. And the cost for four classes is £45, including paints, as I said.</p>
-        <p>Man: OK, now we're both quite keen on the Maori language class.</p>
-        <p>Woman: There are spaces on the next course, so you could join that.</p>
-        <p>Man: Oh, good. Which room will that be in?</p>
-        <p>Woman: When you come in through the entrance of the community centre building, you'll need to go straight up the stairs in front of you, all the way to the top. And it's the small room you'll find there.</p>
-        <p>Man: I see. All right, and let me just check when it's starting. I heard from someone that the July course has been delayed until August.</p>
-        <p>Woman: I'm afraid so. And we're halfway through the June course at the moment so there's not much point you taking that.</p>
-        <p>Man: I guess we'll have to wait, then.</p>
-        <p>Woman: Well, when you do come, the tutor recommends bringing a small recorder with you just so you can listen again later, and er, the cost for five classes is currently £40.</p>
-        <p>Man: OK, useful information to know. Um, there's one more class I'm interested in - that's the digital photography class.</p>
-        <p>Woman: Oh, I've taken that class myself. The tutor's very good. That'll be in room 9 and it's starting in two weeks' time - in the evening - every Wednesday at 6 o'clock.</p>
-        <p>Man: Um, obviously I need to bring the camera with me. I suppose it'd be useful to have the instructions that go with the camera, too.</p>
-        <p>Woman: I'd say so. Um, some people bring along a lot of accessories like extra lenses, but there's really no need for this class. It's mainly focusing on composition really, and getting the most out of the basic camera.</p>
-        <p>Man: That's exactly what I need. And how much does it cost?</p>
-        <p>Woman: Let's see. For four classes, it's £35, but if you take eight, it works out as £55, so you're making a bit of a saving – £15 that is.</p>
-        <p>Man: I see.</p>
-        <p>Man: OK, now just another question for the watercolours class; I've just remembered that my wife asked me to find out about the level - who's it for?</p>
-        <p>Woman: OK, well you don't have to be very skilled or anything like that. It's designed for beginners, actually. People who might see art as a hobby rather than as a professional opportunity.</p>
-        <p>Man: That sounds like my wife. And er, who do I talk to if I want to find out some more about the Maori language classes?</p>
-        <p>Woman: Probably best to talk to the tutor directly. He'll be in the office in about half an hour. His name's Jason Kahui. That's K-A-H-U-I.</p>
-        <p>Man: Good - I'll give him a call.</p>
-        <p>Woman: Oh, if you do decide to come to the photography class, don't forget to look at your camera battery and make sure it's charged. I know it sounds obvious but I've seen a few people suddenly find the camera's stopped working right in the middle of class.</p>
-        <p>Man: Yes, I can imagine it'd be easy to forget that. Oh, that reminds me, in the final week of the photography course, is it right that there's a visit to a show in the local area? I work in the city, you see, so I might have to come home early for that one.</p>
-        <p>Woman: Yes. They'll decide the date once the class has started. Is there anything else I can...</p>
-      </div>
-    </div>
-
-    <!-- PART 2 -->
-    <div class="passage" data-part="2">
-      <span class="part-label">Part 2</span>
-      <h2>Community Gardens at Hadley Park</h2>
-      <p><em>Listen and answer questions 11–20.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 2</h3>
-        <div class="audio-desc">A project manager talking to voluntary workers about the tasks that need to be done.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131556-official_cambridge_guide_to_ielts_academic_listening_test_4_2.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_4_2.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Good morning - it's great to see so many people here. Thank you all very much for coming. Well, as you know, the community gardens at Hadley Park are really not looking as good as they should, quite bad really, and although the local council has a budget to deal with some of the problems, we do need volunteers for other tasks. If you don't mind, I'm going to divide you into two groups. So, everyone on this side of the room is Group A, and the rest of you are Group B. So, Group A, there are a couple of things we'd like you to help with. Um, first of all, don't worry about any litter or empty bottles you see lying about one of the local schools has offered to help out with that as part of their own environmental project. The priority for you will be to give us a hand with the new wooden fencing - it needs constructing along parts of the bicycle track, as there are parts which have now fallen down or broken – as I'm sure you've seen. You've probably also noticed that some of the pathways that come from the bicycle track are quite narrow – and there are plans to make them wider – but the council will be dealing with that later in the year, and they've also promised to produce some informational signs about the plants in the gardens. Hopefully they'll be up in a few weeks' time. The other thing we're doing is getting rid of some of the foreign species that are growing in the gardens and putting back some native plants and trees. So, you'll be doing some digging for us and getting those into the ground.</p>
-        <p>So, Group A, there's some items you'll need to bring along with you. I was going to say 'raincoats' but the forecast has changed so you can leave those at home. I'd definitely recommend a strong pair of boots, waterproof would be best; it's quite muddy at the moment, and your own gloves would also be advisable. Tools will be available – spades and hammers, that kind of thing. You just need to make sure they go back in the trucks. And, there's no need to worry about food and drink as we'll be supplying sandwiches and coffee – possibly some biscuits, even!</p>
-        <p>OK, Group B, your turn. Does everyone have a copy of the plan? Great. OK, we'll all be meeting in the car park – that's on the bottom of the plan, see? Now, if you've been assigned to the vegetable beds, to get there, you go out of the car park and go up the footpath until you reach the circle of trees – there they are – in the middle of the plan, and you see that the footpath goes all the way around them. Well, on the left-hand side of that circular footpath, there's a short track which takes you directly to the vegetable beds. You can see a bamboo fence marked just above them. All right? OK, if you're helping out with the bee hives, pay attention. Look again at the circle of trees in the middle of the plan, and the footpath that goes around them. On the right side of that circle – you can see that the footpath goes off in an easterly direction – heading towards the right-hand side of the plan. And then, the path splits into two and you can either go up or down. You want the path that heads down and at the end of this, you see two areas divided by a bamboo fence – and as we're looking at the plan, the bee hives are on the right of the fence – the smaller section, I mean. Now don't worry – all the bees have been removed! You just need to transport the hives back to the car park.</p>
-        <p>OK, for the seating, look at the circular footpath, at the top of it, there's a path that goes from there and takes you up to the seating area, alongside the bicycle track and with a good view of the island, I suppose.</p>
-        <p>OK, if you're volunteering for the adventure playground area, let's start from the car park again and go up the footpath, but then you want the first left turn. Go up there, and then you see there's a short path that goes off to the right – go down there and that's the adventure playground area, above the bamboo fence. That fence does need repairing, I'm afraid. Right, what else? Oh yes, the sand area. We've got that circular footpath in the middle – find the track that goes east, towards the right-hand side of the plan, and where that track divides, you need the little path that goes up towards the bicycle track. The sand area is just above the bamboo fence there. And finally, the pond area. So, it's on the left-hand side of your plan – towards the top – just above the fruit bushes and to the left of the little path. OK, as I said already, hopefully we'll...</p>
-      </div>
-    </div>
-
-    <!-- PART 3 -->
-    <div class="passage" data-part="3">
-      <span class="part-label">Part 3</span>
-      <h2>Food Waste — Student Discussion</h2>
-      <p><em>Listen and answer questions 21–30.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 3</h3>
-        <div class="audio-desc">Two students discussing a presentation they are going to give about food waste.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131557-official_cambridge_guide_to_ielts_academic_listening_test_4_3.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_4_3.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Anna: Hi, Robert.</p>
-        <p>Robert: Hi. Sorry I'm late. I was just printing off some pages about food waste in Britain.</p>
-        <p>Anna: Do you want to include Britain in the presentation? I thought we were concentrating on the USA?</p>
-        <p>Robert: Well, it is a global problem, so I thought we ought to provide some statistics that show that.</p>
-        <p>Anna: Fair enough. What did you find out?</p>
-        <p>Robert: Well, I was looking at a British study from 2013. It basically concluded that 12 billion pounds' worth of food and drink was thrown away each year - all of it ending up in landfill sites. Over eight million tons - and that wasn't including packaging.</p>
-        <p>Anna: An incredible amount.</p>
-        <p>Robert: Yes, and they were only looking at what households threw away, so there's no information about restaurants and the catering industry. But one thing the study did investigate was the amount of milk and soft drinks that were wasted, and I think it was probably quite unique in that respect.</p>
-        <p>Anna: Interesting. You know, in the other European reports I've read - there's one thing they have in common when they talk about carbon dioxide emissions.</p>
-        <p>Robert: I know what you are going to say. They never refer to the fuel that farms and factories require to produce the food, and the carbon dioxide that releases?</p>
-        <p>Anna: Exactly. We could really cut down on carbon emissions if less food was supplied in the first place. To my mind, the reports talk too much about the carbon dioxide produced by the trucks that deliver the fresh goods to the shops and take the waste away. They forget about one of the key causes of carbon dioxide.</p>
-        <p>Robert: Absolutely. If the reports are actually going to be useful to people, they need to be more comprehensive.</p>
-        <p>Anna: Who do you mean by 'people'?</p>
-        <p>Robert: Well, the government, industries ... people making television programmes. Have you seen any documentaries about food waste?</p>
-        <p>Anna: Not that I remember.</p>
-        <p>Robert: My point exactly. These days they all seem to be focusing on where your meat, fruit and vegetables are sourced from. We're being encouraged to buy locally, not from overseas. That's probably a good thing but I'd still like to see something about waste.</p>
-        <p>Anna: Yes, it's the same with magazine articles - it's all about fat and sugar content and the kind of additives and colouring in food - but nothing about how it reaches your table and what happens after it ends up in the bin.</p>
-        <p>Robert: Well, we've only got 15 minutes for this presentation, so I think we'll have to limit what we say about the consequences of food waste. What do we want to concentrate on?</p>
-        <p>Anna: Well, I know some of the other presentations are looking at food and farming methods and what they do to the environment, so I think we'll avoid that. And the fact that in some countries, people can't afford the food grown on their own farms – that was covered last term.</p>
-        <p>Robert: OK. We don't want to repeat stuff.</p>
-        <p>Anna: What concerns me above all else is that in a recession governments should be encouraging business to find ways to cut costs. Apparently supermarkets in the USA lose about 11% of their fruit to waste. That's throwing money away.</p>
-        <p>Robert: All right – we'll focus on that problem. It should get the others' attention, anyway. Now, how do you want to begin the presentation? Let's not start with statistics, though, because that's what everybody does.</p>
-        <p>Anna: I agree. How about we give the other students a set of questions to answer – about what they suspect they waste every day?</p>
-        <p>Robert: I'm fine with that. Probably a better option than showing pictures of landfill sites. It'll be more personalised, that way.</p>
-        <p>Anna: All right, now let's start...</p>
-        <p>Robert: OK, shall we now have a look at the projects that different researchers and organisations are working on?</p>
-        <p>Anna: For me, the project I really liked was the one at Tufts University – you know, where they've invented tiny edible patches to stick on fresh foods that show you what level of bacteria is present, and so whether you can still eat it.</p>
-        <p>Robert: It's a great idea as it tells you if you need to hurry up and eat the food before it goes off. The other good thing about the patches is that apparently they'll be cheap to manufacture.</p>
-        <p>Anna: Good. Then the other thing I thought was great was the Massachusetts Institute of Technology project.</p>
-        <p>Robert: I hadn't seen that.</p>
-        <p>Anna: Well, they've developed these sensors that can detect tiny amounts of ethylene. Ethylene is the natural plant hormone in fruit that makes them turn ripe, apparently. The researchers think that they can attach the sensors to cardboard boxes – and then supermarkets can scan the sensors with a portable device to see how ripe the fruit inside is. That's got to be a quicker way to check for ripeness than taking each box off the shelf and opening it.</p>
-        <p>Robert: Definitely. And I thought that Lean Path was worth mentioning, too. Their waste tracking technology means that caterers can see how much food is being wasted and why. That'll increase profits for them eventually.</p>
-        <p>Anna: Yes. And did you read about Zero PerCent? They've produced this smartphone application that allows restaurants to send donation alerts to food charities. The charities can then pick up the unwanted food and distribute it to people in need.</p>
-        <p>Robert: In the long run, that'll definitely benefit poorer families in the neighbourhood. No kid should go to school hungry.</p>
-        <p>Anna: I agree. And I read that quite a few local governments in the USA are thinking about introducing compulsory composting in their states – so you can't put any food waste into your rubbish bins, just the compost bin.</p>
-        <p>Robert: Well, I guess that means a bit more work for people. I mean, they have to separate the organic and inorganic waste themselves before they take it out to the compost bin, and you know how lazy some people are! But I guess if we all start composting, we'd be doing something positive about the problem of food waste ourselves, rather than relying on the government to sort it out. Having said that, not everyone has a garden so ...</p>
-      </div>
-    </div>
-
-    <!-- PART 4 -->
-    <div class="passage" data-part="4">
-      <span class="part-label">Part 4</span>
-      <h2>Kite-making by the Maori People of New Zealand</h2>
-      <p><em>Listen and answer questions 31–40.</em></p>
-
-      <div class="audio-card">
-        <h3>🎧 Audio — Part 4</h3>
-        <div class="audio-desc">A lecture about kite-making by the Maori people of New Zealand.</div>
-        <audio controls preload="metadata">
-          <source src="https://ielts-listening-audio.engnovatemedia.com/3131558-official_cambridge_guide_to_ielts_academic_listening_test_4_4.mp3" type="audio/mpeg">
-          <source src="https://engnovate.com/wp-content/uploads/2026/04/official_cambridge_guide_to_ielts_academic_listening_test_4_4.mp3" type="audio/mpeg">
-        </audio>
-        <div class="audio-tip"><i>ℹ</i> You will hear the recording <strong>ONCE ONLY</strong>. Read the questions before you play the audio.</div>
-      </div>
-
-      <div class="transcript-toggle" onclick="toggleTranscript(this)">
-        <span>📄 Show Transcript</span>
-        <span>▼</span>
-      </div>
-      <div class="transcript-body">
-        <p>Well, good morning everyone. As you know, we've been looking at different kinds of art and craft that were practised by the Maori people of New Zealand - at least before the Europeans began to arrive in the 18th century. So, the focus of this lecture is kite making; how the kites were made, their appearance and the purposes they served.</p>
-        <p>Well, let's start with the way they were made. As with other Maori artistic traditions, kite-making involved certain rituals. So, firstly, only priests were allowed to fly and handle the largest, most sacred kites. There were rules, too, for the size and scale of the kites that the priests had to follow, and during the preparation of both small and large kites, food was strictly forbidden.</p>
-        <p>In terms of appearance, kites were frequently designed in the image of a native bird, or a Maori god, and sometimes, perhaps less often, a well-known hero. You can imagine that when Maori first arrived in the new country, in New Zealand, it may have taken some time to find suitable materials for their kites – but through trial and error no doubt, they found plants and trees that provided bark and even roots that they could use to make the frames and wings of their kites. And after the frame had been constructed, the kite then had to be decorated. For this the priests used long grasses, and these – when the kite was in the air – would stream along behind it. They also used a variety of feathers to add, um, colour to their creations. Well, all this meant it was easy to see a kite in the sky but you could also hear Maori kites. They could be quite noisy indeed, and this was because some priests liked to hang a long row of shells from the kite. You can imagine how they'd rattle and clatter in the wind – how they might completely capture your attention.</p>
-        <p>As I said before, the most common image was probably a bird, and that's the same for other kite-making cultures, but the kites were designed in particular shapes – so there were kites that were triangular, rectangular and also shaped like a diamond. And some of them were so large, it would actually require several men to operate them. Um, some of the kites were also covered in patterns, and to make these patterns, the Maori used different pigments of red and black, and these were either made from a charcoal base or from red-brown clay which had been combined with oil obtained from a local species of shark.</p>
-        <p>Now, before I forget, if you have a chance, do visit the Auckland Museum because they have the last surviving 'birdman' kite on display. This is the kind of kite that has a wooden mask at the top of the frame – it's a mask of a human head – and you can clearly see it has a tattoo and also a set of teeth. Quite impressive – and a good example of Maori craftsmanship and symbolism.</p>
-        <p>Right, turning to the purpose and function of the kites; they certainly had multiple uses. Primarily, the flying of kites was a way of communicating with the gods and when the kites rose into the air, the Maori used them to deliver messages – perhaps requesting a good harvest, good fortune in war, a successful hunting expedition. So, these kites were incredibly valuable to a community – treasured objects that one generation would pass to the next. People would also fly kites for other reasons, for example, to attract the attention of a neighbouring village. This was done when a meeting was required between Maori elders – a convenient method, indeed. And finally, when it comes to war, there are traditional stories that describe how when a Maori warrior found himself surrounded by his enemies, a kite could actually provide the possibility of escape – the kites were powerful enough to take a man up into the air; and for this reason, they could also be used to lower him into enemy fortifications so that an attack could begin from the inside.</p>
-        <p>Well, I'm happy to say there seems to be a revival and growing interest in kite-making, and ...</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="resizer" id="resizer"></div>
-
-  <div class="pane questions" id="questionsPane">
-    <form id="quiz" onsubmit="return false;">
+    <main class="wrap">
+      <h1>Official Cambridge Guide to IELTS Academic Listening Test 4</h1>
+      <p class="lead">4 parts · 40 questions · switch parts with the tabs at the
+        bottom.</p>
 
       <!-- PART 1 -->
-      <section class="q-section active" data-part="1">
-        <div class="q-group">
-          <h3>Questions 1–6</h3>
-          <div class="q-instr">
-            <p>Complete the table below.</p>
-            <p>Write <strong>NO MORE THAN ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
-          </div>
-          <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px;">
-            <thead>
-              <tr style="background:#f8fafc;">
-                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">Class</th>
-                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">Where</th>
-                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">When</th>
-                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">What to bring</th>
-                <th style="border:1px solid var(--line);padding:6px 8px;text-align:left;">Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="border:1px solid var(--line);padding:6px 8px;">Painting with watercolours</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">in the <u>hall</u></td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">at <strong>1</strong> <input type="text" name="q1" aria-label="Q1" style="min-width:80px;"> pm on Tuesdays</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">water jar and set of <strong>2</strong> <input type="text" name="q2" aria-label="Q2" style="min-width:100px;"></td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">£45 – four classes</td>
-              </tr>
-              <tr>
-                <td style="border:1px solid var(--line);padding:6px 8px;">Maori language</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">the small room at the <strong>3</strong> <input type="text" name="q3" aria-label="Q3" style="min-width:90px;"> of the building</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">starts in <strong>4</strong> <input type="text" name="q4" aria-label="Q4" style="min-width:100px;"></td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">small recorder</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">£40 – five classes</td>
-              </tr>
-              <tr>
-                <td style="border:1px solid var(--line);padding:6px 8px;">Digital photography</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">room 9</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">6 pm Wednesday evenings</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">the <strong>5</strong> <input type="text" name="q5" aria-label="Q5" style="min-width:110px;"> for the camera</td>
-                <td style="border:1px solid var(--line);padding:6px 8px;">£ <strong>6</strong> <input type="text" name="q6" aria-label="Q6" style="min-width:70px;"> – eight classes</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="q" data-q="1" style="display:none;"><div class="q-num">1</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="2" style="display:none;"><div class="q-num">2</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="3" style="display:none;"><div class="q-num">3</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="4" style="display:none;"><div class="q-num">4</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="5" style="display:none;"><div class="q-num">5</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="6" style="display:none;"><div class="q-num">6</div><div class="q-body"><div class="feedback"></div></div></div>
+      <section class="card part current hlable" id="part1" data-part="1">
+        <div class="part-head">
+          <span class="part-badge">Part 1</span>
+          <span class="part-desc">Questions 1–10 · Table &amp; sentence
+            completion</span>
+          <span class="part-audio-label">Listen and answer</span>
         </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131555-official_cambridge_guide_to_ielts_academic_listening_test_4_1.mp3"></audio>
 
-        <div class="q-group">
-          <h3>Questions 7–10</h3>
-          <div class="q-instr">
-            <p>Complete the sentences below.</p>
-            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
-          </div>
-          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>The watercolours class suits people who are <input type="text" name="q7" aria-label="Q7" style="min-width:150px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>To find out about the Maori language class, contact Jason <input type="text" name="q8" aria-label="Q8" style="min-width:150px;">.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>For the photography class, check the <input type="text" name="q9" aria-label="Q9" style="min-width:150px;"> for the camera.</p><div class="feedback"></div></div></div>
-          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>There is a trip to a local <input type="text" name="q10" aria-label="Q10" style="min-width:150px;"> in the final week of the photography class.</p><div class="feedback"></div></div></div>
-        </div>
+        <h3>Questions 1–6</h3>
+        <p>Complete the table below.<br>Write <strong>NO MORE THAN ONE WORD
+            AND/OR A NUMBER</strong> for each answer.</p>
+        <table>
+          <thead>
+            <tr><th>Class</th><th>Where</th><th>When</th><th>What to
+                bring</th><th>Cost</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Painting with watercolours</td>
+              <td>in the <u>hall</u></td>
+              <td>at <span class="num">1</span><input type="text" data-q="1"
+                  style="min-width:80px"> pm on Tuesdays</td>
+              <td>water jar and set of <span class="num">2</span><input
+                  type="text" data-q="2" style="min-width:100px"></td>
+              <td>£45 – four classes</td>
+            </tr>
+            <tr>
+              <td>Maori language</td>
+              <td>the small room at the <span class="num">3</span><input
+                  type="text" data-q="3" style="min-width:90px"> of the
+                building</td>
+              <td>starts in <span class="num">4</span><input type="text"
+                  data-q="4" style="min-width:100px"></td>
+              <td>small recorder</td>
+              <td>£40 – five classes</td>
+            </tr>
+            <tr>
+              <td>Digital photography</td>
+              <td>room 9</td>
+              <td>6 pm Wednesday evenings</td>
+              <td>the <span class="num">5</span><input type="text" data-q="5"
+                  style="min-width:110px"> for the camera</td>
+              <td>£ <span class="num">6</span><input type="text" data-q="6"
+                  style="min-width:70px"> – eight classes</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Questions 7–10</h3>
+        <p>Complete the sentences below.<br>Write <strong>ONE WORD ONLY</strong>
+          for each answer.</p>
+        <ul class="notes">
+          <li>The watercolours class suits people who are <span class="q"><span
+                class="num">7</span><input type="text" data-q="7"></span>.</li>
+          <li>To find out about the Maori language class, contact Jason <span
+              class="q"><span class="num">8</span><input type="text"
+                data-q="8"></span>.</li>
+          <li>For the photography class, check the <span class="q"><span
+                class="num">9</span><input type="text" data-q="9"></span> for
+            the camera.</li>
+          <li>There is a trip to a local <span class="q"><span
+                class="num">10</span><input type="text" data-q="10"></span> in
+            the final week of the photography class.</li>
+        </ul>
       </section>
 
       <!-- PART 2 -->
-      <section class="q-section" data-part="2">
-        <div class="q-group">
-          <h3>Questions 11–12</h3>
-          <div class="q-instr">
-            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
-          </div>
-          <div class="q" data-q="11" data-q2="12">
-            <div class="q-num">11–12</div>
-            <div class="q-body">
-              <p>Which <strong>TWO</strong> tasks will the volunteers in Group A be responsible for?</p>
-              <div class="options stack">
-                <label><input type="checkbox" name="q11_12" value="A" data-limit="2"> A. widening pathways</label>
-                <label><input type="checkbox" name="q11_12" value="B" data-limit="2"> B. planting trees</label>
-                <label><input type="checkbox" name="q11_12" value="C" data-limit="2"> C. picking up rubbish</label>
-                <label><input type="checkbox" name="q11_12" value="D" data-limit="2"> D. putting up signs</label>
-                <label><input type="checkbox" name="q11_12" value="E" data-limit="2"> E. building fences</label>
-              </div>
-              <div class="feedback"></div>
-            </div>
-          </div>
+      <section class="card part hlable" id="part2" data-part="2">
+        <div class="part-head">
+          <span class="part-badge">Part 2</span>
+          <span class="part-desc">Questions 11–20 · Multi-select &amp; map
+            labelling</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131556-official_cambridge_guide_to_ielts_academic_listening_test_4_2.mp3"></audio>
+
+        <h3>Questions 11–12</h3>
+        <p>Which <strong>TWO</strong> tasks will the volunteers in Group A be
+          responsible for?</p>
+        <div class="mcq">
+          <label class="opt"><input type="checkbox" name="q11_12" value="A"
+              data-limit="2"><span class="ltr">A</span><span>widening
+              pathways</span></label>
+          <label class="opt"><input type="checkbox" name="q11_12" value="B"
+              data-limit="2"><span class="ltr">B</span><span>planting
+              trees</span></label>
+          <label class="opt"><input type="checkbox" name="q11_12" value="C"
+              data-limit="2"><span class="ltr">C</span><span>picking up
+              rubbish</span></label>
+          <label class="opt"><input type="checkbox" name="q11_12" value="D"
+              data-limit="2"><span class="ltr">D</span><span>putting up
+              signs</span></label>
+          <label class="opt"><input type="checkbox" name="q11_12" value="E"
+              data-limit="2"><span class="ltr">E</span><span>building
+              fences</span></label>
+          <div class="feedback"></div>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 13–14</h3>
-          <div class="q-instr">
-            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
-          </div>
-          <div class="q" data-q="13" data-q2="14">
-            <div class="q-num">13–14</div>
-            <div class="q-body">
-              <p>Which <strong>TWO</strong> items should volunteers in Group A bring with them?</p>
-              <div class="options stack">
-                <label><input type="checkbox" name="q13_14" value="A" data-limit="2"> A. food and water</label>
-                <label><input type="checkbox" name="q13_14" value="B" data-limit="2"> B. boots</label>
-                <label><input type="checkbox" name="q13_14" value="C" data-limit="2"> C. gloves</label>
-                <label><input type="checkbox" name="q13_14" value="D" data-limit="2"> D. raincoats</label>
-                <label><input type="checkbox" name="q13_14" value="E" data-limit="2"> E. their own tools</label>
-              </div>
-              <div class="feedback"></div>
-            </div>
-          </div>
+        <h3>Questions 13–14</h3>
+        <p>Which <strong>TWO</strong> items should volunteers in Group A bring
+          with them?</p>
+        <div class="mcq">
+          <label class="opt"><input type="checkbox" name="q13_14" value="A"
+              data-limit="2"><span class="ltr">A</span><span>food and
+              water</span></label>
+          <label class="opt"><input type="checkbox" name="q13_14" value="B"
+              data-limit="2"><span
+              class="ltr">B</span><span>boots</span></label>
+          <label class="opt"><input type="checkbox" name="q13_14" value="C"
+              data-limit="2"><span
+              class="ltr">C</span><span>gloves</span></label>
+          <label class="opt"><input type="checkbox" name="q13_14" value="D"
+              data-limit="2"><span
+              class="ltr">D</span><span>raincoats</span></label>
+          <label class="opt"><input type="checkbox" name="q13_14" value="E"
+              data-limit="2"><span class="ltr">E</span><span>their own
+              tools</span></label>
+          <div class="feedback"></div>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 15–20</h3>
-          <div class="q-instr">
-            <p>Label the plan below.</p>
-            <p>Write the correct letter, <strong>A–I</strong>, next to Questions 15–20.</p>
-          </div>
-          <p><img class="plan-img" src="https://engnovate.com/wp-content/uploads/2026/04/official-cambridge-guide-to-ielts-academic-listening-test-4-5-diagram-69e2363603c9e.jpg" alt="Hadley Park plan"></p>
-          <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Vegetable beds <select name="q15" aria-label="Q15"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>Bee hives <select name="q16" aria-label="Q16"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>Seating <select name="q17" aria-label="Q17"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>Adventure playground <select name="q18" aria-label="Q18"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>Sand area <select name="q19" aria-label="Q19"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>Pond <select name="q20" aria-label="Q20"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p><div class="feedback"></div></div></div>
-        </div>
+        <h3>Questions 15–20</h3>
+        <p>Label the plan below.<br>Write the correct letter,
+          <strong>A–I</strong>, next to Questions 15–20.</p>
+        <p><img class="plan-img"
+            src="https://engnovate.com/wp-content/uploads/2026/04/official-cambridge-guide-to-ielts-academic-listening-test-4-5-diagram-69e2363603c9e.jpg"
+            alt="Hadley Park plan"></p>
+        <ul class="matchlist">
+          <li><span>Vegetable beds</span><span class="num">15</span><select
+              data-q="15"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+          <li><span>Bee hives</span><span class="num">16</span><select
+              data-q="16"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+          <li><span>Seating</span><span class="num">17</span><select
+              data-q="17"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+          <li><span>Adventure playground</span><span
+              class="num">18</span><select data-q="18"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+          <li><span>Sand area</span><span class="num">19</span><select
+              data-q="19"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+          <li><span>Pond</span><span class="num">20</span><select
+              data-q="20"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+        </ul>
       </section>
 
       <!-- PART 3 -->
-      <section class="q-section" data-part="3">
-        <div class="q-group">
-          <h3>Questions 21–25</h3>
-          <div class="q-instr">
-            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
-          </div>
-          <div class="q" data-q="21"><div class="q-num">21</div><div class="q-body"><p>What point does Robert make about the 2013 study in Britain?</p><div class="options stack"><label><input type="radio" name="q21" value="A"> A. It focused more on packaging than wasted food.</label><label><input type="radio" name="q21" value="B"> B. It proved that households produced more waste than restaurants.</label><label><input type="radio" name="q21" value="C"> C. It included liquid waste as well as solid waste.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="22"><div class="q-num">22</div><div class="q-body"><p>The speakers agree that food waste reports should emphasise the connection between carbon dioxide emissions and</p><div class="options stack"><label><input type="radio" name="q22" value="A"> A. food production.</label><label><input type="radio" name="q22" value="B"> B. transport of food to landfill sites.</label><label><input type="radio" name="q22" value="C"> C. distribution of food products.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="23"><div class="q-num">23</div><div class="q-body"><p>Television programmes now tend to focus on</p><div class="options stack"><label><input type="radio" name="q23" value="A"> A. the nutritional value of food products.</label><label><input type="radio" name="q23" value="B"> B. the origin of food products.</label><label><input type="radio" name="q23" value="C"> C. the chemicals found in food products.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="24"><div class="q-num">24</div><div class="q-body"><p>For Anna, the most significant point about food waste is</p><div class="options stack"><label><input type="radio" name="q24" value="A"> A. the moral aspect.</label><label><input type="radio" name="q24" value="B"> B. the environmental impact.</label><label><input type="radio" name="q24" value="C"> C. the economic effect.</label></div><div class="feedback"></div></div></div>
-          <div class="q" data-q="25"><div class="q-num">25</div><div class="q-body"><p>Anna and Robert decide to begin their presentation by</p><div class="options stack"><label><input type="radio" name="q25" value="A"> A. handing out a questionnaire.</label><label><input type="radio" name="q25" value="B"> B. providing statistical evidence.</label><label><input type="radio" name="q25" value="C"> C. showing images of wasted food.</label></div><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part3" data-part="3">
+        <div class="part-head">
+          <span class="part-badge">Part 3</span>
+          <span class="part-desc">Questions 21–30 · Multiple choice &amp;
+            matching</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131557-official_cambridge_guide_to_ielts_academic_listening_test_4_3.mp3"></audio>
+
+        <h3>Questions 21–25</h3>
+        <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or
+          <strong>C</strong>.</p>
+        <div class="mcq">
+          <div class="stem"><span class="num">21</span> What point does Robert
+            make about the 2013 study in Britain?</div>
+          <label class="opt"><input type="radio" name="q21" value="A"><span
+              class="ltr">A</span><span>It focused more on packaging than wasted
+              food.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="B"><span
+              class="ltr">B</span><span>It proved that households produced more
+              waste than restaurants.</span></label>
+          <label class="opt"><input type="radio" name="q21" value="C"><span
+              class="ltr">C</span><span>It included liquid waste as well as
+              solid waste.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">22</span> The speakers agree that
+            food waste reports should emphasise the connection between carbon
+            dioxide emissions and</div>
+          <label class="opt"><input type="radio" name="q22" value="A"><span
+              class="ltr">A</span><span>food production.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="B"><span
+              class="ltr">B</span><span>transport of food to landfill
+              sites.</span></label>
+          <label class="opt"><input type="radio" name="q22" value="C"><span
+              class="ltr">C</span><span>distribution of food
+              products.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">23</span> Television programmes
+            now tend to focus on</div>
+          <label class="opt"><input type="radio" name="q23" value="A"><span
+              class="ltr">A</span><span>the nutritional value of food
+              products.</span></label>
+          <label class="opt"><input type="radio" name="q23" value="B"><span
+              class="ltr">B</span><span>the origin of food
+              products.</span></label>
+          <label class="opt"><input type="radio" name="q23" value="C"><span
+              class="ltr">C</span><span>the chemicals found in food
+              products.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">24</span> For Anna, the most
+            significant point about food waste is</div>
+          <label class="opt"><input type="radio" name="q24" value="A"><span
+              class="ltr">A</span><span>the moral aspect.</span></label>
+          <label class="opt"><input type="radio" name="q24" value="B"><span
+              class="ltr">B</span><span>the environmental impact.</span></label>
+          <label class="opt"><input type="radio" name="q24" value="C"><span
+              class="ltr">C</span><span>the economic effect.</span></label>
+        </div>
+        <div class="mcq">
+          <div class="stem"><span class="num">25</span> Anna and Robert decide
+            to begin their presentation by</div>
+          <label class="opt"><input type="radio" name="q25" value="A"><span
+              class="ltr">A</span><span>handing out a
+              questionnaire.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="B"><span
+              class="ltr">B</span><span>providing statistical
+              evidence.</span></label>
+          <label class="opt"><input type="radio" name="q25" value="C"><span
+              class="ltr">C</span><span>showing images of wasted
+              food.</span></label>
         </div>
 
-        <div class="q-group">
-          <h3>Questions 26–30</h3>
-          <div class="q-instr">
-            <p>What advantage do the speakers identify for each of the following projects?</p>
-            <p>Choose <strong>FIVE</strong> answers from the box and write the correct letter, <strong>A–G</strong>, next to Questions 26–30.</p>
-            <p><strong>A</strong> It should save time. &nbsp; <strong>B</strong> It will create new jobs. &nbsp; <strong>C</strong> It will benefit local communities. &nbsp; <strong>D</strong> It will make money. &nbsp; <strong>E</strong> It will encourage personal responsibility. &nbsp; <strong>F</strong> It will be easy to advertise. &nbsp; <strong>G</strong> It will involve very little cost.</p>
+        <h3>Questions 26–30</h3>
+        <p>What advantage do the speakers identify for each of the following
+          projects? Choose <strong>FIVE</strong> answers from the box.</p>
+        <div class="optbox">
+          <b>Advantages</b>
+          <div class="optgrid">
+            <div><strong>A</strong> It should save time.</div>
+            <div><strong>B</strong> It will create new jobs.</div>
+            <div><strong>C</strong> It will benefit local communities.</div>
+            <div><strong>D</strong> It will make money.</div>
+            <div><strong>E</strong> It will encourage personal
+              responsibility.</div>
+            <div><strong>F</strong> It will be easy to advertise.</div>
+            <div><strong>G</strong> It will involve very little cost.</div>
           </div>
-          <div class="q" data-q="26"><div class="q-num">26</div><div class="q-body"><p>edible patch <select name="q26" aria-label="Q26"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="27"><div class="q-num">27</div><div class="q-body"><p>ripeness sensor <select name="q27" aria-label="Q27"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="28"><div class="q-num">28</div><div class="q-body"><p>waste tracking technology <select name="q28" aria-label="Q28"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="29"><div class="q-num">29</div><div class="q-body"><p>smartphone application <select name="q29" aria-label="Q29"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
-          <div class="q" data-q="30"><div class="q-num">30</div><div class="q-body"><p>food waste composting <select name="q30" aria-label="Q30"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></p><div class="feedback"></div></div></div>
         </div>
+        <ul class="matchlist">
+          <li><span>edible patch</span><span class="num">26</span><select
+              data-q="26"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>ripeness sensor</span><span class="num">27</span><select
+              data-q="27"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>waste tracking technology</span><span
+              class="num">28</span><select data-q="28"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>smartphone application</span><span
+              class="num">29</span><select data-q="29"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+          <li><span>food waste composting</span><span
+              class="num">30</span><select data-q="30"><option
+                value>--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+        </ul>
       </section>
 
       <!-- PART 4 -->
-      <section class="q-section" data-part="4">
-        <div class="q-group">
-          <h3>Questions 31–40</h3>
-          <div class="q-instr">
-            <p>Complete the notes below.</p>
-            <p>Write <strong>ONE WORD</strong> for each answer.</p>
-          </div>
-          <p style="font-weight:700;margin:6px 0 12px;">Kite-making by the Maori people of New Zealand</p>
-          <p style="font-weight:700;margin:6px 0 4px;">Making and appearance of the kites</p>
-          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
-            <li>The priests who made the kites had rules for size and scale</li>
-            <li><strong>31</strong> <input type="text" name="q31" aria-label="Q31" style="min-width:150px;"> was not allowed during a kite's preparation</li>
-          </ul>
-          <p style="font-weight:700;margin:6px 0 4px;">Kites:</p>
-          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
-            <li>often represented a bird, a god, or a <strong>32</strong> <input type="text" name="q32" aria-label="Q32" style="min-width:150px;"></li>
-            <li>had frames that were decorated with grasses and <strong>33</strong> <input type="text" name="q33" aria-label="Q33" style="min-width:150px;"></li>
-            <li>had a line of noisy <strong>34</strong> <input type="text" name="q34" aria-label="Q34" style="min-width:150px;"> attached to them.</li>
-            <li>could be triangular, rectangular or <strong>35</strong> <input type="text" name="q35" aria-label="Q35" style="min-width:150px;"> shaped.</li>
-            <li>had patterns made from clay mixed with <strong>36</strong> <input type="text" name="q36" aria-label="Q36" style="min-width:150px;"> oil.</li>
-            <li>sometimes had human-head masks with <strong>37</strong> <input type="text" name="q37" aria-label="Q37" style="min-width:150px;"> and a tattoo.</li>
-          </ul>
-          <p style="font-weight:700;margin:6px 0 4px;">Purpose and function of kites:</p>
-          <ul style="margin:0 0 12px;padding-left:20px;font-size:14px;">
-            <li>a way of sending <strong>38</strong> <input type="text" name="q38" aria-label="Q38" style="min-width:150px;"> to the gods</li>
-            <li>a way of telling other villages that a <strong>39</strong> <input type="text" name="q39" aria-label="Q39" style="min-width:150px;"> was necessary</li>
-            <li>a means of <strong>40</strong> <input type="text" name="q40" aria-label="Q40" style="min-width:150px;"> if enemies were coming.</li>
-          </ul>
-          <div class="q" data-q="31" style="display:none;"><div class="q-num">31</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="32" style="display:none;"><div class="q-num">32</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="33" style="display:none;"><div class="q-num">33</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="34" style="display:none;"><div class="q-num">34</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="35" style="display:none;"><div class="q-num">35</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="36" style="display:none;"><div class="q-num">36</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="37" style="display:none;"><div class="q-num">37</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="38" style="display:none;"><div class="q-num">38</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="39" style="display:none;"><div class="q-num">39</div><div class="q-body"><div class="feedback"></div></div></div>
-          <div class="q" data-q="40" style="display:none;"><div class="q-num">40</div><div class="q-body"><div class="feedback"></div></div></div>
+      <section class="card part hlable" id="part4" data-part="4">
+        <div class="part-head">
+          <span class="part-badge">Part 4</span>
+          <span class="part-desc">Questions 31–40 · Note completion</span>
+          <span class="part-audio-label">Listen and answer</span>
+        </div>
+        <audio controls preload="none"
+          src="https://ielts-listening-audio.engnovatemedia.com/3131558-official_cambridge_guide_to_ielts_academic_listening_test_4_4.mp3"></audio>
+
+        <h3>Questions 31–40</h3>
+        <p>Complete the notes below.<br>Write <strong>ONE WORD</strong> for each
+          answer.</p>
+        <p><strong>Kite-making by the Maori people of New Zealand</strong></p>
+        <p><strong>Making and appearance of the kites</strong></p>
+        <ul class="notes">
+          <li>The priests who made the kites had rules for size and scale</li>
+          <li><span class="q"><span class="num">31</span><input type="text"
+                data-q="31"></span> was not allowed during a kite's
+            preparation</li>
+        </ul>
+        <p><strong>Kites:</strong></p>
+        <ul class="notes">
+          <li>often represented a bird, a god, or a <span class="q"><span
+                class="num">32</span><input type="text" data-q="32"></span></li>
+          <li>had frames that were decorated with grasses and <span
+              class="q"><span class="num">33</span><input type="text"
+                data-q="33"></span></li>
+          <li>had a line of noisy <span class="q"><span
+                class="num">34</span><input type="text" data-q="34"></span>
+            attached to them.</li>
+          <li>could be triangular, rectangular or <span class="q"><span
+                class="num">35</span><input type="text" data-q="35"></span>
+            shaped.</li>
+          <li>had patterns made from clay mixed with <span class="q"><span
+                class="num">36</span><input type="text" data-q="36"></span>
+            oil.</li>
+          <li>sometimes had human-head masks with <span class="q"><span
+                class="num">37</span><input type="text" data-q="37"></span> and
+            a tattoo.</li>
+        </ul>
+        <p><strong>Purpose and function of kites:</strong></p>
+        <ul class="notes">
+          <li>a way of sending <span class="q"><span class="num">38</span><input
+                type="text" data-q="38"></span> to the gods</li>
+          <li>a way of telling other villages that a <span class="q"><span
+                class="num">39</span><input type="text" data-q="39"></span> was
+            necessary</li>
+          <li>a means of <span class="q"><span class="num">40</span><input
+                type="text" data-q="40"></span> if enemies were coming.</li>
+        </ul>
+      </section>
+
+      <!-- RESULT -->
+      <section class="card resultcard" id="resultCard">
+        <h2>Your result</h2>
+        <p class="score" id="scoreLine">0 / 40</p>
+        <p class="band" id="bandLine"></p>
+        <div class="result-note">
+          <strong>Audioscript and full answer key are now available
+            below.</strong>
+          <button class="btn small" id="jumpScript" type="button">Jump to
+            audioscript ↓</button>
+          <button class="btn small" id="retakeBtn" type="button">Reset &amp;
+            retake</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="result">
+            <thead><tr><th>#</th><th>Your answer</th><th>Correct
+                  answer</th><th></th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
         </div>
       </section>
 
-    </form>
-  </div>
-</div>
+      <!-- ANSWER KEY -->
+      <section class="card post-submit hlable" id="answers">
+        <h2>Answer key</h2>
+        <div class="optbox"><b>Part 1</b>1 7.30 · 2 pencils · 3 top · 4 August ·
+          5 instructions<br>6 55 · 7 beginners · 8 Kahui · 9 battery · 10
+          show</div>
+        <div class="optbox"><b>Part 2</b>11–12 B, E · 13–14 B, C<br>15 C · 16 G
+          · 17 B · 18 E · 19 F · 20 A</div>
+        <div class="optbox"><b>Part 3</b>21 C · 22 A · 23 B · 24 C · 25 A<br>26
+          G · 27 A · 28 D · 29 C · 30 E</div>
+        <div class="optbox"><b>Part 4</b>31 food · 32 hero · 33 feathers · 34
+          shells · 35 diamond<br>36 shark · 37 teeth · 38 messages · 39 meeting
+          · 40 escape</div>
+      </section>
 
-<!-- BOTTOM PANEL -->
-<div class="bottom-panel">
-  <div class="bottom-inner">
-    <div class="part-tabs">
-      <button class="part-tab active" data-part="1">
-        <span class="tab-part-name">Part 1</span>
-        <span class="tab-qcount">Questions 1–10</span>
-      </button>
-      <button class="part-tab" data-part="2">
-        <span class="tab-part-name">Part 2</span>
-        <span class="tab-qcount">Questions 11–20</span>
-      </button>
-      <button class="part-tab" data-part="3">
-        <span class="tab-part-name">Part 3</span>
-        <span class="tab-qcount">Questions 21–30</span>
-      </button>
-      <button class="part-tab" data-part="4">
-        <span class="tab-part-name">Part 4</span>
-        <span class="tab-qcount">Questions 31–40</span>
-      </button>
-    </div>
+      <!-- TRANSCRIPTS -->
+      <section class="card post-submit hlable" id="transcripts">
+        <h2>Audioscript</h2>
+        <p class="lead" style="margin:0 0 12px">Select any text and press
+          <strong>Highlight</strong> to mark it. Click a highlight to remove
+          it.</p>
 
-    <div class="ielts-reading-question-palette" id="palette"></div>
+        <details class="transcript hlable" id="script1">
+          <summary>Part 1 — Eastwood Community Centre Evening Classes</summary>
+          <p>Woman: Hello. Eastwood Community Centre.</p>
+          <p>Man: Oh, hello. My name's Andrew Dyson. I'm calling about the
+            evening classes you offer.</p>
+          <p>Woman: OK, Mr Dyson, are there any classes in particular that
+            you're interested in?</p>
+          <p>Man: Yes, you've got a class called 'Painting with watercolours', I
+            believe.</p>
+          <p>Woman: That's right. It's a popular class so this term it'll be
+            moving to the hall, so they've got more room.</p>
+          <p>Man: Right. I know it's on Tuesdays but what time exactly?</p>
+          <p>Woman: It was 6.30 last term, but let me just have a look at the
+            details. OK, it'll be 7.30 this time, probably it suits more
+            people.</p>
+          <p>Man: Well, it's my wife who's really interested and that'll be good
+            for her because she's home from work by 7.15 - that'll give her just
+            enough time to get there. Um, what does she need to bring?</p>
+          <p>Woman: OK, well paints are provided by the tutor, I know that. Um,
+            the information says she'll need just a jar for water and some
+            pencils for drawing. There are also lots of aprons here, so she
+            needn't worry what she's wearing. And the cost for four classes is
+            £45, including paints, as I said.</p>
+          <p>Man: OK, now we're both quite keen on the Maori language class.</p>
+          <p>Woman: There are spaces on the next course, so you could join
+            that.</p>
+          <p>Man: Oh, good. Which room will that be in?</p>
+          <p>Woman: When you come in through the entrance of the community
+            centre building, you'll need to go straight up the stairs in front
+            of you, all the way to the top. And it's the small room you'll find
+            there.</p>
+          <p>Man: I see. All right, and let me just check when it's starting. I
+            heard from someone that the July course has been delayed until
+            August.</p>
+          <p>Woman: I'm afraid so. And we're halfway through the June course at
+            the moment so there's not much point you taking that.</p>
+          <p>Man: I guess we'll have to wait, then.</p>
+          <p>Woman: Well, when you do come, the tutor recommends bringing a
+            small recorder with you just so you can listen again later, and er,
+            the cost for five classes is currently £40.</p>
+          <p>Man: OK, useful information to know. Um, there's one more class I'm
+            interested in - that's the digital photography class.</p>
+          <p>Woman: Oh, I've taken that class myself. The tutor's very good.
+            That'll be in room 9 and it's starting in two weeks' time - in the
+            evening - every Wednesday at 6 o'clock.</p>
+          <p>Man: Um, obviously I need to bring the camera with me. I suppose
+            it'd be useful to have the instructions that go with the camera,
+            too.</p>
+          <p>Woman: I'd say so. Um, some people bring along a lot of accessories
+            like extra lenses, but there's really no need for this class. It's
+            mainly focusing on composition really, and getting the most out of
+            the basic camera.</p>
+          <p>Man: That's exactly what I need. And how much does it cost?</p>
+          <p>Woman: Let's see. For four classes, it's £35, but if you take
+            eight, it works out as £55, so you're making a bit of a saving – £15
+            that is.</p>
+          <p>Man: I see.</p>
+          <p>Man: OK, now just another question for the watercolours class; I've
+            just remembered that my wife asked me to find out about the level -
+            who's it for?</p>
+          <p>Woman: OK, well you don't have to be very skilled or anything like
+            that. It's designed for beginners, actually. People who might see
+            art as a hobby rather than as a professional opportunity.</p>
+          <p>Man: That sounds like my wife. And er, who do I talk to if I want
+            to find out some more about the Maori language classes?</p>
+          <p>Woman: Probably best to talk to the tutor directly. He'll be in the
+            office in about half an hour. His name's Jason Kahui. That's
+            K-A-H-U-I.</p>
+          <p>Man: Good - I'll give him a call.</p>
+          <p>Woman: Oh, if you do decide to come to the photography class, don't
+            forget to look at your camera battery and make sure it's charged. I
+            know it sounds obvious but I've seen a few people suddenly find the
+            camera's stopped working right in the middle of class.</p>
+          <p>Man: Yes, I can imagine it'd be easy to forget that. Oh, that
+            reminds me, in the final week of the photography course, is it right
+            that there's a visit to a show in the local area? I work in the
+            city, you see, so I might have to come home early for that one.</p>
+          <p>Woman: Yes. They'll decide the date once the class has started. Is
+            there anything else I can...</p>
+        </details>
 
-    <div class="ielts-reading-bottom-controls">
-      <div class="ielts-reading-question-control-buttons">
-        <button id="prevBtn" title="Previous question">←</button>
-        <button id="nextBtn" title="Next question">→</button>
+        <details class="transcript hlable" id="script2">
+          <summary>Part 2 — Community Gardens at Hadley Park</summary>
+          <p>Good morning - it's great to see so many people here. Thank you all
+            very much for coming. Well, as you know, the community gardens at
+            Hadley Park are really not looking as good as they should, quite bad
+            really, and although the local council has a budget to deal with
+            some of the problems, we do need volunteers for other tasks. If you
+            don't mind, I'm going to divide you into two groups. So, everyone on
+            this side of the room is Group A, and the rest of you are Group B.
+            So, Group A, there are a couple of things we'd like you to help
+            with. Um, first of all, don't worry about any litter or empty
+            bottles you see lying about one of the local schools has offered to
+            help out with that as part of their own environmental project. The
+            priority for you will be to give us a hand with the new wooden
+            fencing - it needs constructing along parts of the bicycle track, as
+            there are parts which have now fallen down or broken – as I'm sure
+            you've seen. You've probably also noticed that some of the pathways
+            that come from the bicycle track are quite narrow – and there are
+            plans to make them wider – but the council will be dealing with that
+            later in the year, and they've also promised to produce some
+            informational signs about the plants in the gardens. Hopefully
+            they'll be up in a few weeks' time. The other thing we're doing is
+            getting rid of some of the foreign species that are growing in the
+            gardens and putting back some native plants and trees. So, you'll be
+            doing some digging for us and getting those into the ground.</p>
+          <p>So, Group A, there's some items you'll need to bring along with
+            you. I was going to say 'raincoats' but the forecast has changed so
+            you can leave those at home. I'd definitely recommend a strong pair
+            of boots, waterproof would be best; it's quite muddy at the moment,
+            and your own gloves would also be advisable. Tools will be available
+            – spades and hammers, that kind of thing. You just need to make sure
+            they go back in the trucks. And, there's no need to worry about food
+            and drink as we'll be supplying sandwiches and coffee – possibly
+            some biscuits, even!</p>
+          <p>OK, Group B, your turn. Does everyone have a copy of the plan?
+            Great. OK, we'll all be meeting in the car park – that's on the
+            bottom of the plan, see? Now, if you've been assigned to the
+            vegetable beds, to get there, you go out of the car park and go up
+            the footpath until you reach the circle of trees – there they are –
+            in the middle of the plan, and you see that the footpath goes all
+            the way around them. Well, on the left-hand side of that circular
+            footpath, there's a short track which takes you directly to the
+            vegetable beds. You can see a bamboo fence marked just above them.
+            All right? OK, if you're helping out with the bee hives, pay
+            attention. Look again at the circle of trees in the middle of the
+            plan, and the footpath that goes around them. On the right side of
+            that circle – you can see that the footpath goes off in an easterly
+            direction – heading towards the right-hand side of the plan. And
+            then, the path splits into two and you can either go up or down. You
+            want the path that heads down and at the end of this, you see two
+            areas divided by a bamboo fence – and as we're looking at the plan,
+            the bee hives are on the right of the fence – the smaller section, I
+            mean. Now don't worry – all the bees have been removed! You just
+            need to transport the hives back to the car park.</p>
+          <p>OK, for the seating, look at the circular footpath, at the top of
+            it, there's a path that goes from there and takes you up to the
+            seating area, alongside the bicycle track and with a good view of
+            the island, I suppose.</p>
+          <p>OK, if you're volunteering for the adventure playground area, let's
+            start from the car park again and go up the footpath, but then you
+            want the first left turn. Go up there, and then you see there's a
+            short path that goes off to the right – go down there and that's the
+            adventure playground area, above the bamboo fence. That fence does
+            need repairing, I'm afraid. Right, what else? Oh yes, the sand area.
+            We've got that circular footpath in the middle – find the track that
+            goes east, towards the right-hand side of the plan, and where that
+            track divides, you need the little path that goes up towards the
+            bicycle track. The sand area is just above the bamboo fence there.
+            And finally, the pond area. So, it's on the left-hand side of your
+            plan – towards the top – just above the fruit bushes and to the left
+            of the little path. OK, as I said already, hopefully we'll...</p>
+        </details>
+
+        <details class="transcript hlable" id="script3">
+          <summary>Part 3 — Food Waste: Student Discussion</summary>
+          <p>Anna: Hi, Robert.</p>
+          <p>Robert: Hi. Sorry I'm late. I was just printing off some pages
+            about food waste in Britain.</p>
+          <p>Anna: Do you want to include Britain in the presentation? I thought
+            we were concentrating on the USA?</p>
+          <p>Robert: Well, it is a global problem, so I thought we ought to
+            provide some statistics that show that.</p>
+          <p>Anna: Fair enough. What did you find out?</p>
+          <p>Robert: Well, I was looking at a British study from 2013. It
+            basically concluded that 12 billion pounds' worth of food and drink
+            was thrown away each year - all of it ending up in landfill sites.
+            Over eight million tons - and that wasn't including packaging.</p>
+          <p>Anna: An incredible amount.</p>
+          <p>Robert: Yes, and they were only looking at what households threw
+            away, so there's no information about restaurants and the catering
+            industry. But one thing the study did investigate was the amount of
+            milk and soft drinks that were wasted, and I think it was probably
+            quite unique in that respect.</p>
+          <p>Anna: Interesting. You know, in the other European reports I've
+            read - there's one thing they have in common when they talk about
+            carbon dioxide emissions.</p>
+          <p>Robert: I know what you are going to say. They never refer to the
+            fuel that farms and factories require to produce the food, and the
+            carbon dioxide that releases?</p>
+          <p>Anna: Exactly. We could really cut down on carbon emissions if less
+            food was supplied in the first place. To my mind, the reports talk
+            too much about the carbon dioxide produced by the trucks that
+            deliver the fresh goods to the shops and take the waste away. They
+            forget about one of the key causes of carbon dioxide.</p>
+          <p>Robert: Absolutely. If the reports are actually going to be useful
+            to people, they need to be more comprehensive.</p>
+          <p>Anna: Who do you mean by 'people'?</p>
+          <p>Robert: Well, the government, industries ... people making
+            television programmes. Have you seen any documentaries about food
+            waste?</p>
+          <p>Anna: Not that I remember.</p>
+          <p>Robert: My point exactly. These days they all seem to be focusing
+            on where your meat, fruit and vegetables are sourced from. We're
+            being encouraged to buy locally, not from overseas. That's probably
+            a good thing but I'd still like to see something about waste.</p>
+          <p>Anna: Yes, it's the same with magazine articles - it's all about
+            fat and sugar content and the kind of additives and colouring in
+            food - but nothing about how it reaches your table and what happens
+            after it ends up in the bin.</p>
+          <p>Robert: Well, we've only got 15 minutes for this presentation, so I
+            think we'll have to limit what we say about the consequences of food
+            waste. What do we want to concentrate on?</p>
+          <p>Anna: Well, I know some of the other presentations are looking at
+            food and farming methods and what they do to the environment, so I
+            think we'll avoid that. And the fact that in some countries, people
+            can't afford the food grown on their own farms – that was covered
+            last term.</p>
+          <p>Robert: OK. We don't want to repeat stuff.</p>
+          <p>Anna: What concerns me above all else is that in a recession
+            governments should be encouraging business to find ways to cut
+            costs. Apparently supermarkets in the USA lose about 11% of their
+            fruit to waste. That's throwing money away.</p>
+          <p>Robert: All right – we'll focus on that problem. It should get the
+            others' attention, anyway. Now, how do you want to begin the
+            presentation? Let's not start with statistics, though, because
+            that's what everybody does.</p>
+          <p>Anna: I agree. How about we give the other students a set of
+            questions to answer – about what they suspect they waste every
+            day?</p>
+          <p>Robert: I'm fine with that. Probably a better option than showing
+            pictures of landfill sites. It'll be more personalised, that
+            way.</p>
+          <p>Anna: All right, now let's start...</p>
+          <p>Robert: OK, shall we now have a look at the projects that different
+            researchers and organisations are working on?</p>
+          <p>Anna: For me, the project I really liked was the one at Tufts
+            University – you know, where they've invented tiny edible patches to
+            stick on fresh foods that show you what level of bacteria is
+            present, and so whether you can still eat it.</p>
+          <p>Robert: It's a great idea as it tells you if you need to hurry up
+            and eat the food before it goes off. The other good thing about the
+            patches is that apparently they'll be cheap to manufacture.</p>
+          <p>Anna: Good. Then the other thing I thought was great was the
+            Massachusetts Institute of Technology project.</p>
+          <p>Robert: I hadn't seen that.</p>
+          <p>Anna: Well, they've developed these sensors that can detect tiny
+            amounts of ethylene. Ethylene is the natural plant hormone in fruit
+            that makes them turn ripe, apparently. The researchers think that
+            they can attach the sensors to cardboard boxes – and then
+            supermarkets can scan the sensors with a portable device to see how
+            ripe the fruit inside is. That's got to be a quicker way to check
+            for ripeness than taking each box off the shelf and opening it.</p>
+          <p>Robert: Definitely. And I thought that Lean Path was worth
+            mentioning, too. Their waste tracking technology means that caterers
+            can see how much food is being wasted and why. That'll increase
+            profits for them eventually.</p>
+          <p>Anna: Yes. And did you read about Zero PerCent? They've produced
+            this smartphone application that allows restaurants to send donation
+            alerts to food charities. The charities can then pick up the
+            unwanted food and distribute it to people in need.</p>
+          <p>Robert: In the long run, that'll definitely benefit poorer families
+            in the neighbourhood. No kid should go to school hungry.</p>
+          <p>Anna: I agree. And I read that quite a few local governments in the
+            USA are thinking about introducing compulsory composting in their
+            states – so you can't put any food waste into your rubbish bins,
+            just the compost bin.</p>
+          <p>Robert: Well, I guess that means a bit more work for people. I
+            mean, they have to separate the organic and inorganic waste
+            themselves before they take it out to the compost bin, and you know
+            how lazy some people are! But I guess if we all start composting,
+            we'd be doing something positive about the problem of food waste
+            ourselves, rather than relying on the government to sort it out.
+            Having said that, not everyone has a garden so ...</p>
+        </details>
+
+        <details class="transcript hlable" id="script4">
+          <summary>Part 4 — Kite-making by the Maori People of New
+            Zealand</summary>
+          <p>Well, good morning everyone. As you know, we've been looking at
+            different kinds of art and craft that were practised by the Maori
+            people of New Zealand - at least before the Europeans began to
+            arrive in the 18th century. So, the focus of this lecture is kite
+            making; how the kites were made, their appearance and the purposes
+            they served.</p>
+          <p>Well, let's start with the way they were made. As with other Maori
+            artistic traditions, kite-making involved certain rituals. So,
+            firstly, only priests were allowed to fly and handle the largest,
+            most sacred kites. There were rules, too, for the size and scale of
+            the kites that the priests had to follow, and during the preparation
+            of both small and large kites, food was strictly forbidden.</p>
+          <p>In terms of appearance, kites were frequently designed in the image
+            of a native bird, or a Maori god, and sometimes, perhaps less often,
+            a well-known hero. You can imagine that when Maori first arrived in
+            the new country, in New Zealand, it may have taken some time to find
+            suitable materials for their kites – but through trial and error no
+            doubt, they found plants and trees that provided bark and even roots
+            that they could use to make the frames and wings of their kites. And
+            after the frame had been constructed, the kite then had to be
+            decorated. For this the priests used long grasses, and these – when
+            the kite was in the air – would stream along behind it. They also
+            used a variety of feathers to add, um, colour to their creations.
+            Well, all this meant it was easy to see a kite in the sky but you
+            could also hear Maori kites. They could be quite noisy indeed, and
+            this was because some priests liked to hang a long row of shells
+            from the kite. You can imagine how they'd rattle and clatter in the
+            wind – how they might completely capture your attention.</p>
+          <p>As I said before, the most common image was probably a bird, and
+            that's the same for other kite-making cultures, but the kites were
+            designed in particular shapes – so there were kites that were
+            triangular, rectangular and also shaped like a diamond. And some of
+            them were so large, it would actually require several men to operate
+            them. Um, some of the kites were also covered in patterns, and to
+            make these patterns, the Maori used different pigments of red and
+            black, and these were either made from a charcoal base or from
+            red-brown clay which had been combined with oil obtained from a
+            local species of shark.</p>
+          <p>Now, before I forget, if you have a chance, do visit the Auckland
+            Museum because they have the last surviving 'birdman' kite on
+            display. This is the kind of kite that has a wooden mask at the top
+            of the frame – it's a mask of a human head – and you can clearly see
+            it has a tattoo and also a set of teeth. Quite impressive – and a
+            good example of Maori craftsmanship and symbolism.</p>
+          <p>Right, turning to the purpose and function of the kites; they
+            certainly had multiple uses. Primarily, the flying of kites was a
+            way of communicating with the gods and when the kites rose into the
+            air, the Maori used them to deliver messages – perhaps requesting a
+            good harvest, good fortune in war, a successful hunting expedition.
+            So, these kites were incredibly valuable to a community – treasured
+            objects that one generation would pass to the next. People would
+            also fly kites for other reasons, for example, to attract the
+            attention of a neighbouring village. This was done when a meeting
+            was required between Maori elders – a convenient method, indeed. And
+            finally, when it comes to war, there are traditional stories that
+            describe how when a Maori warrior found himself surrounded by his
+            enemies, a kite could actually provide the possibility of escape –
+            the kites were powerful enough to take a man up into the air; and
+            for this reason, they could also be used to lower him into enemy
+            fortifications so that an attack could begin from the inside.</p>
+          <p>Well, I'm happy to say there seems to be a revival and growing
+            interest in kite-making, and ...</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>Local copy for personal study. Test material © its original rights
+      holders — please support the original site.</footer>
+
+    <div class="bottombar" id="bottombar">
+      <div class="bb-inner">
+        <div class="bb-top">
+          <div class="bb-tabs" id="bbTabs"></div>
+          <div class="bb-palette" id="bbPalette"></div>
+        </div>
+        <div class="bb-bottom">
+          <span class="bb-progress" id="bbProgress">0 / 40 answered</span>
+          <div class="bb-actions">
+            <button class="btn primary small" id="bbSubmit"
+              type="button">Submit</button>
+            <button class="bb-hide" id="bbHide" type="button"
+              title="Hide bar">✕</button>
+          </div>
+        </div>
       </div>
-      <div class="ielts-reading-test-control-buttons">
-        <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
-        <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
-      </div>
     </div>
-  </div>
-</div>
+    <button id="bbShow" type="button">Show question bar</button>
 
-<!-- RESULT OVERLAY -->
-<div class="overlay" id="resultOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Your Results</h3>
-      <button class="close-x" data-close="resultOverlay">×</button>
+    <div id="hlBar" role="toolbar" aria-label="Highlight actions">
+      <button type="button" class="hl-main"
+        data-act="hl"><span>🖍️</span><span>Highlight</span></button>
+      <div class="sep"></div>
+      <button type="button" data-act="clear">Clear all</button>
     </div>
-    <div class="overlay-body">
-      <div class="score-summary">
-        <div class="big" id="resultScore">0 / 40</div>
-        <div class="sub" id="resultSub">Band estimate: —</div>
-      </div>
-      <div class="legend-row">
-        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span>
-      </div>
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
-        <tbody id="resultBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- PREVIEW OVERLAY -->
-<div class="overlay" id="previewOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head">
-      <h3>Review Your Answers</h3>
-      <button class="close-x" data-close="previewOverlay">×</button>
-    </div>
-    <div class="overlay-body">
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-        <tbody id="previewBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- HIGHLIGHT TOOLBAR -->
-<div id="hl-popup">
-  <button id="hl-highlight">🖍 Highlight</button>
-  <button id="hl-dehighlight">🧽 Clear</button>
-  <button id="hl-note">📝 Note</button>
-  <button id="hl-flashcard">🃏 Flashcard</button>
-</div>
-
-<!-- NOTE POPUP -->
-<div id="note-popup">
-  <div class="np-card">
-    <h4>Add a note</h4>
-    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
-    <div class="np-actions">
-      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
-      <button type="button" class="np-save" id="note-save">Save Note</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* ANSWER KEY */
-const ANSWER_KEY = {
-  1:["7.30","7:30","7 30","730","0730"],
-  2:["pencils","pencil"],
-  3:["top"],
-  4:["august"],
-  5:["instructions","instruction"],
-  6:["55"],
-  7:["beginners","beginner"],
-  8:["kahui"],
-  9:["battery"],
-  10:["show"],
-  11:["b,e"],
-  12:["b,e"],
-  13:["b,c"],
-  14:["b,c"],
-  15:["c"],
-  16:["g"],
-  17:["b"],
-  18:["e"],
-  19:["f"],
-  20:["a"],
-  21:["C"],
-  22:["A"],
-  23:["B"],
-  24:["C"],
-  25:["A"],
-  26:["G"],
-  27:["A"],
-  28:["D"],
-  29:["C"],
-  30:["E"],
-  31:["food"],
-  32:["hero"],
-  33:["feathers"],
-  34:["shells"],
-  35:["diamond"],
-  36:["shark"],
-  37:["teeth"],
-  38:["messages"],
-  39:["meeting"],
-  40:["escape"]
-};
-
-const PART_QUESTIONS = {
-  1: Array.from({length:10},(_,i)=>i+1),
-  2: Array.from({length:10},(_,i)=>i+11),
-  3: Array.from({length:10},(_,i)=>i+21),
-  4: Array.from({length:10},(_,i)=>i+31)
-};
-
-function normalize(s){
-  return (s||"").toString().trim().toLowerCase()
-    .replace(/[.,;:!?'"()£]/g,"").replace(/\s+/g," ");
-}
-
-function getCheckedValues(name){
-  const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
-  return Array.from(checked).map(c => c.value.toLowerCase()).sort().join(",");
-}
-
-function getUserAnswer(n){
-  if (n === 11 || n === 12) return getCheckedValues("q11_12");
-  if (n === 13 || n === 14) return getCheckedValues("q13_14");
-  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
-  if (r) return r.value;
-  const s = document.querySelector(`select[name=q${n}]`);
-  if (s) return s.value;
-  const t = document.querySelector(`input[type=text][name=q${n}]`);
-  if (t) return t.value;
-  return "";
-}
-
-function isCorrect(n, ua){
-  const keys = ANSWER_KEY[n] || [];
-  const v = normalize(ua);
-  if (!v) return false;
-  // Paired questions (11–12, 13–14): exact set match
-  if (n === 11 || n === 12 || n === 13 || n === 14) {
-    return keys.some(k => normalize(k) === v);
-  }
-  return keys.some(k => normalize(k) === v);
-}
-
-function estimateBand(score){
-  if (score>=39) return "9.0"; if (score>=37) return "8.5";
-  if (score>=35) return "8.0"; if (score>=32) return "7.5";
-  if (score>=30) return "7.0"; if (score>=26) return "6.5";
-  if (score>=23) return "6.0"; if (score>=18) return "5.5";
-  if (score>=16) return "5.0"; if (score>=13) return "4.5";
-  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
-  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
-  return "2.0 or below";
-}
-
-let toastTimer=null;
-function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg; el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
-}
-
-function toggleTranscript(el){
-  const body = el.nextElementSibling;
-  const arrow = el.querySelector("span:last-child");
-  body.classList.toggle("show");
-  arrow.textContent = body.classList.contains("show") ? "▲" : "▼";
-  el.querySelector("span:first-child").textContent = body.classList.contains("show") ? "📄 Hide Transcript" : "📄 Show Transcript";
-}
-
-/* BUILD PALETTE */
-const palette = document.getElementById("palette");
-Object.keys(PART_QUESTIONS).forEach(part => {
-  const section = document.createElement("div");
-  section.className = "ielts-reading-palette-section";
-  section.dataset.part = part;
-  const label = document.createElement("strong");
-  label.className = "ielts-reading-palette-section-part";
-  label.textContent = `Part ${part}:`;
-  section.appendChild(label);
-  PART_QUESTIONS[part].forEach(n => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "ielts-reading-palette-item";
-    btn.dataset.q = n;
-    btn.textContent = n;
-    btn.addEventListener("click", () => goToQuestion(n));
-    section.appendChild(btn);
-  });
-  const count = document.createElement("em");
-  count.className = "ielts-reading-palette-section-question-count";
-  count.textContent = `${PART_QUESTIONS[part].length} questions`;
-  section.appendChild(count);
-  palette.appendChild(section);
-});
-
-/* PART SWITCHING */
-let currentPart = 1;
-let currentQuestion = 1;
-
-function switchPart(part){
-  currentPart = parseInt(part,10);
-  document.querySelectorAll(".part-tab").forEach(t =>
-    t.classList.toggle("active", t.dataset.part === String(part)));
-  document.querySelectorAll(".passage").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-  document.querySelectorAll(".q-section").forEach(s =>
-    s.classList.toggle("active", s.dataset.part === String(part)));
-  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-  currentQuestion = PART_QUESTIONS[part][0];
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-
-document.querySelectorAll(".part-tab").forEach(tab => {
-  tab.addEventListener("click", () => switchPart(tab.dataset.part));
-});
-
-function goToQuestion(n){
-  n = parseInt(n,10);
-  if (!n || n<1 || n>40) return;
-  let part = 1;
-  for (const p of [1,2,3,4]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
-  if (part !== currentPart) switchPart(part);
-  currentQuestion = n;
-  const qEl = document.querySelector(`.q[data-q="${n}"]`);
-  if (qEl){
-    qEl.scrollIntoView({behavior:"smooth", block:"center"});
-    qEl.classList.add("highlight");
-    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
-  }
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-function updatePaletteCurrent(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
-}
-function updateNavButtons(){
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
-  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===4);
-}
-document.getElementById("prevBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx > 0) goToQuestion(all[idx-1]);
-  else if (currentPart > 1){
-    const prev = PART_QUESTIONS[currentPart-1];
-    goToQuestion(prev[prev.length-1]);
-  }
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx < all.length-1) goToQuestion(all[idx+1]);
-  else if (currentPart < 4) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
-});
-document.querySelectorAll(".q").forEach(qEl => {
-  qEl.addEventListener("focusin", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-  qEl.addEventListener("click", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-});
-
-function refreshPaletteAnswered(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
-    const n = parseInt(b.dataset.q,10);
-    const ua = getUserAnswer(n);
-    b.classList.toggle("answered", ua.trim() !== "");
-  });
-}
-document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
-document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
-
-/* Limit multi-select checkboxes to 2 */
-document.querySelectorAll('input[type=checkbox][data-limit="2"]').forEach(cb => {
-  cb.addEventListener("change", () => {
-    const name = cb.name;
-    const checked = document.querySelectorAll(`input[type=checkbox][name="${name}"]:checked`);
-    if (checked.length > 2) {
-      cb.checked = false;
-      toast("Choose only TWO options");
-    }
-  });
-});
-
-/* RESIZER */
+    <script>
 (function(){
-  const resizer = document.getElementById("resizer");
-  const passagesPane = document.getElementById("passagesPane");
-  const questionsPane = document.getElementById("questionsPane");
-  let dragging = false;
-  resizer.addEventListener("mousedown", e => {
-    e.preventDefault(); dragging = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
-  });
-  document.addEventListener("mousemove", e => {
-    if (!dragging) return;
-    const rect = document.getElementById("mainSplit").getBoundingClientRect();
-    let pct = ((e.clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(20, Math.min(70, pct));
-    passagesPane.style.flex = `0 0 ${pct}%`;
-    questionsPane.style.flex = "1 1 auto";
-  });
-  document.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    document.body.style.cursor = "";
-    document.body.style.userSelect = "";
+  "use strict";
+  var KEY = {
+    1:["7.30","7:30","7 30","730","0730"],2:["pencils","pencil"],3:["top"],4:["august"],5:["instructions","instruction"],6:["55"],
+    7:["beginners","beginner"],8:["kahui"],9:["battery"],10:["show"],
+    11:["b,e"],12:["b,e"],13:["b,c"],14:["b,c"],15:["c"],16:["g"],17:["b"],18:["e"],19:["f"],20:["a"],
+    21:["C"],22:["A"],23:["B"],24:["C"],25:["A"],26:["G"],27:["A"],28:["D"],29:["C"],30:["E"],
+    31:["food"],32:["hero"],33:["feathers"],34:["shells"],35:["diamond"],36:["shark"],37:["teeth"],38:["messages"],39:["meeting"],40:["escape"]
+  };
+  var LABEL = {
+    1:"7.30",2:"pencils",3:"top",4:"August",5:"instructions",6:"55",7:"beginners",8:"Kahui",9:"battery",10:"show",
+    11:"B, E",12:"B, E",13:"B, C",14:"B, C",15:"C",16:"G",17:"B",18:"E",19:"F",20:"A",
+    21:"C",22:"A",23:"B",24:"C",25:"A",26:"G",27:"A",28:"D",29:"C",30:"E",
+    31:"food",32:"hero",33:"feathers",34:"shells",35:"diamond",36:"shark",37:"teeth",38:"messages",39:"meeting",40:"escape"
+  };
+  var PARTS=[{n:1,from:1,to:10,name:"Part 1"},{n:2,from:11,to:20,name:"Part 2"},{n:3,from:21,to:30,name:"Part 3"},{n:4,from:31,to:40,name:"Part 4"}];
+  var PAIRED = {11:"q11_12",12:"q11_12",13:"q13_14",14:"q13_14"};
+  function norm(s){return String(s==null?"":s).toLowerCase().replace(/[£$€]/g,"").replace(/[^a-z0-9\s]/g," ").replace(/^\s*(the|a|an)\s+/,"").replace(/\s+/g," ").trim().replace(/\s+/g,"");}
+  function correctLabel(q){return LABEL[q]||KEY[q][0];}
+  function qInput(q){return document.querySelector('[data-q="'+q+'"]');}
+  function qRadios(q){return document.querySelectorAll('input[name="q'+q+'"]');}
+  function qCheckboxes(name){return document.querySelectorAll('input[type=checkbox][name="'+name+'"]');}
+  function isChoice(q){if(PAIRED[q])return true;var el=qInput(q);return (el&&el.tagName==="SELECT")||qRadios(q).length>0;}
+  function getUserAnswer(q){
+    if(PAIRED[q]){var cb=qCheckboxes(PAIRED[q]);var arr=[];cb.forEach(function(c){if(c.checked)arr.push(c.value.toLowerCase());});return arr.sort().join(",");}
+    var el=qInput(q);if(el)return el.value;
+    var r=document.querySelector('input[name="q'+q+'"]:checked');return r?r.value:"";
+  }
+  function hasAnswer(q){if(PAIRED[q]){var cb=qCheckboxes(PAIRED[q]);var n=0;cb.forEach(function(c){if(c.checked)n++;});return n>0;}var el=qInput(q);if(el)return !!el.value;return !!document.querySelector('input[name="q'+q+'"]:checked');}
+  function isCorrect(q,raw){if(!raw)return false;if(isChoice(q))return KEY[q].indexOf(String(raw).toUpperCase())!==-1;var u=norm(raw);if(!u)return false;for(var i=0;i<KEY[q].length;i++)if(norm(KEY[q][i])===u)return true;return false;}
+  function bandFor(s){if(s>=39)return "Band 9.0";if(s>=37)return "Band 8.5";if(s>=35)return "Band 8.0";if(s>=32)return "Band 7.5";if(s>=30)return "Band 7.0";if(s>=26)return "Band 6.5";if(s>=23)return "Band 6.0";if(s>=18)return "Band 5.5";if(s>=16)return "Band 5.0";if(s>=13)return "Band 4.5";if(s>=10)return "Band 4.0";return "Band 3.5 or below";}
+  var bbTabs=document.getElementById("bbTabs"),bbPalette=document.getElementById("bbPalette"),bbProgress=document.getElementById("bbProgress");
+  var chipMap={},currentPart=1;
+  PARTS.forEach(function(p){var t=document.createElement("button");t.type="button";t.className="bb-tab"+(p.n===currentPart?" current":"");t.dataset.part=p.n;t.textContent=p.name;t.addEventListener("click",function(){switchPart(p.n);});bbTabs.appendChild(t);});
+  function renderPalette(n){bbPalette.innerHTML="";chipMap={};var part=null;for(var i=0;i<PARTS.length;i++)if(PARTS[i].n===n){part=PARTS[i];break;}if(!part)return;
+    for(var q=part.from;q<=part.to;q++){(function(qq){var b=document.createElement("button");b.type="button";b.className="chip";b.dataset.q=qq;b.textContent=qq;b.addEventListener("click",function(){scrollToQ(qq);});bbPalette.appendChild(b);chipMap[qq]=b;})(q);}
+    refreshPalette();}
+  function refreshPalette(){var done=0,graded=document.body.classList.contains("graded");var counted={};for(var q=1;q<=40;q++){if(PAIRED[q]){if(counted[PAIRED[q]])continue;counted[PAIRED[q]]=true;if(hasAnswer(q))done++;}else{if(hasAnswer(q))done++;}var chip=chipMap[q];if(!chip)continue;chip.classList.remove("ok","no","answered");if(graded){var ok=isCorrect(q,getUserAnswer(q));chip.classList.add(ok?"ok":"no");}else if(hasAnswer(q))chip.classList.add("answered");}bbProgress.textContent=done+" / 40 answered";}
+  function switchPart(n){currentPart=n;document.querySelectorAll(".part").forEach(function(el){el.classList.toggle("current",parseInt(el.dataset.part,10)===n);});document.querySelectorAll(".bb-tab").forEach(function(t){t.classList.toggle("current",parseInt(t.dataset.part,10)===n);});renderPalette(n);var t=document.querySelector('.part[data-part="'+n+'"]');if(t){var top=t.getBoundingClientRect().top+window.scrollY-76;window.scrollTo({top:top,behavior:"smooth"});}}
+  function anchorFor(q){if(PAIRED[q])return qCheckboxes(PAIRED[q])[0].closest(".mcq");var el=qInput(q);if(el)return el;var r=document.querySelector('input[name="q'+q+'"]');if(r)return r.closest(".mcq")||r;return null;}
+  function scrollToQ(q){var el=anchorFor(q);if(!el)return;el.scrollIntoView({behavior:"smooth",block:"center"});var chip=chipMap[q];if(chip){chip.classList.add("active");setTimeout(function(){chip.classList.remove("active");},1200);}}
+  document.addEventListener("input",function(e){if(e.target.matches("[data-q]"))refreshPalette();});
+  document.addEventListener("change",function(e){if(e.target.matches("[data-q]")||e.target.matches('input[type=radio]')||e.target.matches('input[type=checkbox]'))refreshPalette();});
+  document.querySelectorAll('input[type=checkbox][data-limit="2"]').forEach(function(cb){cb.addEventListener("change",function(){var n=cb.name;var checked=document.querySelectorAll('input[type=checkbox][name="'+n+'"]:checked');if(checked.length>2){cb.checked=false;toastSimple("Choose only TWO options");}});});
+  function toastSimple(t){/* no-op for Test 4 — kept minimal */}
+  renderPalette(currentPart);
+  var bb=document.getElementById("bottombar"),bbShow=document.getElementById("bbShow");
+  document.getElementById("bbHide").addEventListener("click",function(){bb.classList.add("off");bbShow.classList.add("on");document.body.classList.add("bb-off");});
+  bbShow.addEventListener("click",function(){bb.classList.remove("off");bbShow.classList.remove("on");document.body.classList.remove("bb-off");});
+  function clearFeedback(){document.querySelectorAll(".feedback").forEach(function(n){n.textContent="";});document.querySelectorAll(".is-right,.is-wrong,.picked-ok,.picked-no,.key").forEach(function(n){n.classList.remove("is-right","is-wrong","picked-ok","picked-no","key");});}
+  function placeFeedback(q,ok,text){var span;var el=qInput(q);var fb=null;
+    if(PAIRED[q]){var box=qCheckboxes(PAIRED[q])[0].closest(".mcq");fb=box?box.querySelector(".feedback"):null;
+      if(fb){span=document.createElement("span");span.className="feedback "+(ok?"ok":"no");span.textContent=ok?"✓ Correct":"✗ Correct answer: "+text;fb.appendChild(span);}
+      var k=KEY[q][0].split(",");qCheckboxes(PAIRED[q]).forEach(function(c){var lab=c.closest(".opt");if(!lab)return;if(k.indexOf(c.value.toLowerCase())>=0)lab.classList.add("key");if(c.checked)lab.classList.add(k.indexOf(c.value.toLowerCase())>=0?"picked-ok":"picked-no");});
+      return;}
+    span=document.createElement("span");span.className="feedback "+(ok?"ok":"no");
+    if(ok)span.textContent="✓";else span.innerHTML="✗ <em>"+text+"</em>";
+    if(el){el.classList.add(ok?"is-right":"is-wrong");el.insertAdjacentElement("afterend",span);return;}
+    var radios=qRadios(q);if(radios.length){var mcq=radios[0].closest(".mcq");var stem=mcq?mcq.querySelector(".stem"):null;if(stem)stem.appendChild(span);var kk=KEY[q][0];radios.forEach(function(r){var lab=r.closest(".opt");if(!lab)return;if(r.value===kk)lab.classList.add("key");if(r.checked)lab.classList.add(r.value===kk?"picked-ok":"picked-no");});}}
+  var resultBody=document.getElementById("resultBody"),resultCard=document.getElementById("resultCard");
+  function openAllScripts(){document.querySelectorAll("details.transcript").forEach(function(d){d.open=true;});}
+  function submit(){clearFeedback();document.body.classList.add("graded");openAllScripts();var score=0;resultBody.innerHTML="";
+    var counted={};
+    for(var q=1;q<=40;q++){if(PAIRED[q]){if(counted[PAIRED[q]])continue;counted[PAIRED[q]]=true;}
+      var raw=getUserAnswer(q);var ok=isCorrect(q,raw);if(ok)score++;placeFeedback(q,ok,correctLabel(q));
+      var tr=document.createElement("tr");var tdNum=document.createElement("td");tdNum.textContent=(q===11?"11–12":q===13?"13–14":q);var tdUser=document.createElement("td");tdUser.textContent=raw?raw:"—";if(raw)tdUser.className=ok?"right":"wrong";var tdKey=document.createElement("td");tdKey.textContent=correctLabel(q);var tdMark=document.createElement("td");var pill=document.createElement("span");pill.className="pill "+(ok?"ok":"no");pill.textContent=ok?"✓":"✗";tdMark.appendChild(pill);tr.appendChild(tdNum);tr.appendChild(tdUser);tr.appendChild(tdKey);tr.appendChild(tdMark);resultBody.appendChild(tr);}
+    document.getElementById("scoreLine").textContent=score+" / 40";document.getElementById("bandLine").textContent="Estimated IELTS Listening band: "+bandFor(score);
+    var bc=document.getElementById("bandChip");if(bc){bc.textContent=bandFor(score).replace("Band ","");bc.classList.add("show");}
+    resultCard.classList.add("show");refreshPalette();resultCard.scrollIntoView({behavior:"smooth",block:"start"});}
+  function resetAll(){document.querySelectorAll("[data-q]").forEach(function(el){el.value="";});document.querySelectorAll("input[type=radio]").forEach(function(r){r.checked=false;});document.querySelectorAll("input[type=checkbox]").forEach(function(c){c.checked=false;});clearFeedback();resultCard.classList.remove("show");resultBody.innerHTML="";document.body.classList.remove("graded");document.querySelectorAll("details.transcript").forEach(function(d){d.open=false;});for(var q=1;q<=40;q++){var chip=chipMap[q];if(chip)chip.classList.remove("ok","no","answered");}var bc=document.getElementById("bandChip");if(bc){bc.textContent="--";bc.classList.remove("show");}currentPart=0;switchPart(1);refreshPalette();window.scrollTo({top:0,behavior:"smooth"});}
+  document.getElementById("bbSubmit").addEventListener("click",submit);
+  document.getElementById("retakeBtn").addEventListener("click",resetAll);
+  document.getElementById("jumpScript").addEventListener("click",function(){document.getElementById("transcripts").scrollIntoView({behavior:"smooth",block:"start"});});
+  var HL_STORE="ielts-listening-highlights-"+(document.title||"test");
+  var hlBar=document.getElementById("hlBar"),hlHint=document.getElementById("hlHint");
+  var activeContainer=null,savedRange=null,containers=[];
+  document.querySelectorAll(".hlable").forEach(function(el,i){if(!el.dataset.hlId)el.dataset.hlId="hlc-"+i;containers.push(el);});
+  function textNodesIn(root){var out=[],n;var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(node){if(!node.nodeValue||!node.nodeValue.length)return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}});while((n=w.nextNode()))out.push(n);return out;}
+  function nodeOffsetMap(c){var nodes=textNodesIn(c),map=new Map(),pos=0;nodes.forEach(function(n){map.set(n,pos);pos+=n.nodeValue.length;});return map;}
+  function unwrapMarks(c){c.querySelectorAll("mark.hl").forEach(function(m){var p=m.parentNode;if(!p)return;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);});if(c.normalize)c.normalize();}
+  function markOffsets(c){var map=nodeOffsetMap(c),res=[];c.querySelectorAll("mark.hl").forEach(function(m){var inner=textNodesIn(m);if(!inner.length)return;var first=inner[0],last=inner[inner.length-1];var s=map.get(first),e=map.get(last);if(s==null||e==null)return;e+=last.nodeValue.length;if(e>s)res.push([s,e]);});res.sort(function(a,b){return a[0]-b[0];});return res;}
+  function wrapOffsets(c,s,e){var nodes=textNodesIn(c),pos=0,segs=[];for(var i=0;i<nodes.length;i++){var n=nodes[i],len=n.nodeValue.length;var ns=pos,ne=pos+len;var ss=Math.max(s,ns),ee=Math.min(e,ne);if(ee>ss)segs.push([n,ss-ns,ee-ns]);pos=ne;if(pos>=e)break;}
+    segs.forEach(function(seg){var node=seg[0],so=seg[1],eo=seg[2];var r=document.createRange();try{r.setStart(node,so);r.setEnd(node,eo);var m=document.createElement("mark");m.className="hl";r.surroundContents(m);}catch(err){}});}
+  function applyOffsets(c,ranges){unwrapMarks(c);ranges.slice().sort(function(a,b){return b[0]-a[0];}).forEach(function(r){wrapOffsets(c,r[0],r[1]);});}
+  function rangeToOffsets(c,range){var nodes=textNodesIn(c),pos=0,s=null,e=null;for(var i=0;i<nodes.length;i++){var n=nodes[i],len=n.nodeValue.length;if(n===range.startContainer)s=pos+range.startOffset;if(n===range.endContainer)e=pos+range.endOffset;pos+=len;}if(s==null||e==null||e<=s)return null;return [s,e];}
+  function saveHighlights(){var data={};containers.forEach(function(c){var o=markOffsets(c);if(o.length)data[c.dataset.hlId]=o;});try{localStorage.setItem(HL_STORE,JSON.stringify(data));}catch(e){}}
+  function loadHighlights(){var raw;try{raw=localStorage.getItem(HL_STORE);}catch(e){return;}if(!raw)return;var data;try{data=JSON.parse(raw);}catch(e){return;}containers.forEach(function(c){var o=data[c.dataset.hlId];if(o&&o.length)applyOffsets(c,o);});}
+  function clearAllHighlights(){containers.forEach(function(c){unwrapMarks(c);});try{localStorage.removeItem(HL_STORE);}catch(e){}flashHint("Highlights cleared");}
+  function flashHint(t){hlHint.classList.add("flash");var s=hlHint.querySelector("span:last-child"),o=s.textContent;s.textContent=t;setTimeout(function(){hlHint.classList.remove("flash");s.textContent=o;},1200);}
+  var cHl=document.getElementById("clearHighlightsLink");if(cHl)cHl.addEventListener("click",function(e){e.preventDefault();clearAllHighlights();var mp=document.getElementById("menuPop");if(mp)mp.classList.remove("show");});
+  document.addEventListener("click",function(e){var m=e.target.closest&&e.target.closest("mark.hl");if(!m)return;var p=m.parentNode;if(!p)return;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);if(p.normalize)p.normalize();saveHighlights();});
+  function hideHlBar(){hlBar.classList.remove("on");savedRange=null;activeContainer=null;}
+  function findContainer(node){var el=node.nodeType===1?node:node.parentElement;if(!el)return null;return el.closest(".hlable");}
+  function applyHighlight(){if(!savedRange||!activeContainer)return false;var o=rangeToOffsets(activeContainer,savedRange);if(!o)return false;var ex=markOffsets(activeContainer);ex.push(o);applyOffsets(activeContainer,ex);saveHighlights();var sel=window.getSelection();if(sel)sel.removeAllRanges();hideHlBar();flashHint("Highlighted");return true;}
+  document.addEventListener("mouseup",function(e){if(e.target.closest&&e.target.closest("#hlBar"))return;setTimeout(function(){var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount){hideHlBar();return;}var range=sel.getRangeAt(0);var c=findContainer(range.commonAncestorContainer);if(!c){hideHlBar();return;}var rect=range.getBoundingClientRect();if(!rect||(!rect.width&&!rect.height)){hideHlBar();return;}activeContainer=c;savedRange=range.cloneRange();hlBar.style.top=(rect.top+window.scrollY-10)+"px";hlBar.style.left=(rect.left+rect.width/2+window.scrollX)+"px";hlBar.classList.add("on");},10);});
+  document.addEventListener("mousedown",function(e){if(e.target.closest&&e.target.closest("#hlBar"))e.preventDefault();});
+  document.addEventListener("scroll",hideHlBar,{passive:true});window.addEventListener("resize",hideHlBar);
+  hlBar.addEventListener("click",function(e){var b=e.target.closest("button[data-act]");if(!b)return;if(b.dataset.act==="clear"){clearAllHighlights();hideHlBar();return;}if(b.dataset.act==="hl")applyHighlight();});
+  loadHighlights();
+  var secs=0,tEl=document.getElementById("timer");
+  function fmt(n){var h=Math.floor(n/3600),m=Math.floor((n%3600)/60),s=n%60;return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;}
+  setInterval(function(){secs++;if(tEl)tEl.textContent=fmt(secs);},1000);
+  var menuBtn=document.getElementById("menuBtn"),menuPop=document.getElementById("menuPop");
+  if(menuBtn&&menuPop){menuBtn.addEventListener("click",function(e){e.stopPropagation();menuPop.classList.toggle("show");});document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".menu-wrap"))menuPop.classList.remove("show");});}
+  var fb2=document.getElementById("focusBtn");if(fb2)fb2.addEventListener("click",function(){if(!document.fullscreenElement){if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen();}else if(document.exitFullscreen)document.exitFullscreen();});
+  var ex2=document.getElementById("exportLink");if(ex2)ex2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");window.print();});
+  var rl2=document.getElementById("resetLink");if(rl2)rl2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");if(confirm("Reset the test? All answers will be cleared."))resetAll();});
+  var gt2=document.getElementById("gotoTop");if(gt2)gt2.addEventListener("click",function(e){e.preventDefault();if(menuPop)menuPop.classList.remove("show");window.scrollTo({top:0,behavior:"smooth"});});
+  document.addEventListener("keydown",function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){e.preventDefault();submit();return;}
+    if(e.key==="Escape"){hideHlBar();return;}
+    if(e.altKey&&e.key>="1"&&e.key<="4"){e.preventDefault();switchPart(parseInt(e.key,10));return;}
+    if(e.key==="h"||e.key==="H"){var tag=(e.target.tagName||"").toLowerCase();if(tag==="input"||tag==="textarea"||tag==="select")return;var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;var range=sel.getRangeAt(0);var c=findContainer(range.commonAncestorContainer);if(!c)return;activeContainer=c;savedRange=range.cloneRange();applyHighlight();}
   });
 })();
-
-/* TIMER */
-let seconds = 0;
-setInterval(() => {
-  seconds++;
-  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
-  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
-  const s = String(seconds%60).padStart(2,"0");
-  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-/* ============================================
-   HIGHLIGHT / NOTE FEATURE
-   ============================================ */
-const hlPopup = document.getElementById("hl-popup");
-const notePopup = document.getElementById("note-popup");
-const passagesEl = document.getElementById("passagesPane");
-const questionsEl = document.getElementById("questionsPane");
-const fab = document.getElementById("hl-fab");
-
-let savedRange = null;
-let pendingNoteRange = null;
-let highlighterOn = false;
-let currentMark = null;
-let noteSaveTarget = null;
-
-fab.addEventListener("click", () => {
-  highlighterOn = !highlighterOn;
-  fab.classList.toggle("active", highlighterOn);
-  toast(highlighterOn
-    ? "Highlighter ON — select text or click a word"
-    : "Highlighter OFF — normal selection");
-});
-
-function showPopupAt(rect){
-  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
-  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
-  hlPopup.classList.add("show");
-}
-
-function isEditableTarget(el){
-  return el && (el.closest("input") || el.closest("select") ||
-                el.closest("button") || el.closest("label") ||
-                el.closest(".transcript-toggle"));
-}
-
-document.addEventListener("mouseup", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  setTimeout(() => {
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      const range = sel.getRangeAt(0);
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        if (isEditableTarget(e.target)) return;
-        savedRange = range.cloneRange();
-        showPopupAt(range.getBoundingClientRect());
-      }
-    }
-  }, 0);
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  if (isEditableTarget(e.target)) return;
-
-  const inP = e.target.closest(".passages");
-  const inQ = e.target.closest(".questions");
-  if (!inP && !inQ) return;
-
-  const existingMark = e.target.tagName === "MARK" ? e.target :
-                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
-  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
-
-  if (existingNote) {
-    const note = existingNote.dataset.note || "";
-    document.getElementById("note-text").value = note;
-    pendingNoteRange = null;
-    notePopup.classList.add("show");
-    noteSaveTarget = existingNote;
-    return;
-  }
-
-  if (existingMark) {
-    savedRange = null;
-    currentMark = existingMark;
-    showPopupAt(existingMark.getBoundingClientRect());
-    return;
-  }
-
-  if (highlighterOn) {
-    const sel = window.getSelection();
-    let range = null;
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      range = sel.getRangeAt(0);
-    } else {
-      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
-      if (wordRange) range = wordRange;
-    }
-    if (range) {
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        highlightRange(range);
-        window.getSelection().removeAllRanges();
-        hlPopup.classList.remove("show");
-        savedRange = null;
-      }
-    }
-  }
-});
-
-function getWordRangeFromPoint(x, y){
-  let node, offset;
-  if (document.caretRangeFromPoint){
-    const r = document.caretRangeFromPoint(x, y);
-    if (!r) return null;
-    node = r.startContainer; offset = r.startOffset;
-  } else if (document.caretPositionFromPoint){
-    const pos = document.caretPositionFromPoint(x, y);
-    if (!pos) return null;
-    node = pos.offsetNode; offset = pos.offset;
-  } else return null;
-  if (!node || node.nodeType !== 3) return null;
-  const text = node.textContent;
-  if (!text || !text.trim()) return null;
-  let start = offset, end = offset;
-  const isWord = c => /[\w'’\-]/i.test(c);
-  while (start > 0 && isWord(text[start-1])) start--;
-  while (end < text.length && isWord(text[end])) end++;
-  if (start === end) {
-    if (offset < text.length) end = offset + 1;
-  }
-  if (start >= end) return null;
-  const range = document.createRange();
-  try {
-    range.setStart(node, start);
-    range.setEnd(node, end);
-  } catch(err){ return null; }
-  return range;
-}
-
-document.getElementById("hl-highlight").addEventListener("click", () => {
-  if (currentMark) { hlPopup.classList.remove("show"); return; }
-  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
-  highlightRange(savedRange);
-  window.getSelection().removeAllRanges();
-  hlPopup.classList.remove("show");
-  savedRange = null;
-  toast("Text highlighted");
-});
-
-document.getElementById("hl-dehighlight").addEventListener("click", () => {
-  if (currentMark){
-    const parent = currentMark.parentNode;
-    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
-    parent.removeChild(currentMark);
-    currentMark = null;
-    hlPopup.classList.remove("show");
-    toast("Highlight removed");
-    return;
-  }
-  if (savedRange){
-    clearHighlightInRange(savedRange);
-    window.getSelection().removeAllRanges();
-    hlPopup.classList.remove("show");
-    savedRange = null;
-    toast("Highlight removed");
-  } else {
-    hlPopup.classList.remove("show");
-  }
-});
-
-document.getElementById("hl-note").addEventListener("click", () => {
-  if (!savedRange) { toast("Select text first"); return; }
-  pendingNoteRange = savedRange.cloneRange();
-  noteSaveTarget = null;
-  document.getElementById("note-text").value = "";
-  notePopup.classList.add("show");
-  hlPopup.classList.remove("show");
-});
-
-document.getElementById("hl-flashcard").addEventListener("click", () => {
-  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
-  if (!text) { toast("Select text first"); return; }
-  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
-  hlPopup.classList.remove("show");
-});
-
-function highlightRange(range){
-  try {
-    const mark = document.createElement("mark");
-    mark.className = "hl-user";
-    mark.appendChild(range.extractContents());
-    range.insertNode(mark);
-  } catch(err){
-    console.warn("Highlight failed:", err);
-  }
-}
-
-function clearHighlightInRange(range){
-  const container = range.commonAncestorContainer;
-  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
-  if (!root || !root.querySelectorAll) return;
-  const marks = root.querySelectorAll("mark.hl-user");
-  marks.forEach(m => {
-    try {
-      if (range.intersectsNode(m)) {
-        const parent = m.parentNode;
-        while (m.firstChild) parent.insertBefore(m.firstChild, m);
-        parent.removeChild(m);
-      }
-    } catch(err){}
-  });
-}
-
-document.getElementById("note-cancel").addEventListener("click", () => {
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-  noteSaveTarget = null;
-});
-
-document.getElementById("note-save").addEventListener("click", () => {
-  const noteText = document.getElementById("note-text").value.trim();
-
-  if (noteSaveTarget){
-    if (noteText){
-      noteSaveTarget.dataset.note = noteText;
-      noteSaveTarget.title = "Note: " + noteText;
-      toast("Note updated");
-    } else {
-      const parent = noteSaveTarget.parentNode;
-      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
-      parent.removeChild(noteSaveTarget);
-      toast("Note removed");
-    }
-    noteSaveTarget = null;
-    notePopup.classList.remove("show");
-    document.getElementById("note-text").value = "";
-    return;
-  }
-
-  if (!noteText || !pendingNoteRange) {
-    notePopup.classList.remove("show");
-    pendingNoteRange = null;
-    return;
-  }
-  try {
-    const span = document.createElement("span");
-    span.className = "hl-note";
-    span.title = "Note: " + noteText;
-    span.dataset.note = noteText;
-    span.appendChild(pendingNoteRange.extractContents());
-    pendingNoteRange.insertNode(span);
-    toast("Note saved");
-  } catch(err){
-    console.warn("Note failed:", err);
-  }
-  document.getElementById("note-text").value = "";
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-});
-
-document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (!confirm("Remove all highlights and notes from this test?")) return;
-  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
-    const parent = el.parentNode;
-    while (el.firstChild) parent.insertBefore(el.firstChild, el);
-    parent.removeChild(el);
-  });
-  toast("Highlights cleared");
-});
-
-/* SUBMIT */
-document.getElementById("submitBtn").addEventListener("click", () => {
-  let score = 0, answered = 0;
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong"));
-
-  const rows = [];
-  const grouped = new Set();
-  for (let n=1; n<=40; n++){
-    if (grouped.has(n)) continue;
-    const qEl = document.querySelector(`.q[data-q="${n}"]`);
-    if (!qEl) continue;
-    const ua = getUserAnswer(n);
-    if (ua.trim() !== "") answered++;
-    const ok = isCorrect(n, ua);
-    if (ok) score++;
-    qEl.classList.add(ok ? "correct" : "wrong");
-    const fb = qEl.querySelector(".feedback");
-    if (fb){
-      const key = (ANSWER_KEY[n]||[]).join(" / ");
-      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
-    }
-    // apply palette class to both paired question numbers
-    const q2 = qEl.dataset.q2;
-    [n, q2].forEach(num => {
-      if (!num) return;
-      const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${num}"]`);
-      if (pal) pal.classList.add(ok ? "correct" : "wrong");
-      if (num !== n) grouped.add(parseInt(num,10));
-    });
-    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
-  }
-
-  document.getElementById("resultScore").textContent = `${score} / 40`;
-  document.getElementById("resultSub").textContent =
-    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
-
-  const tbody = document.getElementById("resultBody");
-  tbody.innerHTML = "";
-  rows.forEach(r => {
-    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${r.n}${r.n===11?"–12":r.n===13?"–14":""}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
-    tbody.appendChild(tr);
-  });
-
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "Band " + estimateBand(score);
-  chip.classList.add("show");
-
-  document.getElementById("resultOverlay").classList.add("show");
-});
-
-/* REVIEW */
-document.getElementById("reviewBtn").addEventListener("click", () => {
-  const tbody = document.getElementById("previewBody");
-  tbody.innerHTML = "";
-  for (let n=1; n<=40; n++){
-    const ua = getUserAnswer(n);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
-    tbody.appendChild(tr);
-  }
-  document.getElementById("previewOverlay").classList.add("show");
-});
-
-document.querySelectorAll("[data-close]").forEach(btn =>
-  btn.addEventListener("click", () =>
-    document.getElementById(btn.dataset.close).classList.remove("show")));
-document.querySelectorAll(".overlay").forEach(ov =>
-  ov.addEventListener("click", e => {
-    if (e.target === ov) ov.classList.remove("show");
-  }));
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
-    hlPopup.classList.remove("show");
-    notePopup.classList.remove("show");
-  }
-});
-
-/* MENU */
-const menuPop = document.getElementById("menuPop");
-document.getElementById("menuBtn").addEventListener("click", e => {
-  e.stopPropagation(); menuPop.classList.toggle("show");
-});
-document.addEventListener("click", () => menuPop.classList.remove("show"));
-menuPop.addEventListener("click", e => e.stopPropagation());
-
-document.getElementById("exportLink").addEventListener("click", e => {
-  e.preventDefault(); window.print();
-});
-document.getElementById("resetLink").addEventListener("click", e => {
-  e.preventDefault(); doReset();
-});
-document.getElementById("gotoTop").addEventListener("click", e => {
-  e.preventDefault();
-  window.scrollTo({top:0, behavior:"smooth"});
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-});
-
-function doReset(){
-  if (!confirm("Clear all answers and reset the test?")) return;
-  document.getElementById("quiz").reset();
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong","answered"));
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "--"; chip.classList.remove("show");
-  document.getElementById("resultOverlay").classList.remove("show");
-  document.getElementById("previewOverlay").classList.remove("show");
-  document.querySelectorAll(".transcript-body").forEach(t => t.classList.remove("show"));
-  document.querySelectorAll(".transcript-toggle").forEach(t => {
-    t.querySelector("span:first-child").textContent = "📄 Show Transcript";
-    t.querySelector("span:last-child").textContent = "▼";
-  });
-  switchPart(1);
-  toast("Test reset. Good luck!");
-}
-
-document.getElementById("focusBtn").addEventListener("click", () =>
-  document.body.classList.add("focus-mode"));
-document.getElementById("exitFocusBtn").addEventListener("click", () =>
-  document.body.classList.remove("focus-mode"));
-
-switchPart(1);
-refreshPaletteAnswered();
-updateNavButtons();
 </script>
-
-</body>
+  </body>
 </html>

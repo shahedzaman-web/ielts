@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Trainer 1 Academic Listening Test 1 — Unlocked</title>
+<style>
+:root{
+  --bg:#eef2f6; --card:#fff; --ink:#1e293b; --muted:#64748b;
+  --brand:#0f766e; --brand-dark:#0d5c56;
+  --ok:#16a34a; --bad:#c2410c;
+  --line:#e2e8f0; --soft:#f8fafc; --hl:#fef08a;
+  --bbh:80px; --header-h:58px;
+  --text:#1e293b; --accent:#0f766e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:calc(var(--bbh) + 20px);
+}
+body.bb-off{padding-bottom:20px}
+.wrap{max-width:940px;margin:0 auto;padding:0 16px}
+::selection{background:var(--hl);color:#111}
+
+/* ---------- top bar ---------- */
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.topbar .wrap{display:flex;align-items:center;gap:10px;height:58px}
+.brand{font-weight:700;color:var(--brand);letter-spacing:.2px;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:400}
+.spacer{flex:1}
+.timer{
+  font-variant-numeric:tabular-nums;font-weight:700;background:var(--soft);
+  border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:15px;
+}
+.btn{
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  padding:8px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;
+  transition:.15s;white-space:nowrap;
+}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-dark);border-color:var(--brand-dark)}
+.btn.ghost{background:transparent}
+.btn.small{padding:6px 11px;font-size:13px}
+.btn.hl-btn{
+  background:#fef3c7;border-color:#fcd34d;color:#78350f;
+}
+.btn.hl-btn:hover{background:#fde68a}
+
+/* ---------- intro ---------- */
+h1{font-size:26px;margin:24px 0 6px}
+.lead{color:var(--muted);margin:0 0 14px}
+
+/* highlight banner */
+.hl-banner{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+  padding:12px 16px;margin-bottom:20px;font-size:14px;color:#78350f;
+}
+.hl-banner .hl-icon{font-size:20px;line-height:1}
+.hl-banner .hl-text{flex:1;min-width:180px}
+.hl-banner strong{color:#92400e}
+.hl-banner kbd{
+  background:#fde68a;border:1px solid #f59e0b;border-radius:5px;
+  padding:1px 6px;font-size:12px;font-family:inherit;font-weight:700;
+}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;margin-bottom:22px;box-shadow:0 1px 2px rgba(15,23,42,.04);
+}
+.card h2{font-size:20px;margin:0 0 4px}
+.card h3{font-size:17px;margin:18px 0 8px}
+.card p{margin:8px 0}
+audio{width:100%;margin:10px 0 6px}
+
+/* ---------- part switching ---------- */
+.part{display:none}
+.part.current{display:block}
+.part-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:14px;
+}
+.part-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--brand);color:#fff;font-weight:800;font-size:13px;
+  padding:4px 12px;border-radius:999px;letter-spacing:.3px;
+}
+.part-desc{color:var(--muted);font-size:14px;font-weight:600}
+.part-audio-label{font-size:13px;color:var(--muted);font-weight:600;margin-left:auto}
+
+/* ---------- questions ---------- */
+.notes{list-style:none;padding:0;margin:0}
+.notes li{padding:9px 0 9px 4px;border-bottom:1px dashed var(--line)}
+.notes li:last-child{border-bottom:none}
+.q{white-space:nowrap}
+
+.num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:24px;height:24px;padding:0 6px;margin-right:5px;
+  background:#e2e8f0;color:#334155;border-radius:6px;
+  font-size:13px;font-weight:700;vertical-align:middle;
+}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #99f6e4;border-color:#5eead4;}
+input[type=text].is-right{border-color:#86efac;background:#f0fdf4}
+input[type=text].is-wrong{border-color:#fdba74;background:#ffedd5}
+
+.mcq{margin:10px 0 16px;padding:4px 6px;border-radius:8px}
+.mcq .stem{font-weight:600}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;cursor:pointer;border-radius:6px}
+.opt:hover{background:var(--soft)}
+.opt input{margin-top:5px;accent-color:var(--brand)}
+.opt .ltr{font-weight:700;color:var(--brand);min-width:16px}
+.opt.picked-ok{background:#f0fdf4}
+.opt.picked-no{background:#ffedd5}
+.opt.key{outline:1px dashed #86efac}
+
+select{
+  font:inherit;font-size:15px;padding:4px 8px;border-radius:6px;
+  border:1px solid #cbd5e1;border-bottom:2px solid #94a3b8;background:#fff;outline:none;
+}
+select:focus{border-color:var(--brand)}
+select.is-right{border-color:#86efac;background:#f0fdf4}
+select.is-wrong{border-color:#fdba74;background:#ffedd5}
+
+.matchlist{list-style:none;padding:0;margin:6px 0 0}
+.matchlist li{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+.matchlist li:last-child{border-bottom:none}
+.optbox{
+  background:var(--soft);border:1px solid var(--line);border-radius:10px;
+  padding:12px 14px;margin:10px 0;font-size:15px;
+}
+.optbox b{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 16px}
+
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-size:14px}
+td input[type=text]{min-width:120px}
+
+.diagram{width:100%;max-width:520px;display:block;margin:10px auto;border-radius:10px;border:1px solid var(--line)}
+.diagram-note{text-align:center;color:var(--muted);font-size:14px}
+
+/* inline feedback */
+.feedback{font-size:13px;font-weight:700;margin-left:6px;white-space:nowrap}
+.feedback.ok{color:var(--ok)}
+.feedback.no{color:var(--bad)}
+.feedback.no em{font-style:normal;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:5px}
+
+/* ---------- post-submit sections ---------- */
+.post-submit{display:none}
+body.graded .post-submit{display:block}
+
+/* ---------- results ---------- */
+.resultcard{display:none}
+.resultcard.show{display:block}
+.score{font-size:34px;font-weight:800;color:var(--brand);margin:0}
+.band{color:var(--muted);margin:2px 0 6px}
+.result-note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:10px;
+  padding:10px 14px;font-size:14px;margin:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+table.result td.wrong{color:var(--bad);font-weight:600}
+table.result td.right{color:var(--ok);font-weight:600}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
+.pill.ok{background:#dcfce7;color:#166534}
+.pill.no{background:#ffedd5;color:#9a3412}
+
+/* ---------- transcripts ---------- */
+details.transcript{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:16px}
+details.transcript summary{cursor:pointer;font-weight:700;color:var(--brand)}
+details.transcript[open] summary{margin-bottom:8px}
+details.transcript p{margin:10px 0;font-size:15px;color:#334155}
+
+/* ---------- highlight markup ---------- */
+mark.hl{
+  background:var(--hl);color:inherit;padding:0 1px;border-radius:3px;cursor:pointer;
+  box-shadow:inset 0 -2px 0 #f59e0b;
+}
+mark.hl:hover{background:#fde047}
+
+/* floating selection toolbar */
+#hlBar{
+  position:absolute;z-index:90;display:none;
+  background:#1e293b;border-radius:10px;
+  padding:6px;box-shadow:0 10px 30px rgba(2,6,23,.42);
+  font-size:13px;gap:4px;align-items:center;
+  transform:translate(-50%,-100%);
+  animation:hlpop .12s ease-out;
+}
+@keyframes hlpop{
+  from{opacity:0;transform:translate(-50%,-90%) scale(.92);}
+  to{opacity:1;transform:translate(-50%,-100%) scale(1);}
+}
+#hlBar.on{display:flex}
+#hlBar button{
+  background:transparent;border:none;color:#fff;cursor:pointer;
+  font:inherit;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;
+}
+#hlBar button:hover{background:rgba(255,255,255,.16)}
+#hlBar .hl-main{background:#facc15;color:#422006}
+#hlBar .hl-main:hover{background:#fde047}
+#hlBar .sep{width:1px;height:20px;background:rgba(255,255,255,.22);margin:0 2px}
+
+/* persistent floating highlight indicator */
+#hlHint{
+  position:fixed;right:16px;top:calc(var(--header-h) + 16px);z-index:55;
+  background:#fffbeb;border:1px solid #fde68a;color:#78350f;
+  border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;
+  box-shadow:0 4px 14px rgba(120,53,15,.12);
+  display:flex;align-items:center;gap:7px;
+  cursor:default;transition:.2s;
+}
+#hlHint.flash{background:#fde68a;transform:scale(1.06)}
+#hlHint .dot{
+  width:8px;height:8px;border-radius:50%;background:#f59e0b;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:.55;transform:scale(.8);}
+}
+body.bb-off #hlHint{top:calc(var(--header-h) + 16px)}
+
+/* ---------- bottom bar ---------- */
+.bottombar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:#fff;border-top:1px solid var(--line);
+  box-shadow:0 -3px 16px rgba(15,23,42,.08);
+  transition:transform .25s ease;
+}
+.bottombar.off{transform:translateY(110%)}
+.bb-inner{
+  max-width:1000px;margin:0 auto;padding:8px 12px;
+  display:flex;flex-direction:column;gap:6px;
+}
+
+.bb-top{
+  display:flex;align-items:center;gap:10px;
+  overflow-x:auto;padding:2px 0 4px;
+  scrollbar-width:thin;
+}
+.bb-top::-webkit-scrollbar{height:6px}
+.bb-top::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+
+.bb-tabs{
+  display:flex;gap:4px;flex:0 0 auto;
+  padding-right:10px;border-right:1px solid var(--line);
+}
+
+.bb-tab{
+  border:1px solid var(--line);background:#fff;color:var(--muted);
+  font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+  padding:6px 12px;border-radius:7px;cursor:pointer;
+  white-space:nowrap;transition:.12s;
+}
+.bb-tab:hover{border-color:var(--brand);color:var(--brand)}
+.bb-tab.current{background:var(--brand);border-color:var(--brand);color:#fff}
+
+.bb-palette{
+  display:flex;gap:4px;flex:1;flex-wrap:nowrap;
+  align-items:center;min-width:0;
+}
+
+.chip{
+  width:30px;height:30px;border-radius:7px;border:1px solid var(--line);
+  background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  transition:.12s;padding:0;
+}
+.chip:hover{border-color:var(--brand);color:var(--brand)}
+.chip.answered{background:#ccfbf1;border-color:#5eead4;color:#115e59}
+.chip.ok{background:#dcfce7;border-color:#86efac;color:#166534}
+.chip.no{background:#ffedd5;border-color:#fdba74;color:#9a3412}
+.chip.active{outline:2px solid var(--brand);outline-offset:1px}
+
+.bb-bottom{
+  display:flex;align-items:center;gap:10px;
+  padding-top:6px;border-top:1px dashed var(--line);
+}
+.bb-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
+.bb-progress{
+  font-size:13px;font-weight:800;color:var(--muted);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.bb-hide{
+  border:1px solid var(--line);background:#fff;border-radius:8px;
+  width:32px;height:32px;cursor:pointer;color:var(--muted);font-size:15px;line-height:1;
+}
+.bb-hide:hover{background:var(--soft);color:var(--ink)}
+
+#bbShow{
+  position:fixed;right:16px;bottom:16px;z-index:71;display:none;
+  background:var(--brand);color:#fff;border:none;border-radius:999px;
+  padding:11px 18px;font-weight:700;font-size:14px;cursor:pointer;
+  box-shadow:0 8px 22px rgba(15,118,110,.32);
+}
+#bbShow.on{display:block}
+
+footer{color:var(--muted);font-size:14px;text-align:center;padding:26px 16px 40px}
+footer a{color:var(--muted)}
+
+@media (max-width:600px){
+  .brand span{display:none}
+  .bb-progress{display:none}
+  .bb-inner{padding:6px 8px;gap:4px}
+  .card{padding:18px 16px}
+  h1{font-size:22px}
+  .bb-tab{padding:5px 9px;font-size:10px}
+  .chip{width:28px;height:28px;font-size:12px}
+  #hlHint{font-size:12px;padding:6px 10px;right:10px;}
+}
+@media print{
+  .topbar,.app-header,.bottombar,#bbShow,#hlBar,#hlHint{display:none!important}
+  body{padding-bottom:0}
+  .part{display:block!important}
+  .card{break-inside:avoid;box-shadow:none}
+  .post-submit{display:block!important}
+  details.transcript{display:block}
+  details.transcript > *{display:block!important}
+}
+
+/* ---------- app header (sticky) ---------- */
+.app-header{
+  position:sticky;top:0;z-index:60;height:var(--header-h);
+  background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;
+  box-shadow:0 1px 4px rgba(15,23,42,.05);
+}
+.app-header > a:first-child{
+  font-size:20px;line-height:1;text-decoration:none;
+  width:38px;height:38px;flex:0 0 auto;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:8px;background:var(--soft);border:1px solid var(--line);
+  transition:.15s;
+}
+.app-header > a:first-child:hover{background:#ccfbf1;border-color:#5eead4}
+.app-header .logo{height:34px;display:block;}
+.app-header h1{
+  font-size:14px;font-weight:600;margin:0;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:var(--text);
+}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{
+  background:#0f172a;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;
+  opacity:.35;transition:.2s;
+}
+.band-chip.show{opacity:1;background:#0f766e;}
+.timer-chip{
+  background:#0f172a;color:#fff;font-size:13px;font-weight:700;
+  padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;gap:6px;
+}
+.icon-btn{
+  background:#fff;border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:.12s;
+}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{
+  display:none;position:absolute;right:0;top:calc(100% + 8px);
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;
+  overflow:hidden;z-index:100;
+}
+.menu-pop.show{display:block;}
+.menu-pop a{
+  display:block;padding:10px 14px;font-size:13px;color:var(--text);
+  text-decoration:none;border-bottom:1px solid #f1f5f9;
+}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+@media (max-width:600px){
+  .app-header{padding:0 10px;gap:8px}
+  .app-header h1{font-size:12px}
+  .timer-chip{padding:4px 8px;font-size:12px}
+  .icon-btn{padding:4px 8px;font-size:12px}
+  .band-chip{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <a href="./../index.html" title="Home">📚</a>
+  <h1>Official Cambridge Guide to IELTS Academic Listening Test 1</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="focusBtn" type="button">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn" type="button">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- persistent highlight indicator -->
+<div id="hlHint" title="Select any text to highlight it">
+  <span class="dot"></span>
+  <span>Highlight mode ON</span>
+</div>
+
+<main class="wrap">
+
+  <h1>IELTS Trainer 1 Academic Listening Test 1</h1>
+  <p class="lead">4 parts · 40 questions · switch parts with the tabs at the bottom.</p>
+
+
+  <!-- ================= PART 1 ================= -->
+  <section class="card part current hlable" id="part1" data-part="1">
+    <div class="part-head">
+      <span class="part-badge">Part 1</span>
+      <span class="part-desc">Questions 1–10 · Complete the notes</span>
+      <span class="part-audio-label">Listen and answer</span>
+    </div>
+    <audio controls preload="none" src="https://ielts-listening-audio.engnovatemedia.com/3146563-ielts_trainer_1_academic_listening_test_1_1.mp3"></audio>
+
+    <p>Complete the notes below.<br>
+       Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+
+    <h3>Cycling holiday in Austria</h3>
+    <ul class="notes">
+      <li>Holiday begins on <span class="q"><span class="num">1</span><input type="text" data-q="1" aria-label="Question 1" autocomplete="off" spellcheck="false"></span>.</li>
+      <li>No more than <span class="q"><span class="num">2</span><input type="text" data-q="2" aria-label="Question 2" autocomplete="off" spellcheck="false"></span> people in cycling group.</li>
+      <li>Each day, group cycles <span class="q"><span class="num">3</span><input type="text" data-q="3" aria-label="Question 3" autocomplete="off" spellcheck="false"></span> on average.</li>
+      <li>Some of the hotels have a <span class="q"><span class="num">4</span><input type="text" data-q="4" aria-label="Question 4" autocomplete="off" spellcheck="false"></span>.</li>
+      <li>Holiday costs £ <span class="q"><span class="num">5</span><input type="text" data-q="5" aria-label="Question 5" autocomplete="off" spellcheck="false"></span> per person without flights.</li>
+      <li>All food included except <span class="q"><span class="num">6</span><input type="text" data-q="6" aria-label="Question 6" autocomplete="off" spellcheck="false"></span>.</li>
+      <li>Essential to bring a <span class="q"><span class="num">7</span><input type="text" data-q="7" aria-label="Question 7" autocomplete="off" spellcheck="false"></span>.</li>
+      <li>Discount possible on equipment at www. <span class="q"><span class="num">8</span><input type="text" data-q="8" aria-label="Question 8" autocomplete="off" spellcheck="false"></span> .com</li>
+      <li>Possible that the <span class="q"><span class="num">9</span><input type="text" data-q="9" aria-label="Question 9" autocomplete="off" spellcheck="false"></span> may change.</li>
+      <li>Guided tour of a <span class="q"><span class="num">10</span><input type="text" data-q="10" aria-label="Question 10" autocomplete="off" spellcheck="false"></span> is arranged.</li>
+    </ul>
+  </section>
+
+  <!-- ================= PART 2 ================= -->
+  <section class="card part hlable" id="part2" data-part="2">
+    <div class="part-head">
+      <span class="part-badge">Part 2</span>
+      <span class="part-desc">Questions 11–20 · Multiple choice &amp; matching</span>
+      <span class="part-audio-label">Listen and answer</span>
+    </div>
+    <audio controls preload="none" src="https://ielts-listening-audio.engnovatemedia.com/3146570-ielts_trainer_1_academic_listening_test_1_2.mp3"></audio>
+
+    <h3>Questions 11–14</h3>
+    <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+
+    <div class="mcq">
+      <div class="stem"><span class="num">11</span> The market is now situated</div>
+      <label class="opt"><input type="radio" name="q11" value="A"><span class="ltr">A</span><span>under a car park.</span></label>
+      <label class="opt"><input type="radio" name="q11" value="B"><span class="ltr">B</span><span>beside the cathedral.</span></label>
+      <label class="opt"><input type="radio" name="q11" value="C"><span class="ltr">C</span><span>near the river.</span></label>
+    </div>
+
+    <div class="mcq">
+      <div class="stem"><span class="num">12</span> On only one day a week the market sells</div>
+      <label class="opt"><input type="radio" name="q12" value="A"><span class="ltr">A</span><span>antique furniture.</span></label>
+      <label class="opt"><input type="radio" name="q12" value="B"><span class="ltr">B</span><span>local produce.</span></label>
+      <label class="opt"><input type="radio" name="q12" value="C"><span class="ltr">C</span><span>hand-made items.</span></label>
+    </div>
+
+    <div class="mcq">
+      <div class="stem"><span class="num">13</span> The area is well known for</div>
+      <label class="opt"><input type="radio" name="q13" value="A"><span class="ltr">A</span><span>ice cream.</span></label>
+      <label class="opt"><input type="radio" name="q13" value="B"><span class="ltr">B</span><span>a cake.</span></label>
+      <label class="opt"><input type="radio" name="q13" value="C"><span class="ltr">C</span><span>a fish dish.</span></label>
+    </div>
+
+    <div class="mcq">
+      <div class="stem"><span class="num">14</span> What change has taken place in the harbour area?</div>
+      <label class="opt"><input type="radio" name="q14" value="A"><span class="ltr">A</span><span>Fish can now be bought from the fishermen.</span></label>
+      <label class="opt"><input type="radio" name="q14" value="B"><span class="ltr">B</span><span>The restaurants have moved to a different part.</span></label>
+      <label class="opt"><input type="radio" name="q14" value="C"><span class="ltr">C</span><span>There are fewer restaurants than there used to be.</span></label>
+    </div>
+
+    <h3>Questions 15–20</h3>
+    <p>Which advantage is mentioned for each of the following restaurants?<br>
+       Choose <strong>SIX</strong> answers from the box and write the correct letter, A–H, next to questions 15–20.</p>
+
+    <div class="optbox">
+      <b>Advantages</b>
+      <div class="optgrid">
+        <div><strong>A</strong> the decoration</div>
+        <div><strong>B</strong> easy parking</div>
+        <div><strong>C</strong> entertainment</div>
+        <div><strong>D</strong> excellent service</div>
+        <div><strong>E</strong> good value</div>
+        <div><strong>F</strong> good views</div>
+        <div><strong>G</strong> quiet location</div>
+        <div><strong>H</strong> wide menu</div>
+      </div>
+    </div>
+
+    <ul class="matchlist">
+      <li><span>• Merrivales</span><span class="num">15</span>
+        <select data-q="15" aria-label="Question 15"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+      <li><span>• The Lobster Pot</span><span class="num">16</span>
+        <select data-q="16" aria-label="Question 16"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+      <li><span>• Elliots</span><span class="num">17</span>
+        <select data-q="17" aria-label="Question 17"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+      <li><span>• The Cabin</span><span class="num">18</span>
+        <select data-q="18" aria-label="Question 18"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+      <li><span>• The Olive Tree</span><span class="num">19</span>
+        <select data-q="19" aria-label="Question 19"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+      <li><span>• The Old School Restaurant</span><span class="num">20</span>
+        <select data-q="20" aria-label="Question 20"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+    </ul>
+  </section>
+
+  <!-- ================= PART 3 ================= -->
+  <section class="card part hlable" id="part3" data-part="3">
+    <div class="part-head">
+      <span class="part-badge">Part 3</span>
+      <span class="part-desc">Questions 21–30 · Flow-chart &amp; diagram</span>
+      <span class="part-audio-label">Listen and answer</span>
+    </div>
+    <audio controls preload="none" src="https://ielts-listening-audio.engnovatemedia.com/3146569-ielts_trainer_1_academic_listening_test_1_3.mp3"></audio>
+
+    <h3>Questions 21–26</h3>
+    <p>Complete the flow-chart below.<br>
+       Choose <strong>SIX</strong> answers from the box and write the correct letter, A–I, next to questions 21–26.</p>
+
+    <div class="optbox">
+      <b>Options</b>
+      <div class="optgrid">
+        <div><strong>A</strong> actors</div>
+        <div><strong>B</strong> furniture</div>
+        <div><strong>C</strong> background noise</div>
+        <div><strong>D</strong> costumes</div>
+        <div><strong>E</strong> local council</div>
+        <div><strong>F</strong> equipment</div>
+        <div><strong>G</strong> shooting schedule</div>
+        <div><strong>H</strong> understudies</div>
+        <div><strong>I</strong> shopowners</div>
+      </div>
+    </div>
+
+    <p style="font-weight:700;margin-top:16px">FILM PROJECT</p>
+    <ul class="matchlist">
+      <li><span>visit locations and discuss</span><span class="num">21</span>
+        <select data-q="21" aria-label="Question 21"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+      <li><span>↓ contact the</span><span class="num">22</span><span>about roadworks</span>
+        <select data-q="22" aria-label="Question 22"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+      <li><span>↓ plan the</span><span class="num">23</span>
+        <select data-q="23" aria-label="Question 23"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+      <li><span>↓ hold auditions and recheck availability of the</span><span class="num">24</span>
+        <select data-q="24" aria-label="Question 24"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+      <li><span>↓ choose the</span><span class="num">25</span><span>from the volunteers</span>
+        <select data-q="25" aria-label="Question 25"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+      <li><span>↓ rehearse</span></li>
+      <li><span>↓ collect</span><span class="num">26</span><span>and organise food and transport</span>
+        <select data-q="26" aria-label="Question 26"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></li>
+    </ul>
+
+    <h3>Questions 27–30</h3>
+    <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, A–G, next to questions 27–30.</p>
+
+    <div class="optbox">
+      <b>Options</b>
+      <div class="optgrid">
+        <div><strong>A</strong> lights</div>
+        <div><strong>B</strong> fixed camera</div>
+        <div><strong>C</strong> mirror</div>
+        <div><strong>D</strong> torches</div>
+        <div><strong>E</strong> wooden screen</div>
+        <div><strong>F</strong> bike</div>
+        <div><strong>G</strong> large box</div>
+      </div>
+    </div>
+
+    <img class="diagram"
+         src="https://engnovate.com/wp-content/uploads/2026/05/ielts-trainer-1-academic-listening-test-1-5-diagram-69fe8b58010f9.jpg"
+         alt="Diagram of the water mill"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <p class="diagram-note" style="display:none">
+      Diagram image could not be loaded — open the original page to view it.
+    </p>
+
+    <ul class="matchlist">
+      <li><span class="num">27</span><select data-q="27" aria-label="Question 27"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+      <li><span class="num">28</span><select data-q="28" aria-label="Question 28"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+      <li><span class="num">29</span><select data-q="29" aria-label="Question 29"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+      <li><span class="num">30</span><select data-q="30" aria-label="Question 30"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></li>
+    </ul>
+  </section>
+
+  <!-- ================= PART 4 ================= -->
+  <section class="card part hlable" id="part4" data-part="4">
+    <div class="part-head">
+      <span class="part-badge">Part 4</span>
+      <span class="part-desc">Questions 31–40 · Complete the table</span>
+      <span class="part-audio-label">Listen and answer</span>
+    </div>
+    <audio controls preload="none" src="https://ielts-listening-audio.engnovatemedia.com/3146568-ielts_trainer_1_academic_listening_test_1_4.mp3"></audio>
+
+    <h3>Questions 31–40</h3>
+    <p>Complete the table below.<br>
+       Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+
+    <table>
+      <thead>
+        <tr><th colspan="4" style="text-align:center">EXOTIC PESTS</th></tr>
+        <tr><th>Origin</th><th>Name</th><th>New habitat</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Australia</td>
+          <td>red-backed spider</td>
+          <td>New Zealand and Japan</td>
+          <td>even on island in middle of
+            <span class="num">31</span><input type="text" data-q="31" aria-label="Question 31" autocomplete="off" spellcheck="false"></td>
+        </tr>
+        <tr>
+          <td>England</td>
+          <td>rabbit</td>
+          <td>Australia</td>
+          <td>800 years ago: imported into England to be used for
+            <span class="num">32</span><input type="text" data-q="32" aria-label="Question 32" autocomplete="off" spellcheck="false"></td>
+        </tr>
+        <tr>
+          <td>America</td>
+          <td>fire ants</td>
+          <td><span class="num">33</span><input type="text" data-q="33" aria-label="Question 33" autocomplete="off" spellcheck="false"> in Brisbane</td>
+          <td>imported by chance</td>
+        </tr>
+        <tr>
+          <td>Australia</td>
+          <td><span class="num">34</span><input type="text" data-q="34" aria-label="Question 34" autocomplete="off" spellcheck="false"></td>
+          <td>Scotland</td>
+          <td>deliberately introduced in order to improve
+            <span class="num">35</span><input type="text" data-q="35" aria-label="Question 35" autocomplete="off" spellcheck="false"> (not effective)</td>
+        </tr>
+        <tr>
+          <td>New Zealand</td>
+          <td>flatworm</td>
+          <td><span class="num">36</span><input type="text" data-q="36" aria-label="Question 36" autocomplete="off" spellcheck="false"> Europe</td>
+          <td>accidental introduction inside imported
+            <span class="num">37</span><input type="text" data-q="37" aria-label="Question 37" autocomplete="off" spellcheck="false"></td>
+        </tr>
+        <tr>
+          <td>Japan</td>
+          <td><span class="num">38</span><input type="text" data-q="38" aria-label="Question 38" autocomplete="off" spellcheck="false"></td>
+          <td>Australian coastal waters</td>
+          <td>some advantages</td>
+        </tr>
+        <tr>
+          <td>Australia</td>
+          <td>budgerigar</td>
+          <td>urban areas of south-east
+            <span class="num">39</span><input type="text" data-q="39" aria-label="Question 39" autocomplete="off" spellcheck="false"></td>
+          <td>smaller flocks because of arrival of
+            <span class="num">40</span><input type="text" data-q="40" aria-label="Question 40" autocomplete="off" spellcheck="false"> in recent years</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= RESULTS (after submit) ================= -->
+  <section class="card resultcard" id="resultCard">
+    <h2>Your result</h2>
+    <p class="score" id="scoreLine">0 / 40</p>
+    <p class="band" id="bandLine"></p>
+
+    <div class="result-note">
+      <strong>Audioscript and full answer key are now available below.</strong>
+      <button class="btn small" id="jumpScript" type="button">Jump to audioscript ↓</button>
+      <button class="btn small" id="retakeBtn" type="button">Reset &amp; retake</button>
+    </div>
+
+    <div style="overflow-x:auto">
+      <table class="result">
+        <thead><tr><th>#</th><th>Your answer</th><th>Correct answer</th><th></th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= ANSWER KEY (after submit) ================= -->
+  <section class="card post-submit hlable" id="answers">
+    <h2>Answer key</h2>
+    <div class="optbox">
+      <b>Part 1</b>
+      1&nbsp;17 April &nbsp;·&nbsp; 2&nbsp;16 &nbsp;·&nbsp; 3&nbsp;45 km &nbsp;·&nbsp; 4&nbsp;swimming pool &nbsp;·&nbsp; 5&nbsp;1013<br>
+      6&nbsp;snacks &nbsp;·&nbsp; 7&nbsp;helmet &nbsp;·&nbsp; 8&nbsp;ballantyne &nbsp;·&nbsp; 9&nbsp;route &nbsp;·&nbsp; 10&nbsp;theatre
+    </div>
+    <div class="optbox">
+      <b>Part 2</b>
+      11&nbsp;A &nbsp;·&nbsp; 12&nbsp;C &nbsp;·&nbsp; 13&nbsp;B &nbsp;·&nbsp; 14&nbsp;B<br>
+      15&nbsp;D &nbsp;·&nbsp; 16&nbsp;H &nbsp;·&nbsp; 17&nbsp;F &nbsp;·&nbsp; 18&nbsp;G &nbsp;·&nbsp; 19&nbsp;C &nbsp;·&nbsp; 20&nbsp;A
+    </div>
+    <div class="optbox">
+      <b>Part 3</b>
+      21&nbsp;C &nbsp;·&nbsp; 22&nbsp;E &nbsp;·&nbsp; 23&nbsp;G &nbsp;·&nbsp; 24&nbsp;A &nbsp;·&nbsp; 25&nbsp;H &nbsp;·&nbsp; 26&nbsp;B<br>
+      27–30: the four items placed on the diagram are <strong>B</strong> (fixed camera),
+      <strong>A</strong> (lights), <strong>E</strong> (wooden screen) and <strong>G</strong> (large box) —
+      <em>mirror (C) is the distractor</em>. Match them against the labelled positions in the diagram.
+    </div>
+    <div class="optbox">
+      <b>Part 4</b>
+      31&nbsp;Atlantic &nbsp;·&nbsp; 32&nbsp;food &nbsp;·&nbsp; 33&nbsp;gardens &nbsp;·&nbsp; 34&nbsp;earthworm &nbsp;·&nbsp; 35&nbsp;soil (condition)<br>
+      36&nbsp;north-west &nbsp;·&nbsp; 37&nbsp;plant pots &nbsp;·&nbsp; 38&nbsp;seaweed &nbsp;·&nbsp; 39&nbsp;(United) States &nbsp;·&nbsp; 40&nbsp;competitors
+    </div>
+  </section>
+
+  <!-- ================= TRANSCRIPTS (after submit) ================= -->
+  <section class="card post-submit hlable" id="transcripts">
+    <h2>Audioscript</h2>
+    <p class="lead" style="margin:0 0 12px">Select any text and press <strong>Highlight</strong> to mark it. Click a highlight to remove it.</p>
+
+    <details class="transcript hlable" id="script1">
+      <summary>Part 1 — Cycling holiday in Austria</summary>
+      <p>You will hear a telephone conversation between a woman and a man who works for a holiday company, about a holiday she would like to go on.</p>
+      <p><strong>Man:</strong> 'Holidays for You'. Sean speaking. Can I help you?<br>
+      <strong>Woman:</strong> Oh hi. I've been looking at your website. Um, I'm interested in a cycling holiday in Austria in April.<br>
+      <strong>Man:</strong> Ah! We have two trips in April – one lasts fourteen days and the other ten days.<br>
+      <strong>Woman:</strong> Mm … I think the 10-day trip is better. So let's see. I've got a calendar here. What are the dates?</p>
+      <p><strong>Man:</strong> Well, that trip is in the middle of the month. It starts on the 17th of April and it finishes on the 27th.<br>
+      <strong>Woman:</strong> That suits me. I can't leave work before the 10th of April.<br>
+      <strong>Man:</strong> Let me see if there are any spaces. Is it just for yourself?<br>
+      <strong>Woman:</strong> Myself and my sister – so two of us.<br>
+      <strong>Man:</strong> Um, yes. We have spaces.<br>
+      <strong>Woman:</strong> Is it a big group?<br>
+      <strong>Man:</strong> At the moment there are 12 people booked on this trip and with you two that will be 14. The maximum number is 16 so it's almost fully booked. We can't go over that because it's hard to keep a larger group together.</p>
+      <p><strong>Woman:</strong> I need to check that I'm fit enough for this but the distances look OK. The website says we'll ride approximately 45 km a day. Is that right?<br>
+      <strong>Man:</strong> That's correct and I've got the exact distances here. It really depends on which part of the trip. Some days are only 35 km and some are more. But you'll never have to cycle more than 50 km in one day.<br>
+      <strong>Woman:</strong> Oh, OK. I can manage that. And we stay in hotels?<br>
+      <strong>Man:</strong> Yes. They all have restaurants and the rooms have en-suite facilities.<br>
+      <strong>Woman:</strong> And do they have pools? It's how I relax after a long day.<br>
+      <strong>Man:</strong> There is a swimming pool in a few of the hotels but none of them has a gym.<br>
+      <strong>Woman:</strong> I don't think we'll need a gym after all that cycling! I'd better find out how much the holiday costs before I get too excited.<br>
+      <strong>Man:</strong> Including flights it's £1,177 for one person.<br>
+      <strong>Woman:</strong> Oh, we'll book our own flights on the Internet.<br>
+      <strong>Man:</strong> Ah, that's just £1,013 then. And we can book insurance for you if you want.<br>
+      <strong>Woman:</strong> Mm … and which meals are included in that price?<br>
+      <strong>Man:</strong> Well, er, breakfast of course. And the hotels will provide you with a packed lunch each day. We do stop during the afternoon in a village somewhere for a rest, so any snacks you buy then are extra. Then dinner will be in the hotel every evening and that's included in the price of the holiday.</p>
+      <p><strong>Woman:</strong> And you provide the bicycles of course. What else?<br>
+      <strong>Man:</strong> A lock and a bell come with the bike as well as lights, although you shouldn't need to cycle in the dark. There's a small bag, or pannier, on the front of the bike, where you can put the things you want to take with you during the day like water or fruit. But we won't allow you to cycle unless you bring a helmet. We don't provide these locally because, like walking boots on a walking holiday, it's really important it fits properly.<br>
+      <strong>Woman:</strong> OK.<br>
+      <strong>Man:</strong> If there's any special gear you need for your holiday, we recommend a particular website and you can get a discount by quoting your booking reference.<br>
+      <strong>Woman:</strong> Great. What is it?<br>
+      <strong>Man:</strong> It's www.ballantyne.com. That's all one word, and I'll spell it for you: www dot B-A double L-A-N-T-Y-N-E dot com.<br>
+      <strong>Woman:</strong> Good. I've got that down. I've been looking at your website while we've been talking. I see we cycle along the river Danube?<br>
+      <strong>Man:</strong> Yes, it's one of Europe's most well-known areas for cycling.<br>
+      <strong>Woman:</strong> It looks fascinating – lots of beautiful countryside and things to see.<br>
+      <strong>Man:</strong> I should warn you that we do reserve the right to make some alterations to the route if the weather is bad. Some of the tracks sometimes get very muddy.<br>
+      <strong>Woman:</strong> OK. Well, hopefully it won't rain too much! I know we stop in towns and villages but do we get a chance to look around? Because I'm really interested in history.<br>
+      <strong>Man:</strong> Oh yes, you get opportunities to explore. Is there something in particular you want to see?<br>
+      <strong>Woman:</strong> There's a theatre in a town called Grein. A friend of mine went there last year and said it was amazing.<br>
+      <strong>Man:</strong> Let's see. Um, ah yes, there's a guide who'll take you round the building. We don't have any other tours arranged but you can visit several castles and museums on the holiday.<br>
+      <strong>Woman:</strong> Well, thank you for all that information. I'd like to book that then.<br>
+      <strong>Man:</strong> Right. Well, I'll just …</p>
+    </details>
+
+    <details class="transcript hlable" id="script2">
+      <summary>Part 2 — Food and restaurants in the local area</summary>
+      <p>You will hear someone talking on the radio about food and restaurants in the local area.</p>
+      <p><strong>Announcer:</strong> And now we have our 'Know your town' section where we look at what's on offer in our area. Today John Munroe is going to tell us about local food and eating out. John.</p>
+      <p><strong>John:</strong> Well, most of us buy our food in supermarkets these days but we're very lucky having a wonderful market here. It was originally on the piece of land in front of the cathedral but at the beginning of the twentieth century it was moved to a site by the river. When the new shopping centre was built in the 1960s, it found a home beneath the multi-storey car park where it still is, but there are plans to move it back to its previous home by the river.</p>
+      <p>The market is now open six days a week. On Tuesday to Saturday you can buy fresh fruit and vegetables, meat and cheese from the area, as well as a whole range of imported produce. But if you come on a Sunday, you'll find a different market, where craftspeople sell what they have made – things like bags, cards, clothes. During the week there are a few stalls selling more everyday utensils like saucepans and cleaning products alongside the fruit and vegetables – as well as one new stall selling antique furniture which is proving to be very popular.</p>
+      <p>People often ask what our local dish is. As we're by the sea, they expect it to be some kind of fish recipe. Our fish is good of course but there isn't one particular dish that stands out. What we do have is an apple cake that isn't really made anywhere else. There's a new café in the High Street: Barton's, which bakes them fresh every morning and serves them with delicious home-made ice cream in a choice of flavours.</p>
+      <p>Now, the harbour is obviously the place to buy fresh fish. Every morning there's a stall where local fishermen sell a selection of the day's catch before the rest goes to London or abroad. They've been doing that for as long as anyone can remember of course, but the harbour itself looks very different from a few years ago. Most of the restaurants used to be at the far end, but that part was redeveloped and the restaurants had to relocate to the other end. Many of them are simply the old ones in new premises but a couple of new ones have opened recently so there's a good range now both in the harbour and the town itself. I'm now going to give you my 'Top Six Places to Eat' in different parts of the town.</p>
+      <p>So Number 1 for me is Merrivales, which is in one of the busiest parts of the town leading down to the harbour. It's in a side street so it doesn't look out over the water but it's very close, so you can take a walk after your meal and find one of the cafés with live music. At Merrivales you can enjoy delicious fresh fish and seafood. The friendly staff offer very attentive service and a really enjoyable evening.</p>
+      <p>The Lobster Pot is on the main road going down to the harbour so it also misses out on the sea view, but the food makes up for that. It serves a huge range of fish and seafood as well as vegetarian and meat dishes so there's something for everyone. Prices are from mid-range to fairly expensive so it's really only for a special occasion.</p>
+      <p>Elliots is in the city centre and is a very upmarket restaurant in the evening but during the day it serves lunch and coffee. It's on the twentieth floor above some offices and it's a great place to sit for a while as you can see most of the city spread out from there. It does get very busy though and you may have to wait to be served.</p>
+      <p>Not far from the city centre is The Cabin which is on the canal bank. You can't park your car there – it's a fifteen-minute walk from the nearest car park – but it's very peaceful, a good place to relax away from the traffic. It's not cheap but it's an ideal place for a long lunch.</p>
+      <p>The Olive Tree is a family-run restaurant in the city centre offering beautifully prepared Greek dishes. It's well known locally and very popular. Service can be slow when it's busy as all the food is freshly made. There's plenty of room and on Friday and Saturday nights, the wooden floors resound with live music and dancing which is certainly worth going for.</p>
+      <p>The last place I want to recommend has only just opened in a converted school building. The Old School Restaurant has been very cleverly renovated. The use of mirrors, plants and the colours on the walls makes you feel as though you're in a large garden instead of the city centre. There are only a few dishes on the menu but they change every day.</p>
+      <p>So Tanya, I …</p>
+    </details>
+
+    <details class="transcript hlable" id="script3">
+      <summary>Part 3 — Planning a film project</summary>
+      <p>You will hear three students on a media studies course talking about a film they are planning to make.</p>
+      <p><strong>Reza:</strong> Hi Mike.<br>
+      <strong>Mike:</strong> Hi Reza, this is Helen.<br>
+      <strong>Helen:</strong> Hello!<br>
+      <strong>Mike:</strong> We're really pleased you've agreed to join us on this film project.<br>
+      <strong>Helen:</strong> Yes, your experience is going to be so useful.<br>
+      <strong>Reza:</strong> Well, I hope so. It's the technical side I know best – lighting, sound and stuff.<br>
+      <strong>Mike:</strong> But you think the script is OK?<br>
+      <strong>Reza:</strong> Yes, I think it's great! Um, have you decided where you're going to shoot?<br>
+      <strong>Helen:</strong> Well, there's the water-mill scene at the end. And we've thought about some locations in town we can use. They're behind the shopping mall and on a couple of residential streets. And in an empty shop on campus. It means we don't have to worry about getting permission from a shopowner.<br>
+      <strong>Mike:</strong> So do you think we should go to all the locations with you?<br>
+      <strong>Reza:</strong> It would be a good idea. We need to talk about the levels of background noise so we know they're all going to be reasonable places to film.<br>
+      <strong>Mike:</strong> But the sounds of traffic will make it more natural.<br>
+      <strong>Helen:</strong> I think Reza means things like aeroplanes, trains and so on that would mean we have to stop filming.<br>
+      <strong>Reza:</strong> Exactly. And also I'll make notes for myself about what lighting I'm going to need. I think the university department has a good range of equipment, but I'll need to make a list for each location for my own reference. Anyway, once we've had a look round, you can do the roadworks check.<br>
+      <strong>Mike:</strong> What do you mean?<br>
+      <strong>Reza:</strong> You need to find out about building work or roadworks. Because you could start filming one day and come back in the morning to find one of the roads has been dug up! The local council have to be informed about things like that so you can find out from them.<br>
+      <strong>Mike:</strong> OK. Then I think we need to work from the script and put together a list of all the scenes and decide which ones we're going to film when. We need to prepare the shooting schedule, day by day.<br>
+      <strong>Reza:</strong> You're right. Then when you know how long filming is going to last, you can tell everyone when they're needed.<br>
+      <strong>Helen:</strong> OK, so as soon as we can, we'll audition, and then when we contact people to offer them parts we can send the exact dates and make really sure they are free. Because often the actors are all enthusiastic but then when you try to pin them down about whether they're really free at that time, you find they've got exams or something, or they're off to a festival just before and you have to rush about looking for replacements.<br>
+      <strong>Mike:</strong> Then, we need people who can take over the main parts if one of our stars falls ill or something.<br>
+      <strong>Reza:</strong> Yes, I agree. So offer the main parts to the people we really want, and then look at other volunteers who were OK.<br>
+      <strong>Helen:</strong> Yes. We can select the understudies once the main roles have been confirmed. So, once we've got that sorted and we've held all the rehearsals of the main scenes, we'll be ready to start filming.<br>
+      <strong>Reza:</strong> Yes, that sounds good. Anything else?<br>
+      <strong>Mike:</strong> Er, well, just housekeeping, really. We don't actually need costumes because actors will wear their own clothes. My family has agreed to lend us some pieces of furniture which we need, so we'll go and fetch those the weekend before we start.<br>
+      <strong>Helen:</strong> We'll provide food and drink during shooting so I'm going to borrow some cool-boxes.<br>
+      <strong>Mike:</strong> And I've got a little van. Most of the locations are within walking distance of the halls of residence anyway. The only one further away is the water-mill.<br>
+      <strong>Reza:</strong> Ah, yes, can you tell me about that?<br>
+      <strong>Mike:</strong> Um, OK. Er, hang on a minute, I'll get my notes. There's a plan in them.</p>
+      <p><strong>Mike:</strong> Here's the mill. You see, basically you have a vertical water-wheel which was used to power the grinding stones.<br>
+      <strong>Reza:</strong> Mm, it sounds really interesting. Will we film inside?<br>
+      <strong>Helen:</strong> Yes. That's where the final scene between the girl and the man takes place. Our plan is to fix one camera outside by the window next to the door, to film through the window, and then have another handheld camera inside the mill. That means we can get two views of the same scene. We were going to do something using a mirror, but we decided that would be too complicated.<br>
+      <strong>Mike:</strong> Yes, by doing it that way, all we'll need is lights on the inside, next to the wall behind the wheel which can shine across to the opposite wall.<br>
+      <strong>Reza:</strong> Hmm. Will that give enough light?<br>
+      <strong>Helen:</strong> I think so, because the scene is in the evening; it shouldn't be too bright. The actors will be carrying torches too.<br>
+      <strong>Mike:</strong> And we'll have an old screen made of wood just inside the door, because it's a new door and it'll look wrong. The lights won't shine directly on it so it'll be fine.<br>
+      <strong>Reza:</strong> So you won't actually show the door open?<br>
+      <strong>Mike:</strong> No. There's a huge box on the floor against the wall farthest from the wheel. We'll see the girl approaching the mill on her bike. Then we see through the window and the man is inside looking at it, then the next shot is the girl, in the room with him, opening the box.<br>
+      <strong>Reza:</strong> So it'll be a mysterious ending! Well, I think it's going to be a great project.<br>
+      <strong>Mike:</strong> Good.<br>
+      <strong>Helen:</strong> Thanks!</p>
+    </details>
+
+    <details class="transcript hlable" id="script4">
+      <summary>Part 4 — Exotic pests</summary>
+      <p>You will hear part of a lecture about exotic pests given as the introduction to a course on ecology and environment.</p>
+      <p><strong>Lecturer:</strong> Good afternoon. I want this afternoon as an introduction to our ecology module to offer examples of exotic pests – non-native animals or plants which are, or may be, causing problems – which might prove a fruitful topic for seminar papers later in the term. People and products are criss-crossing the world as never before, and on these new global highways, plants and animals are travelling too.</p>
+      <p>Exotic plants and animals are turning up in Antarctica and on the most remote islands on Earth. For example, the Australian red-backed spider – it's made its way to countries fairly near home, such as New Zealand and Japan, as some of you may know – well, it's also been found on Tristan da Cunha, which is a remote island, thousands of miles from anywhere, way out in the middle of the Atlantic.</p>
+      <p>Now, another famous animal invader in the other direction, so to speak, from England to Australia in the southern hemisphere, is the rabbit. This was in 1830 and it might seem less of a threat, but it became an extraordinarily destructive pest. The fact that rabbits increased so rapidly is perhaps more understandable when we remind ourselves that they had originally been introduced to England from continental Europe eight centuries earlier. This was because they were regarded as a luxury food source, and in spite of having warm fur, they probably originated on the hot dry plains of Spain, which of course explains why they thrive in the climate of Australia.</p>
+      <p>A much less cuddly example of a pest introduced to Australia, this time from America, is fire ants. These are increasing and spreading very fast. Their huge nests can now be found in gardens in the city of Brisbane and they are costing the Australian government a great deal of money in control measures. These were an accidental introduction, rather than a deliberate one, brought to Australia, probably in horticultural imports or in mud on second-hand machinery.</p>
+      <p>As a biologist and conservationist, I have become increasingly concerned about these matters. Exotic invasions are irreversible and deserve to be taken more seriously even when they aren't particularly damaging. For example, something that is not necessarily a major disaster compared to other ecological experiments: in 1975 an Australian species of earthworm was deliberately introduced to the northern hemisphere, in Scotland, because they were bigger than the natives. The aim was that they would be more effective than native species, but in fact they don't do more for the soil condition than the smaller locals which they displace. Although they don't do a lot of harm, as far as we know up to now, this will probably prove to have been a mistake.</p>
+      <p>A much more serious case, also in Scotland, as well as other countries, along with the latest victim, Iceland, is the New Zealand flatworm. This is a most unwelcome newcomer in these regions of north-west Europe. Basically, this flatworm came into these countries by accident. It's now been realised that it was actually carried in the plant pots containing exotic ornamental shrubs and so on, and as it eats local earthworms, and doesn't benefit the local ecology in any way, it is a real pest.</p>
+      <p>Next, there's a further instance, this time in the water and it's come from Japan. It's a delicious but very fast-spreading seaweed and is one of many exotic species, large and small, in the seas covering the rocks around Australia. Unfortunately, it is replacing indigenous seaweeds and permanently altering the ecosystem. However, to look at the situation from a business point of view – it is now being harvested and exported, dried, back to Japan, its original home, where it's particularly popular. So sometimes we may find accidental benefits from apparently harmful arrivals.</p>
+      <p>Well, you could say that world ecology is now going the same way as popular culture. Global music and fashions, food and drinks are taking over from local ones in every land. And in ecosystems, we find vigorous exotic invaders overwhelming native species and natural habitats.</p>
+      <p>But can we find any examples of invaders which appear to be a problem and then find that in fact they may not be such a big issue after all? We might take as an example a native of Australia, the budgerigar, the most common pet parrot in the world, of course. Because there have been many escapes over the years, it is now to be found flying about in feral flocks where the climate suits it. So, these flocks of budgerigars have been getting very numerous in the south-east of the United States, particularly in residential areas. People have been getting quite worried about this, but it has been observed that the size of the flocks has diminished somewhat recently. The fact that they are smaller is thought to be due to the fact that new competitors for their habitat have arrived from other places.</p>
+      <p>That's the last example for now. What I'd like you to consider is this: Is the planet Earth moving towards a one-world ecosystem? How far would it be a wholly bad development?</p>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  Local copy for personal study. Test material © its original rights holders —
+  please support the original site.
+</footer>
+
+<!-- ============ bottom bar ============ -->
+<div class="bottombar" id="bottombar">
+  <div class="bb-inner">
+
+    <div class="bb-top">
+      <div class="bb-tabs" id="bbTabs"></div>
+      <div class="bb-palette" id="bbPalette"></div>
+    </div>
+
+    <div class="bb-bottom">
+      <span class="bb-progress" id="bbProgress">0 / 40 answered</span>
+      <div class="bb-actions">
+        <button class="btn primary small" id="bbSubmit" type="button">Submit</button>
+        <button class="bb-hide" id="bbHide" type="button" title="Hide bar">✕</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<button id="bbShow" type="button">Show question bar</button>
+
+<!-- ============ floating selection highlight toolbar ============ -->
+<div id="hlBar" role="toolbar" aria-label="Highlight actions">
+  <button type="button" class="hl-main" data-act="hl">
+    <span>🖍️</span><span>Highlight</span>
+  </button>
+  <div class="sep"></div>
+  <button type="button" data-act="clear">Clear all</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================
+     1. ANSWER KEY
+     ========================================================= */
+  var KEY = {
+    1:  ["17 april", "17th april", "april 17", "april 17th", "17/04"],
+    2:  ["16"],
+    3:  ["45 km", "45km", "45 kilometres", "45 kilometers"],
+    4:  ["swimming pool", "pool"],
+    5:  ["1013", "1,013", "£1013"],
+    6:  ["snacks"],
+    7:  ["helmet"],
+    8:  ["ballantyne"],
+    9:  ["route"],
+    10: ["theatre", "theater"],
+    11: ["A"], 12: ["C"], 13: ["B"], 14: ["B"],
+    15: ["D"], 16: ["H"], 17: ["F"], 18: ["G"], 19: ["C"], 20: ["A"],
+    21: ["C"], 22: ["E"], 23: ["G"], 24: ["A"], 25: ["H"], 26: ["B"],
+    27: ["B"], 28: ["A"], 29: ["E"], 30: ["G"],
+    31: ["atlantic", "the atlantic"],
+    32: ["food"],
+    33: ["gardens", "garden"],
+    34: ["earthworm", "earthworms"],
+    35: ["soil", "soil condition"],
+    36: ["north-west", "northwest", "north west"],
+    37: ["plant pots", "plant pot", "pots"],
+    38: ["seaweed"],
+    39: ["united states", "usa", "us", "states"],
+    40: ["competitors", "competitor"]
+  };
+
+  var LABEL = {
+    1: "17 April", 3: "45 km", 5: "1013", 31: "Atlantic",
+    35: "soil (condition)", 36: "north-west", 37: "plant pots",
+    39: "(United) States"
+  };
+
+  var PARTS = [
+    { n: 1, from: 1,  to: 10, name: "Part 1" },
+    { n: 2, from: 11, to: 20, name: "Part 2" },
+    { n: 3, from: 21, to: 30, name: "Part 3" },
+    { n: 4, from: 31, to: 40, name: "Part 4" }
+  ];
+
+  /* =========================================================
+     2. HELPERS
+     ========================================================= */
+  function norm(s) {
+    return String(s == null ? "" : s)
+      .toLowerCase()
+      .replace(/[£$€]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/^\s*(the|a|an)\s+/, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .replace(/\s+/g, "");
+  }
+
+  function correctLabel(q) { return LABEL[q] || KEY[q][0]; }
+
+  function qInput(q) { return document.querySelector('[data-q="' + q + '"]'); }
+  function qRadios(q) { return document.querySelectorAll('input[name="q' + q + '"]'); }
+  function isChoice(q) {
+    var el = qInput(q);
+    return (el && el.tagName === "SELECT") || qRadios(q).length > 0;
+  }
+  function getUserAnswer(q) {
+    var el = qInput(q);
+    if (el) return el.value;
+    var r = document.querySelector('input[name="q' + q + '"]:checked');
+    return r ? r.value : "";
+  }
+  function hasAnswer(q) {
+    var el = qInput(q);
+    if (el) return !!el.value;
+    return !!document.querySelector('input[name="q' + q + '"]:checked');
+  }
+  function isCorrect(q, raw) {
+    if (!raw) return false;
+    if (isChoice(q)) return KEY[q].indexOf(String(raw).toUpperCase()) !== -1;
+    var u = norm(raw);
+    if (!u) return false;
+    for (var i = 0; i < KEY[q].length; i++) {
+      if (norm(KEY[q][i]) === u) return true;
+    }
+    return false;
+  }
+  function bandFor(score) {
+    if (score >= 39) return "Band 9.0";
+    if (score >= 37) return "Band 8.5";
+    if (score >= 35) return "Band 8.0";
+    if (score >= 32) return "Band 7.5";
+    if (score >= 30) return "Band 7.0";
+    if (score >= 26) return "Band 6.5";
+    if (score >= 23) return "Band 6.0";
+    if (score >= 18) return "Band 5.5";
+    if (score >= 16) return "Band 5.0";
+    if (score >= 13) return "Band 4.5";
+    if (score >= 10) return "Band 4.0";
+    return "Band 3.5 or below";
+  }
+
+  /* =========================================================
+     3. BOTTOM BAR
+     ========================================================= */
+  var bbTabs    = document.getElementById("bbTabs");
+  var bbPalette = document.getElementById("bbPalette");
+  var bbProgress = document.getElementById("bbProgress");
+  var chipMap   = {};
+  var currentPart = 1;
+
+  PARTS.forEach(function (p) {
+    var t = document.createElement("button");
+    t.type = "button";
+    t.className = "bb-tab" + (p.n === currentPart ? " current" : "");
+    t.dataset.part = p.n;
+    t.textContent = p.name;
+    t.title = "Switch to " + p.name;
+    t.addEventListener("click", function () { switchPart(p.n); });
+    bbTabs.appendChild(t);
+  });
+
+  function renderPalette(n) {
+    bbPalette.innerHTML = "";
+    chipMap = {};
+    var part = null;
+    for (var i = 0; i < PARTS.length; i++) {
+      if (PARTS[i].n === n) { part = PARTS[i]; break; }
+    }
+    if (!part) return;
+
+    for (var q = part.from; q <= part.to; q++) {
+      (function (qq) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip";
+        b.dataset.q = qq;
+        b.textContent = qq;
+        b.title = "Go to question " + qq;
+        b.addEventListener("click", function () { scrollToQ(qq); });
+        bbPalette.appendChild(b);
+        chipMap[qq] = b;
+      })(q);
+    }
+    refreshPalette();
+  }
+
+  function refreshPalette() {
+    var done = 0;
+    var graded = document.body.classList.contains("graded");
+
+    for (var q = 1; q <= 40; q++) {
+      if (hasAnswer(q)) done++;
+      var chip = chipMap[q];
+      if (!chip) continue;
+      chip.classList.remove("ok", "no", "answered");
+      if (graded) {
+        var ok = isCorrect(q, getUserAnswer(q));
+        chip.classList.add(ok ? "ok" : "no");
+      } else if (hasAnswer(q)) {
+        chip.classList.add("answered");
+      }
+    }
+    bbProgress.textContent = done + " / 40 answered";
+  }
+
+  function switchPart(n) {
+    currentPart = n;
+    document.querySelectorAll(".part").forEach(function (el) {
+      el.classList.toggle("current", parseInt(el.dataset.part, 10) === n);
+    });
+    document.querySelectorAll(".bb-tab").forEach(function (t) {
+      t.classList.toggle("current", parseInt(t.dataset.part, 10) === n);
+    });
+    renderPalette(n);
+    var target = document.querySelector('.part[data-part="' + n + '"]');
+    if (target) {
+      var top = target.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    }
+  }
+
+  function anchorFor(q) {
+    var el = qInput(q);
+    if (el) return el;
+    var r = document.querySelector('input[name="q' + q + '"]');
+    if (r) return r.closest(".mcq") || r;
+    return null;
+  }
+
+  function scrollToQ(q) {
+    var el = anchorFor(q);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    var chip = chipMap[q];
+    if (chip) {
+      chip.classList.add("active");
+      setTimeout(function () { chip.classList.remove("active"); }, 1200);
+    }
+    setTimeout(function () {
+      var focusable = qInput(q) ||
+        document.querySelector('input[name="q' + q + '"]:checked') ||
+        document.querySelector('input[name="q' + q + '"]');
+      if (focusable && focusable.focus) {
+        try { focusable.focus({ preventScroll: true }); } catch (e) { focusable.focus(); }
+      }
+    }, 420);
+  }
+
+  document.addEventListener("input", function (e) {
+    if (e.target.matches("[data-q]")) refreshPalette();
+  });
+  document.addEventListener("change", function (e) {
+    if (e.target.matches("[data-q]") || e.target.matches('input[type=radio]')) refreshPalette();
+  });
+
+  renderPalette(currentPart);
+
+  var bb = document.getElementById("bottombar");
+  var bbShow = document.getElementById("bbShow");
+  document.getElementById("bbHide").addEventListener("click", function () {
+    bb.classList.add("off");
+    bbShow.classList.add("on");
+    document.body.classList.add("bb-off");
+  });
+  bbShow.addEventListener("click", function () {
+    bb.classList.remove("off");
+    bbShow.classList.remove("on");
+    document.body.classList.remove("bb-off");
+  });
+
+  /* =========================================================
+     4. SUBMIT / SCORE / FEEDBACK
+     ========================================================= */
+  function clearFeedback() {
+    document.querySelectorAll(".feedback").forEach(function (n) { n.remove(); });
+    document.querySelectorAll(".is-right,.is-wrong,.picked-ok,.picked-no,.key")
+      .forEach(function (n) {
+        n.classList.remove("is-right", "is-wrong", "picked-ok", "picked-no", "key");
+      });
+  }
+
+  function placeFeedback(q, ok, text) {
+    var el = qInput(q);
+    var span = document.createElement("span");
+    span.className = "feedback " + (ok ? "ok" : "no");
+    if (ok) span.textContent = "✓";
+    else span.innerHTML = "✗ <em>" + text + "</em>";
+
+    if (el) {
+      el.classList.add(ok ? "is-right" : "is-wrong");
+      el.insertAdjacentElement("afterend", span);
+      return;
+    }
+    var radios = qRadios(q);
+    if (radios.length) {
+      var mcq = radios[0].closest(".mcq");
+      var stem = mcq ? mcq.querySelector(".stem") : null;
+      if (stem) stem.appendChild(span);
+      var keyLetter = KEY[q][0];
+      radios.forEach(function (r) {
+        var lab = r.closest(".opt");
+        if (!lab) return;
+        if (r.value === keyLetter) lab.classList.add("key");
+        if (r.checked) lab.classList.add(r.value === keyLetter ? "picked-ok" : "picked-no");
+      });
+    }
+  }
+
+  var resultBody = document.getElementById("resultBody");
+  var resultCard = document.getElementById("resultCard");
+
+  function openAllScripts() {
+    document.querySelectorAll("details.transcript").forEach(function (d) { d.open = true; });
+  }
+
+  function submit() {
+    clearFeedback();
+    document.body.classList.add("graded");
+    openAllScripts();
+
+    var score = 0;
+    resultBody.innerHTML = "";
+
+    for (var q = 1; q <= 40; q++) {
+      var raw = getUserAnswer(q);
+      var ok = isCorrect(q, raw);
+      if (ok) score++;
+
+      placeFeedback(q, ok, correctLabel(q));
+
+      var tr = document.createElement("tr");
+      var tdNum = document.createElement("td"); tdNum.textContent = q;
+
+      var tdUser = document.createElement("td");
+      tdUser.textContent = raw ? raw : "—";
+      if (raw) tdUser.className = ok ? "right" : "wrong";
+
+      var tdKey = document.createElement("td");
+      tdKey.textContent = correctLabel(q);
+
+      var tdMark = document.createElement("td");
+      var pill = document.createElement("span");
+      pill.className = "pill " + (ok ? "ok" : "no");
+      pill.textContent = ok ? "✓" : "✗";
+      tdMark.appendChild(pill);
+
+      tr.appendChild(tdNum); tr.appendChild(tdUser);
+      tr.appendChild(tdKey); tr.appendChild(tdMark);
+      resultBody.appendChild(tr);
+    }
+
+    document.getElementById("scoreLine").textContent = score + " / 40";
+    document.getElementById("bandLine").textContent =
+      "Estimated IELTS Listening band: " + bandFor(score);
+
+    var bandChip = document.getElementById("bandChip");
+    if (bandChip) {
+      bandChip.textContent = bandFor(score).replace("Band ", "");
+      bandChip.classList.add("show");
+    }
+
+    resultCard.classList.add("show");
+    refreshPalette();
+
+    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function resetAll() {
+    document.querySelectorAll("[data-q]").forEach(function (el) { el.value = ""; });
+    document.querySelectorAll("input[type=radio]").forEach(function (r) { r.checked = false; });
+    clearFeedback();
+    resultCard.classList.remove("show");
+    resultBody.innerHTML = "";
+    document.body.classList.remove("graded");
+    document.querySelectorAll("details.transcript").forEach(function (d) { d.open = false; });
+    for (var q = 1; q <= 40; q++) {
+      var chip = chipMap[q];
+      if (chip) chip.classList.remove("ok", "no", "answered");
+    }
+    var bandChip = document.getElementById("bandChip");
+    if (bandChip) { bandChip.textContent = "--"; bandChip.classList.remove("show"); }
+    currentPart = 0;
+    switchPart(1);
+    refreshPalette();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.getElementById("bbSubmit").addEventListener("click", submit);
+  document.getElementById("retakeBtn").addEventListener("click", resetAll);
+  document.getElementById("jumpScript").addEventListener("click", function () {
+    document.getElementById("transcripts")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  /* =========================================================
+     5. HIGHLIGHTING
+     ========================================================= */
+  var HL_STORE = "ielts-trainer1-L1-highlights";
+  var hlBar = document.getElementById("hlBar");
+  var hlHint = document.getElementById("hlHint");
+  var activeContainer = null;
+  var savedRange = null;
+
+  var containers = [];
+  document.querySelectorAll(".hlable").forEach(function (el, i) {
+    if (!el.dataset.hlId) el.dataset.hlId = "hlc-" + i;
+    containers.push(el);
+  });
+
+  function textNodesIn(root) {
+    var out = [], n;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !node.nodeValue.length) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    while ((n = walker.nextNode())) out.push(n);
+    return out;
+  }
+  function nodeOffsetMap(container) {
+    var nodes = textNodesIn(container);
+    var map = new Map();
+    var pos = 0;
+    nodes.forEach(function (n) { map.set(n, pos); pos += n.nodeValue.length; });
+    return map;
+  }
+  function unwrapMarks(container) {
+    container.querySelectorAll("mark.hl").forEach(function (m) {
+      var parent = m.parentNode;
+      if (!parent) return;
+      while (m.firstChild) parent.insertBefore(m.firstChild, m);
+      parent.removeChild(m);
+    });
+    if (container.normalize) container.normalize();
+  }
+  function markOffsets(container) {
+    var map = nodeOffsetMap(container);
+    var res = [];
+    container.querySelectorAll("mark.hl").forEach(function (m) {
+      var inner = textNodesIn(m);
+      if (!inner.length) return;
+      var first = inner[0], last = inner[inner.length - 1];
+      var start = map.get(first), end = map.get(last);
+      if (start == null || end == null) return;
+      end += last.nodeValue.length;
+      if (end > start) res.push([start, end]);
+    });
+    res.sort(function (a, b) { return a[0] - b[0]; });
+    return res;
+  }
+  function wrapOffsets(container, start, end) {
+    var nodes = textNodesIn(container);
+    var pos = 0, segs = [];
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i], len = n.nodeValue.length;
+      var ns = pos, ne = pos + len;
+      var s = Math.max(start, ns), e = Math.min(end, ne);
+      if (e > s) segs.push([n, s - ns, e - ns]);
+      pos = ne;
+      if (pos >= end) break;
+    }
+    segs.forEach(function (seg) {
+      var node = seg[0], so = seg[1], eo = seg[2];
+      var r = document.createRange();
+      try {
+        r.setStart(node, so);
+        r.setEnd(node, eo);
+        var mark = document.createElement("mark");
+        mark.className = "hl";
+        r.surroundContents(mark);
+      } catch (err) {}
+    });
+  }
+  function applyOffsets(container, ranges) {
+    unwrapMarks(container);
+    ranges.slice().sort(function (a, b) { return b[0] - a[0]; })
+      .forEach(function (r) { wrapOffsets(container, r[0], r[1]); });
+  }
+  function rangeToOffsets(container, range) {
+    var nodes = textNodesIn(container);
+    var pos = 0, start = null, end = null;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i], len = n.nodeValue.length;
+      if (n === range.startContainer) start = pos + range.startOffset;
+      if (n === range.endContainer) end = pos + range.endOffset;
+      pos += len;
+    }
+    if (start == null || end == null || end <= start) return null;
+    return [start, end];
+  }
+  function saveHighlights() {
+    var data = {};
+    containers.forEach(function (c) {
+      var offs = markOffsets(c);
+      if (offs.length) data[c.dataset.hlId] = offs;
+    });
+    try { localStorage.setItem(HL_STORE, JSON.stringify(data)); } catch (e) {}
+  }
+  function loadHighlights() {
+    var raw;
+    try { raw = localStorage.getItem(HL_STORE); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    containers.forEach(function (c) {
+      var offs = data[c.dataset.hlId];
+      if (offs && offs.length) applyOffsets(c, offs);
+    });
+  }
+  function clearAllHighlights() {
+    containers.forEach(function (c) { unwrapMarks(c); });
+    try { localStorage.removeItem(HL_STORE); } catch (e) {}
+    flashHint("Highlights cleared");
+  }
+
+  function flashHint(text) {
+    hlHint.classList.add("flash");
+    var span = hlHint.querySelector("span:last-child");
+    var old = span.textContent;
+    span.textContent = text;
+    setTimeout(function () {
+      hlHint.classList.remove("flash");
+      span.textContent = old;
+    }, 1200);
+  }
+
+  /* --- wire up the "Clear Highlights" link in the menu (was clearHlBtn) --- */
+  var clearHlEl = document.getElementById("clearHighlightsLink") ||
+                  document.getElementById("clearHlBtn");
+  if (clearHlEl) {
+    clearHlEl.addEventListener("click", function (e) {
+      e.preventDefault();
+      clearAllHighlights();
+      var mp = document.getElementById("menuPop");
+      if (mp) mp.classList.remove("show");
+    });
+  }
+
+  /* click a highlight to remove it */
+  document.addEventListener("click", function (e) {
+    var m = e.target.closest && e.target.closest("mark.hl");
+    if (!m) return;
+    var parent = m.parentNode;
+    if (!parent) return;
+    while (m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+    if (parent.normalize) parent.normalize();
+    saveHighlights();
+  });
+
+  function hideHlBar() {
+    hlBar.classList.remove("on");
+    savedRange = null;
+    activeContainer = null;
+  }
+  function findContainer(node) {
+    var el = node.nodeType === 1 ? node : node.parentElement;
+    if (!el) return null;
+    return el.closest(".hlable");
+  }
+
+  function applyHighlight() {
+    if (!savedRange || !activeContainer) return false;
+    var offs = rangeToOffsets(activeContainer, savedRange);
+    if (!offs) return false;
+    var existing = markOffsets(activeContainer);
+    existing.push(offs);
+    applyOffsets(activeContainer, existing);
+    saveHighlights();
+    var sel = window.getSelection();
+    if (sel) sel.removeAllRanges();
+    hideHlBar();
+    flashHint("Highlighted");
+    return true;
+  }
+
+  document.addEventListener("mouseup", function (e) {
+    if (e.target.closest && e.target.closest("#hlBar")) return;
+    setTimeout(function () {
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.rangeCount) { hideHlBar(); return; }
+      var range = sel.getRangeAt(0);
+      var container = findContainer(range.commonAncestorContainer);
+      if (!container) { hideHlBar(); return; }
+      var rect = range.getBoundingClientRect();
+      if (!rect || (!rect.width && !rect.height)) { hideHlBar(); return; }
+      activeContainer = container;
+      savedRange = range.cloneRange();
+      hlBar.style.top = (rect.top + window.scrollY - 10) + "px";
+      hlBar.style.left = (rect.left + rect.width / 2 + window.scrollX) + "px";
+      hlBar.classList.add("on");
+    }, 10);
+  });
+  document.addEventListener("mousedown", function (e) {
+    if (e.target.closest && e.target.closest("#hlBar")) e.preventDefault();
+  });
+  document.addEventListener("scroll", hideHlBar, { passive: true });
+  window.addEventListener("resize", hideHlBar);
+
+  hlBar.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    if (btn.dataset.act === "clear") { clearAllHighlights(); hideHlBar(); return; }
+    if (btn.dataset.act === "hl") { applyHighlight(); }
+  });
+
+  loadHighlights();
+
+  /* =========================================================
+     6. TIMER
+     ========================================================= */
+  var seconds = 0, running = true;
+  var timerEl = document.getElementById("timer");
+  var timerBtn = document.getElementById("timerBtn");
+  function fmt(n) {
+    var h = Math.floor(n / 3600);
+    var m = Math.floor((n % 3600) / 60);
+    var s = n % 60;
+    return (h < 10 ? "0" : "") + h + ":" +
+           (m < 10 ? "0" : "") + m + ":" +
+           (s < 10 ? "0" : "") + s;
+  }
+  setInterval(function () {
+    if (!running) return;
+    seconds++;
+    if (timerEl) timerEl.textContent = fmt(seconds);
+  }, 1000);
+  if (timerBtn) {
+    timerBtn.addEventListener("click", function () {
+      running = !running;
+      timerBtn.textContent = running ? "Pause" : "Resume";
+    });
+  }
+
+  /* =========================================================
+     7. HEADER MENU / FOCUS / EXPORT / RESET / TOP
+     ========================================================= */
+  var menuBtn = document.getElementById("menuBtn");
+  var menuPop = document.getElementById("menuPop");
+  if (menuBtn && menuPop) {
+    menuBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menuPop.classList.toggle("show");
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest || !e.target.closest(".menu-wrap")) {
+        menuPop.classList.remove("show");
+      }
+    });
+  }
+
+  var focusBtn = document.getElementById("focusBtn");
+  if (focusBtn) {
+    focusBtn.addEventListener("click", function () {
+      if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        }
+      } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    });
+  }
+
+  var exportLink = document.getElementById("exportLink");
+  if (exportLink) {
+    exportLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (menuPop) menuPop.classList.remove("show");
+      window.print();
+    });
+  }
+
+  var resetLink = document.getElementById("resetLink");
+  if (resetLink) {
+    resetLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (menuPop) menuPop.classList.remove("show");
+      if (confirm("Reset the test? All answers will be cleared.")) resetAll();
+    });
+  }
+
+  var gotoTop = document.getElementById("gotoTop");
+  if (gotoTop) {
+    gotoTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (menuPop) menuPop.classList.remove("show");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* =========================================================
+     8. SHORTCUTS
+     ========================================================= */
+  document.addEventListener("keydown", function (e) {
+    // Ctrl/Cmd+Enter => submit
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault(); submit(); return;
+    }
+    // Esc => hide highlight bar
+    if (e.key === "Escape") { hideHlBar(); return; }
+    // Alt+1..4 => switch part
+    if (e.altKey && e.key >= "1" && e.key <= "4") {
+      e.preventDefault();
+      switchPart(parseInt(e.key, 10));
+      return;
+    }
+    // H => highlight current selection
+    if (e.key === "h" || e.key === "H") {
+      var tag = (e.target.tagName || "").toLowerCase();
+      if (tag === "input" || tag === "textarea" || tag === "select") return;
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+      var range = sel.getRangeAt(0);
+      var container = findContainer(range.commonAncestorContainer);
+      if (!container) return;
+      activeContainer = container;
+      savedRange = range.cloneRange();
+      applyHighlight();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
