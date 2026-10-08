@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Idioms &amp; Natural Language · Study Guide</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
+      #f8fafc;
+    margin: 0;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #4c1d95 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(139,92,246,.32), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.24), transparent 70%),
+      radial-gradient(closest-side, rgba(16,185,129,.18), transparent 70%);
+    filter: blur(70px);
+    animation: drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+  .stat-box {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: .85rem;
+    padding: .8rem 1.2rem;
+    text-align: center;
+    min-width: 90px;
+  }
+  .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .63rem; color: #c4b5fd; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-shell {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(248,250,252,.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
+  }
+  .chip {
+    padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    cursor: pointer; transition: all .16s ease; white-space: nowrap;
+  }
+  .chip:hover { border-color: #c4b5fd; color: #7c3aed; }
+  .chip.active {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 18px -8px rgba(124,58,237,.7);
+  }
+  .search-input {
+    padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
+    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
+    transition: all .18s ease;
+  }
+  .search-input:focus { border-color: #c4b5fd; box-shadow: 0 0 0 3px rgba(139,92,246,.14); }
+  .mode-btn {
+    padding: .45rem .85rem; border-radius: 999px; font-size: .72rem; font-weight: 800;
+    border: 1px solid #fcd34d; background: #fffbeb; color: #92400e;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .mode-btn:hover { background: #fef3c7; }
+  .mode-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 18px -8px rgba(217,119,6,.7);
+  }
+
+  /* ---------- IDIOM CARDS ---------- */
+  .idiom-card {
+    background: #fff; border-radius: 1rem; border: 1px solid #eef2f6;
+    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, border-color .25s ease;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .idiom-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #7c3aed, #0ea5e9);
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .idiom-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -22px rgba(76,29,149,.35), 0 6px 18px -12px rgba(15,23,42,.14);
+    border-color: #e9d5ff;
+  }
+  .idiom-card:hover::after { opacity: 1; }
+
+  .num-badge {
+    width: 2rem; height: 2rem; border-radius: .6rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .78rem; font-weight: 800;
+    background: linear-gradient(135deg, #ede9fe, #dbeafe);
+    color: #5b21b6; flex-shrink: 0;
+  }
+  .tag {
+    font-size: .6rem; font-weight: 700; padding: .15rem .55rem;
+    border-radius: 999px; background: #f1f5f9; color: #64748b;
+    text-transform: uppercase; letter-spacing: .04em; white-space: nowrap;
+  }
+  .example-box {
+    background: linear-gradient(135deg, #faf5ff, #f0f9ff);
+    border-left: 3px solid #a78bfa;
+    border-radius: .55rem;
+    padding: .7rem .85rem;
+    font-size: .82rem; color: #334155; line-height: 1.55;
+  }
+  .example-box .lbl {
+    font-size: .58rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: #7c3aed; display: block; margin-bottom: .25rem;
+  }
+
+  /* Quiz mode: blur examples until hovered/clicked */
+  .quiz-mode .example-box { filter: blur(5px); cursor: pointer; transition: filter .25s ease; user-select: none; }
+  .quiz-mode .example-box:hover,
+  .quiz-mode .example-box.revealed { filter: blur(0); user-select: auto; }
+
+  /* ---------- SECTIONS ---------- */
+  .section-card {
+    background: #fff; border-radius: 1.25rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(15,23,42,.04);
+  }
+  .topic-row {
+    display: flex; flex-direction: column; gap: .5rem;
+    padding: 1rem 1.15rem;
+    border-radius: .85rem;
+    border: 1px solid #eef2f6;
+    background: #fafbfc;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .topic-row:hover { border-color: #e9d5ff; background: #fdfaff; }
+  .topic-row .topic-name {
+    font-size: .78rem; font-weight: 800; color: #5b21b6;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+
+  .pitfall-card {
+    border-radius: .9rem; padding: 1.1rem 1.25rem;
+    border: 1px solid #fee2e2;
+    background: linear-gradient(135deg, #fff5f5, #fff);
+    display: flex; gap: .85rem; align-items: flex-start;
+  }
+  .pitfall-num {
+    width: 1.6rem; height: 1.6rem; border-radius: .5rem; flex-shrink: 0;
+    background: #fee2e2; color: #b91c1c; font-weight: 800; font-size: .75rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .step-card {
+    border-radius: .9rem; padding: 1.2rem;
+    border: 1px solid #e0e7ff;
+    background: linear-gradient(135deg, #f5f3ff, #fff);
+    position: relative;
+  }
+  .step-num {
+    font-size: 2rem; font-weight: 800; line-height: 1;
+    background: linear-gradient(135deg, #7c3aed, #0ea5e9);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; margin-bottom: .5rem;
+  }
+
+  .check-item {
+    display: flex; gap: .75rem; align-items: flex-start;
+    padding: .85rem 1rem; border-radius: .75rem;
+    border: 1px solid #eef2f6; background: #fff;
+    cursor: pointer; transition: all .18s ease;
+  }
+  .check-item:hover { border-color: #c4b5fd; background: #fdfaff; }
+  .check-item.checked { border-color: #86efac; background: #f0fdf4; }
+  .check-box {
+    width: 1.15rem; height: 1.15rem; border-radius: .35rem;
+    border: 2px solid #cbd5e1; flex-shrink: 0; margin-top: .1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .18s ease;
+  }
+  .check-item.checked .check-box {
+    background: #22c55e; border-color: #22c55e;
+  }
+  .check-box svg { width: .7rem; height: .7rem; color: #fff; opacity: 0; transition: opacity .18s ease; }
+  .check-item.checked .check-box svg { opacity: 1; }
+
+  .progress-track {
+    height: 8px; border-radius: 999px; background: #e2e8f0; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #7c3aed, #0ea5e9);
+    border-radius: 999px;
+    transition: width .35s cubic-bezier(.4,0,.2,1);
+  }
+
+  .footer-note {
+    background: #f1f5f9; border-radius: 1rem; padding: 1.6rem 2rem;
+    text-align: center; color: #475569; font-size: .88rem;
+    border: 1px solid #e2e8f0; margin-top: 3rem;
+  }
+
+  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
+
+  .rule-box {
+    border-radius: .9rem; padding: 1rem 1.25rem;
+    border: 1px solid #fde68a;
+    background: linear-gradient(135deg, #fffbeb, #fff);
+    display: flex; gap: .8rem; align-items: flex-start;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora { animation: none; }
+    .idiom-card, .chip, .example-box { transition: none; }
+  }
+  @media (max-width: 640px) {
+    .stat-box { padding: .6rem .85rem; min-width: 76px; }
+    .stat-box .number { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+          🗣️ IELTS Speaking Reference
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+          Idioms &amp;<br />
+          <span class="text-purple-300">Natural Language</span>
+        </h1>
+        <p class="text-lg md:text-xl text-purple-100/80 mt-4 max-w-2xl leading-relaxed">
+          35 high-value expressions — organised by topic, with natural examples,
+          accuracy notes, and a practice routine for spontaneous use.
+        </p>
+
+        <div class="mt-6 rounded-xl bg-white/5 border border-white/10 px-5 py-4 backdrop-blur-sm">
+          <p class="text-[0.68rem] font-extrabold uppercase tracking-widest text-amber-300 mb-1.5">Core principle</p>
+          <p class="text-purple-50/90 text-sm leading-relaxed m-0">
+            Use idioms as <strong class="text-white">natural accents</strong>, not as a checklist.
+            Precision, relevance and grammatical control matter more than the number of
+            idioms you use.
+          </p>
+        </div>
+      </div>
+
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number">35</div><div class="label">Idioms</div></div>
+        <div class="stat-box"><div class="number">10</div><div class="label">Topics</div></div>
+        <div class="stat-box"><div class="number">6</div><div class="label">Steps</div></div>
+        <div class="stat-box"><div class="number">7</div><div class="label">Checks</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<div class="filter-shell" id="bank">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="flex flex-col gap-3">
+
+      <div class="flex flex-wrap items-center gap-2.5">
+        <button class="chip active" data-cat="all">All Topics</button>
+        <div id="catChips" class="flex flex-wrap items-center gap-1.5"></div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2.5">
+        <div class="relative flex-1 min-w-[200px]">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search idioms, meanings or examples…" />
+        </div>
+
+        <button id="quizBtn" class="mode-btn" title="Hide examples and test yourself">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+          Quiz mode
+        </button>
+
+        <button id="resetBtn" class="chip" style="border-color:#fecaca;color:#b91c1c;">Reset</button>
+      </div>
+
+      <div class="text-xs text-slate-500 font-medium">
+        Showing <span id="resultCount" class="font-extrabold text-purple-600">0</span> idioms
+        <span id="activeSummary" class="text-slate-400"></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= RESULTS ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+  <div id="results"></div>
+
+  <!-- ============ SECTION 3 · CHOOSING THE RIGHT IDIOM ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="topics" />
+
+  <section class="section-card p-6 md:p-9">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">🎯</span>
+      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Choosing the Right Idiom</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      Don't memorise idioms as isolated vocabulary. Group them by communicative purpose
+      and by the situations you're likely to describe in the exam.
+    </p>
+
+    <div id="topicTable" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
+
+    <div class="mt-7 grid md:grid-cols-3 gap-4">
+      <div class="rounded-xl border border-indigo-100 bg-indigo-50/60 p-5">
+        <span class="font-extrabold text-indigo-800 text-sm uppercase tracking-wide">Part 1</span>
+        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+          Favour short, conversational expressions — <em>not my cup of tea</em>,
+          <em>give it a shot</em>, <em>once in a blue moon</em>, <em>under the weather</em>.
+        </p>
+      </div>
+      <div class="rounded-xl border border-amber-100 bg-amber-50/60 p-5">
+        <span class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part 2</span>
+        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+          Use an idiom when telling a story or describing a change, difficulty, surprise,
+          preference or personal experience.
+        </p>
+      </div>
+      <div class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-5">
+        <span class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part 3</span>
+        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+          Choose neutral, analytical language first. Add an idiom only when it fits
+          naturally with your argument or example.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 · GRAMMAR ACCURACY ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="grammar" />
+
+  <section class="section-card p-6 md:p-9">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">⚙️</span>
+      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Grammar &amp; Fixed-Expression Accuracy</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      Most idiom errors are not vocabulary errors — they are <strong>control errors</strong>.
+      The meaning is known, but the article, preposition, tense or fixed word order changes.
+    </p>
+
+    <div class="overflow-x-auto rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50">
+            <th class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide w-32">Area</th>
+            <th class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide">What to control</th>
+          </tr>
+        </thead>
+        <tbody id="grammarTable"></tbody>
+      </table>
+    </div>
+
+    <div class="rule-box mt-6">
+      <span class="text-xl shrink-0">📌</span>
+      <div>
+        <p class="font-extrabold text-amber-800 text-sm m-0 mb-1">Common source-list corrections</p>
+        <ul class="text-sm text-slate-700 space-y-1.5 m-0 pl-4 list-disc">
+          <li><em>Killed two birds with one stone</em> is correct for one specific past action; the base form <em>kill two birds with one stone</em> is correct in general statements. Match the tense to the sentence.</li>
+          <li><em>Dogs and cats</em> is understandable, but <em>raining cats and dogs</em> is the conventional fixed form.</li>
+          <li><em>Bite the bullet</em>, <em>a piece of cake</em>, <em>go the extra mile</em> and other fixed expressions keep their normal articles and structure.</li>
+          <li>Several traditional origin stories are simplified or disputed. Treat origins as memory cues, not facts to reproduce.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5 · COMMON PITFALLS ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="pitfalls" />
+
+  <section class="section-card p-6 md:p-9">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">⚠️</span>
+      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Common Pitfalls</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      Relevance beats decoration. A cluster of expressions can sound rehearsed rather
+      than fluent.
+    </p>
+
+    <div id="pitfallsGrid" class="grid md:grid-cols-2 gap-3.5"></div>
+
+    <div class="mt-6 rounded-xl border border-rose-200 bg-rose-50/70 px-5 py-4 flex gap-3">
+      <span class="text-xl shrink-0">🚫</span>
+      <p class="text-sm text-slate-700 m-0">
+        <strong class="text-rose-800">Memorised-script warning:</strong> the safest way to use an
+        idiom is to remember the <em>meaning</em> and a <em>typical situation</em> — not one fixed
+        sentence that must appear in every answer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6 · PRACTICE METHOD ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="practice" />
+
+  <section class="section-card p-6 md:p-9">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">🔁</span>
+      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Practice Method</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      The objective is <strong>active recall</strong>: you should be able to choose an
+      expression spontaneously because the situation triggers the meaning.
+    </p>
+
+    <div id="stepsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </section>
+
+  <!-- ============ SECTION 7 · CHECKLIST ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="checklist" />
+
+  <section class="section-card p-6 md:p-9">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">✅</span>
+        <h2 class="text-2xl font-extrabold text-slate-900 m-0">Quick Revision Checklist</h2>
+      </div>
+      <div class="text-sm font-bold text-slate-500">
+        <span id="checkCount">0</span> / <span id="checkTotal">7</span> complete
+      </div>
+    </div>
+    <p class="text-slate-500 text-sm mb-5 max-w-3xl">
+      Before the test, aim to know a smaller set extremely well. Natural delivery and
+      accurate grammar are stronger than memorising a long list.
+    </p>
+
+    <div class="progress-track mb-6">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div id="checklistGrid" class="grid md:grid-cols-2 gap-3"></div>
+
+    <div class="mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
+      <span class="text-xl shrink-0">💡</span>
+      <p class="text-sm text-slate-700 m-0">
+        <strong class="text-purple-800">Final takeaway:</strong> idioms should function as
+        natural, precise language inside a strong answer — not as visible "IELTS tricks."
+      </p>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <p class="font-bold text-slate-800">🗣️ IELTS Speaking · Idioms &amp; Natural Language</p>
+    <p class="text-sm mt-1">35 expressions · 10 topic groups · accuracy notes · practice routine</p>
+    <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML &amp; Tailwind CSS</p>
+  </div>
+</main>
+
+<script>
+/* =========================================================================
+   DATA
+   ========================================================================= */
+
+const CATEGORIES = [
+  "Education & learning",
+  "Work & colleagues",
+  "Travel & places",
+  "People & relationships",
+  "Money & shopping",
+  "Health & lifestyle",
+  "Mistakes & setbacks",
+  "Weather & routine",
+  "Plans & uncertainty",
+  "Preferences & opinions"
+];
+
+const IDIOMS = [
+  { n:1, idiom:"Once in a blue moon", meaning:"Very rarely.",
+    example:"I eat fast food once in a blue moon because I usually cook at home.",
+    cats:["Weather & routine"] },
+
+  { n:2, idiom:"A piece of cake", meaning:"Very easy to do.",
+    example:"The registration process was a piece of cake once I had all the documents ready.",
+    cats:["Education & learning"] },
+
+  { n:3, idiom:"Break the ice", meaning:"Make people feel more relaxed and comfortable.",
+    example:"We played a quick game to break the ice before the workshop started.",
+    cats:["People & relationships"] },
+
+  { n:4, idiom:"Get the hang of it", meaning:"Learn how to do something through practice.",
+    example:"It took me a few days to get the hang of the new software.",
+    cats:["Education & learning"] },
+
+  { n:5, idiom:"Give it a shot", meaning:"Try something.",
+    example:"I have never tried hiking alone, but I would love to give it a shot.",
+    cats:["Travel & places","Preferences & opinions"] },
+
+  { n:6, idiom:"Go the extra mile", meaning:"Make more effort than is expected.",
+    example:"My teacher went the extra mile to explain the difficult topic to me.",
+    cats:["Education & learning","Work & colleagues"] },
+
+  { n:7, idiom:"On the same page", meaning:"Have the same understanding, expectation or opinion.",
+    example:"Before starting the project, we made sure everyone was on the same page.",
+    cats:["Work & colleagues"] },
+
+  { n:8, idiom:"Under the weather", meaning:"Feeling slightly unwell.",
+    example:"I was feeling a bit under the weather, so I stayed home and rested.",
+    cats:["Health & lifestyle"] },
+
+  { n:9, idiom:"In the long run", meaning:"Over a long period of time; eventually.",
+    example:"Learning English every day will help me in the long run.",
+    cats:["Health & lifestyle","Education & learning"] },
+
+  { n:10, idiom:"Out of the blue", meaning:"Unexpectedly or without warning.",
+    example:"Out of the blue, an old friend called me after several years.",
+    cats:["Weather & routine"] },
+
+  { n:11, idiom:"A breath of fresh air", meaning:"Something pleasantly new, refreshing or different.",
+    example:"A weekend in the countryside was a breath of fresh air after a busy month in the city.",
+    cats:["Travel & places"] },
+
+  { n:12, idiom:"Hit the nail on the head", meaning:"Describe or identify something exactly.",
+    example:"You hit the nail on the head when you said that my main weakness is time management.",
+    cats:["Preferences & opinions","People & relationships"] },
+
+  { n:13, idiom:"Cost an arm and a leg", meaning:"Be extremely expensive.",
+    example:"The new laptop cost an arm and a leg, so I waited for a discount.",
+    cats:["Money & shopping"] },
+
+  { n:14, idiom:"Worth every penny", meaning:"Fully worth the money spent.",
+    example:"The course was worth every penny because the instructor gave detailed feedback.",
+    cats:["Money & shopping"] },
+
+  { n:15, idiom:"Have a soft spot for", meaning:"Have a particular fondness for something or someone.",
+    example:"I have a soft spot for old books because I love the smell and feel of them.",
+    cats:["People & relationships","Preferences & opinions"] },
+
+  { n:16, idiom:"Not my cup of tea", meaning:"Not something I particularly like.",
+    example:"Horror films are not really my cup of tea, although I enjoy thrillers.",
+    cats:["Preferences & opinions"] },
+
+  { n:17, idiom:"Kill time", meaning:"Spend time while waiting or with nothing urgent to do.",
+    example:"I usually read news articles to kill time while I am waiting for a bus.",
+    cats:["Weather & routine","Travel & places"] },
+
+  { n:18, idiom:"Lend a hand", meaning:"Help someone.",
+    example:"My brother always lends me a hand when I have too much work to do.",
+    cats:["Work & colleagues","People & relationships"] },
+
+  { n:19, idiom:"Keep an eye on", meaning:"Watch or look after something temporarily.",
+    example:"Could you keep an eye on my bag while I buy some water?",
+    cats:["People & relationships"] },
+
+  { n:20, idiom:"Make a difference", meaning:"Have a meaningful effect or impact.",
+    example:"Even small changes in our daily habits can make a big difference.",
+    cats:["Health & lifestyle","Work & colleagues"] },
+
+  { n:21, idiom:"Bite the bullet", meaning:"Face a difficult or unpleasant situation bravely and endure it.",
+    example:"I did not enjoy the extra practice, but I decided to bite the bullet and finish it.",
+    cats:["Mistakes & setbacks","Education & learning"] },
+
+  { n:22, idiom:"Kill two birds with one stone", meaning:"Achieve two objectives with one action.",
+    example:"I killed two birds with one stone by walking to the market and getting my daily exercise at the same time.",
+    cats:["Work & colleagues","Plans & uncertainty"] },
+
+  { n:23, idiom:"Let the cat out of the bag", meaning:"Reveal a secret, often accidentally.",
+    example:"I accidentally let the cat out of the bag about the surprise party.",
+    cats:["People & relationships"] },
+
+  { n:24, idiom:"Don't put all your eggs in one basket", meaning:"Do not risk everything on a single option or plan.",
+    example:"I applied to several universities because I did not want to put all my eggs in one basket.",
+    cats:["Plans & uncertainty","Money & shopping"] },
+
+  { n:25, idiom:"Burn the midnight oil", meaning:"Stay up late to work or study.",
+    example:"I had to burn the midnight oil for a few nights before my final exam.",
+    cats:["Education & learning","Work & colleagues"] },
+
+  { n:26, idiom:"Burn the candle at both ends", meaning:"Overwork yourself by doing too much for too long.",
+    example:"I was burning the candle at both ends by working full-time and studying every night.",
+    cats:["Health & lifestyle","Work & colleagues"] },
+
+  { n:27, idiom:"At the drop of a hat", meaning:"Immediately and without hesitation.",
+    example:"I would travel to a beautiful new place at the drop of a hat if I had enough time.",
+    cats:["Travel & places","Plans & uncertainty"] },
+
+  { n:28, idiom:"Cry over spilt milk", meaning:"Regret something that has already happened and cannot be changed.",
+    example:"I made a mistake in the interview, but there is no point crying over spilt milk.",
+    cats:["Mistakes & setbacks"] },
+
+  { n:29, idiom:"You can't judge a book by its cover", meaning:"Do not judge something or someone by appearance alone.",
+    example:"He looked very serious at first, but you cannot judge a book by its cover because he is actually very friendly.",
+    cats:["People & relationships"] },
+
+  { n:30, idiom:"Don't count your chickens before they hatch", meaning:"Do not assume success before an outcome is secure.",
+    example:"I think the interview went well, but I will not count my chickens before I receive the official offer.",
+    cats:["Plans & uncertainty"] },
+
+  { n:31, idiom:"Raining cats and dogs", meaning:"Raining very heavily.",
+    example:"It was raining cats and dogs, so we cancelled our outdoor plans.",
+    cats:["Weather & routine"] },
+
+  { n:32, idiom:"Throw in the towel", meaning:"Surrender, quit, or admit defeat.",
+    example:"The course was difficult, but I refused to throw in the towel.",
+    cats:["Mistakes & setbacks","Work & colleagues"] },
+
+  { n:33, idiom:"Cross that bridge when you come to it", meaning:"Deal with a problem when it actually happens rather than worrying in advance.",
+    example:"I am not sure what the final problem will be, so I will cross that bridge when I come to it.",
+    cats:["Plans & uncertainty","Mistakes & setbacks"] },
+
+  { n:34, idiom:"Rome wasn't built in a day", meaning:"Important achievements take time, patience and persistent effort.",
+    example:"Improving my speaking skills will take time; Rome was not built in a day.",
+    cats:["Education & learning","Plans & uncertainty"] },
+
+  { n:35, idiom:"When in Rome, do as the Romans do", meaning:"Adapt to local customs and behaviour when in a different place.",
+    example:"When I travel abroad, I try to respect local customs because when in Rome, do as the Romans do.",
+    cats:["Travel & places"] }
+];
+
+const GRAMMAR_ROWS = [
+  ["Articles","Say <em>a piece of cake</em>, not <em>piece of cake</em>. Keep required articles in fixed expressions such as <em>bite the bullet</em> and <em>go the extra mile</em>."],
+  ["Tense","Idioms behave like ordinary language. Change the tense when the context requires it. For example: <em>I kill two birds with one stone</em> for a general habit, but <em>I killed two birds with one stone</em> for a finished past action."],
+  ["Prepositions","Keep the common pattern: <em>on the same page about the plan</em>, <em>make a difference to people</em>, <em>have a soft spot for old books</em>."],
+  ["Word order","Do not casually rearrange fixed expressions. <em>Raining cats and dogs</em> is the standard form."],
+  ["Register","Some expressions are informal. They are often excellent for Speaking but should not be copied into formal academic Writing without considering the context."],
+  ["Meaning","Do not use a familiar-looking idiom as a synonym for a completely different idea. <em>Under the weather</em> means mildly unwell; it does not mean unhappy, unlucky or exhausted."]
+];
+
+const PITFALLS = [
+  ["Forcing idioms into unrelated questions.","Relevance beats decoration."],
+  ["Using too many idioms in one answer.","A cluster of expressions can sound rehearsed."],
+  ["Using a difficult idiom without fully controlling its grammar or meaning.","Accuracy matters more than rarity."],
+  ["Replacing precise topic vocabulary with vague idioms.","An idiom should complement clear language, not hide a lack of detail."],
+  ["Trying to sound \"advanced\" instead of sounding natural.","Spontaneous, comprehensible communication is the goal."],
+  ["Copying an idiom from a memorised template without adapting tense, pronouns or surrounding grammar.","Adapt every expression to your own sentence."]
+];
+
+const STEPS = [
+  ["Learn the meaning","Read the idiom and explain it in your own words without looking."],
+  ["Build a personal example","Create one sentence connected to your own life, studies, work, family, travel or daily routine."],
+  ["Change the grammar","Practise the same idiom in present, past or future forms where appropriate."],
+  ["Use it in a 40-second answer","Pick an IELTS Speaking question and answer naturally. Do not force the idiom."],
+  ["Record and review","Listen for pronunciation, hesitation, unnatural pauses, wrong articles, tense errors and poor topic fit."],
+  ["Retain only useful idioms","Keep expressions that you can actually imagine using in conversation."]
+];
+
+const CHECKLIST = [
+  "I know the meaning of the idiom, not just the translation.",
+  "I know at least one real situation in which I could use it.",
+  "I can use it with the correct article, tense and preposition.",
+  "I can speak the sentence without pausing to \"search\" for the idiom.",
+  "I can replace it with a normal expression if it does not fit the question.",
+  "I am not using the same idiom repeatedly throughout the test.",
+  "I keep the answer focused on the question rather than on showing vocabulary."
+];
+
+/* =========================================================================
+   HELPERS
+   ========================================================================= */
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escAttr(s){
+  return esc(s).replace(/"/g,'&quot;');
+}
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+const state = { cat: 'all', q: '', quiz: false };
+
+/* =========================================================================
+   POPULATE CATEGORY CHIPS
+   ========================================================================= */
+const catChipsWrap = document.getElementById('catChips');
+CATEGORIES.forEach(cat => {
+  const count = IDIOMS.filter(i => i.cats.includes(cat)).length;
+  const b = document.createElement('button');
+  b.className = 'chip';
+  b.dataset.cat = cat;
+  b.textContent = cat + ' (' + count + ')';
+  catChipsWrap.appendChild(b);
+});
+
+/* =========================================================================
+   RENDER IDIOM GRID
+   ========================================================================= */
+const resultsEl = document.getElementById('results');
+const countEl = document.getElementById('resultCount');
+const summaryEl = document.getElementById('activeSummary');
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+
+  const filtered = IDIOMS.filter(item => {
+    if (state.cat !== 'all' && !item.cats.includes(state.cat)) return false;
+    if (q) {
+      const hay = (item.idiom + ' ' + item.meaning + ' ' + item.example + ' ' + item.cats.join(' ')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  countEl.textContent = filtered.length;
+
+  const bits = [];
+  if (state.cat !== 'all') bits.push('“' + state.cat + '”');
+  if (q) bits.push('search: “' + state.q.trim() + '”');
+  summaryEl.textContent = bits.length ? ' · ' + bits.join(' · ') : '';
+
+  if (!filtered.length) {
+    resultsEl.innerHTML =
+      '<div class="no-results">' +
+        '<div class="text-5xl mb-3">🔍</div>' +
+        '<p class="font-bold text-slate-600">No idioms match your filters.</p>' +
+        '<p class="text-sm mt-1">Try resetting or broadening your search.</p>' +
+      '</div>';
+    return;
+  }
+
+  resultsEl.innerHTML =
+    '<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">' +
+      filtered.map(cardHTML).join('') +
+    '</div>';
+
+  // attach quiz reveal handlers
+  resultsEl.querySelectorAll('.example-box').forEach(box => {
+    box.addEventListener('click', () => box.classList.toggle('revealed'));
+  });
+}
+
+function cardHTML(item) {
+  return '' +
+  '<article class="idiom-card p-5">' +
+    '<div class="flex items-start gap-3 mb-3">' +
+      '<div class="num-badge">' + item.n + '</div>' +
+      '<div class="flex-1 min-w-0">' +
+        '<h3 class="text-[0.98rem] font-extrabold text-slate-900 leading-snug m-0">' +
+          esc(item.idiom) +
+        '</h3>' +
+      '</div>' +
+    '</div>' +
+
+    '<p class="text-[0.82rem] text-slate-600 leading-relaxed mb-3">' +
+      esc(item.meaning) +
+    '</p>' +
+
+    '<div class="example-box mb-3">' +
+      '<span class="lbl">Example</span>' +
+      esc(item.example) +
+    '</div>' +
+
+    '<div class="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-slate-100">' +
+      item.cats.map(c => '<span class="tag">' + esc(c) + '</span>').join('') +
+    '</div>' +
+  '</article>';
+}
+
+/* =========================================================================
+   TOPIC TABLE (Section 3)
+   ========================================================================= */
+const topicTable = document.getElementById('topicTable');
+CATEGORIES.forEach(cat => {
+  const list = IDIOMS.filter(i => i.cats.includes(cat)).map(i => i.idiom);
+
+  const row = document.createElement('div');
+  row.className = 'topic-row';
+
+  row.innerHTML =
+    '<span class="topic-name">' + esc(cat) + '</span>' +
+    '<div class="flex flex-wrap gap-1.5">' +
+      list.map(name =>
+        '<button class="chip" data-goto="' + escAttr(name) + '">' + esc(name) + '</button>'
+      ).join('') +
+    '</div>';
+
+  topicTable.appendChild(row);
+});
+
+// Clicking a chip in the topic table filters + scrolls to the grid
+topicTable.addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  const name = btn.dataset.goto;
+  state.q = name;
+  state.cat = 'all';
+  document.getElementById('searchInput').value = name;
+  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  render();
+  document.getElementById('bank').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+/* =========================================================================
+   GRAMMAR TABLE
+   ========================================================================= */
+const grammarTable = document.getElementById('grammarTable');
+GRAMMAR_ROWS.forEach(([area, text], i) => {
+  const tr = document.createElement('tr');
+  tr.className = i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
+  tr.innerHTML =
+    '<td class="px-4 py-3.5 font-extrabold text-slate-800 text-xs uppercase tracking-wide align-top">' + esc(area) + '</td>' +
+    '<td class="px-4 py-3.5 text-slate-600 leading-relaxed">' + text + '</td>';
+  grammarTable.appendChild(tr);
+});
+
+/* =========================================================================
+   PITFALLS
+   ========================================================================= */
+const pitfallsGrid = document.getElementById('pitfallsGrid');
+PITFALLS.forEach(([title, note], i) => {
+  const div = document.createElement('div');
+  div.className = 'pitfall-card';
+  div.innerHTML =
+    '<div class="pitfall-num">' + (i + 1) + '</div>' +
+    '<div>' +
+      '<p class="font-bold text-slate-800 text-sm m-0 mb-1">' + esc(title) + '</p>' +
+      '<p class="text-slate-600 text-sm m-0 leading-relaxed">' + esc(note) + '</p>' +
+    '</div>';
+  pitfallsGrid.appendChild(div);
+});
+
+/* =========================================================================
+   PRACTICE STEPS
+   ========================================================================= */
+const stepsGrid = document.getElementById('stepsGrid');
+STEPS.forEach(([title, desc], i) => {
+  const div = document.createElement('div');
+  div.className = 'step-card';
+  div.innerHTML =
+    '<div class="step-num">' + String(i + 1).padStart(2, '0') + '</div>' +
+    '<p class="font-extrabold text-slate-900 text-sm m-0 mb-1.5">' + esc(title) + '</p>' +
+    '<p class="text-slate-600 text-[0.82rem] m-0 leading-relaxed">' + esc(desc) + '</p>';
+  stepsGrid.appendChild(div);
+});
+
+/* =========================================================================
+   CHECKLIST
+   ========================================================================= */
+const checklistGrid = document.getElementById('checklistGrid');
+document.getElementById('checkTotal').textContent = CHECKLIST.length;
+
+CHECKLIST.forEach((text, i) => {
+  const div = document.createElement('div');
+  div.className = 'check-item';
+  div.dataset.idx = i;
+  div.innerHTML =
+    '<div class="check-box">' +
+      '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" d="M5 13l4 4L19 7"/>' +
+      '</svg>' +
+    '</div>' +
+    '<span class="text-sm text-slate-700 leading-relaxed">' + esc(text) + '</span>';
+  checklistGrid.appendChild(div);
+});
+
+const checkCountEl = document.getElementById('checkCount');
+const progressFill = document.getElementById('progressFill');
+
+checklistGrid.addEventListener('click', e => {
+  const item = e.target.closest('.check-item');
+  if (!item) return;
+  item.classList.toggle('checked');
+  updateChecklistProgress();
+});
+
+function updateChecklistProgress() {
+  const total = CHECKLIST.length;
+  const done = checklistGrid.querySelectorAll('.check-item.checked').length;
+  checkCountEl.textContent = done;
+  progressFill.style.width = (done / total * 100) + '%';
+}
+
+/* =========================================================================
+   FILTER EVENTS
+   ========================================================================= */
+document.querySelectorAll('#catChips .chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.cat = chip.dataset.cat;
+    render();
+  });
+});
+
+// "All Topics" button (first button in the filter bar)
+document.querySelector('[data-cat="all"]').addEventListener('click', () => {
+  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  state.cat = 'all';
+  render();
+});
+
+let debounce;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => { state.q = e.target.value; render(); }, 160);
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  state.cat = 'all';
+  state.q = '';
+  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  document.getElementById('searchInput').value = '';
+  render();
+});
+
+/* Quiz mode */
+document.getElementById('quizBtn').addEventListener('click', function () {
+  state.quiz = !state.quiz;
+  this.classList.toggle('active', state.quiz);
+  resultsEl.classList.toggle('quiz-mode', state.quiz);
+
+  // reset reveals when leaving quiz mode
+  if (!state.quiz) {
+    resultsEl.querySelectorAll('.example-box').forEach(b => b.classList.remove('revealed'));
+  }
+});
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+render();
+</script>
+
+</body>
+</html>

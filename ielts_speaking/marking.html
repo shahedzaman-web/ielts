@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Speaking Marking Criteria · Complete Improvement Guide</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(139,92,246,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
+      #f8fafc;
+    margin: 0;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================= HERO ================= */
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #3b0764 55%, #1e3a8a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(139,92,246,.32), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
+      radial-gradient(closest-side, rgba(244,63,94,.18), transparent 70%);
+    filter: blur(70px);
+    animation: drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: .9rem;
+    padding: .85rem 1.2rem;
+    text-align: center;
+    min-width: 90px;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .stat-box:hover {
+    background: rgba(255,255,255,.11);
+    border-color: rgba(255,255,255,.20);
+    transform: translateY(-3px);
+  }
+  .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .63rem; color: #c4b5fd; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+
+  /* ================= STICKY NAV ================= */
+  .nav-shell {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(248,250,252,.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 24px -16px rgba(15,23,42,.25);
+  }
+  .nav-link {
+    padding: .45rem .9rem; border-radius: 999px;
+    font-size: .76rem; font-weight: 700; color: #475569;
+    text-decoration: none;
+    transition: all .18s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .nav-link:hover { background: #f5f3ff; color: #7c3aed; }
+  .nav-link.primary {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff;
+    box-shadow: 0 6px 18px -8px rgba(124,58,237,.7);
+  }
+  .nav-link.primary:hover { box-shadow: 0 8px 22px -8px rgba(124,58,237,.85); }
+
+  /* ================= CRITERION CARDS ================= */
+  .criterion-card {
+    border-radius: 1.25rem;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    box-shadow: 0 4px 16px -8px rgba(15,23,42,.10);
+    overflow: hidden;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+    scroll-margin-top: 5rem;
+  }
+  .criterion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 48px -28px rgba(15,23,42,.28), 0 8px 20px -14px rgba(15,23,42,.12);
+  }
+  .criterion-header {
+    padding: 1.4rem 1.6rem;
+    display: flex; align-items: center; gap: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+  }
+  .criterion-header::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--accent);
+  }
+  .criterion-icon {
+    width: 52px; height: 52px; border-radius: .9rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+    box-shadow: 0 6px 18px -8px rgba(15,23,42,.25);
+  }
+  .criterion-title {
+    font-size: 1.15rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.015em; line-height: 1.25; margin: 0;
+  }
+  .criterion-weight {
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-size: .65rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase;
+    background: #f1f5f9; color: #64748b;
+    padding: .2rem .65rem; border-radius: 999px;
+    margin-top: .35rem;
+  }
+
+  .criterion-body { padding: 1.5rem 1.6rem 1.75rem; }
+
+  .sub-heading {
+    font-size: .68rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: #7c3aed;
+    display: flex; align-items: center; gap: .5rem;
+    margin-bottom: .75rem;
+  }
+  .sub-heading .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, #e9d5ff, transparent);
+  }
+
+  /* Band descriptor box */
+  .band-box {
+    border-radius: .9rem;
+    border: 1px solid #eef2f6;
+    background: linear-gradient(135deg, #fafbff, #f8fafc);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1.4rem;
+  }
+  .band-row {
+    display: flex; gap: .75rem; align-items: flex-start;
+    padding: .45rem 0;
+    font-size: .84rem; color: #334155; line-height: 1.55;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .band-row:last-child { border-bottom: 0; }
+  .band-label {
+    font-size: .62rem; font-weight: 800; letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: .2rem .55rem; border-radius: .4rem;
+    flex-shrink: 0; margin-top: .1rem;
+    white-space: nowrap;
+  }
+  .band-7 { background: #dbeafe; color: #1d4ed8; }
+  .band-8 { background: #d1fae5; color: #065f46; }
+
+  /* Improvement strategies */
+  .strategy-item {
+    display: flex; gap: .75rem; align-items: flex-start;
+    padding: .75rem .9rem;
+    border-radius: .75rem;
+    border: 1px solid #eef2f6;
+    background: #fff;
+    margin-bottom: .5rem;
+    transition: border-color .2s ease, background .2s ease, transform .18s ease;
+    font-size: .84rem; color: #334155; line-height: 1.55;
+  }
+  .strategy-item:hover {
+    border-color: #e9d5ff;
+    background: #fdfaff;
+    transform: translateX(3px);
+  }
+  .strategy-num {
+    width: 1.5rem; height: 1.5rem; border-radius: .45rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .68rem; font-weight: 800; flex-shrink: 0;
+    margin-top: .05rem;
+  }
+
+  /* Practice drill box */
+  .drill-box {
+    border-radius: .9rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid #fde68a;
+    background: linear-gradient(135deg, #fffbeb, #fff);
+    margin-top: 1.2rem;
+  }
+  .drill-box .drill-title {
+    font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; color: #b45309;
+    margin-bottom: .5rem; display: flex; align-items: center; gap: .4rem;
+  }
+
+  /* Pitfall box */
+  .pitfall-box {
+    border-radius: .9rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid #fecaca;
+    background: linear-gradient(135deg, #fff5f5, #fff);
+    margin-top: 1.2rem;
+  }
+  .pitfall-box .pitfall-title {
+    font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; color: #b91c1c;
+    margin-bottom: .5rem; display: flex; align-items: center; gap: .4rem;
+  }
+
+  /* ================= OVERVIEW TABLE ================= */
+  .criteria-table {
+    width: 100%; border-collapse: collapse;
+    font-size: .84rem;
+  }
+  .criteria-table th {
+    background: #f8fafc;
+    padding: .85rem 1rem;
+    text-align: left;
+    font-size: .65rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .07em;
+    color: #64748b;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .criteria-table td {
+    padding: .85rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155; line-height: 1.55;
+    vertical-align: top;
+  }
+  .criteria-table tr:last-child td { border-bottom: 0; }
+  .criteria-table tr:hover td { background: #fafbff; }
+
+  /* ================= SECTION TITLE ================= */
+  .section-title {
+    font-size: 1.6rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.025em; display: flex; align-items: center; gap: .6rem;
+    margin: 0;
+  }
+  .section-title .emoji-wrap {
+    width: 2.6rem; height: 2.6rem; border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; flex-shrink: 0;
+    box-shadow: 0 4px 14px -6px rgba(15,23,42,.25);
+  }
+  .section-sub {
+    font-size: .85rem; color: #64748b; font-weight: 500;
+    margin-top: .35rem;
+  }
+
+  .divider {
+    border: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1 20%, #cbd5e1 80%, transparent);
+    margin: 3rem 0;
+    position: relative;
+  }
+  .divider::before {
+    content: '◆';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cbd5e1; font-size: .55rem;
+    background: #f8fafc; padding: 0 .55rem;
+    line-height: 1;
+  }
+
+  /* ================= TIPS ================= */
+  .tip-item {
+    display: flex; gap: .7rem; align-items: flex-start;
+    padding: .8rem 1rem;
+    border-radius: .75rem;
+    border: 1px solid #e6fffa;
+    background: #f0fdfa;
+    font-size: .84rem; color: #334155; line-height: 1.55;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .tip-item:hover { transform: translateY(-2px); border-color: #99f6e4; }
+  .tip-item .tip-num {
+    width: 1.5rem; height: 1.5rem; border-radius: .45rem; flex-shrink: 0;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #fff; font-size: .65rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: .05rem;
+  }
+
+  /* ================= FOOTER ================= */
+  .footer-note {
+    background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+    border-radius: 1.25rem;
+    padding: 2rem 2rem;
+    text-align: center;
+    color: #475569;
+    font-size: .9rem;
+    border: 1px solid #e2e8f0;
+    margin-top: 3.5rem;
+    position: relative; overflow: hidden;
+  }
+  .footer-note::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 3px;
+    background: linear-gradient(90deg, transparent, #7c3aed, #0ea5e9, transparent);
+    border-radius: 999px;
+  }
+
+  /* ================= PROGRESS BAR ================= */
+  .progress-track {
+    height: 8px; border-radius: 999px; background: #e2e8f0; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #7c3aed, #4f46e5);
+    border-radius: 999px;
+    transition: width .35s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ================= MISC ================= */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1; border-radius: 999px;
+    border: 3px solid #f8fafc;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora { animation: none; }
+    .criterion-card, .strategy-item, .tip-item, .nav-link { transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    .criterion-body { padding: 1.2rem 1.25rem 1.5rem; }
+    .criterion-header { padding: 1.1rem 1.25rem; }
+    .stat-box { padding: .65rem .9rem; min-width: 78px; }
+    .stat-box .number { font-size: 1.2rem; }
+    .section-title { font-size: 1.35rem; }
+    .criteria-table { font-size: .78rem; }
+    .criteria-table th, .criteria-table td { padding: .65rem .7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= STICKY NAV ================= -->
+<nav class="nav-shell">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+    <div class="flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-2.5 shrink-0 no-underline">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-purple-600 to-indigo-500 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-purple-500/30">SC</span>
+        <span class="hidden sm:block">
+          <span class="block text-[0.82rem] font-extrabold text-slate-900 leading-tight tracking-tight">Speaking Criteria</span>
+          <span class="block text-[0.6rem] font-bold text-slate-400 uppercase tracking-widest">IELTS Guide</span>
+        </span>
+      </a>
+
+      <div class="flex items-center gap-1 overflow-x-auto">
+        <a href="#overview" class="nav-link">📋 Overview</a>
+        <a href="#criteria" class="nav-link hidden md:inline-flex">📊 Criteria</a>
+        <a href="#plan" class="nav-link hidden md:inline-flex">🗓️ Plan</a>
+        <a href="#checklist" class="nav-link primary">✅ Checklist</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-16 pb-16 md:pt-24 md:pb-24 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-widest mb-5 border border-white/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Four Criteria · Equally Weighted
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight m-0">
+          IELTS Speaking<br />
+          <span class="bg-gradient-to-r from-violet-300 via-purple-200 to-blue-300 bg-clip-text text-transparent">Marking Criteria</span>
+        </h1>
+        <p class="text-lg md:text-xl text-purple-100/80 mt-5 max-w-2xl leading-relaxed">
+          Every criterion explained — with Band 7 &amp; 8 descriptors, targeted
+          improvement strategies, practice drills, and common pitfalls.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#criteria" class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-full transition border border-white/20 flex items-center gap-2">
+            📊 Explore Criteria
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a href="#plan" class="group bg-violet-600 hover:bg-violet-500 text-white font-semibold px-6 py-3 rounded-full transition shadow-lg shadow-violet-900/40 flex items-center gap-2">
+            🗓️ 30-Day Plan
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number">4</div><div class="label">Criteria</div></div>
+        <div class="stat-box"><div class="number">25%</div><div class="label">Each</div></div>
+        <div class="stat-box"><div class="number">7–8</div><div class="label">Target</div></div>
+        <div class="stat-box"><div class="number">30</div><div class="label">Day Plan</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAIN ================= -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- ============================================================ -->
+  <!--  OVERVIEW                                                      -->
+  <!-- ============================================================ -->
+  <section id="overview" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-violet-100 to-purple-100 text-violet-700">📋</span>
+          How Speaking Is Scored
+        </h2>
+        <p class="section-sub">Four equally-weighted criteria · Each scored 0–9 · Final band = average</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm mb-8">
+      <p class="text-slate-600 leading-relaxed mb-6 max-w-3xl">
+        Your IELTS Speaking score is made up of <strong>four equally-weighted criteria</strong>.
+        Each criterion is scored from 0 to 9, and your overall Speaking band is the average
+        of the four — rounded to the nearest half-band. This means you cannot ignore any
+        single criterion; each is worth <strong>25%</strong> of your total score.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="criteria-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Criterion</th>
+              <th style="width: 8%;">Weight</th>
+              <th>What It Measures</th>
+              <th style="width: 22%;">Band 7 Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="font-extrabold text-blue-700">🗣️ Fluency &amp; Coherence</span></td>
+              <td class="font-extrabold text-slate-700">25%</td>
+              <td>Flow of speech, natural pausing, logical development, use of discourse markers</td>
+              <td class="text-slate-600">Speaks at length without noticeable effort; uses connectives flexibly</td>
+            </tr>
+            <tr>
+              <td><span class="font-extrabold text-purple-700">📚 Lexical Resource</span></td>
+              <td class="font-extrabold text-slate-700">25%</td>
+              <td>Vocabulary range, precision, collocations, idioms, paraphrasing ability</td>
+              <td class="text-slate-600">Flexible vocabulary; some less common items; effective paraphrase</td>
+            </tr>
+            <tr>
+              <td><span class="font-extrabold text-emerald-700">⚙️ Grammatical Range &amp; Accuracy</span></td>
+              <td class="font-extrabold text-slate-700">25%</td>
+              <td>Variety of sentence structures, tense control, error frequency</td>
+              <td class="text-slate-600">Range of complex structures; frequent error-free sentences</td>
+            </tr>
+            <tr>
+              <td><span class="font-extrabold text-rose-700">🔊 Pronunciation</span></td>
+              <td class="font-extrabold text-slate-700">25%</td>
+              <td>Individual sounds, word stress, sentence stress, intonation, chunking</td>
+              <td class="text-slate-600">Generally clear; some accent but easily understood throughout</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  CRITERION 1 · FLUENCY & COHERENCE                             -->
+  <!-- ============================================================ -->
+  <section id="criteria" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">📊</span>
+          The Four Criteria — In Detail
+        </h2>
+        <p class="section-sub">Band descriptors · Improvement strategies · Practice drills · Pitfalls</p>
+      </div>
+    </div>
+
+    <!-- ===== CRITERION 1 ===== -->
+    <article id="criterion-fc" class="criterion-card mb-8" style="--accent: linear-gradient(90deg, #3b82f6, #6366f1);">
+      <div class="criterion-header">
+        <div class="criterion-icon bg-blue-50 text-blue-600">🗣️</div>
+        <div>
+          <h3 class="criterion-title">Fluency &amp; Coherence</h3>
+          <span class="criterion-weight">⚖️ 25% of total score</span>
+        </div>
+      </div>
+
+      <div class="criterion-body">
+
+        <!-- Band descriptors -->
+        <div class="sub-heading"><span>Band Descriptors</span><span class="line"></span></div>
+        <div class="band-box">
+          <div class="band-row">
+            <span class="band-label band-7">Band 7</span>
+            <span>Speaks at length without noticeable effort or loss of coherence. May demonstrate language-related hesitation at times, or some repetition and/or self-correction. Uses a range of connectives and discourse markers with some flexibility.</span>
+          </div>
+          <div class="band-row">
+            <span class="band-label band-8">Band 8</span>
+            <span>Speaks fluently with only occasional repetition or self-correction. Hesitation is usually content-related rather than language-related. Develops topics coherently and appropriately. Uses a wide range of connectives and discourse markers naturally.</span>
+          </div>
+        </div>
+
+        <!-- Improvement strategies -->
+        <div class="sub-heading"><span>How to Improve</span><span class="line"></span></div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#dbeafe;color:#1d4ed8;">1</span>
+          <span><strong>Use the 4–3–2 drill.</strong> Pick one topic and speak about it for 4 minutes, then 3 minutes, then 2 minutes. Each round forces faster retrieval and reduces hesitation. Do this daily with different Part 2 topics.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#dbeafe;color:#1d4ed8;">2</span>
+          <span><strong>Master discourse markers.</strong> Learn and use a range: <em>To begin with, Having said that, On the other hand, As far as I'm concerned, That said, Ultimately.</em> Group them by function (adding, contrasting, concluding, exemplifying).</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#dbeafe;color:#1d4ed8;">3</span>
+          <span><strong>Replace disruptive fillers.</strong> Swap <em>um, uh, like</em> with natural thinking phrases: <em>That's an interesting question…, Let me think about that for a moment…, How shall I put this…?</em></span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#dbeafe;color:#1d4ed8;">4</span>
+          <span><strong>Pause at idea boundaries.</strong> Pause naturally between sentences and clauses, not mid-phrase. This signals confidence and makes you easier to follow.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#dbeafe;color:#1d4ed8;">5</span>
+          <span><strong>Record and review.</strong> Listen for long pauses, repeated words, and moments where you lose your train of thought. Note the topics that cause the most hesitation and prepare vocabulary for them.</span>
+        </div>
+
+        <!-- Practice drill -->
+        <div class="drill-box">
+          <p class="drill-title">🎯 Weekly Practice Drill</p>
+          <p class="text-sm text-slate-700 m-0 leading-relaxed">
+            <strong>Day 1–3:</strong> 4–3–2 drill with one Part 2 topic per day.<br>
+            <strong>Day 4–5:</strong> Record yourself answering 5 Part 1 questions in under 45 seconds each — no pauses longer than 2 seconds.<br>
+            <strong>Day 6–7:</strong> Full mock Part 2 (2 minutes) + Part 3 discussion (5 minutes). Review recording for hesitations.
+          </p>
+        </div>
+
+        <!-- Pitfalls -->
+        <div class="pitfall-box">
+          <p class="pitfall-title">⚠️ Common Pitfalls</p>
+          <ul class="list-disc pl-5 m-0 space-y-1.5 text-sm text-slate-700">
+            <li>Memorising full answers — sounds stiff and breaks natural flow</li>
+            <li>Overusing filler sounds (<em>um, uh, like</em>) instead of thinking phrases</li>
+            <li>Pausing mid-sentence because you're searching for the "perfect" word</li>
+            <li>Speaking too fast and losing coherence just to appear fluent</li>
+            <li>Ignoring the examiner's follow-up questions because you're focused on your script</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- ===== CRITERION 2 ===== -->
+    <article id="criterion-lr" class="criterion-card mb-8" style="--accent: linear-gradient(90deg, #8b5cf6, #a855f7);">
+      <div class="criterion-header">
+        <div class="criterion-icon bg-purple-50 text-purple-600">📚</div>
+        <div>
+          <h3 class="criterion-title">Lexical Resource</h3>
+          <span class="criterion-weight">⚖️ 25% of total score</span>
+        </div>
+      </div>
+
+      <div class="criterion-body">
+
+        <div class="sub-heading"><span>Band Descriptors</span><span class="line"></span></div>
+        <div class="band-box">
+          <div class="band-row">
+            <span class="band-label band-7">Band 7</span>
+            <span>Uses vocabulary resource flexibly to discuss a variety of topics. Uses some less common and idiomatic vocabulary, showing some awareness of style and collocation, with some inappropriate choices. Uses paraphrase effectively as required.</span>
+          </div>
+          <div class="band-row">
+            <span class="band-label band-8">Band 8</span>
+            <span>Uses a wide vocabulary resource readily and flexibly to convey precise meaning. Uses less common and idiomatic vocabulary skilfully, with occasional inaccuracies. Uses paraphrase effectively as required.</span>
+          </div>
+        </div>
+
+        <div class="sub-heading"><span>How to Improve</span><span class="line"></span></div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ede9fe;color:#5b21b6;">1</span>
+          <span><strong>Build topic-specific word banks.</strong> For each Part 3 topic (housing, education, technology, environment, etc.), collect 8–10 precise terms with collocations. Don't learn isolated words — learn them in phrases.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ede9fe;color:#5b21b6;">2</span>
+          <span><strong>Master collocations.</strong> Learn which words naturally go together: <em>make a decision</em> (not <em>do a decision</em>), <em>heavy traffic</em> (not <em>strong traffic</em>), <em>highly unlikely</em> (not <em>strongly unlikely</em>).</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ede9fe;color:#5b21b6;">3</span>
+          <span><strong>Practise paraphrasing.</strong> Take a simple sentence and rewrite it three ways using synonyms and different structures. E.g., <em>"I like reading"</em> → <em>"I'm fond of reading"</em> → <em>"Reading is something I really enjoy"</em> → <em>"I have a strong preference for reading."</em></span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ede9fe;color:#5b21b6;">4</span>
+          <span><strong>Use idioms selectively.</strong> 1–2 idioms per answer is enough. Force them only when they fit naturally. A well-placed idiom is far more impressive than three awkward ones.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ede9fe;color:#5b21b6;">5</span>
+          <span><strong>Record and upgrade.</strong> After answering a question, transcribe your answer and replace common words with more precise alternatives. Build a personal "upgrade list."</span>
+        </div>
+
+        <div class="drill-box">
+          <p class="drill-title">🎯 Weekly Practice Drill</p>
+          <p class="text-sm text-slate-700 m-0 leading-relaxed">
+            <strong>Day 1–2:</strong> Collocation mapping — take 10 common verbs (<em>make, do, take, have, get</em>) and list 5 natural collocations for each.<br>
+            <strong>Day 3–4:</strong> Paraphrase practice — rewrite 10 simple sentences in three different ways.<br>
+            <strong>Day 5–7:</strong> Topic vocabulary — pick 2 Part 3 topics, learn 10 collocations each, then answer 4 questions using at least 5 of them.
+          </p>
+        </div>
+
+        <div class="pitfall-box">
+          <p class="pitfall-title">⚠️ Common Pitfalls</p>
+          <ul class="list-disc pl-5 m-0 space-y-1.5 text-sm text-slate-700">
+            <li>Using advanced words incorrectly — <em>vocabulary</em> is not the same as <em>lexicon</em> in everyday speech</li>
+            <li>Forcing idioms that don't fit the context or tone</li>
+            <li>Learning word lists without collocations — isolated words rarely sound natural</li>
+            <li>Repeating the same word 4–5 times in one answer when a synonym exists</li>
+            <li>Using overly formal academic words in a conversational Part 1 answer</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- ===== CRITERION 3 ===== -->
+    <article id="criterion-gra" class="criterion-card mb-8" style="--accent: linear-gradient(90deg, #10b981, #14b8a6);">
+      <div class="criterion-header">
+        <div class="criterion-icon bg-emerald-50 text-emerald-600">⚙️</div>
+        <div>
+          <h3 class="criterion-title">Grammatical Range &amp; Accuracy</h3>
+          <span class="criterion-weight">⚖️ 25% of total score</span>
+        </div>
+      </div>
+
+      <div class="criterion-body">
+
+        <div class="sub-heading"><span>Band Descriptors</span><span class="line"></span></div>
+        <div class="band-box">
+          <div class="band-row">
+            <span class="band-label band-7">Band 7</span>
+            <span>Uses a range of complex structures with some flexibility. Frequently produces error-free sentences, though some grammatical mistakes persist. Errors do not impede communication.</span>
+          </div>
+          <div class="band-row">
+            <span class="band-label band-8">Band 8</span>
+            <span>Uses a wide range of structures flexibly. Produces a majority of error-free sentences with only occasional slips. Errors are minor and do not affect clarity.</span>
+          </div>
+        </div>
+
+        <div class="sub-heading"><span>How to Improve</span><span class="line"></span></div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#d1fae5;color:#065f46;">1</span>
+          <span><strong>Mix sentence types deliberately.</strong> In every answer, aim for at least one simple sentence, one compound sentence (with <em>and, but, so</em>), and one complex sentence (with <em>because, although, which, if</em>).</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#d1fae5;color:#065f46;">2</span>
+          <span><strong>Practise conditionals in Part 3.</strong> Part 3 questions often invite hypothetical answers. Use <em>"If the government were to invest more…, it could…"</em> and <em>"Provided that…, people would…"</em> naturally.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#d1fae5;color:#065f46;">3</span>
+          <span><strong>Master past tenses for Part 2.</strong> Most Part 2 tasks describe past experiences. Drill past simple, past continuous, past perfect, and <em>used to</em> until they are automatic.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#d1fae5;color:#065f46;">4</span>
+          <span><strong>Use relative clauses.</strong> Add natural detail with <em>who, which, that, where</em>: <em>"I visited a place which was famous for its tea gardens"</em> instead of two short sentences.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#d1fae5;color:#065f46;">5</span>
+          <span><strong>Self-correct gracefully.</strong> If you make a mistake, correct it immediately and move on: <em>"He go — he goes to work by bus."</em> Do not restart the whole sentence.</span>
+        </div>
+
+        <div class="drill-box">
+          <p class="drill-title">🎯 Weekly Practice Drill</p>
+          <p class="text-sm text-slate-700 m-0 leading-relaxed">
+            <strong>Day 1–2:</strong> Sentence transformation — take 10 simple sentences and rewrite each as compound and complex.<br>
+            <strong>Day 3–4:</strong> Tense drill — describe your day (past), your routine (present), and your plans (future) in 90 seconds each.<br>
+            <strong>Day 5–7:</strong> Conditional practice — answer 6 Part 3 questions using at least one conditional per answer.
+          </p>
+        </div>
+
+        <div class="pitfall-box">
+          <p class="pitfall-title">⚠️ Common Pitfalls</p>
+          <ul class="list-disc pl-5 m-0 space-y-1.5 text-sm text-slate-700">
+            <li>Forcing every sentence to be complex — this creates errors and sounds unnatural</li>
+            <li>Mixing tenses within the same idea (e.g., switching from past to present mid-story)</li>
+            <li>Subject-verb agreement errors — <em>"The people in my country is…"</em></li>
+            <li>Using <em>"discuss about"</em> (incorrect) instead of <em>"discuss"</em> (correct)</li>
+            <li>Overusing <em>"very"</em> and <em>"a lot of"</em> instead of varied structures</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- ===== CRITERION 4 ===== -->
+    <article id="criterion-p" class="criterion-card mb-8" style="--accent: linear-gradient(90deg, #f43f5e, #ec4899);">
+      <div class="criterion-header">
+        <div class="criterion-icon bg-rose-50 text-rose-600">🔊</div>
+        <div>
+          <h3 class="criterion-title">Pronunciation</h3>
+          <span class="criterion-weight">⚖️ 25% of total score</span>
+        </div>
+      </div>
+
+      <div class="criterion-body">
+
+        <div class="sub-heading"><span>Band Descriptors</span><span class="line"></span></div>
+        <div class="band-box">
+          <div class="band-row">
+            <span class="band-label band-7">Band 7</span>
+            <span>Generally clear pronunciation with some effective use of pronunciation features. Can be understood throughout, though individual words or sounds may occasionally be unclear. Accent has some effect on intelligibility but not enough to impede communication.</span>
+          </div>
+          <div class="band-row">
+            <span class="band-label band-8">Band 8</span>
+            <span>Easy to understand throughout. Uses a wide range of pronunciation features with flexibility. Accent has minimal effect on intelligibility. Sustained flexible use of features is evident.</span>
+          </div>
+        </div>
+
+        <div class="sub-heading"><span>How to Improve</span><span class="line"></span></div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ffe4e6;color:#9f1239;">1</span>
+          <span><strong>Shadowing.</strong> Listen to a short audio clip (30–60 seconds) from a native speaker. Play it, pause, and repeat sentence by sentence, imitating the speaker's rhythm, stress, and intonation. Do this for 10–15 minutes daily.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ffe4e6;color:#9f1239;">2</span>
+          <span><strong>Word stress awareness.</strong> English word stress is fixed and can change meaning. Learn stress patterns when you learn new words: <em>deVELopment</em> (not <em>DEvelopment</em>), <em>phoTOgraphy</em> (not <em>PHOtography</em>).</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ffe4e6;color:#9f1239;">3</span>
+          <span><strong>Sentence stress.</strong> Stress the important content words and reduce function words. <em>"I WANT to GO to the BEACH this WEEKEND."</em> This creates natural English rhythm.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ffe4e6;color:#9f1239;">4</span>
+          <span><strong>Chunking.</strong> Break speech into meaningful groups of words: <em>"When I was a child | I used to play cricket | with my friends."</em> This makes you easier to follow and sounds more fluent.</span>
+        </div>
+        <div class="strategy-item">
+          <span class="strategy-num" style="background:#ffe4e6;color:#9f1239;">5</span>
+          <span><strong>Record and compare.</strong> Record yourself reading a short passage. Listen back and compare with a native speaker's version. Focus on sounds you consistently mispronounce (e.g., <em>v/w</em>, <em>th</em>, long/short vowels).</span>
+        </div>
+
+        <div class="drill-box">
+          <p class="drill-title">🎯 Weekly Practice Drill</p>
+          <p class="text-sm text-slate-700 m-0 leading-relaxed">
+            <strong>Day 1–2:</strong> Shadowing — 10 minutes daily with a podcast or YouTube clip. Focus on rhythm and intonation.<br>
+            <strong>Day 3–4:</strong> Minimal pairs — practise confusing sound pairs (<em>ship/sheep, very/wary, think/sink</em>) for 10 minutes.<br>
+            <strong>Day 5–7:</strong> Record a 90-second Part 2 answer, transcribe it, and mark where stress should fall. Re-record with correct stress.
+          </p>
+        </div>
+
+        <div class="pitfall-box">
+          <p class="pitfall-title">⚠️ Common Pitfalls</p>
+          <ul class="list-disc pl-5 m-0 space-y-1.5 text-sm text-slate-700">
+            <li>Speaking too quietly or mumbling — the examiner must hear you clearly</li>
+            <li>Flat intonation — English uses rising and falling tones to convey meaning</li>
+            <li>Pronouncing every word with equal stress instead of stressing content words</li>
+            <li>Confusing <em>v</em> and <em>w</em> — <em>"very"</em> not <em>"wery"</em></li>
+            <li>Mispronouncing <em>th</em> sounds — <em>"think"</em> not <em>"tink"</em></li>
+            <li>Using an accent that impedes understanding — clarity matters more than native-like accent</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  30-DAY PLAN                                                   -->
+  <!-- ============================================================ -->
+  <section id="plan" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700">🗓️</span>
+          30-Day Improvement Plan
+        </h2>
+        <p class="section-sub">Balanced focus across all four criteria · 30–45 minutes daily</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+      <div class="grid md:grid-cols-3 gap-4">
+
+        <div class="rounded-xl border border-blue-100 bg-blue-50/60 p-5">
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-blue-800 text-xs uppercase tracking-wide mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Days 1–10 · Foundation
+          </span>
+          <ul class="list-disc pl-4 m-0 space-y-1.5 text-sm text-slate-700">
+            <li><strong>FC:</strong> 4–3–2 drill, 10 min daily</li>
+            <li><strong>LR:</strong> Build 2 topic word banks</li>
+            <li><strong>GRA:</strong> Sentence transformation drills</li>
+            <li><strong>P:</strong> Shadowing, 10 min daily</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-5">
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-emerald-800 text-xs uppercase tracking-wide mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Days 11–20 · Development
+          </span>
+          <ul class="list-disc pl-4 m-0 space-y-1.5 text-sm text-slate-700">
+            <li><strong>FC:</strong> Record full Part 2 + Part 3</li>
+            <li><strong>LR:</strong> Paraphrase practice + idioms</li>
+            <li><strong>GRA:</strong> Conditional &amp; relative clause drills</li>
+            <li><strong>P:</strong> Minimal pairs + intonation work</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-amber-100 bg-amber-50/60 p-5">
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-amber-800 text-xs uppercase tracking-wide mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Days 21–30 · Mastery
+          </span>
+          <ul class="list-disc pl-4 m-0 space-y-1.5 text-sm text-slate-700">
+            <li><strong>FC:</strong> Full mock tests, timed</li>
+            <li><strong>LR:</strong> Cross-topic vocabulary revision</li>
+            <li><strong>GRA:</strong> Error review from recordings</li>
+            <li><strong>P:</strong> Final recording comparison</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 px-5 py-4 flex gap-3">
+        <span class="text-xl shrink-0">💡</span>
+        <p class="text-sm text-slate-700 m-0 leading-relaxed">
+          <strong>Pro tip:</strong> After every recording, rate yourself 1–9 on each criterion
+          using the band descriptors above. Track your scores in a notebook. You will
+          notice which criterion needs the most attention and can adjust your practice
+          accordingly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  QUICK REFERENCE TIPS                                          -->
+  <!-- ============================================================ -->
+  <section id="tips" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-teal-100 to-cyan-100 text-teal-700">💡</span>
+          Quick Reference Tips
+        </h2>
+        <p class="section-sub">Small changes that make a big difference across all criteria</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-3.5">
+      <div class="tip-item"><span class="tip-num">1</span><span><strong>Don't memorise scripts.</strong> Examiners detect rehearsed answers instantly. Learn structures and vocabulary, not fixed sentences.</span></div>
+      <div class="tip-item"><span class="tip-num">2</span><span><strong>Extend every answer.</strong> Aim for 2–4 sentences in Part 1, 1.5–2 minutes in Part 2, and 35–60 seconds in Part 3.</span></div>
+      <div class="tip-item"><span class="tip-num">3</span><span><strong>Use natural thinking phrases.</strong> <em>"That's an interesting question…"</em> buys you time without sounding hesitant.</span></div>
+      <div class="tip-item"><span class="tip-num">4</span><span><strong>Self-correct without panic.</strong> If you make a mistake, correct it briefly and continue. Fluency is about recovery, not perfection.</span></div>
+      <div class="tip-item"><span class="tip-num">5</span><span><strong>Use Bangladeshi examples naturally.</strong> Cox's Bazar, Dhaka traffic, Eid, monsoon, garment industry — these make answers authentic and easier to develop.</span></div>
+      <div class="tip-item"><span class="tip-num">6</span><span><strong>Record yourself weekly.</strong> Listen for patterns in your errors — repeated grammar mistakes, overused words, unclear pronunciation.</span></div>
+      <div class="tip-item"><span class="tip-num">7</span><span><strong>Practise under timed conditions.</strong> Use a timer for Part 2 (1 min prep, 2 min speak) and Part 3 (35–60 sec per answer).</span></div>
+      <div class="tip-item"><span class="tip-num">8</span><span><strong>Focus on clarity, not accent.</strong> You don't need a British or American accent. You need to be clearly understood throughout.</span></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  CHECKLIST                                                     -->
+  <!-- ============================================================ -->
+  <section id="checklist" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-emerald-100 to-green-100 text-emerald-700">✅</span>
+          Pre-Test Checklist
+        </h2>
+        <p class="section-sub">Run through this list before every practice session and on test day</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+
+      <div class="progress-track mb-6">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="text-sm font-bold text-slate-500 mb-5">
+        <span id="checkCount">0</span> / <span id="checkTotal">10</span> complete
+      </div>
+
+      <div id="checklistGrid" class="grid md:grid-cols-2 gap-3"></div>
+
+      <div class="mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
+        <span class="text-xl shrink-0">🏆</span>
+        <p class="text-sm text-slate-700 m-0">
+          <strong class="text-purple-800">Final reminder:</strong> All four criteria are
+          equally weighted. A weakness in one can pull down your overall band even if
+          the others are strong. Practice all four, track your progress, and trust the
+          process.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <p class="font-extrabold text-slate-800 text-base m-0">🎙️ IELTS Speaking Marking Criteria · Complete Guide</p>
+    <p class="text-sm mt-1.5 m-0">Four criteria · Band 7–8 descriptors · Improvement strategies · 30-day plan</p>
+    <p class="text-xs text-gray-400 mt-2.5 m-0">Built for personal study · HTML &amp; Tailwind CSS</p>
+  </div>
+
+</main>
+
+<script>
+/* =========================================================================
+   CHECKLIST
+   ========================================================================= */
+const CHECKLIST = [
+  "I know the Band 7 and Band 8 descriptors for all four criteria",
+  "I practise fluency daily using the 4–3–2 drill",
+  "I have a topic vocabulary bank with collocations, not just word lists",
+  "I can use at least 5 different discourse markers naturally",
+  "I mix simple, compound and complex sentences in my answers",
+  "I self-correct mistakes gracefully without restarting sentences",
+  "I record myself at least twice a week and review the recordings",
+  "I can speak for 1.5–2 minutes on any Part 2 topic without long pauses",
+  "I use natural thinking phrases instead of disruptive fillers",
+  "I focus on clarity rather than trying to sound like a native speaker"
+];
+
+const checklistGrid = document.getElementById('checklistGrid');
+document.getElementById('checkTotal').textContent = CHECKLIST.length;
+
+CHECKLIST.forEach((text, i) => {
+  const div = document.createElement('div');
+  div.className = 'check-item';
+  div.style.cssText = 'display:flex;gap:.75rem;align-items:flex-start;padding:.85rem 1rem;border-radius:.75rem;border:1px solid #eef2f6;background:#fff;cursor:pointer;transition:all .18s ease;';
+  div.innerHTML =
+    '<div class="check-box" style="width:1.15rem;height:1.15rem;border-radius:.35rem;border:2px solid #cbd5e1;flex-shrink:0;margin-top:.1rem;display:flex;align-items:center;justify-content:center;transition:all .18s ease;">' +
+      '<svg style="width:.7rem;height:.7rem;color:#fff;opacity:0;transition:opacity .18s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" d="M5 13l4 4L19 7"/>' +
+      '</svg>' +
+    '</div>' +
+    '<span style="font-size:.84rem;color:#334155;line-height:1.55;">' + text + '</span>';
+
+  div.addEventListener('click', () => {
+    const checked = div.classList.toggle('checked');
+    if (checked) {
+      div.style.borderColor = '#86efac';
+      div.style.background = '#f0fdf4';
+      div.querySelector('.check-box').style.background = '#22c55e';
+      div.querySelector('.check-box').style.borderColor = '#22c55e';
+      div.querySelector('.check-box svg').style.opacity = '1';
+    } else {
+      div.style.borderColor = '#eef2f6';
+      div.style.background = '#fff';
+      div.querySelector('.check-box').style.background = 'transparent';
+      div.querySelector('.check-box').style.borderColor = '#cbd5e1';
+      div.querySelector('.check-box svg').style.opacity = '0';
+    }
+    updateProgress();
+  });
+
+  checklistGrid.appendChild(div);
+});
+
+function updateProgress() {
+  const total = CHECKLIST.length;
+  const done = checklistGrid.querySelectorAll('.checked').length;
+  document.getElementById('checkCount').textContent = done;
+  document.getElementById('progressFill').style.width = (done / total * 100) + '%';
+}
+</script>
+
+</body>
+</html>

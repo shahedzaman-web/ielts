@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Speaking Part 3 Vocabulary · Cambridge 11–21</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(13,148,136,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
+      #f8fafc;
+    margin: 0;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #134e4a 55%, #0e7490 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(13,148,136,.32), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
+      radial-gradient(closest-side, rgba(16,185,129,.20), transparent 70%);
+    filter: blur(70px);
+    animation: drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+  .stat-box {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: .85rem;
+    padding: .8rem 1.2rem;
+    text-align: center;
+    min-width: 90px;
+  }
+  .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .63rem; color: #99f6e4; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-shell {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(248,250,252,.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
+  }
+  .book-select {
+    padding: .45rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569; cursor: pointer;
+    outline: none;
+  }
+  .book-select:focus { border-color: #5eead4; box-shadow: 0 0 0 3px rgba(13,148,136,.14); }
+  .search-input {
+    padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
+    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
+    transition: all .18s ease;
+  }
+  .search-input:focus { border-color: #5eead4; box-shadow: 0 0 0 3px rgba(13,148,136,.14); }
+  .reset-btn {
+    padding: .45rem .9rem; border-radius: 999px; font-size: .78rem; font-weight: 700;
+    border: 1px solid #fecaca; background: #fff; color: #b91c1c;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+  }
+  .reset-btn:hover { background: #fef2f2; }
+
+  /* ---------- VOCAB TABLES ---------- */
+  .topic-block {
+    background: #fff; border-radius: 1.1rem;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 2px 10px rgba(15,23,42,.035);
+    overflow: hidden;
+    transition: box-shadow .25s ease, border-color .25s ease;
+  }
+  .topic-block:hover {
+    border-color: #ccfbf1;
+    box-shadow: 0 12px 30px -18px rgba(13,148,136,.28), 0 4px 12px -8px rgba(15,23,42,.12);
+  }
+  .topic-header {
+    padding: .9rem 1.25rem;
+    background: linear-gradient(135deg, #f0fdfa, #f0f9ff);
+    border-bottom: 1px solid #e6fffa;
+    display: flex; align-items: center; gap: .65rem;
+  }
+  .topic-header .t-icon {
+    width: 2rem; height: 2rem; border-radius: .55rem;
+    background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: .9rem; font-weight: 800; flex-shrink: 0;
+  }
+  .topic-header .t-name {
+    font-size: .88rem; font-weight: 800; color: #0f172a; line-height: 1.25;
+  }
+  .topic-header .t-count {
+    margin-left: auto; font-size: .65rem; font-weight: 800;
+    background: #ccfbf1; color: #0f766e;
+    padding: .18rem .6rem; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: .05em; white-space: nowrap;
+  }
+
+  .vocab-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) 2fr;
+    gap: 1rem;
+    padding: .7rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background .16s ease;
+  }
+  .vocab-row:last-child { border-bottom: 0; }
+  .vocab-row:hover { background: #f0fdfa; }
+  .vocab-term {
+    font-size: .84rem; font-weight: 700; color: #0f172a;
+    line-height: 1.45; word-break: break-word;
+  }
+  .vocab-meaning {
+    font-size: .82rem; color: #475569; line-height: 1.5;
+  }
+  .vocab-row:hover .vocab-term { color: #0f766e; }
+
+  /* ---------- BOOK / TEST HEADINGS ---------- */
+  .book-heading {
+    display: flex; align-items: center; gap: .75rem;
+    margin: 2.6rem 0 1.1rem;
+  }
+  .book-heading .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, #cbd5e1, transparent);
+  }
+  .book-pill {
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; color: #fff;
+    background: linear-gradient(135deg, #0f172a, #134e4a);
+    padding: .38rem .95rem; border-radius: 999px;
+    box-shadow: 0 6px 16px -10px rgba(15,23,42,.6);
+    white-space: nowrap;
+  }
+  .test-heading {
+    font-size: .82rem; font-weight: 800; color: #0f172a;
+    display: flex; align-items: center; gap: .5rem;
+    margin: 1.4rem 0 .7rem;
+  }
+  .test-heading .dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+    flex-shrink: 0;
+  }
+  .repeat-note {
+    font-size: .72rem; font-weight: 600; color: #94a3b8;
+    background: #f8fafc; border: 1px dashed #e2e8f0;
+    border-radius: .6rem; padding: .5rem .85rem;
+    margin: .4rem 0 .8rem;
+    display: inline-block;
+  }
+
+  /* ---------- POWER WORDS ---------- */
+  .power-card {
+    border-radius: .9rem;
+    border: 1px solid #e0f2fe;
+    background: linear-gradient(135deg, #f0f9ff, #fff);
+    padding: 1.1rem 1.25rem;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .power-card:hover {
+    transform: translateY(-3px);
+    border-color: #7dd3fc;
+    box-shadow: 0 14px 30px -20px rgba(14,165,233,.5);
+  }
+  .power-card .pw {
+    font-size: 1rem; font-weight: 800; color: #0c4a6e;
+    margin-bottom: .3rem; letter-spacing: -.01em;
+  }
+  .power-card .pm {
+    font-size: .82rem; color: #475569; line-height: 1.5;
+    margin-bottom: .7rem;
+  }
+  .power-card .pt {
+    font-size: .6rem; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; color: #0284c7;
+    background: #e0f2fe; padding: .2rem .55rem;
+    border-radius: 999px; display: inline-block; margin: .15rem .2rem 0 0;
+    white-space: nowrap;
+  }
+
+  .tip-item {
+    display: flex; gap: .7rem; align-items: flex-start;
+    padding: .75rem 1rem; border-radius: .75rem;
+    border: 1px solid #e6fffa; background: #f0fdfa;
+    font-size: .84rem; color: #334155; line-height: 1.55;
+  }
+  .tip-item .tip-dot {
+    width: 1.4rem; height: 1.4rem; border-radius: .45rem; flex-shrink: 0;
+    background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+    color: #fff; font-size: .65rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: .05rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.02em; display: flex; align-items: center; gap: .55rem;
+  }
+
+  .footer-note {
+    background: #f1f5f9; border-radius: 1rem; padding: 1.6rem 2rem;
+    text-align: center; color: #475569; font-size: .88rem;
+    border: 1px solid #e2e8f0; margin-top: 3rem;
+  }
+
+  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora { animation: none; }
+    .topic-block, .power-card { transition: none; }
+  }
+  @media (max-width: 640px) {
+    .stat-box { padding: .6rem .85rem; min-width: 76px; }
+    .stat-box .number { font-size: 1.15rem; }
+    .vocab-row { grid-template-columns: 1fr; gap: .2rem; padding: .65rem 1rem; }
+    .vocab-term { font-size: .82rem; }
+    .vocab-meaning { font-size: .78rem; }
+    .topic-header { padding: .75rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+          📚 B2–C1 Vocabulary Bank · Band 7–8
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+          IELTS Speaking Part 3<br />
+          <span class="text-teal-300">Topic Vocabulary</span>
+        </h1>
+        <p class="text-lg md:text-xl text-teal-100/80 mt-4 max-w-2xl leading-relaxed">
+          Every Part 3 topic from Cambridge IELTS Books 11–21 — with
+          topic-specific terms and clear definitions.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#bank" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-teal-900/30 flex items-center gap-2">
+            🔍 Browse the Bank <span>→</span>
+          </a>
+          <a href="#power" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+            ⚡ Power Words
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number" id="statTerms">—</div><div class="label">Terms</div></div>
+        <div class="stat-box"><div class="number" id="statTopics">—</div><div class="label">Topics</div></div>
+        <div class="stat-box"><div class="number">11</div><div class="label">Books</div></div>
+        <div class="stat-box"><div class="number">13</div><div class="label">Power Words</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<div class="filter-shell" id="bank">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="flex flex-wrap items-center gap-2.5">
+      <select class="book-select" id="bookFilter">
+        <option value="all">All Books</option>
+      </select>
+
+      <div class="relative flex-1 min-w-[200px]">
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search terms, meanings or topics…" />
+      </div>
+
+      <button id="resetBtn" class="reset-btn">Reset</button>
+    </div>
+
+    <div class="mt-2.5 text-xs text-slate-500 font-medium">
+      Showing <span id="resultCount" class="font-extrabold text-teal-600">0</span> terms
+      <span id="activeSummary" class="text-slate-400"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= RESULTS ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+  <div id="results"></div>
+
+  <!-- ============ CROSS-TOPIC POWER WORDS ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="power" />
+
+  <section>
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">⚡</span>
+      <h2 class="section-title m-0">Cross-Topic Power Words</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      These high-frequency B2–C1 words appear across multiple Part 3 topics.
+      Learn them once and use them everywhere.
+    </p>
+
+    <div id="powerGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </section>
+
+  <!-- ============ FINAL TIPS ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="tips" />
+
+  <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-9 shadow-sm">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">💡</span>
+      <h2 class="section-title m-0">Final Tips for Using This Vocabulary</h2>
+    </div>
+    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+      Vocabulary only works when it's used naturally inside a well-structured answer.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-3.5">
+      <div class="tip-item"><span class="tip-dot">1</span><span>Don't memorise lists — learn words in context through definitions and practice.</span></div>
+      <div class="tip-item"><span class="tip-dot">2</span><span>Practise 5–7 new words per day in your own answers.</span></div>
+      <div class="tip-item"><span class="tip-dot">3</span><span>Record yourself answering Part 3 questions using this vocabulary.</span></div>
+      <div class="tip-item"><span class="tip-dot">4</span><span>Focus on collocations — they make your English sound natural.</span></div>
+      <div class="tip-item"><span class="tip-dot">5</span><span>Use Bangladeshi examples — Cox's Bazar, Dhaka, Eid, garment industry, monsoon.</span></div>
+      <div class="tip-item"><span class="tip-dot">6</span><span>Balance perspectives — use discourse markers like "Having said that," "On the other hand," "Provided that."</span></div>
+      <div class="tip-item"><span class="tip-dot">7</span><span>Aim for 35–60 seconds per answer with a clear opinion, reason and example.</span></div>
+      <div class="tip-item"><span class="tip-dot">8</span><span>Self-correct naturally — if you make a mistake, rephrase without panic.</span></div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <p class="font-bold text-slate-800">📚 IELTS Speaking Part 3 · Cambridge Vocabulary Serial</p>
+    <p class="text-sm mt-1">Books 11–21 · B2–C1 topic vocabulary with definitions</p>
+    <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML &amp; Tailwind CSS</p>
+  </div>
+</main>
+
+<script>
+/* =========================================================================
+   DATA — [book, test, topic, [[term, meaning], ...]]
+   ========================================================================= */
+const VOCAB = [
+/* ===== BOOK 11 ===== */
+[11,1,"Different types of home",[
+ ["detached house","A house not joined to another"],
+ ["apartment block / flat","A building divided into separate homes"],
+ ["high-rise","A very tall building with many floors"],
+ ["vertical living","Living in tall buildings rather than on land"],
+ ["urban sprawl","Uncontrolled expansion of cities into surrounding areas"],
+ ["affordable housing","Housing that ordinary people can afford"],
+ ["mortgage","A loan used to buy property"],
+ ["amenities","Useful facilities or services"]
+]],
+[11,1,"Finding a place to live",[
+ ["rental market","The system of renting property"],
+ ["lease agreement","A legal contract for renting"],
+ ["commute","The journey between home and work"],
+ ["proximity","Nearness in distance"],
+ ["cost of living","The amount needed for daily expenses"],
+ ["financial independence","Being able to support yourself"],
+ ["extended family","A family including relatives beyond parents and children"],
+ ["inheritance","Property or money received from someone who died"]
+]],
+[11,1,"Reading and children",[
+ ["literacy","The ability to read and write"],
+ ["reading for pleasure","Reading because you enjoy it"],
+ ["reluctant reader","A child who avoids reading"],
+ ["attention span","How long you can concentrate"],
+ ["instant gratification","Immediate pleasure or reward"],
+ ["graphic novel","A book with comic-style illustrations"],
+ ["fiction / non-fiction","Imaginary stories / factual books"],
+ ["academic pressure","Stress caused by school demands"]
+]],
+[11,1,"Reading for different purposes",[
+ ["skimming","Reading quickly for the main idea"],
+ ["scanning","Reading quickly to find specific information"],
+ ["comprehension","Understanding what you read"],
+ ["critical reading","Analysing and questioning a text"],
+ ["speed reading","Reading rapidly while maintaining understanding"],
+ ["digital reading","Reading on screens"],
+ ["e-reader","A device for reading electronic books"],
+ ["information overload","Too much information to process"]
+]],
+[11,1,"Types of weather",[
+ ["monsoon","Seasonal heavy rainfall"],
+ ["humidity","Amount of moisture in the air"],
+ ["waterlogging","When land becomes flooded and cannot drain"],
+ ["cyclone","A violent tropical storm"],
+ ["heatwave","A period of unusually hot weather"],
+ ["precipitation","Rain, snow, or hail"],
+ ["seasonal","Related to a particular season"],
+ ["harvest","Gathering crops"]
+]],
+[11,1,"Weather forecasts",[
+ ["forecast","A prediction of future weather"],
+ ["meteorology","The scientific study of weather"],
+ ["accuracy","Correctness or precision"],
+ ["unreliable","Not able to be trusted"],
+ ["early warning system","Technology that alerts people to danger"],
+ ["satellite imagery","Pictures taken from space"],
+ ["climate pattern","Long-term weather trends"],
+ ["contingency plan","A plan for unexpected events"]
+]],
+[11,1,"Different types of TV programmes",[
+ ["game show","A TV programme where people compete for prizes"],
+ ["reality TV","Shows featuring ordinary people in real situations"],
+ ["talk show","A programme with interviews and discussion"],
+ ["soap opera / drama serial","A long-running fictional series"],
+ ["news bulletin","A short news broadcast"],
+ ["viewership","The number of people watching"],
+ ["prime time","The most popular viewing hours"],
+ ["censorship","Official control of media content"]
+]],
+[11,1,"TV advertising",[
+ ["commercial","An advertisement on TV or radio"],
+ ["advertising revenue","Income from ads"],
+ ["product placement","Featuring products within a show"],
+ ["target audience","The group an ad aims to reach"],
+ ["persuasive","Good at convincing people"],
+ ["misleading claim","A statement that gives a false impression"],
+ ["consumer protection","Laws that protect buyers"],
+ ["endorsement","Public support by a famous person"]
+]],
+
+/* ===== BOOK 12 ===== */
+[12,1,"Arriving early",[
+ ["punctuality","Being on time"],
+ ["time-sensitive","Needing to be done at a specific time"],
+ ["buffer time","Extra time allowed for delays"],
+ ["unforeseen delay","A delay you could not predict"],
+ ["prioritise","To treat something as more important"],
+ ["courtesy","Polite behaviour showing respect"],
+ ["time management","Organising time effectively"],
+ ["first impression","The initial opinion someone forms"]
+]],
+[12,1,"Being patient",[
+ ["patience","The ability to wait calmly"],
+ ["tolerance","Willingness to accept differences"],
+ ["perseverance","Continuing despite difficulties"],
+ ["emotional control","Managing your feelings"],
+ ["frustration","Annoyance at being unable to do something"],
+ ["composure","Calmness under pressure"],
+ ["long-suffering","Patient despite repeated problems"],
+ ["restraint","Holding back from reacting"]
+]],
+[12,1,"Watching films/movies",[
+ ["blockbuster","A very successful film"],
+ ["cinematography","The art of filming"],
+ ["plot","The storyline"],
+ ["immersive","Deeply engaging"],
+ ["streaming platform","A service showing films online"],
+ ["box office","Where tickets are sold / film earnings"],
+ ["soundtrack","Music accompanying a film"],
+ ["subtitles","Text at the bottom of the screen"]
+]],
+[12,1,"Theatre",[
+ ["performance","A presentation to an audience"],
+ ["stage","The raised area where actors perform"],
+ ["audience","People watching a performance"],
+ ["rehearsal","Practice before a performance"],
+ ["script","Written text of a play"],
+ ["improvisation","Performing without preparation"],
+ ["cultural heritage","Traditions passed down generations"],
+ ["patronage","Financial support from donors"]
+]],
+[12,1,"Money and young people",[
+ ["allowance","Regular pocket money"],
+ ["budgeting","Planning how to spend money"],
+ ["financial literacy","Knowledge about money management"],
+ ["savings","Money kept for the future"],
+ ["expenditure","Money spent"],
+ ["impulse buying","Buying without planning"],
+ ["debt","Money owed"],
+ ["financial independence","Supporting yourself financially"]
+]],
+[12,1,"Money and society",[
+ ["income inequality","Gap between rich and poor"],
+ ["social mobility","Ability to move between social classes"],
+ ["wealth gap","Difference in wealth between groups"],
+ ["poverty line","Minimum income needed to survive"],
+ ["philanthropy","Giving to good causes"],
+ ["redistribution","Sharing wealth more equally"],
+ ["humanitarian aid","Help during crises"],
+ ["economic disparity","Unequal distribution of wealth"]
+]],
+[12,1,"Different kinds of workplaces",[
+ ["ergonomic","Designed for comfort and efficiency"],
+ ["open-plan office","Office with few walls"],
+ ["workstation","A desk and equipment for work"],
+ ["ventilation","Air circulation"],
+ ["remote work","Working from home"],
+ ["hybrid model","Mix of office and remote work"],
+ ["productivity","Amount of work produced"],
+ ["morale","Spirit and confidence of a group"]
+]],
+[12,1,"The importance of work",[
+ ["livelihood","Means of earning money"],
+ ["job satisfaction","Pleasure from your work"],
+ ["workaholic","Someone addicted to work"],
+ ["burnout","Exhaustion from overwork"],
+ ["purpose","Sense of meaning"],
+ ["contribution","What you give to society"],
+ ["dignity of labour","Respect for all work"],
+ ["automation","Machines doing human work"]
+]],
+
+/* ===== BOOK 13 ===== */
+[13,1,"Choosing work",[
+ ["career path","The sequence of jobs someone does"],
+ ["vocational","Related to practical skills"],
+ ["white-collar","Office or professional work"],
+ ["blue-collar","Manual or industrial work"],
+ ["prestige","Respect based on status"],
+ ["remuneration","Payment for work"],
+ ["job security","Stability of employment"],
+ ["career progression","Advancement in a career"]
+]],
+[13,1,"Work-Life balance",[
+ ["work-life balance","Balance between work and personal life"],
+ ["overtime","Extra hours worked"],
+ ["flexible hours","Choosing when to work"],
+ ["annual leave","Paid holiday from work"],
+ ["burnout","Exhaustion from overwork"],
+ ["wellbeing","Health and happiness"],
+ ["stress","Mental pressure"],
+ ["disconnect","Ability to switch off from work"]
+]],
+[13,1,"Technology and education",[
+ ["digital literacy","Ability to use technology effectively"],
+ ["e-learning","Learning via electronic media"],
+ ["blended learning","Mix of online and face-to-face"],
+ ["interactive","Engaging two-way communication"],
+ ["simulation","Computer model of reality"],
+ ["digital divide","Gap in technology access"],
+ ["adaptive learning","Technology adjusting to student needs"],
+ ["screen time","Time spent on devices"]
+]],
+[13,1,"Technology and society",[
+ ["connectivity","Being connected online"],
+ ["instant messaging","Real-time text communication"],
+ ["misinformation","False information"],
+ ["privacy","Right to keep data private"],
+ ["digital detox","Taking a break from technology"],
+ ["innovation","New ideas or methods"],
+ ["obsolete","No longer used"],
+ ["dependency","Reliance on something"]
+]],
+[13,1,"Discussing problems with others",[
+ ["confide","To share private feelings"],
+ ["emotional support","Comfort and encouragement"],
+ ["perspective","A point of view"],
+ ["venting","Expressing frustration"],
+ ["trust","Belief in someone's reliability"],
+ ["counselling","Professional advice"],
+ ["confidential","Kept secret"],
+ ["burden","A heavy responsibility"]
+]],
+[13,1,"Communication skills at work",[
+ ["active listening","Fully concentrating on what is said"],
+ ["articulate","Express clearly"],
+ ["concise","Brief and clear"],
+ ["clarification","Making something clear"],
+ ["constructive feedback","Helpful criticism"],
+ ["tone","Attitude in communication"],
+ ["etiquette","Proper behaviour"],
+ ["collaboration","Working together"]
+]],
+[13,1,"The internet",[
+ ["addiction","Compulsive dependence"],
+ ["algorithm","Rules used by computers"],
+ ["infinite scroll","Endless scrolling feature"],
+ ["digital footprint","Your online activity trail"],
+ ["cyberbullying","Online harassment"],
+ ["e-commerce","Buying and selling online"],
+ ["infrastructure","Basic systems and structures"],
+ ["net neutrality","Equal treatment of internet data"]
+]],
+[13,1,"Social media websites",[
+ ["viral","Spreading quickly online"],
+ ["influencer","Someone who affects buying decisions"],
+ ["engagement","Interaction with content"],
+ ["trolling","Posting provocative comments"],
+ ["anonymity","Being unnamed"],
+ ["misinformation","False information"],
+ ["targeted advertising","Ads aimed at specific users"],
+ ["digital wellbeing","Healthy technology use"]
+]],
+
+/* ===== BOOK 14 ===== */
+[14,1,"Creating a nice home",[
+ ["interior design","Planning the inside of a home"],
+ ["aesthetic","Sense of beauty"],
+ ["declutter","Remove unnecessary items"],
+ ["cosy","Warm and comfortable"],
+ ["furnishings","Furniture and decorations"],
+ ["colour scheme","Planned combination of colours"],
+ ["statement piece","A striking decorative item"],
+ ["budget-friendly","Affordable"]
+]],
+[14,1,"Different types of home",[
+ ["maintenance","Upkeep and repairs"],
+ ["shared facilities","Common areas for residents"],
+ ["security","Protection from danger"],
+ ["adaptable","Able to change"],
+ ["energy-efficient","Using less energy"],
+ ["smart home","Home with automated technology"],
+ ["compact","Small and efficiently designed"],
+ ["accessibility","Easy to reach or use"]
+]],
+[14,1,"Difficult jobs",[
+ ["demanding","Requiring much effort"],
+ ["hazardous","Dangerous"],
+ ["physically taxing","Exhausting for the body"],
+ ["emotionally draining","Exhausting for the emotions"],
+ ["high-stakes","Involving serious consequences"],
+ ["resilience","Ability to recover from difficulty"],
+ ["sacrifice","Giving up something valuable"],
+ ["vocation","A strong calling to a career"]
+]],
+[14,1,"Personal and career success",[
+ ["ambition","Strong desire to succeed"],
+ ["milestone","Important achievement"],
+ ["networking","Building professional contacts"],
+ ["mentor","An experienced advisor"],
+ ["setback","A problem that delays progress"],
+ ["fulfilment","Deep satisfaction"],
+ ["work-life balance","Balancing work and personal life"],
+ ["burnout","Exhaustion from overwork"]
+]],
+[14,1,"Shopping online",[
+ ["e-commerce","Buying and selling online"],
+ ["cash on delivery","Paying when the item arrives"],
+ ["product review","Feedback from buyers"],
+ ["counterfeit","Fake product"],
+ ["return policy","Rules for returning items"],
+ ["delivery delay","Late arrival of goods"],
+ ["digital payment","Paying electronically"],
+ ["convenience","Ease of use"]
+]],
+[14,1,"Online retail businesses",[
+ ["brick-and-mortar","Physical shops"],
+ ["showroom","Place to display products"],
+ ["competitive pricing","Attractive prices"],
+ ["customer loyalty","Repeat buying from a brand"],
+ ["logistics","Organisation of delivery"],
+ ["overheads","Regular business costs"],
+ ["hybrid retail","Mix of online and physical"],
+ ["market share","Portion of total sales"]
+]],
+
+/* ===== BOOK 15 ===== */
+[15,1,"Staying in hotels",[
+ ["amenities","Facilities offered"],
+ ["hospitality","Friendly welcome and service"],
+ ["check-in / check-out","Arrival and departure process"],
+ ["concierge","Hotel staff who assist guests"],
+ ["room service","Food delivered to your room"],
+ ["housekeeping","Cleaning and maintenance"],
+ ["rating","Evaluation score"],
+ ["value for money","Worth the price"]
+]],
+[15,1,"Working in a hotel",[
+ ["front desk","Reception area"],
+ ["shift work","Working in rotating time periods"],
+ ["customer-facing","Dealing directly with customers"],
+ ["upselling","Persuading customers to buy more"],
+ ["multitasking","Doing several things at once"],
+ ["grievance","A complaint"],
+ ["turnover","Rate of staff leaving"],
+ ["promotion prospects","Chances of advancement"]
+]],
+[15,2,"Consumerism",[
+ ["consumerism","Culture of buying goods"],
+ ["materialism","Valuing possessions"],
+ ["disposable income","Money left after essentials"],
+ ["impulse buying","Unplanned purchases"],
+ ["status symbol","Item showing social position"],
+ ["sustainability","Avoiding environmental harm"],
+ ["frugality","Being careful with money"],
+ ["minimalism","Owning fewer things"]
+]],
+[15,3,"Famous people today",[
+ ["celebrity","A famous person"],
+ ["public figure","Someone known by the public"],
+ ["fan base","Supporters of a famous person"],
+ ["media coverage","Reporting by news outlets"],
+ ["paparazzi","Photographers who follow celebrities"],
+ ["influencer","Someone who affects opinions"],
+ ["role model","Someone to imitate"],
+ ["viral fame","Sudden online popularity"]
+]],
+[15,3,"Advantages of being famous",[
+ ["endorsement","Paid promotion of a product"],
+ ["influence","Power to affect others"],
+ ["platform","Opportunity to speak publicly"],
+ ["recognition","Being known by others"],
+ ["philanthropy","Charity work"],
+ ["privacy","Freedom from public attention"],
+ ["scrutiny","Close examination"],
+ ["brand value","Commercial worth of a name"]
+]],
+[15,4,"Science and the public",[
+ ["scientific literacy","Understanding science"],
+ ["evidence-based","Based on evidence"],
+ ["research","Systematic study"],
+ ["breakthrough","Major discovery"],
+ ["peer review","Evaluation by experts"],
+ ["misinformation","False information"],
+ ["science communication","Explaining science to the public"],
+ ["public engagement","Involving the public"]
+]],
+[15,4,"Scientific discoveries",[
+ ["innovation","New ideas or methods"],
+ ["vaccine","Medicine preventing disease"],
+ ["antibiotic","Medicine fighting bacteria"],
+ ["genetics","Study of genes"],
+ ["renewable energy","Energy from natural sources"],
+ ["artificial intelligence","Machines simulating intelligence"],
+ ["space exploration","Exploring outer space"],
+ ["research funding","Money for research"]
+]],
+
+/* ===== BOOK 16 ===== */
+[16,1,"Different kinds of tourist attractions",[
+ ["landmark","A recognisable feature"],
+ ["heritage site","A place of historical importance"],
+ ["eco-tourism","Nature-based travel"],
+ ["cultural attraction","Places of cultural interest"],
+ ["infrastructure","Basic facilities"],
+ ["souvenir","Item bought as a reminder"],
+ ["peak season","Busiest travel period"],
+ ["off the beaten track","Away from popular routes"]
+]],
+[16,1,"The importance of international tourism",[
+ ["foreign exchange","Money from other countries"],
+ ["hospitality industry","Hotels and restaurants"],
+ ["cultural exchange","Sharing cultures"],
+ ["sustainable tourism","Responsible travel"],
+ ["visa","Permission to enter a country"],
+ ["remittance","Money sent by workers abroad"],
+ ["economic driver","Something that boosts the economy"],
+ ["seasonal employment","Jobs available only in certain seasons"]
+]],
+[16,2,"Online reviews",[
+ ["feedback","Comments about a product"],
+ ["authenticity","Being genuine"],
+ ["credibility","Being trusted"],
+ ["rating","Numerical evaluation"],
+ ["testimonial","Personal recommendation"],
+ ["transparency","Openness"],
+ ["word-of-mouth","Informal recommendation"],
+ ["consumer trust","Confidence in buyers"]
+]],
+[16,2,"Customer service",[
+ ["complaint","Expression of dissatisfaction"],
+ ["resolution","Solving a problem"],
+ ["courtesy","Politeness"],
+ ["patience","Ability to stay calm"],
+ ["escalate","To pass to a higher level"],
+ ["loyalty","Repeat business"],
+ ["responsiveness","Speed of response"],
+ ["after-sales service","Help after purchase"]
+]],
+[16,3,"Expensive items",[
+ ["luxury goods","High-end products"],
+ ["aspirational","Desired but difficult to afford"],
+ ["investment","Something that gains value"],
+ ["branded","Made by a well-known company"],
+ ["durable","Long-lasting"],
+ ["affordability","Ability to pay"],
+ ["installment","Paying in parts"],
+ ["conspicuous consumption","Buying to show wealth"]
+]],
+[16,3,"Rich people",[
+ ["wealth","Large amount of money"],
+ ["affluent","Wealthy"],
+ ["philanthropy","Charity giving"],
+ ["social responsibility","Duty to help society"],
+ ["upward mobility","Moving to a higher class"],
+ ["inequality","Unequal distribution"],
+ ["privilege","Special advantage"],
+ ["legacy","What you leave behind"]
+]],
+[16,4,"Computer games",[
+ ["multiplayer","Games with multiple players"],
+ ["virtual world","Computer-generated environment"],
+ ["esports","Competitive gaming"],
+ ["addiction","Compulsive use"],
+ ["age rating","Recommended minimum age"],
+ ["violence","Aggressive content"],
+ ["interactive","Engaging with the user"],
+ ["cognitive skills","Thinking abilities"]
+]],
+[16,4,"Technology in the classroom",[
+ ["smartboard","Interactive digital board"],
+ ["tablet","Portable touchscreen device"],
+ ["educational app","Software for learning"],
+ ["digital resource","Online learning material"],
+ ["accessibility","Ease of access"],
+ ["teacher training","Preparing teachers"],
+ ["blended learning","Mix of online and offline"],
+ ["distraction","Something diverting attention"]
+]],
+
+/* ===== BOOK 17 ===== */
+[17,1,"Neighbours",[
+ ["neighbourly","Friendly towards neighbours"],
+ ["community spirit","Sense of togetherness"],
+ ["close-knit","Tightly connected"],
+ ["cordial relations","Friendly relations"],
+ ["dispute","Argument"],
+ ["privacy","Being left alone"],
+ ["mutual support","Helping each other"],
+ ["anonymity","Being unknown"]
+]],
+[17,1,"Facilities in cities",[
+ ["infrastructure","Basic systems"],
+ ["public transport","Buses, trains, etc."],
+ ["utility","Essential service like water or power"],
+ ["amenity","Useful facility"],
+ ["healthcare","Medical services"],
+ ["sanitation","Waste and sewage systems"],
+ ["congestion","Overcrowding"],
+ ["urban planning","Designing cities"]
+]],
+[17,2,"Visiting cities on holiday",[
+ ["itinerary","Travel plan"],
+ ["sightseeing","Visiting attractions"],
+ ["local cuisine","Food of the region"],
+ ["accommodation","Place to stay"],
+ ["guided tour","Tour with a guide"],
+ ["landmark","Famous feature"],
+ ["off-season","Less busy period"],
+ ["budget travel","Cheap travel"]
+]],
+[17,2,"The growth of cities",[
+ ["urbanisation","Growth of cities"],
+ ["migration","Moving to a new area"],
+ ["overpopulation","Too many people"],
+ ["slum","Poor urban area"],
+ ["infrastructure strain","Pressure on facilities"],
+ ["decentralisation","Spreading power away from centre"],
+ ["liveability","Quality of life"],
+ ["sustainable development","Growth without harming future"]
+]],
+[17,3,"Public monuments",[
+ ["memorial","Structure honouring someone"],
+ ["statue","Sculpture of a person"],
+ ["heritage","Traditions and history"],
+ ["preservation","Protecting from damage"],
+ ["commemorate","To honour memory"],
+ ["symbolic","Representing something"],
+ ["restoration","Repairing to original state"],
+ ["landmark","Recognisable structure"]
+]],
+[17,3,"Architecture",[
+ ["design","Planning appearance"],
+ ["aesthetic","Beauty"],
+ ["functionality","Practical use"],
+ ["sustainable","Environmentally friendly"],
+ ["urban planning","Designing cities"],
+ ["structural","Related to structure"],
+ ["innovation","New methods"],
+ ["heritage building","Historic structure"]
+]],
+[17,4,"Arriving late",[
+ ["punctuality","Being on time"],
+ ["tardiness","Being late"],
+ ["excuse","Reason for lateness"],
+ ["buffer","Extra time"],
+ ["apologise","Say sorry"],
+ ["consequence","Result"],
+ ["accountability","Being responsible"],
+ ["courtesy","Politeness"]
+]],
+[17,4,"Managing study time",[
+ ["procrastination","Delaying tasks"],
+ ["time management","Organising time"],
+ ["prioritise","Treat as more important"],
+ ["revision","Reviewing material"],
+ ["cramming","Studying intensively before exams"],
+ ["spaced learning","Studying in intervals"],
+ ["leisure time","Free time"],
+ ["burnout","Exhaustion"]
+]],
+
+/* ===== BOOK 18 ===== */
+[18,1,"Young people and cooking",[
+ ["culinary skills","Cooking abilities"],
+ ["nutrition","Food and health"],
+ ["hygiene","Cleanliness"],
+ ["recipe","Instructions for cooking"],
+ ["self-sufficiency","Being independent"],
+ ["budgeting","Managing money"],
+ ["gender norms","Expectations based on gender"],
+ ["life skill","Useful ability for daily life"]
+]],
+[18,1,"Working as a chef",[
+ ["culinary","Related to cooking"],
+ ["hospitality","Service industry"],
+ ["pressure","Stressful conditions"],
+ ["creativity","Artistic ability"],
+ ["presentation","How food looks"],
+ ["hygiene standards","Cleanliness rules"],
+ ["resilience","Ability to cope"],
+ ["burnout","Exhaustion"]
+]],
+[18,2,"Museums and art galleries",[
+ ["exhibit","Displayed item"],
+ ["collection","Group of items"],
+ ["curator","Person managing a collection"],
+ ["preservation","Protecting from damage"],
+ ["interactive","Engaging with visitors"],
+ ["heritage","Cultural history"],
+ ["admission fee","Entry charge"],
+ ["accessibility","Easy to access"]
+]],
+[18,2,"The holiday industry",[
+ ["package holiday","All-inclusive trip"],
+ ["itinerary","Travel plan"],
+ ["tour operator","Company organising tours"],
+ ["sustainable tourism","Responsible travel"],
+ ["over-tourism","Too many tourists"],
+ ["eco-resort","Environmentally friendly hotel"],
+ ["seasonal","Related to seasons"],
+ ["local economy","Business activity in an area"]
+]],
+[18,3,"Family occasions",[
+ ["gathering","A meeting of people"],
+ ["extended family","Relatives beyond immediate family"],
+ ["tradition","Long-established custom"],
+ ["reunion","Meeting after separation"],
+ ["celebration","Marking a special event"],
+ ["ritual","Ceremonial act"],
+ ["bonding","Forming close relationships"],
+ ["obligation","Duty"]
+]],
+[18,3,"Everyday life in families",[
+ ["household chores","Daily tasks at home"],
+ ["quality time","Meaningful time together"],
+ ["parental involvement","Parents helping children"],
+ ["gender roles","Expected behaviour by gender"],
+ ["responsibility","Duty"],
+ ["cooperation","Working together"],
+ ["communication","Sharing thoughts"],
+ ["work-life balance","Balancing work and family"]
+]],
+[18,4,"Friends at school",[
+ ["peer group","People of similar age"],
+ ["social skills","Ability to interact"],
+ ["camaraderie","Friendly fellowship"],
+ ["influence","Effect on someone"],
+ ["loyalty","Being faithful"],
+ ["conflict","Disagreement"],
+ ["trust","Belief in reliability"],
+ ["introvert / extrovert","Shy / outgoing person"]
+]],
+[18,4,"Making new friends",[
+ ["socialise","Spend time with others"],
+ ["network","Build contacts"],
+ ["common interest","Shared hobby"],
+ ["online friendship","Friendship formed online"],
+ ["trust","Belief in someone"],
+ ["proactive","Taking initiative"],
+ ["loneliness","Feeling alone"],
+ ["support system","People who help you"]
+]],
+
+/* ===== BOOK 19 ===== */
+[19,1,"School rules",[
+ ["discipline","Controlled behaviour"],
+ ["uniform","Standard school clothing"],
+ ["attendance","Being present"],
+ ["consequence","Result of action"],
+ ["enforcement","Making people follow rules"],
+ ["restorative","Focused on repairing harm"],
+ ["corporal punishment","Physical punishment"],
+ ["boundary","Limit"]
+]],
+[19,1,"Working in the legal profession",[
+ ["litigation","Legal proceedings"],
+ ["advocate","Lawyer"],
+ ["contract","Legal agreement"],
+ ["verdict","Court decision"],
+ ["ethics","Moral principles"],
+ ["caseload","Number of cases"],
+ ["integrity","Honesty"],
+ ["analytical","Logical thinking"]
+]],
+[19,2,"Rewards for children at school",[
+ ["recognition","Public appreciation"],
+ ["incentive","Something encouraging"],
+ ["motivation","Desire to achieve"],
+ ["certificate","Official document of achievement"],
+ ["scholarship","Financial award for study"],
+ ["competition","Contest"],
+ ["self-esteem","Confidence"],
+ ["merit","Deserving quality"]
+]],
+[19,2,"Rewards for sportspeople",[
+ ["endorsement","Paid promotion"],
+ ["prize money","Cash award"],
+ ["salary cap","Limit on pay"],
+ ["incentive","Motivation"],
+ ["team spirit","Unity in a team"],
+ ["meritocracy","System based on ability"],
+ ["disparity","Inequality"],
+ ["commercialisation","Making profit-oriented"]
+]],
+[19,3,"Driving a car",[
+ ["congestion","Traffic jam"],
+ ["road safety","Avoiding accidents"],
+ ["driving licence","Official permission to drive"],
+ ["traffic rules","Regulations for driving"],
+ ["pedestrian","Person walking"],
+ ["awareness","Being alert"],
+ ["enforcement","Making people obey laws"],
+ ["road rage","Angry behaviour while driving"]
+]],
+[19,3,"Electric cars",[
+ ["charging station","Place to recharge"],
+ ["range anxiety","Fear of running out of power"],
+ ["infrastructure","Basic facilities"],
+ ["emission","Gas released"],
+ ["sustainable","Environmentally friendly"],
+ ["incentive","Encouragement"],
+ ["battery life","Duration of battery"],
+ ["affordability","Ability to afford"]
+]],
+[19,4,"The beauty industry",[
+ ["cosmetics","Beauty products"],
+ ["skincare","Products for skin"],
+ ["endorsement","Promotion by a celebrity"],
+ ["marketing","Promoting products"],
+ ["self-esteem","Confidence"],
+ ["idealised","Perfect but unrealistic"],
+ ["consumerism","Culture of buying"],
+ ["regulation","Official rules"]
+]],
+[19,4,"Beauty and culture",[
+ ["aesthetic","Sense of beauty"],
+ ["youthful","Looking young"],
+ ["fairness","Light skin"],
+ ["stereotype","Fixed idea"],
+ ["diversity","Variety"],
+ ["perception","How something is seen"],
+ ["media influence","Effect of media"],
+ ["self-image","How you see yourself"]
+]],
+
+/* ===== BOOK 20 ===== */
+[20,1,"Theatre and films",[
+ ["production","A staged performance"],
+ ["audience","People watching"],
+ ["ticket","Entry pass"],
+ ["repertoire","Collection of works"],
+ ["contemporary","Modern"],
+ ["social commentary","Criticism of society"],
+ ["engagement","Involvement"],
+ ["outreach","Reaching new audiences"]
+]],
+[20,1,"Working as an actor",[
+ ["audition","Trial performance"],
+ ["rejection","Being turned down"],
+ ["recognition","Public acknowledgement"],
+ ["versatility","Ability to adapt"],
+ ["glamorous","Attractive and exciting"],
+ ["precarious","Uncertain"],
+ ["publicity","Media attention"],
+ ["craft","Skill"]
+]],
+[20,2,"Making plans",[
+ ["coordinate","Organise together"],
+ ["spontaneous","Unplanned"],
+ ["flexible","Able to change"],
+ ["commitment","Obligation"],
+ ["collaborate","Work together"],
+ ["priority","Most important thing"],
+ ["peer pressure","Influence from friends"],
+ ["authentic","True to yourself"]
+]],
+[20,2,"Career planning",[
+ ["career path","Sequence of jobs"],
+ ["internship","Work experience"],
+ ["transferable skills","Skills useful in many jobs"],
+ ["retraining","Learning new skills"],
+ ["progression","Advancement"],
+ ["mentor","Advisor"],
+ ["networking","Building contacts"],
+ ["adaptability","Ability to adjust"]
+]],
+[20,3,"Satisfaction in life",[
+ ["fulfilment","Deep satisfaction"],
+ ["contentment","Peaceful happiness"],
+ ["gratitude","Thankfulness"],
+ ["aspiration","Hope or ambition"],
+ ["dissatisfaction","Unhappiness"],
+ ["wellbeing","Health and happiness"],
+ ["balance","Stability"],
+ ["perspective","Point of view"]
+]],
+[20,3,"Job satisfaction",[
+ ["remuneration","Pay"],
+ ["colleagues","Coworkers"],
+ ["recognition","Appreciation"],
+ ["autonomy","Independence"],
+ ["stagnation","Lack of growth"],
+ ["meaningful","Having purpose"],
+ ["work environment","Conditions at work"],
+ ["turnover","Staff leaving"]
+]],
+[20,4,"News and media",[
+ ["broadcast","Transmit news"],
+ ["journalism","News reporting"],
+ ["credibility","Trustworthiness"],
+ ["bias","Unfair preference"],
+ ["headline","News title"],
+ ["coverage","Reporting"],
+ ["digital platform","Online service"],
+ ["misinformation","False news"]
+]],
+[20,4,"Discussion programmes",[
+ ["debate","Formal discussion"],
+ ["panel","Group of speakers"],
+ ["moderator","Person leading discussion"],
+ ["polarise","Divide opinions"],
+ ["engagement","Involvement"],
+ ["credibility","Trustworthiness"],
+ ["sensationalism","Exaggerated reporting"],
+ ["media literacy","Understanding media"]
+]],
+
+/* ===== BOOK 21 ===== */
+[21,1,"Different types of holidays",[
+ ["domestic tourism","Travelling within your country"],
+ ["package tour","Organised trip"],
+ ["itinerary","Travel plan"],
+ ["relaxation","Rest"],
+ ["sightseeing","Visiting attractions"],
+ ["getaway","Short holiday"],
+ ["affordability","Ability to afford"],
+ ["aspirational","Desired"]
+]],
+[21,1,"Tourist attractions",[
+ ["landmark","Famous site"],
+ ["heritage","Cultural history"],
+ ["eco-tourism","Nature-based tourism"],
+ ["admission fee","Entry charge"],
+ ["preservation","Protection"],
+ ["overcrowding","Too many people"],
+ ["maintenance","Upkeep"],
+ ["expectation","What you hope for"]
+]],
+[21,2,"Honesty and children",[
+ ["truthfulness","Being honest"],
+ ["integrity","Moral honesty"],
+ ["deception","Lying"],
+ ["age-appropriate","Suitable for age"],
+ ["protective","Shielding from harm"],
+ ["trust","Belief in honesty"],
+ ["consequence","Result"],
+ ["role model","Example to follow"]
+]],
+[21,2,"Honesty and advertising",[
+ ["claim","Statement in an ad"],
+ ["exaggeration","Overstatement"],
+ ["misleading","Giving false impression"],
+ ["regulation","Official rules"],
+ ["consumer protection","Laws protecting buyers"],
+ ["endorsement","Celebrity promotion"],
+ ["transparency","Openness"],
+ ["scepticism","Doubting"]
+]],
+[21,3,"Homes and gardens",[
+ ["green space","Area with plants"],
+ ["balcony garden","Plants on a balcony"],
+ ["rooftop garden","Garden on a roof"],
+ ["container gardening","Growing in pots"],
+ ["vertical garden","Plants growing upward"],
+ ["herbs","Plants used in cooking"],
+ ["sustainability","Environmental responsibility"],
+ ["therapeutic","Healing"]
+]],
+[21,3,"Gardening as a hobby",[
+ ["horticulture","The art of gardening"],
+ ["nurture","Care for"],
+ ["patience","Ability to wait"],
+ ["harvest","Gathering crops"],
+ ["organic","Without chemicals"],
+ ["relaxation","Stress relief"],
+ ["achievement","Sense of accomplishment"],
+ ["sustainable","Environmentally friendly"]
+]],
+[21,4,"Competitions",[
+ ["contest","Competition"],
+ ["prize","Award"],
+ ["scholarship","Educational award"],
+ ["recognition","Public acknowledgement"],
+ ["participation","Taking part"],
+ ["suspense","Excitement of uncertainty"],
+ ["merit","Deserving quality"],
+ ["fairness","Justice"]
+]],
+[21,4,"Being competitive in sports",[
+ ["competitive","Wanting to win"],
+ ["sportsmanship","Fair play"],
+ ["opponent","Rival"],
+ ["resilience","Ability to bounce back"],
+ ["teamwork","Working together"],
+ ["motivation","Drive to succeed"],
+ ["pressure","Stressful expectation"],
+ ["participation","Taking part"]
+]]
+];
+
+const POWER_WORDS = [
+ ["infrastructure","Basic systems and facilities",["Cities","Technology","Tourism","Electric cars"]],
+ ["sustainability","Avoiding environmental harm",["Consumerism","Tourism","Gardening","Architecture"]],
+ ["accessibility","Ease of access",["Education","Museums","Healthcare","Technology"]],
+ ["affordability","Ability to pay",["Housing","Holidays","Electric cars","Beauty"]],
+ ["regulation","Official rules",["Advertising","Media","Beauty","Environment"]],
+ ["engagement","Involvement",["Social media","Theatre","Education","News"]],
+ ["credibility","Trustworthiness",["News","Reviews","Advertising","Science"]],
+ ["wellbeing","Health and happiness",["Work-life balance","Satisfaction","Gardening"]],
+ ["resilience","Ability to recover",["Difficult jobs","Sport","Actors","Students"]],
+ ["stereotype","Fixed idea",["Beauty","Gender","Culture","Fame"]],
+ ["preservation","Protection from damage",["Monuments","Heritage","Environment"]],
+ ["commercialisation","Making profit-oriented",["Sport","Festivals","Education","Media"]],
+ ["disparity","Inequality",["Wealth","Sport","Education","Cities"]]
+];
+
+/* =========================================================================
+   HELPERS
+   ========================================================================= */
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* =========================================================================
+   STATS
+   ========================================================================= */
+let totalTerms = 0;
+VOCAB.forEach(([,,,terms]) => totalTerms += terms.length);
+document.getElementById('statTerms').textContent = totalTerms;
+document.getElementById('statTopics').textContent = VOCAB.length;
+
+/* =========================================================================
+   POPULATE BOOK FILTER
+   ========================================================================= */
+const bookSel = document.getElementById('bookFilter');
+[...new Set(VOCAB.map(v => v[0]))].sort((a,b)=>a-b).forEach(b => {
+  const o = document.createElement('option');
+  o.value = b; o.textContent = 'Book ' + b;
+  bookSel.appendChild(o);
+});
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+const state = { book: 'all', q: '' };
+
+/* =========================================================================
+   RENDER
+   ========================================================================= */
+const resultsEl = document.getElementById('results');
+const countEl = document.getElementById('resultCount');
+const summaryEl = document.getElementById('activeSummary');
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+
+  // Filter topics: keep a topic if any term matches
+  const filtered = VOCAB
+    .filter(([book]) => state.book === 'all' || book === Number(state.book))
+    .map(([book, test, topic, terms]) => {
+      let keptTerms = terms;
+      if (q) {
+        const topicMatch = topic.toLowerCase().includes(q);
+        keptTerms = terms.filter(([term, meaning]) =>
+          term.toLowerCase().includes(q) ||
+          meaning.toLowerCase().includes(q)
+        );
+        if (!topicMatch && keptTerms.length === 0) return null;
+        if (topicMatch && keptTerms.length === 0) keptTerms = terms; // show all terms if topic name matched
+      }
+      return { book, test, topic, terms: keptTerms };
+    })
+    .filter(Boolean);
+
+  // Count visible terms
+  const visibleTerms = filtered.reduce((n, t) => n + t.terms.length, 0);
+  countEl.textContent = visibleTerms;
+
+  const bits = [];
+  if (state.book !== 'all') bits.push('Book ' + state.book);
+  if (q) bits.push('search: “' + state.q.trim() + '”');
+  summaryEl.textContent = bits.length ? ' · ' + bits.join(' · ') : '';
+
+  if (!filtered.length) {
+    resultsEl.innerHTML =
+      '<div class="no-results">' +
+        '<div class="text-5xl mb-3">🔍</div>' +
+        '<p class="font-bold text-slate-600">No vocabulary matches your filters.</p>' +
+        '<p class="text-sm mt-1">Try resetting or broadening your search.</p>' +
+      '</div>';
+    return;
+  }
+
+  // Group by book → test
+  const byBook = {};
+  filtered.forEach(item => {
+    (byBook[item.book] = byBook[item.book] || {});
+    (byBook[item.book][item.test] = byBook[item.book][item.test] || []).push(item);
+  });
+
+  let html = '';
+  Object.keys(byBook).sort((a,b)=>a-b).forEach(book => {
+    const tests = byBook[book];
+    const bookTerms = Object.values(tests).reduce(
+      (n, arr) => n + arr.reduce((m, t) => m + t.terms.length, 0), 0
+    );
+
+    html += '<div class="book-heading">' +
+              '<span class="book-pill">Book ' + book + '</span>' +
+              '<span class="text-xs font-semibold text-slate-400">' + bookTerms + ' term' + (bookTerms !== 1 ? 's' : '') + '</span>' +
+              '<span class="line"></span>' +
+            '</div>';
+
+    Object.keys(tests).sort((a,b)=>a-b).forEach(test => {
+      const topics = tests[test];
+      html += '<div class="test-heading"><span class="dot"></span>Test ' + test + ' · Part 3</div>';
+      html += '<div class="grid md:grid-cols-2 gap-4">';
+      topics.forEach(t => html += topicBlockHTML(t));
+      html += '</div>';
+    });
+  });
+
+  resultsEl.innerHTML = html;
+}
+
+function topicBlockHTML({topic, terms}) {
+  const rows = terms.map(([term, meaning]) =>
+    '<div class="vocab-row">' +
+      '<div class="vocab-term">' + esc(term) + '</div>' +
+      '<div class="vocab-meaning">' + esc(meaning) + '</div>' +
+    '</div>'
+  ).join('');
+
+  return '' +
+  '<section class="topic-block">' +
+    '<div class="topic-header">' +
+      '<div class="t-icon">A</div>' +
+      '<div class="t-name">' + esc(topic) + '</div>' +
+      '<span class="t-count">' + terms.length + '</span>' +
+    '</div>' +
+    '<div>' + rows + '</div>' +
+  '</section>';
+}
+
+/* =========================================================================
+   POWER WORDS
+   ========================================================================= */
+const powerGrid = document.getElementById('powerGrid');
+POWER_WORDS.forEach(([word, meaning, topics]) => {
+  const div = document.createElement('div');
+  div.className = 'power-card';
+  div.innerHTML =
+    '<div class="pw">' + esc(word) + '</div>' +
+    '<div class="pm">' + esc(meaning) + '</div>' +
+    '<div>' + topics.map(t => '<span class="pt">' + esc(t) + '</span>').join('') + '</div>';
+  powerGrid.appendChild(div);
+});
+
+/* =========================================================================
+   EVENTS
+   ========================================================================= */
+bookSel.addEventListener('change', () => {
+  state.book = bookSel.value;
+  render();
+});
+
+let debounce;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => { state.q = e.target.value; render(); }, 160);
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  state.book = 'all';
+  state.q = '';
+  bookSel.value = 'all';
+  document.getElementById('searchInput').value = '';
+  render();
+});
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+render();
+</script>
+
+</body>
+</html>

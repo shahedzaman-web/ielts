@@ -1,1203 +1,1052 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>English Grammar &amp; IELTS Resource Hub</title>
-        <script src="https://cdn.tailwindcss.com">
-    </script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
-            rel="stylesheet" />
-        <style>
-        * {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            scroll-behavior: smooth;
-        }
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>English Grammar &amp; IELTS Resource Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 
-        body {
-            background: #f6f9fc;
-        }
-
-        .resource-card {
-            transition: all 0.25s ease;
-            background: #ffffff;
-            border-radius: 1rem;
-            padding: 1.5rem 1.5rem 1.75rem;
-            border: 1px solid #eef2f6;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #3b82f6;
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            border-color: #dbeafe;
-        }
-
-        .resource-card:hover::after {
-            opacity: 1;
-        }
-
-        .resource-card .icon-wrap {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            flex-shrink: 0;
-        }
-
-        .resource-card .title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #0f172a;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
-        }
-
-        .resource-card .description {
-            font-size: 0.9rem;
-            color: #475569;
-            line-height: 1.6;
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-
-        .resource-card .badge-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-top: auto;
-        }
-
-        .resource-card .badge-group .badge {
-            font-size: 0.65rem;
-            font-weight: 600;
-            padding: 0.15rem 0.7rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .badge-grammar {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-        .badge-ielts {
-            background: #d1fae5;
-            color: #065f46;
-        }
-        .badge-advanced {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        .badge-interactive {
-            background: #ede9fe;
-            color: #5b21b6;
-        }
-        .badge-strategy {
-            background: #fce7f3;
-            color: #9d174d;
-        }
-
-        .resource-card .open-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #3b82f6;
-            margin-top: 0.5rem;
-            transition: color 0.2s;
-            text-decoration: none;
-        }
-
-        .resource-card .open-btn:hover {
-            color: #1d4ed8;
-        }
-
-        .resource-card .open-btn svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s;
-        }
-
-        .resource-card .open-btn:hover svg {
-            transform: translateX(3px);
-        }
-
-        .hero-gradient {
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            text-align: center;
-        }
-
-        .stat-box .number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .stat-box .label {
-            font-size: 0.7rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-
-        .footer-note {
-            background: #f1f5f9;
-            border-radius: 1rem;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            color: #475569;
-            font-size: 0.9rem;
-            border: 1px solid #e2e8f0;
-            margin-top: 2.5rem;
-        }
-
-        @media (max-width: 640px) {
-            .resource-card {
-                padding: 1.25rem;
-            }
-            .stat-box .number {
-                font-size: 1.2rem;
-            }
-            .hero-gradient h1 {
-                font-size: 2rem;
-            }
-        }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title .count {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #64748b;
-            background: #f1f5f9;
-            padding: 0.1rem 0.7rem;
-            border-radius: 9999px;
-        }
-
-        .divider {
-            border: 0;
-            border-top: 2px dashed #e2e8f0;
-            margin: 2.5rem 0;
-        }
-
-          :root{
-    --brand-1:#4f46e5;   /* indigo */
-    --brand-2:#0ea5e9;   /* sky */
-    --brand-3:#10b981;   /* emerald */
-    --brand-4:#f59e0b;   /* amber */
-  }
-  html{scroll-behavior:smooth;}
-  body{
+  body {
     background:
-      radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.08), transparent 60%),
-      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.08), transparent 60%),
+      radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
       #f8fafc;
+    margin: 0;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
   }
-  /* Subtle animated aurora behind the hero */
-  .aurora{
-    position:absolute;inset:-40% -20% auto -20%;height:400px;
-    background:
-      radial-gradient(closest-side, rgba(79,70,229,.25), transparent 70%),
-      radial-gradient(closest-side, rgba(14,165,233,.22), transparent 70%),
-      radial-gradient(closest-side, rgba(16,185,129,.18), transparent 70%);
-    filter:blur(60px);
-    animation:drift 18s ease-in-out infinite alternate;
-    pointer-events:none;
-  }
-  @keyframes drift{
-    from{transform:translate3d(-3%, -2%, 0) scale(1);}
-    to  {transform:translate3d(3%,  2%, 0) scale(1.05);}
-  }
-  .card{
-    transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease, border-color .28s ease;
-  }
-  .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 20px 40px -20px rgba(15,23,42,.28), 0 8px 20px -12px rgba(15,23,42,.18);
-  }
-  .pill{
-    display:inline-flex;align-items:center;gap:.4rem;
-    padding:.25rem .6rem;border-radius:999px;font-size:.7rem;font-weight:700;
-    letter-spacing:.02em;
-  }
-  .link-item{
-    display:flex;align-items:center;justify-content:space-between;gap:.5rem;
-    padding:.55rem .75rem;border-radius:.6rem;
-    transition:background-color .18s ease, transform .18s ease, color .18s ease;
-    border:1px solid transparent;
-  }
-  .link-item:hover{
-    background:#fff;
-    border-color:rgba(79,70,229,.25);
-    transform:translateX(2px);
-    box-shadow:0 6px 16px -12px rgba(79,70,229,.5);
-  }
-  .link-item .arrow{
-    opacity:0;transform:translateX(-4px);
-    transition:opacity .2s ease, transform .2s ease;
-    color:#4f46e5;font-weight:800;
-  }
-  .link-item:hover .arrow{opacity:1;transform:translateX(0);}
-  .num{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:1.35rem;height:1.35rem;border-radius:.45rem;
-    background:#eef2ff;color:#4338ca;font-size:.7rem;font-weight:800;
-    flex:0 0 auto;
-  }
-  .section-sheen{
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,1));
-  }
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    .aurora{animation:none;}
-    .card,.link-item,.link-item .arrow{transition:none;}
-  }
-    </style>
-    </head>
-    <body>
 
-        <!-- ====== HERO ====== -->
-        <section class="hero-gradient text-white py-16 md:py-24">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div
-                    class="flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div class="md:w-2/3">
-                        <div
-                            class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4">
-                            📚 10+ Resources
-                        </div>
-                        <h1
-                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                            English Grammar<br />
-                            <span class="text-blue-300">&amp; IELTS
-                                Mastery</span>
-                        </h1>
-                        <p
-                            class="text-lg md:text-xl text-blue-100/80 mt-4 max-w-2xl leading-relaxed">
-                            Your complete library of grammar guides, interactive
-                            exercises, and IELTS writing strategies — all in one
-                            place.
-                        </p>
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <a href="#grammar"
-                                class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
-                                📖 Grammar <span>→</span>
-                            </a>
-                            <a href="#ielts"
-                                class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
-                                🎯 IELTS <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div
-                        class="md:w-1/3 flex flex-wrap justify-center gap-3 md:gap-4">
-                        <div class="stat-box">
-                            <div class="number">11</div>
-                            <div class="label">Resources</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="number">6</div>
-                            <div class="label">Grammar</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="number">6</div>
-                            <div class="label">IELTS</div>
-                        </div>
-                    </div>
-                </div>
+  /* ================= HERO ================= */
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #1e3a8a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(79,70,229,.32), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
+      radial-gradient(closest-side, rgba(16,185,129,.20), transparent 70%);
+    filter: blur(70px);
+    animation: drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: .9rem;
+    padding: .85rem 1.2rem;
+    text-align: center;
+    min-width: 92px;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .stat-box:hover {
+    background: rgba(255,255,255,.11);
+    border-color: rgba(255,255,255,.20);
+    transform: translateY(-3px);
+  }
+  .stat-box .number { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .65rem; color: #93c5fd; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+
+  /* ================= STICKY NAV ================= */
+  .nav-shell {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(248,250,252,.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 24px -16px rgba(15,23,42,.25);
+  }
+  .nav-link {
+    padding: .45rem .9rem; border-radius: 999px;
+    font-size: .78rem; font-weight: 700; color: #475569;
+    text-decoration: none;
+    transition: all .18s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .nav-link:hover { background: #eef2ff; color: #4338ca; }
+  .nav-link.primary {
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    color: #fff;
+    box-shadow: 0 6px 18px -8px rgba(79,70,229,.7);
+  }
+  .nav-link.primary:hover { box-shadow: 0 8px 22px -8px rgba(79,70,229,.85); }
+
+  /* ================= SECTION TITLES ================= */
+  .section-title {
+    font-size: 1.65rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.025em; display: flex; align-items: center; gap: .6rem;
+    margin: 0;
+  }
+  .section-title .emoji-wrap {
+    width: 2.6rem; height: 2.6rem; border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; flex-shrink: 0;
+    box-shadow: 0 4px 14px -6px rgba(15,23,42,.25);
+  }
+  .section-title .count {
+    font-size: .68rem; font-weight: 800; color: #4338ca;
+    background: #eef2ff; padding: .2rem .65rem;
+    border-radius: 999px; letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-left: .15rem;
+  }
+  .section-sub {
+    font-size: .85rem; color: #64748b; font-weight: 500;
+    margin-top: .35rem;
+  }
+
+  .divider {
+    border: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1 20%, #cbd5e1 80%, transparent);
+    margin: 3.5rem 0;
+    position: relative;
+  }
+  .divider::before {
+    content: '◆';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cbd5e1; font-size: .55rem;
+    background: #f8fafc; padding: 0 .55rem;
+    line-height: 1;
+  }
+
+  /* ================= RESOURCE CARDS ================= */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.15rem;
+  }
+
+  .resource-card {
+    position: relative; overflow: hidden;
+    background: #fff;
+    border-radius: 1.1rem;
+    padding: 1.4rem 1.4rem 1.5rem;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 2px 8px rgba(15,23,42,.03);
+    display: flex; flex-direction: column; height: 100%;
+    text-decoration: none;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1),
+                box-shadow .28s ease, border-color .28s ease;
+  }
+  .resource-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--accent, linear-gradient(90deg, #4f46e5, #0ea5e9));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 44px -24px rgba(15,23,42,.30), 0 8px 20px -14px rgba(15,23,42,.15);
+    border-color: #dbeafe;
+  }
+  .resource-card:hover::before { transform: scaleX(1); }
+
+  .icon-wrap {
+    width: 50px; height: 50px; border-radius: .85rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.45rem; margin-bottom: .85rem; flex-shrink: 0;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .resource-card:hover .icon-wrap { transform: scale(1.08) rotate(-3deg); }
+
+  .resource-card .title {
+    font-weight: 700; font-size: 1.02rem;
+    color: #0f172a; margin-bottom: .35rem; line-height: 1.35;
+    letter-spacing: -.01em;
+  }
+  .resource-card .description {
+    font-size: .855rem; color: #64748b; line-height: 1.6;
+    flex-grow: 1; margin-bottom: 1rem;
+  }
+
+  .badge-group {
+    display: flex; flex-wrap: wrap; gap: .3rem;
+    margin-top: auto; margin-bottom: .7rem;
+  }
+  .badge {
+    font-size: .6rem; font-weight: 800;
+    padding: .18rem .6rem; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: .06em;
+    white-space: nowrap;
+  }
+  .badge-grammar  { background: #dbeafe; color: #1d4ed8; }
+  .badge-ielts    { background: #d1fae5; color: #065f46; }
+  .badge-advanced { background: #fef3c7; color: #92400e; }
+  .badge-interactive { background: #ede9fe; color: #5b21b6; }
+  .badge-strategy { background: #fce7f3; color: #9d174d; }
+  .badge-intermediate { background: #e0f2fe; color: #0369a1; }
+
+  .open-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-weight: 700; font-size: .78rem;
+    color: var(--open-color, #4f46e5);
+    transition: gap .2s ease;
+    letter-spacing: .01em;
+  }
+  .resource-card:hover .open-btn { gap: .65rem; }
+  .open-btn svg {
+    width: 15px; height: 15px;
+    transition: transform .25s ease;
+  }
+  .resource-card:hover .open-btn svg { transform: translateX(2px); }
+
+  /* ================= QUICK START ================= */
+  .qs-card {
+    border-radius: 1rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid;
+    transition: transform .25s ease, box-shadow .25s ease;
+    position: relative; overflow: hidden;
+  }
+  .qs-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -22px rgba(15,23,42,.3);
+  }
+  .qs-card .qs-num {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 3rem; font-weight: 800; line-height: 1;
+    opacity: .1; letter-spacing: -.05em;
+  }
+  .qs-list a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .35rem;
+    padding: .22rem 0;
+    transition: gap .18s ease, opacity .18s ease;
+    font-weight: 500;
+    opacity: .85;
+  }
+  .qs-list a:hover { gap: .55rem; opacity: 1; }
+  .qs-list a::before {
+    content: '→'; font-weight: 800; opacity: .5; font-size: .8em;
+  }
+
+  /* ================= LINK ITEMS (Reading/Listening/Speaking) ================= */
+  .link-item {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: .5rem;
+    padding: .55rem .75rem;
+    border-radius: .6rem;
+    transition: background .18s ease, transform .18s ease, border-color .18s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+  }
+  .link-item:hover {
+    background: #fff;
+    border-color: rgba(79,70,229,.22);
+    transform: translateX(3px);
+    box-shadow: 0 8px 18px -14px rgba(79,70,229,.55);
+  }
+  .link-item .arrow {
+    opacity: 0; transform: translateX(-5px);
+    transition: opacity .2s ease, transform .2s ease;
+    color: #4f46e5; font-weight: 800;
+  }
+  .link-item:hover .arrow { opacity: 1; transform: translateX(0); }
+
+  .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.4rem; height: 1.4rem; border-radius: .45rem;
+    background: #eef2ff; color: #4338ca;
+    font-size: .68rem; font-weight: 800;
+    flex: 0 0 auto;
+  }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .28rem .7rem; border-radius: 999px;
+    font-size: .68rem; font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  /* ================= HIGHLIGHT CARD (Cambridge) ================= */
+  .highlight-shell {
+    position: relative; overflow: hidden;
+    background: #fff;
+    border-radius: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 30px 60px -30px rgba(15,23,42,.28), 0 8px 24px -16px rgba(15,23,42,.12);
+  }
+
+  .feat-card {
+    border-radius: 1.1rem;
+    padding: 1.35rem 1.4rem;
+    border: 1px solid;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+    position: relative; overflow: hidden;
+  }
+  .feat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 44px -24px rgba(15,23,42,.28);
+  }
+
+  .stat-mini {
+    border-radius: .85rem;
+    padding: .85rem 1rem;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #f8fafc, #fff);
+    transition: transform .22s ease, border-color .22s ease;
+  }
+  .stat-mini:hover { transform: translateY(-2px); border-color: #c7d2fe; }
+  .stat-mini .sm-num {
+    font-size: 1.35rem; font-weight: 800; color: #0f172a; line-height: 1;
+    letter-spacing: -.02em;
+  }
+  .stat-mini .sm-lbl {
+    font-size: .6rem; font-weight: 700; color: #64748b;
+    text-transform: uppercase; letter-spacing: .07em;
+    margin-top: .3rem;
+  }
+
+  /* ================= FOOTER ================= */
+  .footer-note {
+    background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+    border-radius: 1.25rem;
+    padding: 2rem 2rem;
+    text-align: center;
+    color: #475569;
+    font-size: .9rem;
+    border: 1px solid #e2e8f0;
+    margin-top: 3.5rem;
+    position: relative; overflow: hidden;
+  }
+  .footer-note::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 3px;
+    background: linear-gradient(90deg, transparent, #4f46e5, #0ea5e9, transparent);
+    border-radius: 999px;
+  }
+
+  /* ================= MISC ================= */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1; border-radius: 999px;
+    border: 3px solid #f8fafc;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora { animation: none; }
+    .resource-card, .icon-wrap, .open-btn, .link-item, .link-item .arrow,
+    .qs-card, .feat-card, .stat-box, .stat-mini { transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    .resource-card { padding: 1.2rem; }
+    .stat-box { padding: .65rem .9rem; min-width: 78px; }
+    .stat-box .number { font-size: 1.2rem; }
+    .section-title { font-size: 1.35rem; }
+    .section-title .emoji-wrap { width: 2.25rem; height: 2.25rem; font-size: 1.15rem; }
+    .divider { margin: 2.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= STICKY NAV ================= -->
+<nav class="nav-shell">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+    <div class="flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-2.5 shrink-0 no-underline">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-indigo-500/30">EG</span>
+        <span class="hidden sm:block">
+          <span class="block text-[0.82rem] font-extrabold text-slate-900 leading-tight tracking-tight">English Grammar</span>
+          <span class="block text-[0.6rem] font-bold text-slate-400 uppercase tracking-widest">IELTS Hub</span>
+        </span>
+      </a>
+
+      <div class="flex items-center gap-1 overflow-x-auto">
+        <a href="#grammar" class="nav-link">📖 Grammar</a>
+        <a href="#ielts" class="nav-link">🎯 IELTS</a>
+        <a href="#reading-listening" class="nav-link hidden md:inline-flex">🎧 Reading &amp; Listening</a>
+        <a href="#speaking" class="nav-link hidden md:inline-flex">🗣️ Speaking</a>
+        <a href="#quickstart" class="nav-link primary">🚀 Start</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-16 pb-16 md:pt-24 md:pb-24 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-widest mb-5 border border-white/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Complete Study Library · 2026
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight m-0">
+          English Grammar<br />
+          <span class="bg-gradient-to-r from-blue-300 via-cyan-200 to-teal-300 bg-clip-text text-transparent">&amp; IELTS Mastery</span>
+        </h1>
+        <p class="text-lg md:text-xl text-blue-100/80 mt-5 max-w-2xl leading-relaxed">
+          Your complete library of grammar guides, interactive exercises,
+          IELTS writing strategies, and speaking resources — all in one place.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#grammar" class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-full transition border border-white/20 flex items-center gap-2">
+            📖 Explore Grammar
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a href="#ielts" class="group bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-full transition shadow-lg shadow-blue-900/40 flex items-center gap-2">
+            🎯 IELTS Resources
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number">30+</div><div class="label">Resources</div></div>
+        <div class="stat-box"><div class="number">11</div><div class="label">Grammar</div></div>
+        <div class="stat-box"><div class="number">6</div><div class="label">IELTS</div></div>
+        <div class="stat-box"><div class="number">100%</div><div class="label">Free</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAIN ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- ============================================================ -->
+  <!--  GRAMMAR SECTION                                              -->
+  <!-- ============================================================ -->
+  <section id="grammar" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">📖</span>
+          Grammar Resources
+          <span class="count">11</span>
+        </h2>
+        <p class="section-sub">Master the rules · Practice interactively</p>
+      </div>
+    </div>
+
+    <div class="grid-cards">
+
+      <!-- 1. Subject-Verb Agreement -->
+      <a href="subject_verb_agreement.html" class="resource-card" style="--accent: linear-gradient(90deg, #3b82f6, #6366f1); --open-color: #2563eb;">
+        <div class="icon-wrap bg-blue-50 text-blue-600">🤝</div>
+        <div class="title">Subject–Verb Agreement</div>
+        <div class="description">Master the essential rule that your verb must match your subject in number and person. Clear rules, real examples, and a practice quiz.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Quiz</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 2. Verb Tenses -->
+      <a href="tense.html" class="resource-card" style="--accent: linear-gradient(90deg, #f59e0b, #f97316); --open-color: #d97706;">
+        <div class="icon-wrap bg-amber-50 text-amber-600">⏳</div>
+        <div class="title">Verb Tenses</div>
+        <div class="description">Master all 12 English verb tenses with clear explanations, examples, and a complete practice section. Past · Present · Future.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Exercises</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 3. Articles & Nouns -->
+      <a href="article.html" class="resource-card" style="--accent: linear-gradient(90deg, #10b981, #14b8a6); --open-color: #059669;">
+        <div class="icon-wrap bg-emerald-50 text-emerald-600">📘</div>
+        <div class="title">Articles &amp; Countable Nouns</div>
+        <div class="description">Master a/an, the and the difference between countable and uncountable nouns. Clear rules, examples, and interactive practice exercises.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 4. Prepositions -->
+      <a href="prepositions.html" class="resource-card" style="--accent: linear-gradient(90deg, #8b5cf6, #a855f7); --open-color: #7c3aed;">
+        <div class="icon-wrap bg-purple-50 text-purple-600">🧩</div>
+        <div class="title">Prepositions</div>
+        <div class="description">Master English prepositions: in, on, at, and more. Learn time, place, direction, and usage rules with clear examples and interactive practice.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Exercises</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 5. Pronouns -->
+      <a href="pronouns.html" class="resource-card" style="--accent: linear-gradient(90deg, #ec4899, #f43f5e); --open-color: #db2777;">
+        <div class="icon-wrap bg-pink-50 text-pink-600">🔤</div>
+        <div class="title">Pronouns</div>
+        <div class="description">Master all types: personal, possessive, reflexive, relative, indefinite, and more. Clear rules, examples, and interactive practice exercises.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 6. Conditional Sentences -->
+      <a href="conditional.html" class="resource-card" style="--accent: linear-gradient(90deg, #eab308, #facc15); --open-color: #ca8a04;">
+        <div class="icon-wrap bg-yellow-50 text-yellow-600">🔗</div>
+        <div class="title">Conditional Sentences</div>
+        <div class="description">Master zero, first, second, third, and mixed conditionals. Clear rules, examples, and interactive practice exercises.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 7. Essential Grammar (Interactive) -->
+      <a href="essential_grammar.html" class="resource-card" style="--accent: linear-gradient(90deg, #6366f1, #8b5cf6); --open-color: #4f46e5;">
+        <div class="icon-wrap bg-indigo-50 text-indigo-600">📗</div>
+        <div class="title">Essential Grammar in Use</div>
+        <div class="description">An interactive grammar reference with 145+ units covering everything from present tenses to phrasal verbs. Search, practice, and track your progress.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Interactive</span>
+          <span class="badge badge-advanced">145+ Units</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 8. English Collocations -->
+      <a href="english_collocations.html" class="resource-card" style="--accent: linear-gradient(90deg, #f43f5e, #ec4899); --open-color: #e11d48;">
+        <div class="icon-wrap bg-rose-50 text-rose-600">📚</div>
+        <div class="title">English Collocations</div>
+        <div class="description">Learn the most common and natural combinations of words in English. Improve your fluency and accuracy with these essential collocations.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 9. Advanced Grammar in Use -->
+      <a href="advanced_grammar.html" class="resource-card" style="--accent: linear-gradient(90deg, #14b8a6, #06b6d4); --open-color: #0d9488;">
+        <div class="icon-wrap bg-teal-50 text-teal-600">📘</div>
+        <div class="title">Advanced Grammar in Use</div>
+        <div class="description">A comprehensive guide to advanced English grammar, covering complex structures, idiomatic expressions, and nuanced usage. Ideal for learners aiming for fluency and accuracy.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Reference</span>
+          <span class="badge badge-advanced">Advanced</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 10. Common Mistakes in Intermediate Grammar -->
+      <a href="common_mistake_intermediate.html" class="resource-card" style="--accent: linear-gradient(90deg, #f97316, #ef4444); --open-color: #ea580c;">
+        <div class="icon-wrap bg-rose-50 text-rose-700">⚠️</div>
+        <div class="title">Common Mistakes in Intermediate Grammar</div>
+        <div class="description">Identify and avoid the most frequent errors in intermediate English grammar. Learn from real-life examples and practice with interactive exercises.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+          <span class="badge badge-intermediate">Intermediate</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 11. Common Mistakes in Advanced Grammar -->
+      <a href="common_mistake_advanced.html" class="resource-card" style="--accent: linear-gradient(90deg, #ef4444, #dc2626); --open-color: #dc2626;">
+        <div class="icon-wrap bg-rose-50 text-rose-700">⚠️</div>
+        <div class="title">Common Mistakes in Advanced Grammar</div>
+        <div class="description">Identify and avoid the most frequent errors in advanced English grammar. Learn from real-life examples and practice with interactive exercises.</div>
+        <div class="badge-group">
+          <span class="badge badge-grammar">Grammar</span>
+          <span class="badge badge-interactive">Practice</span>
+          <span class="badge badge-advanced">Advanced</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  IELTS SECTION                                                 -->
+  <!-- ============================================================ -->
+  <section id="ielts" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700">🎯</span>
+          IELTS Resources
+          <span class="count">6</span>
+        </h2>
+        <p class="section-sub">Band 7–9 strategies · Model essays · Vocabulary</p>
+      </div>
+    </div>
+
+    <div class="grid-cards">
+
+      <!-- 1. Task 1 Complete Master Manual -->
+      <a href="task1_marged.html" class="resource-card" style="--accent: linear-gradient(90deg, #1e40af, #3b82f6); --open-color: #1d4ed8;">
+        <div class="icon-wrap bg-blue-900/10 text-blue-700">📊</div>
+        <div class="title">Task 1 · Complete Master Manual</div>
+        <div class="description">From clauses to super sentences — everything you need for a Band 7+ in Grammatical Range &amp; Accuracy. 40+ sections, 20 templates, full essay analysis.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Strategy</span>
+          <span class="badge badge-advanced">Band 7–9</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 2. Rachel Mitchell Task 1 -->
+      <a href="rachel_mitchell_task1.html" class="resource-card" style="--accent: linear-gradient(90deg, #10b981, #22c55e); --open-color: #059669;">
+        <div class="icon-wrap bg-green-50 text-green-700">📈</div>
+        <div class="title">Task 1 · Rachel Mitchell</div>
+        <div class="description">The ultimate guide with practice to get a target band score of 8.0+ in 10 minutes a day. Proven formulas, tips, strategies, structures, and model essays.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Strategy</span>
+          <span class="badge badge-advanced">8.0+</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 3. Rachel Mitchell Task 2 -->
+      <a href="rachel_mitchell_task2.html" class="resource-card" style="--accent: linear-gradient(90deg, #f59e0b, #eab308); --open-color: #d97706;">
+        <div class="icon-wrap bg-amber-50 text-amber-700">✍️</div>
+        <div class="title">Task 2 · Rachel Mitchell</div>
+        <div class="description">The ultimate guide with practice to get a target band score of 8.0+ in 10 minutes a day. Proven formulas, tips, strategies, structures, vocabulary, and model essays.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Strategy</span>
+          <span class="badge badge-advanced">8.0+</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 4. Simon Task 2 -->
+      <a href="simon_task2.html" class="resource-card" style="--accent: linear-gradient(90deg, #e11d48, #f43f5e); --open-color: #e11d48;">
+        <div class="icon-wrap bg-rose-50 text-rose-700">📝</div>
+        <div class="title">Task 2 · Simon (Model Essays)</div>
+        <div class="description">A comprehensive collection of band 9 model essays for all question types: agree/disagree, discuss both views, problem/solution, and two-part questions.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Model Essays</span>
+          <span class="badge badge-advanced">Band 9</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 5. English Vocabulary in Use Advanced -->
+      <a href="vocabulary_advanced.html" class="resource-card" style="--accent: linear-gradient(90deg, #8b5cf6, #a855f7); --open-color: #7c3aed;">
+        <div class="icon-wrap bg-purple-50 text-purple-700">📝</div>
+        <div class="title">English Vocabulary in Use · Advanced 3rd Ed.</div>
+        <div class="description">Expand your vocabulary with this comprehensive guide to advanced English words and phrases. Includes exercises and real-life examples.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Vocabulary</span>
+          <span class="badge badge-advanced">Advanced</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+      <!-- 6. Sentence Structure -->
+      <a href="sentence_structure.html" class="resource-card" style="--accent: linear-gradient(90deg, #0ea5e9, #06b6d4); --open-color: #0284c7;">
+        <div class="icon-wrap bg-sky-50 text-sky-700">🧱</div>
+        <div class="title">Sentence Structure</div>
+        <div class="description">A comprehensive guide to sentence structure, including types of sentences, sentence patterns, and real-life examples for Band 7+ writing.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Grammar</span>
+          <span class="badge badge-advanced">Advanced</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  QUICK START GUIDE                                             -->
+  <!-- ============================================================ -->
+  <section id="quickstart" class="scroll-mt-20">
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-9 shadow-sm">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center text-2xl">🚀</span>
+        <div>
+          <h2 class="text-2xl font-extrabold text-gray-900 m-0 tracking-tight">Quick Start Guide</h2>
+          <p class="text-sm text-slate-500 m-0 mt-0.5">Not sure where to begin? Follow this suggested learning path.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-6">
+        <div class="qs-card bg-blue-50 border-blue-100">
+          <div class="qs-num text-blue-500">01</div>
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-blue-800 text-sm uppercase tracking-wide mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Foundation
+          </span>
+          <ul class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
+            <li><a href="subject_verb_agreement.html" class="text-blue-700 hover:text-blue-900">Subject–Verb Agreement</a></li>
+            <li><a href="tense.html" class="text-blue-700 hover:text-blue-900">Verb Tenses</a></li>
+            <li><a href="article.html" class="text-blue-700 hover:text-blue-900">Articles &amp; Nouns</a></li>
+          </ul>
+        </div>
+
+        <div class="qs-card bg-emerald-50 border-emerald-100">
+          <div class="qs-num text-emerald-500">02</div>
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-emerald-800 text-sm uppercase tracking-wide mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Intermediate
+          </span>
+          <ul class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
+            <li><a href="prepositions.html" class="text-emerald-700 hover:text-emerald-900">Prepositions</a></li>
+            <li><a href="pronouns.html" class="text-emerald-700 hover:text-emerald-900">Pronouns</a></li>
+            <li><a href="essential_grammar.html" class="text-emerald-700 hover:text-emerald-900">Essential Grammar (Interactive)</a></li>
+          </ul>
+        </div>
+
+        <div class="qs-card bg-amber-50 border-amber-100">
+          <div class="qs-num text-amber-500">03</div>
+          <span class="inline-flex items-center gap-1.5 font-extrabold text-amber-800 text-sm uppercase tracking-wide mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> IELTS Mastery
+          </span>
+          <ul class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
+            <li><a href="task1_marged.html" class="text-amber-700 hover:text-amber-900">Task 1 · Complete Manual</a></li>
+            <li><a href="rachel_mitchell_task1.html" class="text-amber-700 hover:text-amber-900">Rachel Mitchell Task 1</a></li>
+            <li><a href="rachel_mitchell_task2.html" class="text-amber-700 hover:text-amber-900">Rachel Mitchell Task 2</a></li>
+            <li><a href="simon_task2.html" class="text-amber-700 hover:text-amber-900">Simon Task 2 (Model Essays)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================================ -->
+  <!--  IELTS READING & LISTENING (Cambridge Guidelines)             -->
+  <!-- ============================================================ -->
+  <section id="reading-listening" class="scroll-mt-20">
+    <div class="highlight-shell">
+      <div class="aurora" style="opacity:.4"></div>
+
+      <div class="relative p-6 md:p-10">
+
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-7">
+          <div class="flex items-center gap-4">
+            <div class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+              <span class="text-3xl leading-none" aria-hidden="true">📖</span>
             </div>
-        </section>
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                <span class="pill bg-indigo-50 text-indigo-700 ring-1 ring-indigo-100">Official Cambridge</span>
+                <span class="pill bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100">Free Access</span>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 m-0">
+                IELTS Reading &amp; Listening Guidelines
+              </h2>
+            </div>
+          </div>
+        </div>
 
-        <!-- ====== MAIN CONTENT ====== -->
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- Description -->
+        <p class="text-slate-600 leading-relaxed max-w-3xl mb-8">
+          The official IELTS guidelines provide essential information on test format, question
+          types, and scoring criteria. Familiarising yourself with these guidelines can help
+          you approach each section with confidence.
+        </p>
 
-            <!-- ============================================================ -->
-            <!--  GRAMMAR SECTION                                              -->
-            <!-- ============================================================ -->
-            <section id="grammar">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="section-title">
-                        📖 Grammar Resources
-                        <span class="count">11</span>
-                    </div>
-                    <span class="text-sm text-gray-400 hidden sm:inline">Master
-                        the rules · Practice interactively</span>
+        <!-- Stats strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <div class="stat-mini">
+            <div class="sm-num">8</div>
+            <div class="sm-lbl">Reading Guides</div>
+          </div>
+          <div class="stat-mini">
+            <div class="sm-num">8</div>
+            <div class="sm-lbl">Listening Tests</div>
+          </div>
+          <div class="stat-mini">
+            <div class="sm-num">16</div>
+            <div class="sm-lbl">Total Resources</div>
+          </div>
+          <div class="stat-mini">
+            <div class="sm-num">100%</div>
+            <div class="sm-lbl">Free Forever</div>
+          </div>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="grid md:grid-cols-2 gap-5">
+
+          <!-- Reading Guidelines card -->
+          <div class="feat-card border-indigo-100 bg-gradient-to-b from-indigo-50/60 to-white">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/30">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
                 </div>
-
-                <div class="grid-cards">
-
-                    <!-- 1. Subject-Verb Agreement -->
-                    <a href="subject_verb_agreement.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-blue-50 text-blue-600">🤝</div>
-                        <div class="title">Subject–Verb Agreement</div>
-                        <div class="description">Master the essential rule that
-                            your verb must match your subject in number and
-                            person. Clear rules, real examples, and a practice
-                            quiz.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span class="badge badge-interactive">Quiz</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 2. Verb Tenses -->
-                    <a href="tense.html" class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-amber-50 text-amber-600">⏳</div>
-                        <div class="title">Verb Tenses</div>
-                        <div class="description">Master all 12 English verb
-                            tenses with clear explanations, examples, and a
-                            complete practice section. Past · Present ·
-                            Future.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Exercises</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 3. Articles & Nouns -->
-                    <a href="article.html" class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-emerald-50 text-emerald-600">📘</div>
-                        <div class="title">Articles &amp; Countable Nouns</div>
-                        <div class="description">Master a/an, the and the
-                            difference between countable and uncountable nouns.
-                            Clear rules, examples, and interactive practice
-                            exercises.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 4. Prepositions -->
-                    <a href="prepositions.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-purple-50 text-purple-600">🧩</div>
-                        <div class="title">Prepositions</div>
-                        <div class="description">Master English prepositions:
-                            in, on, at, and more. Learn time, place, direction,
-                            and usage rules with clear examples and interactive
-                            practice.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Exercises</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 5. Pronouns -->
-                    <a href="pronouns.html" class="resource-card no-underline">
-                        <div class="icon-wrap bg-pink-50 text-pink-600">🔤</div>
-                        <div class="title">Pronouns</div>
-                        <div class="description">Master all types: personal,
-                            possessive, reflexive, relative, indefinite, and
-                            more. Clear rules, examples, and interactive
-                            practice exercises.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 6. Conditional Sentences -->
-
-                    <a href="conditional.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-yellow-50 text-yellow-600">🔗</div>
-                        <div class="title">Conditional Sentences</div>
-                        <div class="description">Master zero, first, second,
-                            third, and mixed conditionals. Clear rules,
-                            examples,
-                            and interactive practice exercises.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-                    <!-- 7. Essential Grammar (Interactive) -->
-                    <a href="essential_grammar.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-indigo-50 text-indigo-600">📗</div>
-                        <div class="title">Essential Grammar in Use</div>
-                        <div class="description">An interactive grammar
-                            reference with 145+ units covering everything from
-                            present tenses to phrasal verbs. Search, practice,
-                            and track your progress.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Interactive</span>
-                            <span class="badge badge-advanced">145+ Units</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-                    <!-- 8. English Collocations -->
-                    <a href="english_collocations.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-600">📚</div>
-                        <div class="title">English Collocations</div>
-                        <div class="description">Learn the most common and
-                            natural combinations of words in English. Improve
-                            your fluency and accuracy with these essential
-                            collocations.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 9. Advanced Grammar in Use -->
-                    <a href="advanced_grammar.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-teal-50 text-teal-600">📘</div>
-                        <div class="title">Advanced Grammar in Use</div>
-                        <div class="description">A comprehensive guide to
-                            advanced
-                            English grammar, covering complex structures,
-                            idiomatic
-                            expressions, and nuanced usage. Ideal for learners
-                            aiming
-                            for fluency and accuracy.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Reference</span>
-                            <span class="badge badge-advanced">Advanced</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-                    <!-- 10. Common Mistakes in Intermediate Grammar -->
-                    <a href="common_mistake_intermediate.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-700">⚠️</div>
-                        <div class="title">Common Mistakes in Intermediate
-                            Grammar</div>
-                        <div class="description">Identify and avoid the most
-                            frequent errors in intermediate English grammar.
-                            Learn
-                            from real-life examples and practice with
-                            interactive exercises.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                            <span
-                                class="badge badge-intermediate">Intermediate</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-                    <!-- 11. Common Mistakes in Advanced Grammar -->
-                    <a href="common_mistake_advanced.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-700">⚠️</div>
-                        <div class="title">Common Mistakes in Advanced
-                            Grammar</div>
-                        <div class="description">Identify and avoid the most
-                            frequent errors in advanced English grammar. Learn
-                            from real-life examples and practice with
-                            interactive exercises.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-grammar">Grammar</span>
-                            <span
-                                class="badge badge-interactive">Practice</span>
-                            <span class="badge badge-advanced">Advanced</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
+                <div>
+                  <h3 class="font-extrabold text-slate-900 text-lg leading-tight">Official Guidelines</h3>
+                  <p class="text-xs text-slate-500 font-medium m-0">Reading Section</p>
                 </div>
-            </section>
+              </div>
+              <span class="pill bg-indigo-100 text-indigo-700">8 Guides</span>
+            </div>
 
-            <hr class="divider" />
+            <ul class="space-y-1.5 text-sm list-none p-0 m-0">
+              <li><a class="link-item" href="official_guideline_reading_1.html"><span class="flex items-center gap-2"><span class="num">1</span> IELTS Reading Official Guideline 1</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_2.html"><span class="flex items-center gap-2"><span class="num">2</span> IELTS Reading Official Guideline 2</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_3.html"><span class="flex items-center gap-2"><span class="num">3</span> IELTS Reading Official Guideline 3</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_4.html"><span class="flex items-center gap-2"><span class="num">4</span> IELTS Reading Official Guideline 4</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_5.html"><span class="flex items-center gap-2"><span class="num">5</span> IELTS Reading Official Guideline 5</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_6.html"><span class="flex items-center gap-2"><span class="num">6</span> IELTS Reading Official Guideline 6</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_7.html"><span class="flex items-center gap-2"><span class="num">7</span> IELTS Reading Official Guideline 7</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_reading_8.html"><span class="flex items-center gap-2"><span class="num">8</span> IELTS Reading Official Guideline 8</span><span class="arrow">→</span></a></li>
+            </ul>
+          </div>
 
-            <!-- ============================================================ -->
-            <!--  IELTS SECTION                                                 -->
-            <!-- ============================================================ -->
-            <section id="ielts">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="section-title">
-                        🎯 IELTS Resources
-                        <span class="count">6</span>
-                    </div>
-                    <span class="text-sm text-gray-400 hidden sm:inline">Band
-                        7–9 strategies · Model essays</span>
+          <!-- Listening card -->
+          <div class="feat-card border-emerald-100 bg-gradient-to-b from-emerald-50/60 to-white">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/30">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                  </svg>
                 </div>
-
-                <div class="grid-cards">
-
-                    <!-- 1. Task 1 Complete Master Manual -->
-                    <a href="task1_marged.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-blue-900/10 text-blue-700">📊</div>
-                        <div class="title">Task 1 · Complete Master Manual</div>
-                        <div class="description">From clauses to super sentences
-                            — everything you need for a Band 7+ in Grammatical
-                            Range &amp; Accuracy. 40+ sections, 20 templates,
-                            full essay analysis.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Strategy</span>
-                            <span class="badge badge-advanced">Band 7–9</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 2. Rachel Mitchell Task 1 -->
-                    <a href="rachel_mitchell_task1.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-green-50 text-green-700">📈</div>
-                        <div class="title">Task 1 · Rachel Mitchell</div>
-                        <div class="description">The ultimate guide with
-                            practice to get a target band score of 8.0+ in 10
-                            minutes a day. Proven formulas, tips, strategies,
-                            structures, and model essays.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Strategy</span>
-                            <span class="badge badge-advanced">8.0+</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 3. Rachel Mitchell Task 2 -->
-                    <a href="rachel_mitchell_task2.html"
-                        class="resource-card no-underline">
-                        <div
-                            class="icon-wrap bg-amber-50 text-amber-700">✍️</div>
-                        <div class="title">Task 2 · Rachel Mitchell</div>
-                        <div class="description">The ultimate guide with
-                            practice to get a target band score of 8.0+ in 10
-                            minutes a day. Proven formulas, tips, strategies,
-                            structures, vocabulary, and model essays.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Strategy</span>
-                            <span class="badge badge-advanced">8.0+</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- 4. Simon Task 2 -->
-                    <a href="simon_task2.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-700">📝</div>
-                        <div class="title">Task 2 · Simon (Model Essays)</div>
-                        <div class="description">A comprehensive collection of
-                            band 9 model essays for all question types:
-                            agree/disagree, discuss both views,
-                            problem/solution, and two-part questions.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Model
-                                Essays</span>
-                            <span class="badge badge-advanced">Band 9</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-                    <!-- 5.  English Vocabulary in Use Advanced 3rd Edition -->
-                    <a href="vocabulary_advanced.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-700">📝</div>
-                        <div class="title">English Vocabulary in Use Advanced
-                            3rd Edition</div>
-                        <div class="description">Expand your vocabulary with
-                            this comprehensive guide to advanced English words
-                            and phrases. Includes exercises and real-life
-                            examples.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Vocabulary</span>
-                            <span class="badge badge-advanced">Advanced</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
-                    <!-- sentence_structure.html -->
-                    <a href="sentence_structure.html"
-                        class="resource-card no-underline">
-                        <div class="icon-wrap bg-rose-50 text-rose-700">📝</div>
-                        <div class="title">Sentence Structure</div>
-                        <div class="description">A comprehensive guide to
-                            sentence structure, including types of sentences,
-                            sentence patterns, and real-life examples.</div>
-                        <div class="badge-group">
-                            <span class="badge badge-ielts">IELTS</span>
-                            <span class="badge badge-strategy">Grammar</span>
-                            <span class="badge badge-advanced">Advanced</span>
-                        </div>
-                        <span class="open-btn">
-                            Open Resource
-                            <svg fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24"><path stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
-                    </a>
-
+                <div>
+                  <h3 class="font-extrabold text-slate-900 text-lg leading-tight">Listening</h3>
+                  <p class="text-xs text-slate-500 font-medium m-0">Audio Tests</p>
                 </div>
-            </section>
+              </div>
+              <span class="pill bg-emerald-100 text-emerald-700">8 Tests</span>
+            </div>
 
-            <!-- ============================================================ -->
-            <!--  QUICK START GUIDE                                             -->
-            <!-- ============================================================ -->
-            <hr class="divider" />
+            <ul class="space-y-1.5 text-sm list-none p-0 m-0">
+              <li><a class="link-item" href="official_guideline_listening_1.html"><span class="flex items-center gap-2"><span class="num">1</span> Listening Test 1</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_2.html"><span class="flex items-center gap-2"><span class="num">2</span> Listening Test 2</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_3.html"><span class="flex items-center gap-2"><span class="num">3</span> Listening Test 3</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_4.html"><span class="flex items-center gap-2"><span class="num">4</span> Listening Test 4</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_5.html"><span class="flex items-center gap-2"><span class="num">5</span> Listening Test 5</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_6.html"><span class="flex items-center gap-2"><span class="num">6</span> Listening Test 6</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_7.html"><span class="flex items-center gap-2"><span class="num">7</span> Listening Test 7</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item" href="official_guideline_listening_8.html"><span class="flex items-center gap-2"><span class="num">8</span> Listening Test 8</span><span class="arrow">→</span></a></li>
+            </ul>
+          </div>
 
-            <section
-                class="bg-white rounded-xl border border-gray-200 p-6 md:p-8 shadow-sm">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="text-3xl">🚀</span>
-                    <h2 class="text-2xl font-extrabold text-gray-900 m-0">Quick
-                        Start Guide</h2>
-                </div>
-                <p class="text-gray-600 mb-4">Not sure where to begin? Here's a
-                    suggested learning path:</p>
-                <div class="grid md:grid-cols-3 gap-4 text-sm">
-                    <div
-                        class="bg-blue-50 rounded-xl p-4 border border-blue-100">
-                        <span class="font-bold text-blue-800">Step 1 ·
-                            Foundation</span>
-                        <ul
-                            class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
-                            <li><a href="subject_verb_agreement.html"
-                                    class="text-blue-600 hover:underline">Subject–Verb
-                                    Agreement</a></li>
-                            <li><a href="tense.html"
-                                    class="text-blue-600 hover:underline">Verb
-                                    Tenses</a></li>
-                            <li><a href="article.html"
-                                    class="text-blue-600 hover:underline">Articles
-                                    &amp; Nouns</a></li>
-                        </ul>
-                    </div>
-                    <div
-                        class="bg-emerald-50 rounded-xl p-4 border border-emerald-100">
-                        <span class="font-bold text-emerald-800">Step 2 ·
-                            Intermediate</span>
-                        <ul
-                            class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
-                            <li><a href="prepositions.html"
-                                    class="text-emerald-600 hover:underline">Prepositions</a></li>
-                            <li><a href="pronouns.html"
-                                    class="text-emerald-600 hover:underline">Pronouns</a></li>
-                            <li><a href="essential_grammar.html"
-                                    class="text-emerald-600 hover:underline">Essential
-                                    Grammar (Interactive)</a></li>
-                        </ul>
-                    </div>
-                    <div
-                        class="bg-amber-50 rounded-xl p-4 border border-amber-100">
-                        <span class="font-bold text-amber-800">Step 3 · IELTS
-                            Mastery</span>
-                        <ul
-                            class="list-disc pl-4 mt-1 text-gray-700 space-y-0.5">
-                            <li><a href="task1_marged.html"
-                                    class="text-amber-600 hover:underline">Task
-                                    1 · Complete Manual</a></li>
-                            <li><a href="rachel_mitchell_task1.html"
-                                    class="text-amber-600 hover:underline">Rachel
-                                    Mitchell Task 1</a></li>
-                            <li><a href="rachel_mitchell_task2.html"
-                                    class="text-amber-600 hover:underline">Rachel
-                                    Mitchell Task 2</a></li>
-                            <li><a href="simon_task2.html"
-                                    class="text-amber-600 hover:underline">Simon
-                                    Task 2 (Model Essays)</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <hr class="divider" />
+        </div>
 
-            <section
-                class="relative overflow-hidden bg-white rounded-3xl border border-slate-200 shadow-[0_30px_60px_-30px_rgba(15,23,42,.25)]">
-                <div class="aurora"></div>
+        <!-- Footer callout -->
+        <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold text-slate-900 text-sm m-0">Study tip</p>
+              <p class="text-slate-600 text-sm m-0">Complete one Reading Guide and one Listening Test per day for the best results.</p>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 hover:bg-slate-800 transition shrink-0">
+            Start Practising
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
 
-                <div class="relative p-6 md:p-10">
+      </div>
+    </div>
+  </section>
 
-                    <!-- Header -->
-                    <div
-                        class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-                                <span class="text-3xl leading-none"
-                                    aria-hidden="true">📖</span>
-                            </div>
-                            <div>
-                                <div
-                                    class="flex flex-wrap items-center gap-2 mb-1">
-                                    <span
-                                        class="pill bg-indigo-50 text-indigo-700 ring-1 ring-indigo-100">Official
-                                        Cambridge</span>
-                                    <span
-                                        class="pill bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100">Free
-                                        Access</span>
-                                </div>
-                                <h2
-                                    class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 m-0">
-                                    IELTS Reading &amp; Listening Guidelines
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
+  <hr class="divider" />
 
-                    <!-- Description -->
-                    <p class="text-slate-600 leading-relaxed max-w-3xl mb-8">
-                        The official IELTS guidelines provide essential
-                        information on test format, question
-                        types, and scoring criteria. Familiarising yourself with
-                        these guidelines can help
-                        you approach each section with confidence.
-                    </p>
+  <!-- ============================================================ -->
+  <!--  IELTS SPEAKING + TRAINER                                      -->
+  <!-- ============================================================ -->
+  <section id="speaking" class="scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-purple-100 to-pink-100 text-purple-700">🗣️</span>
+          IELTS Speaking
+          <span class="count">3</span>
+        </h2>
+        <p class="section-sub">Question banks · Sample answers · Idioms · Vocabulary</p>
+      </div>
+    </div>
 
-                    <!-- Stats strip -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-                        <div
-                            class="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3">
-                            <div
-                                class="text-2xl font-extrabold text-slate-900">8</div>
-                            <div
-                                class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Reading
-                                Guides</div>
-                        </div>
-                        <div
-                            class="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3">
-                            <div
-                                class="text-2xl font-extrabold text-slate-900">8</div>
-                            <div
-                                class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Listening
-                                Tests</div>
-                        </div>
-                        <div
-                            class="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3">
-                            <div
-                                class="text-2xl font-extrabold text-slate-900">16</div>
-                            <div
-                                class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Total
-                                Resources</div>
-                        </div>
-                        <div
-                            class="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3">
-                            <div
-                                class="text-2xl font-extrabold text-slate-900">100%</div>
-                            <div
-                                class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Free
-                                Forever</div>
-                        </div>
-                    </div>
+    <div class="grid-cards">
+      <a href="./ielts_speaking/ielts_speaking.html" class="resource-card" style="--accent: linear-gradient(90deg, #8b5cf6, #a855f7); --open-color: #7c3aed;">
+        <div class="icon-wrap bg-purple-50 text-purple-600">💬</div>
+        <div class="title">Speaking Questions + Sample Answers</div>
+        <div class="description">Cambridge IELTS 11–21 Part 1, 2 &amp; 3 question bank with Band 7–8 model answers, filterable by question type and topic.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Q&amp;A Bank</span>
+          <span class="badge badge-advanced">Band 7–8</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
 
-                    <!-- Cards grid -->
-                    <div class="grid md:grid-cols-2 gap-5">
+      <a href="./ielts_speaking/idioms.html" class="resource-card" style="--accent: linear-gradient(90deg, #ec4899, #f43f5e); --open-color: #db2777;">
+        <div class="icon-wrap bg-pink-50 text-pink-600">🎭</div>
+        <div class="title">IELTS Speaking Idioms</div>
+        <div class="description">35 high-value idioms organised by topic, with natural examples, grammar accuracy notes, and an interactive practice checklist.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Natural Language</span>
+          <span class="badge badge-advanced">35 Idioms</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
 
-                        <!-- Reading Guidelines card -->
-                        <div
-                            class="card group rounded-2xl border border-indigo-100 bg-gradient-to-b from-indigo-50/60 to-white p-5 md:p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/30">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path
-                                                d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                            <path
-                                                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="font-extrabold text-slate-900 text-lg leading-tight">Official
-                                            Guidelines</h3>
-                                        <p
-                                            class="text-xs text-slate-500 font-medium">Reading
-                                            Section</p>
-                                    </div>
-                                </div>
-                                <span
-                                    class="pill bg-indigo-100 text-indigo-700">8
-                                    Guides</span>
-                            </div>
+      <a href="./ielts_speaking/vocabulary.html" class="resource-card" style="--accent: linear-gradient(90deg, #0d9488, #14b8a6); --open-color: #0d9488;">
+        <div class="icon-wrap bg-teal-50 text-teal-600">📚</div>
+        <div class="title">IELTS Speaking Vocabulary</div>
+        <div class="description">B2–C1 topic vocabulary for every Part 3 topic from Cambridge Books 11–21, with clear definitions and cross-topic power words.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Vocabulary</span>
+          <span class="badge badge-advanced">B2–C1</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+       <a href="./ielts_speaking/marking.html" class="resource-card" style="--accent: linear-gradient(90deg, #0d9488, #14b8a6); --open-color: #0d9488;">
+        <div class="icon-wrap bg-teal-50 text-teal-600">📚</div>
+        <div class="title">IELTS Speaking Marking Criteria</div>
+        <div class="description">Understand the IELTS Speaking band scores and what examiners look for in each criterion.</div>
+        <div class="badge-group">
+          <span class="badge badge-ielts">IELTS</span>
+          <span class="badge badge-strategy">Marking Criteria</span>
+          <span class="badge badge-advanced">Band Scores</span>
+        </div>
+        <span class="open-btn">
+          Open Resource
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </span>
+      </a>
+    </div>
 
-                            <ul class="space-y-1.5 text-sm">
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_1.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">1</span> IELTS
-                                            Reading Official Guideline
-                                            1</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_2.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">2</span> IELTS
-                                            Reading Official Guideline
-                                            2</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_3.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">3</span> IELTS
-                                            Reading Official Guideline
-                                            3</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_4.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">4</span> IELTS
-                                            Reading Official Guideline
-                                            4</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_5.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">5</span> IELTS
-                                            Reading Official Guideline
-                                            5</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_6.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">6</span> IELTS
-                                            Reading Official Guideline
-                                            6</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_7.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">7</span> IELTS
-                                            Reading Official Guideline
-                                            7</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_reading_8.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">8</span> IELTS
-                                            Reading Official Guideline
-                                            8</span><span
-                                            class="arrow">→</span></a></li>
-                            </ul>
-                        </div>
+  </section>
 
-                        <!-- Listening card -->
-                        <div
-                            class="card group rounded-2xl border border-emerald-100 bg-gradient-to-b from-emerald-50/60 to-white p-5 md:p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/30">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path
-                                                d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                                            <path
-                                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="font-extrabold text-slate-900 text-lg leading-tight">Listening</h3>
-                                        <p
-                                            class="text-xs text-slate-500 font-medium">Audio
-                                            Tests</p>
-                                    </div>
-                                </div>
-                                <span
-                                    class="pill bg-emerald-100 text-emerald-700">8
-                                    Tests</span>
-                            </div>
+  <hr class="divider" />
 
-                            <ul class="space-y-1.5 text-sm">
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_1.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">1</span> Listening
-                                            Test 1</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_2.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">2</span> Listening
-                                            Test 2</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_3.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">3</span> Listening
-                                            Test 3</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_4.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">4</span> Listening
-                                            Test 4</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_5.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">5</span> Listening
-                                            Test 5</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_6.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">6</span> Listening
-                                            Test 6</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_7.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">7</span> Listening
-                                            Test 7</span><span
-                                            class="arrow">→</span></a></li>
-                                <li><a class="link-item"
-                                        href="official_guideline_listening_8.html"><span
-                                            class="flex items-center gap-2"><span
-                                                class="num">8</span> Listening
-                                            Test 8</span><span
-                                            class="arrow">→</span></a></li>
-                            </ul>
-                        </div>
+  <!-- ============================================================ -->
+  <!--  IELTS TRAINER PART 1                                          -->
+  <!-- ============================================================ -->
+  <section id="trainer" class="scroll-mt-20">
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-100 to-cyan-100 flex items-center justify-center text-2xl">🎧</span>
+        <div>
+          <h2 class="text-xl font-extrabold text-gray-900 m-0 tracking-tight">IELTS Trainer · Part 1</h2>
+          <p class="text-sm text-slate-500 m-0 mt-0.5">Practice-focused listening resources</p>
+        </div>
+      </div>
 
-                    </div>
+      <ul class="space-y-1.5 text-sm list-none p-0 m-0 max-w-md">
+        <li><a class="link-item" href="./trainer_1/listening_1.html"><span class="flex items-center gap-2"><span class="num">1</span> Listening Test 1</span><span class="arrow">→</span></a></li>
+      </ul>
+    </div>
+  </section>
 
-                    <!-- Footer callout -->
-                    <div
-                        class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4">
-                        <div class="flex items-start gap-3">
-                            <div
-                                class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p
-                                    class="font-bold text-slate-900 text-sm">Study
-                                    tip</p>
-                                <p class="text-slate-600 text-sm">Complete one
-                                    Reading Guide and one Listening Test per day
-                                    for the best results.</p>
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 hover:bg-slate-800 transition">
-                            Start Practising
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-4 h-4" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M13 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
+  <!-- ============================================================ -->
+  <!--  FOOTER                                                        -->
+  <!-- ============================================================ -->
+  <div class="footer-note">
+    <p class="font-extrabold text-slate-800 text-base m-0">📚 English Grammar &amp; IELTS Resource Hub</p>
+    <p class="text-sm mt-1.5 m-0">All resources compiled for easy reference · Built with ❤️ using HTML &amp; Tailwind CSS</p>
+    <p class="text-xs text-gray-400 mt-2.5 m-0">© 2026 · Free to use for personal study</p>
+  </div>
 
-                </div>
-            </section>
-            <section class="mt-8 text-center">
-                <p class="text-sm text-gray-500">IELTS Trainer Part 1</p>
-                <ul class="space-y-1.5 text-sm">
-                    <li><a class="link-item"
-                            href="./trainer_1/listening_1.html"
-                           ><span
-                                class="flex items-center gap-2"><span
-                                    class="num">1</span> Listening
-                                Test 1</span><span
-                                class="arrow">→</span></a></li>
-                </ul>
-            </section>
-                <!-- ============================================================ -->
-                <!--  FOOTER                                                        -->
-                <!-- ============================================================ -->
-                <div class="footer-note">
-                    <p class="font-medium">📚 English Grammar &amp; IELTS
-                        Resource
-                        Hub</p>
-                    <p class="text-sm mt-1">All resources compiled for easy
-                        reference · Built with ❤️ using HTML &amp; Tailwind
-                        CSS</p>
-                    <p class="text-xs text-gray-400 mt-2">© 2026 · Free to use
-                        for
-                        personal study</p>
-                </div>
+</main>
 
-            </main>
-
-        </body>
-    </html>
+</body>
+</html>
