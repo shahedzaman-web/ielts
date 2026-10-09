@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Writing Task 2 · Cambridge 11–21 Model Answers</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(16,185,129,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
+      #f8fafc;
+    margin: 0;
+    color: #0f172a;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #064e3b 55%, #0e7490 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(16,185,129,.32), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
+      radial-gradient(closest-side, rgba(20,184,166,.20), transparent 70%);
+    filter: blur(70px);
+    animation: drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+  .stat-box {
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: .85rem;
+    padding: .8rem 1.2rem;
+    text-align: center;
+    min-width: 88px;
+  }
+  .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .64rem; color: #99f6e4; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-shell {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(248,250,252,.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
+  }
+  .seg-btn {
+    padding: .45rem .95rem; border-radius: 999px; font-size: .78rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+  }
+  .seg-btn:hover { border-color: #5eead4; color: #0d9488; }
+  .seg-btn.active {
+    background: linear-gradient(135deg, #0d9488, #0ea5e9);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 18px -8px rgba(13,148,136,.7);
+  }
+  .chip {
+    padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    cursor: pointer; transition: all .16s ease; white-space: nowrap;
+  }
+  .chip:hover { border-color: #5eead4; color: #0d9488; }
+  .chip.active {
+    background: linear-gradient(135deg, #0d9488, #14b8a6);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 16px -8px rgba(13,148,136,.6);
+  }
+  select.book-select {
+    padding: .45rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569; cursor: pointer; outline: none;
+  }
+  select.book-select:focus { border-color: #5eead4; box-shadow: 0 0 0 3px rgba(13,148,136,.14); }
+  .search-input {
+    padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
+    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
+    transition: all .18s ease;
+  }
+  .search-input:focus { border-color: #5eead4; box-shadow: 0 0 0 3px rgba(13,148,136,.14); }
+  .tool-btn {
+    padding: .38rem .8rem; border-radius: 999px;
+    font-size: .72rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .16s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .tool-btn:hover { border-color: #5eead4; color: #0d9488; background: #f0fdfa; }
+  .tool-btn svg { width: 12px; height: 12px; }
+
+  /* ---------- CARDS ---------- */
+  .essay-card {
+    background: #fff; border-radius: 1.1rem; border: 1px solid #eef2f6;
+    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    transition: box-shadow .25s ease, border-color .25s ease;
+    position: relative; overflow: hidden;
+  }
+  .essay-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #0d9488, #0ea5e9);
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .essay-card:hover {
+    box-shadow: 0 20px 44px -26px rgba(15,23,42,.35), 0 6px 18px -12px rgba(15,23,42,.15);
+    border-color: #ccfbf1;
+  }
+  .essay-card:hover::after { opacity: 1; }
+
+  .badge {
+    font-size: .62rem; font-weight: 800; padding: .18rem .62rem;
+    border-radius: 999px; text-transform: uppercase; letter-spacing: .05em;
+    white-space: nowrap;
+  }
+  .b-book { background: #ede9fe; color: #5b21b6; }
+  .b-test { background: #dbeafe; color: #1d4ed8; }
+  .b-words { background: #f1f5f9; color: #475569; }
+
+  /* Question type badges */
+  .t-agree    { background:#d1fae5; color:#065f46; }
+  .t-discuss  { background:#dbeafe; color:#1d4ed8; }
+  .t-advdis   { background:#fef3c7; color:#92400e; }
+  .t-posneg   { background:#fce7f3; color:#9d174d; }
+  .t-probsol  { background:#ede9fe; color:#5b21b6; }
+  .t-twopart  { background:#ccfbf1; color:#115e59; }
+
+  .answer-box {
+    max-height: 0; overflow: hidden;
+    transition: max-height .5s cubic-bezier(.4,0,.2,1), opacity .3s ease, margin-top .3s ease;
+    opacity: 0; margin-top: 0;
+  }
+  .answer-box.open { max-height: 8000px; opacity: 1; margin-top: 1rem; }
+
+  .toggle-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-weight: 700; font-size: .8rem; color: #0d9488;
+    cursor: pointer; user-select: none; transition: color .18s;
+    padding: .4rem .85rem; border-radius: 999px;
+    background: #f0fdfa; border: 1px solid #ccfbf1;
+  }
+  .toggle-btn:hover { color: #0f766e; background: #ccfbf1; }
+  .toggle-btn svg { width: 14px; height: 14px; transition: transform .25s ease; }
+  .toggle-btn.open svg { transform: rotate(180deg); }
+
+  .essay-body p {
+    font-size: .875rem; color: #334155; line-height: 1.75; margin: 0 0 .85rem 0;
+  }
+  .essay-body p:last-child { margin-bottom: 0; }
+  .essay-body {
+    border-left: 3px solid #5eead4;
+    background: linear-gradient(135deg, #f0fdfa, #f8fafc);
+    border-radius: .75rem;
+    padding: 1.15rem 1.35rem;
+  }
+
+  /* ---------- COLLAPSIBLE SECTIONS ---------- */
+  .book-heading {
+    display: flex; align-items: center; gap: .75rem;
+    margin: 2.4rem 0 1rem;
+    cursor: pointer; user-select: none;
+    padding: .35rem .5rem .35rem 0;
+    border-radius: .6rem;
+    transition: background .18s ease;
+  }
+  .book-heading:hover { background: rgba(13,148,136,.05); }
+  .book-heading .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, #cbd5e1, transparent);
+  }
+  .book-pill {
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; color: #fff;
+    background: linear-gradient(135deg, #0f172a, #064e3b);
+    padding: .38rem .95rem; border-radius: 999px;
+    box-shadow: 0 6px 16px -10px rgba(15,23,42,.6);
+    white-space: nowrap;
+  }
+
+  .test-heading {
+    font-size: .82rem; font-weight: 800; color: #0f172a;
+    display: flex; align-items: center; gap: .5rem;
+    margin: 1.5rem 0 .7rem;
+    cursor: pointer; user-select: none;
+    padding: .3rem .5rem;
+    border-radius: .55rem;
+    transition: background .18s ease;
+    width: fit-content;
+  }
+  .test-heading:hover { background: rgba(13,148,136,.06); }
+  .test-heading .dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: linear-gradient(135deg, #0d9488, #0ea5e9);
+    flex-shrink: 0;
+  }
+
+  .collapse-chevron {
+    width: 1.4rem; height: 1.4rem; border-radius: .4rem;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0; padding: 0;
+    transition: all .18s ease;
+  }
+  .book-heading:hover .collapse-chevron,
+  .test-heading:hover .collapse-chevron { border-color: #5eead4; color: #0d9488; background: #f0fdfa; }
+  .collapse-chevron svg {
+    width: 11px; height: 11px;
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .collapse-chevron.collapsed svg { transform: rotate(-90deg); }
+
+  .section-body { transition: opacity .2s ease; }
+  .section-body.collapsed { display: none; }
+
+  /* ---------- HOW TO SECTION ---------- */
+  .howto-card {
+    border-radius: 1rem;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .howto-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -20px rgba(15,23,42,.28);
+  }
+  .howto-card h4 {
+    font-size: .82rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .05em;
+    margin: 0 0 .5rem 0;
+  }
+  .howto-card p { font-size: .8rem; color: #475569; line-height: 1.6; margin: 0 0 .6rem 0; }
+  .howto-card p:last-child { margin-bottom: 0; }
+  .howto-card .formula {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .74rem; color: #0f172a; font-weight: 600;
+    background: #fff; border: 1px solid #e2e8f0;
+    padding: .5rem .7rem; border-radius: .5rem;
+    display: block; margin-top: .4rem; line-height: 1.5;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer-note {
+    background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+    border-radius: 1.25rem;
+    padding: 2rem 2rem;
+    text-align: center;
+    color: #475569;
+    font-size: .88rem;
+    border: 1px solid #e2e8f0;
+    margin-top: 3.5rem;
+    position: relative; overflow: hidden;
+  }
+  .footer-note::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 3px;
+    background: linear-gradient(90deg, transparent, #0d9488, #0ea5e9, transparent);
+    border-radius: 999px;
+  }
+
+  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
+
+  .section-title {
+    font-size: 1.55rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.025em; display: flex; align-items: center; gap: .6rem;
+    margin: 0;
+  }
+  .section-title .emoji-wrap {
+    width: 2.6rem; height: 2.6rem; border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; flex-shrink: 0;
+    box-shadow: 0 4px 14px -6px rgba(15,23,42,.25);
+  }
+  .section-sub { font-size: .85rem; color: #64748b; font-weight: 500; margin-top: .35rem; }
+
+  .divider {
+    border: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1 20%, #cbd5e1 80%, transparent);
+    margin: 3rem 0;
+    position: relative;
+  }
+  .divider::before {
+    content: '◆';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cbd5e1; font-size: .55rem;
+    background: #f8fafc; padding: 0 .55rem;
+    line-height: 1;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora { animation: none; }
+    .essay-card, .answer-box, .toggle-btn svg, .collapse-chevron svg { transition: none; }
+  }
+  @media (max-width: 640px) {
+    .stat-box { padding: .6rem .85rem; min-width: 74px; }
+    .stat-box .number { font-size: 1.15rem; }
+    .book-heading { margin: 1.8rem 0 .8rem; }
+    .essay-body { padding: .95rem 1rem; }
+    .essay-body p { font-size: .84rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+          ✍️ Cambridge IELTS 11 – 21
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+          Writing Task 2<br />
+          <span class="text-teal-300">Question Bank &amp; Model Answers</span>
+        </h1>
+        <p class="text-lg md:text-xl text-teal-100/80 mt-4 max-w-2xl leading-relaxed">
+          Every Task 2 question from Cambridge Books 11–21 — filterable by
+          essay type and book, with full Band 7–9 model answers.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#bank" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-teal-900/30 flex items-center gap-2">
+            🔍 Browse the Bank <span>→</span>
+          </a>
+          <a href="#howto" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+            📘 How to Answer Each Type
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number" id="statTotal">—</div><div class="label">Essays</div></div>
+        <div class="stat-box"><div class="number">11</div><div class="label">Books</div></div>
+        <div class="stat-box"><div class="number">6</div><div class="label">Types</div></div>
+        <div class="stat-box"><div class="number">7+</div><div class="label">Band</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<div class="filter-shell" id="bank">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="flex flex-col gap-3">
+
+      <!-- Row 1: Book + search + reset -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <select class="book-select" id="bookFilter">
+          <option value="all">All Books</option>
+        </select>
+
+        <div class="relative flex-1 min-w-[180px]">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search questions, topics or keywords…" />
+        </div>
+
+        <button id="resetBtn" class="seg-btn" style="border-color:#fecaca;color:#b91c1c;">Reset</button>
+      </div>
+
+      <!-- Row 2: Type chips -->
+      <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
+        <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Type:</span>
+      </div>
+
+      <!-- Row 3: Collapse toolbar + count -->
+      <div class="flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
+          <button id="collapseAllBtn" class="tool-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 9l7 7 7-7"/></svg>
+            Collapse All
+          </button>
+          <button id="expandAllBtn" class="tool-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 15l-7-7-7 7"/></svg>
+            Expand All
+          </button>
+          <button id="openEssaysBtn" class="tool-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+            Open All Essays
+          </button>
+        </div>
+
+        <div class="text-xs text-slate-500 font-medium">
+          Showing <span id="resultCount" class="font-extrabold text-teal-600">0</span> essays
+          <span id="activeSummary" class="text-slate-400"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= RESULTS ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+  <div id="results"></div>
+
+  <!-- ============ HOW TO ANSWER EACH TYPE ============ -->
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="howto" />
+
+  <section>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-teal-100 to-cyan-100 text-teal-700">📘</span>
+          How to Answer Each Question Type
+        </h2>
+        <p class="section-sub">The structure you should follow for every Task 2 essay type</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="howto-card border-teal-200 bg-gradient-to-br from-teal-50/80 to-white">
+        <h4 class="text-teal-800">✅ Agree / Disagree</h4>
+        <p>State your position clearly in the introduction. Acknowledge the other side briefly, then argue your view.</p>
+        <span class="formula">Intro: position → Body 1: main reason → Body 2: second reason + counter → Conclusion</span>
+      </div>
+
+      <div class="howto-card border-blue-200 bg-gradient-to-br from-blue-50/80 to-white">
+        <h4 class="text-blue-800">⚖️ Discuss Both Views</h4>
+        <p>You must cover <em>both</em> sides fairly. Your opinion should appear in the intro and conclusion (and ideally in one body paragraph).</p>
+        <span class="formula">Intro: both views + opinion → Body 1: view A → Body 2: view B → Conclusion</span>
+      </div>
+
+      <div class="howto-card border-amber-200 bg-gradient-to-br from-amber-50/80 to-white">
+        <h4 class="text-amber-800">➕➖ Advantages / Disadvantages</h4>
+        <p>If the question asks "outweigh", you must decide. List both sides, then clearly state which is stronger.</p>
+        <span class="formula">Intro: state which outweighs → Body 1: stronger side → Body 2: weaker side → Conclusion</span>
+      </div>
+
+      <div class="howto-card border-pink-200 bg-gradient-to-br from-pink-50/80 to-white">
+        <h4 class="text-pink-800">👍👎 Positive / Negative</h4>
+        <p>Take a position. Support with reasons and examples. If you say "mostly positive", concede one negative clearly.</p>
+        <span class="formula">Intro: position → Body 1: main positives → Body 2: negatives → Conclusion</span>
+      </div>
+
+      <div class="howto-card border-purple-200 bg-gradient-to-br from-purple-50/80 to-white">
+        <h4 class="text-purple-800">🔧 Problem / Solution</h4>
+        <p>Identify 2 causes/problems in one body paragraph and 2 solutions in the other. Solutions must link to the problems.</p>
+        <span class="formula">Intro: restate → Body 1: causes → Body 2: solutions → Conclusion</span>
+      </div>
+
+      <div class="howto-card border-cyan-200 bg-gradient-to-br from-cyan-50/80 to-white">
+        <h4 class="text-cyan-800">❓ Two-Part Question</h4>
+        <p>You must answer <em>both</em> questions explicitly. Give equal weight to each part.</p>
+        <span class="formula">Intro: address both questions → Body 1: answer Q1 → Body 2: answer Q2 → Conclusion</span>
+      </div>
+
+    </div>
+
+    <div class="mt-7 rounded-2xl border border-teal-200 bg-gradient-to-br from-teal-50/70 to-cyan-50/60 px-6 py-5 flex gap-3">
+      <span class="text-2xl shrink-0">💡</span>
+      <div>
+        <p class="font-extrabold text-teal-800 text-sm mb-1.5 m-0">Universal Task 2 principles</p>
+        <ul class="text-sm text-slate-700 m-0 pl-4 list-disc space-y-1">
+          <li><strong>Word count:</strong> aim for 260–290 words — enough to develop ideas without rambling.</li>
+          <li><strong>Paragraphing:</strong> always 4 paragraphs (intro, 2 body, conclusion).</li>
+          <li><strong>Position:</strong> state and maintain a clear opinion throughout — do not sit on the fence unless the question allows it.</li>
+          <li><strong>Cohesion:</strong> use a range of linkers (<em>Furthermore, However, Consequently, By contrast</em>) but avoid mechanical overuse.</li>
+          <li><strong>Examples:</strong> one specific example per body paragraph is better than three vague ones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="footer-note">
+    <p class="font-extrabold text-slate-800 text-base m-0">✍️ IELTS Writing Task 2 · Cambridge 11–21</p>
+    <p class="text-sm mt-1.5 m-0">44 model essays across all Task 2 question types · filterable by book and type</p>
+    <p class="text-xs text-gray-400 mt-2.5 m-0">Built for personal study · HTML &amp; Tailwind CSS</p>
+  </div>
+</main>
+
+<script>
+/* =========================================================================
+   DATA
+   Format: [book, test, type, topic, question, essay]
+   ========================================================================= */
+const ESSAYS = [
+
+/* ===== BOOK 11 ===== */
+[11,1,"Agree / Disagree","Government spending · Transport",
+ "Governments should spend money on railways rather than roads. To what extent do you agree or disagree?",
+`In recent years, there has been considerable debate about whether governments should prioritise investment in railways over roads. I strongly agree that spending on railways is more advantageous for several reasons.
+
+Firstly, railways are significantly more environmentally friendly compared to road transport. Trains emit fewer greenhouse gases, including carbon dioxide, than cars and buses. This means that expanding railway networks can help reduce pollution and combat climate change. For example, a study in Europe found that railways produce 10% less carbon emissions than road vehicles, highlighting their environmental benefits.
+
+Secondly, railways offer a more efficient use of space and resources. Trains can carry a large number of passengers and goods over long distances, reducing the need for multiple vehicles on the road. This not only alleviates traffic congestion but also maximises fuel efficiency. For instance, a survey conducted in the USA in 2015 showed that increasing investment in railways could reduce fuel consumption by nearly 20%, making it a more sustainable option compared to road transport.
+
+On the other hand, roads are essential for short-distance travel and personal mobility. While railways excel in long-distance journeys, roads provide crucial access to areas where railways may not be practical. Therefore, it is important to recognise that both forms of transport play vital roles in a comprehensive transportation network.
+
+In conclusion, while roads remain important for short journeys and personal travel, the environmental and resource-related benefits of railways make them a more strategic investment for the future. By reducing emissions and optimising fuel use, railways offer a sustainable solution that outweighs the advantages of road transport. For these reasons, I fully support increased government investment in railways.`],
+
+[11,2,"Agree / Disagree","Environment · Recycling",
+ "Some people claim that not enough of the waste from homes is recycled. They say that the only way to increase recycling is for governments to make it a legal requirement. To what extent do you agree or disagree?",
+`Effective waste management is essential for tackling the escalating environmental dilemmas that society faces today. A prevalent viewpoint is that the implementation of stringent legal requirements is the sole method to enhance recycling efforts. While legislative measures undoubtedly have a significant impact, I contend that a synergistic approach, incorporating regulatory frameworks, educational initiatives, and the development of robust infrastructure, is vital for fostering responsible waste disposal practices among individuals.
+
+A notable illustration of successful governmental intervention can be found in Sweden, where stringent waste sorting regulations have culminated in an extraordinary recycling rate exceeding 99%. The Swedish government has not only enacted comprehensive legislation but has furthermore invested substantially in public educational programmes and established an efficient waste management infrastructure that facilitates easy sorting for its citizens. This amalgamation of legal stipulations, extensive awareness campaigns, and a well-organised system has enabled Sweden to emerge as a global frontrunner in waste management practices.
+
+Conversely, there are also cautionary examples where government initiatives have faltered in their mission to promote effective waste management. The Philippines serves as a striking case, where persistent challenges in waste management have prevailed despite the existence of laws mandating waste segregation. The inadequacy of infrastructure, inconsistent enforcement of regulations, and a lack of public awareness have collectively contributed to rampant illegal dumping and subpar waste management practices. This predicament underscores the significance of not only enforcing legal requirements but also investing in the necessary infrastructure to support these laws.
+
+In summary, although legislative measures are crucial for promoting recycling and responsible waste management, they must be augmented by comprehensive educational strategies and substantial infrastructural development. A holistic approach that integrates regulations, community awareness, and adequate resources will empower individuals to manage their waste more effectively and, ultimately, bolster environmental sustainability.`],
+
+[11,3,"Discuss Both Views","Education · Languages",
+ "Some people say that the only reason for learning a foreign language is in order to travel to or work in a foreign country. Others say that these are not the only reasons why someone should learn a foreign language. Discuss both these views and give your own opinion.",
+`Learning a new language is a topic of considerable debate. Some people argue that the primary reason for acquiring a foreign language is to travel to or work in a foreign country. Others believe that there are additional important reasons for learning a new language beyond these practical purposes. This essay will explore both perspectives before presenting my own view.
+
+On the one hand, many individuals learn a second language primarily to facilitate travel or enhance their job prospects abroad. For travellers, knowing the local language can greatly enhance their experience by allowing for more meaningful interactions with locals and a deeper understanding of the culture. Similarly, for those seeking employment in a foreign country, proficiency in the local language is often essential. Without it, effective communication with colleagues and clients can be challenging, potentially hindering professional success.
+
+On the other hand, learning a foreign language offers benefits that extend beyond mere travel or work. For example, language skills can provide valuable insights into different cultures, as language is closely tied to cultural identity and traditions. Additionally, speaking multiple languages can help individuals build relationships with people from diverse backgrounds, whether through social media, online communities, or international networks. This can lead to greater cultural awareness and personal growth. Furthermore, multilingualism can enhance cognitive abilities and improve problem-solving skills, making it a valuable asset in various aspects of life.
+
+In my opinion, the reasons for learning a foreign language are diverse and should not be confined to just travel or work. In today's globalised world, the ability to communicate across languages offers numerous advantages, including personal enrichment, cultural understanding, and cognitive development. As such, the significance of learning a new language extends far beyond practical necessities.
+
+In conclusion, while travelling and working abroad are valid reasons for learning a foreign language, they are not the only ones. The broader benefits of language acquisition, such as cultural insights and cognitive enhancement, illustrate the multifaceted value of being multilingual.`],
+
+[11,4,"Discuss Both Views","Government · Economic progress",
+ "Many governments think that economic progress is their most important goal. Some people, however, think that other types of progress are equally important for a country. Discuss both views and give your opinion.",
+`People have different views about how governments should measure their countries' progress. While economic progress is of course essential, I agree with those who believe that other measures of progress are just as important.
+
+There are three key reasons why economic growth is seen as a fundamental goal for countries. Firstly, a healthy economy results in job creation, a high level of employment, and better salaries for all citizens. Secondly, economic progress ensures that more money is available for governments to spend on infrastructure and public services. For example, a government with higher revenues can invest in the country's transport network, its education system, and its hospitals. Finally, a strong economy can help a country's standing on the global stage in terms of its political influence and trading power.
+
+However, I would argue that various other forms of progress are just as significant as the economic factors mentioned above. In particular, we should consider the areas of social justice, human rights, equality, and democracy itself. For example, the treatment of minority groups is often seen as a reflection of the moral standards and level of development of a society. Perhaps another key consideration when judging the progress of a modern country should be how well that country protects the natural environment and whether it is moving towards environmental sustainability. Alternatively, the success of a nation could be measured by looking at the health, well-being, and happiness of its residents.
+
+In conclusion, the economy is obviously a key marker of a country's success, but social, environmental, and health criteria are equally significant.`],
+
+/* ===== BOOK 12 ===== */
+[12,1,"Discuss Both Views","Knowledge · Research",
+ "Some people believe that it is good to share as much information as possible in scientific research, business and the academic world. Others believe that some information is too important or too valuable to be shared freely. Discuss both these views and give your own opinion.",
+`The ongoing debate about whether knowledge in science, commerce, and education should be widely accessible or restricted highlights a fundamental dilemma. Some advocate for the unrestricted dissemination of ideas to drive collective progress, while others argue that certain data holds immense value and should be kept confidential. This essay will explore both perspectives and present my viewpoint.
+
+Advocates for open access emphasise its potential to foster collaboration and innovation. In the scientific community, unrestricted access to studies allows researchers globally to build on previous findings, expediting advancements. For example, during the COVID-19 pandemic, the exchange of research findings across borders was pivotal in the rapid development of vaccines. Similarly, in education, sharing ideas promotes intellectual growth and ensures learners and professionals benefit from diverse perspectives. In business, cooperation through knowledge sharing can result in breakthroughs that benefit entire industries.
+
+Conversely, restricting certain types of knowledge can be essential for ethical and practical reasons. In commercial enterprises, safeguarding proprietary data and trade secrets ensures competitiveness and protects investments in innovation. Likewise, in research, sensitive information such as personal medical records or national security-related findings must remain confidential to uphold ethical standards and ensure safety. In education, concerns about plagiarism and intellectual property theft further justify limitations on unrestricted sharing.
+
+In my view, while sharing ideas is crucial for progress, it is equally important to maintain a balance. Certain types of knowledge, particularly those involving sensitive or proprietary data, should be protected to ensure ethical integrity and encourage innovation. However, frameworks can be developed to enable the responsible sharing of ideas. For example, open-access platforms that safeguard privacy and intellectual property can create a middle ground, promoting collaboration while addressing concerns about confidentiality.
+
+In conclusion, the decision to share or withhold knowledge depends on its context and nature. Striking a balance between openness and security can enable society to harness the benefits of shared ideas while mitigating potential risks.`],
+
+[12,2,"Advantages / Disadvantages","Demographics · Youth",
+ "At the present time, the population of some countries includes a relatively large number of young adults, compared with the number of older people. Do the advantages of this situation outweigh the disadvantages?",
+`In many countries, the proportion of young adults significantly exceeds that of older people. While some view this demographic shift as advantageous due to the energy and potential of a younger workforce, others argue that it brings challenges, such as a lack of experienced individuals. This essay will examine both the benefits and drawbacks of this situation before concluding that the advantages outweigh the disadvantages.
+
+On the one hand, a youthful population brings numerous benefits, particularly in terms of economic growth and innovation. Younger individuals tend to be more energetic, adaptable, and open to new ideas, which can drive progress and productivity across various sectors. For instance, countries with a high proportion of young people often experience faster technological advancements and greater entrepreneurial activity, contributing to national development. Additionally, younger citizens are generally healthier, placing less strain on healthcare systems compared to ageing populations. This enables governments to allocate resources to other areas, such as education and infrastructure.
+
+On the other hand, a population skewed towards youth can present several challenges. One major concern is the potential lack of experienced professionals and leaders, as older generations typically possess the wisdom and practical knowledge gained from years of experience. Without this expertise, critical sectors such as governance, healthcare, and education may suffer. Moreover, a youthful population today suggests an ageing society in the future, which will inevitably lead to increased demand for pensions and healthcare services. Governments must therefore prepare for the long-term implications of this demographic trend.
+
+In conclusion, while there are valid concerns about a lack of experience and the future challenges of an ageing society, the advantages of having a larger young population, such as increased innovation, economic dynamism, and reduced healthcare costs, are far more compelling. Therefore, I believe that the benefits of this situation clearly outweigh the disadvantages, particularly in the context of global economic competition.`],
+
+[12,3,"Discuss Both Views","Transport · Public infrastructure",
+ "In a number of countries, some people think it is necessary to spend large sums of money on constructing new railway lines for very fast trains between cities. Others believe the money should be spent on improving existing public transport. Discuss both these views and give your own opinion.",
+`In many countries, governments face the dilemma of allocating funds either to construct new high-speed railway lines or to enhance existing public transport systems. Both options have distinct merits, and a balanced approach may be the most prudent course of action.
+
+Proponents of investing in new high-speed rail infrastructure argue that such projects can significantly reduce travel times between major cities. This not only boosts economic productivity by connecting regional markets but also alleviates road congestion and reduces carbon emissions when compared to car or air travel. Moreover, high-speed trains often provide a more comfortable and efficient mode of transport for long-distance journeys, potentially stimulating tourism and regional development.
+
+On the other hand, many argue that improving existing public transport should be prioritised. Urban populations rely heavily on buses, trams, and subways for daily commuting, and investing in these services can yield immediate benefits. Upgrading outdated infrastructure, increasing service frequency, and expanding coverage can reduce overcrowding and improve accessibility for a larger segment of society. Additionally, enhancing local transport systems tends to be more cost-effective in the short term and directly addresses the needs of daily commuters, thereby improving overall quality of life in densely populated areas.
+
+In my opinion, while the allure of high-speed rail is undeniable for its long-term economic and environmental benefits, immediate investments should focus on modernising current public transport systems. By ensuring that urban residents have access to reliable and efficient services, governments can address urgent congestion and mobility issues. Once these improvements are firmly in place, additional funds can then be directed toward expanding high-speed rail networks to foster intercity connectivity.
+
+In conclusion, both approaches offer valuable benefits. However, prioritising the enhancement of existing public transport appears to be the most pragmatic solution for addressing immediate urban challenges while setting the stage for future high-speed rail developments.`],
+
+[12,4,"Discuss Both Views","Parenting · Children's choices",
+ "Some people believe that allowing children to make their own choices on everyday matters (such as food, clothes and entertainment) is likely to result in a society of individuals who only think about their own wishes. Other people believe that it is important for children to make decisions about matters that affect them. Discuss both these views and give your own opinion.",
+`In today's world, some people argue that allowing children to make their own decisions regarding everyday matters such as food, clothing, and recreation may lead to a self-centred society. However, others believe it is essential for children to learn how to make decisions independently. In this essay, I will examine both perspectives and provide my opinion at the end.
+
+On one hand, proponents of restricting children's decision-making argue that this practice could result in a self-centred society. They contend that giving children the freedom to choose can instil the belief that they can easily achieve whatever they desire. Often, children do not consider the consequences of their choices, leading to increased selfishness. If they are permitted to make decisions in all matters, they may prioritise their own benefits over the impact on others. For instance, young children who are allowed to make choices at will may not fully understand how their actions can affect those around them. Additionally, they may fail to appreciate items they obtain easily because they have not had to work for them.
+
+On the other hand, advocates of giving children the freedom to make decisions argue that it nurtures self-reliance and resilience. When children learn to make decisions independently, they do not depend on others for guidance, which enhances their critical thinking skills and boosts their confidence. Encouraging children to make age-appropriate choices fosters a sense of responsibility. For example, when a child is given the chance to select extracurricular activities as a hobby, they can improve their cognitive development and problem-solving abilities.
+
+Considering both viewpoints, I believe that children should be encouraged to make their own choices in all matters. This empowerment helps them build self-confidence and adaptability in today's dynamic world. It provides opportunities for personal growth and cultivates their resilience.`],
+
+/* ===== BOOK 13 ===== */
+[13,1,"Agree / Disagree","Language · Migration",
+ "Living in a country where you have to speak a foreign language can cause serious social problems, as well as practical problems. To what extent do you agree or disagree with this statement?",
+`Residing in a foreign country where one is required to communicate in a second language can indeed lead to significant challenges, both socially and practically. While some individuals may navigate these situations with relative ease, I strongly contend that the inability to communicate proficiently in the local language can have serious ramifications.
+
+Research indicates that speaking in a foreign language can present psychological hurdles for many individuals. For immigrants, particularly those moving to regions with distinct cultural differences from their home countries, engaging in meaningful dialogue with native speakers can prove to be exceedingly difficult. This challenge is exacerbated when individuals lack a deep understanding of the host country's traditions and customs. For instance, when an immigrant seeking employment applies for jobs, their adequate qualifications may not suffice if they are unable to communicate effectively. This inability to articulate oneself can consequently result in job rejections, regardless of professional competence. Moreover, difficulty in verbal communication may lead to social isolation, as individuals struggle to forge friendships and integrate into their communities.
+
+In addition to the social obstacles, practical issues often arise for those who lack fluency in the local language. Such practical challenges can permeate various aspects of daily life for individuals with limited communicative ability. For example, when attempting to transfer money online, individuals may encounter considerable difficulties due to complex and technical language within websites or applications. Furthermore, routine household tasks, such as repairing an appliance, may necessitate comprehending user manuals accurately. While these activities may appear straightforward, the lack of language proficiency can transform them into costly and time-consuming endeavours.
+
+In conclusion, although some individuals might adapt successfully to life in a foreign country, I assert that the inability to communicate proficiently in the local language can lead to numerous difficulties, particularly in social and practical domains. These challenges underscore the importance of language acquisition for individuals aspiring to thrive in a multicultural environment.`],
+
+[13,2,"Agree / Disagree","Modern life · Consumer choice",
+ "Some people believe that nowadays we have too many choices. To what extent do you agree or disagree with this statement?",
+`In today's modern world, the variety of choices available to individuals has increased significantly in almost every aspect of life—from what we eat and wear to how we communicate and even where we work or live. While some argue that this abundance of options is overwhelming and unnecessary, I strongly believe that having many choices is ultimately beneficial and empowering.
+
+To begin with, the presence of numerous options allows people to find products and services that better match their personal preferences and needs. For example, in the past, shopping for clothes meant choosing from a few available items in local stores. Nowadays, online platforms offer access to thousands of brands from around the world, allowing consumers to find exactly what suits them in terms of style, size, and budget. This level of choice leads to greater satisfaction and a higher standard of living.
+
+Moreover, having multiple choices promotes competition, which often results in better quality and lower prices. In the technology sector, for instance, there are countless brands of smartphones, each competing to offer the best features at the most affordable prices. This benefits consumers by ensuring that companies continuously innovate and improve their products.
+
+However, it is also true that too many choices can sometimes cause confusion or "decision fatigue," where individuals struggle to make decisions due to the overwhelming number of options. Yet, this issue can often be managed by using filters, reviews, and expert recommendations to simplify the decision-making process.
+
+In conclusion, although having a wide range of choices can occasionally be overwhelming, I believe that the advantages far outweigh the drawbacks. The freedom to choose enhances personal satisfaction, drives innovation, and ultimately contributes to a better quality of life.`],
+
+[13,3,"Discuss Both Views","Education · School subjects",
+ "Some people say History is one of the most important school subjects. Others think that, in today's world, subjects like science and technology are more important than history. Discuss both views and give your opinion.",
+`The ongoing debate regarding whether History remains one of the most important subjects in school or if Science and Technology have now taken precedence deserves careful consideration. This essay will discuss both perspectives before articulating my own stance.
+
+On the one hand, History is considered essential because it helps people understand societal development and learn from past experiences. By studying historical events, students gain insight into how civilisations evolved, how conflicts emerged, and how human progress was shaped. For example, learning about World War II teaches valuable lessons about the dangers of nationalism and the importance of diplomacy. Furthermore, History fosters a sense of identity and cultural awareness. Knowing one's national history helps individuals appreciate their cultural heritage and maintain traditions, which strengthens social cohesion. Without historical knowledge, societies risk repeating mistakes and losing their cultural roots.
+
+On the other hand, opponents argue that Science and Technology subjects are more critical in today's world due to their direct impact on economic development and innovation. As industries become more technology-driven, skills in fields such as engineering, medicine, and computer science are vital for future careers. For instance, advances in artificial intelligence, renewable energy, and healthcare have significantly improved people's quality of life. Additionally, scientific literacy is needed for solving global challenges, such as climate change, pandemics, and cybersecurity threats. Without a strong foundation in Science and Technology, societies might struggle to adapt to rapid advancements and compete in the modern workforce.
+
+In conclusion, while History provides valuable knowledge and critical thinking skills, I firmly believe that Science and Technology subjects are more relevant in today's fast-changing world. Therefore, it is imperative for schools to integrate both historical knowledge and scientific education into the curriculum, ultimately preparing students for the challenges and opportunities of the future.`],
+
+[13,4,"Problem / Solution","Agriculture · Global hunger",
+ "In spite of the advances made in agriculture, many people around the world still go hungry. Why is this the case? What can be done about this problem?",
+`Despite significant advancements in agriculture, hunger remains a pressing issue in many parts of the world. This essay will explore the reasons behind this persistent problem and propose effective solutions to address it.
+
+One major cause of hunger is the impact of wars and political instability. In conflict zones, governments often allocate most of their resources to military spending, leaving insufficient funds for essential sectors like food production and distribution. Furthermore, wars disrupt supply chains, destroy farmland, and displace people, all of which contribute to food shortages. For example, in war-torn regions, access to food becomes limited due to damaged infrastructure and unsafe conditions for farming and trade.
+
+Another key factor is extreme weather and climate change. Prolonged droughts, floods, and temperature extremes can severely damage crops and reduce agricultural yields. As global warming accelerates, these challenges are becoming more frequent and severe. For instance, unpredictable weather patterns caused by climate change have devastated agricultural output in many developing countries, leaving millions vulnerable to hunger. Additionally, natural disasters like earthquakes can exacerbate food insecurity by destroying infrastructure and disrupting food supplies, as seen during the earthquake in Turkey last year.
+
+To mitigate hunger, affluent nations must collaborate with countries facing food insecurity. Through financial aid, resource sharing, and the transfer of advanced agricultural technologies, developed countries can support sustainable farming practices and improve food availability. International organisations, such as the United Nations, should also take the lead in coordinating global food aid programmes to reach the most vulnerable populations. Furthermore, addressing climate change is critical. Governments and individuals should prioritise sustainable land management, reforestation, and the preservation of ecosystems to enhance resilience against climate-related disruptions.
+
+In conclusion, it is a tragedy that hunger persists in an era marked by technological and agricultural progress. However, by fostering international cooperation and adopting sustainable practices, we can combat food insecurity and work towards a world where everyone has access to sufficient nutrition.`],
+
+/* ===== BOOK 14 ===== */
+[14,1,"Discuss Both Views","Life attitude · Resilience",
+ "Some people believe that it is best to accept a bad situation, such as an unsatisfactory job or shortage of money. Others argue that it is better to try and improve such situations. Discuss both views and give your opinion.",
+`It is often argued that tolerating negative circumstances, such as an unsatisfactory job or financial difficulties, is the most pragmatic approach. Conversely, I contend that it is more advantageous to make concerted efforts to improve such challenging situations.
+
+On one hand, there are several compelling reasons why some individuals believe that accepting adversities, like an unsatisfactory job or financial constraints, is the optimal strategy. Firstly, many may overlook job opportunities that are both financially rewarding and conveniently located. This oversight can lead to long commutes or relocation, which may only exacerbate their dissatisfaction in the short term. Secondly, while enduring unpleasant work conditions may seem counterproductive, such situations can potentially enhance individuals' creativity and resourcefulness. For instance, facing constraints may encourage employees to innovate and develop new skills, ultimately benefiting their long-term career trajectories.
+
+On the other hand, there exists a strong case for actively striving to improve one's circumstances rather than passively accepting them. One key argument in favour of this view is that by demonstrating resilience and a proactive attitude, individuals may foster trust and rapport with their colleagues and superiors, leading to tangible benefits such as raises or promotions. For example, a diligent employee who consistently goes above and beyond may attract recognition from management, resulting in increased responsibilities and financial rewards. Furthermore, failing to take action to enhance one's quality of life can lead to feelings of fatigue and disillusionment. In extreme cases, this could drive individuals towards illegal activities as a means of escaping their plight, highlighting the importance of seeking legitimate avenues for improvement.
+
+In conclusion, both viewpoints regarding the acceptance of adverse situations and the pursuit of improvement have their merits. However, I firmly believe that making sustained efforts to overcome challenges is the more beneficial path. It is essential for both individuals and governments to consider the implications of each approach and to encourage proactive strategies for enhancing life circumstances.`],
+
+[14,2,"Discuss Both Views","Environment · Biodiversity",
+ "Some people say that the main environmental problem of our time is the loss of particular species of plants and animals. Others say that there are more important environmental problems. Discuss both these views and give your own opinion.",
+`The extinction of plant and animal species is viewed as the main environmental problem by some, while others believe that many other issues are more concerning. Although every issue deserves human attention, I believe that the loss of wildlife poses a significant danger to the environment.
+
+Many people argue that various environmental changes warrant more discussion than species extinction, especially given past and recent events. Over the past two decades, disasters such as earthquakes, tsunamis, and hurricanes have impacted numerous regions around the world. These major natural events have led to the deaths of thousands of people and widespread destruction of land. Additionally, many species are suffering because of global warming, which is currently one of the world's leading concerns. For example, icebergs that serve as habitats for polar bears are melting, and many plant species are dying due to the rising temperatures on Earth.
+
+On the other hand, the issue of wildlife extinction has been explored throughout history. Humans are a significant cause of the loss of various plants and animals. Our ecosystem is delicately balanced, and the cycle of life becomes incomplete if even one species is removed from the system. For instance, lions sit at the top of the food chain; without them, deer and other animals would proliferate, ultimately disrupting the ecosystem. Similarly, plants play an equal role in maintaining ecological balance. Large trees, for example, help prevent flooding and keep the environment clean. To ensure the safety and balance of our environment, it is crucial to protect both animals and plants at all costs.
+
+Every problem deserves time and attention, especially natural disasters. However, in my opinion, the loss of wildlife could lead to irrevocable damage to the Earth, making the protection of endangered plants and animals an utmost necessity.`],
+
+[14,3,"Agree / Disagree","Culture · Music",
+ "Some people say that music is a good way of bringing people of different cultures and ages together. To what extent do you agree or disagree with this opinion?",
+`Music, a universal language, possesses the extraordinary power to transcend cultural and generational barriers, fostering connections that bridge divides. Its ability to evoke emotions, spark memories, and create shared experiences makes it a potent tool for unity.
+
+One of the most compelling aspects of music is its ability to connect people on an emotional level. Regardless of language or cultural background, music can elicit a wide range of feelings, from joy and excitement to sadness and nostalgia. When people share these emotional responses to music, they form a bond that transcends superficial differences. This shared emotional experience can break down barriers and create a sense of common humanity.
+
+Moreover, music often serves as a cultural ambassador, introducing people to different traditions, customs, and perspectives. Through music, individuals can explore the rich tapestry of human expression, gaining a deeper appreciation for diverse cultures. Music festivals, for example, bring together people from all walks of life, celebrating cultural diversity through music, dance, and art. These events create a vibrant and inclusive atmosphere where people can connect with one another and learn from each other's experiences.
+
+However, it is important to acknowledge that while music has the potential to unite people, it can also be divisive. Certain genres or artists may appeal to specific groups, reinforcing existing social divisions. Additionally, the way music is consumed, through individual headphones or shared experiences, can influence the extent to which it fosters connection.
+
+In conclusion, music's ability to transcend cultural and generational boundaries makes it a powerful tool for bringing people together. By evoking shared emotions, promoting cultural exchange, and creating inclusive spaces, music can foster understanding, empathy, and unity. While it is not a panacea for all societal ills, music undoubtedly plays a significant role in enriching our lives and connecting us to one another.`],
+
+[14,4,"Two-Part Question","Work · Self-employment",
+ "Nowadays many people choose to be self-employed, rather than to work for a company or organisation. Why might this be the case? What could be the disadvantages of being self-employed?",
+`In recent years, there has been a noticeable trend towards self-employment, with many individuals choosing to work for themselves rather than for a company or organisation. There are several reasons why this may be the case, and there are also a number of potential disadvantages to being self-employed.
+
+One reason why more and more people are opting for self-employment is the desire for greater autonomy and control over their work. Working for oneself allows for more flexibility and the ability to pursue one's own goals and projects, rather than those of a larger organisation. For instance, freelancers may prefer to work from home and set their own hours, allowing them to balance their work with other commitments, such as family or personal interests. Self-employment also offers the potential for greater financial rewards, as profits are not shared with an employer.
+
+However, being self-employed also comes with its own set of challenges. One of the main disadvantages is the lack of job security and benefits such as health insurance and paid time off. Self-employed individuals are also responsible for all aspects of their work, from accounting to marketing to customer service, which can be overwhelming and time-consuming. Additionally, there may be less opportunity for career advancement or professional development compared to working for a company with established training programmes and career paths.
+
+In fact, despite these potential drawbacks, the trend towards self-employment is likely to continue as technology and the gig economy create more opportunities for independent work. Governments and policymakers can help mitigate some of the risks and disadvantages of self-employment by offering support such as access to healthcare, retirement savings plans, and training programmes.`],
+
+/* ===== BOOK 15 ===== */
+[15,1,"Two-Part Question","Housing · Homeownership",
+ "In some countries, owning a home rather than renting one is very important for people. Why might this be the case? Do you think this is a positive or negative situation?",
+`In various nations, homeownership is often seen as more desirable than renting. This preference stems from the sense of security and financial stability that owning a home offers, which renting may not provide. In this essay, I will explore why people in some countries prioritise owning a home and evaluate whether this trend has positive or negative implications.
+
+One primary reason why people favour homeownership is the belief that owning a property symbolises stability and success. In many societies, owning a home is not just a financial asset but a sign of achieving a life milestone. For instance, individuals may associate homeownership with long-term security, as it eliminates the uncertainty of rent hikes or eviction. Furthermore, many people view buying a home as an investment that appreciates in value over time, providing a future financial safety net. In contrast, renting is often seen as "temporary" and not contributing to long-term wealth accumulation.
+
+However, this emphasis on homeownership can have some negative effects on individuals and the economy. When people place such a high value on buying property, it can lead to housing market bubbles, where prices inflate to unsustainable levels. Additionally, those who feel pressured to own a home may take on excessive debt, leading to financial strain. This can also discourage mobility, as homeowners are less likely to move for job opportunities compared to renters.
+
+In conclusion, while owning a home may provide people with a sense of security and financial investment, it also comes with certain risks. Although the desire to own property can be a positive goal, it is essential for individuals and governments to balance this aspiration with the potential downsides, such as debt and inflated housing markets.`],
+
+[15,2,"Agree / Disagree","Media · Print vs Digital",
+ "In the future, nobody will buy printed newspapers or books because they will be able to read everything they want online without paying. To what extent do you agree or disagree with this statement?",
+`The rapid advancement of digital technology has transformed the way we consume information. While it is true that online platforms offer unparalleled convenience and accessibility, I disagree with the notion that printed newspapers and books will become entirely obsolete in the future.
+
+Firstly, although digital media provides easy access to a wealth of information, printed newspapers and books continue to hold intrinsic value that cannot be replicated online. Physical books, for instance, offer a tangible experience that many readers cherish. The sensory pleasure of holding a book, the smell of the paper, and the act of turning pages are all aspects that contribute to the enduring appeal of printed literature. Similarly, newspapers provide a curated, organised presentation of news that some readers prefer over the potentially overwhelming abundance of online information.
+
+Secondly, while it is possible to access a vast array of content online, the quality and reliability of this information can vary greatly. Many reputable publishers and authors still prefer traditional print as a medium for disseminating their work, ensuring that the content remains authoritative and credible. Moreover, printed materials often serve as valuable historical records and are preserved in libraries and archives, whereas digital content can be easily altered or lost over time.
+
+Furthermore, the assumption that all online content is free is a misconception. Many high-quality news websites and e-books require subscriptions or purchases, similar to their printed counterparts. This suggests that cost is not the only factor influencing people's choice between digital and print media. Additionally, the rise of digital fatigue, where users become overwhelmed by constant screen exposure, has led some individuals to seek refuge in the more relaxing and less intrusive medium of print.
+
+In conclusion, while digital media has undoubtedly gained significant popularity, the complete disappearance of printed newspapers and books is unlikely. The unique qualities of print, combined with concerns about digital reliability and screen fatigue, ensure that there will continue to be a place for traditional media in the future.`],
+
+[15,3,"Discuss Both Views","Advertising · Consumer behaviour",
+ "Some people say that advertising is extremely successful at persuading us to buy things. Other people think that advertising is so common that we no longer pay attention to it. Discuss both these views and give your own opinion.",
+`Some people argue that advertising is highly effective at convincing consumers to make purchases, while others believe that it has become so pervasive that it no longer captures our attention. This essay will discuss both perspectives before concluding with my own viewpoint.
+
+On one hand, proponents of advertising's effectiveness argue that it plays a crucial role in influencing consumer behaviour. Effective advertisements leverage psychological triggers such as emotional appeal, scarcity, and endorsements from celebrities. For instance, companies often use high-profile endorsements to create a sense of trust and desirability around their products. Additionally, targeted advertising on social media platforms can reach specific demographics, thus maximising its persuasive impact. This tailored approach ensures that ads are more relevant to individual consumers, increasing the likelihood of a purchase.
+
+Conversely, others contend that the sheer volume of advertisements has led to a state of desensitisation among consumers. In today's digital age, people are bombarded with advertisements across multiple channels, including television, social media, and websites. This saturation can lead to 'ad fatigue,' where consumers begin to ignore or overlook advertisements. For example, many people use ad-blocking software to avoid unwanted commercial content online. This overwhelming presence can diminish the effectiveness of advertising, as it becomes just another background noise in daily life.
+
+In my opinion, while advertising still holds significant power to influence consumer choices, its effectiveness is increasingly challenged by its omnipresence. To remain impactful, advertisers must innovate and craft more engaging and personalised content. Overall, while advertising can still persuade consumers, its success is heavily dependent on its ability to cut through the noise and capture attention in a crowded market.`],
+
+[15,4,"Advantages / Disadvantages","Parenting · Children",
+ "In some cultures, children are often told that they can achieve anything if they try hard enough. What are the advantages and disadvantages of giving children this message?",
+`In many modern societies, it is common to encourage children by telling them that complete dedication and hard work can lead to any achievement. While this optimistic message can significantly boost a child's motivation and long-term work ethic, it can also create unrealistic expectations and immense psychological pressure. This essay will discuss both the benefits and drawbacks of this mindset.
+
+One of the main advantages is that this message develops a strong work ethic and perseverance in children. If children believe that success depends solely on effort, they will try to overcome obstacles instead of giving up. For instance, a child facing a complex maths problem will not give up easily because they know that with enough effort, they can find the solution.
+
+On the other hand, constantly giving this message can lead to unrealistic expectations and severe stress in children. Because in the real world, success is often heavily influenced by other external factors such as natural talent, economic background, and simple luck. Consequently, children who experience failure despite working incredibly hard often blame themselves entirely for not trying hard enough, which severely damages their self-esteem and mental health. For example, a child who trains exhaustively for a sports competition but loses due to genetic limitations might feel like a complete failure, leading to anxiety and a total loss of confidence in their abilities.
+
+To sum up, although encouraging children to work hard is beneficial because it shapes persistence and determination in them, parents and educators should also explain to them that success is not solely dependent on effort. Pushing this idea too extremely can do more harm than good; therefore, a balanced approach that celebrates both hard work and emotional well-being is highly necessary.`],
+
+/* ===== BOOK 16 ===== */
+[16,1,"Two-Part Question","Housing · Local history",
+ "In some countries, more and more people are becoming interested in finding out about the history of the house or building they live in. What are the reasons for this? How can people research this?",
+`In recent years, an increasing number of people have shown interest in uncovering the historical background of their residences. This essay will explore the motivations behind this trend, such as curiosity and preservation planning, and suggest reliable methods for conducting such research, including oral accounts and local archives.
+
+One primary reason for investigating the history of a home is a natural curiosity. Humans have an inherent desire to understand their surroundings, which can alleviate feelings of uncertainty or insecurity. For instance, the intrigue in horror movies often stems from characters' ignorance of their property's past, highlighting the consequences of not knowing. Additionally, homeowners may be motivated by the need to maintain or even enhance the value of their property. Historical knowledge can reveal valuable antiques or connections to significant eras, prompting individuals to assess the building's structural integrity and plan for effective restoration.
+
+To uncover the history of a building, there are several viable approaches. Firstly, engaging with long-time residents who possess a wealth of information can provide homebuyers with authentic insights and personal anecdotes about the area. Previous owners can also be valuable sources, offering practical experiences and reasons for their departure. Secondly, local archives or libraries are rich resources for historical documents, photographs, and records. Old newspapers and magazines, for instance, may mention specific addresses in the context of notable incidents, providing valuable references for homebuyers.
+
+In conclusion, the growing interest in researching the history of houses can be attributed to curiosity and the potential for preservation. Oral records from long-time residents and previous owners, along with archival materials, are effective sources of information for uncovering a building's past.`],
+
+[16,2,"Two-Part Question","Advertising · Novelty",
+ "In their advertising, businesses nowadays usually emphasise that their products are new in some way. Why is this? Do you think it is a positive or negative development?",
+`In the modern era, the issue of product marketing has generated considerable discussion. It has been widely observed that businesses increasingly emphasise the novelty of their products in advertisements. This essay will examine the reasons behind this trend and present my view that, while innovation can be beneficial, the overall impact is largely negative.
+
+To begin with, a prominent reason for highlighting the newness of products is that it helps companies attract consumer attention in a highly competitive market. This is primarily due to the fact that modern consumers are constantly seeking the latest trends and innovations. For instance, smartphone manufacturers frequently advertise their latest camera or processor upgrades to entice buyers. Consequently, this strategy allows companies to increase sales and maintain market share.
+
+Furthermore, another significant aspect to consider is that this focus on newness often encourages over consumption and waste. This can largely be explained by the observation that many so-called "new" products only feature minor improvements, yet consumers feel compelled to purchase them. A clear illustration of this is the fast-fashion industry, where clothes are marketed as "new collections" weekly, despite minimal changes in design. Therefore, this often results in environmental harm and unnecessary expenditure.
+
+A final point worth considering is that while advertising innovation can drive real technological improvements, the overall impact of overemphasising superficial novelty ultimately makes it a negative development. While it is true that highlighting genuine innovation can benefit both companies and consumers, the overwhelming prevalence of marketing ploys overshadows these advantages.
+
+In conclusion, the trend of advertising products as "new" stems from competition and consumer desire for innovation, but it also contributes to overconsumption and environmental issues. Taking all factors into account, it is evident that this is largely a negative development, despite some benefits of true technological advancements.`],
+
+[16,3,"Agree / Disagree","Health · Sugar tax",
+ "Many manufactured food and drink products contain high levels of sugar, which causes many health problems. Sugary products should be made more expensive to encourage people to consume less sugar. Do you agree or disagree?",
+`There is a growing consensus that many manufactured food and beverage products contain excessive amounts of sugar, leading to a multitude of health complications. A proposal has emerged suggesting that increasing the prices of these sugary items could serve as an effective strategy to reduce their consumption. I maintain that this perspective is valid and warranting consideration.
+
+It is widely acknowledged that higher prices for sugary products could result in a decrease in consumer demand. The rationale behind this stems from a common-sense approach, where individuals are generally inclined to allocate their financial resources towards maintaining their health rather than exacerbating health issues. To elucidate, pricing sugary foods and drinks at a premium could act as a deterrent, prompting consumers to reconsider their choices and prioritise healthier alternatives. Furthermore, this measure would not only positively impact individual health outcomes but could also alleviate the economic burden associated with preventable diseases like obesity and type 2 diabetes.
+
+Nevertheless, it is important to recognise that price adjustments alone may not suffice in addressing the challenges posed by sugar-rich products. A multifaceted approach is necessary to raise awareness about the detrimental effects of excessive sugar consumption. Educational initiatives in schools and community health programmes can play a critical role in informing individuals about the serious health risks linked to sugary products, such as obesity, dental decay, cardiovascular diseases, and diabetes. Additionally, consumers should be encouraged to scrutinise food and beverage labels diligently to monitor their sugar intake. This vigilance could empower individuals to make informed dietary choices. Finally, regulatory measures could mandate manufacturers to reduce the levels of added sugars in their products, favouring natural sweeteners instead.
+
+In conclusion, while there are various practical strategies to mitigate the consumption of sugary foods and drinks, ultimately decreasing the prevalence of health-related complications, I argue that merely raising the prices of such products may be considered a superficial remedy. It is imperative to implement comprehensive educational campaigns and regulatory frameworks to foster a long-term change in consumer behaviour and improve public health.`],
+
+[16,4,"Advantages / Disadvantages","Technology · Driverless vehicles",
+ "In the future, all cars, buses and trucks will be driverless. The only people travelling inside these vehicles will be passengers. Do you think the advantages of driverless vehicles outweigh the disadvantages?",
+`In the future, all vehicles, including cars, buses, and trucks, are expected to become driverless, meaning that only passengers will be inside these vehicles. From my perspective, the benefits of driverless transportation greatly outweigh the drawbacks.
+
+On one hand, driverless vehicles do present certain disadvantages. A significant concern is the potential loss of employment for professional drivers. Millions of people around the world rely on driving jobs for their livelihoods, and the widespread adoption of autonomous vehicles could result in large-scale unemployment. Additionally, there is the issue of cybersecurity. As driverless vehicles are controlled by complex software, they could be vulnerable to hacking or technical malfunctions, posing a risk to passenger safety. These incidents, although rare, could undermine public trust in the technology.
+
+Nevertheless, the benefits of driverless vehicles are far more significant. One of the most important advantages is their potential to drastically reduce traffic accidents. Human error is responsible for the majority of road accidents, often caused by distractions, fatigue, or impaired driving. Autonomous vehicles, with their advanced sensors and algorithms, can process data more efficiently and respond faster, potentially saving countless lives. Furthermore, driverless technology could significantly improve traffic flow. With vehicles communicating with each other and operating efficiently, congestion in urban areas could be reduced, leading to shorter travel times and lower fuel consumption, which would also decrease carbon emissions.
+
+In conclusion, while driverless vehicles do have some drawbacks, such as the risk of job loss and cybersecurity concerns, I believe the advantages far outweigh these issues. The improvements in road safety, efficiency, and environmental impact make autonomous vehicles a promising innovation that could transform the way we travel in the future. The potential benefits make it a technology worth embracing.`],
+
+/* ===== BOOK 17 ===== */
+[17,1,"Advantages / Disadvantages","Life · Risk-taking",
+ "It is important for people to take risks, both in their professional lives and their personal lives. Do you think the advantages of taking risks outweigh the disadvantages?",
+`Being willing to take risks is often valued in the occupational as well as private life of each individual. From my perspective, I believe that the downsides of challenging oneself to cope with difficulties would be eclipsed by its benefits in terms of life fulfilment and profound lessons accumulated.
+
+The prime disadvantage of taking risks is the fear of losing time and effort. People may be afraid of failure, often associated with financial damage and negative reputations, even if it involves putting in a great deal of resources. This circumstance would be worsened by a shameful feeling after making mistakes, and a doubtful attitude towards one's capabilities, which is prone to obstruct any future attempt. For instance, the hesitation to experiment with novel types of employment among many young people often stems from their fear of not having sufficient competence, thus putting a limit on their career prospects.
+
+Individuals who wish to accept ordeals would possibly reach a higher level of success and contentment. To begin with, having experienced many trials and errors, they are likely to nurture life skills and values, such as critical thinking and perseverance. These competencies are increasingly prized in a globalised world where the ability to solve problems is paramount, opening the door to many invaluable opportunities in professional and personal lives. Those people willing to take risks are often ambitious to become well-rounded, forcing themselves to escape from their comfort zone and make their lives more meaningful. To illustrate, many admirable billionaires would never halt their learning process and daily workouts to exceed their intellect and physical capabilities, which are their ultimate life goals. In other words, overcoming those obstacles has enabled them to live to the fullest.
+
+In conclusion, dealing with hazards may involve several downsides. However, in my opinion, taking risks can be worthwhile as it brings about life contentment and prestigious wisdom and skills.`],
+
+[17,2,"Two-Part Question","Technology · Children & smartphones",
+ "Some children spend hours every day on their smartphones. Why is this the case? Do you think this is a positive or a negative development?",
+`The phenomenon of children spending extensive hours on their smartphones has become increasingly prevalent in modern society. This essay aims to explore the reasons behind this trend and evaluate its implications.
+
+The primary reason for children's excessive smartphone use is the digital transformation of society. Smartphones serve as portals to unlimited information, entertainment, and social interaction, which are appealing to the curious and developing minds of children. The allure of games, social media, and online videos is potent, often offering an escape from the monotony of daily routines or academic pressures. Additionally, the societal shift towards digital communication has made smartphones indispensable tools for staying connected with peers, with social status and inclusion sometimes perceived as contingent upon online presence.
+
+However, this trend's impact on children is multifaceted and warrants a nuanced assessment. On the positive side, smartphones can be powerful educational tools. They provide access to a vast array of resources that can complement traditional learning, fostering self-directed study and enabling the acquisition of new skills. Moreover, they can facilitate social connections, offering a platform for children to maintain friendships, especially in circumstances where face-to-face interaction is not feasible.
+
+Conversely, excessive smartphone use raises significant concerns. It can detract from physical activity, contributing to sedentary lifestyles and associated health issues such as obesity and poor posture. The constant barrage of notifications and the addictive nature of some apps can disrupt concentration and lead to diminished academic performance. Furthermore, unsupervised access to the internet exposes children to potential cyberbullying, inappropriate content, and privacy risks. The psychological impact is also notable, with studies linking excessive screen time to increased rates of anxiety, depression, and sleep disturbances among children.
+
+In conclusion, while smartphones undeniably offer valuable opportunities for learning and social interaction, their excessive use by children is a double-edged sword. This trend underscores the need for a balanced approach to digital consumption. Parents and educators play a crucial role in setting boundaries, promoting healthy online habits, and ensuring that children's engagement with smartphones enriches rather than detracts from their development. Ultimately, fostering digital literacy and responsible usage from a young age is imperative in navigating the complexities of the digital age positively.`],
+
+[17,3,"Discuss Both Views","Professionals · Global mobility",
+ "Some people believe that professionals, such as doctors and engineers, should be required to work in the country where they did their training. Others believe they should be free to work in another country if they wish. Discuss both these views and give your own opinion.",
+`The question of whether professionals like doctors and engineers should be mandated to work in the country where they received their training or have the freedom to work internationally elicits diverse opinions.
+
+Advocates for mandatory local service argue that professionals owe a debt to the communities that supported their education. They contend that requiring individuals to work in their home country ensures that the skills and knowledge gained during training are directly applied to address local needs. This approach is seen as a way to address shortages of skilled professionals in certain regions, particularly those underserved or in need of specific expertise. Mandatory service is also perceived as a means of giving back to the community that invested resources in the individual's education.
+
+On the other side of the spectrum, proponents of professional freedom emphasise the benefits of a globalised workforce. Allowing professionals to work in different countries fosters collaboration and the exchange of ideas, ultimately contributing to advancements in various fields. Professionals gain exposure to diverse working environments, expanding their skill set and fostering a more interconnected and innovative global community.
+
+In my opinion, a balanced approach is crucial. While mandatory local service ensures a return on the investment made by the community, complete restriction may impede professional growth and limit global collaboration. Implementing a system that combines a mandatory service period with the option for professionals to work internationally would strike a balance, allowing individuals to contribute to their home country while fostering a globally interconnected professional community. This way, both local and global interests can be harmonised for the benefit of professionals and the societies they serve.`],
+
+[17,4,"Positive / Negative","Health · Alternative medicine",
+ "Nowadays, a growing number of people with health problems are trying alternative medicines and treatments instead of visiting their usual doctor. Do you think this is a positive or a negative development?",
+`The increasing popularity of alternative medicine over conventional medical treatments has sparked considerable debate in recent years. While many individuals claim that alternative therapies are beneficial, others reject this notion, questioning their efficacy and safety. The growing influence of this trend has fuelled controversy regarding its potential impact. In my opinion, alternative medicine offers certain advantages, though it also poses risks. This essay will explore both the positive and negative aspects of this development and ultimately arrive at a balanced conclusion.
+
+There are several compelling reasons to support the use of alternative medicine. One of the most significant is that many alternative treatments, such as Ayurvedic medicine, are derived from natural resources. This is often perceived as a healthier, more sustainable option compared to synthetic pharmaceuticals. Another notable benefit is that many people believe alternative medicines come with fewer or no side effects, as they are based on natural ingredients. These merits make alternative medicine appealing to a growing number of people.
+
+However, there are substantial concerns that challenge these benefits. One of the most pressing issues is the lack of proper regulatory oversight in the production of alternative medicines. Unlike conventional drugs, which are subjected to rigorous testing and quality control, many alternative treatments do not undergo the same scrutiny. This raises questions about their safety and effectiveness. Moreover, some products are marketed as "Ayurvedic" or "natural" without any genuine adherence to traditional practices, further complicating the situation.
+
+In conclusion, while alternative medicine offers advantages such as being derived from natural sources and potentially having fewer side effects, its drawbacks, particularly the lack of regulation and potential misuse in marketing, cannot be ignored. A balanced approach that incorporates both conventional and alternative treatments, with proper oversight, might provide the best path forward for ensuring safety and effectiveness.`],
+
+/* ===== BOOK 18 ===== */
+[18,1,"Agree / Disagree","Science · Purpose",
+ "The most important aim of science should be to improve people's lives. To what extent do you agree or disagree with this statement?",
+`It is widely contended that the paramount objective of science is to enhance the well-being of individuals. I wholeheartedly support this notion and maintain that scientific advancements are instrumental in improving people's standard of living.
+
+Primarily, I am of the opinion that scientific breakthroughs contribute significantly to the enhancement of societal well-being. In contemporary times, technology plays a crucial role in shaping our environment. It aids in streamlining our tasks and alleviating the burden of our daily responsibilities, especially when we are preoccupied with various commitments. Modern conveniences such as washing machines, vacuum cleaners, and robotic cleaners have revolutionised household chores, making them less laborious and time-consuming. For instance, in the past, individuals had to engage in strenuous manual labour to maintain cleanliness in their homes, whereas today, these tasks can be efficiently and swiftly accomplished with the help of technology. Consequently, such innovations have substantially improved the efficiency and simplicity of our everyday tasks.
+
+Moreover, researchers and scientists in the field of healthcare continually work towards the development of new treatments, leading to the eradication of diseases that once plagued societies. The introduction of novel medical interventions has resulted in prolonged life expectancy and improved health outcomes for individuals. For example, patients can now undergo treatment in hospitals and receive diagnoses in a fraction of the time compared to previous eras. Consequently, the evolution of medical science has not only extended human lifespan but has also enhanced the quality of healthcare services, ensuring prompt and effective treatment for a variety of ailments.
+
+In conclusion, I firmly believe that scientific progress plays a pivotal role in not only enhancing individuals' quality of life but also in fostering convenience and comfort in our daily routines. By prioritising advancements that directly benefit human well-being, science can continue to make significant contributions to societal progress and prosperity.`],
+
+[18,2,"Discuss Both Views","Education · University curriculum",
+ "Some university students want to learn about other subjects in addition to their main subjects. Others believe it is more important to give all their time and attention to studying for a qualification. Discuss both views and give your opinion.",
+`University education has long been a subject of debate, particularly regarding whether students should broaden their knowledge by studying additional subjects, or devote themselves completely to focus on their primary field. While some argue that focusing exclusively on the main subject ensures academic excellence, others believe that exposure to diverse fields leads to a more holistic development. This essay will discuss both perspectives before presenting my own view.
+
+On the one hand, dedicating all time and attention to the main subject can significantly enhance a student's expertise. Academic disciplines, especially in fields such as medicine, engineering, or law, require a profound depth of knowledge and consistent effort. By concentrating solely on their core subjects, students can achieve mastery, improve their performance, and secure better career prospects. Moreover, dividing attention among several subjects may cause cognitive overload, reduce efficiency, and increase the likelihood of errors. Therefore, a focused approach is often regarded as the major practical path towards professional success.
+
+On the other hand, studying more subjects offers substantial intellectual and personal benefits. Exposure to different disciplines develops critical thinking, creativity, and adaptability — skills that are essential in today's dynamic world. For example, a medical student who studies psychology or communication develops better patient interaction skills, thereby enhancing the overall effectiveness. Furthermore, interdisciplinary knowledge enables individuals to tackle problems from diverse perspectives, leading to innovative solutions. It not only boosts employability but also contributes to personal growth and development.
+
+In my opinion, while specialisation is undeniably crucial, a balanced approach can be more advantageous. Students should definitely prioritise their main discipline but allocate some time to exploring other complementary fields. This ensures deep understanding, allowing students to become well-rounded to face real-world challenges more effectively.
+
+In conclusion, although paying attention to the core field course leads to academic excellence, incorporating interdisciplinary subjects provides invaluable skills and perspectives. A combination of both is, therefore, the most effective strategy.`],
+
+[18,3,"Positive / Negative","Urbanisation · Migration",
+ "In many countries around the world, rural people are moving to cities, so the population in the countryside is decreasing. Do you think this is a positive or a negative development?",
+`Since the onset of the Second Industrial Revolution two centuries ago, the global urban population has experienced significant growth. This trend of urbanisation has sparked ongoing debates regarding whether the migration from rural areas to urban centres constitutes a positive or negative development.
+
+One of the primary adverse effects of population decline in rural areas is the diminishing agricultural workforce. Agriculture, being one of the earliest and most fundamental human industries, plays a crucial role in sustaining the human population. A reduction in the number of individuals engaged in agricultural activities engenders uncertainty in food production, thereby directly influencing food availability and public welfare. Nonetheless, it is important to note that recent technological advancements have enabled the automation of numerous agricultural processes, which may mitigate some of these concerns.
+
+Conversely, the influx of individuals into urban environments fosters advancements in human civilisation. The presence of cutting-edge technologies and sophisticated medical facilities in cities significantly enhances the quality of life for their inhabitants. This progress is largely driven by the concentration of educated individuals who collaborate to innovate and improve various aspects of life. As cities evolve and develop further, they tend to attract even more people seeking lucrative opportunities, creating a positive feedback loop that accelerates urbanisation.
+
+In conclusion, despite the challenges posed by the decline of the rural population, urbanisation has ultimately improved the overall quality of human life. This essay posits that the demographic shift from rural locales to urban centres is a beneficial trend, as its advantages considerably outweigh the associated drawbacks.`],
+
+[18,4,"Advantages / Disadvantages","Demographics · Ageing population",
+ "In many countries, people are now living longer than ever before. Some people say an aging population creates problems for governments. Other people think there are benefits if society has more elderly people. To what extent do the advantages of having an ageing population outweigh the disadvantages?",
+`In numerous countries, the average lifespan has increased significantly, resulting in a growing elderly population. While some argue that this demographic shift presents several challenges for governments, others contend that the presence of more senior individuals can bring substantial benefits to society. This essay will argue that, despite the potential advantages, the disadvantages associated with an ageing population are more pronounced.
+
+On one hand, it is undeniable that elderly individuals can contribute positively to society in various ways. Firstly, as older workers retire, they create additional job opportunities for younger generations. This transition can lead to a decrease in youth unemployment rates, which is particularly crucial in economies struggling to integrate young entrants into the workforce. Secondly, older individuals often possess invaluable wisdom and diverse perspectives rooted in their extensive life experiences. Their insights can greatly enhance discussions on contemporary issues, thereby enriching decision-making processes within families, communities, and workplaces.
+
+Conversely, it is my conviction that the challenges posed by an ageing population far outweigh the potential benefits. One significant issue is the increasing demand for healthcare services. As individuals age, they typically require more medical attention and assistance with daily activities, thereby exerting considerable pressure on healthcare systems and social services. Furthermore, many seniors are no longer contributing to the tax base due to retirement, yet governments are still obligated to fund their pensions and healthcare costs. This financial burden often results in a reduction of available resources for essential public services and infrastructure improvements. Moreover, the younger generation may find themselves sandwiched between caring for their ageing relatives and managing their own responsibilities. This can lead to heightened stress levels and mental health concerns, particularly for those who feel solely responsible for supporting their entire family.
+
+In conclusion, while elderly individuals undeniably provide certain benefits to society, the myriad challenges they introduce present significant hurdles for governments and families alike. Consequently, I contend that the disadvantages of an ageing population outweigh the advantages, necessitating a reevaluation of how societies adapt to these demographic changes.`],
+
+/* ===== BOOK 19 ===== */
+[19,1,"Discuss Both Views","Life · Competition vs cooperation",
+ "Some people think that competition at work, school and in daily life is a good thing. Others believe that cooperation is more important. Discuss both these views and give your opinion.",
+`The debate surrounding the merits of competition versus cooperation in various aspects of life, including the workplace and educational settings, is a contentious one. On one hand, some individuals advocate for a competitive environment, whereas others assert that collaboration is more beneficial. In my opinion, while competition may drive individuals to excel, cooperative spaces are essential for fostering creativity and reducing conflict.
+
+Proponents of competition argue that it injects excitement and motivation into work and educational environments. For instance, many individuals thrive under pressure, finding that the presence of competition stimulates their performance and enhances their productivity. Furthermore, competition can serve as a powerful catalyst for continuous improvement, pushing individuals to exceed their personal bests. It encourages them to set ambitious goals and strive for excellence, often leading to significant achievements.
+
+Conversely, there is a strong belief in the advantages of cooperation, particularly in collaborative settings. Advocates of this perspective highlight that a tension-free environment nurtures a sense of security, enabling individuals to learn from their mistakes and develop their creativity and overall performance. For example, when team members collaborate and share knowledge, the process of completing tasks becomes more efficient, as they are able to pool their skills and expertise, thus minimising conflict and enhancing the quality of their work. Additionally, a cooperative approach fosters stronger interpersonal relationships and enhances team morale, which can be invaluable in both professional and educational contexts.
+
+In conclusion, while I recognise the merits of a stimulating competitive atmosphere, I firmly believe that cooperative environments are more impactful in the long run. Engaging in cooperative activities not only cultivates learning and innovation but also minimises the stress and anxiety often associated with competition. Ultimately, a harmonious balance between competition and cooperation could yield the most favourable outcomes for individuals and groups alike.`],
+
+[19,2,"Agree / Disagree","Work · Working week",
+ "The working week should be shorter and workers should have a longer weekend. Do you agree or disagree?",
+`There has been a rising debate about whether working weeks should be shortened, giving workers a longer weekend. I agree with this idea, as it offers some benefits for both employees and employers.
+
+First, a shorter working week can lead to a better work-life balance for working citizens. Many people nowadays struggle to set aside time for their family, hobbies, and relaxation due to long working hours. By reducing the working week, employees would have more time to replenish their stamina and spend time with their loved ones, resulting in higher job satisfaction and overall happiness. For instance, countries like Sweden and Iceland have experimented with shorter working weeks, yielding positive outcomes, such as lower levels of work-related stress and improved mental health in the workforce.
+
+Second, contrary to the belief that longer hours mean more output, a longer weekend can boost overall productivity. When employees are provided with sufficient time to rest and recharge, they return to work with increased energy and motivation. Microsoft Japan, for example, has recently implemented a four-day workweek policy and observed a massive surge in productivity.
+
+However, critics may argue that a shorter working week may lead to reduced earnings for workers, particularly those paid daily and hourly. While this is a valid concern, it can be addressed by adjusting employees' wages to ensure a sufficient income despite fewer working hours. On top of that, the long-term benefits of improved mental health and productivity can outweigh the short-term financial drawbacks.
+
+In conclusion, I contend that shortening the working week and extending the weekend presents a positive change to society as a whole. It offers advantages for both employees and employers, contributing to a healthy mental state and improved productivity within the workforce. Thus, this idea should be thoroughly considered and implemented on a large scale.`],
+
+[19,3,"Agree / Disagree","Money · Saving",
+ "It is important for everyone, including young people, to save money for their future. To what extent do you agree or disagree with this statement?",
+`It is often argued that everyone, including young people, should save money for the future. I completely agree with this view because financial savings provide protection against unexpected difficulties and help people achieve important long-term goals.
+
+The primary reason for saving money is that life is unpredictable. Unexpected events such as economic recessions, serious illnesses or sudden unemployment can place people under considerable financial pressure. Those who have built up savings are generally able to cope with these challenges without relying heavily on loans or financial support from others. The COVID-19 pandemic, for example, demonstrated how quickly stable incomes could disappear, leaving many families struggling to cover basic living expenses. Having emergency savings therefore offers financial security and reduces anxiety during uncertain times.
+
+Saving money is also essential because it enables people to accomplish future ambitions. Young adults often hope to pursue higher education, purchase a home, establish a business or retire comfortably. Achieving these goals requires careful financial planning over many years. Furthermore, developing the habit of saving encourages self-discipline and responsible spending. Instead of making impulsive purchases, individuals learn to prioritise essential expenses and manage their finances more effectively — skills that remain valuable throughout adulthood.
+
+Admittedly, some people believe that young adults should spend more of their income on travelling or enjoying new experiences while they are young. Although these activities can broaden people's perspectives and create lasting memories, they should not come at the expense of financial stability. Maintaining a balance between spending and saving is a far wiser approach.
+
+In conclusion, I strongly agree that everyone should save money because it provides protection against unexpected problems while making important life goals more achievable through responsible financial planning.`],
+
+[19,4,"Positive / Negative","Food · Global trade",
+ "In many countries nowadays, consumers can go to a supermarket and buy food produced all over the world. Do you think this is a positive or negative development?",
+`In numerous countries today, consumers have the convenience of purchasing food from various parts of the globe in local supermarkets. This trend presents both positive and negative aspects.
+
+On the positive side, the availability of international food products significantly enhances consumer choice and variety. For instance, people can enjoy exotic fruits like kiwis from New Zealand or spices from India, which would otherwise be unavailable locally. This access not only enriches the culinary experience but also allows consumers to maintain a diverse and nutritious diet. Another advantage is the economic benefit derived from global trade. By importing food, countries can support farmers and producers from different regions, boosting the global economy and creating job opportunities in the logistics and retail sectors. Thus, the international food market in supermarkets greatly benefits both consumers and the economy.
+
+Conversely, this development also brings about several drawbacks. One significant concern is the environmental impact of transporting food over long distances. For example, the carbon footprint associated with shipping fruits from one continent to another is substantial, contributing to climate change and environmental degradation. Another issue is the potential threat to local agriculture. Local farmers may find it challenging to compete with cheaper imported goods, leading to a decline in local food production and loss of agricultural heritage. These negative effects highlight the importance of considering environmental sustainability and the well-being of local producers when evaluating this trend.
+
+In conclusion, while the global availability of food in supermarkets offers increased variety and economic benefits, it also poses environmental challenges and risks to local agriculture.`],
+
+/* ===== BOOK 20 ===== */
+[20,1,"Agree / Disagree","Society · Water access",
+ "Access to clean water is a basic human right. Therefore every home should have a water supply that is provided free of charge. Do you agree or disagree?",
+`It is often argued that since clean water is a fundamental necessity for human survival, it should be recognised as a basic right and provided to every household at no cost. While I agree that access to safe water is essential for public health, I believe that a completely free supply is economically unsustainable and could lead to irresponsible consumption.
+
+On the one hand, providing water free of charge ensures equity and protects public health. Water is not a luxury; it is a requirement for life. If a government charges high rates for water, low-income families might be forced to use contaminated sources, leading to the spread of waterborne diseases like cholera or typhoid. By making water free, a nation invests in the well-being of its citizens, ensuring that no one has to choose between buying food and having clean water to drink.
+
+On the other hand, the process of delivering clean water involves significant infrastructure costs. Treating raw water to make it drinkable and maintaining a vast network of pipes requires constant funding and labour. If the government provides this service entirely for free, it may lack the budget to upgrade ageing systems or expand supply to rural areas. Furthermore, when a resource is free, there is often a lack of incentive to conserve it. This can lead to irresponsible consumption and the depletion of natural water reservoirs, which is a major environmental concern.
+
+In conclusion, while I acknowledge that every human has a right to clean water, I believe that a balanced approach is necessary. A more practical solution would be a subsidised system where a basic amount of water is provided for free to meet daily needs, while usage beyond that limit is charged. This ensures that the poor are protected while encouraging everyone to value and conserve this precious resource.`],
+
+[20,2,"Two-Part Question","Education · School holidays",
+ "In many countries, primary and secondary schools close for two months or more in the summer holidays. What is the value of long school holidays? What are the arguments in favour of shorter school holidays?",
+`In many countries, primary and secondary schools close for two months or even more in summer holidays. While long holidays offer several benefits for students, many people argue that shorter school holidays are preferable. This essay will discuss both perspectives.
+
+Long holidays provide valuable rest and recovery time for students. After months of academic pressure, extended breaks allow children to relax, recover both physically and mentally, and relieve stress by spending quality time with their families, pursuing hobbies, and taking part in cultural and social activities. Another significant benefit of long school holidays is that students can acquire hands-on experience and essential interpersonal skills outside the classroom. By participating in summer camps, volunteer work, and part-time jobs, young people can develop valuable skills such as communication skills, financial literacy, and time management, all of which contribute to their overall personal development.
+
+Nevertheless, there are compelling arguments in favour of shorter school holidays. One major concern associated with extended breaks is that students may lose academic momentum, find it harder to concentrate, and gradually forget previously learned knowledge, particularly in subjects such as mathematics, physics, and other science-related disciplines. Consequently, they may achieve poorer academic performance and face greater difficulty readjusting to the formal learning environment. Shorter holidays, combined with more frequent breaks throughout the year, can help maintain academic continuity and encourage a more consistent learning routine. As a result, students are able to enjoy sufficient leisure time while maintaining regular study habits, without experiencing excessive stress or significant learning loss.
+
+In conclusion, although long holidays offer certain advantages in terms of rest, family time, and personal growth, shorter holidays can help prevent academic regression and support learning consistency. Therefore, adopting a balanced approach — such as shorter summer holidays accompanied by frequent breaks throughout the school year — may be the most effective solution.`],
+
+[20,3,"Advantages / Disadvantages","Environment · Air travel",
+ "Some people have decided to reduce the number of times they fly every year or to stop flying altogether. Do you think the environmental benefits of this development outweigh the disadvantages for individuals and businesses?",
+`In recent years, a growing number of individuals have opted to reduce their air travel or cease flying altogether. In my view, this trend presents significant environmental advantages that far outweigh any potential disadvantages for individuals and businesses. The primary benefits include a substantial reduction in carbon emissions and a corresponding increase in green spaces.
+
+When individuals opt for alternatives to air travel, the frequency of flights diminishes markedly. This, in turn, results in a significant decrease in the emission of harmful greenhouse gases that are emitted by aircraft. A direct outcome of this decline is improved air quality, which subsequently reduces the likelihood of environmental phenomena such as acid rain. For instance, there have been notable instances in Spain where industrial activities have contributed to air pollution, leading to acid rain that devastated vast forested areas. This illustrates the pressing need for reduced air travel to mitigate such environmental damage.
+
+Furthermore, the declining demand for flights is likely to facilitate the expansion of tree-covered areas. With fewer airports required, the environmental degradation associated with airport construction can be curtailed, thereby alleviating issues like desertification that often arise from such developments. A compelling example is China, a densely populated nation with a limited number of airports. This scarcity is largely due to the public's awareness of the environmental impact that constructing new airports could have on their natural landscapes, leading to deforestation.
+
+In conclusion, the decision of many individuals to curtail their air travel or eliminate it altogether represents a pivotal shift towards environmental conservation. I firmly believe that the benefits of such actions far exceed any drawbacks for individuals and businesses, as they lead to enhanced air quality and a greater propensity for forest expansion.`],
+
+[20,4,"Two-Part Question","Culture · Global fashion",
+ "Many aspects of the way people dress today are influenced by global fashion trends. How has global fashion become such a strong influence on people's lives? Do you think this is a positive or negative development?",
+`Global fashion trends have significantly shaped the way people dress in modern society. With the rapid development of technology and international trade, fashion styles from one part of the world can quickly spread to others. While this phenomenon has transformed the clothing industry, I believe it is largely a positive development despite some drawbacks.
+
+Global fashion has become a powerful influence mainly because of social media, celebrities, and multinational brands. Platforms such as Instagram, TikTok, and YouTube allow users to follow the latest trends instantly. Influencers and celebrities often promote specific clothing styles, encouraging millions of followers to imitate them. In addition, international fashion companies have expanded their reach across countries, making trendy outfits easily accessible to consumers worldwide.
+
+In my opinion, the growing influence of global fashion is generally beneficial. Firstly, it promotes cultural exchange by exposing people to different styles and traditions. For example, many individuals today wear clothing inspired by Korean, Japanese, or Western fashion, which fosters appreciation for diverse cultures. Secondly, global fashion provides consumers with a wider variety of choices, enabling them to express their personalities through clothing.
+
+However, there are certain negative aspects. The pressure to keep up with rapidly changing trends can encourage excessive spending and overconsumption. Moreover, fast fashion contributes to environmental problems due to the large amount of waste generated by the clothing industry.
+
+In conclusion, global fashion has become highly influential because of social media, celebrities, and the worldwide expansion of fashion brands. Although it may lead to consumerism and environmental concerns, I believe its advantages, particularly cultural exchange and greater consumer choice, outweigh its disadvantages.`],
+
+/* ===== BOOK 21 ===== */
+[21,1,"Agree / Disagree","Housing · Urban density",
+ "The best way to provide enough homes in large cities is to build tall apartment blocks. To what extent do you agree or disagree with this statement?",
+`Nowadays, many large cities face housing shortages due to rapid population growth. Opinions remain divided as to whether constructing high-rise residential buildings is the most effective solution to this issue. I completely agree with this opinion because tall apartment blocks make better use of limited land and allow more people to live in well-connected areas.
+
+The primary reason why I support this perspective is that building apartment blocks is a practical solution to the lack of space in metropolitan areas. As the urban population continues to expand, the amount of land available for traditional houses steadily declines. High-rise buildings maximise limited land availability by accommodating a large number of households within a relatively small area. As a result, governments can provide housing for more residents without urban sprawl into surrounding rural regions.
+
+Furthermore, high-rise residential development allows residents to live in well-connected neighbourhoods with easy access to schools, workplaces, and other essential services. This not only improves the quality of work-life balance, but also reduces transportation costs and traffic congestion. For instance, cities like Singapore and Hong Kong have successfully used high-rise buildings to accommodate large populations while maintaining efficient transport systems. Consequently, reduced reliance on private vehicles alleviates pressure on the urban traffic system and enables residents to achieve better work-life balance.
+
+However, some people argue that the rapid expansion of tall residential blocks may place additional pressure on urban infrastructure, inadvertently causing overcrowding and loss of personal privacy. While this can happen if high-rise buildings are poorly designed, modern residential buildings usually include green space, security, and recreational facilities.
+
+In conclusion, I firmly believe that constructing high-rise residential apartments is the best way to solve actively growing urban housing shortages. In light of contemporary societal needs, tall apartment blocks provide public facilities, enhancing urban viability while accommodating expanding populations.`],
+
+[21,2,"Discuss Both Views","Entertainment · Cinema vs digital",
+ "Some people say that in the digital age, theatres and cinemas are no longer important as people can watch all the entertainment they want online. Others argue that theatres and cinemas are still important both economically and culturally. Discuss both these views and give your own opinion.",
+`Some people believe that in the 21st century, the Internet has replaced traditional forms of entertainment such as theatres and cinemas. Others, however, argue that these places are still important both economically and culturally. This essay will discuss both views before explaining why I believe theatres and cinemas continue to play a significant role in modern society.
+
+On the one hand, it is understandable why many people think that theatres and cinemas are becoming less important. There is no doubt that the Internet has changed people's lives dramatically. Nowadays, people can watch films, TV programmes and even live performances online whenever they want. This is far more convenient than going to the cinema because it saves both time and money. As a result, many people prefer online entertainment and believe that traditional venues are no longer necessary.
+
+On the other hand, I believe that theatres and cinemas still have an important place in society. They provide opportunities for people to spend time together instead of staying at home alone. In addition, visiting theatres in different countries allows people to learn about other cultures and meet new people. These experiences help individuals broaden their horizons and reduce feelings of loneliness. Furthermore, theatres and cinemas create jobs and contribute to the local economy, making them valuable not only culturally but also economically.
+
+In conclusion, although online entertainment is becoming increasingly popular because of its convenience, I believe that theatres and cinemas remain essential. They offer unique cultural experiences, encourage social interaction and continue to make an important contribution to the economy.`],
+
+[21,3,"Advantages / Disadvantages","Education · Study abroad",
+ "All university undergraduate courses should include a period of time spent studying abroad or doing a work placement. Do you think the advantages of this would outweigh the disadvantages?",
+`In an increasingly globalised world, the education system is evolving to meet the demands of modern society. One proposal gaining traction is the incorporation of a mandatory period for studying abroad or participating in a work placement within all university undergraduate programmes. While some may argue that such requirements could present challenges, I contend that the advantages significantly outweigh the disadvantages.
+
+Primarily, the benefits of studying abroad or undertaking a work placement render students more competitive in the job market. Exposure to different cultures and working environments equips graduates with invaluable skills such as adaptability and cross-cultural communication. For instance, an engineering student who completes an internship in Germany may learn innovative practices and technologies that could be beneficial to their future employers. Furthermore, these experiences often enhance problem-solving abilities, as students must navigate unfamiliar situations and tackle challenges independently, thereby fostering personal and professional growth.
+
+Conversely, critics of this approach argue that not all students can financially afford the expenses associated with studying abroad or work placements. Acknowledging this concern, it is essential to consider that universities could implement scholarship programmes and partnerships with local companies to mitigate financial barriers, ensuring inclusivity. Additionally, some individuals contend that mandatory international experiences could take away from academic focus and lead to disruptions in students' learning schedules. However, with careful planning and integration into the curriculum, such experiences can be seamlessly woven into a student's educational journey, enriching rather than hindering their academic pursuits.
+
+In conclusion, while there are legitimate concerns regarding the implementation of compulsory overseas study or work placements, the overwhelming benefits, such as enhanced employability and personal development, render these challenges surmountable. By adopting supportive measures, educational institutions can ensure that all students reap the rewards of a globalised educational experience, thereby preparing them for success in an interconnected world.`],
+
+[21,4,"Agree / Disagree","Education · Primary school",
+ "Some people argue that primary schools focus too much on formal learning. To what extent do you agree with this opinion? How important do you think it is for children to play as well as learn in the primary school classroom?",
+`Some people argue that primary schools should devote more time to formal learning. While I partly agree with this view, I believe that play at a young age is equally important because it promotes children's mental well-being and helps them develop essential personal skills.
+
+I acknowledge that formal learning is indispensable in primary schools because it equips children with basic literacy and numeracy skills. This initial knowledge enables pupils to understand more complex subjects in later stages of education. To illustrate, learning to read, write, and perform basic calculations at an early age allows pupils to cope with increasingly challenging academic tasks. It also provides them with the foundation they need to become more independent and confident learners as they progress through school. Therefore, allocating sufficient time to formal learning is necessary for children's academic success.
+
+However, play is just as important as formal learning in primary education because it contributes significantly to children's cognitive, emotional and social development. Through games and interactive activities, children learn how to communicate effectively, cooperate with others, and solve problems creatively. These skills are difficult to develop through formal academic lessons alone. For example, group activities and educational games encourage pupils to work as a team, share ideas, and build self-confidence while enjoying the learning process. Moreover, regular opportunities for play can reduce academic pressure and allow children to remain motivated and engaged in their studies. Therefore, incorporating play into primary education is essential for children's overall development and can even improve their academic performance.
+
+In conclusion, although formal learning is essential for building children's academic foundation, I believe that play is equally important because it supports their overall development. Therefore, primary schools should strike a balance between structured education and play-based activities.`]
+];
+
+/* =========================================================================
+   BUILD + FILTER LOGIC
+   ========================================================================= */
+
+const TYPE_ORDER = [
+  "Agree / Disagree",
+  "Discuss Both Views",
+  "Advantages / Disadvantages",
+  "Positive / Negative",
+  "Problem / Solution",
+  "Two-Part Question"
+];
+
+const TYPE_CLASS = {
+  "Agree / Disagree": "t-agree",
+  "Discuss Both Views": "t-discuss",
+  "Advantages / Disadvantages": "t-advdis",
+  "Positive / Negative": "t-posneg",
+  "Problem / Solution": "t-probsol",
+  "Two-Part Question": "t-twopart"
+};
+
+/* Normalise into a single list */
+const ALL = ESSAYS.map(r => ({
+  book: r[0], test: r[1], type: r[2], topic: r[3],
+  question: r[4], essay: r[5]
+}));
+
+/* ---- Stats ---- */
+document.getElementById('statTotal').textContent = ALL.length;
+
+/* ---- Book select ---- */
+const bookSel = document.getElementById('bookFilter');
+[...new Set(ALL.map(i => i.book))].sort((a,b)=>a-b).forEach(b => {
+  const o = document.createElement('option');
+  o.value = b; o.textContent = 'Book ' + b;
+  bookSel.appendChild(o);
+});
+
+/* ---- Type chips ---- */
+const typeWrap = document.getElementById('typeFilters');
+TYPE_ORDER.forEach(t => {
+  const count = ALL.filter(i => i.type === t).length;
+  if (count === 0) return;
+  const b = document.createElement('button');
+  b.className = 'chip';
+  b.dataset.type = t;
+  b.textContent = t + ' (' + count + ')';
+  typeWrap.appendChild(b);
+});
+
+/* ---- State ---- */
+const state = { book: 'all', type: 'all', q: '' };
+const collapsedBooks = new Set();
+const collapsedTests = new Set();
+
+/* ---- Helpers ---- */
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function nl2p(text) {
+  return esc(text).split('\n\n')
+    .map(p => '<p>' + p.replace(/\n/g,' ') + '</p>')
+    .join('');
+}
+function wordCount(text) {
+  return text.trim().split(/\s+/).length;
+}
+
+const CHEVRON_SVG = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>';
+
+/* ---- Render ---- */
+const resultsEl = document.getElementById('results');
+const countEl = document.getElementById('resultCount');
+const summaryEl = document.getElementById('activeSummary');
+let uid = 0;
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+
+  const filtered = ALL.filter(item => {
+    if (state.book !== 'all' && item.book !== Number(state.book)) return false;
+    if (state.type !== 'all' && item.type !== state.type) return false;
+    if (q) {
+      const hay = (item.question + ' ' + item.topic + ' ' + item.essay).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  countEl.textContent = filtered.length;
+
+  const bits = [];
+  if (state.book !== 'all') bits.push('Book ' + state.book);
+  if (state.type !== 'all') bits.push('“' + state.type + '”');
+  if (q) bits.push('search: “' + state.q.trim() + '”');
+  summaryEl.textContent = bits.length ? ' · ' + bits.join(' · ') : '';
+
+  if (!filtered.length) {
+    resultsEl.innerHTML =
+      '<div class="no-results">' +
+        '<div class="text-5xl mb-3">🔍</div>' +
+        '<p class="font-bold text-slate-600">No essays match your filters.</p>' +
+        '<p class="text-sm mt-1">Try resetting or broadening your search.</p>' +
+      '</div>';
+    return;
+  }
+
+  /* Group by book → test */
+  const byBook = {};
+  filtered.forEach(i => {
+    (byBook[i.book] = byBook[i.book] || {});
+    (byBook[i.book][i.test] = byBook[i.book][i.test] || []).push(i);
+  });
+
+  let html = '';
+  Object.keys(byBook).sort((a,b)=>a-b).forEach(book => {
+    const tests = byBook[book];
+    const bookCount = Object.values(tests).reduce((n,a)=>n+a.length,0);
+    const bookKey = String(book);
+    const bookCollapsed = collapsedBooks.has(bookKey);
+
+    html += '<div class="book-heading" data-book="' + bookKey + '">' +
+              '<button class="collapse-chevron ' + (bookCollapsed ? 'collapsed' : '') + '" aria-label="Toggle book">' + CHEVRON_SVG + '</button>' +
+              '<span class="book-pill">Book ' + book + '</span>' +
+              '<span class="text-xs font-semibold text-slate-400">' + bookCount + ' essay' + (bookCount!==1?'s':'') + '</span>' +
+              '<span class="line"></span>' +
+            '</div>';
+
+    html += '<div class="section-body ' + (bookCollapsed ? 'collapsed' : '') + '" data-book-body="' + bookKey + '">';
+
+    Object.keys(tests).sort((a,b)=>a-b).forEach(test => {
+      const items = tests[test];
+      const testKey = bookKey + '-' + test;
+      const testCollapsed = collapsedTests.has(testKey);
+
+      html += '<div class="test-heading" data-test="' + testKey + '">' +
+                '<button class="collapse-chevron ' + (testCollapsed ? 'collapsed' : '') + '" aria-label="Toggle test">' + CHEVRON_SVG + '</button>' +
+                '<span class="dot"></span>' +
+                'Test ' + test +
+                '<span class="text-slate-400 font-semibold">· ' + items.length + '</span>' +
+              '</div>';
+
+      html += '<div class="section-body ' + (testCollapsed ? 'collapsed' : '') + '" data-test-body="' + testKey + '">';
+      html += '<div class="grid gap-4">';
+      items.forEach(item => html += cardHTML(item));
+      html += '</div></div>';
+    });
+
+    html += '</div>';
+  });
+
+  resultsEl.innerHTML = html;
+
+  /* Answer toggles */
+  resultsEl.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const box = document.getElementById(btn.dataset.target);
+      const open = box.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.querySelector('.lbl').textContent = open ? 'Hide model answer' : 'Show model answer';
+    });
+  });
+
+  /* Book collapse */
+  resultsEl.querySelectorAll('.book-heading').forEach(heading => {
+    heading.addEventListener('click', () => {
+      const key = heading.dataset.book;
+      const body = resultsEl.querySelector('[data-book-body="' + key + '"]');
+      const chevron = heading.querySelector('.collapse-chevron');
+      if (!body) return;
+      const isCollapsed = body.classList.toggle('collapsed');
+      chevron.classList.toggle('collapsed', isCollapsed);
+      if (isCollapsed) collapsedBooks.add(key);
+      else collapsedBooks.delete(key);
+    });
+  });
+
+  /* Test collapse */
+  resultsEl.querySelectorAll('.test-heading').forEach(heading => {
+    heading.addEventListener('click', () => {
+      const key = heading.dataset.test;
+      const body = resultsEl.querySelector('[data-test-body="' + key + '"]');
+      const chevron = heading.querySelector('.collapse-chevron');
+      if (!body) return;
+      const isCollapsed = body.classList.toggle('collapsed');
+      chevron.classList.toggle('collapsed', isCollapsed);
+      if (isCollapsed) collapsedTests.add(key);
+      else collapsedTests.delete(key);
+    });
+  });
+}
+
+function cardHTML(item) {
+  const id = 'essay-' + (uid++);
+  const typeCls = TYPE_CLASS[item.type] || '';
+  const wc = wordCount(item.essay);
+
+  return '' +
+  '<article class="essay-card p-5 flex flex-col">' +
+    '<div class="flex flex-wrap items-center gap-1.5 mb-3">' +
+      '<span class="badge b-book">Book ' + item.book + '</span>' +
+      '<span class="badge b-test">Test ' + item.test + '</span>' +
+      '<span class="badge ' + typeCls + '">' + esc(item.type) + '</span>' +
+      '<span class="badge b-words">' + wc + ' words</span>' +
+    '</div>' +
+
+    '<p class="text-[0.66rem] font-bold uppercase tracking-wider text-slate-400 mb-1.5">' + esc(item.topic) + '</p>' +
+
+    '<h3 class="text-[0.95rem] font-extrabold text-slate-900 leading-snug m-0 mb-3">' +
+      esc(item.question) +
+    '</h3>' +
+
+    '<div class="mt-auto">' +
+      '<span class="toggle-btn" data-target="' + id + '">' +
+        '<span class="lbl">Show model answer</span>' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>' +
+        '</svg>' +
+      '</span>' +
+    '</div>' +
+
+    '<div class="answer-box" id="' + id + '">' +
+      '<div class="essay-body">' + nl2p(item.essay) + '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+/* ---- Events ---- */
+typeWrap.addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const wasActive = chip.classList.contains('active');
+  typeWrap.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  if (wasActive) {
+    state.type = 'all';
+  } else {
+    chip.classList.add('active');
+    state.type = chip.dataset.type;
+  }
+  render();
+});
+
+bookSel.addEventListener('change', () => { state.book = bookSel.value; render(); });
+
+let debounce;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => { state.q = e.target.value; render(); }, 160);
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  state.book = 'all'; state.type = 'all'; state.q = '';
+  typeWrap.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  bookSel.value = 'all';
+  document.getElementById('searchInput').value = '';
+  render();
+});
+
+/* Collapse / Expand All */
+document.getElementById('collapseAllBtn').addEventListener('click', () => {
+  resultsEl.querySelectorAll('.book-heading').forEach(h => {
+    const key = h.dataset.book;
+    collapsedBooks.add(key);
+    const body = resultsEl.querySelector('[data-book-body="' + key + '"]');
+    if (body) body.classList.add('collapsed');
+    const chev = h.querySelector('.collapse-chevron');
+    if (chev) chev.classList.add('collapsed');
+  });
+  resultsEl.querySelectorAll('.test-heading').forEach(h => {
+    const key = h.dataset.test;
+    collapsedTests.add(key);
+    const body = resultsEl.querySelector('[data-test-body="' + key + '"]');
+    if (body) body.classList.add('collapsed');
+    const chev = h.querySelector('.collapse-chevron');
+    if (chev) chev.classList.add('collapsed');
+  });
+});
+
+document.getElementById('expandAllBtn').addEventListener('click', () => {
+  collapsedBooks.clear();
+  collapsedTests.clear();
+  resultsEl.querySelectorAll('.section-body').forEach(b => b.classList.remove('collapsed'));
+  resultsEl.querySelectorAll('.collapse-chevron').forEach(c => c.classList.remove('collapsed'));
+});
+
+/* Open All Essays */
+document.getElementById('openEssaysBtn').addEventListener('click', () => {
+  resultsEl.querySelectorAll('.toggle-btn').forEach(btn => {
+    const box = document.getElementById(btn.dataset.target);
+    if (!box) return;
+    box.classList.add('open');
+    btn.classList.add('open');
+    btn.querySelector('.lbl').textContent = 'Hide model answer';
+  });
+});
+
+/* Init */
+render();
+</script>
+
+</body>
+</html>
