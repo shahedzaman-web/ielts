@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IELTS Writing Task 1 · Cambridge 11–21 Model Answers &amp; Practice</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(245,158,11,.07), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
+      #f8fafc;
+    margin: 0; color: #0f172a;
+  }
+  body.modal-open { overflow: hidden; }
+
+  .hero-gradient {
+    background: linear-gradient(145deg, #0f172a 0%, #78350f 55%, #0e7490 100%);
+    position: relative; overflow: hidden;
+  }
+  .aurora {
+    position: absolute; inset: -40% -20% auto -20%; height: 420px;
+    background:
+      radial-gradient(closest-side, rgba(245,158,11,.30), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
+      radial-gradient(closest-side, rgba(234,88,12,.20), transparent 70%);
+    filter: blur(70px); animation: drift 18s ease-in-out infinite alternate; pointer-events: none;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
+  }
+  .stat-box {
+    background: rgba(255,255,255,.06); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.10); border-radius: .85rem;
+    padding: .8rem 1.2rem; text-align: center; min-width: 88px;
+  }
+  .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
+  .stat-box .label { font-size: .64rem; color: #fcd34d; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  .filter-shell {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(248,250,252,.9); backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
+  }
+  .seg-btn {
+    padding: .45rem .95rem; border-radius: 999px; font-size: .78rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+  }
+  .seg-btn:hover { border-color: #fcd34d; color: #b45309; }
+  .seg-btn.active {
+    background: linear-gradient(135deg, #d97706, #ea580c);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 18px -8px rgba(217,119,6,.7);
+  }
+  .chip {
+    padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    cursor: pointer; transition: all .16s ease; white-space: nowrap;
+  }
+  .chip:hover { border-color: #fcd34d; color: #b45309; }
+  .chip.active {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 16px -8px rgba(217,119,6,.6);
+  }
+  select.book-select {
+    padding: .45rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569; cursor: pointer; outline: none;
+  }
+  select.book-select:focus { border-color: #fcd34d; box-shadow: 0 0 0 3px rgba(217,119,6,.14); }
+  .search-input {
+    padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
+    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
+    transition: all .18s ease;
+  }
+  .search-input:focus { border-color: #fcd34d; box-shadow: 0 0 0 3px rgba(217,119,6,.14); }
+  .tool-btn {
+    padding: .38rem .8rem; border-radius: 999px; font-size: .72rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .16s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .tool-btn:hover { border-color: #fcd34d; color: #b45309; background: #fffbeb; }
+  .tool-btn svg { width: 12px; height: 12px; }
+
+  .essay-card {
+    background: #fff; border-radius: 1.1rem; border: 1px solid #eef2f6;
+    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    transition: box-shadow .25s ease, border-color .25s ease;
+    position: relative; overflow: hidden;
+  }
+  .essay-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #d97706, #ea580c);
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .essay-card:hover {
+    box-shadow: 0 20px 44px -26px rgba(15,23,42,.35), 0 6px 18px -12px rgba(15,23,42,.15);
+    border-color: #fde68a;
+  }
+  .essay-card:hover::after { opacity: 1; }
+
+  /* ---------- MAIN PAGE CARD: chart left · model answer right ---------- */
+  .card-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .card-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; }
+  }
+  .card-split-left, .card-split-right { min-width: 0; }
+
+  .badge {
+    font-size: .62rem; font-weight: 800; padding: .18rem .62rem;
+    border-radius: 999px; text-transform: uppercase; letter-spacing: .05em;
+    white-space: nowrap;
+  }
+  .b-book { background: #ede9fe; color: #5b21b6; }
+  .b-test { background: #dbeafe; color: #1d4ed8; }
+  .b-words { background: #f1f5f9; color: #475569; }
+
+  .c-line   { background:#dbeafe; color:#1d4ed8; }
+  .c-bar    { background:#d1fae5; color:#065f46; }
+  .c-pie    { background:#fce7f3; color:#9d174d; }
+  .c-table  { background:#ede9fe; color:#5b21b6; }
+  .c-map    { background:#fef3c7; color:#92400e; }
+  .c-process{ background:#ccfbf1; color:#115e59; }
+  .c-mixed  { background:#ffe4e6; color:#9f1239; }
+
+  .img-frame {
+    border-radius: .85rem;
+    background: linear-gradient(135deg, #fef9c3, #fffbeb);
+    border: 1px solid #fde68a;
+    overflow: hidden; position: relative;
+    min-height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: zoom-in;
+    transition: border-color .22s ease, box-shadow .22s ease;
+  }
+  .img-frame:hover { border-color: #d97706; box-shadow: 0 8px 24px -12px rgba(217,119,6,.4); }
+  .img-frame img {
+    width: 100%; height: auto; display: block;
+    transition: transform .35s ease;
+  }
+  .img-frame:hover img { transform: scale(1.02); }
+  .img-frame .img-fallback {
+    padding: 1.5rem 1rem; text-align: center;
+    color: #92400e; font-size: .78rem; line-height: 1.55;
+  }
+  .img-frame .img-fallback .big-ico { font-size: 2.4rem; display: block; margin-bottom: .5rem; }
+  .img-frame .img-fallback a {
+    color: #b45309; font-weight: 700; text-decoration: underline;
+    word-break: break-all;
+  }
+  .img-frame .img-badge {
+    position: absolute; top: .6rem; left: .6rem;
+    background: rgba(15,23,42,.85); color: #fff;
+    font-size: .6rem; font-weight: 800; letter-spacing: .05em;
+    padding: .22rem .6rem; border-radius: 999px;
+    text-transform: uppercase; backdrop-filter: blur(4px);
+    z-index: 2;
+  }
+  .img-frame .img-zoom {
+    position: absolute; bottom: .6rem; right: .6rem;
+    background: rgba(15,23,42,.85); color: #fff;
+    font-size: .62rem; font-weight: 700;
+    padding: .28rem .65rem; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: .25rem;
+    backdrop-filter: blur(4px);
+    opacity: 0; transition: opacity .2s ease;
+    z-index: 2;
+  }
+  .img-frame:hover .img-zoom { opacity: 1; }
+
+  .practice-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-weight: 800; font-size: .8rem; color: #fff;
+    cursor: pointer; user-select: none; transition: all .18s ease;
+    padding: .45rem .95rem; border-radius: 999px;
+    background: linear-gradient(135deg, #d97706, #ea580c);
+    border: none;
+    box-shadow: 0 6px 18px -8px rgba(217,119,6,.7);
+  }
+  .practice-btn:hover { box-shadow: 0 8px 22px -8px rgba(217,119,6,.9); transform: translateY(-1px); }
+  .practice-btn svg { width: 14px; height: 14px; }
+
+  .answer-label {
+    font-size: .66rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; color: #b45309;
+    display: inline-flex; align-items: center; gap: .35rem;
+    margin-bottom: .5rem;
+  }
+
+  .essay-body p {
+    font-size: .875rem; color: #334155; line-height: 1.75; margin: 0 0 .85rem 0;
+  }
+  .essay-body p:last-child { margin-bottom: 0; }
+  .essay-body {
+    border-left: 3px solid #fbbf24;
+    background: linear-gradient(135deg, #fffbeb, #fef9c3);
+    border-radius: .75rem;
+    padding: 1.15rem 1.35rem;
+  }
+
+  .book-heading {
+    display: flex; align-items: center; gap: .75rem;
+    margin: 2.4rem 0 1rem; cursor: pointer; user-select: none;
+    padding: .35rem .5rem .35rem 0; border-radius: .6rem;
+    transition: background .18s ease;
+  }
+  .book-heading:hover { background: rgba(217,119,6,.05); }
+  .book-heading .line { flex: 1; height: 1px; background: linear-gradient(90deg, #cbd5e1, transparent); }
+  .book-pill {
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; color: #fff;
+    background: linear-gradient(135deg, #0f172a, #78350f);
+    padding: .38rem .95rem; border-radius: 999px;
+    box-shadow: 0 6px 16px -10px rgba(15,23,42,.6);
+    white-space: nowrap;
+  }
+  .test-heading {
+    font-size: .82rem; font-weight: 800; color: #0f172a;
+    display: flex; align-items: center; gap: .5rem;
+    margin: 1.5rem 0 .7rem; cursor: pointer; user-select: none;
+    padding: .3rem .5rem; border-radius: .55rem;
+    transition: background .18s ease; width: fit-content;
+  }
+  .test-heading:hover { background: rgba(217,119,6,.06); }
+  .test-heading .dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: linear-gradient(135deg, #d97706, #ea580c);
+    flex-shrink: 0;
+  }
+  .collapse-chevron {
+    width: 1.4rem; height: 1.4rem; border-radius: .4rem;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0; padding: 0; transition: all .18s ease;
+  }
+  .book-heading:hover .collapse-chevron,
+  .test-heading:hover .collapse-chevron { border-color: #fcd34d; color: #b45309; background: #fffbeb; }
+  .collapse-chevron svg { width: 11px; height: 11px; transition: transform .25s cubic-bezier(.4,0,.2,1); }
+  .collapse-chevron.collapsed svg { transform: rotate(-90deg); }
+  .section-body { transition: opacity .2s ease; }
+  .section-body.collapsed { display: none; }
+
+  .howto-card {
+    border-radius: 1rem; padding: 1.2rem 1.3rem; border: 1px solid;
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .howto-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -20px rgba(15,23,42,.28); }
+  .howto-card h4 {
+    font-size: .82rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .05em; margin: 0 0 .5rem 0;
+    display: flex; align-items: center; gap: .45rem;
+  }
+  .howto-card p { font-size: .8rem; color: #475569; line-height: 1.6; margin: 0 0 .6rem 0; }
+  .howto-card p:last-child { margin-bottom: 0; }
+  .howto-card .formula {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: .72rem; color: #0f172a; font-weight: 600;
+    background: #fff; border: 1px solid #e2e8f0;
+    padding: .5rem .7rem; border-radius: .5rem;
+    display: block; margin-top: .45rem; line-height: 1.55;
+    word-break: break-word;
+  }
+
+  .phrase-pill {
+    display: inline-block; font-size: .7rem; font-weight: 600;
+    padding: .28rem .7rem; border-radius: 999px;
+    background: #fff; border: 1px solid #e2e8f0;
+    color: #334155; margin: .18rem;
+    transition: all .18s ease;
+  }
+  .phrase-pill:hover { border-color: #fcd34d; color: #b45309; background: #fffbeb; }
+
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(15,23,42,.92); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center;
+    padding: 2rem; cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95vw; max-height: 90vh;
+    border-radius: .75rem; background: #fff;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.7);
+  }
+  .lightbox .lb-close {
+    position: absolute; top: 1.2rem; right: 1.5rem;
+    color: #fff; font-size: 1.6rem; font-weight: 800;
+    width: 2.5rem; height: 2.5rem; border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    cursor: pointer; transition: all .2s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox .lb-close:hover { background: rgba(255,255,255,.22); }
+
+  .practice-modal {
+    position: fixed; inset: 0; z-index: 90;
+    background: rgba(15,23,42,.78); backdrop-filter: blur(10px);
+    display: none; padding: 1rem; overflow-y: auto;
+  }
+  .practice-modal.open { display: block; }
+
+  .practice-shell {
+    max-width: 1280px; margin: 1rem auto;
+    background: #f8fafc; border-radius: 1.5rem;
+    box-shadow: 0 40px 100px -30px rgba(0,0,0,.6);
+    overflow: hidden; position: relative;
+    display: flex; flex-direction: column;
+  }
+
+  .pm-header {
+    background: linear-gradient(135deg, #0f172a, #78350f);
+    color: #fff; padding: 1rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; flex-shrink: 0;
+  }
+  .pm-header h2 {
+    font-size: 1rem; font-weight: 800;
+    margin: 0; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: .55rem;
+    flex-wrap: wrap;
+  }
+  .pm-header .pm-close {
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.24);
+    color: #fff; font-size: 1rem; font-weight: 800;
+    width: 2.2rem; height: 2.2rem; border-radius: 999px;
+    cursor: pointer; transition: all .18s ease;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; line-height: 1;
+    padding: 0;
+  }
+  .pm-header .pm-close:hover { background: rgba(255,255,255,.28); transform: rotate(90deg); }
+
+  .pm-body { padding: 1.2rem 1.5rem 1.6rem; }
+
+  .timer-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    padding: 1rem 1.3rem; border-radius: 1rem;
+    background: #fff; border: 2px solid #e2e8f0;
+    transition: border-color .3s ease, box-shadow .3s ease;
+    margin-bottom: 1.1rem;
+  }
+  .timer-row.warn { border-color: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,.12); }
+  .timer-row.danger {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220,38,38,.14);
+    animation: pulse-danger 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-danger {
+    0%,100% { box-shadow: 0 0 0 4px rgba(220,38,38,.14); }
+    50%     { box-shadow: 0 0 0 8px rgba(220,38,38,.06); }
+  }
+  .timer-row.done { border-color: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,.14); }
+
+  .timer-left { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+  .timer-display {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 2.4rem; font-weight: 800; color: #0f172a;
+    line-height: 1; letter-spacing: -.02em;
+    transition: color .3s ease;
+  }
+  .timer-row.warn   .timer-display { color: #d97706; }
+  .timer-row.danger .timer-display { color: #dc2626; }
+  .timer-row.done   .timer-display { color: #059669; }
+
+  .timer-label {
+    font-size: .7rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; color: #94a3b8;
+  }
+  .timer-row.warn   .timer-label { color: #b45309; }
+  .timer-row.danger .timer-label { color: #b91c1c; }
+  .timer-row.done   .timer-label { color: #047857; }
+
+  .timer-btns { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .tm-btn {
+    padding: .5rem 1.1rem; border-radius: 999px;
+    font-size: .78rem; font-weight: 800;
+    cursor: pointer; transition: all .18s ease;
+    display: inline-flex; align-items: center; gap: .35rem;
+    border: 1px solid transparent;
+  }
+  .tm-btn svg { width: 13px; height: 13px; }
+  .tm-btn-primary {
+    background: linear-gradient(135deg, #d97706, #ea580c);
+    color: #fff; box-shadow: 0 6px 18px -8px rgba(217,119,6,.7);
+  }
+  .tm-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -8px rgba(217,119,6,.9); }
+  .tm-btn-secondary { background: #fff; color: #475569; border-color: #e2e8f0; }
+  .tm-btn-secondary:hover { border-color: #fcd34d; color: #b45309; background: #fffbeb; }
+
+  .pm-workspace {
+    display: grid;
+    grid-template-columns: 46% 10px 1fr;
+    gap: 0;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    margin-bottom: 1.1rem;
+    align-items: stretch;
+  }
+  .pm-col { min-width: 0; }
+
+  .pm-col-left {
+    display: flex; flex-direction: column;
+    background: linear-gradient(135deg, #fffbeb, #fef9c3);
+    max-height: 78vh;
+    overflow-y: auto;
+  }
+  .pm-col-right {
+    display: flex; flex-direction: column; gap: .9rem;
+    background: #fff;
+    padding: 1.1rem 1.15rem;
+    max-height: 78vh;
+    overflow-y: auto;
+  }
+
+  .pm-pane { padding: 1.15rem 1.25rem; }
+  .pm-pane-chart {
+    border-top: 1px dashed #fcd34d;
+    background: #fff;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .pm-img-wrap {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+  }
+  .pm-img-wrap img {
+    max-width: 100%; height: auto;
+    border-radius: .6rem;
+    cursor: zoom-in;
+    transition: transform .25s ease;
+    display: block;
+  }
+  .pm-img-wrap img:hover { transform: scale(1.02); }
+
+  .pm-img-fallback {
+    padding: 1.6rem 1rem; text-align: center;
+    color: #94a3b8; font-size: .82rem; line-height: 1.55;
+  }
+  .pm-img-fallback a {
+    color: #b45309; font-weight: 700; text-decoration: underline;
+    word-break: break-all;
+  }
+
+  .pm-pane-label {
+    font-size: .62rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .1em;
+    color: #b45309; margin-bottom: .5rem;
+    display: flex; align-items: center; gap: .35rem;
+  }
+  .pm-pane-chart .pm-pane-label { color: #0369a1; }
+
+  .pm-q { font-size: .92rem; font-weight: 700; color: #0f172a; line-height: 1.55; margin: 0; }
+  .pm-topic {
+    font-size: .68rem; font-weight: 700;
+    color: #78350f; margin-bottom: .35rem;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .pm-meta {
+    display: flex; flex-wrap: wrap; gap: .4rem;
+    margin-top: .9rem; padding-top: .85rem;
+    border-top: 1px dashed #fcd34d;
+  }
+
+  .pm-divider {
+    background: linear-gradient(180deg, transparent, #e2e8f0 15%, #e2e8f0 85%, transparent);
+    cursor: col-resize;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    user-select: none; transition: background .18s ease;
+  }
+  .pm-divider:hover { background: linear-gradient(180deg, transparent, #fcd34d 15%, #fcd34d 85%, transparent); }
+  .pm-divider::after {
+    content: '⋮'; font-size: 1.1rem; font-weight: 800;
+    color: #94a3b8; background: #fff;
+    border: 1px solid #e2e8f0; border-radius: 999px;
+    width: 1.5rem; height: 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1; transition: all .18s ease; letter-spacing: 0;
+  }
+  .pm-divider:hover::after { color: #b45309; border-color: #fcd34d; background: #fffbeb; }
+  .pm-divider-hint {
+    position: absolute; top: -1.4rem; left: 50%; transform: translateX(-50%);
+    font-size: .6rem; font-weight: 700; color: #94a3b8;
+    text-transform: uppercase; letter-spacing: .08em;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity .2s ease;
+  }
+  .pm-divider:hover .pm-divider-hint { opacity: 1; }
+
+  .writing-area {
+    border-radius: 1rem; background: #fff;
+    border: 1px solid #e2e8f0; overflow: hidden;
+    display: flex; flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+  .writing-area .wa-header {
+    padding: .7rem 1.2rem; background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .5rem;
+  }
+  .writing-area .wa-title {
+    font-size: .72rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #64748b;
+  }
+  .wa-count {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: .82rem; font-weight: 800; color: #64748b;
+    padding: .2rem .65rem; background: #f1f5f9; border-radius: 999px;
+    transition: all .18s ease;
+  }
+  .wa-count.ok  { background: #d1fae5; color: #065f46; }
+  .wa-count.low { background: #fef3c7; color: #92400e; }
+  .wa-count.high{ background: #fee2e2; color: #b91c1c; }
+
+  .writing-area textarea {
+    width: 100%;
+    flex: 1;
+    min-height: 340px;
+    padding: 1.1rem 1.3rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: .88rem; line-height: 1.7;
+    border: none; outline: none; resize: vertical;
+    color: #0f172a; background: #fff;
+  }
+  .writing-area textarea::placeholder { color: #cbd5e1; }
+
+  .wa-footer {
+    padding: .65rem 1.2rem;
+    border-top: 1px solid #f1f5f9; background: #fafbfc;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .5rem;
+    font-size: .72rem; color: #94a3b8;
+  }
+
+  .footer-note {
+    background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+    border-radius: 1.25rem; padding: 2rem;
+    text-align: center; color: #475569;
+    font-size: .88rem; border: 1px solid #e2e8f0;
+    margin-top: 3.5rem; position: relative; overflow: hidden;
+  }
+  .footer-note::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 3px;
+    background: linear-gradient(90deg, transparent, #d97706, #0ea5e9, transparent);
+    border-radius: 999px;
+  }
+
+  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
+
+  .section-title {
+    font-size: 1.55rem; font-weight: 800; color: #0f172a;
+    letter-spacing: -.025em; display: flex; align-items: center; gap: .6rem;
+    margin: 0;
+  }
+  .section-title .emoji-wrap {
+    width: 2.6rem; height: 2.6rem; border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; flex-shrink: 0;
+    box-shadow: 0 4px 14px -6px rgba(15,23,42,.25);
+  }
+  .section-sub { font-size: .85rem; color: #64748b; font-weight: 500; margin-top: .35rem; }
+
+  .divider {
+    border: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1 20%, #cbd5e1 80%, transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .divider::before {
+    content: '◆'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cbd5e1; font-size: .55rem;
+    background: #f8fafc; padding: 0 .55rem; line-height: 1;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora, .timer-row.danger { animation: none; }
+    .essay-card, .collapse-chevron svg, .img-frame img { transition: none; }
+  }
+  @media (max-width: 900px) {
+    .pm-workspace { grid-template-columns: 1fr !important; grid-template-rows: auto auto auto; }
+    .pm-divider { height: 8px; cursor: row-resize; }
+    .pm-divider::after { content: '⋯'; width: 2.5rem; height: 1.5rem; }
+    .pm-divider-hint { display: none; }
+    .pm-col-left, .pm-col-right { max-height: none; overflow: visible; }
+  }
+  @media (max-width: 640px) {
+    .stat-box { padding: .6rem .85rem; min-width: 74px; }
+    .stat-box .number { font-size: 1.15rem; }
+    .book-heading { margin: 1.8rem 0 .8rem; }
+    .essay-body { padding: .95rem 1rem; }
+    .essay-body p { font-size: .84rem; }
+    .timer-display { font-size: 1.9rem; }
+    .pm-header h2 { font-size: .92rem; }
+    .pm-body { padding: 1rem; }
+    .writing-area textarea { min-height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+  <div class="aurora"></div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="md:w-2/3">
+        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+          📊 Cambridge IELTS 11 – 21
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+          Writing Task 1<br />
+          <span class="text-amber-300">Model Answers &amp; Practice</span>
+        </h1>
+        <p class="text-lg md:text-xl text-amber-100/80 mt-4 max-w-2xl leading-relaxed">
+          Every Task 1 question from Cambridge Books 11–21 — with chart images,
+          Band 7–9 model answers, and a split-view practice mode with a 20-minute timer.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#bank" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-amber-900/30 flex items-center gap-2">
+            🔍 Browse the Bank <span>→</span>
+          </a>
+          <a href="#howto" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+            📘 How to Answer Each Type
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+        <div class="stat-box"><div class="number" id="statTotal">—</div><div class="label">Questions</div></div>
+        <div class="stat-box"><div class="number">11</div><div class="label">Books</div></div>
+        <div class="stat-box"><div class="number">7</div><div class="label">Chart Types</div></div>
+        <div class="stat-box"><div class="number">20</div><div class="label">Min Timer</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<div class="filter-shell" id="bank">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+    <div class="flex flex-col gap-3">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <select class="book-select" id="bookFilter">
+          <option value="all">All Books</option>
+        </select>
+        <div class="relative flex-1 min-w-[180px]">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search questions, topics or keywords…" />
+        </div>
+        <button id="resetBtn" class="seg-btn" style="border-color:#fecaca;color:#b91c1c;">Reset</button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
+        <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Chart Type:</span>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
+          <button id="collapseAllBtn" class="tool-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 9l7 7 7-7"/></svg>
+            Collapse All
+          </button>
+          <button id="expandAllBtn" class="tool-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 15l-7-7-7 7"/></svg>
+            Expand All
+          </button>
+        </div>
+        <div class="text-xs text-slate-500 font-medium">
+          Showing <span id="resultCount" class="font-extrabold text-amber-600">0</span> questions
+          <span id="activeSummary" class="text-slate-400"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= RESULTS ================= -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+  <div id="results"></div>
+
+  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="howto" />
+
+  <section>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+      <div>
+        <h2 class="section-title">
+          <span class="emoji-wrap bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700">📘</span>
+          How to Answer Each Task 1 Type
+        </h2>
+        <p class="section-sub">Structure and paragraphing for every visual type</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="howto-card border-blue-200 bg-gradient-to-br from-blue-50/80 to-white">
+        <h4 class="text-blue-800"><span>📈</span> Line Graph</h4>
+        <p>Show trends over time. Group data by similarity, not by listing every year.</p>
+        <span class="formula">Intro → Overview: 2 main trends → Body 1: rising → Body 2: falling/stable</span>
+      </div>
+      <div class="howto-card border-emerald-200 bg-gradient-to-br from-emerald-50/80 to-white">
+        <h4 class="text-emerald-800"><span>📊</span> Bar Chart</h4>
+        <p>Compare categories. Highlight the highest, lowest, and any surprising result.</p>
+        <span class="formula">Intro → Overview: 2 key contrasts → Body 1: top → Body 2: bottom</span>
+      </div>
+      <div class="howto-card border-pink-200 bg-gradient-to-br from-pink-50/80 to-white">
+        <h4 class="text-pink-800"><span>🥧</span> Pie Chart</h4>
+        <p>Focus on proportions. Note the largest and smallest slices.</p>
+        <span class="formula">Intro → Overview: biggest & smallest → Body 1: dominant → Body 2: smaller</span>
+      </div>
+      <div class="howto-card border-purple-200 bg-gradient-to-br from-purple-50/80 to-white">
+        <h4 class="text-purple-800"><span>📋</span> Table</h4>
+        <p>Do not describe every cell. Group rows or columns with similar patterns.</p>
+        <span class="formula">Intro → Overview: 2 patterns → Body 1: highest → Body 2: lowest</span>
+      </div>
+      <div class="howto-card border-amber-200 bg-gradient-to-br from-amber-50/80 to-white">
+        <h4 class="text-amber-800"><span>🗺️</span> Map / Plan</h4>
+        <p>Present tense for "now", future/passive for "planned". Describe location changes.</p>
+        <span class="formula">Intro → Overview: 2 biggest changes → Body 1: north/east → Body 2: south/west</span>
+      </div>
+      <div class="howto-card border-teal-200 bg-gradient-to-br from-teal-50/80 to-white">
+        <h4 class="text-teal-800"><span>⚙️</span> Process Diagram</h4>
+        <p>Describe stages in order. Use passive voice and sequencing words.</p>
+        <span class="formula">Intro → Overview: X stages → Body 1: first half → Body 2: second half</span>
+      </div>
+      <div class="howto-card border-rose-200 bg-gradient-to-br from-rose-50/80 to-white">
+        <h4 class="text-rose-800"><span>🔀</span> Mixed Visuals</h4>
+        <p>Cover both visuals. Link them explicitly.</p>
+        <span class="formula">Intro → Overview: 2 findings → Body 1: visual A → Body 2: visual B</span>
+      </div>
+    </div>
+
+    <div class="mt-7 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50/70 to-orange-50/60 px-6 py-5 flex gap-3">
+      <span class="text-2xl shrink-0">💡</span>
+      <div>
+        <p class="font-extrabold text-amber-800 text-sm mb-1.5 m-0">Universal Task 1 principles</p>
+        <ul class="text-sm text-slate-700 m-0 pl-4 list-disc space-y-1">
+          <li><strong>Word count:</strong> 150+ words (aim for 160–190).</li>
+          <li><strong>No opinions:</strong> describe what you see. Do not explain causes.</li>
+          <li><strong>Overview is essential:</strong> missing it caps you at Band 5.</li>
+          <li><strong>Time:</strong> 20 minutes max — 3 min plan, 15 min write, 2 min check.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-7 rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm">
+      <h3 class="text-lg font-extrabold text-slate-900 m-0 mb-3 flex items-center gap-2">
+        <span>🗣️</span> Useful Task 1 Language Bank
+      </h3>
+      <div class="mb-4">
+        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Describing trends</p>
+        <div class="flex flex-wrap">
+          <span class="phrase-pill">rose sharply</span><span class="phrase-pill">increased steadily</span>
+          <span class="phrase-pill">declined gradually</span><span class="phrase-pill">plummeted</span>
+          <span class="phrase-pill">peaked at</span><span class="phrase-pill">fluctuated</span>
+          <span class="phrase-pill">remained stable</span><span class="phrase-pill">plateaued</span>
+        </div>
+      </div>
+      <div class="mb-4">
+        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Comparing figures</p>
+        <div class="flex flex-wrap">
+          <span class="phrase-pill">roughly double</span><span class="phrase-pill">three times as high as</span>
+          <span class="phrase-pill">marginally above</span><span class="phrase-pill">in sharp contrast to</span>
+          <span class="phrase-pill">whereas</span><span class="phrase-pill">similarly</span>
+        </div>
+      </div>
+      <div class="mb-4">
+        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Maps &amp; plans</p>
+        <div class="flex flex-wrap">
+          <span class="phrase-pill">was converted into</span><span class="phrase-pill">will be replaced by</span>
+          <span class="phrase-pill">to the north of</span><span class="phrase-pill">adjacent to</span>
+          <span class="phrase-pill">was relocated to</span><span class="phrase-pill">demolished</span>
+        </div>
+      </div>
+      <div>
+        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Process diagrams</p>
+        <div class="flex flex-wrap">
+          <span class="phrase-pill">initially</span><span class="phrase-pill">subsequently</span>
+          <span class="phrase-pill">following this</span><span class="phrase-pill">once completed</span>
+          <span class="phrase-pill">is passed through</span><span class="phrase-pill">is then transported to</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <p class="font-extrabold text-slate-800 text-base m-0">📊 IELTS Writing Task 1 · Cambridge 11–21</p>
+    <p class="text-sm mt-1.5 m-0">Model answers + chart images + 20-minute practice timer</p>
+    <p class="text-xs text-gray-400 mt-2.5 m-0">Image sources: engnovate.com · Built for personal study</p>
+  </div>
+</main>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lightboxClose" aria-label="Close">✕</button>
+  <img id="lightboxImg" src="" alt="Chart" />
+</div>
+
+<!-- ================= PRACTICE MODAL ================= -->
+<div class="practice-modal" id="practiceModal">
+  <div class="practice-shell">
+
+    <div class="pm-header">
+      <h2>
+        <span>⏱️</span>
+        <span>Practice Mode</span>
+        <span class="text-amber-300 text-sm font-bold">· 20 minutes</span>
+      </h2>
+      <button type="button" class="pm-close" id="pmClose" aria-label="Close practice">✕</button>
+    </div>
+
+    <div class="pm-body">
+
+      <div class="timer-row" id="timerRow">
+        <div class="timer-left">
+          <div class="timer-display mono" id="timerDisplay">20:00</div>
+          <div class="timer-label" id="timerLabel">Ready to start</div>
+        </div>
+        <div class="timer-btns">
+          <button type="button" class="tm-btn tm-btn-primary" id="timerStart">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span id="timerStartText">Start</span>
+          </button>
+          <button type="button" class="tm-btn tm-btn-secondary" id="timerReset">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <div class="pm-workspace" id="pmSplit">
+
+        <div class="pm-col pm-col-left">
+          <div class="pm-pane pm-pane-question">
+            <div class="pm-pane-label">📝 Question</div>
+            <div class="pm-topic" id="pmTopic">—</div>
+            <p class="pm-q" id="pmQuestion">—</p>
+            <div class="pm-meta" id="pmMeta"></div>
+          </div>
+
+          <div class="pm-pane pm-pane-chart">
+            <div class="pm-pane-label">📊 Chart</div>
+            <div class="pm-img-wrap" id="pmImgContainer">
+              <div class="pm-img-fallback">Loading chart…</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pm-divider" id="pmDivider">
+          <span class="pm-divider-hint">Drag to resize</span>
+        </div>
+
+        <div class="pm-col pm-col-right">
+          <div class="writing-area">
+            <div class="wa-header">
+              <span class="wa-title">✍️ Your Answer</span>
+              <span class="wa-count" id="pmWordCount">0 words</span>
+            </div>
+            <textarea id="pmTextarea" placeholder="Write your Task 1 response here. Aim for 150+ words. Describe the main features and make comparisons where relevant. Do not give opinions."></textarea>
+            <div class="wa-footer">
+              <span>Target: <strong class="text-amber-700">150–190 words</strong></span>
+              <span id="pmStatus">Not started</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   IMAGES
+   ========================================================================= */
+const IMAGES = {
+  "11-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-11-academic-writing-test-1-1.png",
+  "11-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-11-academic-writing-test-2-1.png",
+  "11-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-11-academic-writing-test-3-1.png",
+  "11-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-11-academic-writing-test-4-1.png",
+  "12-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-12-academic-writing-test-1-1.png",
+  "12-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-12-academic-writing-test-2-1.png",
+  "12-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-12-academic-writing-test-3-1.png",
+  "12-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-12-academic-writing-test-4-1.png",
+  "13-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-13-academic-writing-test-1-1.png",
+  "13-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-13-academic-writing-test-2-1.png",
+  "13-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-13-academic-writing-test-3-1.png",
+  "13-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-13-academic-writing-test-4-1.png",
+  "14-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-14-academic-writing-test-1-1.jpg",
+  "14-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-14-academic-writing-test-2-1.png",
+  "14-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-14-academic-writing-test-3-1.png",
+  "14-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-14-academic-writing-test-4-1.png",
+  "15-1": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/ed94b092f2c82249",
+  "15-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-15-academic-writing-test-2-1.png",
+  "15-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-15-academic-writing-test-3-1.png",
+  "15-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-15-academic-writing-test-4-1.png",
+  "16-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-16-academic-writing-test-1-1.png",
+  "16-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-16-academic-writing-test-2-1.png",
+  "16-3": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-16-academic-writing-test-3-1.png",
+  "16-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-16-academic-writing-test-4-1.png",
+  "17-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-1-1.png",
+  "17-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-2-1.png",
+  "17-3":"https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/d53bfc6c33a0fcca",
+  "17-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-4-1.png",
+  "18-1": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/a4398fc18f9d0e27",
+  "18-2": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/aa26dfb4b4c9839b",
+  "18-3": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/db4c45da8f17cc8f",
+  "18-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-18-academic-writing-test-4-1.webp",
+  "19-1": "https://engnovate.com/wp-content/uploads/2024/10/cambridge-ielts-19-academic-writing-test-1%E2%80%931.png",
+  "19-2": "https://engnovate.com/wp-content/uploads/2024/10/cambridge-ielts-19-academic-writing-test-2%E2%80%931.png",
+  "19-3": "https://engnovate.com/wp-content/uploads/2024/10/cambridge-ielts-19-academic-writing-test-3%E2%80%931.png",
+  "19-4": "https://engnovate.com/wp-content/uploads/2024/10/cambridge-ielts-19-academic-writing-test-4%E2%80%931.png",
+  "20-1": "https://engnovate.com/wp-content/uploads/2025/07/Cambridge-IELTS-20-Academic-Writing-Test-1-1.png",
+  "20-2": "https://engnovate.com/wp-content/uploads/2025/07/Cambridge-IELTS-20-Academic-Writing-Test-2-1.png",
+  "20-3": "https://engnovate.com/wp-content/uploads/2025/07/Cambridge-IELTS-20-Academic-Writing-Test-3-1.png",
+  "20-4": "https://engnovate.com/wp-content/uploads/2025/07/Cambridge-IELTS-20-Academic-Writing-Test-4-1.png",
+  "21-1": "https://engnovate.com/wp-content/uploads/2026/06/cambridge-ielts-21-academic-writing-test-1-1-diagram-6a3cf471c4f88.jpg",
+  "21-2": "https://engnovate.com/wp-content/uploads/2026/06/cambridge-ielts-21-academic-writing-test-2-1-diagram-6a3cf69ce3c3c.jpg",
+  "21-3": "https://engnovate.com/wp-content/uploads/2026/06/cambridge-ielts-21-academic-writing-test-3-1-diagram-6a3cf9263843a.jpg",
+  "21-4": "https://engnovate.com/wp-content/uploads/2026/06/cambridge-ielts-21-academic-writing-test-4-1-diagram-6a3cfa2909fd5.jpg"
+};
+
+/* =========================================================================
+   DATA
+   ========================================================================= */
+const QUESTIONS = [
+[11,1,"Pie Chart","Water usage · Six world regions",
+ "The charts below show the percentage of water used for different purposes in six areas of the world. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The pie chart indicates the proportion of water consumed for various purposes in six regions of the world.
+
+Overall, it is clear that industrial water usage is the highest in North America and Europe, while other regions are dominated by agricultural use. Moreover, domestic water usage accounts for only a small percentage across all regions.
+
+In general, the percentage of agricultural water usage is notably higher, ranging between 81% and 88% in Africa, Central Asia, and Southeast Asia. In contrast, the other three areas show a more balanced distribution, with agricultural use at 39% in North America, 71% in South America, and 32% in Europe.
+
+Focusing on domestic water usage, the proportion of total water consumption is significantly lower than that of industrial and agricultural usage. Domestic water usage stands at 7% in both Central Asia and South Asia, while it makes up the highest percentage in South America at 19%. Additionally, the remaining percentages are 13% in North America, 15% in Europe, and 9% in Africa. By contrast, industrial water usage is most prominent in Europe, where it reaches 53%, much higher than North America's 48%. The remaining regions show much lower levels, all below 12%.`],
+
+[11,2,"Pie Chart","British students · Additional languages",
+ "The charts below show the proportions of British students at one university in England who were able to speak other languages in addition to English, in 2000 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The pie charts compare the proportion of British students by their foreign language knowledge in 2000 and 2010.
+
+Overall, the number of students with no skills in foreign languages decreased, while Spanish remained the most popular language choice at this university.
+
+Spanish accounted for the largest share of foreign languages in 2000. However, every fifth British student at this university did not speak any other language apart from English. This was the second-largest group of respondents. What is more, there was an equal percentage of students declaring knowledge of French and another language (15 percent in both cases).
+
+Similarly, Spanish speakers comprised the biggest category in the 2010 survey, with 35 percent. In contrast to the previous results, those speaking English only had been replaced by those using another language in the second place. The latter group constituted a fifth of all survey respondents in 2010. French users, German students, and those speaking no foreign language made up ten percent each.`],
+
+[11,3,"Line Graph","CO2 emissions · Four European countries",
+ "The graph below shows average carbon dioxide (CO2) emissions per person in the United Kingdom, Sweden, Italy and Portugal between 1967 and 2007. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph compares the amount of carbon dioxide (CO2) produced per person in four different countries over a period of 40 years, starting from 1967.
+
+Overall, it is clear that the average CO2 emissions per person in Italy and Portugal witnessed an upward trend, while the opposite was true for the figure in the United Kingdom and Sweden. Additionally, during most of the period, the amount of CO2 emitted in the United Kingdom was the highest.
+
+Turning to the specific data, the United Kingdom commenced with the highest average CO2 emissions per person, standing close to 11 metric tonnes in 1967. It then declined steadily over the years, reaching around 9 metric tonnes in 2007. In contrast, Sweden saw a slightly different pattern. Sweden's CO2 emissions started at 9 metric tonnes; this figure then rose gradually to just over 10 metric tonnes in 1997 before decreasing significantly to about 5.5 metric tonnes in 2007.
+
+Moving on to Italy and Portugal, in 1967 the amount of CO2 produced per person in Italy stood at nearly 4.2 metric tonnes. It then rose to around 7.8 metric tonnes in 1997 and remained relatively stable until 2007. Similarly, Portugal's figure saw a significant increase of 4.5 metric tonnes between 1967 and 1997 and remained at roughly 5.5 until 2007.`],
+
+[11,4,"Mixed","Ashdown Museum · Visitors & satisfaction",
+ "The table below shows the numbers of visitors to Ashdown Museum during the year before and the year after it was refurbished. The charts show the result of surveys asking visitors how satisfied they were with their visit, during the same two periods. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The given table illustrates how many people visited the Ashdown Museum, while the pie charts demonstrate the outcomes of a survey about visitors' satisfaction throughout the year before and the year after renovation.
+
+From an overall perspective, the number of visitors increased after refurbishment. Moreover, it is clear that the proportion of visitors who were very satisfied nearly doubled following the renovation, while the share of dissatisfied visitors decreased significantly.
+
+Regarding the pie charts, the percentage of visitors who were very satisfied rose from 15% before the refurbishment to 35% afterward. The satisfied category also experienced a slight rise, increasing from 30% to 40%. In contrast, the dissatisfied group declined significantly, dropping from 40% before renovation to just 15% after. Similarly, the share for the very dissatisfied visitors halved from 10% to 5% over the same period of time. The proportion of visitors who never responded to the survey remained steady at 5% in both years.
+
+According to the table, throughout the year before the museum underwent renovation, 74,000 people went there to visit it, while this number rose to 92,000 by the year after renovation.`],
+
+[12,1,"Bar Chart","Australian physical activity · Men & women",
+ "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar chart shows the percentage of Australian men and women of different ages who engaged in regular exercise in the year 2010.
+
+Overall, female participation generally increased with age, while the reverse was true for males until middle age, and males experienced a lower peak and trough than the corresponding figures for females.
+
+In the youngest age group, males outnumbered females, with 52.8% of 15- to 24-year-olds taking part in regular activity compared to 47.7% of females. However, this was the peak age range for men as numbers declined from this point on, reaching their lowest point at 35 to 44 years, when just under 40% exercised regularly. Although the figure increased again from the age of 45, male participation rates remained below 50% for almost all age groups.
+
+In contrast, the younger females generally exercised less than their older counterparts. From the age of 25, female participation rates increased marginally but steadily, peaking at 55.3% between the ages of 45 and 54, then falling to their lowest point (47.1%) in the oldest group. Notably, more than 50% of women aged 35 to 64 exercised on a regular basis. Only from age 65 and over were the figures for both genders near parity at 46.7% (males) and 47.1% (females).`],
+
+[12,2,"Map / Plan","Islip town centre · Proposed development",
+ "The maps below show the centre of a small town called Islip as it is now, and plans for its development. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The maps illustrate the current layout of Islip town centre and the proposed development plan.
+
+Overall, significant changes are planned, including the addition of new housing areas and transport facilities. The main road will be modified, and a dedicated pedestrian zone will be introduced.
+
+At present, shops line both sides of the main road, with housing located to the south and open countryside to the north. A school is positioned in the southwest, while a large park is in the southeast. The main road passes through the town centre, providing access to these areas.
+
+In the future, the main road will be converted into a dual carriageway surrounding the central area. The shops on the northern side will be replaced by a shopping centre, alongside a bus station and a car park. The main road through the town centre will become a pedestrian-only zone. Additionally, new residential areas will be developed to the east and west, reducing the park's size. The school, however, will remain unchanged.`],
+
+[12,3,"Bar Chart","US fast food consumption · 2003–2013",
+ "The chart shows how frequently people in the USA ate in fast food restaurants between 2003 and 2013. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The given bar chart compares how often junk food consumption occurs in the USA in three different years: 2003, 2006, and 2013.
+
+Overall, it is noticeable that most people eat fast food weekly or a few times per month. Besides, the figures generally follow a similar trend over the ten-year period.
+
+According to the chart, over a quarter of the total population in the USA eat fast food once a week or monthly. While the percentages for 2003 and 2006 are higher for the weekly group at 31% and 33% respectively, people preferred to consume fast food less frequently in 2013, with its peak at 33% for the monthly group.
+
+Regarding the remaining figures, they are all under 20% for the given three years. There are only slight differences between the proportion of individuals who eat junk food daily or never; the highest is 5% in 2003 for the latter category. However, the figures for 2006 and 2013 were the same for two groups; approximately 3% of the population ate fast food every day and exactly 15% did this quite a few times per year in both years.`],
+
+[12,4,"Process Diagram","Geothermal energy · Electricity production",
+ "The diagram below shows how geothermal energy is used to produce electricity. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the process of exploiting geothermal energy to produce electricity at a geothermal power plant. Overall, it is clear that the cycle involves five main stages, beginning with pumping cold water deep underground and ending with the generation of electricity. Notably, the system utilises heat from underground layers of hot rock to convert water into steam to operate turbines and generators.
+
+In the initial stage, cold water from the surface is pumped down to a depth of 4.5 km through an injection well to reach the geothermal zone containing hot rocks. This is subsequently followed by water absorbing heat from hot rocks, and it is pumped back to the surface through the production well as hot water.
+
+Regarding the next stage involving surface operations, hot water passes through the condenser to form steam. Then the steam is subsequently directed to the turbine, driving the turbine blades. This motion operates the generator, thereby producing electricity. The process concludes when the generated electricity is transmitted to the power grid to meet consumption needs.`],
+
+[13,1,"Map / Plan","City Hospital · Road access 2007 & 2010",
+ "The two maps below show road access to a city hospital in 2007 and in 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided maps illustrate the changes in the road access to City Hospital in the years 2007 and 2010.
+
+Overall, there were significant alterations in the layout design of the hospital surroundings. Notably, additional features such as a bus stop, roundabout, and car parks were introduced in the 2010 map.
+
+In 2007, the hospital was encircled by a ring road. However, in 2010, a public car park emerged to the east of the ring road. Furthermore, the road leading to the hospital was directly linked to both the ring road and the city road in 2007. In contrast, in 2010, two roundabouts were installed to the south of the hospital, connecting the ring road and city road. Additionally, significant changes in the distribution of facilities occurred between the two years, including the relocation of the bus stop and the separation of the bus station to the western side of the hospital road.
+
+Moreover, in 2010, the staff car park was relocated to the eastern side of the road, depicting a complete transformation of the hospital's access and surrounding facilities.`],
+
+[13,2,"Bar Chart","England & Wales · Owned vs rented homes",
+ "The chart below shows the percentage of households in owned and rented accommodation in England and Wales between 1918 and 2011. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar chart shows the percentage of households in England and Wales that lived in owned and rented accommodation between 1918 and 2011.
+
+In general, what stands out from the graph is that while the number of owned households witnessed a slight decline from 1918, the number of rented households experienced a different trend. Another interesting and important point is that, in the year 1971, these two types of accommodation had an equal percentage of households.
+
+At the beginning of the period in 1918, renting was far more common than owning, with the vast majority of households living in rented accommodation. However, homeownership gradually increased over the years, and by 1971, the two categories were equal, marking a major change in housing trends.
+
+Following this, homeownership continued to rise, reaching a peak in 2001, while the percentage of renters declined. However, from 2001 to 2011, this trend slightly reversed, with rental accommodation becoming more common again.`],
+
+[13,3,"Bar Chart","Top 10 countries · Electricity production",
+ "The bar chart below shows the top ten countries for the production and consumption of electricity in 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar diagram compares the production and consumption of electricity, measured in billion kilowatt-hours, among the top ten countries in the year 2014.
+
+At a glance, it is clear that China and the USA were the leading countries in both electricity production and consumption, while Germany and South Korea ranked at the bottom of the list. All countries had a production rate that was higher than their consumption rates, except for Germany.
+
+To begin with, China and the USA produced and consumed nearly 5,500 KWH and 4,000 KWH respectively. In contrast, the rates for Russia were only about one-fourth to one-fifth of those in China and the USA, a trend that is also evident in electricity consumption.
+
+Furthermore, countries such as Japan, India, Canada, France, Brazil, Germany, and South Korea fell into the 1,000 KWH category for production and consumption. France, Brazil, and Germany exhibited rates of around 500 KWH. Among these, South Korea had the lowest production and consumption, with only 400 KWH.`],
+
+[13,4,"Map / Plan","University sports centre · Redevelopment",
+ "The plans below show the layout of a university's sports centre now, and how it will look after redevelopment. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided plans delineate the existing configuration of the university's sports centre and the proposed modifications following redevelopment. The redevelopment project heralds substantial changes that will enhance the facility by introducing new amenities while retaining certain key features.
+
+In the current layout, the university sports centre comprises a reception area adjacent to the entrance, a gym, a 25-metre pool, a changing room, and two outdoor courts. The proposed design will eliminate the outdoor courts to accommodate a leisure pool. Additionally, a sports shop and a café will be constructed flanking the reception area, further enriching the centre's offerings. While the existing gym will remain in its location, it is set to undergo expansion to cater to increased demand for fitness services.
+
+Further modifications include the addition of a sports hall and two dance studios in the space previously occupied by the eastern outdoor courts. The redevelopment will also introduce two new changing rooms on the west and east sides of the facility, thereby improving user convenience. Notably, both the current changing room and the reception area will remain unchanged in the future design.`],
+
+[14,1,"Pie Chart","American meals · Three nutrient types",
+ "The charts below show the average percentages in typical meals of three types of nutrients, all of which may be unhealthy if eaten too much. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The charts illustrate the average proportions of three nutrient varieties, including sodium, saturated fats, and added sugars, found in four typical meals of Americans, excessive intake of which can pose health risks.
+
+Overall, it is clear that dinner exhibits the highest levels of sodium and saturated fat consumption, while breakfast shows the opposite trend. In addition, snacks contain the greatest percentage of added sugar among the four meals mentioned.
+
+Looking closely at the charts, dinner contains the highest average sodium and saturated fat content, making up 43% and 37% of total consumption respectively, followed by lunch, accounting for 29% sodium and 26% saturated fat. In contrast, the figures for added sugar in these two meals are considerably lower (23% for supper and 19% for luncheon).
+
+As for snacks and breakfast, the proportions of sodium consumed are the same, at 14%. In the case of saturated fat, the greater percentage is found in snacks, registering 21%, than in breakfasts, at 16%. By comparison, added sugar emerges as the most prevalent nutritional component in snacks (42%), while the opposite is true for breakfast with the lowest intake of added sugar and saturated fat, both accounting for 16%.`],
+
+[14,2,"Mixed","Country exports · Five product categories",
+ "The chart below shows the value of one country's exports in various categories during 2015 and 2016. The table shows the percentage change in each category of exports in 2018 compared with 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar graph and accompanying table illustrate the export revenues of a country across five distinct product categories for the years 2015 and 2016, alongside the percentage changes experienced within this period.
+
+Overall, there was a notable variation in export values, with the most significant increase recorded in textiles, while agricultural products exhibited minimal change.
+
+In 2015, the export earnings from petroleum products amounted to approximately $60 billion; however, this figure experienced a slight decline of 3% in 2016, resulting in revenues of around $58 billion. Engineered goods, contrastingly, saw a remarkable increase from $50 billion in 2015 to $54 billion in 2016, marking an increase of 8.5%. Similarly, agricultural products remained stable at around $22 billion, reflecting a modest rise of 0.81% over the same period.
+
+The category of gems and jewellery faced a downturn, with exports decreasing from about $42 billion in 2015 to approximately $38 billion in 2016, corresponding to a decrease of 5.18%. Notably, textiles demonstrated the most profound growth, with revenues increasing sharply from around $18 billion to approximately $20 billion, which translates to a substantial rise of 15.24%.`],
+
+[14,3,"Process Diagram","Hydroelectric power station · Electricity generation",
+ "The diagram below shows how electricity is generated in a hydroelectric power station. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the process of generating electricity in a hydroelectric power station.
+
+Overall, electricity is produced by utilising the flow of water between a high-level reservoir and a low-level reservoir, with turbines generating power during the day and pumping water back up at night.
+
+As shown in the first stage, water from a river is collected in the high-level reservoir. During the daytime, the intake gate opens, allowing water to flow downwards through a channel toward the reversible turbines. The rushing water causes the turbines to spin rapidly, which in turn drives the generator to produce electricity. This electricity is then transmitted to the national grid via power lines. After passing through the turbines, the water continues into the low-level reservoir.
+
+In the second stage, during the night, the intake gate closes, and the turbines reverse their function. Water from the low-level reservoir is pumped back up to the high-level reservoir using the turbines, which now act as pumps. Although this process consumes energy and does not generate electricity, it restores the water to the upper reservoir, ensuring that the system can produce electricity again the following day.`],
+
+[14,4,"Map / Plan","Grange Park · 1920 vs today",
+ "The plans below show a public park when it first opened in 1920 and the same park today. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The two maps illustrate the changes made to Grange Park between 1920, when it was first opened, and today. Several notable developments have taken place, transforming the park into a more modern and versatile space.
+
+In 1920, the park featured a stage for musicians in the centre, surrounded by a fountain. Rose gardens were located in the corners of the park, with seating areas distributed around the perimeter. To the right, there was a glasshouse and a pond for water plants.
+
+In contrast, today's park has undergone significant modifications. The stage has been replaced by an amphitheatre for concerts, while the fountain in the centre has been removed and a large rose garden now occupies this space, surrounded by seating. The glasshouse has been replaced by a café, and the pond has been converted into a children's play area. Additionally, a new water feature has been introduced in the bottom-right corner, and there is now an entrance to an underground car park near the Eldon Street entrance.
+
+In summary, Grange Park has evolved from a traditional layout with a focus on floral displays and seating to a more diverse space with modern amenities such as an amphitheatre, café, and play area.`],
+
+[15,1,"Bar Chart","Australian cities · Coffee & tea habits",
+ "The chart below shows the results of a survey about people's coffee and tea buying and drinking habits in five Australian cities. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar graph displays the data collected in a survey about the coffee and tea buying and drinking habits of residents in five cities in Australia over the last four weeks.
+
+Overall, in all the cities except Adelaide, more people went to a café for coffee or tea than bought instant or fresh coffee. In Adelaide, going to a café and buying instant coffee were almost equally common.
+
+Most residents in Melbourne, Hobart, Sydney, and Brisbane visited a café for coffee or tea, at approximately 64%, 63%, 62%, and 55% respectively, whereas just under half of residents in Adelaide did so. These five cities also had roughly half of residents purchasing instant coffee, and the figures in Hobart and Brisbane were almost 55%.
+
+In comparison, the proportion of people who bought fresh coffee was never as high as 45% in any of the five cities, with those in Brisbane and Adelaide, both at nearly 35%, less likely than those in the other three cities to do so.`],
+
+[15,2,"Line Graph","Caribbean island · Tourist numbers",
+ "The graph below shows the number of tourists visiting a particular Caribbean island between 2010 and 2017. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided line graph illustrates the influx of tourists to a specific Caribbean island from 2010 to 2017, categorising them into three distinct groups: those residing on cruise ships, those staying on the island, and the aggregate number of visitors.
+
+A general observation reveals a consistent upward trajectory in tourism across all three categories throughout the designated period, with visitors who opted to stay on the island representing the largest segment of the total.
+
+In 2010, the number of cruise ship visitors was approximately 0.5 million, while those choosing to stay on the island totalled around 1 million, culminating in an overall visitor count of about 1.5 million. By 2017, the number of cruise ship visitors experienced a notable rise, reaching about 1.25 million. This group represented an increasing share of the total, which expanded to around 4 million.
+
+On the other hand, the segment of visitors staying on the island displayed a more pronounced growth trajectory. Starting at around 1 million in 2010, this figure surged to approximately 2.75 million by 2017.`],
+
+[15,3,"Process Diagram","Instant noodles · Manufacturing",
+ "The diagram below shows the process of manufacturing instant noodles. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the sequential process of manufacturing instant noodles. The production involves eight distinct stages, commencing with the storage of flour and culminating in the preparation of labelled noodle cups, ready for consumer use.
+
+The manufacturing process begins with flour being stored in silos, which is subsequently transported to a mixing machine. In this mixer, the flour is blended with water and oil to create a consistent dough. The dough is then subjected to rolling, resulting in sheets that are cut into narrow noodle strips. These strips are formed into circular discs as part of the production process.
+
+Following the formation of the noodle discs, they undergo cooking in hot oil, after which they are dried to achieve the desired texture. The subsequent steps involve the inclusion of vegetables and spices, before the prepared noodles are placed into cups. Finally, the cups are labelled and sealed, ensuring they are ready for distribution.`],
+
+[15,4,"Mixed","Anthropology graduates · Destinations & salaries",
+ "The chart below shows what anthropology graduates from one university did after finishing their undergraduate degree course. The table shows the salaries of the anthropologists in work after five years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The pie chart illustrates the destinations of anthropology graduates from one university after completing their undergraduate studies, while the table presents the salaries of those employed after five years of work.
+
+Overall, the majority of graduates entered full-time employment, and after five years, anthropologists working in the government sector tended to earn the highest salaries.
+
+In detail, 52% of graduates secured full-time jobs, making that the most common outcome. A further 15% worked part-time, while 5% combined part-time work with postgraduate study. Full-time postgraduate study accounted for 8%, the same proportion as those who were unemployed, and 12% of outcomes were not known.
+
+Turning to salaries after five years, government sector employees were the highest earners, with 50% earning $100,000 or more. Freelance consultants also performed well, as 80% earned at least $75,000, including 40% in the highest salary band. In contrast, private company employees were more evenly distributed, with the largest proportion (35%) earning between $50,000 and $74,999.`],
+
+[16,1,"Line Graph","Electrical appliances · Housework time",
+ "The charts below show the changes in ownership of electrical appliances and amount of time spent doing housework in households in one country between 1920 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided line charts illustrate changes in ownership of electrical appliances and time spent on household chores in households of a particular country from 1920 to 2019.
+
+Overall, a significant increase in the adoption of electrical appliances, such as washing machines, refrigerators, and vacuum cleaners, can be observed, while there was a notable decline in the hours dedicated to housework per week.
+
+Notably, in 1920, no households owned a refrigerator, but by 1960, the ownership had surged to 90% and eventually reached 100% in 1980, maintaining that level until 2019. Similarly, the ownership of vacuum cleaners started at 0% in 1920, increased to 60% by 1960, and reached full saturation by 2000 after remaining stable at 80% from 1980. The ownership of washing machines saw a steep rise from 30% in 1920 to over 70% in 1960, slightly dropped to 60% in 1980, and then increased again to over 70% by 2019.
+
+In contrast, the time spent on housework per week experienced a sharp decline from 50 hours in 1920 to 30 hours by 1960, further decreasing to 20 hours in 1980, and finally settling at 15 hours from 2000 to 2019.`],
+
+[16,2,"Process Diagram","Sugar · Manufacturing from sugar cane",
+ "The diagram below shows the manufacturing process for making sugar from sugar cane. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram shows the process used to make sugar. Overall, this is a largely mechanical process comprising two main stages: the farming of sugar cane and the processing of the crop, which turns it into a liquid and eventually into sugar.
+
+The first stage of the process is the longest as the sugar cane takes between 12 and 18 months to grow tall enough for harvesting. Once it is fully grown, the crop can be harvested in two ways, either mechanically using specialist machinery or by hand, a much more labour-intensive method.
+
+The second stage is wholly mechanical and involves five steps. First, the plants are crushed to form a juice, which is then extracted. The juice is purified by passing it through a limestone filter before being heated. During this step, the liquid content of the juice evaporates leaving behind a syrup. The syrup is then put in a centrifuge and spun at a high enough speed to separate out the sugar crystals, which are subsequently dried and cooled to produce the final product.`],
+
+[16,3,"Map / Plan","Southwest Airport · Redevelopment",
+ "The plans below show the site of an airport now and how it will look after redevelopment next year. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The plans illustrate how reconstruction in the next year will change the appearance of Southwest Airport compared to its present condition.
+
+Overall, the total number of gates, as well as the departure and arrival areas, will be increased. New facilities such as car hire places, ATMs, shops, and sky trains will be introduced, and the airport area will be extended.
+
+Currently, passengers entering the airport can find only one entry point, which will be doubled next year. Upon entering the airport, they find security and passport control ahead, with the check-in area on the left and the café on the right. According to the new plan, these positions will be swapped, placing the check-in and café in opposite corners. The remaining two corners will be utilised, one for a bag drop point. Beyond the security and passport control area, shops will be introduced in the currently unused space. The rectangular area, which currently contains 8 gates and a walkway, will be reshaped and extended. The walkways will be replaced by SkyTrains, and the number of gates will increase to 18.
+
+For arriving passengers, the airport will feature two arrival points instead of one. The passport control and customs area on the right will be expanded to accommodate a car hire place. An ATM and a café will also be added on the right side of the arrival point.`],
+
+[16,4,"Process Diagram","Plastic bottles · Recycling",
+ "The diagram below shows the process for recycling plastic bottles. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram shows the complete process of recycling plastic bottles, broken down into eight main stages. The process starts with the collection of plastic bottles and ends with the creation of new reusable materials and products, demonstrating the systematic nature of recycling.
+
+To begin, people drop off their used plastic bottles into special recycling bins. A truck then picks up these bins and takes the bottles to a recycling centre. Once at the centre, workers carefully sort the materials, separating plastic bottles from other waste to ensure that only the correct items move forward in the process.
+
+After sorting, the plastic bottles are crushed into smaller pieces to make them easier to handle. These pieces are then washed thoroughly to remove any dirt, labels, or other impurities. The cleaned plastic is turned into small pellets. These pellets are then heated and shaped into blocks of raw material, which are pressed into cubes to make them easier to transport. Finally, the recycled materials are used to produce new products, such as plastic bottles and clothing.`],
+
+[17,1,"Map / Plan","Norbiton industrial area · Planned redevelopment",
+ "The maps below show an industrial area in the town of Norbiton and the planned future development of the site. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The maps illustrate the current layout of an industrial area in the town of Norbiton and the proposed future redevelopment of the site. Overall, the transformation aims to replace factories with residential and community facilities, making the area more liveable.
+
+A significant shift from an industrial zone to a residential neighbourhood is planned. The factories will be demolished to make way for housing, a school, a medical centre, shops, and a playground. Additionally, the infrastructure will be enhanced with better connectivity and amenities.
+
+Currently, the area consists predominantly of factories, spread across the northern and eastern parts of the site. A river runs horizontally through the northern section, separating the farmland from the industrial zone. The main road, featuring a roundabout, connects the town to the factories.
+
+In the proposed redevelopment, all factories will be replaced with housing units. New facilities, including a school in the southeastern part, a medical centre, and shops near the roundabout, will be introduced. A playground will be built adjacent to the residential area. Additionally, a new bridge over the river will improve access to the farmland.`],
+
+[17,2,"Mixed","Police budget · Sources & spending",
+ "The table and charts below give information on the police budget for 2017 and 2018 in one area of Britain. The table shows where the money came from and the charts show how it was distributed. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The table and pie charts depict data about how the British police received and spent money in 2017 and 2018.
+
+Overall, the national government was the leading primary source of the police budget, whereas grants occupied the bottom-most position in both years. The highest expenditure was on salaries; however, technology was the least spent area.
+
+Focusing on the police budget, the contribution of the national government and local taxes was increased by 2.3 and 11.1 million pounds, respectively, from 2017 to 2018. However, there was a slight increment on the budget allocated from other sources, with 38 million in 2017 to 38.5 million in 2018.
+
+As for the budget expenditure, although the maximum amount was spent on police salaries, a 6% decline was witnessed between 2017 and 2018. Surprisingly, buildings and transport took the same amount of money in both years (17%). Additionally, the technology expenditure almost doubled in one year, increasing from 8% in 2017 to 14% in 2018.`],
+
+[17,3,"Line Graph","Shops · Closures and openings 2011–2018",
+ "The graph below shows the number of shops that closed and the number of new shops that opened in one country between 2011 and 2018. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided line graph illustrates the trends in shop closures and openings within a particular country from 2011 to 2018.
+
+Overall, the data reveals that shop closures consistently outnumbered openings throughout the period under review, with notable fluctuations in both categories.
+
+In 2011, approximately 5,400 shops closed while the number of newly opened shops was slightly higher at around 5,900. However, in 2012, closures increased sharply to approximately 7,300, contrasting with a decline in openings to roughly 5,600. Following this period of decline, new shops surged to about 7,000 in 2013, only for closures to peak at 8,000 the following year. In 2015, shop openings dropped to an alarming low of around 3,200, while closures fell to 5,800 before witnessing a gradual increase in subsequent years.
+
+From 2016 onwards, shop openings showed a gradual recovery, reaching 6,300 by 2018, albeit still remaining lower than closures, which peaked at 6,600 in the same year.`],
+
+[17,4,"Line Graph","Asian countries · Urban population growth",
+ "The graph below gives information about the percentage of the population in four Asian countries living in cities from 1970 to 2020, with predictions for 2030 and 2040. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph delineates the percentage of urban population in four Asian nations — Philippines, Malaysia, Thailand, and Indonesia — over a period spanning from 1970 to 2040.
+
+A discernible upward trajectory in urbanisation is evident across all four countries throughout the designated timeframe, with projections indicating that the Philippines is likely to exceed 80%, while Malaysia and Thailand are anticipated to stabilise around 70%, alongside Indonesia reaching just above 60% by 2040.
+
+In 1970, the proportion of the urban population in Malaysia and the Philippines was relatively modest, each at approximately 30%, whereas Thailand and Indonesia recorded even lower figures, around 15%. Over the subsequent decades, Malaysia exhibited the most pronounced increase, soaring to 70% by 2020 and projected to approach nearly 90% by 2040. The Philippines also demonstrated significant urban growth, reaching nearly 80% by 2020 and continuing on an upward trajectory toward 2040.
+
+Conversely, Thailand's urban population experienced noticeable growth, advancing to approximately 30% by 1990. Indonesia, initially possessing the lowest urban population percentage, mirrored this growth pattern, reaching approximately 40% by 2020, with expectations of achieving 60% by 2040.`],
+
+[18,1,"Bar Chart","US households · Annual income",
+ "The chart below shows the number of households in the US by their annual income in 2007, 2011, and 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar chart illustrates the number of households in the US based on their annual income for three different years: 2007, 2011, and 2015.
+
+Overall, while the numbers of middle-class and upper-middle-class individuals remained almost steady throughout the given years, the numbers of lower-class, lower-middle-class, and upper-class individuals fluctuated in various ways.
+
+It can be observed that the number of people earning between 50 and 75 thousand dollars stayed roughly the same across all three years, with their figures slightly exceeding 20 million. Similarly, the number of individuals in the upper-middle class, earning between 75 and 100 thousand dollars, did not change significantly over time.
+
+On the other hand, the number of lower-class individuals rose from just over 25 million to just under 30 million between 2007 and 2011, then slightly decreased to around 27 million in 2015. However, the number of individuals with incomes exceeding 100 thousand dollars decreased from 2007 to 2011 but then increased to over 30 million after 2011.`],
+
+[18,2,"Map / Plan","Public library · Floor plan 20 years ago vs now",
+ "The diagram below shows the floor plan of a public library 20 years ago and how it looks now. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the transformation of the Central Library's floor plan over the past 20 years, revealing significant changes in the layout and allocation of space.
+
+The two floor plans demonstrate a notable shift in the library's design, with various areas being repurposed or replaced to accommodate changing needs and technologies.
+
+One of the most striking differences between the two layouts is the relocation and repurposing of various sections. For instance, the area previously dedicated to children's books has been converted into a lecture room, while the space housing CDs, videos, and computer games has been expanded and transformed into an area for storytelling events and fiction books.
+
+Furthermore, the removal of tables and chairs has resulted in a more open-plan design. The adult fiction section has been relocated from the left to the right side of the passage, accompanied by self-service machines and an information desk. Additionally, a new area has been created for all reference books, and the reading room and enquiry desk have been replaced by a computer room and café, respectively.`],
+
+[18,3,"Line Graph","Metal prices · Average monthly change 2014",
+ "The graph below shows the average monthly change in the prices of three metals during 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph illustrates the average monthly percentage change in the prices of three metals, namely copper, nickel, and zinc, throughout the year 2014.
+
+Overall, the prices of all three metals exhibited considerable fluctuations over the course of the year, with nickel experiencing the most significant peaks and troughs compared to copper and zinc.
+
+Copper commenced the year at approximately 0% in January, experiencing a notable decline to around -2.2% in February. From March to October, the price fluctuations were relatively subdued, with averages oscillating between -1% and 1%. By the end of the year, in December, the price declined slightly to about -1.2%.
+
+In contrast, nickel initiated the year with a decrease of around -0.8% in January, plunging further to -2.8% in February. It reached its zenith in May at 5.8%. By December, nickel exhibited a recovery, concluding with a final increase to approximately 1.2%. Similarly, zinc started at -0.5% in January, falling to -1.8% in February, but it achieved a peak of 3.2% in July.`],
+
+[18,4,"Line Graph","Social centre · Activity participation",
+ "The graph below gives information on the number of participants for different activities at one social centre in Melbourne, Australia for the period 2000 to 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph illustrates the number of members participating in various activities at a social centre in Melbourne, Australia between 2000 and 2020.
+
+Overall, it is evident that the attendance for Martial Arts and Film clubs remained relatively stable throughout the period. Table Tennis and Musical Performance saw an increase over the years, whereas Amateur Dramatics experienced a decline in popularity.
+
+Initially, Table Tennis was the most popular activity in 2000 with around 65 participants. It then dropped to 60 by 2010 before returning to 65 in 2020. Similarly, Martial Arts ranked second in 2000 with just over 35 participants, experienced fluctuations, but eventually settled back to the initial level (35).
+
+Additionally, two other activities, Musical Performance and Amateur Dramatics, are examined. Musical Performance debuted in 2005 with zero participants and attracted about 15 individuals over the span of 15 years. Meanwhile, there were 25 participants interested in Amateur Dramatics, but this number dwindled to approximately 5 individuals, making it the least popular activity.`],
+
+[19,1,"Line Graph","Social centre · Melbourne activities 2000–2020",
+ "The graph below gives information on the number of participants for different activities at one social centre in Melbourne, Australia for the period 2000 to 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph illustrates the number of members participating in various activities at a social centre in Melbourne, Australia between 2000 and 2020.
+
+Overall, it is evident that the attendance for Martial Arts and Film clubs remained relatively stable throughout the period. Table Tennis and Musical Performance saw an increase over the years, whereas Amateur Dramatics experienced a decline in popularity.
+
+Initially, Table Tennis was the most popular activity in 2000 with around 65 participants. It then dropped to 60 by 2010 before returning to 65 in 2020. Similarly, Martial Arts ranked second in 2000 with just over 35 participants, experienced fluctuations, but eventually settled back to the initial level (35).
+
+Additionally, two other activities, Musical Performance and Amateur Dramatics, are examined. Musical Performance debuted in 2005 with zero participants and attracted about 15 individuals over the span of 15 years. Meanwhile, there were 25 participants interested in Amateur Dramatics, but this number dwindled to approximately 5 individuals.`],
+
+[19,2,"Map / Plan","Porth Harbour · 2000 vs today",
+ "The plans below show a harbour in 2000 and how it looks today. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The map reflects modifications to Porth Harbour from the year 2000 to the present day.
+
+Overall, this pier witnessed significant changes, including the renovation of several facilities and the introduction of new ones. Moreover, more recreational space was added to this area.
+
+In 2000, along the main road on the east side, it was split into two distinct branches. Notably, while the first one was a car parking lot, which was in front of showers and toilets and adjacent to a marina for private yachts, the second one went to the lifeboat and another parking lot, which is next to fishing boats. Besides, there was the disused castle with a private beach located in the easternmost part of the harbour. Simultaneously, there was a single dock with passenger ferries in the northern part of the port, situated below a public beach extending further north.
+
+At present, the northern area continues to function as a port, with the addition of a new dock beside the old one. Furthermore, this area serves as a docking point for passenger ferries. The marina to the right of these facilities has been repurposed for fishing boats. At the same time, the abandoned castle has been converted into a hotel. Additionally, cafés and shops have been established to the east of this road.`],
+
+[19,3,"Process Diagram","Ethanol · Biofuel production",
+ "The diagram below shows how a biofuel called ethanol is produced. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the cyclic process of ethanol production from biofuels, specifically detailing the various stages involved in this intricate procedure.
+
+Overall, the ethanol manufacturing process involves several interconnected steps, commencing with the utilisation of sunlight and carbon dioxide for plant growth and culminating in the distribution of ethanol as a biofuel.
+
+Initially, sunlight and carbon dioxide facilitate the growth of plants, which serve as the primary feedstock for ethanol production. Following their harvest, these plants undergo a pre-processing phase that extracts cellulose. This cellulose subsequently undergoes further processing to yield sugars, which are essential for the fermentation stage.
+
+During fermentation, the sugars are converted into ethanol through the action of specific microbes. The resultant ethanol can then be transported for use in various modes of transportation, including cars, trucks, and ships. Notably, the combustion of ethanol in these vehicles generates carbon dioxide as a by-product, thus contributing to the cyclical nature of this process.`],
+
+[19,4,"Mixed","Dance classes · Locations & types",
+ "The charts below give information on the location and types of dance classes young people in a town in Australia are currently attending. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The pie chart and bar chart detail information concerning dance classes currently being attended by young people in an Australian town. Looking from an overall perspective, it is readily apparent that the vast majority of classes are hosted in private studios, followed by school halls, community halls, and, most distantly, college studios. For very young children, ballet and tap dancing are more popular, while the preferred option for older students is modern dance.
+
+Regarding the location of dance classes in the town, private studios account for 48% of the total, precisely double the figure for after-school school halls (24%). Community and other halls trail this data point slightly at 18% and the least common venue is college-based studios at just 10%.
+
+Concerning the varieties of dance classes popular with different age demographics, ballet is most notable with over 600 students under age 11, and only 300 students aged 11 to 16. The age disparity narrows for tap classes with 410 older students and 440 younger ones. Modern dance displays the opposite trend to ballet with far more older students (520) relative to their younger counterparts (300).`],
+
+[20,1,"Table","New York City · Population by district",
+ "The first table below shows changes in the total population of New York City from 1800 to 2000. The second and third tables show changes in the population of the five districts of the city (Manhattan, Brooklyn, Bronx, Queens, Staten Island) over the same period. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided tables illustrate shifts in the demographic distribution across New York City's districts over two centuries, from 1800 to 2000.
+
+Overall, the city's total population experienced a dramatic hundredfold increase across the period. Concurrently, the demographic dominance shifted decisively from Manhattan to the other four districts.
+
+In 1800, New York City's population was under 80,000, with Manhattan housing the vast majority at 76%. By 1900, while the total had surged to approximately 3.4 million, Manhattan's share had fallen to just over half, at 54%. Conversely, the combined population of the outer areas grew significantly, rising from 18,701 to 1.59 million over the same century, increasing their proportion from 24% to 46%.
+
+The trend of suburbanisation continued through the 20th century. By 2000, the total population exceeded 8 million, yet Manhattan was home to only 19% of residents, a sharp decline from its earlier dominance. In stark contrast, the other districts collectively housed 81% of the city's population, with their numbers swelling to nearly 6.5 million.`],
+
+[20,2,"Map / Plan","Beechwood Farm · 1950 vs today",
+ "The plans below show the site of a farm in 1950 and the same site today. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The map shows how Beechwood Farm has changed from 1950 to the present day.
+
+In general, Beechwood Farm has become more accessible with new roads and parking areas, more entertaining with camping areas and holiday cottages, and greener due to the addition of solar panels.
+
+From 1950 to 2025, the sheep grazing area has been segmented into four sections, which now include two parking spaces, a campsite, and a solar panel installation. Additionally, the pathways around the farm have been upgraded to roads, and the barn has been moved from the edge of the pathways to the junction of two roads near the chicken area.
+
+Vacation cottages have replaced the barn's original location from 1950. Simultaneously, a farm shop has been constructed in the vicinity of the fruit trees. However, the locations of the farmhouse, chicken area, vegetable region, soft fruit patch, and fruit tree area have remained unchanged throughout the last 75 years.`],
+
+[20,3,"Mixed","Little Chalfont library · Members, loans, trends",
+ "The charts below give information about a public library in a town called Little Chalfont. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The provided charts illustrate various aspects of the public library situated in Little Chalfont, encompassing member demographics, category-wise loan distributions, and annual loan trends over a decade.
+
+Overall, adults aged 18 to 64 represent the predominant age group among library members, while children's fiction emerges as the most popular lending category.
+
+In terms of membership demographics as of 2016, the pie chart reveals that the largest segment consists of adults aged 18 to 64, accounting for 51% of the total members. This is followed by children, who comprise 22% of the library's patrons. Young adults aged 13 to 17 represent 16%, while adults aged 65 and above make up the smallest group, contributing only 11% to the overall membership.
+
+As evidenced by the table detailing total loans by category in 2016, children's fiction and adult fiction each constituted 38% of all loans, indicating a strong preference for narrative literature across these demographics. Meanwhile, children's non-fiction and children's DVDs received 6%, suggesting that while fiction is favoured, there remains some interest in non-fiction and audiovisual materials.`],
+
+[20,4,"Process Diagram","Bamboo · Fabric manufacturing",
+ "The diagram below shows how fabric is manufactured from bamboo. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates the process by which bamboo is transformed into fabric. Overall, this is a linear process consisting of nine distinct stages, starting with planting bamboo and ending with fabric production.
+
+In the initial stages, bamboo plants are sown in spring and then harvested in autumn once they have matured. After harvesting, the stalks are mechanically cut into strips, which are subsequently crushed to form a liquid pulp, marking the end of the preparatory phase.
+
+In the next sequence, the liquid pulp is filtered to separate the long fibres from the rest of the material. These extracted fibres are then softened using water and amine oxide, a chemical agent. Once softened, the material is spun into yarn, after which it is woven to produce fabric. Finally, the fabric is turned into garments, such as socks and T-shirts, completing the production cycle.`],
+
+[21,1,"Line Graph","US economy · Jobs in four sectors",
+ "The graph below gives information about the number of jobs in four sectors of the economy in the US between 1960 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The line graph illustrates the number of employees in four sectors of the economy in the US between 1960 and 2020.
+
+Overall, the number of retail and healthcare workers increased, albeit at varying rates, while the reverse was true for manufacturing and agriculture. However, the number of manufacturing workers stood out among the other categories with consistently higher figures.
+
+Focusing on the increases first, the number of retail jobs started at about 6 million in 1960. Over the six decades, it experienced a significant increase from 6 million in 1960 to 16 million in 2020. Similarly, the number of healthcare jobs grew dramatically from 2 million in 1960 to 16 million in 2020.
+
+By contrast, the number of manufacturing and agriculture jobs decreased over the period. The number of manufacturing jobs increased steadily from 15 million in 1960 to 20 million in 1980, but this was followed by a significant decrease to 13 million in the final year. The number of agriculture jobs declined gradually from 5 million in 1960 to about 2 million in 2020.`],
+
+[21,2,"Map / Plan","College café · Before redesign and today",
+ "The plans below show a college café before it was redesigned and how it looks now. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The two maps illustrate the layout of a college café before and after it was redesigned.
+
+Overall, the café has been significantly modernised, with several new facilities introduced to improve food services and customer convenience. While the kitchen, the central seating area, and the toilets remained unchanged, the serving area and the staff dining rooms were substantially reorganised.
+
+Before the renovation, the café contained two staff dining rooms on the left-hand side. Following the redesign, these rooms were replaced by a takeaway food counter and a coffee bar. In addition, a new salad bar was installed beside the central seating area. The tables and chairs in the middle of the café remained in the same location throughout the redevelopment.
+
+Outside the café, a new outdoor seating area was added, together with a barbecue area to its left. On the right-hand side of the café, the kitchen was left unchanged. However, the serving area was modified to provide only hot meals instead of the wider range of food and drink options available previously. Finally, the toilets remained in their original position.`],
+
+[21,3,"Process Diagram","Rain-shadow desert · Formation",
+ "The diagram below shows how one type of desert, known as a rain-shadow desert, is formed. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The diagram illustrates how a rain-shadow desert is formed.
+
+Overall, the process begins when moist air from the sea moves towards a mountain and ends with the formation of a dry desert on the other side of the mountain. Rain falls only on the windward side, while the leeward side remains dry because the air has lost most of its moisture.
+
+At the first stage, winds carrying moist air approach the coast from the sea. As they reach the mountains, they are forced to rise up the windward side. While rising, the air cools, causing clouds to form. As the temperature continues to fall, the moisture in the clouds turns into rain, which falls on the windward slope.
+
+After that, the air crosses the top of the mountain and moves down the leeward side. Since most of its moisture has already fallen as rain, the air becomes dry. It continues travelling across inland areas without producing any further rainfall. As a result, the land receives very little precipitation over a long distance, eventually leading to the formation of a rain-shadow desert.`],
+
+[21,4,"Mixed","University library · Users & satisfaction",
+ "The chart and table below show the results of a survey of library users at a university. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The pie chart illustrates the categories of library users, while the table demonstrates the results of a survey regarding library user satisfaction at a university.
+
+Overall, it is remarkable that the full-time undergraduate students constituted the largest share of total library users. Regarding user satisfaction, the helpfulness of staff and library opening hours were the most positively received aspects, whereas the availability of journals experienced the highest level of dissatisfaction.
+
+Looking at the pie graph, it is clear that the most significant portion goes to full-time undergraduates, making up 44%, with full-time postgraduates at 25%. Part-time postgraduates represented exactly 16% of the total dataset. Meanwhile, the percentages for distance learning and academic staff exhibited a near-equal distribution, sitting at 8% and 7%, respectively.
+
+As detailed in the table, the figures reveal library user satisfaction. Library opening hours and helpfulness of staff registered a zero-percent dissatisfaction rate, with 65% and 95% being very satisfied, respectively. In contrast, almost half of users were very satisfied with the availability of journals and reliability of Wi-Fi, representing 45% and 48%, respectively.`]
+];
+
+/* =========================================================================
+   CONSTANTS
+   ========================================================================= */
+const TYPE_ORDER = ["Line Graph","Bar Chart","Pie Chart","Table","Map / Plan","Process Diagram","Mixed"];
+const TYPE_CLASS = {
+  "Line Graph":"c-line","Bar Chart":"c-bar","Pie Chart":"c-pie","Table":"c-table",
+  "Map / Plan":"c-map","Process Diagram":"c-process","Mixed":"c-mixed"
+};
+const TYPE_ICON = {
+  "Line Graph":"📈","Bar Chart":"📊","Pie Chart":"🥧","Table":"📋",
+  "Map / Plan":"🗺️","Process Diagram":"⚙️","Mixed":"🔀"
+};
+
+const ALL = QUESTIONS.map(r => {
+  const key = r[0] + '-' + r[1];
+  return {
+    book: r[0], test: r[1], type: r[2], topic: r[3],
+    question: r[4], essay: r[5], image: IMAGES[key] || null
+  };
+});
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function nl2p(text) {
+  return esc(text).split('\n\n').map(p => '<p>' + p.replace(/\n/g,' ') + '</p>').join('');
+}
+function wordCount(text) {
+  const t = String(text || '').trim();
+  return t ? t.split(/\s+/).length : 0;
+}
+
+/* ------------------------------------------------------------------
+   IMAGE LOADER
+   ------------------------------------------------------------------ */
+const IMG_TIMEOUT_MS = 12000;
+
+function imgFallbackHTML(url) {
+  return '<span class="big-ico">🖼️</span>' +
+         'Chart image could not be loaded.<br>' +
+         '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">Open the original on engnovate.com ↗</a>' +
+         '<br><button type="button" class="img-retry" style="margin-top:.6rem;padding:.35rem .9rem;border-radius:999px;border:1px solid #fcd34d;background:#fff;color:#b45309;font-weight:700;font-size:.72rem;cursor:pointer;">↻ Retry</button>';
+}
+
+function loadFrameImage(frame) {
+  if (!frame) return;
+  const st = frame.dataset.imgState;
+  if (st === 'loading' || st === 'ok') return;
+
+  const url = frame.dataset.img;
+  const fallback = frame.querySelector('.img-fallback');
+
+  if (!url) {
+    frame.dataset.imgState = 'error';
+    if (fallback) fallback.innerHTML = '<span class="big-ico">🖼️</span>No chart image for this question.';
+    return;
+  }
+
+  frame.dataset.imgState = 'loading';
+  if (fallback) fallback.innerHTML = '<span class="big-ico">⏳</span>Loading chart…';
+
+  const img = document.createElement('img');
+  img.alt = 'Chart';
+  img.decoding = 'async';
+  img.referrerPolicy = 'no-referrer';
+  img.style.display = 'none';
+
+  let settled = false;
+  const timer = setTimeout(() => fail(), IMG_TIMEOUT_MS);
+
+  function succeed() {
+    if (settled) return;
+    settled = true;
+    clearTimeout(timer);
+    frame.dataset.imgState = 'ok';
+    img.style.display = '';
+    if (fallback) fallback.remove();
+  }
+  function fail() {
+    if (settled) return;
+    settled = true;
+    clearTimeout(timer);
+    frame.dataset.imgState = 'error';
+    img.remove();
+    if (fallback) fallback.innerHTML = imgFallbackHTML(url);
+  }
+
+  img.addEventListener('load', () => {
+    if (img.naturalWidth > 0) succeed();
+    else fail();
+  });
+  img.addEventListener('error', fail);
+
+  frame.insertBefore(img, frame.firstChild);
+  img.src = url;
+}
+
+const CHEVRON_SVG = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>';
+
+/* ---- Stats ---- */
+document.getElementById('statTotal').textContent = ALL.length;
+
+/* ---- Book select ---- */
+const bookSel = document.getElementById('bookFilter');
+[...new Set(ALL.map(i => i.book))].sort((a,b)=>a-b).forEach(b => {
+  const o = document.createElement('option');
+  o.value = b; o.textContent = 'Book ' + b;
+  bookSel.appendChild(o);
+});
+
+/* ---- Type chips ---- */
+const typeWrap = document.getElementById('typeFilters');
+TYPE_ORDER.forEach(t => {
+  const count = ALL.filter(i => i.type === t).length;
+  if (!count) return;
+  const b = document.createElement('button');
+  b.className = 'chip';
+  b.dataset.type = t;
+  b.textContent = TYPE_ICON[t] + ' ' + t + ' (' + count + ')';
+  typeWrap.appendChild(b);
+});
+
+/* ---- State ---- */
+const state = { book: 'all', type: 'all', q: '' };
+const collapsedBooks = new Set();
+const collapsedTests = new Set();
+
+/* ---- Render ---- */
+const resultsEl = document.getElementById('results');
+const countEl = document.getElementById('resultCount');
+const summaryEl = document.getElementById('activeSummary');
+let uid = 0;
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+  const filtered = ALL.filter(item => {
+    if (state.book !== 'all' && item.book !== Number(state.book)) return false;
+    if (state.type !== 'all' && item.type !== state.type) return false;
+    if (q) {
+      const hay = (item.question + ' ' + item.topic + ' ' + item.essay).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  countEl.textContent = filtered.length;
+  const bits = [];
+  if (state.book !== 'all') bits.push('Book ' + state.book);
+  if (state.type !== 'all') bits.push('“' + state.type + '”');
+  if (q) bits.push('search: “' + state.q.trim() + '”');
+  summaryEl.textContent = bits.length ? ' · ' + bits.join(' · ') : '';
+
+  if (!filtered.length) {
+    resultsEl.innerHTML = '<div class="no-results"><div class="text-5xl mb-3">🔍</div><p class="font-bold text-slate-600">No questions match your filters.</p><p class="text-sm mt-1">Try resetting or broadening your search.</p></div>';
+    return;
+  }
+
+  const byBook = {};
+  filtered.forEach(i => {
+    (byBook[i.book] = byBook[i.book] || {});
+    (byBook[i.book][i.test] = byBook[i.book][i.test] || []).push(i);
+  });
+
+  let html = '';
+  Object.keys(byBook).sort((a,b)=>a-b).forEach(book => {
+    const tests = byBook[book];
+    const bookCount = Object.values(tests).reduce((n,a)=>n+a.length,0);
+    const bookKey = String(book);
+    const bc = collapsedBooks.has(bookKey);
+    html += '<div class="book-heading" data-book="' + bookKey + '">' +
+              '<button class="collapse-chevron ' + (bc?'collapsed':'') + '">' + CHEVRON_SVG + '</button>' +
+              '<span class="book-pill">Book ' + book + '</span>' +
+              '<span class="text-xs font-semibold text-slate-400">' + bookCount + ' question' + (bookCount!==1?'s':'') + '</span>' +
+              '<span class="line"></span></div>';
+    html += '<div class="section-body ' + (bc?'collapsed':'') + '" data-book-body="' + bookKey + '">';
+    Object.keys(tests).sort((a,b)=>a-b).forEach(test => {
+      const items = tests[test];
+      const testKey = bookKey + '-' + test;
+      const tc = collapsedTests.has(testKey);
+      html += '<div class="test-heading" data-test="' + testKey + '">' +
+                '<button class="collapse-chevron ' + (tc?'collapsed':'') + '">' + CHEVRON_SVG + '</button>' +
+                '<span class="dot"></span>Test ' + test +
+                '<span class="text-slate-400 font-semibold">· ' + items.length + '</span></div>';
+      html += '<div class="section-body ' + (tc?'collapsed':'') + '" data-test-body="' + testKey + '">';
+      html += '<div class="grid gap-5">';
+      items.forEach(item => html += cardHTML(item));
+      html += '</div></div>';
+    });
+    html += '</div>';
+  });
+
+  resultsEl.innerHTML = html;
+  attachCardHandlers();
+}
+
+/* =====================================================================
+   MAIN PAGE CARD
+   Left  = question + chart
+   Right = "Model Answer" label + always-visible essay
+   ===================================================================== */
+function cardHTML(item) {
+  const cardId = 'card-' + (uid++);
+  const typeCls = TYPE_CLASS[item.type] || '';
+  const icon = TYPE_ICON[item.type] || '📊';
+  const wc = wordCount(item.essay);
+  const imgUrl = item.image || '';
+
+  return '' +
+  '<article class="essay-card p-5" id="' + cardId + '">' +
+    '<div class="card-split">' +
+
+      /* ---------------- LEFT: chart side ---------------- */
+      '<div class="card-split-left">' +
+        '<div class="flex flex-wrap items-center gap-1.5 mb-3">' +
+          '<span class="badge b-book">Book ' + item.book + '</span>' +
+          '<span class="badge b-test">Test ' + item.test + '</span>' +
+          '<span class="badge ' + typeCls + '">' + icon + ' ' + esc(item.type) + '</span>' +
+          '<span class="badge b-words">' + wc + ' words</span>' +
+        '</div>' +
+        '<p class="text-[0.66rem] font-bold uppercase tracking-wider text-slate-400 mb-1.5">' + esc(item.topic) + '</p>' +
+        '<h3 class="text-[0.95rem] font-extrabold text-slate-900 leading-snug m-0 mb-4">' + esc(item.question) + '</h3>' +
+        '<div class="img-frame" data-img="' + esc(imgUrl) + '">' +
+          '<span class="img-badge">' + icon + ' ' + esc(item.type) + '</span>' +
+          '<span class="img-zoom">🔍 Click to enlarge</span>' +
+          '<div class="img-fallback"><span class="big-ico">' + icon + '</span>Loading chart…</div>' +
+        '</div>' +
+      '</div>' +
+
+      /* ---------------- RIGHT: answer side ---------------- */
+      '<div class="card-split-right">' +
+        '<div class="flex flex-wrap items-center justify-between gap-2 mb-3">' +
+          '<span class="answer-label">📖 Model Answer</span>' +
+          '<button type="button" class="practice-btn" data-practice-id="' + cardId + '">' +
+            '<svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Practice · 20 min' +
+          '</button>' +
+        '</div>' +
+        '<div class="essay-body">' + nl2p(item.essay) + '</div>' +
+      '</div>' +
+
+    '</div>' +
+  '</article>';
+}
+
+function attachCardHandlers() {
+
+  resultsEl.querySelectorAll('.img-frame').forEach(loadFrameImage);
+
+  resultsEl.querySelectorAll('.img-frame').forEach(frame => {
+    frame.addEventListener('click', (e) => {
+      if (e.target.closest('a') || e.target.closest('.img-retry')) return;
+      const img = frame.querySelector('img');
+      if (img && img.complete && img.naturalWidth > 0) openLightbox(img.currentSrc || img.src);
+    });
+  });
+
+  resultsEl.querySelectorAll('.practice-btn').forEach(btn => {
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const card = document.getElementById(btn.dataset.practiceId);
+      if (!card) return;
+      openPracticeFromCard(card);
+    });
+  });
+
+  resultsEl.querySelectorAll('.book-heading').forEach(h => {
+    h.addEventListener('click', () => {
+      const key = h.dataset.book;
+      const body = resultsEl.querySelector('[data-book-body="' + key + '"]');
+      const chev = h.querySelector('.collapse-chevron');
+      if (!body) return;
+      const c = body.classList.toggle('collapsed');
+      chev.classList.toggle('collapsed', c);
+      if (c) collapsedBooks.add(key); else collapsedBooks.delete(key);
+    });
+  });
+
+  resultsEl.querySelectorAll('.test-heading').forEach(h => {
+    h.addEventListener('click', () => {
+      const key = h.dataset.test;
+      const body = resultsEl.querySelector('[data-test-body="' + key + '"]');
+      const chev = h.querySelector('.collapse-chevron');
+      if (!body) return;
+      const c = body.classList.toggle('collapsed');
+      chev.classList.toggle('collapsed', c);
+      if (c) collapsedTests.add(key); else collapsedTests.delete(key);
+    });
+  });
+}
+
+resultsEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('.img-retry');
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const frame = btn.closest('.img-frame');
+  if (!frame) return;
+  frame.querySelectorAll('img').forEach(i => i.remove());
+  delete frame.dataset.imgState;
+  loadFrameImage(frame);
+});
+
+/* =========================================================================
+   LIGHTBOX
+   ========================================================================= */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+function openLightbox(src) {
+  if (!src) return;
+  lightboxImg.src = src;
+  lightboxImg.referrerPolicy = 'no-referrer';
+  lightbox.classList.add('open');
+  document.body.classList.add('modal-open');
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+  if (!practiceModal.classList.contains('open')) document.body.classList.remove('modal-open');
+}
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target.id === 'lightboxClose') closeLightbox();
+});
+
+/* =========================================================================
+   PRACTICE MODAL
+   ========================================================================= */
+const practiceModal = document.getElementById('practiceModal');
+const pmTopic = document.getElementById('pmTopic');
+const pmQuestion = document.getElementById('pmQuestion');
+const pmMeta = document.getElementById('pmMeta');
+const pmImgContainer = document.getElementById('pmImgContainer');
+const pmTextarea = document.getElementById('pmTextarea');
+const pmWordCount = document.getElementById('pmWordCount');
+const pmStatus = document.getElementById('pmStatus');
+const pmDivider = document.getElementById('pmDivider');
+const pmSplit = document.getElementById('pmSplit');
+const pmClose = document.getElementById('pmClose');
+
+const timerRow = document.getElementById('timerRow');
+const timerDisplay = document.getElementById('timerDisplay');
+const timerLabel = document.getElementById('timerLabel');
+const timerStart = document.getElementById('timerStart');
+const timerStartText = document.getElementById('timerStartText');
+const timerReset = document.getElementById('timerReset');
+
+const TOTAL_SECONDS = 20 * 60;
+const WARN_AT = 5 * 60;
+const DANGER_AT = 2 * 60;
+const STORAGE_PREFIX = 'ielts-task1-practice-';
+
+let timerInterval = null;
+let secondsLeft = TOTAL_SECONDS;
+let timerRunning = false;
+let timerFinished = false;
+let currentCardKey = '';
+
+function fmtTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+}
+function updateTimerUI() {
+  timerDisplay.textContent = fmtTime(secondsLeft);
+  timerRow.classList.remove('warn','danger','done');
+  if (timerFinished) {
+    timerRow.classList.add('done');
+    timerLabel.textContent = '✓ Time is up — review your answer';
+    timerStartText.textContent = 'Restart';
+    return;
+  }
+  if (timerRunning) {
+    if (secondsLeft <= DANGER_AT) {
+      timerRow.classList.add('danger');
+      timerLabel.textContent = '⏰ Final minutes — wrap up now';
+    } else if (secondsLeft <= WARN_AT) {
+      timerRow.classList.add('warn');
+      timerLabel.textContent = 'Time is running — aim to finish soon';
+    } else {
+      timerLabel.textContent = '✍️ Writing in progress';
+    }
+    timerStartText.textContent = 'Pause';
+  } else {
+    if (secondsLeft === TOTAL_SECONDS) {
+      timerLabel.textContent = 'Ready to start';
+      timerStartText.textContent = 'Start';
+    } else {
+      timerLabel.textContent = '⏸ Paused';
+      timerStartText.textContent = 'Resume';
+    }
+  }
+}
+function startTimer() {
+  if (timerRunning || timerFinished) return;
+  if (secondsLeft <= 0) return;
+  timerRunning = true;
+  updateTimerUI();
+  pmStatus.textContent = 'Writing…';
+  timerInterval = setInterval(() => {
+    secondsLeft--;
+    if (secondsLeft <= 0) { secondsLeft = 0; stopTimer(true); return; }
+    updateTimerUI();
+  }, 1000);
+}
+function pauseTimer() {
+  if (!timerRunning) return;
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  updateTimerUI();
+  pmStatus.textContent = 'Paused';
+}
+function stopTimer(finished) {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  if (finished) { timerFinished = true; pmStatus.textContent = '✓ Time finished'; }
+  updateTimerUI();
+}
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  timerFinished = false;
+  secondsLeft = TOTAL_SECONDS;
+  updateTimerUI();
+  pmStatus.textContent = 'Not started';
+}
+
+timerStart.addEventListener('click', () => {
+  if (timerFinished) { resetTimer(); return; }
+  if (timerRunning) pauseTimer();
+  else startTimer();
+});
+timerReset.addEventListener('click', resetTimer);
+
+function updateWordCount() {
+  const txt = pmTextarea.value;
+  const wc = wordCount(txt);
+  pmWordCount.textContent = wc + ' word' + (wc === 1 ? '' : 's');
+  pmWordCount.classList.remove('ok','low','high');
+  if (wc >= 150 && wc <= 200) pmWordCount.classList.add('ok');
+  else if (wc > 0 && wc < 150) pmWordCount.classList.add('low');
+  else if (wc > 200) pmWordCount.classList.add('high');
+
+  if (currentCardKey) {
+    try { localStorage.setItem(STORAGE_PREFIX + currentCardKey, txt); } catch(e) {}
+  }
+  if (wc === 0) pmStatus.textContent = timerRunning ? 'Writing…' : (timerFinished ? '✓ Time finished' : 'Not started');
+  else if (wc < 150) pmStatus.textContent = 'Below minimum (150)';
+  else if (wc > 200) pmStatus.textContent = 'Over target (200)';
+  else pmStatus.textContent = timerRunning ? 'On target ✓' : 'Word count on target';
+}
+pmTextarea.addEventListener('input', updateWordCount);
+
+function openPracticeFromCard(card) {
+  const question = card.querySelector('h3')?.textContent || '';
+  const topic = card.querySelector('p.text-\\[0\\.66rem\\]')?.textContent || '';
+  const bookBadge = card.querySelector('.b-book')?.textContent || '';
+  const testBadge = card.querySelector('.b-test')?.textContent || '';
+  const typeBadgeEl = card.querySelector('.badge[class*="c-"]');
+  const typeText = typeBadgeEl ? typeBadgeEl.textContent.trim() : '';
+  const imgFrame = card.querySelector('.img-frame');
+  const imgUrl = imgFrame ? imgFrame.dataset.img : null;
+
+  pmTopic.textContent = topic || (bookBadge + ' · ' + testBadge);
+  pmQuestion.textContent = question;
+
+  const icon = typeBadgeEl ? typeBadgeEl.textContent.split(' ')[0] : '';
+  const typeKey = Object.keys(TYPE_ICON).find(k => TYPE_ICON[k] === icon);
+  pmMeta.innerHTML =
+    '<span class="badge b-book">' + esc(bookBadge) + '</span>' +
+    '<span class="badge b-test">' + esc(testBadge) + '</span>' +
+    '<span class="badge ' + (TYPE_CLASS[typeKey] || 'c-mixed') + '">' + esc(typeText) + '</span>';
+
+  pmImgContainer.innerHTML = '<div class="pm-img-fallback">⏳ Loading chart…</div>';
+
+  if (imgUrl) {
+    const fb = pmImgContainer.querySelector('.pm-img-fallback');
+    const img = document.createElement('img');
+    img.alt = 'Chart';
+    img.decoding = 'async';
+    img.referrerPolicy = 'no-referrer';
+    img.style.display = 'none';
+
+    let settled = false;
+    const timer = setTimeout(() => fail(), IMG_TIMEOUT_MS);
+
+    function succeed() {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      img.style.display = '';
+      if (fb) fb.remove();
+      img.addEventListener('click', () => openLightbox(img.currentSrc || img.src));
+    }
+    function fail() {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      img.remove();
+      if (fb) fb.innerHTML =
+        '⚠️ Chart image could not be loaded.<br>' +
+        '<a href="' + esc(imgUrl) + '" target="_blank" rel="noopener noreferrer">Open the original on engnovate.com ↗</a>';
+    }
+
+    img.addEventListener('load', () => { if (img.naturalWidth > 0) succeed(); else fail(); });
+    img.addEventListener('error', fail);
+
+    pmImgContainer.appendChild(img);
+    img.src = imgUrl;
+  } else {
+    pmImgContainer.innerHTML = '<div class="pm-img-fallback">No chart available for this question.</div>';
+  }
+
+  currentCardKey = (bookBadge + '-' + testBadge).replace(/\s+/g,'');
+  let saved = '';
+  try { saved = localStorage.getItem(STORAGE_PREFIX + currentCardKey) || ''; } catch(e) {}
+  pmTextarea.value = saved;
+
+  pmSplit.style.gridTemplateColumns = '';
+  resetTimer();
+  updateWordCount();
+
+  practiceModal.classList.add('open');
+  document.body.classList.add('modal-open');
+  setTimeout(() => pmTextarea.focus(), 200);
+}
+
+function closePractice() {
+  if (timerRunning) {
+    if (!confirm('The timer is still running. Close practice mode anyway? Your written answer will be saved.')) return;
+  }
+  pauseTimer();
+  practiceModal.classList.remove('open');
+  if (!lightbox.classList.contains('open')) document.body.classList.remove('modal-open');
+}
+
+pmClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  closePractice();
+});
+
+practiceModal.addEventListener('click', (e) => {
+  if (e.target === practiceModal) closePractice();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (lightbox.classList.contains('open')) closeLightbox();
+    else if (practiceModal.classList.contains('open')) closePractice();
+  }
+});
+
+/* =========================================================================
+   DRAGGABLE DIVIDER
+   ========================================================================= */
+let isDragging = false;
+let startX = 0;
+let startLeftWidth = 0;
+let splitTotalWidth = 0;
+
+function startDrag(clientX) {
+  isDragging = true;
+  startX = clientX;
+  splitTotalWidth = pmSplit.offsetWidth;
+  startLeftWidth = pmSplit.querySelector('.pm-col-left').offsetWidth;
+  document.body.style.cursor = 'col-resize';
+  document.body.style.userSelect = 'none';
+}
+function onDrag(clientX) {
+  if (!isDragging) return;
+  const dx = clientX - startX;
+  let newLeft = startLeftWidth + dx;
+  const minLeft = splitTotalWidth * 0.2;
+  const maxLeft = splitTotalWidth * 0.8;
+  newLeft = Math.max(minLeft, Math.min(maxLeft, newLeft));
+  const pct = (newLeft / splitTotalWidth) * 100;
+  pmSplit.style.gridTemplateColumns = pct + '% 10px 1fr';
+}
+function endDrag() {
+  if (!isDragging) return;
+  isDragging = false;
+  document.body.style.cursor = '';
+  document.body.style.userSelect = '';
+}
+
+pmDivider.addEventListener('mousedown', (e) => { e.preventDefault(); startDrag(e.clientX); });
+pmDivider.addEventListener('touchstart', (e) => { startDrag(e.touches[0].clientX); }, {passive:true});
+document.addEventListener('mousemove', (e) => onDrag(e.clientX));
+document.addEventListener('touchmove', (e) => { if (isDragging) onDrag(e.touches[0].clientX); }, {passive:true});
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+/* =========================================================================
+   FILTER EVENTS
+   ========================================================================= */
+typeWrap.addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const wasActive = chip.classList.contains('active');
+  typeWrap.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  if (wasActive) state.type = 'all';
+  else { chip.classList.add('active'); state.type = chip.dataset.type; }
+  render();
+});
+bookSel.addEventListener('change', () => { state.book = bookSel.value; render(); });
+let debounce;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => { state.q = e.target.value; render(); }, 160);
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  state.book = 'all'; state.type = 'all'; state.q = '';
+  typeWrap.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  bookSel.value = 'all';
+  document.getElementById('searchInput').value = '';
+  render();
+});
+document.getElementById('collapseAllBtn').addEventListener('click', () => {
+  resultsEl.querySelectorAll('.book-heading').forEach(h => {
+    const key = h.dataset.book;
+    collapsedBooks.add(key);
+    const body = resultsEl.querySelector('[data-book-body="' + key + '"]');
+    if (body) body.classList.add('collapsed');
+    const chev = h.querySelector('.collapse-chevron');
+    if (chev) chev.classList.add('collapsed');
+  });
+  resultsEl.querySelectorAll('.test-heading').forEach(h => {
+    const key = h.dataset.test;
+    collapsedTests.add(key);
+    const body = resultsEl.querySelector('[data-test-body="' + key + '"]');
+    if (body) body.classList.add('collapsed');
+    const chev = h.querySelector('.collapse-chevron');
+    if (chev) chev.classList.add('collapsed');
+  });
+});
+document.getElementById('expandAllBtn').addEventListener('click', () => {
+  collapsedBooks.clear(); collapsedTests.clear();
+  resultsEl.querySelectorAll('.section-body').forEach(b => b.classList.remove('collapsed'));
+  resultsEl.querySelectorAll('.collapse-chevron').forEach(c => c.classList.remove('collapsed'));
+});
+
+render();
+</script>
+
+</body>
+</html>
