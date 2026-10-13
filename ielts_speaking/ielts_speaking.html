@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cambridge IELTS Speaking Hub · Books 11–21</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambridge IELTS Speaking Hub · Books 11–21</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet" />
+    <style>
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
   body {
     background:
@@ -301,200 +303,299 @@
     .book-heading { margin: 1.8rem 0 .8rem; }
   }
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
-  <div class="aurora"></div>
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
-      <div class="md:w-2/3">
-        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
-          🎙️ Cambridge IELTS 11 – 21
-        </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
-          Speaking Question Bank<br />
-          <span class="text-blue-300">&amp; Full Natural Answers</span>
-        </h1>
-        <p class="text-lg md:text-xl text-blue-100/80 mt-4 max-w-2xl leading-relaxed">
-          Every Part 1, Part 2 and Part 3 question from Books 11–21 — with full natural spoken
-          answers, bullet-point structures, dedicated collocation &amp; idiom panels, and filters by part, type and book.
-        </p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#bank" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
-            🔍 Browse the Bank <span>→</span>
-          </a>
-          <a href="#howto" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
-            📘 Answer Formula
-          </a>
-        </div>
-      </div>
-      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
-        <div class="stat-box"><div class="number" id="statPart1">—</div><div class="label">Part 1</div></div>
-        <div class="stat-box"><div class="number" id="statPart2">—</div><div class="label">Part 2</div></div>
-        <div class="stat-box"><div class="number" id="statPart3">—</div><div class="label">Part 3</div></div>
-        <div class="stat-box"><div class="number" id="statTotal">—</div><div class="label">Total</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="filter-shell" id="bank">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-    <div class="flex flex-col gap-3">
-
-      <div class="flex flex-wrap items-center gap-2.5">
-        <div class="flex flex-wrap items-center gap-1.5" id="partFilters">
-          <button class="seg-btn active" data-part="all">All Parts</button>
-          <button class="seg-btn" data-part="1">Part 1</button>
-          <button class="seg-btn" data-part="2">Part 2</button>
-          <button class="seg-btn" data-part="3">Part 3</button>
-        </div>
-
-        <select class="book-select" id="bookFilter">
-          <option value="all">All Books</option>
-        </select>
-
-        <div class="relative flex-1 min-w-[180px]">
-          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-          </svg>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search questions, topics or keywords…" />
-        </div>
-
-        <button id="resetBtn" class="tool-btn warn">Reset</button>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
-        <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Type:</span>
-      </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-2.5">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
-          <button id="collapseAllBtn" class="tool-btn" title="Collapse all books and tests">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 9l7 7 7-7"/></svg>
-            Collapse All
-          </button>
-          <button id="expandAllBtn" class="tool-btn" title="Expand all books and tests">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 15l-7-7-7 7"/></svg>
-            Expand All
-          </button>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Answers:</span>
-          <button id="showAllAnswersBtn" class="tool-btn primary" title="Open every sample answer">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/></svg>
-            Show All Answers
-          </button>
-          <button id="hideAllAnswersBtn" class="tool-btn" title="Close every sample answer">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 3l18 18"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.6 5.7A10 10 0 0112 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 01-3.2 4M6.3 6.3A16.7 16.7 0 002.5 12S6 18.5 12 18.5a9.8 9.8 0 004.2-.9"/></svg>
-            Hide All Answers
-          </button>
+    <section
+      class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+      <div class="aurora"></div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-10">
+          <a href="./../index.html"
+            style="text-decoration:none;color:inherit">
+            <div class="md:w-2/3">
+              <div
+                class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+                <span
+                  class="dot">
+                </span>🎙️
+                Cambridge IELTS 11 – 21
+              </div>
+            </a>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+              Speaking Question Bank<br />
+              <span class="text-blue-300">&amp; Full Natural Answers</span>
+            </h1>
+            <p
+              class="text-lg md:text-xl text-blue-100/80 mt-4 max-w-2xl leading-relaxed">
+              Every Part 1, Part 2 and Part 3 question from Books 11–21 — with
+              full natural spoken
+              answers, bullet-point structures, dedicated collocation &amp;
+              idiom panels, and filters by part, type and book.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#bank"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
+                🔍 Browse the Bank <span>→</span>
+              </a>
+              <a href="#howto"
+                class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+                📘 Answer Formula
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+            <div class="stat-box"><div class="number" id="statPart1">—</div><div
+                class="label">Part 1</div></div>
+            <div class="stat-box"><div class="number" id="statPart2">—</div><div
+                class="label">Part 2</div></div>
+            <div class="stat-box"><div class="number" id="statPart3">—</div><div
+                class="label">Part 3</div></div>
+            <div class="stat-box"><div class="number" id="statTotal">—</div><div
+                class="label">Total</div></div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="text-xs text-slate-500 font-medium">
-        Showing <span id="resultCount" class="font-extrabold text-indigo-600">0</span> questions
-        <span id="activeSummary" class="text-slate-400"></span>
-      </div>
+    <div class="filter-shell" id="bank">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <div class="flex flex-col gap-3">
 
-    </div>
-  </div>
-</div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div class="flex flex-wrap items-center gap-1.5" id="partFilters">
+              <button class="seg-btn active" data-part="all">All Parts</button>
+              <button class="seg-btn" data-part="1">Part 1</button>
+              <button class="seg-btn" data-part="2">Part 2</button>
+              <button class="seg-btn" data-part="3">Part 3</button>
+            </div>
 
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
-  <div id="results"></div>
+            <select class="book-select" id="bookFilter">
+              <option value="all">All Books</option>
+            </select>
 
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="howto" />
+            <div class="relative flex-1 min-w-[180px]">
+              <svg
+                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+              <input type="text" id="searchInput" class="search-input"
+                placeholder="Search questions, topics or keywords…" />
+            </div>
 
-  <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-9 shadow-sm">
-    <div class="flex items-center gap-3 mb-6">
-      <span class="text-3xl">🧭</span>
-      <h2 class="text-2xl font-extrabold text-slate-900 m-0">The Band 7–8 Answer Formula (Natural Speech Edition)</h2>
-    </div>
+            <button id="resetBtn" class="tool-btn warn">Reset</button>
+          </div>
 
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
-        <span class="font-extrabold text-blue-800 text-sm uppercase tracking-wide">Part 1 · 3–4 bullets</span>
-        <ul class="mt-3 space-y-2 text-sm text-slate-700">
-          <li class="flex gap-2"><span class="text-blue-500 font-bold">1.</span> Direct answer, straight away</li>
-          <li class="flex gap-2"><span class="text-blue-500 font-bold">2.</span> One concrete reason or detail</li>
-          <li class="flex gap-2"><span class="text-blue-500 font-bold">3.</span> A conditional or contrast ("If I had to pick…", "That said…")</li>
-          <li class="flex gap-2"><span class="text-blue-500 font-bold">4.</span> One personal / Bangladeshi example</li>
-          <li class="flex gap-2"><span class="text-blue-500 font-bold">5.</span> Stop naturally — don't speechify</li>
-        </ul>
-      </div>
+          <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
+            <span
+              class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Type:</span>
+          </div>
 
-      <div class="bg-amber-50 rounded-xl p-5 border border-amber-100">
-        <span class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part 2 · 4–5 bullets</span>
-        <ul class="mt-3 space-y-2 text-sm text-slate-700">
-          <li class="flex gap-2"><span class="text-amber-500 font-bold">1.</span> Open with the topic in one line</li>
-          <li class="flex gap-2"><span class="text-amber-500 font-bold">2.</span> Cover all four cue bullets</li>
-          <li class="flex gap-2"><span class="text-amber-500 font-bold">3.</span> Add sensory / concrete detail</li>
-          <li class="flex gap-2"><span class="text-amber-500 font-bold">4.</span> Use past tenses for the narrative</li>
-          <li class="flex gap-2"><span class="text-amber-500 font-bold">5.</span> End with a feeling, reflection or conditional</li>
-        </ul>
-      </div>
+          <div class="flex flex-wrap items-center justify-between gap-2.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span
+                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
+              <button id="collapseAllBtn" class="tool-btn"
+                title="Collapse all books and tests">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5" d="M5 9l7 7 7-7" /></svg>
+                Collapse All
+              </button>
+              <button id="expandAllBtn" class="tool-btn"
+                title="Expand all books and tests">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5" d="M19 15l-7-7-7 7" /></svg>
+                Expand All
+              </button>
+            </div>
 
-      <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
-        <span class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part 3 · 2–3 bullets</span>
-        <ul class="mt-3 space-y-2 text-sm text-slate-700">
-          <li class="flex gap-2"><span class="text-emerald-500 font-bold">1.</span> Answer first, then explain</li>
-          <li class="flex gap-2"><span class="text-emerald-500 font-bold">2.</span> WHY → EXAMPLE → BALANCE</li>
-          <li class="flex gap-2"><span class="text-emerald-500 font-bold">3.</span> Compare groups carefully</li>
-          <li class="flex gap-2"><span class="text-emerald-500 font-bold">4.</span> Use "That said…", "It depends…", "If we look at…"</li>
-          <li class="flex gap-2"><span class="text-emerald-500 font-bold">5.</span> Close with "So overall…"</li>
-        </ul>
-      </div>
-    </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span
+                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Answers:</span>
+              <button id="showAllAnswersBtn" class="tool-btn primary"
+                title="Open every sample answer">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" /></svg>
+                Show All Answers
+              </button>
+              <button id="hideAllAnswersBtn" class="tool-btn"
+                title="Close every sample answer">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5" d="M3 3l18 18" /><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.6 5.7A10 10 0 0112 5.5c6 0 9.5 6.5 9.5 6.5a17 17 0 01-3.2 4M6.3 6.3A16.7 16.7 0 002.5 12S6 18.5 12 18.5a9.8 9.8 0 004.2-.9" /></svg>
+                Hide All Answers
+              </button>
+            </div>
+          </div>
 
-    <div class="mt-7 grid md:grid-cols-2 gap-5">
-      <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
-        <p class="font-extrabold text-slate-900 text-sm mb-3">Useful Part 3 language</p>
-        <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
-          <span>I'd argue that…</span><span>I tend to think…</span>
-          <span>The main reason is…</span><span>This is largely because…</span>
-          <span>For instance…</span><span>A good example would be…</span>
-          <span>That said…</span><span>Having said that…</span>
-          <span>To some extent…</span><span>It depends on…</span>
-          <span>So overall, I think…</span><span>On balance…</span>
-        </div>
-      </div>
+          <div class="text-xs text-slate-500 font-medium">
+            Showing <span id="resultCount"
+              class="font-extrabold text-indigo-600">0</span> questions
+            <span id="activeSummary" class="text-slate-400"></span>
+          </div>
 
-      <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
-        <p class="font-extrabold text-slate-900 text-sm mb-3">Bangladesh example bank</p>
-        <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
-          <span>Dhaka traffic</span><span>Apartment living</span>
-          <span>Eid gatherings</span><span>Pohela Boishakh</span>
-          <span>Public exams</span><span>Coaching centres</span>
-          <span>Garment industry</span><span>Freelancing / remittances</span>
-          <span>Monsoon waterlogging</span><span>Cox's Bazar</span>
-          <span>The Sundarbans</span><span>Tea estates</span>
-          <span>Rickshaws &amp; ride-sharing</span><span>Online shopping (Daraz, bKash)</span>
         </div>
       </div>
     </div>
 
-    <div class="mt-7 rounded-xl border border-amber-200 bg-amber-50/60 px-5 py-4 flex gap-3">
-      <span class="text-xl shrink-0">💡</span>
-      <p class="text-sm text-slate-700 m-0">
-        <strong class="text-amber-800">Golden rule:</strong> never memorise a full answer word-for-word.
-        Learn the <em>full-answer flow</em>, the <em>bullet structure</em>, the <em>collocations</em>, the <em>idioms</em>
-        and one <em>personal example</em> per topic — then speak flexibly.
-      </p>
-    </div>
-  </section>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+      <div id="results"></div>
 
-  <div class="footer-note">
-    <p class="font-bold text-slate-800">🎙️ Cambridge IELTS Speaking Hub · Books 11–21</p>
-    <p class="text-sm mt-1">Full natural answers + bullet structures + collocations + idioms — filterable by part, type and book.</p>
-    <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML &amp; Tailwind CSS</p>
-  </div>
-</main>
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="howto" />
 
-<script>
+      <section
+        class="bg-white rounded-2xl border border-slate-200 p-6 md:p-9 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">🧭</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 m-0">The Band 7–8
+            Answer Formula (Natural Speech Edition)</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+            <span
+              class="font-extrabold text-blue-800 text-sm uppercase tracking-wide">Part
+              1 · 3–4 bullets</span>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span
+                  class="text-blue-500 font-bold">1.</span> Direct answer,
+                straight away</li>
+              <li class="flex gap-2"><span
+                  class="text-blue-500 font-bold">2.</span> One concrete reason
+                or detail</li>
+              <li class="flex gap-2"><span
+                  class="text-blue-500 font-bold">3.</span> A conditional or
+                contrast ("If I had to pick…", "That said…")</li>
+              <li class="flex gap-2"><span
+                  class="text-blue-500 font-bold">4.</span> One personal /
+                Bangladeshi example</li>
+              <li class="flex gap-2"><span
+                  class="text-blue-500 font-bold">5.</span> Stop naturally —
+                don't speechify</li>
+            </ul>
+          </div>
+
+          <div class="bg-amber-50 rounded-xl p-5 border border-amber-100">
+            <span
+              class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part
+              2 · 4–5 bullets</span>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span
+                  class="text-amber-500 font-bold">1.</span> Open with the topic
+                in one line</li>
+              <li class="flex gap-2"><span
+                  class="text-amber-500 font-bold">2.</span> Cover all four cue
+                bullets</li>
+              <li class="flex gap-2"><span
+                  class="text-amber-500 font-bold">3.</span> Add sensory /
+                concrete detail</li>
+              <li class="flex gap-2"><span
+                  class="text-amber-500 font-bold">4.</span> Use past tenses for
+                the narrative</li>
+              <li class="flex gap-2"><span
+                  class="text-amber-500 font-bold">5.</span> End with a feeling,
+                reflection or conditional</li>
+            </ul>
+          </div>
+
+          <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+            <span
+              class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part
+              3 · 2–3 bullets</span>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span
+                  class="text-emerald-500 font-bold">1.</span> Answer first,
+                then explain</li>
+              <li class="flex gap-2"><span
+                  class="text-emerald-500 font-bold">2.</span> WHY → EXAMPLE →
+                BALANCE</li>
+              <li class="flex gap-2"><span
+                  class="text-emerald-500 font-bold">3.</span> Compare groups
+                carefully</li>
+              <li class="flex gap-2"><span
+                  class="text-emerald-500 font-bold">4.</span> Use "That said…",
+                "It depends…", "If we look at…"</li>
+              <li class="flex gap-2"><span
+                  class="text-emerald-500 font-bold">5.</span> Close with
+                "So overall…"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-7 grid md:grid-cols-2 gap-5">
+          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
+            <p class="font-extrabold text-slate-900 text-sm mb-3">Useful Part 3
+              language</p>
+            <div
+              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
+              <span>I'd argue that…</span><span>I tend to think…</span>
+              <span>The main reason is…</span><span>This is largely
+                because…</span>
+              <span>For instance…</span><span>A good example would be…</span>
+              <span>That said…</span><span>Having said that…</span>
+              <span>To some extent…</span><span>It depends on…</span>
+              <span>So overall, I think…</span><span>On balance…</span>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
+            <p class="font-extrabold text-slate-900 text-sm mb-3">Bangladesh
+              example bank</p>
+            <div
+              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
+              <span>Dhaka traffic</span><span>Apartment living</span>
+              <span>Eid gatherings</span><span>Pohela Boishakh</span>
+              <span>Public exams</span><span>Coaching centres</span>
+              <span>Garment industry</span><span>Freelancing /
+                remittances</span>
+              <span>Monsoon waterlogging</span><span>Cox's Bazar</span>
+              <span>The Sundarbans</span><span>Tea estates</span>
+              <span>Rickshaws &amp; ride-sharing</span><span>Online shopping
+                (Daraz, bKash)</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-7 rounded-xl border border-amber-200 bg-amber-50/60 px-5 py-4 flex gap-3">
+          <span class="text-xl shrink-0">💡</span>
+          <p class="text-sm text-slate-700 m-0">
+            <strong class="text-amber-800">Golden rule:</strong> never memorise
+            a full answer word-for-word.
+            Learn the <em>full-answer flow</em>, the <em>bullet structure</em>,
+            the <em>collocations</em>, the <em>idioms</em>
+            and one <em>personal example</em> per topic — then speak flexibly.
+          </p>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <p class="font-bold text-slate-800">🎙️ Cambridge IELTS Speaking Hub ·
+          Books 11–21</p>
+        <p class="text-sm mt-1">Full natural answers + bullet structures +
+          collocations + idioms — filterable by part, type and book.</p>
+        <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML
+          &amp; Tailwind CSS</p>
+      </div>
+    </main>
+
+    <script>
 /* =========================================================================
    DATA FORMAT
    PART 1: [book, test, topic, type, question, fullAnswer, [bullets], [collocations], [idioms]]
@@ -5355,5 +5456,5 @@ document.getElementById('hideAllAnswersBtn').addEventListener('click', () => {
 render();
 </script>
 
-</body>
+  </body>
 </html>

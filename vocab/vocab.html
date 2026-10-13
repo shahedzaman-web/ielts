@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vocabulary Remember · Topics · Vocab Hub</title>
-        <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vocabulary Remember · Topics · Vocab Hub</title>
+    <style>
   :root{--bg:#0b1020;--surface:#141a2e;--surface2:#1c2340;--border:#2a3358;--text:#e8ecff;--muted:#8891b8;--accent:#7c8cff;--accent2:#22d3ee;--good:#22c55e;--bad:#ef4444;--warn:#f59e0b;--purple:#a78bfa}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter','Noto Sans Bengali',system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
   body{background:radial-gradient(1000px 500px at 10% -10%,rgba(124,140,255,.15),transparent 60%),radial-gradient(900px 500px at 110% 10%,rgba(34,211,238,.12),transparent 60%),var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
@@ -199,229 +199,231 @@
     .rating-row{grid-template-columns:1fr;gap:6px}
   }
 </style>
-    </head>
-    <body>
+  </head>
+  <body>
 
-        <header class="topbar">
-            <div class="topbar-inner">
-                <div class="brand">
-                    <div class="dot">📖</div>
-                    <div>Vocabulary Remember<small>IELTS · Topic-based · English
-                            + বাংলা</small></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <a href="./../index.html"
+            style="text-decoration:none;color:inherit"><div
+              class="dot">📖</div></a>
+          <div>Vocabulary Remember<small>IELTS · Topic-based · English
+              + বাংলা</small></div>
+        </div>
+        <nav class="tabs" id="tabs">
+          <button class="tab active"
+            data-view="practice">Practice</button>
+          <button class="tab" data-view="manage">Words</button>
+          <button class="tab" data-view="stats">Stats</button>
+        </nav>
+        <div class="stats-mini">
+          <div class="stat"><b
+              id="hTotal">0</b><span>Total</span></div>
+          <div class="stat"><b
+              id="hMastered">0</b><span>Mastered</span></div>
+          <div class="stat"><b
+              id="hStreak">0</b><span>Streak</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="view active" id="view-practice">
+          <div id="picker">
+            <div class="card">
+              <div class="section-title">🎯 Practice modes</div>
+              <p class="section-sub">Pick a mode. Counts update
+                live.</p>
+              <div class="mode-grid">
+                <div class="mode-card new" data-mode="new">
+                  <span class="m-count" id="cNew">0</span>
+                  <span class="m-icon">✨</span>
+                  <div class="m-title">New words</div>
+                  <div class="m-sub">Words you have never
+                    reviewed.</div>
                 </div>
-                <nav class="tabs" id="tabs">
-                    <button class="tab active"
-                        data-view="practice">Practice</button>
-                    <button class="tab" data-view="manage">Words</button>
-                    <button class="tab" data-view="stats">Stats</button>
-                </nav>
-                <div class="stats-mini">
-                    <div class="stat"><b
-                            id="hTotal">0</b><span>Total</span></div>
-                    <div class="stat"><b
-                            id="hMastered">0</b><span>Mastered</span></div>
-                    <div class="stat"><b
-                            id="hStreak">0</b><span>Streak</span></div>
+                <div class="mode-card learning"
+                  data-mode="learning">
+                  <span class="m-count"
+                    id="cLearning">0</span>
+                  <span class="m-icon">📚</span>
+                  <div class="m-title">Learning</div>
+                  <div class="m-sub">Words in progress.
+                    Hardest first.</div>
                 </div>
+                <div class="mode-card mastered"
+                  data-mode="mastered">
+                  <span class="m-count"
+                    id="cMastered">0</span>
+                  <span class="m-icon">🏆</span>
+                  <div class="m-title">Mastered · review</div>
+                  <div class="m-sub">Keep mastered words
+                    fresh.</div>
+                </div>
+                <div class="mode-card" data-mode="all">
+                  <span class="m-count" id="cAll">0</span>
+                  <span class="m-icon">🌐</span>
+                  <div class="m-title">All words</div>
+                  <div class="m-sub">Every word,
+                    shuffled.</div>
+                </div>
+              </div>
             </div>
-        </header>
 
-        <main>
-            <div class="container">
-                <section class="view active" id="view-practice">
-                    <div id="picker">
-                        <div class="card">
-                            <div class="section-title">🎯 Practice modes</div>
-                            <p class="section-sub">Pick a mode. Counts update
-                                live.</p>
-                            <div class="mode-grid">
-                                <div class="mode-card new" data-mode="new">
-                                    <span class="m-count" id="cNew">0</span>
-                                    <span class="m-icon">✨</span>
-                                    <div class="m-title">New words</div>
-                                    <div class="m-sub">Words you have never
-                                        reviewed.</div>
-                                </div>
-                                <div class="mode-card learning"
-                                    data-mode="learning">
-                                    <span class="m-count"
-                                        id="cLearning">0</span>
-                                    <span class="m-icon">📚</span>
-                                    <div class="m-title">Learning</div>
-                                    <div class="m-sub">Words in progress.
-                                        Hardest first.</div>
-                                </div>
-                                <div class="mode-card mastered"
-                                    data-mode="mastered">
-                                    <span class="m-count"
-                                        id="cMastered">0</span>
-                                    <span class="m-icon">🏆</span>
-                                    <div class="m-title">Mastered · review</div>
-                                    <div class="m-sub">Keep mastered words
-                                        fresh.</div>
-                                </div>
-                                <div class="mode-card" data-mode="all">
-                                    <span class="m-count" id="cAll">0</span>
-                                    <span class="m-icon">🌐</span>
-                                    <div class="m-title">All words</div>
-                                    <div class="m-sub">Every word,
-                                        shuffled.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="section-title">🗂️ Topics <span
-                                    id="cTopics"
-                                    style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
-                            <p class="section-sub">Practice a single topic.
-                                Great for targeted study.</p>
-                            <div class="topic-grid" id="topicGrid"></div>
-                        </div>
-
-                        <div class="card">
-                            <div class="section-title">🎴 Decks <span
-                                    id="cDecks"
-                                    style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
-                            <p class="section-sub">25 words per deck. Click a
-                                deck for options.</p>
-                            <div class="deck-grid" id="deckGrid"></div>
-                        </div>
-                    </div>
-
-                    <div id="active" style="display:none">
-                        <div class="card practice-card">
-                            <div class="progress-bar"><i id="sBar"></i></div>
-                            <div class="practice-meta">
-                                <p><b id="sLabel">—</b></p>
-                                <p>Reviewed <b id="sReviewed">0</b> / <b
-                                        id="sTotal">0</b></p>
-                            </div>
-
-                            <div class="flashcard" id="flashcard">
-                                <div class="fc-tag" id="fcTag">WORD</div>
-                                <div class="fc-pos" id="fcPos">—</div>
-                                <div class="fc-topic" id="fcTopic">—</div>
-                                <div class="fc-word" id="fcWord">—</div>
-                                <div class="fc-bangla" id="fcBangla"></div>
-                                <div class="fc-hint" id="fcHint">Tap
-                                    "Reveal meaning" to check</div>
-                                <div id="fcBack"
-                                    style="display:none;width:100%;flex-direction:column;align-items:center">
-                                    <div class="fc-def" id="fcDef"></div>
-                                    <div class="fc-example"
-                                        id="fcExample"></div>
-                                    <div class="fc-syn" id="fcSyn"></div>
-                                </div>
-                            </div>
-
-                            <div class="play-row" id="revealRow">
-                                <button class="btn primary" id="bReveal">👁
-                                    Reveal meaning</button>
-                                <button class="btn" id="bPlay">🔊 Play
-                                    word</button>
-                            </div>
-
-                            <div class="rating-row" id="ratingRow"
-                                style="display:none">
-                                <button class="rate-btn hard" data-rate="hard"
-                                    type="button">😰 Hard<small>Show again
-                                        soon</small></button>
-                                <button class="rate-btn good" data-rate="good"
-                                    type="button">🙂 Good<small>Normal
-                                        interval</small></button>
-                                <button class="rate-btn easy" data-rate="easy"
-                                    type="button">😎 Easy<small>Longer
-                                        interval</small></button>
-                            </div>
-
-                            <div class="actions">
-                                <button class="btn ghost small" id="bFlip"
-                                    type="button">🔄 Flip card</button>
-                                <span class="spacer"></span>
-                                <button class="btn ghost small" id="bExit"
-                                    type="button">Exit</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="done" style="display:none"></div>
-                </section>
-
-                <section class="view" id="view-manage">
-                    <div class="card">
-                        <div class="section-title">📚 Word list <span
-                                id="listCount"
-                                style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
-                        <p class="section-sub">Add, edit, search, sort or remove
-                            words.</p>
-                        <div class="search-row">
-                            <input type="text" id="search"
-                                placeholder="Search word, Bangla, meaning…" />
-                            <select id="topicFilter">
-                                <option value="all">All topics</option>
-                            </select>
-                            <select id="filter">
-                                <option value="all">All words</option>
-                                <option value="new">New</option>
-                                <option value="learning">Learning</option>
-                                <option value="mastered">Mastered</option>
-                                <option value="hard">Difficult (hard
-                                    rating)</option>
-                            </select>
-                            <select id="sort">
-                                <option value="learning-first">Sort: Learning
-                                    first</option>
-                                <option value="new-first">Sort: New
-                                    first</option>
-                                <option value="hardest">Sort: Hardest
-                                    first</option>
-                                <option value="az">Sort: A → Z</option>
-                                <option value="za">Sort: Z → A</option>
-                                <option value="newest">Sort: Newest</option>
-                                <option value="oldest">Sort: Oldest</option>
-                            </select>
-                            <button class="btn primary" id="bAdd">+ Add
-                                word</button>
-                            <button class="btn" id="bExport">Export</button>
-                            <button class="btn" id="bImport">Import</button>
-                            <button class="btn ghost" id="bReseed">↻
-                                Reset</button>
-                            <input type="file" id="importFile" accept=".json"
-                                style="display:none" />
-                        </div>
-                        <div class="word-list" id="wordList"></div>
-                    </div>
-                </section>
-
-                <section class="view" id="view-stats">
-                    <div class="stat-grid" id="statGrid"></div>
-                    <div class="card">
-                        <div class="section-title">🔥 Words to review</div>
-                        <p class="section-sub">Sorted by difficulty. <button
-                                class="btn small primary" id="bPractice"
-                                type="button">Practice these now</button></p>
-                        <div class="mistake-list" id="mistakeList"></div>
-                    </div>
-                    <div class="card">
-                        <div class="section-title">🗂️ Progress by topic</div>
-                        <p class="section-sub">Mastery levels per topic.</p>
-                        <div class="topic-grid" id="statTopics"></div>
-                    </div>
-                    <div class="card">
-                        <div class="section-title">🕒 Recent sessions</div>
-                        <p class="section-sub">Last 10 sessions.</p>
-                        <div class="mistake-list" id="historyList"></div>
-                    </div>
-                </section>
+            <div class="card">
+              <div class="section-title">🗂️ Topics <span
+                  id="cTopics"
+                  style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
+              <p class="section-sub">Practice a single topic.
+                Great for targeted study.</p>
+              <div class="topic-grid" id="topicGrid"></div>
             </div>
-        </main>
 
-        <div class="modal-bg" id="modalBg"><div class="modal"
-                id="modal"></div></div>
-        <div class="toast" id="toast"></div>
+            <div class="card">
+              <div class="section-title">🎴 Decks <span
+                  id="cDecks"
+                  style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
+              <p class="section-sub">25 words per deck. Click a
+                deck for options.</p>
+              <div class="deck-grid" id="deckGrid"></div>
+            </div>
+          </div>
 
-        <script>
+          <div id="active" style="display:none">
+            <div class="card practice-card">
+              <div class="progress-bar"><i id="sBar"></i></div>
+              <div class="practice-meta">
+                <p><b id="sLabel">—</b></p>
+                <p>Reviewed <b id="sReviewed">0</b> / <b
+                    id="sTotal">0</b></p>
+              </div>
+
+              <div class="flashcard" id="flashcard">
+                <div class="fc-tag" id="fcTag">WORD</div>
+                <div class="fc-pos" id="fcPos">—</div>
+                <div class="fc-topic" id="fcTopic">—</div>
+                <div class="fc-word" id="fcWord">—</div>
+                <div class="fc-bangla" id="fcBangla"></div>
+                <div class="fc-hint" id="fcHint">Tap
+                  "Reveal meaning" to check</div>
+                <div id="fcBack"
+                  style="display:none;width:100%;flex-direction:column;align-items:center">
+                  <div class="fc-def" id="fcDef"></div>
+                  <div class="fc-example"
+                    id="fcExample"></div>
+                  <div class="fc-syn" id="fcSyn"></div>
+                </div>
+              </div>
+
+              <div class="play-row" id="revealRow">
+                <button class="btn primary" id="bReveal">👁
+                  Reveal meaning</button>
+                <button class="btn" id="bPlay">🔊 Play
+                  word</button>
+              </div>
+
+              <div class="rating-row" id="ratingRow"
+                style="display:none">
+                <button class="rate-btn hard" data-rate="hard"
+                  type="button">😰 Hard<small>Show again
+                    soon</small></button>
+                <button class="rate-btn good" data-rate="good"
+                  type="button">🙂 Good<small>Normal
+                    interval</small></button>
+                <button class="rate-btn easy" data-rate="easy"
+                  type="button">😎 Easy<small>Longer
+                    interval</small></button>
+              </div>
+
+              <div class="actions">
+                <button class="btn ghost small" id="bFlip"
+                  type="button">🔄 Flip card</button>
+                <span class="spacer"></span>
+                <button class="btn ghost small" id="bExit"
+                  type="button">Exit</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="done" style="display:none"></div>
+        </section>
+
+        <section class="view" id="view-manage">
+          <div class="card">
+            <div class="section-title">📚 Word list <span
+                id="listCount"
+                style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
+            <p class="section-sub">Add, edit, search, sort or remove
+              words.</p>
+            <div class="search-row">
+              <input type="text" id="search"
+                placeholder="Search word, Bangla, meaning…" />
+              <select id="topicFilter">
+                <option value="all">All topics</option>
+              </select>
+              <select id="filter">
+                <option value="all">All words</option>
+                <option value="new">New</option>
+                <option value="learning">Learning</option>
+                <option value="mastered">Mastered</option>
+                <option value="hard">Difficult (hard
+                  rating)</option>
+              </select>
+              <select id="sort">
+                <option value="learning-first">Sort: Learning
+                  first</option>
+                <option value="new-first">Sort: New
+                  first</option>
+                <option value="hardest">Sort: Hardest
+                  first</option>
+                <option value="az">Sort: A → Z</option>
+                <option value="za">Sort: Z → A</option>
+                <option value="newest">Sort: Newest</option>
+                <option value="oldest">Sort: Oldest</option>
+              </select>
+              <button class="btn primary" id="bAdd">+ Add
+                word</button>
+              <button class="btn" id="bExport">Export</button>
+              <button class="btn" id="bImport">Import</button>
+              <button class="btn ghost" id="bReseed">↻
+                Reset</button>
+              <input type="file" id="importFile" accept=".json"
+                style="display:none" />
+            </div>
+            <div class="word-list" id="wordList"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-stats">
+          <div class="stat-grid" id="statGrid"></div>
+          <div class="card">
+            <div class="section-title">🔥 Words to review</div>
+            <p class="section-sub">Sorted by difficulty. <button
+                class="btn small primary" id="bPractice"
+                type="button">Practice these now</button></p>
+            <div class="mistake-list" id="mistakeList"></div>
+          </div>
+          <div class="card">
+            <div class="section-title">🗂️ Progress by topic</div>
+            <p class="section-sub">Mastery levels per topic.</p>
+            <div class="topic-grid" id="statTopics"></div>
+          </div>
+          <div class="card">
+            <div class="section-title">🕒 Recent sessions</div>
+            <p class="section-sub">Last 10 sessions.</p>
+            <div class="mistake-list" id="historyList"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="modal-bg" id="modalBg"><div class="modal"
+        id="modal"></div></div>
+    <div class="toast" id="toast"></div>
+
+    <script>
 /* =========================================================
    TOPICS DICTIONARY
    ========================================================= */
@@ -2944,5 +2946,5 @@ document.addEventListener('keydown', e => {
   }
 })();
 </script>
-    </body>
+  </body>
 </html>
