@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listen &amp; Spell · Spelling Hub</title>
+    <style>
+  :root{--bg:#0b1020;--surface:#141a2e;--surface2:#1c2340;--border:#2a3358;--text:#e8ecff;--muted:#8891b8;--accent:#7c8cff;--accent2:#22d3ee;--good:#22c55e;--bad:#ef4444;--warn:#f59e0b}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  body{background:radial-gradient(1000px 500px at 10% -10%,rgba(124,140,255,.15),transparent 60%),radial-gradient(900px 500px at 110% 10%,rgba(34,211,238,.12),transparent 60%),var(--bg);color:var(--text);min-height:100dvh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  button,input,textarea,select{font-family:inherit}
+  button{cursor:pointer}
+
+  .topbar{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 18px}
+  .topbar-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+  .brand .dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px}
+  .brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);padding:4px;border-radius:12px}
+  .tab{border:0;background:transparent;color:var(--muted);padding:7px 14px;border-radius:9px;font-weight:700;font-size:13px;transition:all .15s ease}
+  .tab:hover{color:var(--text);background:rgba(255,255,255,.04)}
+  .tab.active{background:linear-gradient(135deg,var(--accent),#5f6eff);color:#fff}
+  .stats-mini{display:flex;gap:6px}
+  .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 10px;border-radius:10px;text-align:center;min-width:58px}
+  .stat b{display:block;font-size:14px;line-height:1.1}
+  .stat span{font-size:9.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+
+  main{flex:1;padding:22px 18px}
+  .container{max-width:1080px;margin:0 auto}
+  .view{display:none}
+  .view.active{display:block}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 24px 50px -40px rgba(0,0,0,.8)}
+  .card + .card{margin-top:14px}
+  .section-title{font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .section-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+
+  /* Mode cards */
+  .mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .mode-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .18s ease;position:relative}
+  .mode-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .mode-card.danger{border-color:rgba(239,68,68,.35)}
+  .mode-card.danger:hover{border-color:#ef4444}
+  .mode-card.good{border-color:rgba(34,197,94,.35)}
+  .mode-card.good:hover{border-color:#22c55e}
+  .mode-card .m-icon{font-size:22px;margin-bottom:8px;display:block}
+  .mode-card .m-title{font-weight:800;font-size:14.5px;margin-bottom:3px}
+  .mode-card .m-sub{font-size:11.5px;color:var(--muted);line-height:1.5}
+  .mode-card .m-count{position:absolute;top:14px;right:14px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(124,140,255,.15);color:#c7d2fe}
+  .mode-card.danger .m-count{background:rgba(239,68,68,.15);color:#fca5a5}
+  .mode-card.good .m-count{background:rgba(34,197,94,.15);color:#86efac}
+
+  /* Chunks */
+  .chunk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+  .chunk{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:all .18s ease}
+  .chunk:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .chunk.done{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.06)}
+  .chunk.has-mistakes{border-color:rgba(239,68,68,.4)}
+  .chunk-title{font-weight:800;font-size:14px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;gap:6px}
+  .chunk-range{font-size:11px;color:var(--muted);margin-bottom:10px}
+  .chunk-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+  .chunk-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s ease}
+  .chunk-meta{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:6px;font-weight:700}
+  .chunk-flags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+  .chunk-flag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px}
+  .chunk-flag.done{background:rgba(34,197,94,.15);color:#86efac}
+  .chunk-flag.mistakes{background:rgba(239,68,68,.15);color:#fca5a5}
+
+  /* Practice */
+  .practice-card{max-width:640px;margin:0 auto}
+  .progress-bar{height:6px;background:rgba(255,255,255,.05);border-radius:999px;overflow:hidden;margin-bottom:14px}
+  .progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s ease}
+  .practice-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .practice-meta b{color:var(--text)}
+  .play-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px}
+  .btn{appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease,background .18s ease,border-color .18s ease}
+  .btn:hover{background:#232c50;border-color:#3b4778}
+  .btn:active{transform:scale(.97)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),#5f6eff);border-color:transparent;color:#fff}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent}
+  .btn.small{padding:6px 11px;font-size:12px}
+  .field{display:flex;align-items:center;gap:10px;background:#0e1428;border:1.5px solid var(--border);border-radius:14px;padding:6px 6px 6px 16px;transition:border-color .18s ease,box-shadow .18s ease}
+  .field:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(124,140,255,.14)}
+  .field.ok{border-color:var(--good);box-shadow:0 0 0 4px rgba(34,197,94,.14)}
+  .field.err{border-color:var(--bad);box-shadow:0 0 0 4px rgba(239,68,68,.14)}
+  .field input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:22px;font-weight:700;letter-spacing:.02em;padding:12px 4px;min-width:0}
+  .field input::placeholder{color:#4b5583;font-weight:500;letter-spacing:0}
+  .field .go{border-radius:10px;padding:12px 18px;font-size:14px}
+  .feedback{margin-top:12px;font-size:14px;min-height:22px;font-weight:600}
+  .feedback.ok{color:#86efac}
+  .feedback.err{color:#fca5a5}
+  .feedback .ans{color:#fde68a;font-weight:800}
+  .diff{display:inline-block;margin-left:6px;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .diff .wrong{color:#fca5a5;text-decoration:underline wavy #ef4444;text-underline-offset:3px}
+  .diff .miss{color:#fbbf24;background:rgba(251,191,36,.15);border-radius:3px;padding:0 2px}
+  .hint{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);color:#fde68a;padding:10px 14px;border-radius:12px;font-size:13.5px;margin-bottom:14px}
+  .hint b{color:#fbbf24}
+  .actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;align-items:center}
+  .actions .spacer{flex:1}
+  .session-summary{text-align:center;padding:24px 8px}
+  .session-summary .emoji{font-size:52px;line-height:1;margin-bottom:10px}
+  .session-summary h2{font-size:22px;margin-bottom:6px}
+  .session-summary p{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .summary-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:10px;margin:16px 0}
+  .summary-stats .s{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px}
+  .summary-stats .s b{display:block;font-size:22px;margin-bottom:2px}
+  .summary-stats .s span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+
+  /* Manage */
+  .search-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .search-row input,.search-row select{background:#0e1428;border:1.5px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;font-size:14px;outline:none}
+  .search-row input:focus,.search-row select:focus{border-color:var(--accent)}
+  .search-row input{flex:1;min-width:180px}
+  .word-list{display:flex;flex-direction:column;gap:6px;max-height:560px;overflow-y:auto;padding-right:6px}
+  .word-row{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+  .word-row.has-mistakes{border-left:3px solid #ef4444}
+  .word-text{font-weight:700;font-size:14.5px;word-break:break-word}
+  .word-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:3px}
+  .badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+  .badge.mastered{background:rgba(34,197,94,.15);color:#86efac}
+  .badge.learning{background:rgba(124,140,255,.15);color:#c7d2fe}
+  .badge.new{background:rgba(148,163,184,.15);color:#cbd5e1}
+  .badge.mistakes{background:rgba(239,68,68,.15);color:#fca5a5}
+  .empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:14px}
+  .empty .e{font-size:42px;margin-bottom:8px}
+
+  /* Stats */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px}
+  .stat-card b{display:block;font-size:26px;margin-bottom:2px;line-height:1.1}
+  .stat-card span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  .mistake-list{display:flex;flex-direction:column;gap:6px}
+  .mistake-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+  .mistake-rank{width:26px;height:26px;border-radius:50%;background:var(--surface2);color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
+  .mistake-count{font-weight:800;color:#fca5a5;font-size:13px}
+
+  /* Modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(3,6,20,.78);backdrop-filter:blur(6px);z-index:80;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;max-width:520px;width:100%;max-height:88dvh;overflow-y:auto;box-shadow:0 40px 80px -30px rgba(0,0,0,.85)}
+  .modal h3{font-size:18px;font-weight:800;margin-bottom:6px}
+  .modal p.m-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+  .modal label{display:block;font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+  .modal input,.modal textarea{width:100%;background:#0e1428;border:1.5px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;outline:none;margin-bottom:14px;font-family:inherit}
+  .modal input:focus,.modal textarea:focus{border-color:var(--accent)}
+  .modal textarea{resize:vertical;min-height:60px}
+  .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+  .modal-actions.column{flex-direction:column;align-items:stretch}
+  .modal-actions.column .btn{width:100%;justify-content:flex-start;padding:14px 16px;font-size:14px;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+  .modal-actions.column .btn small{display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px}
+  .modal-actions.column .btn.primary small{color:rgba(255,255,255,.75)}
+  .modal-actions.column .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .modal-actions.column .btn[disabled] small{color:var(--muted)}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#0f1530;border:1px solid var(--border);padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:all .25s ease;z-index:90}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.ok{border-color:rgba(34,197,94,.5);color:#86efac}
+  .toast.err{border-color:rgba(239,68,68,.5);color:#fca5a5}
+
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-thumb{background:#2a3358;border-radius:4px}
+
+  @media (max-width:640px){
+    .field input{font-size:19px;padding:10px 2px}
+    .field .go{padding:10px 14px}
+    .card{padding:16px;border-radius:14px}
+    main{padding:14px}
+    .topbar{padding:10px 12px}
+    .tabs{order:3;width:100%}
+    .tab{flex:1;text-align:center}
+    .word-row{grid-template-columns:1fr auto}
+  }
+</style>
+  </head>
+  <body>
+
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="dot">✍️</div>
+          <div>Listen &amp; Spell<small>Spelling Hub</small></div>
+        </div>
+        <nav class="tabs" id="tabs">
+          <button class="tab active" data-view="practice">Practice</button>
+          <button class="tab" data-view="manage">Words</button>
+          <button class="tab" data-view="stats">Stats</button>
+        </nav>
+        <div class="stats-mini">
+          <div class="stat"><b id="hTotal">0</b><span>Total</span></div>
+          <div class="stat"><b id="hMastered">0</b><span>Mastered</span></div>
+          <div class="stat"><b id="hStreak">0</b><span>Streak</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+
+        <!-- ============== PRACTICE ============== -->
+        <section class="view active" id="view-practice">
+
+          <!-- Picker -->
+          <div id="picker">
+            <div class="card">
+              <div class="section-title">🎯 Practice modes</div>
+              <p class="section-sub">Pick a mode. Counts update live.</p>
+              <div class="mode-grid">
+                <div class="mode-card good" data-mode="clean">
+                  <span class="m-count" id="cClean">0</span>
+                  <span class="m-icon">✅</span>
+                  <div class="m-title">Correct-in-first</div>
+                  <div class="m-sub">Words you have answered correctly without
+                    any wrong attempts. Untried words are excluded.</div>
+                </div>
+                <div class="mode-card danger" data-mode="mistakes">
+                  <span class="m-count" id="cMistakes">0</span>
+                  <span class="m-icon">🔴</span>
+                  <div class="m-title">Frequent mistakes</div>
+                  <div class="m-sub">Words you have got wrong before, including
+                    mastered words. Prioritises your most-missed words.</div>
+                </div>
+                <div class="mode-card" data-mode="all">
+                  <span class="m-count" id="cAll">0</span>
+                  <span class="m-icon">📚</span>
+                  <div class="m-title">All remaining</div>
+                  <div class="m-sub">Every unfinished word (clean + previous
+                    mistakes).</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="section-title">🔴 Top mistakes <span id="cTop"
+                  style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
+              <p class="section-sub">Sorted worst-first. Click 🔊 to hear
+                them.</p>
+              <div class="mistake-list" id="topList"></div>
+            </div>
+
+            <div class="card">
+              <div class="section-title">📦 Chunks</div>
+              <p class="section-sub">Click a chunk for options. Green = fully
+                mastered. Red = has mistakes.</p>
+              <div class="chunk-grid" id="chunkGrid"></div>
+            </div>
+          </div>
+
+          <!-- Active session -->
+          <div id="active" style="display:none">
+            <div class="card practice-card">
+              <div class="progress-bar"><i id="sBar"></i></div>
+              <div class="practice-meta">
+                <p><b id="sLabel">—</b></p>
+                <p>Processed <b id="sCleared">0</b> / <b id="sTotal">0</b></p>
+              </div>
+              <div class="play-row">
+                <button class="btn primary" id="bPlay">🔊 Play word</button>
+                <button class="btn" id="bSlow">🐢 Slower</button>
+                <button class="btn ghost" id="bHint">💡 Hint</button>
+                <button class="btn ghost" id="bSentence" style="display:none">💬
+                  Sentence</button>
+              </div>
+              <div class="hint" id="hint" style="display:none"></div>
+              <form id="form" autocomplete="off" onsubmit="return false;">
+                <div class="field" id="field">
+                  <input id="input" type="text" placeholder="Type the word…"
+                    autocomplete="off" autocapitalize="none" autocorrect="off"
+                    spellcheck="false" />
+                  <button class="btn primary go" id="bCheck"
+                    type="submit">Check</button>
+                </div>
+                <div class="feedback" id="feedback" aria-live="polite"></div>
+              </form>
+              <div class="actions">
+                <button class="btn ghost" id="bSkip">Skip →</button>
+                <button class="btn ghost" id="bReveal">Reveal</button>
+                <span class="spacer"></span>
+                <button class="btn ghost small" id="bExit">Exit</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Done -->
+          <div id="done" style="display:none"></div>
+        </section>
+
+        <!-- ============== MANAGE ============== -->
+        <section class="view" id="view-manage">
+          <div class="card">
+            <div class="section-title">📚 Word list</div>
+            <p class="section-sub">Add, edit, search, sort or remove words.
+              Saved automatically.</p>
+            <div class="search-row">
+              <input type="text" id="search" placeholder="Search words…" />
+              <select id="filter">
+                <option value="all">All words</option>
+                <option value="mastered">Mastered</option>
+                <option value="learning">Learning (has debt)</option>
+                <option value="correct-first">Correct-in-first (answered
+                  correctly, never wrong)</option>
+                <option value="mistakes">Frequent mistakes (wrong
+                  history)</option>
+                <option value="new">Not practised</option>
+              </select>
+              <select id="sort">
+                <option value="correct-first">Sort: Correct-in-first</option>
+                <option value="mistakes">Sort: Most mistakes</option>
+                <option value="az">Sort: A → Z</option>
+                <option value="za">Sort: Z → A</option>
+                <option value="newest">Sort: Newest</option>
+                <option value="oldest">Sort: Oldest</option>
+              </select>
+              <button class="btn primary" id="bAdd">+ Add word</button>
+              <button class="btn" id="bExport">Export</button>
+              <button class="btn" id="bImport">Import</button>
+              <input type="file" id="importFile" accept=".json"
+                style="display:none" />
+            </div>
+            <div class="word-list" id="wordList"></div>
+          </div>
+        </section>
+
+        <!-- ============== STATS ============== -->
+        <section class="view" id="view-stats">
+          <div class="stat-grid" id="statGrid"></div>
+          <div class="card">
+            <div class="section-title">🔴 Top mistakes</div>
+            <p class="section-sub">Worst first. <button
+                class="btn small primary" id="bPractice" type="button">Practice
+                these now</button></p>
+            <div class="mistake-list" id="mistakeList"></div>
+          </div>
+          <div class="card">
+            <div class="section-title">🕒 Recent sessions</div>
+            <p class="section-sub">Last 10 sessions.</p>
+            <div class="mistake-list" id="historyList"></div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <div class="modal-bg" id="modalBg"><div class="modal"
+        id="modal"></div></div>
+    <div class="toast" id="toast"></div>
+
+    <script>
+/* ============ SEED ============ */
+const SEED = ["Millennium","Poultry and game","Cetacean","Mammals","Breeze","Antarctica","Malaysia","Nigeria","Singapore","Philippines","Architecture","Suburb","Storey","Avenue","Archaeology","Humanities","Dictionary","Computer laboratory","Dissertation","Introductory","Student retention","Registrar’s office","Stationery","Volunteer","Secretary","Guard","Cheque","Grace period","Budget deficit","Counterfeit money","Debt","Interest-free credit","Annuity","Strategies","Questionnaire","Poll","Merchandise","Souvenir","Suite","Aquarium","Hydrofoil","Dinghy sailing","Paddle steamer","Cabin cruiser","Kayak","Punt","Helicopter","Hot-air balloon","Crew","Steam train","Festival","Exhibition","Theatre","Scuba-diving","Pottery","Woodcarving","Embroidery","Parachute","Hockey","Squash","Court","Stadium","Hammer","Horse racing","Gymnasium","Paragliding","Jogging","Push-up","Treadmill","Burning fossil fuels","Exhaust fume","Temperature","Chemical-free","Degradation","Vegetable","Vegan","Vegetation","Vegetarian","Drought","Contaminated","Keep-fit","Leisure time","Protein","Cereals","Yoghurt","Aluminium","Concrete","Cassette","Persuade","Concentrate","Touch","Extinct","Vulnerable","Flexible","Spectacular","Dangerous","Strongly recommended","Indigenous","Narrative","Chocolate","Attitude","Pedestrian safety","Sewer systems","Democrats","Lunar calendar","Evolution","Illiteracy","Proficiency","Obscure","Lagoon","Substantial","Burglar","Mountain lodge","Privileged","Excellent","Red tape","Bureaucracy","Available","Cancel","Cancellation","Security","Shoulder","Furniture","Garage","Tendon","Blood stream","Intestine","Stomach","Abdomen","Wrist","Palm","Thigh","Toe","Toenail","Forehead","Berries","Cucumber","Spinach","Lettuce","Lamb","Lentils","Groceries","Ingredients","Astronomer","Celestial body","Universe","Satellite","Asteroid","Meteor","Jazz","Folk music","Lyrics","Songwriter","Guitar","Puzzle","Anxiety","Scarf","Secondary","Variety","Moisture","Moist","Moisten","Irrigation","Purpose","Disease","Journalist","Machines","Advertising","Curtains","Striped","Obesity","Therapy","Rough","Equipment","Warranty","Litter","Meditation","Butterfly","Butterflies","Beginners","Bilingual","Atlas","Pollution","Tourism","Fences","Weapon","Genre","Visible","Trousers","Convenient","Socialize","Prediction","Military","Domestic life","Technical appointment","Poverty","Poetry","Drawings","Harbour","Seaweed","Endangered","Melon","Coconut","Strawberry","Salt","Nutrients","Nutrition","Society","Gloves","Plastic","Competition","Earthworm","Competitors","Taxi","Insurance","Chefs","Journalists","Performance","Depression","Adaptation","Cognitive","Poison","Lizard"];
+const CHUNK_SIZE = 50, DB_NAME = 'SpellingHubDB', DB_VERSION = 1;
+
+/* ============ INDEXEDDB ============ */
+let _db = null;
+function openDB(){
+  if (_db) return Promise.resolve(_db);
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(DB_NAME, DB_VERSION);
+    r.onupgradeneeded = e => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('words')){
+        const s = db.createObjectStore('words', { keyPath:'id', autoIncrement:true });
+        s.createIndex('text','text',{unique:true});
+      }
+      if (!db.objectStoreNames.contains('settings')) db.createObjectStore('settings',{keyPath:'key'});
+      if (!db.objectStoreNames.contains('history')) db.createObjectStore('history',{keyPath:'id',autoIncrement:true});
+    };
+    r.onsuccess = () => { _db = r.result; res(_db); };
+    r.onerror = () => rej(r.error);
+  });
+}
+const tx = (store, mode) => openDB().then(db => db.transaction(store, mode).objectStore(store));
+const dbAll = store => tx(store,'readonly').then(s => new Promise((res,rej)=>{const r=s.getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
+const dbPut = (store,obj) => tx(store,'readwrite').then(s => new Promise((res,rej)=>{const r=s.put(obj);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
+const dbAdd = (store,obj) => tx(store,'readwrite').then(s => new Promise((res,rej)=>{const r=s.add(obj);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
+const dbDel = (store,id) => tx(store,'readwrite').then(s => new Promise((res,rej)=>{const r=s.delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error);}));
+
+/* ============ STATE ============ */
+const state = {
+  words: [],       // all words
+  session: null,   // { pool:[ids], cleared:Set, label, mode, firstTry, attempts, start }
+  streak: 0,
+  view: 'practice'
+};
+
+/* ============ HELPERS ============ */
+const $ = id => document.getElementById(id);
+const $$ = sel => document.querySelectorAll(sel);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s).trim().toLowerCase().replace(/\s+/g,' ');
+
+let toastTimer;
+function toast(msg, kind){
+  const el = $('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + (kind||'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ el.className = 'toast ' + (kind||''); }, 1800);
+}
+
+/* ============ SPEECH ============ */
+let voices = [];
+function loadVoices(){ voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; }
+if (window.speechSynthesis){ loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
+function speak(text, rate){
+  if (!window.speechSynthesis) return;
+  try {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-GB'; u.rate = rate || 0.95;
+    const v = voices.find(x=>/en-GB/i.test(x.lang)) || voices.find(x=>/^en/i.test(x.lang));
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  } catch(_){}
+}
+
+/* ============ DIFF ============ */
+function diffHTML(g0, a0){
+  const g = g0.toLowerCase(), a = a0.toLowerCase();
+  let html = '', i = 0, j = 0;
+  while (i < g.length || j < a.length){
+    if (g[i] === a[j]) { html += esc(g[i]||''); i++; j++; }
+    else {
+      if (g[i] && a[j] && g[i+1] === a[j]) { html += `<span class="wrong">${esc(g[i])}</span>`; i++; }
+      else if (g[i] && a[j] && g[i] === a[j+1]) { html += `<span class="miss">${esc(a[j])}</span>`; j++; }
+      else {
+        if (g[i]) html += `<span class="wrong">${esc(g[i])}</span>`;
+        if (a[j] && !g[i+1]) html += `<span class="miss">${esc(a[j])}</span>`;
+        i++; j++;
+      }
+    }
+  }
+  return html;
+}
+function hintFor(word){
+  const letters = word.replace(/[^a-z]/gi,'').length;
+  const first = word[0] ? word[0].toUpperCase() : '?';
+  const hasSpace = /\s/.test(word), hasHyphen = /-/.test(word);
+  let h = `Starts with “${first}” · ${letters} letters`;
+  if (hasSpace) h += ' · contains a space';
+  if (hasHyphen) h += ' · contains a hyphen';
+  return h;
+}
+
+/* ============ BOOT / SEED / LOAD ============ */
+async function seedIfEmpty(){
+  const existing = await dbAll('words');
+  if (existing.length > 0) return;
+  const now = Date.now();
+  // Seed in parallel so a fresh install does not wait for hundreds of individual transactions.
+  await Promise.all(SEED.map(text => dbAdd('words', { text, mistakes:0, totalCorrect:0, totalWrong:0, mastered:0, createdAt:now }).catch(() => {})));
+}
+async function loadAll(){
+  state.words = await dbAll('words');
+  state.words.sort((a,b) => a.id - b.id);
+  // Normalise older records so lifetime wrong attempts and outstanding debt
+  // remain separate, consistent values across counts, lists, and sessions.
+  const repairs = [];
+  for (const w of state.words){
+    const before = JSON.stringify({ mistakes:w.mistakes, totalWrong:w.totalWrong, totalCorrect:w.totalCorrect, mastered:w.mastered });
+    w.mistakes = Math.max(0, Math.floor(Number(w.mistakes) || 0));
+    w.totalWrong = Math.max(0, Math.floor(Number(w.totalWrong) || 0), w.mistakes);
+    w.totalCorrect = Math.max(0, Math.floor(Number(w.totalCorrect) || 0));
+    w.mastered = Number(w.mastered) > 0 ? 1 : 0;
+    // Older app versions only marked a word mastered after a correct answer.
+    // Restore that evidence when older records lack the totalCorrect counter.
+    if (w.mastered && w.totalCorrect === 0 && w.totalWrong === 0 && w.mistakes === 0) w.totalCorrect = 1;
+    // A word with unresolved mistake debt cannot also be mastered.
+    if (w.mistakes > 0 && w.mastered) w.mastered = 0;
+    const after = JSON.stringify({ mistakes:w.mistakes, totalWrong:w.totalWrong, totalCorrect:w.totalCorrect, mastered:w.mastered });
+    if (before !== after) repairs.push(saveWord(w));
+  }
+  if (repairs.length) await Promise.all(repairs);
+  const settings = await dbAll('settings');
+  settings.forEach(s => { if (s.key === 'streak') state.streak = s.value || 0; });
+}
+function wrongCount(w){
+  // Legacy records may have debt but no totalWrong field; never undercount them.
+  return Math.max(0, Number(w.totalWrong) || 0, Number(w.mistakes) || 0);
+}
+function hasMistakeHistory(w){ return wrongCount(w) > 0 || (Number(w.mistakes) || 0) > 0; }
+function hasDebt(w){ return (Number(w.mistakes) || 0) > 0; }
+// Correct-in-first means the word has actually been answered correctly and has
+// never had a wrong answer. A word that has never been attempted is not eligible.
+function isCorrectInFirst(w){ return (Number(w.totalCorrect) || 0) > 0 && !hasMistakeHistory(w); }
+function isUntried(w){ return (Number(w.totalCorrect) || 0) === 0 && !hasMistakeHistory(w); }
+async function saveWord(w){ await dbPut('words', w); }
+async function saveStreak(){
+  await dbPut('settings', { key:'streak', value: state.streak });
+}
+
+/* ============ TABS ============ */
+function switchTab(view){
+  state.view = view;
+  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
+  if (view === 'practice') renderPicker();
+  if (view === 'manage') renderManage();
+  if (view === 'stats') renderStats();
+}
+$('tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab'); if (!btn) return;
+  switchTab(btn.dataset.view);
+});
+
+/* ============ COUNTS (single source of truth) ============ */
+function getCounts(){
+  const total = state.words.length;
+  const mastered = state.words.filter(w => !!w.mastered && !hasDebt(w)).length;
+  const remaining = state.words.filter(w => !w.mastered || hasDebt(w));
+  const clean = state.words.filter(isCorrectInFirst).length;
+  // Frequent mistakes are words with any wrong-answer history, not just words
+  // whose unresolved debt is still above zero. This includes completed words.
+  const mistakes = state.words.filter(hasMistakeHistory).length;
+  const debtWords = state.words.filter(hasDebt).length;
+  const debt = state.words.reduce((sum,w) => sum + Math.max(0, Number(w.mistakes) || 0), 0);
+  const wrongAttempts = state.words.reduce((sum,w) => sum + wrongCount(w), 0);
+  return { total, mastered, all:remaining.length, clean, mistakes, debt, debtWords, wrongAttempts };
+}
+
+/* ============ HEADER ============ */
+function updateHeader(){
+  const c = getCounts();
+  $('hTotal').textContent = c.total;
+  $('hMastered').textContent = c.mastered;
+  $('hStreak').textContent = state.streak;
+}
+
+/* ============ PICKER ============ */
+function renderPicker(){
+  updateHeader();
+  const c = getCounts();
+  $('cClean').textContent = c.clean;
+  $('cMistakes').textContent = c.mistakes;
+  $('cAll').textContent = c.all;
+  renderTopList();
+  renderChunks();
+}
+
+function renderTopList(){
+  const top = state.words
+    .filter(hasMistakeHistory)
+    .sort((a,b) => wrongCount(b) - wrongCount(a) || (Number(b.mistakes)||0) - (Number(a.mistakes)||0) || a.text.localeCompare(b.text))
+    .slice(0, 8);
+  $('cTop').textContent = top.length ? `· ${top.length} shown` : '';
+  const el = $('topList');
+  if (!top.length){
+    el.innerHTML = '<div class="empty" style="padding:20px"><div class="e">✨</div>No mistakes yet. Great start!</div>';
+    return;
+  }
+  el.innerHTML = top.map((w, i) => `
+    <div class="mistake-row">
+      <div class="mistake-rank">${i+1}</div>
+      <div><div class="word-text">${esc(w.text)}</div><div class="word-badges"><span class="badge mistakes">${w.mastered ? 'Mastered' : 'Not mastered'}</span></div></div>
+      <div class="mistake-count" title="Lifetime wrong answers; debt is unresolved mistakes">${wrongCount(w)}× wrong <small style="display:block;color:var(--muted);font-size:10px">debt ${Number(w.mistakes)||0}</small></div>
+      <div style="display:flex;gap:5px"><button class="btn ghost small" data-play="${w.id}" type="button" aria-label="Play ${esc(w.text)}">🔊</button><button class="btn small" data-practice-word="${w.id}" type="button">Practice</button></div>
+    </div>`).join('');
+  el.querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => {
+    const w = state.words.find(x => x.id === Number(b.dataset.play));
+    if (w) speak(w.text, 0.95);
+  }));
+  el.querySelectorAll('[data-practice-word]').forEach(b => b.addEventListener('click', () => practiceSingleWord(Number(b.dataset.practiceWord))));
+}
+
+function renderChunks(){
+  const grid = $('chunkGrid');
+  const total = state.words.length;
+  if (!total){
+    grid.innerHTML = '<div class="empty"><div class="e">📭</div>No words yet.</div>';
+    return;
+  }
+  const chunkCount = Math.ceil(total / CHUNK_SIZE);
+  let html = '';
+  for (let c = 0; c < chunkCount; c++){
+    const start = c * CHUNK_SIZE;
+    const end = Math.min(start + CHUNK_SIZE, total);
+    const slice = state.words.slice(start, end);
+    const mastered = slice.filter(w => !!w.mastered && !hasDebt(w)).length;
+    const historyCount = slice.filter(hasMistakeHistory).length;
+    const debtCount = slice.filter(hasDebt).length;
+    const left = slice.length - mastered;
+    const pct = slice.length ? (mastered / slice.length) * 100 : 0;
+    const allMastered = left === 0;
+    const cls = ['chunk'];
+    if (allMastered) cls.push('done');
+    if (historyCount > 0) cls.push('has-mistakes');
+    html += `
+      <div class="${cls.join(' ')}" data-chunk="${c}" role="button" tabindex="0" aria-label="Open practice options for chunk ${c+1}">
+        <div class="chunk-title"><span>Chunk ${c+1}</span><span>${allMastered?'✅':''}</span></div>
+        <div class="chunk-range">Words ${start+1}–${end}</div>
+        <div class="chunk-bar"><i style="width:${pct}%"></i></div>
+        <div class="chunk-meta"><span>${mastered} mastered</span><span>${left} left</span></div>
+        <div class="chunk-flags">
+          ${allMastered ? '<span class="chunk-flag done">Mastered ✓ · review available</span>' : ''}
+          ${historyCount > 0 ? `<span class="chunk-flag mistakes">${historyCount} with wrong history</span>` : ''}
+          ${debtCount > 0 ? `<span class="chunk-flag mistakes">${debtCount} with debt</span>` : ''}
+        </div>
+      </div>`;
+  }
+  grid.innerHTML = html;
+  grid.querySelectorAll('.chunk').forEach(el => {
+    const open = () => openChunkMenu(Number(el.dataset.chunk));
+    el.addEventListener('click', open);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); } });
+  });
+}
+
+/* ============ CHUNK MODAL ============ */
+function openChunkMenu(chunkIdx){
+  const start = chunkIdx * CHUNK_SIZE;
+  const end = Math.min(start + CHUNK_SIZE, state.words.length);
+  const slice = state.words.slice(start, end);
+  const correctFirstWords = slice.filter(isCorrectInFirst);
+  const untriedWords = slice.filter(isUntried);
+  const unmasteredMistakes = slice.filter(w => !w.mastered && hasMistakeHistory(w));
+  const historyWords = slice.filter(hasMistakeHistory);
+  const masteredWords = slice.filter(w => !!w.mastered && !hasDebt(w));
+  const options = [
+    { key:'chunk-unmastered', label:'Practice all unfinished words', sub:`${slice.filter(w => !w.mastered).length} words — clean + previous mistakes`, disabled:!slice.some(w => !w.mastered), primary:true },
+    { key:'chunk-clean', label:'Practice correct-in-first words', sub:`${correctFirstWords.length} words answered correctly with no wrong attempts`, disabled:correctFirstWords.length === 0 },
+    { key:'chunk-mistakes', label:'Practice frequent mistakes', sub:`${historyWords.length} words with wrong-answer history, including mastered words`, disabled:historyWords.length === 0 },
+    { key:'chunk-review', label:'Review all words in this chunk', sub:`All ${slice.length} words, including mastered + mistake words`, disabled:slice.length === 0 }
+  ];
+  $('modal').innerHTML = `
+    <h3>Chunk ${chunkIdx + 1}</h3>
+    <p class="m-sub">${masteredWords.length} mastered · ${correctFirstWords.length} correct-in-first · ${untriedWords.length} never tried · ${unmasteredMistakes.length} unfinished with wrong history · ${historyWords.length} total with wrong history</p>
+    <div class="modal-actions column">
+      ${options.map(o => `
+        <button class="btn ${o.primary ? 'primary' : ''}" data-opt="${o.key}" type="button" ${o.disabled ? 'disabled' : ''}>
+          ${esc(o.label)}
+          <small>${esc(o.sub)}</small>
+        </button>`).join('')}
+      <button class="btn ghost" id="chunkCancel" type="button">Cancel</button>
+    </div>`;
+  $('modalBg').classList.add('open');
+  $$('#modal [data-opt]').forEach(btn => {
+    if (btn.disabled) return;
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.opt;
+      closeModal();
+      if (key === 'chunk-unmastered') startSession({ type:'chunk', chunk:chunkIdx, label:`Chunk ${chunkIdx+1} · Unfinished` });
+      else if (key === 'chunk-clean') startSession({ type:'chunk-clean', chunk:chunkIdx, label:`Chunk ${chunkIdx+1} · Correct-in-first` });
+      else if (key === 'chunk-mistakes') startSession({ type:'chunk-mistakes', chunk:chunkIdx, label:`Chunk ${chunkIdx+1} · Frequent mistakes` });
+      else if (key === 'chunk-review') startSession({ type:'chunk-review', chunk:chunkIdx, label:`Chunk ${chunkIdx+1} · Review all` });
+    });
+  });
+  $('chunkCancel').addEventListener('click', closeModal);
+}
+
+/* ============ MODE CARD CLICKS ============ */
+$$('.mode-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const mode = card.dataset.mode;
+    if (mode === 'clean') startSession({ type:'clean', label: 'Correct-in-first' });
+    else if (mode === 'mistakes') startSession({ type:'mistakes', label: 'Frequent mistakes' });
+    else if (mode === 'all') startSession({ type:'all', label: 'All remaining' });
+  });
+});
+
+/* ============ SESSION ============ */
+function buildPool(mode){
+  switch (mode.type){
+    case 'chunk':
+      return state.words.filter((w,i) => Math.floor(i / CHUNK_SIZE) === mode.chunk && !w.mastered);
+    case 'chunk-clean':
+      return state.words.filter((w,i) => Math.floor(i / CHUNK_SIZE) === mode.chunk && isCorrectInFirst(w));
+    case 'chunk-mistakes':
+      return state.words.filter((w,i) => Math.floor(i / CHUNK_SIZE) === mode.chunk && hasMistakeHistory(w));
+    case 'chunk-review':
+      return state.words.filter((w,i) => Math.floor(i / CHUNK_SIZE) === mode.chunk);
+    case 'clean':
+      return state.words.filter(isCorrectInFirst);
+    case 'mistakes':
+      return state.words.filter(hasMistakeHistory);
+    case 'repeat':
+      return state.words.filter(w => Array.isArray(mode.ids) && mode.ids.includes(w.id));
+    case 'all':
+      return state.words.filter(w => !w.mastered);
+    default:
+      return [];
+  }
+}
+
+function startSession(mode){
+  // Compute chunk from index if not passed
+  const pool = buildPool(mode);
+  if (!pool.length){
+    toast('Nothing to practise here 🎉', 'ok');
+    return;
+  }
+
+  state.session = {
+    mode,
+    label: mode.label || 'Practice',
+    pool: pool.map(w => w.id),
+    cleared: new Set(),
+    skipped: new Set(),
+    firstTry: 0,
+    correctAnswers: 0,
+    attempts: 0,
+    start: Date.now(),
+    current: null,
+    triesThisWord: 0,
+    resolved: false
+  };
+
+  $('picker').style.display = 'none';
+  $('active').style.display = 'block';
+  $('done').style.display = 'none';
+  nextWord();
+}
+
+function currentWord(){
+  if (!state.session || state.session.current == null) return null;
+  return state.words.find(w => w.id === state.session.current) || null;
+}
+
+function nextWord(){
+  const s = state.session;
+  if (!s) return;
+  const active = s.pool.filter(id => !s.cleared.has(id) && !s.skipped.has(id));
+  if (!active.length) return endSession();
+  const words = active.map(id => state.words.find(w => w.id === id)).filter(Boolean);
+  if (!words.length) return endSession();
+  // Prioritise words with a longer wrong-answer history, especially in mistake mode.
+  const mistakeMode = ['mistakes','chunk-mistakes','repeat'].includes(s.mode.type);
+  const boost = mistakeMode ? 2 : 1.25;
+  const weights = words.map(w => 1 + Math.pow(wrongCount(w) + (Number(w.mistakes)||0), boost));
+  const totalW = weights.reduce((a,b) => a+b, 0);
+  let r = Math.random() * totalW;
+  let picked = words[0];
+  for (let i = 0; i < words.length; i++){
+    r -= weights[i];
+    if (r <= 0){ picked = words[i]; break; }
+  }
+  s.current = picked.id;
+  s.triesThisWord = 0;
+  s.resolved = false;
+  renderSession();
+  setTimeout(() => { if (state.session && state.session.current === picked.id) speak(picked.text); }, 130);
+}
+
+function renderSession(){
+  const s = state.session, w = currentWord();
+  if (!s || !w) return;
+  const processed = s.cleared.size + s.skipped.size;
+  $('sBar').style.width = ((processed / s.pool.length) * 100).toFixed(1) + '%';
+  $('sLabel').textContent = s.label;
+  $('sCleared').textContent = processed;
+  $('sTotal').textContent = s.pool.length;
+  $('hint').style.display = 'none';
+  $('feedback').className = 'feedback';
+  $('feedback').innerHTML = '';
+  $('field').classList.remove('ok','err');
+  $('input').value = '';
+  $('input').disabled = false;
+  $('bCheck').disabled = false;
+  $('input').focus();
+  $('bSentence').style.display = w.sentence ? 'inline-flex' : 'none';
+  updateHeader();
+}
+
+function checkAnswer(){
+  const s = state.session, w = currentWord();
+  if (!s || !w || s.resolved) return;
+  const guess = $('input').value.trim();
+  if (!guess){ $('field').classList.add('err'); return; }
+  s.attempts++;
+  const ok = norm(guess) === norm(w.text);
+  if (ok){
+    s.correctAnswers++;
+    $('field').classList.remove('err');
+    $('field').classList.add('ok');
+    s.resolved = true; // Prevent double submissions before the next word loads.
+    $('input').disabled = true;
+    $('bCheck').disabled = true;
+    w.totalCorrect = (Number(w.totalCorrect)||0) + 1;
+    if (s.triesThisWord === 0){
+      s.firstTry++;
+      const debt = Number(w.mistakes) || 0;
+      if (debt > 0){
+        // First-try correct answers pay down one unit of unresolved debt.
+        w.mistakes = debt - 1;
+        if (w.mistakes > 0) w.mastered = 0;
+        $('feedback').className = 'feedback ok';
+        $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(debt ${debt} → ${w.mistakes})</small>`;
+        toast(`Debt reduced: ${w.text}`, 'ok');
+      } else {
+        const wasMastered = !!w.mastered;
+        w.mastered = 1;
+        $('feedback').className = 'feedback ok';
+        $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span>`;
+        if (!wasMastered) toast('Mastered: ' + w.text, 'ok');
+      }
+      state.streak++;
+      saveStreak();
+      s.cleared.add(w.id);
+      setTimeout(nextWord, 600);
+    } else {
+      // Getting it right after retries clears this session item but does not erase debt.
+      w.mastered = 0;
+      state.streak = 0;
+      saveStreak();
+      $('feedback').className = 'feedback ok';
+      $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(after retries; debt unchanged)</small>`;
+      s.cleared.add(w.id);
+      setTimeout(nextWord, 700);
+    }
+    awaitSaveWord(w);
+    updateHeader();
+    return;
+  }
+  // Wrong answers update both lifetime wrong attempts and current recovery debt.
+  $('field').classList.remove('ok');
+  $('field').classList.add('err');
+  s.triesThisWord++;
+  w.totalWrong = Math.max(Number(w.totalWrong)||0, Number(w.mistakes)||0) + 1;
+  w.mistakes = (Number(w.mistakes)||0) + 1;
+  w.mastered = 0;
+  saveWord(w).then(() => refreshAfterWordChange()).catch(() => toast('Could not save progress', 'err'));
+  state.streak = 0;
+  saveStreak();
+  const diff = diffHTML(guess, w.text);
+  $('feedback').className = 'feedback err';
+  $('feedback').innerHTML = `❌ Not quite. Correct: <span class="ans">${esc(w.text)}</span><span class="diff">${diff}</span><small style="display:block;color:var(--muted);margin-top:5px">Wrong attempts: ${w.totalWrong} · Unresolved debt: ${w.mistakes}</small>`;
+  speak(w.text, 0.85);
+  updateHeader();
+}
+
+// Keep the rendered counts in sync after persistent word changes.
+function awaitSaveWord(w){
+  saveWord(w).then(() => refreshAfterWordChange()).catch(() => toast('Could not save progress', 'err'));
+}
+function refreshAfterWordChange(){
+  renderPicker();
+  if (state.view === 'manage') renderManage();
+  if (state.view === 'stats') renderStats();
+  updateHeader();
+}
+
+function showHint(){
+  const w = currentWord(); if (!w) return;
+  const h = $('hint');
+  h.style.display = 'block';
+  h.innerHTML = '<b>Hint:</b> ' + hintFor(w.text);
+}
+function revealAnswer(){
+  const w = currentWord(); if (!w) return;
+  $('feedback').className = 'feedback err';
+  $('feedback').innerHTML = `💡 Answer: <span class="ans">${esc(w.text)}</span>`;
+  speak(w.text, 0.8);
+}
+function skipWord(){
+  const s = state.session; if (!s || s.current == null || s.resolved) return;
+  s.resolved = true;
+  s.skipped.add(s.current);
+  nextWord();
+}
+
+function endSession(){
+  const s = state.session;
+  if (!s) return;
+  const duration = Math.round((Date.now() - s.start) / 1000);
+  const accuracy = s.attempts ? Math.round((s.correctAnswers / s.attempts) * 100) : 0;
+  const eligibleItems = Math.max(0, s.pool.length - s.skipped.size);
+  const firstTryRate = eligibleItems ? Math.round((s.firstTry / eligibleItems) * 100) : 0;
+  dbAdd('history', { label:s.label, cleared:s.cleared.size, skipped:s.skipped.size, total:s.pool.length, attempts:s.attempts, correctAnswers:s.correctAnswers, firstTry:s.firstTry, accuracy, firstTryRate, duration, ts:Date.now() }).catch(()=>{});
+  $('active').style.display = 'none';
+  $('done').style.display = 'block';
+  const canRepeatMistakes = ['mistakes','chunk-mistakes'].includes(s.mode.type) || !!s.mode.repeatMistakes;
+  $('done').innerHTML = `
+    <div class="card practice-card">
+      <div class="session-summary">
+        <div class="emoji">🎉</div>
+        <h2>Session complete!</h2>
+        <p>${esc(s.label)} · ${duration}s</p>
+        <div class="summary-stats">
+          <div class="s"><b>${s.cleared.size}</b><span>Cleared</span></div>
+          <div class="s"><b>${firstTryRate}%</b><span>Correct on first try</span></div>
+          <div class="s"><b>${accuracy}%</b><span>Guess accuracy</span></div>
+          <div class="s"><b>${s.skipped.size}</b><span>Skipped</span></div>
+        </div>
+        ${canRepeatMistakes ? '<button class="btn primary" id="repeatMistakesBtn" type="button">↻ Practice these mistake words again</button>' : ''}
+        <button class="btn ${canRepeatMistakes ? 'ghost' : 'primary'}" id="backBtn" type="button" style="margin-left:6px">Back to modes</button>
+      </div>
+    </div>`;
+  const repeatBtn = $('repeatMistakesBtn');
+  if (repeatBtn) repeatBtn.addEventListener('click', () => {
+    const ids = s.pool.slice();
+    startSession({ type:'repeat', ids, label:'Repeat mistake words', repeatMistakes:true });
+  });
+  $('backBtn').addEventListener('click', () => {
+    state.session = null;
+    $('done').style.display = 'none';
+    $('picker').style.display = 'block';
+    renderPicker();
+  });
+}
+
+function exitSession(){
+  if (!state.session) return;
+  if (!confirm('Exit this session? Progress is saved.')) return;
+  state.session = null;
+  $('active').style.display = 'none';
+  $('picker').style.display = 'block';
+  renderPicker();
+}
+
+/* ============ MANAGE ============ */
+function sortWords(list, sortBy){
+  const arr = list.slice();
+  switch (sortBy){
+    case 'correct-first':
+      return arr.sort((a,b) => {
+        // Put answered-correctly-on-first-try words first, untried words second,
+        // and anything with wrong-answer history last.
+        const group = w => isCorrectInFirst(w) ? 0 : (isUntried(w) ? 1 : 2);
+        const ga = group(a), gb = group(b);
+        if (ga !== gb) return ga - gb;
+        if (ga === 2) return wrongCount(b) - wrongCount(a) || a.text.localeCompare(b.text);
+        return (Number(b.totalCorrect)||0) - (Number(a.totalCorrect)||0) || a.text.localeCompare(b.text);
+      });
+    case 'mistakes': return arr.sort((a,b) => wrongCount(b) - wrongCount(a) || (Number(b.mistakes)||0) - (Number(a.mistakes)||0) || a.text.localeCompare(b.text));
+    case 'az': return arr.sort((a,b) => a.text.localeCompare(b.text));
+    case 'za': return arr.sort((a,b) => b.text.localeCompare(a.text));
+    case 'newest': return arr.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+    case 'oldest': return arr.sort((a,b) => (a.createdAt||0) - (b.createdAt||0));
+    default: return arr;
+  }
+}
+
+function renderManage(){
+  const q = ($('search').value || '').toLowerCase().trim();
+  const filt = $('filter').value;
+  const sortBy = $('sort').value;
+
+  let list = state.words.slice();
+  if (q) list = list.filter(w => w.text.toLowerCase().includes(q));
+  if (filt === 'mastered') list = list.filter(w => w.mastered && !hasDebt(w));
+  else if (filt === 'learning') list = list.filter(w => !w.mastered && hasDebt(w));
+  else if (filt === 'correct-first') list = list.filter(isCorrectInFirst);
+  else if (filt === 'mistakes') list = list.filter(hasMistakeHistory);
+  else if (filt === 'new') list = list.filter(w => !w.mastered && isUntried(w));
+  list = sortWords(list, sortBy);
+
+  const el = $('wordList');
+  if (!list.length){
+    el.innerHTML = '<div class="empty"><div class="e">🔍</div>No words match.</div>';
+    return;
+  }
+  el.innerHTML = list.map(w => {
+    const badges = [];
+    if (w.mastered && !hasDebt(w)) badges.push('<span class="badge mastered">Mastered</span>');
+    else if (hasDebt(w)) badges.push(`<span class="badge mistakes">Debt ${Number(w.mistakes)||0}</span>`);
+    else if (hasMistakeHistory(w)) badges.push('<span class="badge learning">Previous mistakes · debt cleared</span>');
+    else badges.push('<span class="badge new">Never wrong</span>');
+    if (wrongCount(w) > 0) badges.push(`<span class="badge mistakes">${wrongCount(w)} wrong</span>`);
+    const cls = hasMistakeHistory(w) ? 'has-mistakes' : '';
+    return `
+      <div class="word-row ${cls}">
+        <div>
+          <div class="word-text">${esc(w.text)}</div>
+          <div class="word-badges">${badges.join('')}</div>
+        </div>
+        <button class="btn ghost small" data-act="play" data-id="${w.id}" type="button">🔊</button>
+        <button class="btn ghost small" data-act="edit" data-id="${w.id}" type="button">Edit</button>
+        <button class="btn ghost small" data-act="del" data-id="${w.id}" type="button">✕</button>
+      </div>`;
+  }).join('');
+
+  el.querySelectorAll('button[data-act]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = Number(btn.dataset.id);
+      const w = state.words.find(x => x.id === id);
+      if (!w) return;
+      if (btn.dataset.act === 'play') speak(w.text, 0.95);
+      else if (btn.dataset.act === 'edit') openWordModal(w);
+      else if (btn.dataset.act === 'del'){
+        if (!confirm(`Delete "${w.text}"?`)) return;
+        await dbDel('words', id);
+        await loadAll();
+        renderManage(); renderPicker(); updateHeader();
+        toast('Deleted', 'ok');
+      }
+    });
+  });
+}
+$('search').addEventListener('input', renderManage);
+$('filter').addEventListener('change', renderManage);
+$('sort').addEventListener('change', renderManage);
+
+function practiceSingleWord(id){
+  const w = state.words.find(x => x.id === Number(id));
+  if (!w){ toast('Word not found', 'err'); return; }
+  switchTab('practice');
+  startSession({ type:'repeat', ids:[w.id], label:`Practice: ${w.text}` });
+}
+
+/* ============ WORD MODAL ============ */
+function closeModal(){ $('modalBg').classList.remove('open'); }
+$('modalBg').addEventListener('click', e => { if (e.target === $('modalBg')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('modalBg').classList.contains('open')) closeModal(); });
+
+function openWordModal(existing){
+  const isEdit = !!existing;
+  const w = existing || { text:'', sentence:'', definition:'' };
+  $('modal').innerHTML = `
+    <h3>${isEdit ? 'Edit word' : 'Add new word'}</h3>
+    <label>Word *</label>
+    <input type="text" id="mWord" value="${esc(w.text)}" autocomplete="off" spellcheck="false" />
+    <label>Example sentence (optional)</label>
+    <textarea id="mSentence">${esc(w.sentence||'')}</textarea>
+    <label>Definition / note (optional)</label>
+    <textarea id="mDef">${esc(w.definition||'')}</textarea>
+    <div class="modal-actions">
+      <button class="btn ghost" id="mCancel" type="button">Cancel</button>
+      <button class="btn primary" id="mSave" type="button">${isEdit ? 'Save' : 'Add'}</button>
+    </div>`;
+  $('modalBg').classList.add('open');
+  setTimeout(() => $('mWord').focus(), 60);
+  $('mCancel').addEventListener('click', closeModal);
+  $('mSave').addEventListener('click', async () => {
+    const text = $('mWord').value.trim();
+    if (!text){ toast('Enter a word', 'err'); return; }
+    const dup = state.words.find(x => norm(x.text) === norm(text) && (!isEdit || x.id !== existing.id));
+    if (dup){ toast('Word already exists', 'err'); return; }
+    if (isEdit){
+      existing.text = text;
+      existing.sentence = $('mSentence').value.trim();
+      existing.definition = $('mDef').value.trim();
+      await saveWord(existing);
+    } else {
+      await dbAdd('words', { text, sentence:$('mSentence').value.trim(), definition:$('mDef').value.trim(), mistakes:0, totalCorrect:0, totalWrong:0, mastered:0, createdAt: Date.now() });
+    }
+    await loadAll();
+    closeModal();
+    renderManage(); renderPicker(); updateHeader();
+    toast(isEdit ? 'Saved' : 'Added', 'ok');
+  });
+}
+$('bAdd').addEventListener('click', () => openWordModal(null));
+
+/* ============ IMPORT / EXPORT ============ */
+$('bExport').addEventListener('click', () => {
+  const data = {
+    words: state.words.map(w => ({ text:w.text, sentence:w.sentence||'', definition:w.definition||'', mistakes:w.mistakes||0, totalCorrect:w.totalCorrect||0, totalWrong:w.totalWrong||0, mastered:w.mastered||0 })),
+    exportedAt: new Date().toISOString(), version: 1
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `spelling-words-${Date.now()}.json`; a.click();
+  URL.revokeObjectURL(url);
+  toast('Exported', 'ok');
+});
+$('bImport').addEventListener('click', () => $('importFile').click());
+$('importFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const text = await f.text();
+    const data = JSON.parse(text);
+    const incoming = Array.isArray(data) ? data : (data.words || []);
+    let added = 0, skipped = 0;
+    for (const item of incoming){
+      const word = (item.text || item.word || '').trim();
+      if (!word) continue;
+      if (state.words.find(x => norm(x.text) === norm(word))){ skipped++; continue; }
+      const mistakes = Math.max(0, Math.floor(Number(item.mistakes)||0));
+      const totalWrong = Math.max(0, Math.floor(Number(item.totalWrong)||0), mistakes);
+      await dbAdd('words', { text:word, sentence:item.sentence||'', definition:item.definition||'', mistakes, totalCorrect:Math.max(0, Math.floor(Number(item.totalCorrect)||0)), totalWrong, mastered:(Number(item.mastered) > 0 && mistakes === 0) ? 1 : 0, createdAt:Date.now() });
+      added++;
+    }
+    await loadAll();
+    renderManage(); renderPicker(); updateHeader();
+    toast(`Imported ${added}, skipped ${skipped}`, 'ok');
+  } catch (_) { toast('Invalid file', 'err'); }
+  e.target.value = '';
+});
+
+/* ============ STATS ============ */
+async function renderStats(){
+  const c = getCounts();
+  $('statGrid').innerHTML = `
+    <div class="stat-card"><b>${c.total}</b><span>Total words</span></div>
+    <div class="stat-card"><b>${c.mastered}</b><span>Mastered</span></div>
+    <div class="stat-card"><b>${c.clean}</b><span>Answered correctly first try</span></div>
+    <div class="stat-card"><b>${c.mistakes}</b><span>Words ever wrong</span></div>
+    <div class="stat-card"><b>${c.debtWords}</b><span>Words with active debt</span></div>
+    <div class="stat-card"><b>${c.debt}</b><span>Total active debt</span></div>
+    <div class="stat-card"><b>${c.wrongAttempts}</b><span>Recorded wrong attempts</span></div>
+    <div class="stat-card"><b>${c.total ? Math.round((c.mastered/c.total)*100) : 0}%</b><span>Complete</span></div>`;
+  const top = state.words
+    .filter(hasMistakeHistory)
+    .sort((a,b) => wrongCount(b) - wrongCount(a) || (Number(b.mistakes)||0) - (Number(a.mistakes)||0) || a.text.localeCompare(b.text))
+    .slice(0, 25);
+  $('mistakeList').innerHTML = top.length ? top.map((w,i) => `
+    <div class="mistake-row">
+      <div class="mistake-rank">${i+1}</div>
+      <div><div class="word-text">${esc(w.text)}</div><div class="word-badges"><span class="badge ${w.mastered ? 'mastered' : 'learning'}">${w.mastered ? 'Mastered' : 'Not mastered'}</span></div></div>
+      <div class="mistake-count" title="Lifetime wrong answers; debt is unresolved mistakes">${wrongCount(w)}× wrong <small style="display:block;color:var(--muted);font-size:10px">debt ${Number(w.mistakes)||0}</small></div>
+      <div style="display:flex;gap:5px"><button class="btn ghost small" data-play="${w.id}" type="button" aria-label="Play ${esc(w.text)}">🔊</button><button class="btn small" data-practice-word="${w.id}" type="button">Practice</button></div>
+    </div>`).join('') : '<div class="empty"><div class="e">✨</div>No mistakes yet.</div>';
+  $('mistakeList').querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => {
+    const w = state.words.find(x => x.id === Number(b.dataset.play));
+    if (w) speak(w.text, 0.95);
+  }));
+  $('mistakeList').querySelectorAll('[data-practice-word]').forEach(b => b.addEventListener('click', () => practiceSingleWord(Number(b.dataset.practiceWord))));
+
+  const history = await dbAll('history');
+  history.sort((a,b) => b.ts - a.ts);
+  const recent = history.slice(0, 10);
+  $('historyList').innerHTML = recent.length ? recent.map(h => {
+    const d = new Date(h.ts);
+    const when = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+    return `
+      <div class="mistake-row">
+        <div class="mistake-rank">📖</div>
+        <div>
+          <div class="word-text">${esc(h.label || 'Session')}</div>
+          <div class="word-badges"><span class="badge mastered">${h.cleared}/${h.total} cleared</span><span class="badge new">${h.attempts} guesses</span><span class="badge learning">${h.firstTryRate ?? (h.total ? Math.round(((h.firstTry||0)/h.total)*100) : 0)}% first-try rate</span></div>
+        </div>
+        <div style="color:var(--muted);font-size:11px">${esc(when)}</div>
+        <div></div>
+      </div>`;
+  }).join('') : '<div class="empty"><div class="e">📊</div>No sessions yet.</div>';
+}
+
+/* Practice these now */
+$('bPractice').addEventListener('click', () => {
+  if (!state.words.some(hasMistakeHistory)){ toast('No mistake history yet — great job!', 'ok'); return; }
+  switchTab('practice');
+  startSession({ type:'mistakes', label:'Frequent mistakes' });
+});
+
+/* ============ SESSION EVENTS ============ */
+$('form').addEventListener('submit', e => { e.preventDefault(); checkAnswer(); });
+$('bCheck').addEventListener('click', e => { e.preventDefault(); checkAnswer(); });
+$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.text, 0.95); });
+$('bSlow').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.text, 0.65); });
+$('bHint').addEventListener('click', showHint);
+$('bReveal').addEventListener('click', revealAnswer);
+$('bSkip').addEventListener('click', skipWord);
+$('bExit').addEventListener('click', exitSession);
+$('bSentence').addEventListener('click', () => { const w = currentWord(); if (w && w.sentence) speak(w.sentence, 0.9); });
+$('input').addEventListener('keydown', e => { if (e.key === 'Escape'){ $('input').value = ''; $('field').classList.remove('ok','err'); } });
+
+/* ============ BOOT ============ */
+(async function boot(){
+  try {
+    await openDB();
+    await seedIfEmpty();
+    await loadAll();
+    renderPicker();
+    updateHeader();
+  } catch (err) {
+    console.error('Spelling Hub initialisation failed:', err);
+    toast('Could not load saved words. Check browser storage permissions.', 'err');
+  }
+})();
+</script>
+  </body>
+</html>
