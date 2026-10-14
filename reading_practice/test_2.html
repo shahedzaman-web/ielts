@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Language Strategy In Multinational Company - IELTS Reading
+            Practice Test 2</title>
+        <style>
+:root{
+  --bg:#eef1f6;
+  --card:#fff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --line:#dfe5ee;
+  --accent:#0f766e;
+  --accent-hover:#0d5c56;
+  --accent-soft:#ccfbf1;
+  --good:#16a34a;
+  --good-soft:#dcfce7;
+  --bad:#dc2626;
+  --bad-soft:#fee2e2;
+  --header-h:56px;
+  --bottom-h:232px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;
+  padding-bottom:var(--bottom-h);
+}
+button{font-family:inherit;cursor:pointer;border:none;}
+
+/* ================= HEADER ================= */
+.app-header{
+  position:sticky;top:0;z-index:60;
+  height:var(--header-h);
+  background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 18px;
+  box-shadow:0 1px 4px rgba(15,23,42,.05);
+}
+.app-header .logo{font-size:20px;text-decoration:none;}
+.app-header h1{
+  font-size:14px;font-weight:600;margin:0;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{
+  background:#0f172a;color:#fff;font-size:12px;font-weight:700;
+  padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;
+  opacity:.35;
+}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{
+  background:#0f172a;color:#fff;font-size:13px;font-weight:700;
+  padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;gap:6px;
+}
+.timer-chip.warning{background:#b45309;}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{
+  background:#fff;border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.icon-btn:hover{background:#f1f5f9;}
+.icon-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.menu-wrap{position:relative;}
+.menu-pop{
+  display:none;position:absolute;right:0;top:calc(100% + 8px);
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;
+  z-index:100;
+}
+.menu-pop.show{display:block;}
+.menu-pop a{
+  display:block;padding:10px 14px;font-size:13px;color:var(--text);
+  text-decoration:none;border-bottom:1px solid #f1f5f9;
+}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+
+/* ================= SPLIT VIEW ================= */
+.main-split{
+  display:flex;
+  max-width:1600px;margin:16px auto 0;
+  height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
+  min-height:560px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{
+  flex:0 0 7px;background:#e2e8f0;cursor:col-resize;
+  display:flex;align-items:center;justify-content:center;
+}
+.resizer:hover{background:#cbd5e1;}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+
+.passage{display:none;}
+.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{
+  display:inline-block;background:var(--accent-soft);color:var(--accent);
+  font-size:11px;font-weight:700;letter-spacing:.06em;
+  padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;
+}
+.passage p{margin:0 0 14px;}
+.passage .para-letter{font-weight:700;margin-right:6px;}
+.passage em{color:var(--muted);}
+
+/* ================= QUESTIONS ================= */
+.q-section{display:none;}
+.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{
+  font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--accent);margin:0 0 8px;font-weight:700;
+}
+.q-instr{
+  font-size:13px;color:var(--muted);
+  background:#f8fafc;border-left:3px solid var(--line);
+  padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;
+}
+.q-instr p{margin:0 0 3px;}
+.q-instr p:last-child{margin:0;}
+
+.summary-box{
+  border:1px solid var(--line);border-radius:8px;
+  padding:14px 16px;background:#fdfefe;font-size:14.5px;line-height:2;
+}
+.summary-box .qnum{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:24px;height:24px;padding:0 6px;margin:0 2px;
+  background:#f1f5f9;color:#334155;border-radius:5px;
+  font-size:12px;font-weight:700;vertical-align:middle;
+}
+.summary-box input[type=text]{
+  border:1px solid var(--line);border-radius:6px;padding:4px 9px;
+  font-size:14px;font-family:inherit;width:140px;background:#fff;
+  vertical-align:middle;margin:0 2px;
+}
+.summary-box input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+
+.word-bank{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:8px 18px;background:#f8fafc;border:1px dashed var(--line);
+  border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:14px;
+}
+.word-bank span{display:flex;align-items:center;gap:8px;}
+.word-bank strong{color:var(--accent);}
+
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}
+.q.highlight{background:#fffbeb;}
+.q-num{
+  flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;
+}
+.q-body{flex:1;min-width:0;}
+.q-body p{margin:0 0 7px;}
+input[type=text]{
+  border:1px solid var(--line);border-radius:6px;padding:5px 9px;
+  font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;
+}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{
+  display:inline-flex;align-items:center;gap:6px;font-size:14px;
+  cursor:pointer;padding:3px 7px;border-radius:6px;
+}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text]{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text]{border-color:var(--bad);background:var(--bad-soft);}
+.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+
+/* ================= USER HIGHLIGHTS ================= */
+mark.hl-yellow,
+mark.hl-green,
+mark.hl-pink,
+mark.hl-blue{
+  padding:1px 2px;border-radius:3px;color:inherit;
+  transition:background .15s;
+  cursor:pointer;
+}
+mark.hl-yellow{background:#fef08a;}
+mark.hl-green{background:#bbf7d0;}
+mark.hl-pink{background:#fbcfe8;}
+mark.hl-blue{background:#bfdbfe;}
+
+/* Flash animation when highlight is removed */
+mark.hl-flash{
+  animation:hlFlash .35s ease-out;
+}
+@keyframes hlFlash{
+  0%{background:#facc15;color:#0f172a;}
+  100%{background:transparent;}
+}
+
+/* ================= HIGHLIGHT TOOLBAR POPUP ================= */
+#hl-toolbar{
+  position:absolute;
+  z-index:400;
+  display:none;
+  background:#0f172a;
+  border-radius:10px;
+  padding:6px;
+  box-shadow:0 10px 30px rgba(15,23,42,.3);
+  align-items:center;
+  gap:4px;
+  flex-wrap:nowrap;
+  user-select:none;
+  transform:translateX(-50%);
+}
+#hl-toolbar.show{display:flex;}
+#hl-toolbar .hl-color{
+  width:26px;height:26px;border-radius:50%;
+  border:2px solid transparent;
+  display:flex;align-items:center;justify-content:center;
+  padding:0;cursor:pointer;transition:transform .12s;
+}
+#hl-toolbar .hl-color:hover{transform:scale(1.12);}
+#hl-toolbar .hl-color[data-color="yellow"]{background:#fde047;}
+#hl-toolbar .hl-color[data-color="green"]{background:#4ade80;}
+#hl-toolbar .hl-color[data-color="pink"]{background:#f472b6;}
+#hl-toolbar .hl-color[data-color="blue"]{background:#60a5fa;}
+#hl-toolbar .hl-remove{
+  background:transparent;color:#fff;border-radius:6px;
+  padding:6px 10px;font-size:12px;font-weight:600;
+  display:flex;align-items:center;gap:5px;
+}
+#hl-toolbar .hl-remove:hover{background:#1e293b;}
+#hl-toolbar .hl-divider{
+  width:1px;height:20px;background:#334155;margin:0 3px;
+}
+
+/* Highlight-mode toggle button in header */
+.hl-toggle{
+  background:#fff;border:1px solid var(--line);
+  color:var(--text);border-radius:6px;
+  padding:5px 12px;font-size:13px;font-weight:600;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.hl-toggle:hover{background:#f1f5f9;}
+.hl-toggle.on{background:#facc15;border-color:#eab308;color:#0f172a;}
+
+/* Custom cursor when highlighter mode is on */
+body.hl-mode .passages,
+body.hl-mode .questions{cursor:crosshair;}
+
+/* =========================================================
+   BOTTOM PANEL
+   ========================================================= */
+.bottom-panel{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:#fff;
+  border-top:1px solid var(--line);
+  box-shadow:0 -2px 12px rgba(15,23,42,.06);
+  padding:10px 22px 10px;
+  overflow-y:auto;
+  max-height:var(--bottom-h);
+}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{
+  flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;
+  padding:7px 12px;text-align:left;display:flex;flex-direction:row;
+  align-items:center;gap:10px;transition:.15s;opacity:.85;
+}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+.skim-btn{
+  font-size:10px;font-weight:700;color:#0369a1;
+  background:#e0f2fe;border-radius:999px;padding:3px 9px;
+  white-space:nowrap;flex:0 0 auto;
+}
+.skim-btn:hover{background:#bae6fd;}
+.skim-btn.on{background:var(--accent);color:#fff;}
+
+.ielts-reading-question-palette{
+  display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;
+  margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;
+}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{
+  width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;
+  font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+  border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;
+}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+
+.ielts-reading-bottom-controls{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid #f1f5f9;padding-top:8px;
+}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{
+  width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
+  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;
+}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{
+  background:#fff;border:1px solid var(--line);color:#334155;
+  border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:7px;transition:.12s;
+}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{
+  background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;
+  font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s;
+}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+
+/* ================= OVERLAYS ================= */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(15,23,42,.55);
+  align-items:center;justify-content:center;padding:24px;
+}
+.overlay.show{display:flex;}
+.overlay-card{
+  background:#fff;border-radius:12px;width:100%;max-width:640px;
+  max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;
+}
+.overlay-head{
+  padding:18px 22px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+
+/* ================= FOCUS MODE ================= */
+body.focus-mode .app-header,
+body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{
+  display:none;position:fixed;top:14px;right:14px;z-index:300;
+  background:var(--accent);color:#fff;border-radius:6px;
+  padding:8px 14px;font-size:13px;font-weight:700;
+}
+body.focus-mode .exit-focus{display:block;}
+
+.toast{
+  position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);
+  transform:translateX(-50%);z-index:500;
+  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;
+  font-size:13px;font-weight:600;opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.toast.show{opacity:1;}
+
+/* ================= FULLSCREEN HELPERS ================= */
+body.fullscreen-active .app-header,
+body.fullscreen-active .bottom-panel{display:none;}
+body.fullscreen-active{padding-bottom:0;}
+body.fullscreen-active .main-split{
+  height:100vh;max-width:none;margin:0;border-radius:0;border:none;
+}
+</style>
+    </head>
+    <body>
+
+        <!-- ================= HEADER ================= -->
+        <header class="app-header">
+            <a href="/" class="logo">📚</a>
+            <h1>Language Strategy In Multinational Company — IELTS Reading
+                Practice Test</h1>
+            <div class="header-right">
+                <button class="icon-btn" id="fullscreenBtn"
+                    title="Toggle full screen">⛶ Fullscreen</button>
+                <button class="icon-btn" id="focusBtn" title="Focus mode">🎯
+                    Focus</button>
+                <button class="hl-toggle" id="hlToggleBtn"
+                    title="Toggle highlighter mode">🖍 Highlight</button>
+                <div class="band-chip" id="bandChip">--</div>
+                <div class="timer-chip" id="timerChip">⏱ <strong
+                        id="timer">20:00</strong></div>
+                <div class="menu-wrap">
+                    <button class="icon-btn" id="menuBtn">☰</button>
+                    <div class="menu-pop" id="menuPop">
+                        <a href="#" id="exportLink">📄 Export as PDF</a>
+                        <a href="#" id="clearHighlightsLink">🧹 Clear All
+                            Highlights</a>
+                        <a href="#" id="resetLink">↺ Reset Test</a>
+                        <a href="#" id="gotoTop">↑ Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+        <!-- ================= HIGHLIGHT TOOLBAR (floats on text selection) ================= -->
+        <div id="hl-toolbar" role="toolbar" aria-label="Highlight toolbar">
+            <button type="button" class="hl-color" data-color="yellow"
+                title="Highlight yellow" aria-label="Yellow highlight"></button>
+            <button type="button" class="hl-color" data-color="green"
+                title="Highlight green" aria-label="Green highlight"></button>
+            <button type="button" class="hl-color" data-color="pink"
+                title="Highlight pink" aria-label="Pink highlight"></button>
+            <button type="button" class="hl-color" data-color="blue"
+                title="Highlight blue" aria-label="Blue highlight"></button>
+            <div class="hl-divider"></div>
+            <button type="button" class="hl-remove" id="hlRemoveBtn"
+                title="Remove highlight">🧽 Clear</button>
+        </div>
+
+        <!-- ================= SPLIT VIEW ================= -->
+        <div class="main-split" id="mainSplit">
+
+            <!-- ---------- PASSAGE ---------- -->
+            <div class="pane passages" id="passagesPane">
+                <div class="passage active" data-part="1">
+                    <span class="part-label">Reading Passage</span>
+                    <h2>Language Strategy In Multinational Company</h2>
+                    <p><em>You should spend about 20 minutes on Questions 1–14,
+                            which are based on the Reading Passage
+                            below.</em></p>
+
+                    <p><span class="para-letter">A</span> The importance of
+                        language management in multinational companies has never
+                        been greater than today. Multinationals are becoming
+                        ever more conscious of the importance of global
+                        coordination as a source of competitive advantage and
+                        language remains the ultimate barrier to aspirations of
+                        international harmonization. Before attempting to
+                        consider language management strategies, companies will
+                        have to evaluate the magnitude of the language barrier
+                        confronting them and in doing so they will need to
+                        examine it in three dimensions: the Language Diversity,
+                        the Language Penetration and the Language
+                        Sophistication. Companies next need to turn their
+                        attention to how they should best manage language. There
+                        is a range of options from which MNCs can formulate
+                        their language strategy.</p>
+
+                    <p><span class="para-letter">B</span> <strong>Lingua
+                            Franca:</strong> The simplest answer, though
+                        realistic only for English speaking companies, is to
+                        rely on one's native tongue. As recently as 1991 a
+                        survey of British exporting companies found that over a
+                        third used English exclusively in dealings with foreign
+                        customers. This attitude that "one language fits all"
+                        has also been carried through into the Internet age. A
+                        survey of the web sites of top American companies
+                        confirmed that over half made no provision for foreign
+                        language access, and another found that less than 10% of
+                        leading companies were able to respond adequately to
+                        emails other than in the company's language. Widespread
+                        though it is however, reliance on a single language is a
+                        strategy that is fatally flawed. It makes no allowance
+                        for the growing trend in Linguistic Nationalism whereby
+                        buyers in Asia, South America and the Middle East in
+                        particular are asserting their right to
+                        "work in the language of the customer". It also fails to
+                        recognize the increasing vitality of languages such as
+                        Spanish, Arabic and Chinese that overtime are likely to
+                        challenge the dominance of English as a lingua franca.
+                        In the IT arena it ignores the rapid globalization of
+                        the Internet where the number of English-language
+                        e-commerce transactions, emails and websites, is rapidly
+                        diminishing as a percentage of the total. Finally, the
+                        total reliance on a single language puts the English
+                        speaker at risk in negotiations. Contracts, rules and
+                        legislation are invariably written in the local
+                        language, and a company unable to operate in that
+                        language is vulnerable.</p>
+
+                    <p><span class="para-letter">C</span> <strong>Functional
+                            Multilingualism:</strong> Another improvised
+                        approach to Language is to rely on what has been termed
+                        "Functional Multilingualism". Essentially what this
+                        means is to muddle through, relying on a mix of
+                        languages, pidgins and gestures to communicate by
+                        whatever means the parties have at their disposal. In a
+                        social context such a shared effort to make one another
+                        understand might be considered an aid to the bonding
+                        process with the frustration of communication being
+                        regularly punctuated by moments of absurdity and humor.
+                        However, as the basis for business negotiations it
+                        appears very hit-and-miss. And yet Hagen's recent study
+                        suggests that 16% of international business transactions
+                        are conducted in a "cocktail of languages". Functional
+                        Multilingualism shares the same defects as reliance on a
+                        lingua franca and increases the probability of cognitive
+                        divergence between the parties engaged in the
+                        communication.</p>
+
+                    <p><span class="para-letter">D</span> <strong>External
+                            Language Resources:</strong> A more rational and
+                        obvious response to the language barrier is to employ
+                        external resources such as translators and interpreters,
+                        and certainly there are many excellent companies
+                        specialized in these fields. However, such a response is
+                        by no means an end to the language barrier. For a start
+                        these services can be very expensive with a top
+                        Simultaneous Interpreter, commanding daily rates as high
+                        as a partner in an international consulting company.
+                        Secondly, any good translator or interpreter will insist
+                        that to be fully effective they must understand the
+                        context of the subject matter. This is not always
+                        possible. In some cases it is prohibited by the
+                        complexity or specialization of the topic. Sometimes by
+                        lack of preparation time but most often the obstacle is
+                        the reluctance of the parties to explain the wider
+                        context to an outsider. Another problem is that unless
+                        there has been considerable pre-explaining between the
+                        interpreter and his clients it is likely that there will
+                        be ambiguity and cultural overtones in the source
+                        messages the interpreter has to work with. They will of
+                        course endeavour to provide a high-fidelity translation
+                        but in this circumstance the interpreter has to use
+                        initiative and guess work. This clearly injects a
+                        potential source of misunderstanding into the
+                        proceedings. Finally, while a good interpreter will
+                        attempt to convey not only the meaning but also the
+                        spirit of any communication, there can be no doubt that
+                        there is a loss of rhetorical power when communications
+                        go through a third party. So in situations requiring
+                        negotiation, persuasion, humor etc. the use of an
+                        interpreter is a poor substitute for direct
+                        communication.</p>
+
+                    <p><span class="para-letter">E</span>
+                        <strong>Training:</strong> The immediate and
+                        understandable reaction to any skills shortage in a
+                        business is to consider personnel development and
+                        certainly the language training industry is well
+                        developed. Offering programs at almost every level and
+                        in numerous languages. However, without doubting the
+                        value of language training no company should be deluded
+                        into believing this to be assured of success. Training
+                        in most companies is geared to the economic cycle. When
+                        times are good, money is invested in training. When
+                        belts get tightened, training is one of the first
+                        "luxuries" to be pared down. In a study conducted across
+                        four European countries, nearly twice as many companies
+                        said they needed language training in coming years as
+                        had conducted training in past years. This disparity
+                        between "good intentions" and "actual delivery",
+                        underlines the problems of relying upon training for
+                        language skills. Unless the company is totally committed
+                        to sustaining the strategy even through bad times, it
+                        will fail.</p>
+
+                    <p><span class="para-letter">F</span> One notable and
+                        committed leader in the field of language training has
+                        been the Volkswagen Group. They have developed a
+                        language strategy over many years and in many respects
+                        can be regarded as a model of how to manage language
+                        professionally. However, the Volkswagen approach
+                        underlines that language training has to be considered a
+                        strategic rather than a tactical solution. In their
+                        system, to progress from "basics" to
+                        "communications competence" in a language requires the
+                        completion of 6 language stages, each one demanding
+                        approximately 90 hours of refresher course, supported by
+                        many more hours of self-study, spread over a 6-9 month
+                        period. The completion of each stage is marked by a
+                        post-stage achievement test, which is a prerequisite for
+                        continued training. So even this professionally managed
+                        program expects a minimum of three years of fairly
+                        intensive study to produce an accountant, Engineer,
+                        buyer or salesperson capable of working effectively in a
+                        foreign language. Clearly companies intending to pursue
+                        this route need to do so with realistic expectations and
+                        with the intention of sustaining the program over many
+                        years. Except in terms of "brush-up" courses for people
+                        who were previously fluent in a foreign language,
+                        training cannot be considered a quick fix and hence
+                        other methods will have to be considered.</p>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <!-- ---------- QUESTIONS ---------- -->
+            <div class="pane questions" id="questionsPane">
+                <form id="quiz" onsubmit="return false;">
+
+                    <section class="q-section active" data-part="1">
+
+                        <!-- ========== Questions 1–6: Summary Completion ========== -->
+                        <div class="q-group">
+                            <h3>Questions 1–6</h3>
+                            <div class="q-instr">
+                                <p>Complete the following summary of the whole
+                                    paragraphs of the Reading Passage, choosing
+                                    <strong>A–L</strong> words from the
+                                    following options.</p>
+                                <p>Write your answers in boxes
+                                    <strong>1–6</strong> on your answer
+                                    sheet.</p>
+                            </div>
+
+                            <div class="word-bank">
+                                <span><strong>A</strong> gestures</span>
+                                <span><strong>B</strong> clients</span>
+                                <span><strong>C</strong> transaction</span>
+                                <span><strong>D</strong> assumption</span>
+                                <span><strong>E</strong> accurate</span>
+                                <span><strong>F</strong> documents</span>
+                                <span><strong>G</strong> managers</span>
+                                <span><strong>H</strong> body language</span>
+                                <span><strong>I</strong> long-term</span>
+                                <span><strong>J</strong> effective</span>
+                                <span><strong>K</strong> rivals</span>
+                                <span><strong>L</strong> costly</span>
+                            </div>
+
+                            <div class="summary-box">
+                                MNCs often encounter language barriers in their
+                                daily strategy, then they seek several
+                                approaches to solve such problems. First, native
+                                language gives them a realistic base in a
+                                different language speaking country, but
+                                problems turn up when they deal with oversea
+                                <span class="qnum">1</span> <input type="text"
+                                    name="q1" aria-label="Q1"> . For example,
+                                operation on translation of some key <span
+                                    class="qnum">2</span> <input type="text"
+                                    name="q2" aria-label="Q2"> , it is
+                                inevitable to generate differences by rules from
+                                different countries. Another way is to rely on a
+                                combination of spoken language and <span
+                                    class="qnum">3</span> <input type="text"
+                                    name="q3" aria-label="Q3"> , yet a report
+                                written that over one-tenth business <span
+                                    class="qnum">4</span> <input type="text"
+                                    name="q4" aria-label="Q4"> processed in a
+                                party language setting. Third way: hire
+                                translators. However, firstly it is <span
+                                    class="qnum">5</span> <input type="text"
+                                    name="q5" aria-label="Q5"> , besides if they
+                                are not well-prepared, they have to take <span
+                                    class="qnum">6</span> <input type="text"
+                                    name="q6" aria-label="Q6"> work.
+                            </div>
+
+                            <!-- hidden .q rows for palette/scoring logic -->
+                            <div class="q" data-q="1" style="display:none"><div
+                                    class="q-num">1</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                            <div class="q" data-q="2" style="display:none"><div
+                                    class="q-num">2</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                            <div class="q" data-q="3" style="display:none"><div
+                                    class="q-num">3</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                            <div class="q" data-q="4" style="display:none"><div
+                                    class="q-num">4</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                            <div class="q" data-q="5" style="display:none"><div
+                                    class="q-num">5</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                            <div class="q" data-q="6" style="display:none"><div
+                                    class="q-num">6</div><div
+                                    class="q-body"><div
+                                        class="feedback"></div></div></div>
+                        </div>
+
+                        <!-- ========== Questions 7–13: Short Answer Questions ========== -->
+                        <div class="q-group">
+                            <h3>Questions 7–13</h3>
+                            <div class="q-instr">
+                                <p>Answer the questions below.</p>
+                                <p>Choose <strong>NO MORE THAN THREE WORDS
+                                        AND/OR A NUMBER</strong> from the
+                                    passage for each answer.</p>
+                            </div>
+
+                            <div class="q" data-q="7">
+                                <div class="q-num">7</div>
+                                <div class="q-body">
+                                    <p>What understandable reaction does
+                                        Training pay attention to according to
+                                        the author?</p>
+                                    <input type="text" name="q7"
+                                        aria-label="Q7">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="8">
+                                <div class="q-num">8</div>
+                                <div class="q-body">
+                                    <p>In what term does the writer describe
+                                        training during economy depression?</p>
+                                    <input type="text" name="q8"
+                                        aria-label="Q8">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="9">
+                                <div class="q-num">9</div>
+                                <div class="q-body">
+                                    <p>What contribution does Volkswagen Group
+                                        do for multinational companies?</p>
+                                    <input type="text" name="q9"
+                                        aria-label="Q9">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="10">
+                                <div class="q-num">10</div>
+                                <div class="q-body">
+                                    <p>What does Volkswagen Group consider
+                                        language training as in their
+                                        company?</p>
+                                    <input type="text" name="q10"
+                                        aria-label="Q10">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="11">
+                                <div class="q-num">11</div>
+                                <div class="q-body">
+                                    <p>How many stages are needed from basic
+                                        course to advanced in training?</p>
+                                    <input type="text" name="q11"
+                                        aria-label="Q11">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="12">
+                                <div class="q-num">12</div>
+                                <div class="q-body">
+                                    <p>How long does a refresher course need
+                                        normally?</p>
+                                    <input type="text" name="q12"
+                                        aria-label="Q12">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="q" data-q="13">
+                                <div class="q-num">13</div>
+                                <div class="q-body">
+                                    <p>At least how long is needed for a
+                                        specific professional to acquire a
+                                        foreign language?</p>
+                                    <input type="text" name="q13"
+                                        aria-label="Q13">
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ========== Question 14: Multiple Choice ========== -->
+                        <div class="q-group">
+                            <h3>Question 14</h3>
+                            <div class="q-instr">
+                                <p>Write your answer in box <strong>14</strong>
+                                    on your answer sheet.</p>
+                            </div>
+
+                            <div class="q" data-q="14">
+                                <div class="q-num">14</div>
+                                <div class="q-body">
+                                    <p>What is the main function of this
+                                        passage?</p>
+                                    <div class="options stack">
+                                        <label><input type="radio" name="q14"
+                                                value="A"> A. to reveal all
+                                            kinds of language problems that
+                                            companies may encounter</label>
+                                        <label><input type="radio" name="q14"
+                                                value="B"> B. to exhibit some
+                                            well-known cases in dealing with
+                                            language difficulties</label>
+                                        <label><input type="radio" name="q14"
+                                                value="C"> C. to evaluate
+                                            various approaches for language
+                                            barrier in multinational
+                                            companies</label>
+                                        <label><input type="radio" name="q14"
+                                                value="D"> D. to testify that
+                                            training is only feasible approach
+                                            to solve language problem</label>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- =========================================================
+     BOTTOM PANEL
+     ========================================================= -->
+        <div class="bottom-panel">
+            <div class="bottom-inner">
+
+                <div class="part-tabs">
+                    <button class="part-tab active" data-part="1">
+                        <span class="tab-part-name">Passage</span>
+                        <span class="tab-qcount">Questions 1–14</span>
+                        <span class="skim-btn" data-part="1">Skim (1x)</span>
+                    </button>
+                </div>
+
+                <div class="ielts-reading-question-palette" id="palette"></div>
+
+                <div class="ielts-reading-bottom-controls">
+                    <div class="ielts-reading-question-control-buttons">
+                        <button id="prevBtn"
+                            title="Previous question">←</button>
+                        <button id="nextBtn" title="Next question">→</button>
+                    </div>
+                    <div class="ielts-reading-test-control-buttons">
+                        <button class="ielts-reading-review-button"
+                            id="reviewBtn">📋 Review</button>
+                        <button class="ielts-reading-submit-button"
+                            id="submitBtn">Submit ✈</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= RESULT OVERLAY ================= -->
+        <div class="overlay" id="resultOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head">
+                    <h3>Your Results</h3>
+                    <button class="close-x"
+                        data-close="resultOverlay">×</button>
+                </div>
+                <div class="overlay-body">
+                    <div class="score-summary">
+                        <div class="big" id="resultScore">0 / 14</div>
+                        <div class="sub" id="resultSub">Band estimate: —</div>
+                    </div>
+                    <div class="legend-row">
+                        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜
+                            No answer</span>
+                    </div>
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th><th>Correct
+                                    Answer</th></tr></thead>
+                        <tbody id="resultBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PREVIEW OVERLAY ================= -->
+        <div class="overlay" id="previewOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head">
+                    <h3>Review Your Answers</h3>
+                    <button class="close-x"
+                        data-close="previewOverlay">×</button>
+                </div>
+                <div class="overlay-body">
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <script>
+/* =========================================================
+   ANSWER KEY
+   ========================================================= */
+const ANSWER_KEY = {
+  1:["B","clients"],
+  2:["F","documents"],
+  3:["A","gestures"],
+  4:["C","transaction","transactions"],
+  5:["L","costly","expensive"],
+  6:["D","assumption","guesswork"],
+  7:["personnel development"],
+  8:["luxury","luxuries"],
+  9:["model"],
+  10:["strategic solution","strategic"],
+  11:["six","6"],
+  12:["90 hours","90"],
+  13:["three years","3 years"],
+  14:["C"]
+};
+
+const PART_QUESTIONS = {
+  1: Array.from({length:14},(_,i)=>i+1)
+};
+
+const TOTAL_QUESTIONS = 14;
+const TEST_DURATION_SECONDS = 20 * 60;
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");
+}
+function getUserAnswer(n){
+  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
+  if (r) return r.value;
+  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  if (t) return t.value;
+  return "";
+}
+function isCorrect(n, ua){
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function estimateBand(score40){
+  if (score40>=39) return "9.0"; if (score40>=37) return "8.5";
+  if (score40>=35) return "8.0"; if (score40>=33) return "7.5";
+  if (score40>=30) return "7.0"; if (score40>=27) return "6.5";
+  if (score40>=23) return "6.0"; if (score40>=19) return "5.5";
+  if (score40>=15) return "5.0"; if (score40>=13) return "4.5";
+  if (score40>=10) return "4.0"; if (score40>=8)  return "3.5";
+  if (score40>=6)  return "3.0"; if (score40>=4)  return "2.5";
+  return "2.0 or below";
+}
+function scaledScore(score){
+  return Math.round((score / TOTAL_QUESTIONS) * 40);
+}
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
+}
+
+/* =========================================================
+   BUILD PALETTE
+   ========================================================= */
+const palette = document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part => {
+  const section = document.createElement("div");
+  section.className = "ielts-reading-palette-section";
+  section.dataset.part = part;
+
+  const label = document.createElement("strong");
+  label.className = "ielts-reading-palette-section-part";
+  label.textContent = `Passage:`;
+  section.appendChild(label);
+
+  PART_QUESTIONS[part].forEach(n => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ielts-reading-palette-item";
+    btn.dataset.q = n;
+    btn.textContent = n;
+    btn.addEventListener("click", () => goToQuestion(n));
+    section.appendChild(btn);
+  });
+
+  const count = document.createElement("em");
+  count.className = "ielts-reading-palette-section-question-count";
+  count.textContent = `${PART_QUESTIONS[part].length} questions`;
+  section.appendChild(count);
+
+  palette.appendChild(section);
+});
+
+/* =========================================================
+   PART SWITCHING
+   ========================================================= */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(part){
+  currentPart = parseInt(part,10);
+
+  document.querySelectorAll(".part-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.part === String(part)));
+
+  document.querySelectorAll(".passage").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.querySelectorAll(".q-section").forEach(s =>
+    s.classList.toggle("active", s.dataset.part === String(part)));
+
+  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
+    p.classList.toggle("active", p.dataset.part === String(part)));
+
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+
+  currentQuestion = PART_QUESTIONS[part][0];
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+document.querySelectorAll(".part-tab").forEach(tab => {
+  tab.addEventListener("click", (e) => {
+    if (e.target.closest(".skim-btn")) return;
+    switchPart(tab.dataset.part);
+  });
+});
+
+/* =========================================================
+   SKIMMING
+   ========================================================= */
+let skimInterval=null, skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const part = btn.dataset.part;
+    if (skimInterval && skimPart === part){
+      clearInterval(skimInterval); skimInterval=null; skimPart=null;
+      btn.classList.remove("on"); btn.textContent="Skim (1x)";
+      toast("Skimming stopped."); return;
+    }
+    if (skimInterval){
+      clearInterval(skimInterval);
+      document.querySelectorAll(".skim-btn").forEach(b=>{
+        b.classList.remove("on"); b.textContent="Skim (1x)";
+      });
+    }
+    if (String(currentPart) !== String(part)) switchPart(part);
+    const pane = document.getElementById("passagesPane");
+    pane.scrollTop = 0;
+    skimPart = part;
+    btn.classList.add("on"); btn.textContent="Stop";
+    skimInterval = setInterval(() => {
+      pane.scrollTop += 1.2;
+      if (pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2){
+        clearInterval(skimInterval); skimInterval=null; skimPart=null;
+        btn.classList.remove("on"); btn.textContent="Skim (1x)";
+        toast("Skimming complete.");
+      }
+    }, 28);
+    toast("Skimming started — read quickly.");
+  });
+});
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+function goToQuestion(n){
+  n = parseInt(n,10);
+  if (!n || n<1 || n>TOTAL_QUESTIONS) return;
+  let part = 1;
+  for (const p of Object.keys(PART_QUESTIONS)) {
+    if (PART_QUESTIONS[p].includes(n)) { part = parseInt(p,10); break; }
+  }
+  if (part !== currentPart) switchPart(part);
+  currentQuestion = n;
+  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:"smooth", block:"center"});
+    qEl.classList.add("highlight");
+    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
+  }
+  const input = document.querySelector(`input[name=q${n}], input[type=radio][name=q${n}]`);
+  if (input && !input.disabled) input.focus({preventScroll:true});
+  updatePaletteCurrent();
+  updateNavButtons();
+}
+
+function updatePaletteCurrent(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
+}
+function updateNavButtons(){
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  document.getElementById("prevBtn").disabled = (idx<=0);
+  document.getElementById("nextBtn").disabled = (idx>=all.length-1);
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(all[idx-1]);
+  else goToQuestion(all[all.length-1]);
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  const all = PART_QUESTIONS[currentPart];
+  const idx = all.indexOf(currentQuestion);
+  if (idx < all.length-1) goToQuestion(all[idx+1]);
+  else goToQuestion(all[0]);
+});
+
+document.querySelectorAll(".q").forEach(qEl => {
+  qEl.addEventListener("focusin", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+  qEl.addEventListener("click", () => {
+    currentQuestion = parseInt(qEl.dataset.q,10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+document.querySelectorAll("#quiz input, #quiz select").forEach(el => {
+  el.addEventListener("focus", () => {
+    const m = (el.name || "").match(/^q(\d+)$/);
+    if (!m) return;
+    currentQuestion = parseInt(m[1],10);
+    updatePaletteCurrent(); updateNavButtons();
+  });
+});
+
+/* =========================================================
+   PALETTE ANSWERED STATE
+   ========================================================= */
+function refreshPaletteAnswered(){
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
+    const n = parseInt(b.dataset.q,10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle("answered", ua.trim() !== "");
+  });
+}
+document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+
+/* =========================================================
+   RESIZER
+   ========================================================= */
+(function(){
+  const resizer = document.getElementById("resizer");
+  const passagesPane = document.getElementById("passagesPane");
+  const questionsPane = document.getElementById("questionsPane");
+  let dragging = false;
+  resizer.addEventListener("mousedown", e => {
+    e.preventDefault(); dragging = true;
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  });
+  document.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const rect = document.getElementById("mainSplit").getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    passagesPane.style.flex = `0 0 ${pct}%`;
+    questionsPane.style.flex = "1 1 auto";
+  });
+  document.addEventListener("mouseup", () => {
+    if (!dragging) return;
+    dragging = false;
+    document.body.style.cursor = "";
+    document.body.style.userSelect = "";
+  });
+})();
+
+/* =========================================================
+   COUNTDOWN TIMER — 20 minutes
+   ========================================================= */
+let secondsLeft = TEST_DURATION_SECONDS;
+let timerInterval = null;
+const timerEl = document.getElementById("timer");
+const timerChip = document.getElementById("timerChip");
+
+function renderTimer(){
+  const m = String(Math.floor(secondsLeft/60)).padStart(2,"0");
+  const s = String(secondsLeft%60).padStart(2,"0");
+  timerEl.textContent = `${m}:${s}`;
+
+  timerChip.classList.remove("warning","danger");
+  if (secondsLeft <= 60) timerChip.classList.add("danger");
+  else if (secondsLeft <= 5*60) timerChip.classList.add("warning");
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(() => {
+    if (secondsLeft <= 0){
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerChip.classList.add("danger");
+      timerEl.textContent = "00:00";
+      toast("⏰ Time is up! You can still submit.");
+      return;
+    }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast("1 minute remaining!");
+    if (secondsLeft === 5*60) toast("5 minutes remaining.");
+  }, 1000);
+}
+startTimer();
+
+/* =========================================================
+   FULLSCREEN MODE
+   ========================================================= */
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+function updateFullscreenUI(){
+  const active = !!document.fullscreenElement;
+  document.body.classList.toggle("fullscreen-active", active);
+  fullscreenBtn.textContent = active ? "⛶ Exit" : "⛶ Fullscreen";
+}
+fullscreenBtn.addEventListener("click", async () => {
+  try {
+    if (!document.fullscreenElement){
+      await document.documentElement.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  } catch(err){
+    console.warn("Fullscreen error:", err);
+    toast("Fullscreen not supported in this browser.");
+  }
+});
+document.addEventListener("fullscreenchange", updateFullscreenUI);
+
+/* =========================================================
+   HIGHLIGHT FEATURE
+   ========================================================= */
+const hlToolbar   = document.getElementById("hl-toolbar");
+const hlToggleBtn = document.getElementById("hlToggleBtn");
+const hlRemoveBtn = document.getElementById("hlRemoveBtn");
+const passagesEl  = document.getElementById("passagesPane");
+const questionsEl = document.getElementById("questionsPane");
+
+let highlighterMode = false;
+let savedRange = null;         // The range user selected
+let currentMark = null;        // The <mark> clicked on (to allow removal)
+
+/* --- Toggle highlighter mode --- */
+hlToggleBtn.addEventListener("click", () => {
+  highlighterMode = !highlighterMode;
+  hlToggleBtn.classList.toggle("on", highlighterMode);
+  document.body.classList.toggle("hl-mode", highlighterMode);
+  toast(highlighterMode
+    ? "Highlighter ON — select text to highlight"
+    : "Highlighter OFF — normal selection");
+});
+
+/* --- Helpers --- */
+function hideToolbar(){
+  hlToolbar.classList.remove("show");
+  hlToolbar.style.left = "-9999px";
+  hlToolbar.style.top  = "-9999px";
+}
+function isEditable(el){
+  return el && (el.closest("input") || el.closest("select") ||
+                el.closest("textarea") || el.closest("button"));
+}
+function isInsidePanes(el){
+  return el && (passagesEl.contains(el) || questionsEl.contains(el));
+}
+
+/* --- Show toolbar near a rect --- */
+function showToolbarAt(rect){
+  hlToolbar.classList.add("show");
+  const paneRect = document.getElementById("mainSplit").getBoundingClientRect();
+  // Position relative to document (absolute positioning)
+  const top = window.scrollY + rect.top - 52;
+  const left = Math.max(
+    paneRect.left + 80,
+    Math.min(window.scrollX + rect.left + rect.width/2, paneRect.right - 80)
+  );
+  hlToolbar.style.top  = top + "px";
+  hlToolbar.style.left = left + "px";
+}
+
+/* --- Apply a highlight color to a range --- */
+function applyHighlight(range, color){
+  try{
+    const mark = document.createElement("mark");
+    mark.className = "hl-" + color;
+    mark.appendChild(range.extractContents());
+    range.insertNode(mark);
+
+    // Clean-up: merge adjacent marks of same color
+    mark.normalize();
+    window.getSelection().removeAllRanges();
+    hideToolbar();
+    savedRange = null;
+    currentMark = null;
+    toast("Text highlighted!");
+  }catch(err){
+    console.warn("Highlight failed:", err);
+  }
+}
+
+/* --- Remove a <mark> from the DOM --- */
+function removeMark(mark){
+  if (!mark || !mark.parentNode) return;
+  const parent = mark.parentNode;
+  while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+  parent.removeChild(mark);
+  parent.normalize();
+  toast("Highlight removed");
+  hideToolbar();
+  currentMark = null;
+  savedRange = null;
+}
+
+/* --- Clear all highlights on the page --- */
+function clearAllHighlights(){
+  const marks = document.querySelectorAll("mark.hl-yellow, mark.hl-green, mark.hl-pink, mark.hl-blue");
+  if (!marks.length){ toast("No highlights to clear."); return; }
+  marks.forEach(m => {
+    const parent = m.parentNode;
+    if (!parent) return;
+    while (m.firstChild) parent.insertBefore(m.firstChild, m);
+    parent.removeChild(m);
+  });
+  document.querySelectorAll(".passages p, .questions p, .questions .q-body").forEach(el => el.normalize());
+  toast("All highlights cleared");
+}
+
+/* --- Mouseup on text: detect selection --- */
+document.addEventListener("mouseup", (e) => {
+  // Ignore clicks inside toolbar / editable inputs
+  if (e.target.closest("#hl-toolbar")) return;
+  if (isEditable(e.target)) return;
+
+  // Small delay to let the selection settle
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (!sel || !sel.rangeCount || sel.isCollapsed){
+      return;
+    }
+    const range = sel.getRangeAt(0);
+    const container = range.commonAncestorContainer;
+    const el = container.nodeType === 1 ? container : container.parentElement;
+    if (!isInsidePanes(el)){
+      return;
+    }
+    // Save range & show the color toolbar
+    savedRange = range.cloneRange();
+    currentMark = null;
+    showToolbarAt(range.getBoundingClientRect());
+  }, 0);
+});
+
+/* --- Click handling: existing <mark> detection & highlighter mode --- */
+document.addEventListener("mousedown", (e) => {
+  // Don't interfere with clicks on the toolbar
+  if (e.target.closest("#hl-toolbar")) return;
+
+  // If user clicked an existing highlight, remember it for removal
+  const mark = e.target.closest ?
+    e.target.closest("mark.hl-yellow, mark.hl-green, mark.hl-pink, mark.hl-blue") : null;
+  if (mark){
+    currentMark = mark;
+    savedRange = null;
+    // Show toolbar anchored to the mark
+    const rect = mark.getBoundingClientRect();
+    setTimeout(() => showToolbarAt(rect), 0);
+    return;
+  }
+
+  // Otherwise, hide toolbar unless the click is on text we're going to select
+  if (!highlighterMode && !e.target.closest("#hl-toolbar")){
+    // Delay to allow selection to form
+    setTimeout(() => {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed){
+        hideToolbar();
+        savedRange = null;
+        currentMark = null;
+      }
+    }, 0);
+  }
+});
+
+/* --- Toolbar button clicks --- */
+hlToolbar.querySelectorAll(".hl-color").forEach(btn => {
+  btn.addEventListener("mousedown", (e) => e.preventDefault()); // keep selection
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const color = btn.dataset.color;
+    if (currentMark && !savedRange){
+      // Recolor existing highlight
+      currentMark.className = "hl-" + color;
+      toast("Highlight recolored");
+      hideToolbar();
+      currentMark = null;
+      return;
+    }
+    if (!savedRange){
+      toast("Select some text first");
+      return;
+    }
+    applyHighlight(savedRange, color);
+  });
+});
+
+/* --- Remove button --- */
+hlRemoveBtn.addEventListener("mousedown", (e) => e.preventDefault());
+hlRemoveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (currentMark){
+    removeMark(currentMark);
+    return;
+  }
+  // Remove any highlights that intersect the saved range
+  if (savedRange){
+    const container = savedRange.commonAncestorContainer;
+    const root = container.nodeType === 1
+      ? container
+      : (container.parentElement || container.parentNode);
+    if (root && root.querySelectorAll){
+      const marks = root.querySelectorAll("mark.hl-yellow, mark.hl-green, mark.hl-pink, mark.hl-blue");
+      let removed = 0;
+      marks.forEach(m => {
+        try{
+          if (savedRange.intersectsNode(m)){
+            const parent = m.parentNode;
+            while (m.firstChild) parent.insertBefore(m.firstChild, m);
+            parent.removeChild(m);
+            removed++;
+          }
+        }catch(err){}
+      });
+      if (removed) toast("Highlight(s) removed");
+    }
+    window.getSelection().removeAllRanges();
+    hideToolbar();
+    savedRange = null;
+  } else {
+    toast("Click a highlight or select text to clear");
+  }
+});
+
+/* --- Hide toolbar on scroll (so it doesn't float away) --- */
+document.getElementById("passagesPane").addEventListener("scroll", hideToolbar, {passive:true});
+document.getElementById("questionsPane").addEventListener("scroll", hideToolbar, {passive:true});
+window.addEventListener("scroll", hideToolbar, {passive:true});
+window.addEventListener("resize", hideToolbar);
+
+/* --- Menu: Clear highlights link --- */
+document.getElementById("clearHighlightsLink").addEventListener("click", (e) => {
+  e.preventDefault();
+  clearAllHighlights();
+});
+
+/* --- Prevent selection across panes from breaking --- */
+document.addEventListener("selectionchange", () => {
+  // no-op; only reacting on mouseup for performance
+});
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+document.getElementById("submitBtn").addEventListener("click", () => {
+  let score = 0, answered = 0;
+
+  document.querySelectorAll("tr.q, div.q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong"));
+
+  const rows = [];
+  for (let n=1; n<=TOTAL_QUESTIONS; n++){
+    const qEl = document.querySelector(`.q[data-q="${n}"]`);
+    if (!qEl) continue;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== "") answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? "correct" : "wrong");
+    const fb = qEl.querySelector(".feedback");
+    if (fb){
+      const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
+      fb.textContent = ok
+        ? "✓ Correct"
+        : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
+    }
+    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? "correct" : "wrong");
+    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
+  }
+
+  document.getElementById("resultScore").textContent = `${score} / ${TOTAL_QUESTIONS}`;
+  document.getElementById("resultSub").textContent =
+    `Band estimate: ${estimateBand(scaledScore(score))} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;
+
+  const tbody = document.getElementById("resultBody");
+  tbody.innerHTML = "";
+  rows.forEach(r => {
+    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "Band " + estimateBand(scaledScore(score));
+  chip.classList.add("show");
+
+  document.getElementById("resultOverlay").classList.add("show");
+
+  if (timerInterval){
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+});
+
+/* =========================================================
+   REVIEW
+   ========================================================= */
+document.getElementById("reviewBtn").addEventListener("click", () => {
+  const tbody = document.getElementById("previewBody");
+  tbody.innerHTML = "";
+  for (let n=1; n<=TOTAL_QUESTIONS; n++){
+    const ua = getUserAnswer(n);
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById("previewOverlay").classList.add("show");
+});
+
+document.querySelectorAll("[data-close]").forEach(btn =>
+  btn.addEventListener("click", () =>
+    document.getElementById(btn.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => {
+    if (e.target === ov) ov.classList.remove("show");
+  }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
+    hideToolbar();
+  }
+});
+
+/* =========================================================
+   MENU
+   ========================================================= */
+const menuPop = document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click", e => {
+  e.stopPropagation(); menuPop.classList.toggle("show");
+});
+document.addEventListener("click", () => menuPop.classList.remove("show"));
+menuPop.addEventListener("click", e => e.stopPropagation());
+
+document.getElementById("exportLink").addEventListener("click", e => {
+  e.preventDefault(); window.print();
+});
+document.getElementById("resetLink").addEventListener("click", e => {
+  e.preventDefault(); doReset();
+});
+document.getElementById("gotoTop").addEventListener("click", e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+  document.getElementById("passagesPane").scrollTop = 0;
+  document.getElementById("questionsPane").scrollTop = 0;
+});
+
+/* =========================================================
+   RESET
+   ========================================================= */
+function doReset(){
+  if (!confirm("Clear all answers and reset the test?")) return;
+  document.getElementById("quiz").reset();
+  document.querySelectorAll("tr.q, div.q").forEach(q => {
+    q.classList.remove("correct","wrong");
+    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
+  });
+  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
+    b.classList.remove("correct","wrong","answered"));
+  const chip = document.getElementById("bandChip");
+  chip.textContent = "--"; chip.classList.remove("show");
+  document.getElementById("resultOverlay").classList.remove("show");
+  document.getElementById("previewOverlay").classList.remove("show");
+  switchPart(1);
+
+  secondsLeft = TEST_DURATION_SECONDS;
+  startTimer();
+
+  toast("Test reset. Good luck!");
+}
+
+/* =========================================================
+   FOCUS MODE
+   ========================================================= */
+document.getElementById("focusBtn").addEventListener("click", () =>
+  document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click", () =>
+  document.body.classList.remove("focus-mode"));
+
+/* =========================================================
+   INIT
+   ========================================================= */
+switchPart(1);
+refreshPaletteAnswered();
+updateNavButtons();
+updateFullscreenUI();
+renderTimer();
+hideToolbar();
+</script>
+
+    </body>
+</html>
