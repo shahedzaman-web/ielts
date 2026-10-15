@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge in Medicine - IELTS Reading Practice Test</title>
+<style>
+:root{--bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;--accent:#0f766e;--accent-soft:#ccfbf1;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;}
+*{box-sizing:border-box;}html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{font-size:20px;text-decoration:none;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.timer-chip.warning{background:#b45309;}.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+.passage{display:none;}.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage .para-letter{font-weight:700;margin-right:6px;}
+.passage em{color:var(--muted);}
+.q-section{display:none;}.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}.q-instr p:last-child{margin:0;}
+.summary-tbl{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 14px;}
+.summary-tbl td,.summary-tbl th{border:1px solid var(--line);padding:10px 12px;vertical-align:top;}
+.summary-tbl th{background:#f8fafc;font-weight:700;text-align:left;}
+.summary-tbl .qnum{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin:0 2px;background:#f1f5f9;color:#334155;border-radius:5px;font-size:12px;font-weight:700;vertical-align:middle;}
+.summary-tbl input[type=text]{border:1px solid var(--line);border-radius:6px;padding:4px 9px;font-size:14px;font-family:inherit;width:130px;background:#fff;vertical-align:middle;margin:0 2px;}
+.summary-tbl input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;cursor:pointer;min-width:130px;}
+select:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}.q-body p{margin:0 0 7px;}
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
+.q .feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto;}
+.skim-btn:hover{background:#bae6fd;}.skim-btn.on{background:var(--accent);color:#fff;}
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.12s;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+body.fullscreen-active .app-header,body.fullscreen-active .bottom-panel{display:none;}
+body.fullscreen-active{padding-bottom:0;}
+body.fullscreen-active .main-split{height:100vh;max-width:none;margin:0;border-radius:0;border:none;}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <a href="/" class="logo">📚</a>
+  <h1>Knowledge in Medicine — IELTS Reading Practice Test</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="fullscreenBtn" title="Toggle full screen">⛶ Fullscreen</button>
+    <button class="icon-btn" id="focusBtn" title="Focus mode">🎯 Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip" id="timerChip">⏱ <strong id="timer">20:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear All Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+    <div class="passage active" data-part="1">
+      <span class="part-label">Reading Passage</span>
+      <h2>Knowledge in Medicine</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–14, which are based on the Reading Passage below.</em></p>
+      <p><strong>A</strong> What counts as knowledge? What do we mean when we say that we know something? What is the status of different kinds of knowledge? In order to explore these questions, we are going to focus on one particular area of knowledge – medicine.</p>
+      <p><strong>B</strong> How do you know when you are ill? This may seem to be an absurd question. You know you are ill because you feel ill; your body tells you that you are ill. You may know that you feel pain or discomfort but knowing you are ill is a bit more complex. At times, people experience the symptoms of illness, but in fact, they are simply tired or over-worked or they may just have a hangover. At other times, people may be suffering from a disease and fail to be aware of the illness until it has reached a late stage in its development. So how do we know we are ill, and what counts as knowledge?</p>
+      <p><strong>C</strong> Think about this example. You feel unwell. You have a bad cough and always seem to be tired. Perhaps it could be stress at work, or maybe you should give up smoking. You feel worse. You visit the doctor who listens to your chest and heart, takes your temperature and blood pressure, and then finally prescribes antibiotics for your cough.</p>
+      <p><strong>D</strong> Things do not improve but you struggle on thinking you should pull yourself together, perhaps things will ease off at work soon. A return visit to your doctor shocks you. This time the doctor, drawing on years of training and experience, diagnoses pneumonia. This means that you will need bed rest and a considerable time off work. The scenario is transformed. Although you still have the same symptoms, you no longer think that these are caused by pressure at work. You now have proof that you are ill. This is the result of the combination of your own subjective experience and the diagnosis of someone who has the status of a medical expert. You have a medically authenticated diagnosis and it appears that you are seriously ill; you know you are ill and have the evidence upon which to base this knowledge.</p>
+      <p><strong>E</strong> This scenario shows many different sources of knowledge. For example, you decide to consult the doctor in the first place because you feel unwell – this is personal knowledge about your own body. However, the doctor's expert diagnosis is based on experience and training, with sources of knowledge as diverse as other experts, laboratory reports, medical textbooks and years of experience.</p>
+      <p><strong>F</strong> One source of knowledge is the experience of our own bodies; the personal knowledge we have of changes that might be significant, as well as the subjective experiences are mediated by other forms of knowledge such as the words we have available to describe our experience, and the common sense of our families and friends as well as that drawn from popular culture. Over the past decade, for example, Western culture has seen a significant emphasis on stress-related illness in the media. Reference to being 'stressed out' has become a common response in daily exchanges in the workplace and has become part of popular common-sense knowledge. It is thus not surprising that we might seek such an explanation of physical symptoms of discomfort.</p>
+      <p><strong>G</strong> We might also rely on the observations of others who know us. Comments from friends and family such as 'you do look ill' or 'that's a bad cough' might be another source of knowledge. Complementary health practices, such as holistic medicine, produce their own sets of knowledge upon which we might also draw in deciding the nature and degree of our ill health and about possible treatments.</p>
+      <p><strong>H</strong> Perhaps the most influential and authoritative source of knowledge is the medical knowledge provided by the general practitioner. We expect the doctor to have access to expert knowledge. This is socially sanctioned. It would not be acceptable to notify our employer that we simply felt too unwell to turn up for work or that our faith healer, astrologer, therapist or even our priest thought it was not a good idea. We need an expert medical diagnosis in order to obtain the necessary certificate if we need to be off work for more than the statutory self-certification period. The knowledge of the medical sciences is privileged in this respect in contemporary Western culture. Medical practitioners are also seen as having the required expert knowledge that permits them legally to prescribe drugs and treatment to which patients would not otherwise have access. However, there is a range of different knowledge upon which we draw when making decisions about our own state of health.</p>
+      <p><strong>I</strong> However, there is more than existing knowledge in this little story; new knowledge is constructed within it. Given the doctor's medical training and background, she may hypothesize 'is this now pneumonia?' and then proceed to look for evidence about it. She will use observations and instruments to assess the evidence and – critically – interpret it in light of her training and experience. This results in new knowledge and new experience both for you and for the doctor. This will then be added to the doctor's medical knowledge and may help in the future diagnosis of pneumonia.</p>
+    </div>
+  </div>
+  <div class="resizer" id="resizer"></div>
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–6</h3>
+          <div class="q-instr">
+            <p>Complete the table.</p>
+            <p>Choose <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p>
+            <p>Write your answers in boxes 1–6 on your answer sheet.</p>
+          </div>
+          <table class="summary-tbl">
+            <thead><tr><th style="width:30%">Source of knowledge</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Personal experience</td>
+                <td>
+                  <p>Symptoms of a <span class="qnum">1</span> <input type="text" name="q1" aria-label="Q1"> and tiredness</p>
+                  <p>Doctor's measurement by taking <span class="qnum">2</span> <input type="text" name="q2" aria-label="Q2"> and temperature</p>
+                  <p>Common judgment from <span class="qnum">3</span> <input type="text" name="q3" aria-label="Q3"> around you</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Scientific evidence</td>
+                <td>
+                  <p>Medical knowledge from the general <span class="qnum">4</span> <input type="text" name="q4" aria-label="Q4">.</p>
+                  <p>e.g. doctor's medical <span class="qnum">5</span> <input type="text" name="q5" aria-label="Q5"></p>
+                  <p>Examine the medical hypothesis with the previous drill and <span class="qnum">6</span> <input type="text" name="q6" aria-label="Q6"></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="q" data-q="1" style="display:none"><div class="q-num">1</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="2" style="display:none"><div class="q-num">2</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="3" style="display:none"><div class="q-num">3</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="4" style="display:none"><div class="q-num">4</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="5" style="display:none"><div class="q-num">5</div><div class="q-body"><div class="feedback"></div></div></div>
+          <div class="q" data-q="6" style="display:none"><div class="q-num">6</div><div class="q-body"><div class="feedback"></div></div></div>
+        </div>
+        <div class="q-group">
+          <h3>Questions 7–14</h3>
+          <div class="q-instr">
+            <p>The Reading Passage has nine paragraphs <strong>A–I</strong>.</p>
+            <p>Which paragraph contains the following information?</p>
+            <p>Write the correct letter <strong>A–I</strong> in boxes 7–14 on your answer sheet.</p>
+          </div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>the contrast between the nature of personal judgment and the nature of doctor's diagnosis</p><select name="q7" aria-label="Q7"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>a reference of culture about pressure</p><select name="q8" aria-label="Q8"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>sick leave will not be permitted without the professional diagnosis</p><select name="q9" aria-label="Q9"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>how doctors' opinions are regarded in society</p><select name="q10" aria-label="Q10"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>the illness of patients can become part of new knowledge</p><select name="q11" aria-label="Q11"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>a description of knowledge drawn from non-specialized sources other than personal knowledge</p><select name="q12" aria-label="Q12"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>an example of collective judgment from personal experience and professional doctor</p><select name="q13" aria-label="Q13"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>a reference that some people do not realize they are ill</p><select name="q14" aria-label="Q14"><option value=""> </option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select><div class="feedback"></div></div></div>
+        </div>
+      </section>
+    </form>
+  </div>
+</div>
+<div class="bottom-panel"><div class="bottom-inner">
+  <div class="part-tabs"><button class="part-tab active" data-part="1"><span class="tab-part-name">Passage</span><span class="tab-qcount">Questions 1–14</span><span class="skim-btn" data-part="1">Skim (1x)</span></button></div>
+  <div class="ielts-reading-question-palette" id="palette"></div>
+  <div class="ielts-reading-bottom-controls">
+    <div class="ielts-reading-question-control-buttons"><button id="prevBtn" title="Previous question">←</button><button id="nextBtn" title="Next question">→</button></div>
+    <div class="ielts-reading-test-control-buttons">
+      <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+      <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+    </div>
+  </div>
+</div></div>
+<div class="overlay" id="resultOverlay"><div class="overlay-card">
+  <div class="overlay-head"><h3>Your Results</h3><button class="close-x" data-close="resultOverlay">×</button></div>
+  <div class="overlay-body">
+    <div class="score-summary"><div class="big" id="resultScore">0 / 14</div><div class="sub" id="resultSub">Band estimate: —</div></div>
+    <div class="legend-row"><span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span></div>
+    <table class="result-tbl"><thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead><tbody id="resultBody"></tbody></table>
+  </div>
+</div></div>
+<div class="overlay" id="previewOverlay"><div class="overlay-card">
+  <div class="overlay-head"><h3>Review Your Answers</h3><button class="close-x" data-close="previewOverlay">×</button></div>
+  <div class="overlay-body"><table class="result-tbl"><thead><tr><th>#</th><th>Your Answer</th></tr></thead><tbody id="previewBody"></tbody></table></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+const ANSWER_KEY={1:["bad cough"],2:["blood pressure"],3:["families and friends","family and friends"],4:["practitioner"],5:["diagnosis"],6:["background"],7:["E"],8:["F"],9:["H"],10:["H"],11:["I"],12:["G"],13:["D"],14:["B"]};
+const PART_QUESTIONS={1:Array.from({length:14},(_,i)=>i+1)};
+const TOTAL_QUESTIONS=14;const TEST_DURATION_SECONDS=20*60;
+function normalize(s){return(s||"").toString().trim().toLowerCase().replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");}
+function getUserAnswer(n){const r=document.querySelector(`input[type=radio][name=q${n}]:checked`);if(r)return r.value;const s=document.querySelector(`select[name=q${n}]`);if(s)return s.value;const t=document.querySelector(`input[type=text][name=q${n}]`);if(t)return t.value;return"";}
+function isCorrect(n,ua){const keys=ANSWER_KEY[n]||[];const v=normalize(ua);if(!v)return false;return keys.some(k=>normalize(k)===v);}
+function estimateBand(s40){if(s40>=39)return"9.0";if(s40>=37)return"8.5";if(s40>=35)return"8.0";if(s40>=33)return"7.5";if(s40>=30)return"7.0";if(s40>=27)return"6.5";if(s40>=23)return"6.0";if(s40>=19)return"5.5";if(s40>=15)return"5.0";if(s40>=13)return"4.5";if(s40>=10)return"4.0";if(s40>=8)return"3.5";if(s40>=6)return"3.0";if(s40>=4)return"2.5";return"2.0 or below";}
+function scaledScore(s){return Math.round((s/TOTAL_QUESTIONS)*40);}
+let toastTimer=null;
+function toast(m){const el=document.getElementById("toast");el.textContent=m;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2000);}
+const palette=document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part=>{const section=document.createElement("div");section.className="ielts-reading-palette-section";section.dataset.part=part;const label=document.createElement("strong");label.className="ielts-reading-palette-section-part";label.textContent="Passage:";section.appendChild(label);PART_QUESTIONS[part].forEach(n=>{const btn=document.createElement("button");btn.type="button";btn.className="ielts-reading-palette-item";btn.dataset.q=n;btn.textContent=n;btn.addEventListener("click",()=>goToQuestion(n));section.appendChild(btn);});const count=document.createElement("em");count.className="ielts-reading-palette-section-question-count";count.textContent=`${PART_QUESTIONS[part].length} questions`;section.appendChild(count);palette.appendChild(section);});
+let currentPart=1,currentQuestion=1;
+function switchPart(part){currentPart=parseInt(part,10);document.querySelectorAll(".part-tab").forEach(t=>t.classList.toggle("active",t.dataset.part===String(part)));document.querySelectorAll(".passage").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.querySelectorAll(".q-section").forEach(s=>s.classList.toggle("active",s.dataset.part===String(part)));document.querySelectorAll(".ielts-reading-palette-section").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;currentQuestion=PART_QUESTIONS[part][0];updatePaletteCurrent();updateNavButtons();}
+document.querySelectorAll(".part-tab").forEach(tab=>tab.addEventListener("click",(e)=>{if(e.target.closest(".skim-btn"))return;switchPart(tab.dataset.part);}));
+let skimInterval=null,skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn=>btn.addEventListener("click",(e)=>{e.stopPropagation();const part=btn.dataset.part;if(skimInterval&&skimPart===part){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming stopped.");return;}if(skimInterval){clearInterval(skimInterval);document.querySelectorAll(".skim-btn").forEach(b=>{b.classList.remove("on");b.textContent="Skim (1x)";});}if(String(currentPart)!==String(part))switchPart(part);const pane=document.getElementById("passagesPane");pane.scrollTop=0;skimPart=part;btn.classList.add("on");btn.textContent="Stop";skimInterval=setInterval(()=>{pane.scrollTop+=1.2;if(pane.scrollTop+pane.clientHeight>=pane.scrollHeight-2){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming complete.");}},28);toast("Skimming started — read quickly.");}));
+function goToQuestion(n){n=parseInt(n,10);if(!n||n<1||n>TOTAL_QUESTIONS)return;let part=1;for(const p of Object.keys(PART_QUESTIONS)){if(PART_QUESTIONS[p].includes(n)){part=parseInt(p,10);break;}}if(part!==currentPart)switchPart(part);currentQuestion=n;const qEl=document.querySelector(`.q[data-q="${n}"]`);if(qEl){qEl.scrollIntoView({behavior:"smooth",block:"center"});qEl.classList.add("highlight");setTimeout(()=>qEl.classList.remove("highlight"),1600);}const input=document.querySelector(`input[name=q${n}], select[name=q${n}], input[type=radio][name=q${n}]`);if(input&&!input.disabled)input.focus({preventScroll:true});updatePaletteCurrent();updateNavButtons();}
+function updatePaletteCurrent(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.toggle("current",parseInt(b.dataset.q,10)===currentQuestion));}
+function updateNavButtons(){const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);document.getElementById("prevBtn").disabled=(idx<=0);document.getElementById("nextBtn").disabled=(idx>=all.length-1);}
+document.getElementById("prevBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);if(idx>0)goToQuestion(all[idx-1]);else goToQuestion(all[all.length-1]);});
+document.getElementById("nextBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);if(idx<all.length-1)goToQuestion(all[idx+1]);else goToQuestion(all[0]);});
+document.querySelectorAll(".q").forEach(qEl=>{qEl.addEventListener("focusin",()=>{currentQuestion=parseInt(qEl.dataset.q,10);updatePaletteCurrent();updateNavButtons();});qEl.addEventListener("click",()=>{currentQuestion=parseInt(qEl.dataset.q,10);updatePaletteCurrent();updateNavButtons();});});
+document.querySelectorAll("#quiz input, #quiz select").forEach(el=>el.addEventListener("focus",()=>{const m=(el.name||"").match(/^q(\d+)$/);if(!m)return;currentQuestion=parseInt(m[1],10);updatePaletteCurrent();updateNavButtons();}));
+function refreshPaletteAnswered(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>{const n=parseInt(b.dataset.q,10);const ua=getUserAnswer(n);b.classList.toggle("answered",ua.trim()!=="");});}
+document.getElementById("quiz").addEventListener("input",refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change",refreshPaletteAnswered);
+(function(){const resizer=document.getElementById("resizer");const p=document.getElementById("passagesPane");const q=document.getElementById("questionsPane");let d=false;resizer.addEventListener("mousedown",e=>{e.preventDefault();d=true;document.body.style.cursor="col-resize";document.body.style.userSelect="none";});document.addEventListener("mousemove",e=>{if(!d)return;const r=document.getElementById("mainSplit").getBoundingClientRect();let pct=((e.clientX-r.left)/r.width)*100;pct=Math.max(25,Math.min(75,pct));p.style.flex=`0 0 ${pct}%`;q.style.flex="1 1 auto";});document.addEventListener("mouseup",()=>{if(!d)return;d=false;document.body.style.cursor="";document.body.style.userSelect="";});})();
+let secondsLeft=TEST_DURATION_SECONDS,timerInterval=null;
+const timerEl=document.getElementById("timer"),timerChip=document.getElementById("timerChip");
+function renderTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0");const s=String(secondsLeft%60).padStart(2,"0");timerEl.textContent=`${m}:${s}`;timerChip.classList.remove("warning","danger");if(secondsLeft<=60)timerChip.classList.add("danger");else if(secondsLeft<=5*60)timerChip.classList.add("warning");}
+function startTimer(){clearInterval(timerInterval);renderTimer();timerInterval=setInterval(()=>{if(secondsLeft<=0){clearInterval(timerInterval);timerInterval=null;timerChip.classList.add("danger");timerEl.textContent="00:00";toast("⏰ Time is up!");return;}secondsLeft--;renderTimer();if(secondsLeft===60)toast("1 minute remaining!");if(secondsLeft===5*60)toast("5 minutes remaining.");},1000);}
+startTimer();
+const fullscreenBtn=document.getElementById("fullscreenBtn");
+function updateFullscreenUI(){const a=!!document.fullscreenElement;document.body.classList.toggle("fullscreen-active",a);fullscreenBtn.textContent=a?"⛶ Exit":"⛶ Fullscreen";}
+fullscreenBtn.addEventListener("click",async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen();}catch(e){toast("Fullscreen not supported.");}});
+document.addEventListener("fullscreenchange",updateFullscreenUI);
+const hlPopup=document.getElementById("hl-popup"),notePopup=document.getElementById("note-popup"),passagesEl=document.getElementById("passagesPane"),questionsEl=document.getElementById("questionsPane");
+let savedRange=null,pendingNoteRange=null,currentMark=null,noteSaveTarget=null;
+function showPopupAt(r){hlPopup.style.top=(window.scrollY+r.top-50)+"px";hlPopup.style.left=Math.max(8,window.scrollX+r.left+r.width/2-150)+"px";hlPopup.classList.add("show");}
+document.addEventListener("mouseup",(e)=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup"))return;if(e.target.tagName==="INPUT"||e.target.tagName==="SELECT")return;setTimeout(()=>{const sel=window.getSelection();if(sel&&sel.rangeCount&&!sel.isCollapsed){const range=sel.getRangeAt(0);const c=range.commonAncestorContainer;const el=c.nodeType===1?c:c.parentElement;if(el&&(passagesEl.contains(el)||questionsEl.contains(el))){savedRange=range.cloneRange();currentMark=null;showPopupAt(range.getBoundingClientRect());}}},0);});
+document.addEventListener("click",(e)=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup"))return;if(!e.target.closest(".passages")&&!e.target.closest(".questions"))return;const em=e.target.tagName==="MARK"?e.target:(e.target.closest?e.target.closest("mark.hl-user"):null);const en=e.target.closest?e.target.closest(".hl-note"):null;if(en){document.getElementById("note-text").value=en.dataset.note||"";pendingNoteRange=null;notePopup.classList.add("show");noteSaveTarget=en;return;}if(em){savedRange=null;currentMark=em;showPopupAt(em.getBoundingClientRect());return;}});
+document.getElementById("hl-highlight").addEventListener("click",()=>{if(currentMark){hlPopup.classList.remove("show");return;}if(!savedRange){toast("Select text to highlight");return;}highlightRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Text highlighted");});
+document.getElementById("hl-dehighlight").addEventListener("click",()=>{if(currentMark){const p=currentMark.parentNode;while(currentMark.firstChild)p.insertBefore(currentMark.firstChild,currentMark);p.removeChild(currentMark);currentMark=null;hlPopup.classList.remove("show");toast("Highlight removed");return;}if(savedRange){clearHighlightInRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Highlight removed");}else hlPopup.classList.remove("show");});
+document.getElementById("hl-note").addEventListener("click",()=>{if(!savedRange){toast("Select text first");return;}pendingNoteRange=savedRange.cloneRange();noteSaveTarget=null;document.getElementById("note-text").value="";notePopup.classList.add("show");hlPopup.classList.remove("show");});
+document.getElementById("hl-flashcard").addEventListener("click",()=>{const t=savedRange?savedRange.toString().trim():(currentMark?currentMark.textContent.trim():"");if(!t){toast("Select text first");return;}toast(`Saved "${t.substring(0,40)}${t.length>40?"…":""}" as flashcard`);hlPopup.classList.remove("show");});
+function highlightRange(r){try{const m=document.createElement("mark");m.className="hl-user";m.appendChild(r.extractContents());r.insertNode(m);}catch(e){}}
+function clearHighlightInRange(r){const c=r.commonAncestorContainer;const root=c.nodeType===1?c:(c.parentElement||c.parentNode);if(!root||!root.querySelectorAll)return;root.querySelectorAll("mark.hl-user").forEach(m=>{try{if(r.intersectsNode(m)){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);}}catch(e){}});}
+document.getElementById("note-cancel").addEventListener("click",()=>{notePopup.classList.remove("show");pendingNoteRange=null;noteSaveTarget=null;});
+document.getElementById("note-save").addEventListener("click",()=>{const nt=document.getElementById("note-text").value.trim();if(noteSaveTarget){if(nt){noteSaveTarget.dataset.note=nt;noteSaveTarget.title="Note: "+nt;toast("Note updated");}else{const p=noteSaveTarget.parentNode;while(noteSaveTarget.firstChild)p.insertBefore(noteSaveTarget.firstChild,noteSaveTarget);p.removeChild(noteSaveTarget);toast("Note removed");}noteSaveTarget=null;notePopup.classList.remove("show");document.getElementById("note-text").value="";return;}if(!nt||!pendingNoteRange){notePopup.classList.remove("show");pendingNoteRange=null;return;}try{const sp=document.createElement("span");sp.className="hl-note";sp.title="Note: "+nt;sp.dataset.note=nt;sp.appendChild(pendingNoteRange.extractContents());pendingNoteRange.insertNode(sp);toast("Note saved");}catch(e){}document.getElementById("note-text").value="";notePopup.classList.remove("show");pendingNoteRange=null;});
+document.getElementById("clearHighlightsLink").addEventListener("click",(e)=>{e.preventDefault();if(!confirm("Remove all highlights and notes?"))return;document.querySelectorAll("mark.hl-user, .hl-note").forEach(el=>{const p=el.parentNode;while(el.firstChild)p.insertBefore(el.firstChild,el);p.removeChild(el);});toast("Highlights cleared");});
+document.getElementById("submitBtn").addEventListener("click",()=>{let score=0,answered=0;document.querySelectorAll("tr.q, div.q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent="";});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong"));const rows=[];for(let n=1;n<=TOTAL_QUESTIONS;n++){const qEl=document.querySelector(`.q[data-q="${n}"]`);if(!qEl)continue;const ua=getUserAnswer(n);if(ua.trim()!=="")answered++;const ok=isCorrect(n,ua);if(ok)score++;qEl.classList.add(ok?"correct":"wrong");const fb=qEl.querySelector(".feedback");if(fb){const k=(ANSWER_KEY[n]||[]).slice(0,3).join(" / ");fb.textContent=ok?"✓ Correct":`✗ ${ua.trim()||"(no answer)"} — Correct answer: ${k}`;}const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);if(pal)pal.classList.add(ok?"correct":"wrong");rows.push({n,ua:ua.trim()||"—",key:(ANSWER_KEY[n]||[])[0]});}document.getElementById("resultScore").textContent=`${score} / ${TOTAL_QUESTIONS}`;document.getElementById("resultSub").textContent=`Band estimate: ${estimateBand(scaledScore(score))} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;const tb=document.getElementById("resultBody");tb.innerHTML="";rows.forEach(r=>{const ok=isCorrect(r.n,r.ua==="—"?"":r.ua);const tr=document.createElement("tr");tr.innerHTML=`<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;tb.appendChild(tr);});const chip=document.getElementById("bandChip");chip.textContent="Band "+estimateBand(scaledScore(score));chip.classList.add("show");document.getElementById("resultOverlay").classList.add("show");if(timerInterval){clearInterval(timerInterval);timerInterval=null;}});
+document.getElementById("reviewBtn").addEventListener("click",()=>{const tb=document.getElementById("previewBody");tb.innerHTML="";for(let n=1;n<=TOTAL_QUESTIONS;n++){const ua=getUserAnswer(n);const tr=document.createElement("tr");tr.innerHTML=`<td>${n}</td><td>${ua.trim()||"—"}</td>`;tb.appendChild(tr);}document.getElementById("previewOverlay").classList.add("show");});
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("show");}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("show"));hlPopup.classList.remove("show");notePopup.classList.remove("show");}});
+const menuPop=document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click",e=>{e.stopPropagation();menuPop.classList.toggle("show");});
+document.addEventListener("click",()=>menuPop.classList.remove("show"));
+menuPop.addEventListener("click",e=>e.stopPropagation());
+document.getElementById("exportLink").addEventListener("click",e=>{e.preventDefault();window.print();});
+document.getElementById("resetLink").addEventListener("click",e=>{e.preventDefault();doReset();});
+document.getElementById("gotoTop").addEventListener("click",e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;});
+function doReset(){if(!confirm("Clear all answers and reset?"))return;document.getElementById("quiz").reset();document.querySelectorAll("tr.q, div.q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent="";});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong","answered"));const chip=document.getElementById("bandChip");chip.textContent="--";chip.classList.remove("show");document.getElementById("resultOverlay").classList.remove("show");document.getElementById("previewOverlay").classList.remove("show");switchPart(1);secondsLeft=TEST_DURATION_SECONDS;startTimer();toast("Test reset. Good luck!");}
+document.getElementById("focusBtn").addEventListener("click",()=>document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click",()=>document.body.classList.remove("focus-mode"));
+switchPart(1);refreshPaletteAnswered();updateNavButtons();updateFullscreenUI();renderTimer();
+</script>
+</body>
+</html>

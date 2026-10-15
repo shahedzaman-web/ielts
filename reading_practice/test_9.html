@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amateur Naturalists - IELTS Reading Practice Test</title>
+<style>
+:root{--bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;--accent:#0f766e;--accent-soft:#ccfbf1;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px;}
+*{box-sizing:border-box;}html,body{height:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h);}
+button{font-family:inherit;cursor:pointer;border:none;}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05);}
+.app-header .logo{font-size:20px;text-decoration:none;}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35;}
+.band-chip.show{opacity:1;background:#16a34a;}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;}
+.timer-chip.warning{background:#b45309;}.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px;}
+.icon-btn:hover{background:#f1f5f9;}
+.menu-wrap{position:relative;}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100;}
+.menu-pop.show{display:block;}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9;}
+.menu-pop a:last-child{border-bottom:none;}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.pane{overflow-y:auto;padding:24px 30px;}
+.passages{flex:0 0 50%;background:#fcfdff;}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center;}
+.resizer:hover{background:#cbd5e1;}.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
+.passage{display:none;}.passage.active{display:block;}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
+.passage .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;}
+.passage p{margin:0 0 14px;}
+.passage .para-letter{font-weight:700;margin-right:6px;}
+.passage em{color:var(--muted);}
+.q-section{display:none;}.q-section.active{display:block;}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
+.q-group:last-child{border-bottom:none;margin-bottom:0;}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700;}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;}
+.q-instr p{margin:0 0 3px;}.q-instr p:last-child{margin:0;}
+input[type=text]{border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;}
+input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
+.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
+.options.stack{display:block;}
+.options label{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:3px 7px;border-radius:6px;}
+.options.stack label{display:flex;margin-bottom:3px;}
+.options label:hover{background:#f8fafc;}
+input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
+.q:last-child{border-bottom:none;}.q.highlight{background:#fffbeb;}
+.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.q-body{flex:1;min-width:0;}.q-body p{margin:0 0 7px;}
+.q.correct .q-num{background:var(--good-soft);color:var(--good);}
+.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
+.q.correct input[type=text]{border-color:var(--good);background:var(--good-soft);}
+.q.wrong input[type=text]{border-color:var(--bad);background:var(--bad-soft);}
+.q .feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
+.q.correct .feedback,.q.wrong .feedback{display:block;}
+.q.correct .feedback{color:var(--good);}
+.q.wrong .feedback{color:var(--bad);}
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
+#hl-popup.show{display:flex;gap:3px;}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
+#hl-popup button:hover{background:#1e293b;}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
+#note-popup.show{display:flex;}
+#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
+#note-popup h4{margin:0 0 10px;font-size:16px;}
+#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
+#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
+#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
+#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
+#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px 10px;overflow-y:auto;max-height:var(--bottom-h);}
+.bottom-inner{max-width:1600px;margin:0 auto;}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85;}
+.part-tab:hover{opacity:1;background:#f1f5f9;}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
+.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
+.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
+.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto;}
+.skim-btn:hover{background:#bae6fd;}.skim-btn.on{background:var(--accent);color:#fff;}
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;}
+.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
+.ielts-reading-palette-section.active{display:flex;}
+.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
+.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;}
+.ielts-reading-palette-item:hover{background:#e2e8f0;}
+.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
+.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22);}
+.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
+.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
+.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px;}
+.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
+.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;}
+.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
+.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
+.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.12s;}
+.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
+.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s;}
+.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.overlay-head h3{margin:0;font-size:18px;}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
+.close-x:hover{color:var(--text);}
+.overlay-body{padding:18px 22px;overflow-y:auto;}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
+table.result-tbl td.correct{color:var(--good);font-weight:700;}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none;}
+body.focus-mode{padding-bottom:0;}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700;}
+body.focus-mode .exit-focus{display:block;}
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;}
+.toast.show{opacity:1;}
+body.fullscreen-active .app-header,body.fullscreen-active .bottom-panel{display:none;}
+body.fullscreen-active{padding-bottom:0;}
+body.fullscreen-active .main-split{height:100vh;max-width:none;margin:0;border-radius:0;border:none;}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <a href="/" class="logo">📚</a>
+  <h1>Amateur Naturalists — IELTS Reading Practice Test</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="fullscreenBtn" title="Toggle full screen">⛶ Fullscreen</button>
+    <button class="icon-btn" id="focusBtn" title="Focus mode">🎯 Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip" id="timerChip">⏱ <strong id="timer">20:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear All Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+  <button id="hl-flashcard">🃏 Flashcard</button>
+</div>
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+    <div class="passage active" data-part="1">
+      <span class="part-label">Reading Passage</span>
+      <h2>Amateur Naturalists</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–14, which are based on the Reading Passage below.</em></p>
+      <p style="text-align:center"><strong><em>From the results of an annual Alaskan betting contest to sightings of migratory birds, ecologists are using a wealth of unusual data to predict the impact of climate change.</em></strong></p>
+      <p><span class="para-letter">A</span> Tim Sparks slides a small leather-bound notebook out of an envelope. The book's yellowing pages contain bee-keeping notes made between 1941 and 1969 by the late Walter Coates of Kilworth, Leicestershire. He adds it to his growing pile of local journals, birdwatchers' lists and gardening diaries. "We're uncovering about one major new record each month," he says, "I still get surprised." Around two centuries before Coates, Robert Marsham, a landowner from Norfolk in the east of England, began recording the life cycles of plants and animals on his estate - when the first wood anemones flowered, the dates on which the oaks burst into leaf and the rooks began nesting. Successive Marshams continued compiling these notes for 211 years.</p>
+      <p><span class="para-letter">B</span> Today, such records are being put to uses that their authors could not possibly have expected. These data sets, and others like them, are proving invaluable to ecologists interested in the timing of biological events, or phenology. By combining the records with climate data, researchers can reveal how, for example, changes in temperature affect the arrival of spring, allowing ecologists to make improved predictions about the impact of climate change. A small band of researchers is combing through hundreds of years of records taken by thousands of amateur naturalists. And more systematic projects have also started up, producing an overwhelming response. "The amount of interest is almost frightening," says Sparks, a climate researcher at the Centre for Ecology and Hydrology in Monks Wood, Cambridgeshire.</p>
+      <p><span class="para-letter">C</span> Sparks first became aware of the army of "closet phenologists", as he describes them, when a retiring colleague gave him the Marsham records. He now spends much of his time following leads from one historical data set to another. As news of his quest spreads, people tip him off to other historical records, and more amateur phenologists come out of their closets. The British devotion to recording and collecting makes his job easier - one man from Kent sent him 30 years' worth of kitchen calendars, on which he had noted the date that his neighbour's magnolia tree flowered.</p>
+      <p><span class="para-letter">D</span> Other researchers have unearthed data from equally odd sources. Rafe Sagarin, an ecologist at Stanford University in California, recently studied records of a betting contest in which participants attempt to guess the exact time at which a specially erected wooden tripod will fall through the surface of a thawing river. The competition has taken place annually on the Tenana River in Alaska since 1917, and analysis of the results showed that the thaw now arrives five days earlier than it did when the contest began.</p>
+      <p><span class="para-letter">E</span> Overall, such records have helped to show that, compared with 20 years ago, a raft of natural events now occur earlier across much of the northern hemisphere, from the opening of leaves to the return of birds from migration and the emergence of butterflies from hibernation. The data can also hint at how nature will change in the future. Together with models of climate change, amateurs' records could help guide conservation. Terry Root, an ecologist at the University of Michigan in Ann Arbor, has collected birdwatchers' counts of wildfowl taken between 1955 and 1996 on seasonal ponds in the American Midwest and combined them with climate data and models of future warming. Her analysis shows that the increased droughts that the models predict could halve the breeding populations at the ponds. "The number of waterfowl in North America will most probably drop significantly with global warming," she says.</p>
+      <p><span class="para-letter">F</span> But not all professionals are happy to use amateur data. "A lot of scientists won't touch them, they say they're too full of problems," says Root. Because different observers can have different ideas of what constitutes, for example, an open snowdrop. "The biggest concern with ad hoc observations is how carefully and systematically they were taken," says Mark Schwartz of the University of Wisconsin, Milwaukee, who studies the interactions between plants and climate. "We need to know pretty precisely what a person's been observing - if they just say 'I noted when the leaves came out', it might not be that useful." Measuring the onset of autumn can be particularly problematic because deciding when leaves change colour is a more subjective process than noting when they appear.</p>
+      <p><span class="para-letter">G</span> Overall, most phenologists are positive about the contribution that amateurs can make. "They get at the raw power of science: careful observation of the natural world," says Sagarin. But the professionals also acknowledge the need for careful quality control. Root, for example, tries to gauge the quality of an amateur archive by interviewing its collector. "You always have to worry - things as trivial as vacations can affect measurement. I disregard a lot of records because they're not rigorous enough," she says. Others suggest that the right statistics can iron out some of the problems with amateur data. Together with colleagues at Wageningen University in the Netherlands, environmental scientist Arnold van Vliet is developing statistical techniques to account for the uncertainty in amateur phenological data. With the enthusiasm of amateur phenologists evident from past records, professional researchers are now trying to create standardised recording schemes for future efforts. They hope that well-designed studies will generate a volume of observations large enough to drown out the idiosyncrasies of individual recorders. The data are cheap to collect, and can provide breadth in space, time and range of species. "It's very difficult to collect data on a large geographical scale without enlisting an army of observers," says Root.</p>
+      <p><span class="para-letter">H</span> Phenology also helps to drive home messages about climate change. "Because the public understand these records, they accept them," says Sparks. It can also illustrate potentially unpleasant consequences, he adds, such as the finding that more rat infestations are reported to local councils in warmer years. And getting people involved is great for public relations. "People are thrilled to think that the data they've been collecting as a hobby can be used for something scientific - it empowers them," says Root.</p>
+    </div>
+  </div>
+  <div class="resizer" id="resizer"></div>
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+      <section class="q-section active" data-part="1">
+        <div class="q-group">
+          <h3>Questions 1–7</h3>
+          <div class="q-instr">
+            <p>Reading Passage has eight paragraphs <strong>A–H</strong>.</p>
+            <p>Which paragraph contains the following information?</p>
+            <p>Write the correct letter <strong>A–H</strong> in boxes <strong>1–7</strong> on your answer sheet.</p>
+          </div>
+          <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>The definition of phenology</p><input type="text" name="q1" aria-label="Q1" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>How Sparks first became aware of amateur records</p><input type="text" name="q2" aria-label="Q2" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>How people reacted to their involvement in data collection</p><input type="text" name="q3" aria-label="Q3" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>The necessity to encourage amateur data collection</p><input type="text" name="q4" aria-label="Q4" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>A description of using amateur records to make predictions</p><input type="text" name="q5" aria-label="Q5" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Records of a competition providing clues to climate change</p><input type="text" name="q6" aria-label="Q6" placeholder="A-H"><div class="feedback"></div></div></div>
+          <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>A description of a very old record compiled by generations of amateur naturalists</p><input type="text" name="q7" aria-label="Q7" placeholder="A-H"><div class="feedback"></div></div></div>
+        </div>
+        <div class="q-group">
+          <h3>Questions 8–10</h3>
+          <div class="q-instr">
+            <p>Complete the sentences below with <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+            <p>Write your answers in boxes <strong>8–10</strong> on your answer sheet.</p>
+          </div>
+          <div class="q" data-q="8"><div class="q-num">8</div><div class="q-body"><p>Walter Coates's records largely contain the information of <input type="text" name="q8" aria-label="Q8"></p><div class="feedback"></div></div></div>
+          <div class="q" data-q="9"><div class="q-num">9</div><div class="q-body"><p>Robert Marsham is famous for recording the <input type="text" name="q9" aria-label="Q9"> of animals and plants on his land.</p><div class="feedback"></div></div></div>
+          <div class="q" data-q="10"><div class="q-num">10</div><div class="q-body"><p>According to some phenologists, global warming may cause the number of waterfowl in North America to drop significantly due to increased <input type="text" name="q10" aria-label="Q10"></p><div class="feedback"></div></div></div>
+        </div>
+        <div class="q-group">
+          <h3>Questions 11–14</h3>
+          <div class="q-instr">
+            <p>Choose the correct letter <strong>A, B, C</strong> or <strong>D</strong>.</p>
+            <p>Write your answers in boxes <strong>11–14</strong> on your answer sheet.</p>
+          </div>
+          <div class="q" data-q="11"><div class="q-num">11</div><div class="q-body"><p>Why do a lot of scientists discredit the data collected by amateurs?</p><div class="options stack"><label><input type="radio" name="q11" value="A"> A. Scientific methods were not used in data collection.</label><label><input type="radio" name="q11" value="B"> B. Amateur observers are not careful in recording their data.</label><label><input type="radio" name="q11" value="C"> C. Amateur data is not reliable.</label><label><input type="radio" name="q11" value="D"> D. Amateur data is produced by wrong candidates.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="12"><div class="q-num">12</div><div class="q-body"><p>Mark Schwartz used the example of leaves to illustrate that</p><div class="options stack"><label><input type="radio" name="q12" value="A"> A. amateur records can't be used.</label><label><input type="radio" name="q12" value="B"> B. amateur records are always unsystematic.</label><label><input type="radio" name="q12" value="C"> C. the colour change of leaves is hard to observe.</label><label><input type="radio" name="q12" value="D"> D. valuable information is often precise.</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="13"><div class="q-num">13</div><div class="q-body"><p>How do the scientists suggest amateur data should be used?</p><div class="options stack"><label><input type="radio" name="q13" value="A"> A. Using improved methods</label><label><input type="radio" name="q13" value="B"> B. Being more careful in observation</label><label><input type="radio" name="q13" value="C"> C. Using raw materials</label><label><input type="radio" name="q13" value="D"> D. Applying statistical techniques in data collection</label></div><div class="feedback"></div></div></div>
+          <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>What's the implication of phenology for ordinary people?</p><div class="options stack"><label><input type="radio" name="q14" value="A"> A. It empowers the public.</label><label><input type="radio" name="q14" value="B"> B. It promotes public relations.</label><label><input type="radio" name="q14" value="C"> C. It warns people of animal infestation.</label><label><input type="radio" name="q14" value="D"> D. It raises awareness about climate change in the public.</label></div><div class="feedback"></div></div></div>
+        </div>
+      </section>
+    </form>
+  </div>
+</div>
+<div class="bottom-panel"><div class="bottom-inner">
+  <div class="part-tabs"><button class="part-tab active" data-part="1"><span class="tab-part-name">Passage</span><span class="tab-qcount">Questions 1–14</span><span class="skim-btn" data-part="1">Skim (1x)</span></button></div>
+  <div class="ielts-reading-question-palette" id="palette"></div>
+  <div class="ielts-reading-bottom-controls">
+    <div class="ielts-reading-question-control-buttons"><button id="prevBtn" title="Previous question">←</button><button id="nextBtn" title="Next question">→</button></div>
+    <div class="ielts-reading-test-control-buttons">
+      <button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button>
+      <button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button>
+    </div>
+  </div>
+</div></div>
+<div class="overlay" id="resultOverlay"><div class="overlay-card">
+  <div class="overlay-head"><h3>Your Results</h3><button class="close-x" data-close="resultOverlay">×</button></div>
+  <div class="overlay-body">
+    <div class="score-summary"><div class="big" id="resultScore">0 / 14</div><div class="sub" id="resultSub">Band estimate: —</div></div>
+    <div class="legend-row"><span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span></div>
+    <table class="result-tbl"><thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead><tbody id="resultBody"></tbody></table>
+  </div>
+</div></div>
+<div class="overlay" id="previewOverlay"><div class="overlay-card">
+  <div class="overlay-head"><h3>Review Your Answers</h3><button class="close-x" data-close="previewOverlay">×</button></div>
+  <div class="overlay-body"><table class="result-tbl"><thead><tr><th>#</th><th>Your Answer</th></tr></thead><tbody id="previewBody"></tbody></table></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+const ANSWER_KEY={1:["B"],2:["C"],3:["H"],4:["G"],5:["E"],6:["D"],7:["A"],8:["bee-keeping","bee keeping"],9:["life cycles","life cycle"],10:["droughts","drought"],11:["C"],12:["D"],13:["D"],14:["D"]};
+const PART_QUESTIONS={1:Array.from({length:14},(_,i)=>i+1)};
+const TOTAL_QUESTIONS=14;const TEST_DURATION_SECONDS=20*60;
+function normalize(s){return(s||"").toString().trim().toLowerCase().replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");}
+function getUserAnswer(n){const r=document.querySelector(`input[type=radio][name=q${n}]:checked`);if(r)return r.value;const t=document.querySelector(`input[type=text][name=q${n}]`);if(t)return t.value;return"";}
+function isCorrect(n,ua){const keys=ANSWER_KEY[n]||[];const v=normalize(ua);if(!v)return false;return keys.some(k=>normalize(k)===v);}
+function estimateBand(s40){if(s40>=39)return"9.0";if(s40>=37)return"8.5";if(s40>=35)return"8.0";if(s40>=33)return"7.5";if(s40>=30)return"7.0";if(s40>=27)return"6.5";if(s40>=23)return"6.0";if(s40>=19)return"5.5";if(s40>=15)return"5.0";if(s40>=13)return"4.5";if(s40>=10)return"4.0";if(s40>=8)return"3.5";if(s40>=6)return"3.0";if(s40>=4)return"2.5";return"2.0 or below";}
+function scaledScore(s){return Math.round((s/TOTAL_QUESTIONS)*40);}
+let toastTimer=null;
+function toast(m){const el=document.getElementById("toast");el.textContent=m;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2000);}
+const palette=document.getElementById("palette");
+Object.keys(PART_QUESTIONS).forEach(part=>{const section=document.createElement("div");section.className="ielts-reading-palette-section";section.dataset.part=part;const label=document.createElement("strong");label.className="ielts-reading-palette-section-part";label.textContent="Passage:";section.appendChild(label);PART_QUESTIONS[part].forEach(n=>{const btn=document.createElement("button");btn.type="button";btn.className="ielts-reading-palette-item";btn.dataset.q=n;btn.textContent=n;btn.addEventListener("click",()=>goToQuestion(n));section.appendChild(btn);});const count=document.createElement("em");count.className="ielts-reading-palette-section-question-count";count.textContent=`${PART_QUESTIONS[part].length} questions`;section.appendChild(count);palette.appendChild(section);});
+let currentPart=1,currentQuestion=1;
+function switchPart(part){currentPart=parseInt(part,10);document.querySelectorAll(".part-tab").forEach(t=>t.classList.toggle("active",t.dataset.part===String(part)));document.querySelectorAll(".passage").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.querySelectorAll(".q-section").forEach(s=>s.classList.toggle("active",s.dataset.part===String(part)));document.querySelectorAll(".ielts-reading-palette-section").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;currentQuestion=PART_QUESTIONS[part][0];updatePaletteCurrent();updateNavButtons();}
+document.querySelectorAll(".part-tab").forEach(tab=>tab.addEventListener("click",(e)=>{if(e.target.closest(".skim-btn"))return;switchPart(tab.dataset.part);}));
+let skimInterval=null,skimPart=null;
+document.querySelectorAll(".skim-btn").forEach(btn=>btn.addEventListener("click",(e)=>{e.stopPropagation();const part=btn.dataset.part;if(skimInterval&&skimPart===part){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming stopped.");return;}if(skimInterval){clearInterval(skimInterval);document.querySelectorAll(".skim-btn").forEach(b=>{b.classList.remove("on");b.textContent="Skim (1x)";});}if(String(currentPart)!==String(part))switchPart(part);const pane=document.getElementById("passagesPane");pane.scrollTop=0;skimPart=part;btn.classList.add("on");btn.textContent="Stop";skimInterval=setInterval(()=>{pane.scrollTop+=1.2;if(pane.scrollTop+pane.clientHeight>=pane.scrollHeight-2){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming complete.");}},28);toast("Skimming started — read quickly.");}));
+function goToQuestion(n){n=parseInt(n,10);if(!n||n<1||n>TOTAL_QUESTIONS)return;let part=1;for(const p of Object.keys(PART_QUESTIONS)){if(PART_QUESTIONS[p].includes(n)){part=parseInt(p,10);break;}}if(part!==currentPart)switchPart(part);currentQuestion=n;const qEl=document.querySelector(`.q[data-q="${n}"]`);if(qEl){qEl.scrollIntoView({behavior:"smooth",block:"center"});qEl.classList.add("highlight");setTimeout(()=>qEl.classList.remove("highlight"),1600);}const input=document.querySelector(`input[name=q${n}], input[type=radio][name=q${n}]`);if(input&&!input.disabled)input.focus({preventScroll:true});updatePaletteCurrent();updateNavButtons();}
+function updatePaletteCurrent(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.toggle("current",parseInt(b.dataset.q,10)===currentQuestion));}
+function updateNavButtons(){const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);document.getElementById("prevBtn").disabled=(idx<=0);document.getElementById("nextBtn").disabled=(idx>=all.length-1);}
+document.getElementById("prevBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);if(idx>0)goToQuestion(all[idx-1]);else goToQuestion(all[all.length-1]);});
+document.getElementById("nextBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart];const idx=all.indexOf(currentQuestion);if(idx<all.length-1)goToQuestion(all[idx+1]);else goToQuestion(all[0]);});
+document.querySelectorAll(".q").forEach(qEl=>{qEl.addEventListener("focusin",()=>{currentQuestion=parseInt(qEl.dataset.q,10);updatePaletteCurrent();updateNavButtons();});qEl.addEventListener("click",()=>{currentQuestion=parseInt(qEl.dataset.q,10);updatePaletteCurrent();updateNavButtons();});});
+document.querySelectorAll("#quiz input").forEach(el=>el.addEventListener("focus",()=>{const m=(el.name||"").match(/^q(\d+)$/);if(!m)return;currentQuestion=parseInt(m[1],10);updatePaletteCurrent();updateNavButtons();}));
+function refreshPaletteAnswered(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>{const n=parseInt(b.dataset.q,10);const ua=getUserAnswer(n);b.classList.toggle("answered",ua.trim()!=="");});}
+document.getElementById("quiz").addEventListener("input",refreshPaletteAnswered);
+document.getElementById("quiz").addEventListener("change",refreshPaletteAnswered);
+(function(){const resizer=document.getElementById("resizer");const p=document.getElementById("passagesPane");const q=document.getElementById("questionsPane");let d=false;resizer.addEventListener("mousedown",e=>{e.preventDefault();d=true;document.body.style.cursor="col-resize";document.body.style.userSelect="none";});document.addEventListener("mousemove",e=>{if(!d)return;const r=document.getElementById("mainSplit").getBoundingClientRect();let pct=((e.clientX-r.left)/r.width)*100;pct=Math.max(25,Math.min(75,pct));p.style.flex=`0 0 ${pct}%`;q.style.flex="1 1 auto";});document.addEventListener("mouseup",()=>{if(!d)return;d=false;document.body.style.cursor="";document.body.style.userSelect="";});})();
+let secondsLeft=TEST_DURATION_SECONDS,timerInterval=null;
+const timerEl=document.getElementById("timer"),timerChip=document.getElementById("timerChip");
+function renderTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0");const s=String(secondsLeft%60).padStart(2,"0");timerEl.textContent=`${m}:${s}`;timerChip.classList.remove("warning","danger");if(secondsLeft<=60)timerChip.classList.add("danger");else if(secondsLeft<=5*60)timerChip.classList.add("warning");}
+function startTimer(){clearInterval(timerInterval);renderTimer();timerInterval=setInterval(()=>{if(secondsLeft<=0){clearInterval(timerInterval);timerInterval=null;timerChip.classList.add("danger");timerEl.textContent="00:00";toast("⏰ Time is up!");return;}secondsLeft--;renderTimer();if(secondsLeft===60)toast("1 minute remaining!");if(secondsLeft===5*60)toast("5 minutes remaining.");},1000);}
+startTimer();
+const fullscreenBtn=document.getElementById("fullscreenBtn");
+function updateFullscreenUI(){const a=!!document.fullscreenElement;document.body.classList.toggle("fullscreen-active",a);fullscreenBtn.textContent=a?"⛶ Exit":"⛶ Fullscreen";}
+fullscreenBtn.addEventListener("click",async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen();}catch(e){toast("Fullscreen not supported.");}});
+document.addEventListener("fullscreenchange",updateFullscreenUI);
+const hlPopup=document.getElementById("hl-popup"),notePopup=document.getElementById("note-popup"),passagesEl=document.getElementById("passagesPane"),questionsEl=document.getElementById("questionsPane");
+let savedRange=null,pendingNoteRange=null,currentMark=null,noteSaveTarget=null;
+function showPopupAt(r){hlPopup.style.top=(window.scrollY+r.top-50)+"px";hlPopup.style.left=Math.max(8,window.scrollX+r.left+r.width/2-150)+"px";hlPopup.classList.add("show");}
+document.addEventListener("mouseup",(e)=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup"))return;if(e.target.tagName==="INPUT")return;setTimeout(()=>{const sel=window.getSelection();if(sel&&sel.rangeCount&&!sel.isCollapsed){const range=sel.getRangeAt(0);const c=range.commonAncestorContainer;const el=c.nodeType===1?c:c.parentElement;if(el&&(passagesEl.contains(el)||questionsEl.contains(el))){savedRange=range.cloneRange();currentMark=null;showPopupAt(range.getBoundingClientRect());}}},0);});
+document.addEventListener("click",(e)=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup"))return;if(!e.target.closest(".passages")&&!e.target.closest(".questions"))return;const em=e.target.tagName==="MARK"?e.target:(e.target.closest?e.target.closest("mark.hl-user"):null);const en=e.target.closest?e.target.closest(".hl-note"):null;if(en){document.getElementById("note-text").value=en.dataset.note||"";pendingNoteRange=null;notePopup.classList.add("show");noteSaveTarget=en;return;}if(em){savedRange=null;currentMark=em;showPopupAt(em.getBoundingClientRect());return;}});
+document.getElementById("hl-highlight").addEventListener("click",()=>{if(currentMark){hlPopup.classList.remove("show");return;}if(!savedRange){toast("Select text to highlight");return;}highlightRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Text highlighted");});
+document.getElementById("hl-dehighlight").addEventListener("click",()=>{if(currentMark){const p=currentMark.parentNode;while(currentMark.firstChild)p.insertBefore(currentMark.firstChild,currentMark);p.removeChild(currentMark);currentMark=null;hlPopup.classList.remove("show");toast("Highlight removed");return;}if(savedRange){clearHighlightInRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Highlight removed");}else hlPopup.classList.remove("show");});
+document.getElementById("hl-note").addEventListener("click",()=>{if(!savedRange){toast("Select text first");return;}pendingNoteRange=savedRange.cloneRange();noteSaveTarget=null;document.getElementById("note-text").value="";notePopup.classList.add("show");hlPopup.classList.remove("show");});
+document.getElementById("hl-flashcard").addEventListener("click",()=>{const t=savedRange?savedRange.toString().trim():(currentMark?currentMark.textContent.trim():"");if(!t){toast("Select text first");return;}toast(`Saved "${t.substring(0,40)}${t.length>40?"…":""}" as flashcard`);hlPopup.classList.remove("show");});
+function highlightRange(r){try{const m=document.createElement("mark");m.className="hl-user";m.appendChild(r.extractContents());r.insertNode(m);}catch(e){}}
+function clearHighlightInRange(r){const c=r.commonAncestorContainer;const root=c.nodeType===1?c:(c.parentElement||c.parentNode);if(!root||!root.querySelectorAll)return;root.querySelectorAll("mark.hl-user").forEach(m=>{try{if(r.intersectsNode(m)){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);}}catch(e){}});}
+document.getElementById("note-cancel").addEventListener("click",()=>{notePopup.classList.remove("show");pendingNoteRange=null;noteSaveTarget=null;});
+document.getElementById("note-save").addEventListener("click",()=>{const nt=document.getElementById("note-text").value.trim();if(noteSaveTarget){if(nt){noteSaveTarget.dataset.note=nt;noteSaveTarget.title="Note: "+nt;toast("Note updated");}else{const p=noteSaveTarget.parentNode;while(noteSaveTarget.firstChild)p.insertBefore(noteSaveTarget.firstChild,noteSaveTarget);p.removeChild(noteSaveTarget);toast("Note removed");}noteSaveTarget=null;notePopup.classList.remove("show");document.getElementById("note-text").value="";return;}if(!nt||!pendingNoteRange){notePopup.classList.remove("show");pendingNoteRange=null;return;}try{const sp=document.createElement("span");sp.className="hl-note";sp.title="Note: "+nt;sp.dataset.note=nt;sp.appendChild(pendingNoteRange.extractContents());pendingNoteRange.insertNode(sp);toast("Note saved");}catch(e){}document.getElementById("note-text").value="";notePopup.classList.remove("show");pendingNoteRange=null;});
+document.getElementById("clearHighlightsLink").addEventListener("click",(e)=>{e.preventDefault();if(!confirm("Remove all highlights and notes?"))return;document.querySelectorAll("mark.hl-user, .hl-note").forEach(el=>{const p=el.parentNode;while(el.firstChild)p.insertBefore(el.firstChild,el);p.removeChild(el);});toast("Highlights cleared");});
+document.getElementById("submitBtn").addEventListener("click",()=>{let score=0,answered=0;document.querySelectorAll("tr.q, div.q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent="";});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong"));const rows=[];for(let n=1;n<=TOTAL_QUESTIONS;n++){const qEl=document.querySelector(`.q[data-q="${n}"]`);if(!qEl)continue;const ua=getUserAnswer(n);if(ua.trim()!=="")answered++;const ok=isCorrect(n,ua);if(ok)score++;qEl.classList.add(ok?"correct":"wrong");const fb=qEl.querySelector(".feedback");if(fb){const k=(ANSWER_KEY[n]||[]).slice(0,3).join(" / ");fb.textContent=ok?"✓ Correct":`✗ ${ua.trim()||"(no answer)"} — Correct answer: ${k}`;}const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);if(pal)pal.classList.add(ok?"correct":"wrong");rows.push({n,ua:ua.trim()||"—",key:(ANSWER_KEY[n]||[])[0]});}document.getElementById("resultScore").textContent=`${score} / ${TOTAL_QUESTIONS}`;document.getElementById("resultSub").textContent=`Band estimate: ${estimateBand(scaledScore(score))} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;const tb=document.getElementById("resultBody");tb.innerHTML="";rows.forEach(r=>{const ok=isCorrect(r.n,r.ua==="—"?"":r.ua);const tr=document.createElement("tr");tr.innerHTML=`<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;tb.appendChild(tr);});const chip=document.getElementById("bandChip");chip.textContent="Band "+estimateBand(scaledScore(score));chip.classList.add("show");document.getElementById("resultOverlay").classList.add("show");if(timerInterval){clearInterval(timerInterval);timerInterval=null;}});
+document.getElementById("reviewBtn").addEventListener("click",()=>{const tb=document.getElementById("previewBody");tb.innerHTML="";for(let n=1;n<=TOTAL_QUESTIONS;n++){const ua=getUserAnswer(n);const tr=document.createElement("tr");tr.innerHTML=`<td>${n}</td><td>${ua.trim()||"—"}</td>`;tb.appendChild(tr);}document.getElementById("previewOverlay").classList.add("show");});
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("show");}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("show"));hlPopup.classList.remove("show");notePopup.classList.remove("show");}});
+const menuPop=document.getElementById("menuPop");
+document.getElementById("menuBtn").addEventListener("click",e=>{e.stopPropagation();menuPop.classList.toggle("show");});
+document.addEventListener("click",()=>menuPop.classList.remove("show"));
+menuPop.addEventListener("click",e=>e.stopPropagation());
+document.getElementById("exportLink").addEventListener("click",e=>{e.preventDefault();window.print();});
+document.getElementById("resetLink").addEventListener("click",e=>{e.preventDefault();doReset();});
+document.getElementById("gotoTop").addEventListener("click",e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;});
+function doReset(){if(!confirm("Clear all answers and reset?"))return;document.getElementById("quiz").reset();document.querySelectorAll("tr.q, div.q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent="";});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong","answered"));const chip=document.getElementById("bandChip");chip.textContent="--";chip.classList.remove("show");document.getElementById("resultOverlay").classList.remove("show");document.getElementById("previewOverlay").classList.remove("show");switchPart(1);secondsLeft=TEST_DURATION_SECONDS;startTimer();toast("Test reset. Good luck!");}
+document.getElementById("focusBtn").addEventListener("click",()=>document.body.classList.add("focus-mode"));
+document.getElementById("exitFocusBtn").addEventListener("click",()=>document.body.classList.remove("focus-mode"));
+switchPart(1);refreshPaletteAnswered();updateNavButtons();updateFullscreenUI();renderTimer();
+</script>
+</body>
+</html>

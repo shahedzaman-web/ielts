@@ -1,378 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"><meta name="viewport"
+      content="width=device-width, initial-scale=1">
     <title>Official Cambridge Guide to IELTS Academic Reading Test 1</title>
     <style>
-:root{
-  --bg:#eef1f6;
-  --card:#fff;
-  --text:#1e293b;
-  --muted:#64748b;
-  --line:#dfe5ee;
-  --accent:#0f766e;
-  --accent-hover:#0d5c56;
-  --accent-soft:#ccfbf1;
-  --good:#16a34a;
-  --good-soft:#dcfce7;
-  --bad:#dc2626;
-  --bad-soft:#fee2e2;
-  --header-h:56px;
-  --bottom-h:232px;
-}
-*{box-sizing:border-box;}
-html,body{height:100%;}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;
-  padding-bottom:var(--bottom-h);
-}
-button{font-family:inherit;cursor:pointer;border:none;}
-
-/* ================= HEADER ================= */
-.app-header{
-  position:sticky;top:0;z-index:60;
-  height:var(--header-h);
-  background:#fff;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:14px;padding:0 18px;
-  box-shadow:0 1px 4px rgba(15,23,42,.05);
-}
-.app-header .logo{height:34px;display:block;}
-.app-header h1{
-  font-size:14px;font-weight:600;margin:0;flex:1;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.header-right{display:flex;align-items:center;gap:10px;}
-.band-chip{
-  background:#0f172a;color:#fff;font-size:12px;font-weight:700;
-  padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;
-  opacity:.35;
-}
-.band-chip.show{opacity:1;background:#16a34a;}
-.timer-chip{
-  background:#0f172a;color:#fff;font-size:13px;font-weight:700;
-  padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;
-  display:flex;align-items:center;gap:6px;
-}
-.icon-btn{
-  background:#fff;border:1px solid var(--line);color:var(--text);
-  border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;
-}
-.icon-btn:hover{background:#f1f5f9;}
-.menu-wrap{position:relative;}
-.menu-pop{
-  display:none;position:absolute;right:0;top:calc(100% + 8px);
-  background:#fff;border:1px solid var(--line);border-radius:8px;
-  box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:210px;overflow:hidden;
-  z-index:100;
-}
-.menu-pop.show{display:block;}
-.menu-pop a{
-  display:block;padding:10px 14px;font-size:13px;color:var(--text);
-  text-decoration:none;border-bottom:1px solid #f1f5f9;
-}
-.menu-pop a:last-child{border-bottom:none;}
-.menu-pop a:hover{background:#f8fafc;color:var(--accent);}
-
-/* ================= SPLIT VIEW ================= */
-.main-split{
-  display:flex;
-  max-width:1600px;margin:16px auto 0;
-  height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);
-  min-height:560px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:8px;
-  overflow:hidden;
-}
-.pane{overflow-y:auto;padding:24px 30px;}
-.passages{flex:0 0 50%;background:#fcfdff;}
-.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line);}
-.resizer{
-  flex:0 0 7px;background:#e2e8f0;cursor:col-resize;
-  display:flex;align-items:center;justify-content:center;
-}
-.resizer:hover{background:#cbd5e1;}
-.resizer::after{content:"⇔";font-size:10px;color:#64748b;}
-
-.passage{display:none;}
-.passage.active{display:block;}
-.passage h2{font-size:24px;margin:0 0 6px;font-weight:700;}
-.passage .part-label{
-  display:inline-block;background:var(--accent-soft);color:var(--accent);
-  font-size:11px;font-weight:700;letter-spacing:.06em;
-  padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;
-}
-.passage p{margin:0 0 14px;}
-.passage .subhead{font-size:18px;font-weight:700;margin:18px 0 12px;}
-.passage em{color:var(--muted);}
-
-/* ================= QUESTIONS ================= */
-.q-section{display:none;}
-.q-section.active{display:block;}
-.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px;}
-.q-group:last-child{border-bottom:none;margin-bottom:0;}
-.q-group h3{
-  font-size:13px;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--accent);margin:0 0 8px;font-weight:700;
-}
-.q-instr{
-  font-size:13px;color:var(--muted);
-  background:#f8fafc;border-left:3px solid var(--line);
-  padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px;
-}
-.q-instr p{margin:0 0 3px;}
-.q-instr p:last-child{margin:0;}
-
-.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px;}
-.q:last-child{border-bottom:none;}
-.q.highlight{background:#fffbeb;}
-.q-num{
-  flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;
-}
-.q-body{flex:1;min-width:0;}
-.q-body p{margin:0 0 7px;}
-input[type=text]{
-  border:1px solid var(--line);border-radius:6px;padding:5px 9px;
-  font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;
-}
-input[type=text]:focus{outline:2px solid #bfdbfe;border-color:#93c5fd;}
-select{
-  border:1px solid var(--line);border-radius:6px;padding:5px 8px;
-  font-size:14px;font-family:inherit;background:#fff;
-}
-.options{display:flex;flex-wrap:wrap;gap:4px 14px;}
-.options.stack{display:block;}
-.options label{
-  display:inline-flex;align-items:center;gap:6px;font-size:14px;
-  cursor:pointer;padding:3px 7px;border-radius:6px;
-}
-.options.stack label{display:flex;margin-bottom:3px;}
-.options label:hover{background:#f8fafc;}
-input[type=radio]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;}
-
-.word-bank{
-  display:flex;flex-wrap:wrap;gap:7px;background:#f8fafc;
-  border:1px dashed var(--line);border-radius:8px;padding:10px;margin-bottom:12px;
-}
-.word-bank span{
-  background:#fff;border:1px solid var(--line);border-radius:999px;
-  padding:2px 11px;font-size:13px;
-}
-.people-list{
-  list-style:none;padding:12px 16px;margin:0 0 14px;
-  font-size:13px;background:#f8fafc;border-radius:8px;
-}
-.people-list li{margin-bottom:3px;}
-.people-list li:last-child{margin-bottom:0;}
-
-.q.correct .q-num{background:var(--good-soft);color:var(--good);}
-.q.wrong .q-num{background:var(--bad-soft);color:var(--bad);}
-.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft);}
-.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft);}
-.feedback{font-size:12px;margin-top:5px;display:none;font-weight:600;}
-.q.correct .feedback,.q.wrong .feedback{display:block;}
-.q.correct .feedback{color:var(--good);}
-.q.wrong .feedback{color:var(--bad);}
-
-/* =========================================================
-   BOTTOM PANEL
-   ========================================================= */
-.bottom-panel{
-  position:fixed;left:0;right:0;bottom:0;z-index:55;
-  background:#fff;
-  border-top:1px solid var(--line);
-  box-shadow:0 -2px 12px rgba(15,23,42,.06);
-  padding:10px 22px 10px;
-  overflow-y:auto;
-  max-height:var(--bottom-h);
-}
-.bottom-inner{max-width:1600px;margin:0 auto;}
-
-.part-tabs{display:flex;gap:8px;margin-bottom:8px;}
-.part-tab{
-  flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;
-  padding:7px 12px;text-align:left;display:flex;flex-direction:row;
-  align-items:center;gap:10px;transition:.15s;opacity:.85;
-}
-.part-tab:hover{opacity:1;background:#f1f5f9;}
-.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);}
-.part-tab .tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap;}
-.part-tab .tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis;}
-.skim-btn{
-  font-size:10px;font-weight:700;color:#0369a1;
-  background:#e0f2fe;border-radius:999px;padding:3px 9px;
-  white-space:nowrap;flex:0 0 auto;
-}
-.skim-btn:hover{background:#bae6fd;}
-.skim-btn.on{background:var(--accent);color:#fff;}
-
-.ielts-reading-question-palette{
-  display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;
-  margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px;
-}
-.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0;}
-.ielts-reading-palette-section.active{display:flex;}
-.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap;}
-.ielts-reading-palette-item{
-  width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;
-  font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
-  border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0;
-}
-.ielts-reading-palette-item:hover{background:#e2e8f0;}
-.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd;}
-.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22);}
-.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good);}
-.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad);}
-.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap;}
-
-.ielts-reading-bottom-controls{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border-top:1px solid #f1f5f9;padding-top:8px;
-}
-.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto;}
-.ielts-reading-question-control-buttons button{
-  width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);
-  color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s;
-}
-.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed;}
-.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto;}
-.ielts-reading-review-button{
-  background:#fff;border:1px solid var(--line);color:#334155;
-  border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;
-  display:flex;align-items:center;gap:7px;transition:.12s;
-}
-.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1;}
-.ielts-reading-submit-button{
-  background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;
-  font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s;
-}
-.ielts-reading-submit-button:hover{background:#b80000;box-shadow:0 4px 12px rgba(224,0,0,.25);}
-
-/* ================= OVERLAYS ================= */
-.overlay{
-  display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(15,23,42,.55);
-  align-items:center;justify-content:center;padding:24px;
-}
-.overlay.show{display:flex;}
-.overlay-card{
-  background:#fff;border-radius:12px;width:100%;max-width:640px;
-  max-height:88vh;display:flex;flex-direction:column;
-  box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden;
-}
-.overlay-head{
-  padding:18px 22px;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.overlay-head h3{margin:0;font-size:18px;}
-.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px;}
-.close-x:hover{color:var(--text);}
-.overlay-body{padding:18px 22px;overflow-y:auto;}
-.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px;}
-.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24;}
-.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px;}
-table.result-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;}
-table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px;}
-table.result-tbl td.correct{color:var(--good);font-weight:700;}
-table.result-tbl td.wrong{color:var(--bad);font-weight:700;}
-.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
-
-/* ================= FOCUS MODE ================= */
-body.focus-mode .app-header,
-body.focus-mode .bottom-panel{display:none;}
-body.focus-mode{padding-bottom:0;}
-body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0;}
-.exit-focus{
-  display:none;position:fixed;top:14px;right:14px;z-index:300;
-  background:var(--accent);color:#fff;border-radius:6px;
-  padding:8px 14px;font-size:13px;font-weight:700;
-}
-body.focus-mode .exit-focus{display:block;}
-
-.toast{
-  position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);
-  transform:translateX(-50%);z-index:500;
-  background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;
-  font-size:13px;font-weight:600;opacity:0;pointer-events:none;
-  transition:opacity .25s;
-}
-.toast.show{opacity:1;}
-
-/* ================= HIGHLIGHT / NOTE ================= */
-mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit;}
-.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help;}
-
-#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25);}
-#hl-popup.show{display:flex;gap:3px;}
-#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap;border:none;cursor:pointer;}
-#hl-popup button:hover{background:#1e293b;}
-
-#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px;}
-#note-popup.show{display:flex;}
-#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px rgba(15,23,42,.3);}
-#note-popup h4{margin:0 0 10px;font-size:16px;color:#1e293b;}
-#note-popup textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box;}
-#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;}
-#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;border:none;cursor:pointer;}
-#note-popup .np-actions .np-cancel{background:#f1f5f9;color:#334155;}
-#note-popup .np-actions .np-save{background:#e00000;color:#fff;}
-
-#hl-fab{
-  position:fixed;right:20px;bottom:calc(var(--bottom-h, 232px) + 20px);z-index:120;
-  background:#e00000;color:#fff;border-radius:50%;
-  width:52px;height:52px;font-size:22px;
-  box-shadow:0 6px 18px rgba(224,0,0,.35);
-  display:flex;align-items:center;justify-content:center;
-  transition:.15s;border:none;cursor:pointer;
-}
-#hl-fab:hover{transform:scale(1.08);}
-#hl-fab.active{background:#facc15;color:#0f172a;}
-body.focus-mode #hl-fab{bottom:20px;}
+:root{--bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;--accent:#0f766e;--accent-soft:#ccfbf1;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}button{font-family:inherit;cursor:pointer;border:0}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px #0f172a0d}.app-header .logo{font-size:22px;text-decoration:none;line-height:1}.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0}.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}.band-chip.show{opacity:1;background:#16a34a}.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}.timer-chip.warn{background:#b45309}.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600}.icon-btn:hover{background:#f1f5f9}.menu-wrap{position:relative}.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px #0f172a1f;min-width:210px;overflow:hidden;z-index:100}.menu-pop.show{display:block}.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}.menu-pop a:last-child{border-bottom:0}.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.pane{overflow-y:auto;padding:24px 30px;scroll-behavior:smooth}.passages{flex:0 0 50%;background:#fcfdff}.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}.resizer:hover{background:#cbd5e1}.resizer:after{content:"⇔";font-size:10px;color:#64748b}.passage{display:none}.passage.active{display:block}.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}.passage p{margin:0 0 14px}.passage em{color:var(--muted)}
+.q-section{display:none}.q-section.active{display:block}.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}.q-group:last-child{border-bottom:0;margin-bottom:0}.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}.q-instr p{margin:0 0 3px}.q-instr p:last-child{margin:0}.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px}.q:last-child{border-bottom:0}.q.highlight{background:#fffbeb}.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.q-body{flex:1;min-width:0}.q-body p{margin:0 0 7px}
+.gap-input{border:1px solid var(--line);border:2px solid var(--line);border-radius:6px;padding:5px 10px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;transition:border-color .15s,background .15s}.gap-input:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}.gap-input.wide{min-width:220px}
+.option-row{display:flex;align-items:flex-start;gap:8px;margin:3px 0;padding:5px 7px;border-radius:6px;line-height:1.45;cursor:default}.option-row:hover{background:#f8fafc}.option-row>span{flex:1;min-width:0;cursor:default}.option-row input[type=radio]{flex:0 0 16px;width:16px;height:16px;margin:3px 0 0;cursor:pointer;pointer-events:auto;accent-color:var(--accent)}.option-row:has(input:checked){background:var(--accent-soft)}
+table.matching-table{width:100%;table-layout:fixed;border-collapse:collapse;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px;margin:6px 0}table.matching-table th,table.matching-table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}table.matching-table thead th{background:#f8fafc;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);text-align:center;height:42px;position:sticky;top:0;z-index:2}table.matching-table thead th.match-num-head{width:48px}table.matching-table thead th.match-option-head{width:48px}table.matching-table thead th.match-statement-head{text-align:left}table.matching-table tbody tr.q{display:table-row;border-bottom:0;padding:0}table.matching-table td.match-num-cell{width:48px;text-align:center;font-weight:700;color:#334155;background:#f8fafc}table.matching-table td.match-statement-cell{text-align:left;line-height:1.45}table.matching-table td.match-option-cell{width:48px;text-align:center;padding:0}table.matching-table td.match-option-cell label{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;cursor:pointer;padding:0}table.matching-table td.match-option-cell label:hover{background:#f1f5f9}table.matching-table td.match-option-cell label:has(input:checked){background:var(--accent-soft)}table.matching-table tr.q.correct td.match-num-cell{background:var(--good-soft);color:var(--good)}table.matching-table tr.q.wrong td.match-num-cell{background:var(--bad-soft);color:var(--bad)}table.matching-table tr.q.correct td.match-statement-cell{color:var(--good);font-weight:600}table.matching-table tr.q.wrong td.match-statement-cell{color:var(--bad);font-weight:600}table.matching-table tr.q .feedback{display:none;font-size:12px;margin-top:6px;font-weight:600}table.matching-table tr.q.correct .feedback,table.matching-table tr.q.wrong .feedback{display:block}table.matching-table tr.q.correct .feedback{color:var(--good)}table.matching-table tr.q.wrong .feedback{color:var(--bad)}
+.people-list{list-style:none;padding:12px 16px;margin:0 0 14px;font-size:13px;background:#f8fafc;border-radius:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px 18px}.people-list li{margin-bottom:3px}
+.summary-drop-bank{display:flex;flex-wrap:wrap;gap:8px 10px;background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin-bottom:14px}
+.summary-drop-item{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;cursor:grab;user-select:none;transition:.12s}
+.summary-drop-item:hover{border-color:var(--accent);background:#f0fdfa}
+.summary-drop-item.dragging{opacity:.4;cursor:grabbing}
+.summary-drop-item.used{opacity:.3;pointer-events:none}
+.summary-box{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:#fdfefe;font-size:14.5px;line-height:2.2}
+.summary-box p{margin:0 0 8px}
+.summary-box .qnum{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin:0 2px;background:#f1f5f9;color:#334155;border-radius:5px;font-size:12px;font-weight:700;vertical-align:middle}
+.summary-drop-slot{display:inline-flex;align-items:center;justify-content:center;min-width:130px;min-height:30px;padding:2px 12px;border:1px dashed var(--line);border-radius:6px;background:#fff;vertical-align:middle;margin:0 3px;font-size:13.5px;cursor:pointer;transition:.12s;color:var(--muted)}
+.summary-drop-slot:hover{border-color:var(--accent)}
+.summary-drop-slot.drag-over{border-color:var(--accent);background:var(--accent-soft);border-style:solid}
+.summary-drop-slot.filled{border-style:solid;background:#e0f2fe;color:#0c4a6e;font-weight:600}
+.summary-drop-slot.correct{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+.summary-drop-slot.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.matching-drag-handle{display:inline-flex;align-items:center;gap:7px;margin:0 0 8px;padding:8px 12px;border:1px solid #b7d8d4;border-radius:7px;background:#f0fdfa;color:#115e59;font-size:12px;font-weight:700;cursor:grab;user-select:none;-webkit-user-select:none;transition:background .15s,opacity .15s}.matching-drag-handle:before{content:"⠿";font-size:16px;line-height:1}.matching-drag-handle:active{cursor:grabbing}.matching-drag-handle.is-assigned{background:#e2e8f0;border-color:#cbd5e1;color:#475569;cursor:not-allowed;opacity:.8;pointer-events:none;user-select:none}.matching-drag-handle.is-assigned:before{content:"✓";font-size:13px}.matching-drop-target{display:block;margin:18px 0;padding:12px;border:1px dashed transparent;border-radius:8px;transition:background .15s,border-color .15s,box-shadow .15s}.matching-drop-target.drop-ready{background:#f0fdfa;border-color:#b7d8d4}.matching-drop-target.drop-over{background:#ccfbf1;border:1px dashed #0f766e;box-shadow:inset 0 0 0 2px #0f766e}.matching-drop-target.matched{background:#f0fdfa;border-color:#99f6e4;box-shadow:inset 4px 0 0 var(--accent)}.matching-drop-slot{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;max-width:100%;min-width:132px;min-height:32px;padding:4px 8px;margin:0 8px 0 0;border:1.5px dashed #cbd5e1;border-radius:7px;background:#f8fafc;color:#64748b;font-size:12px;font-weight:600;text-align:center;vertical-align:middle;box-sizing:border-box;transition:background .15s,border-color .15s}.matching-drop-target.drop-over .matching-drop-slot{border-color:#0f766e;background:#ccfbf1;color:#115e59}.matching-drop-target.matched .matching-drop-slot{border-style:solid;border-color:#0f766e;background:#fff;color:#0f766e}.slot-placeholder{opacity:.85}.assigned-question{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;max-width:100%;margin:1px;padding:4px 6px 4px 9px;border:1px solid #0f766e;border-radius:5px;background:#0f766e;color:#fff;font-size:12px;font-weight:700;text-align:left;white-space:normal;overflow-wrap:anywhere}.assigned-question-label{flex:1 1 auto;min-width:0}.matching-undo{flex:0 0 auto;padding:2px 5px;border:1px solid #99f6e4;border-radius:3px;background:#fff;color:#115e59;font-size:11px;font-weight:700;line-height:1.3}.matching-undo:hover{background:#ccfbf1}
+.q.correct .q-num{background:var(--good-soft);color:var(--good)}.q.wrong .q-num{background:var(--bad-soft);color:var(--bad)}.q.correct .gap-input{border-color:var(--good);background:var(--good-soft)}.q.wrong .gap-input{border-color:var(--bad);background:var(--bad-soft)}.q .feedback{font-size:12px;margin-top:5px;display:none;font-weight:600}.q.correct .feedback,.q.wrong .feedback{display:block}.q.correct .feedback{color:var(--good)}.q.wrong .feedback{color:var(--bad)}
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px #0f172a0f;padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}.bottom-inner{max-width:1600px;margin:0 auto}.part-tabs{display:flex;gap:8px;margin-bottom:8px}.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;align-items:center;gap:10px;transition:.15s;opacity:.85}.part-tab:hover{opacity:1;background:#f1f5f9}.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}.skim-btn:hover{background:#bae6fd}.skim-btn.on{background:var(--accent);color:#fff}.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}.ielts-reading-palette-section.active{display:flex}.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}.ielts-reading-palette-item:hover{background:#e2e8f0}.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px #0f766e38}.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap}.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto}.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s}.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed}.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto}.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.12s}.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s}.ielts-reading-submit-button:hover{background:#0d5c56;box-shadow:0 4px 12px #0f766e40}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:#0f172a8c;align-items:center;justify-content:center;padding:24px}.overlay.show{display:flex}.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px #0f172a4d;overflow:hidden}.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.overlay-head h3{margin:0;font-size:18px}.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}.close-x:hover{color:var(--text)}.overlay-body{padding:18px 22px;overflow-y:auto;min-width:0}.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}table.result-tbl{width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;font-size:13px}table.result-tbl th,table.result-tbl td{box-sizing:border-box;padding:9px 10px;border:1px solid var(--line);text-align:left;vertical-align:middle;line-height:1.4;overflow-wrap:anywhere;word-break:normal}table.result-tbl thead th{position:sticky;top:0;z-index:2;background:#f8fafc;font-weight:700;font-size:12px}#resultOverlay table.result-tbl th:first-child,#resultOverlay table.result-tbl td:first-child{width:9%;text-align:center}#resultOverlay table.result-tbl th:nth-child(2),#resultOverlay table.result-tbl td:nth-child(2),#resultOverlay table.result-tbl th:nth-child(3),#resultOverlay table.result-tbl td:nth-child(3){width:45.5%}#previewOverlay table.result-tbl th:first-child,#previewOverlay table.result-tbl td:first-child{width:12%;text-align:center}#previewOverlay table.result-tbl th:nth-child(2),#previewOverlay table.result-tbl td:nth-child(2){width:88%}table.result-tbl td.correct{color:var(--good);font-weight:700}table.result-tbl td.wrong{color:var(--bad);font-weight:700}.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}body.focus-mode{padding-bottom:0}body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:0;max-width:none;margin:0}.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}body.focus-mode .exit-focus{display:block}.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}.toast.show{opacity:1}
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}#hl-popup{position:fixed;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px #0f172a40}#hl-popup.show{display:flex;gap:3px}#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}#hl-popup button:hover{background:#1e293b}#note-popup{position:fixed;inset:0;z-index:500;background:#0f172a80;display:none;align-items:center;justify-content:center;padding:20px}#note-popup.show{display:flex}#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px #0f172a4d}#note-popup h4{margin:0 0 10px;font-size:16px}#note-popup textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}#note-popup .np-cancel{background:#f1f5f9;color:#334155}#note-popup .np-save{background:#0f766e;color:#fff}
+@media(max-width:900px){:root{--bottom-h:210px}.main-split{margin:0;height:calc(100vh - var(--header-h) - var(--bottom-h));min-height:400px;border-radius:0}.pane{padding:18px 16px}.passages{flex-basis:48%}.part-tab{padding:6px;gap:5px}.skim-btn{padding:3px 5px}.bottom-panel{padding:8px 10px}}@media(max-width:560px){.app-header{padding:0 8px;gap:8px}.app-header h1{font-size:12px}.header-right{gap:5px}.icon-btn{padding:5px 7px;font-size:11px}.main-split{display:block;overflow:auto;height:calc(100vh - var(--header-h) - var(--bottom-h))}.pane{height:50%;border-left:0;padding:16px}.passages{width:100%;border-bottom:2px solid var(--line)}.questions{width:100%}.resizer{display:none}.tab-qcount{display:none}table.result-tbl th,table.result-tbl td{padding:7px 6px;font-size:12px}}
+@media print{.app-header,.bottom-panel,.resizer,.exit-focus,.toast,#hl-popup,#note-popup{display:none!important}body{padding:0;background:#fff}.main-split{display:block;height:auto;max-width:none;margin:0;border:0;overflow:visible}.pane{overflow:visible;padding:10px}.passages,.questions{width:100%;height:auto;border:0}.passage,.q-section{display:block!important}.overlay{display:none!important}}
 </style>
   </head>
   <body>
-
-    <!-- ================= HEADER ================= -->
-    <header class="app-header">
-      <a href="/">📚</a>
-      <h1>Official Cambridge Guide to IELTS Academic Reading Test 1</h1>
-      <div class="header-right">
-        <button class="icon-btn" id="focusBtn">⛶ Focus</button>
-        <div class="band-chip" id="bandChip">--</div>
-        <div class="timer-chip">⏱ <strong id="timer">00:00:00</strong></div>
-        <div class="menu-wrap">
-          <button class="icon-btn" id="menuBtn">☰</button>
-          <div class="menu-pop" id="menuPop">
-            <a href="#" id="exportLink">📄 Export as PDF</a>
-            <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
-            <a href="#" id="resetLink">↺ Reset Test</a>
-            <a href="#" id="gotoTop">↑ Back to Top</a>
-          </div>
-        </div>
-      </div>
-    </header>
-
+    <header class="app-header"><a class="logo"
+        href="./index.html">📚</a><h1>Official Cambridge Guide to IELTS Academic
+        Reading Test 1</h1><div class="header-right"><button class="icon-btn"
+          id="focusBtn">⛶ Focus</button><div class="band-chip"
+          id="bandChip">--</div><div class="timer-chip" id="timerChip">⏱ <strong
+            id="timer">60:00</strong></div><div class="menu-wrap"><button
+            class="icon-btn" id="menuBtn">☰</button><div class="menu-pop"
+            id="menuPop"><a href="#" id="exportLink">📄 Export as PDF</a><a
+              href="#" id="clearHighlightsLink">🧹 Clear Highlights</a><a
+              href="#" id="resetLink">↺ Reset Test</a><a href="#" id="gotoTop">↑
+              Back to Top</a></div></div></div></header>
     <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-    <button id="hl-fab"
-      title="Toggle Highlighter (select text or click a word)">🖍</button><button
-      id="hl-fab"
-      title="Toggle Highlighter (select text or click a word)">🖍</button>
-
-    <!-- ================= SPLIT VIEW ================= -->
     <div class="main-split" id="mainSplit">
-
-      <!-- ---------- PASSAGES ---------- -->
       <div class="pane passages" id="passagesPane">
-        <div class="passage active" data-part="1">
-          <span class="part-label">Part 1</span>
-          <h2>The Dover Bronze-Age Boat</h2>
+        <div class="passage active" data-part="1"><span class="part-label">Part
+            1</span><h2>The Dover Bronze-Age Boat</h2>
           <p><em>You should spend about 20 minutes on Questions 1–13, which are
               based on Reading Passage 1 below.</em></p>
           <p>A beautifully preserved boat, made around 3,000 years ago and
@@ -462,10 +144,8 @@ body.focus-mode #hl-fab{bottom:20px;}
             bound together the communities either side of the Channel, was the
             centrepiece.</p>
         </div>
-
-        <div class="passage" data-part="2">
-          <span class="part-label">Part 2</span>
-          <h2>The changing role of airports</h2>
+        <div class="passage" data-part="2"><span class="part-label">Part
+            2</span><h2>The changing role of airports</h2>
           <p><em>You should spend about 20 minutes on Questions 14–26, which are
               based on Reading Passage 2 below.</em></p>
           <p>Airports continue to diversify their role in an effort to generate
@@ -568,10 +248,8 @@ body.focus-mode #hl-fab{bottom:20px;}
             airports is likely to be minimal, competition with local providers
             of meetings facilities is likely to be much greater.</p>
         </div>
-
-        <div class="passage" data-part="3">
-          <span class="part-label">Part 3</span>
-          <h2>IS PHOTOGRAPHY ART?</h2>
+        <div class="passage" data-part="3"><span class="part-label">Part
+            3</span><h2>IS PHOTOGRAPHY ART?</h2>
           <p><em>You should spend about 20 minutes on Questions 27–40, which are
               based on Reading Passage 3 below.</em></p>
           <p>This may seem a pointless question today. Surrounded as we are by
@@ -675,1183 +353,690 @@ body.focus-mode #hl-fab{bottom:20px;}
               photographic images</em></p>
         </div>
       </div>
-
       <div class="resizer" id="resizer"></div>
-
-      <!-- ---------- QUESTIONS ---------- -->
-      <div class="pane questions" id="questionsPane">
-        <form id="quiz" onsubmit="return false;">
-
-          <!-- ============ PART 1 ============ -->
+      <div class="pane questions" id="questionsPane"><form id="quiz"
+          onsubmit="return false">
           <section class="q-section active" data-part="1">
-            <div class="q-group">
-              <h3>Questions 1–5</h3>
-              <div class="q-instr">
-                <p>Complete the flow-chart below.</p>
-                <p>Choose <strong>ONE WORD ONLY</strong> from the text for each
-                  answer.</p>
-              </div>
-              <p style="font-weight:700;margin:6px 0 12px;">Key events</p>
+            <div class="q-group"><h3>Questions 1–5</h3>
+              <div class="q-instr"><p>Complete the flow-chart
+                  below.</p><p>Choose <strong>ONE WORD ONLY</strong> from the
+                  text for each answer.</p></div>
+              <p style="font-weight:700;margin:6px 0 12px">Key events</p>
               <div class="q" data-q="1"><div class="q-num">1</div><div
                   class="q-body"><p>1992 – the boat was discovered during the
-                    construction of a <input type="text" name="q1"
-                      aria-label="Q1"></p><div
+                    construction of a <input type="text" class="gap-input"
+                      name="q1" aria-label="Q1"></p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="2"><div class="q-num">2</div><div
                   class="q-body"><p>2002 – an international <input type="text"
-                      name="q2" aria-label="Q2"> was held to gather
-                    information</p><div class="feedback"></div></div></div>
+                      class="gap-input" name="q2" aria-label="Q2"> was held to
+                    gather information</p><div
+                    class="feedback"></div></div></div>
               <div class="q" data-q="3"><div class="q-num">3</div><div
-                  class="q-body"><p>2004 – <input type="text" name="q3"
-                      aria-label="Q3"> for the reconstruction were
+                  class="q-body"><p>2004 – <input type="text" class="gap-input"
+                      name="q3" aria-label="Q3"> for the reconstruction were
                     produced</p><div class="feedback"></div></div></div>
               <div class="q" data-q="4"><div class="q-num">4</div><div
-                  class="q-body"><p>2007 – the <input type="text" name="q4"
-                      aria-label="Q4"> of BOAT 1550BC took place</p><div
+                  class="q-body"><p>2007 – the <input type="text"
+                      class="gap-input" name="q4" aria-label="Q4"> of BOAT
+                    1550BC took place</p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="5"><div class="q-num">5</div><div
                   class="q-body"><p>2012 – the Bronze-Age <input type="text"
-                      name="q5" aria-label="Q5"> featured the boat and other
-                    objects</p><div class="feedback"></div></div></div>
+                      class="gap-input" name="q5" aria-label="Q5"> featured the
+                    boat and other objects</p><div
+                    class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 6–9</h3>
-              <div class="q-instr">
-                <p>Do the following statements agree with the information given
-                  in the text?</p>
-                <p>Write <strong>TRUE</strong> if the statement agrees with the
+            <div class="q-group"><h3>Questions 6–9</h3>
+              <div class="q-instr"><p>Do the following statements agree with the
+                  information given in the text?</p><p>Write
+                  <strong>TRUE</strong> if the statement agrees with the
                   information, <strong>FALSE</strong> if the statement
                   contradicts the information, <strong>NOT GIVEN</strong> if
-                  there is no information on this.</p>
-              </div>
+                  there is no information on this.</p></div>
               <div class="q" data-q="6"><div class="q-num">6</div><div
                   class="q-body"><p>Archaeologists realised that the boat had
-                    been damaged on purpose.</p><div
-                    class="options"><label><input type="radio" name="q6"
-                        value="TRUE"> TRUE</label><label><input type="radio"
-                        name="q6" value="FALSE"> FALSE</label><label><input
-                        type="radio" name="q6" value="NOT GIVEN"> NOT
-                      GIVEN</label></div><div
+                    been damaged on purpose.</p><div class="option-row"><input
+                      type="radio" name="q6"
+                      value="TRUE"><span>TRUE</span></div><div
+                    class="option-row"><input type="radio" name="q6"
+                      value="FALSE"><span>FALSE</span></div><div
+                    class="option-row"><input type="radio" name="q6"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="7"><div class="q-num">7</div><div
                   class="q-body"><p>Initially, only the technological aspects of
-                    the boat were examined.</p><div
-                    class="options"><label><input type="radio" name="q7"
-                        value="TRUE"> TRUE</label><label><input type="radio"
-                        name="q7" value="FALSE"> FALSE</label><label><input
-                        type="radio" name="q7" value="NOT GIVEN"> NOT
-                      GIVEN</label></div><div
+                    the boat were examined.</p><div class="option-row"><input
+                      type="radio" name="q7"
+                      value="TRUE"><span>TRUE</span></div><div
+                    class="option-row"><input type="radio" name="q7"
+                      value="FALSE"><span>FALSE</span></div><div
+                    class="option-row"><input type="radio" name="q7"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="8"><div class="q-num">8</div><div
                   class="q-body"><p>Archaeologists went back to the site to try
                     and find the missing northern end of the boat.</p><div
-                    class="options"><label><input type="radio" name="q8"
-                        value="TRUE"> TRUE</label><label><input type="radio"
-                        name="q8" value="FALSE"> FALSE</label><label><input
-                        type="radio" name="q8" value="NOT GIVEN"> NOT
-                      GIVEN</label></div><div
+                    class="option-row"><input type="radio" name="q8"
+                      value="TRUE"><span>TRUE</span></div><div
+                    class="option-row"><input type="radio" name="q8"
+                      value="FALSE"><span>FALSE</span></div><div
+                    class="option-row"><input type="radio" name="q8"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="9"><div class="q-num">9</div><div
                   class="q-body"><p>Evidence found in 2004 suggested that the
                     Bronze-Age Boat had been used for trade.</p><div
-                    class="options"><label><input type="radio" name="q9"
-                        value="TRUE"> TRUE</label><label><input type="radio"
-                        name="q9" value="FALSE"> FALSE</label><label><input
-                        type="radio" name="q9" value="NOT GIVEN"> NOT
-                      GIVEN</label></div><div
+                    class="option-row"><input type="radio" name="q9"
+                      value="TRUE"><span>TRUE</span></div><div
+                    class="option-row"><input type="radio" name="q9"
+                      value="FALSE"><span>FALSE</span></div><div
+                    class="option-row"><input type="radio" name="q9"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
                     class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 10–13</h3>
-              <div class="q-instr">
-                <p>Answer the questions below.</p>
-                <p>Choose <strong>NO MORE THAN THREE WORDS AND/OR A
-                    NUMBER</strong> from the text for each answer.</p>
-              </div>
+            <div class="q-group"><h3>Questions 10–13</h3>
+              <div class="q-instr"><p>Answer the questions below.</p><p>Choose
+                  <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> from
+                  the text for each answer.</p></div>
               <div class="q" data-q="10"><div class="q-num">10</div><div
                   class="q-body"><p>How far under the ground was the boat
-                    found?</p><input type="text" name="q10"
+                    found?</p><input type="text" class="gap-input" name="q10"
                     aria-label="Q10"><div class="feedback"></div></div></div>
               <div class="q" data-q="11"><div class="q-num">11</div><div
                   class="q-body"><p>What natural material had been secured to
                     the boat to prevent water entering?</p><input type="text"
-                    name="q11" aria-label="Q11"><div
+                    class="gap-input" name="q11" aria-label="Q11"><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="12"><div class="q-num">12</div><div
                   class="q-body"><p>What aspect of the boat was the focus of the
-                    2012 reconstruction?</p><input type="text" name="q12"
-                    aria-label="Q12"><div class="feedback"></div></div></div>
+                    2012 reconstruction?</p><input type="text" class="gap-input"
+                    name="q12" aria-label="Q12"><div
+                    class="feedback"></div></div></div>
               <div class="q" data-q="13"><div class="q-num">13</div><div
                   class="q-body"><p>Which two factors influenced the decision
                     not to make a full-scale reconstruction of the
-                    boat?</p><input type="text" name="q13" aria-label="Q13"
-                    style="min-width:220px;"><div
+                    boat?</p><input type="text" class="gap-input wide"
+                    name="q13" aria-label="Q13"><div
                     class="feedback"></div></div></div>
             </div>
           </section>
-
-          <!-- ============ PART 2 ============ -->
           <section class="q-section" data-part="2">
-            <div class="q-group">
-              <h3>Questions 14–18</h3>
+            <div class="q-group"><h3>Questions 14–18</h3>
               <div class="q-instr"><p>The text has eight paragraphs,
                   A–H.</p><p>Which paragraph contains the following information?
-                  Write the correct letter, A–H.</p><p><em>N.B. You may use any
-                    letter more than once.</em></p></div>
+                  Drag each question number onto the correct paragraph on the
+                  left.</p><p><em>N.B. You may use any letter more than
+                    once.</em></p></div>
               <div class="q" data-q="14"><div class="q-num">14</div><div
-                  class="q-body"><p>evidence that a significant number of
-                    airports provide meeting facilities</p><select name="q14"
-                    aria-label="Q14"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div
-                    class="feedback"></div></div></div>
+                  class="q-body"><div class="matching-drag-handle"
+                    draggable="true" data-drag-question="14">evidence that a
+                    significant number of airports provide meeting
+                    facilities</div><div class="feedback"></div></div></div>
               <div class="q" data-q="15"><div class="q-num">15</div><div
-                  class="q-body"><p>a statement regarding the fact that no
-                    further developments are possible in some areas of airport
-                    trade</p><select name="q15" aria-label="Q15"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div
+                  class="q-body"><div class="matching-drag-handle"
+                    draggable="true" data-drag-question="15">a statement
+                    regarding the fact that no further developments are possible
+                    in some areas of airport trade</div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="16"><div class="q-num">16</div><div
-                  class="q-body"><p>reference to the low level of income that
-                    meeting facilities produce for airports</p><select
-                    name="q16" aria-label="Q16"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div
-                    class="feedback"></div></div></div>
+                  class="q-body"><div class="matching-drag-handle"
+                    draggable="true" data-drag-question="16">reference to the
+                    low level of income that meeting facilities produce for
+                    airports</div><div class="feedback"></div></div></div>
               <div class="q" data-q="17"><div class="q-num">17</div><div
-                  class="q-body"><p>mention of the impact of budget airlines on
-                    airport income</p><select name="q17"
-                    aria-label="Q17"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div
+                  class="q-body"><div class="matching-drag-handle"
+                    draggable="true" data-drag-question="17">mention of the
+                    impact of budget airlines on airport income</div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="18"><div class="q-num">18</div><div
-                  class="q-body"><p>examples of airport premises that might be
-                    used for business purposes</p><select name="q18"
-                    aria-label="Q18"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select><div
+                  class="q-body"><div class="matching-drag-handle"
+                    draggable="true" data-drag-question="18">examples of airport
+                    premises that might be used for business purposes</div><div
                     class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 19–22</h3>
+            <div class="q-group"><h3>Questions 19–22</h3>
               <div class="q-instr"><p>Complete the sentences below.</p><p>Choose
                   <strong>NO MORE THAN TWO WORDS</strong> from the text for each
                   answer.</p></div>
               <div class="q" data-q="19"><div class="q-num">19</div><div
                   class="q-body"><p>The length of time passengers spend shopping
                     at airports has been affected by updated <input type="text"
-                      name="q19" aria-label="Q19">.</p><div
+                      class="gap-input" name="q19" aria-label="Q19">.</p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="20"><div class="q-num">20</div><div
                   class="q-body"><p>Airports with a wide range of recreational
-                    facilities can become a <input type="text" name="q20"
-                      aria-label="Q20"> for people rather than a means to
-                    travel.</p><div class="feedback"></div></div></div>
+                    facilities can become a <input type="text" class="gap-input"
+                      name="q20" aria-label="Q20"> for people rather than a
+                    means to travel.</p><div class="feedback"></div></div></div>
               <div class="q" data-q="21"><div class="q-num">21</div><div
                   class="q-body"><p>Both passengers and <input type="text"
-                      name="q21" aria-label="Q21"> may feel encouraged to use
-                    and develop a sense of loyalty towards airports that market
-                    their business services.</p><div
+                      class="gap-input" name="q21" aria-label="Q21"> may feel
+                    encouraged to use and develop a sense of loyalty towards
+                    airports that market their business services.</p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="22"><div class="q-num">22</div><div
                   class="q-body"><p>Airports that supply meeting facilities may
-                    need to develop a <input type="text" name="q22"
-                      aria-label="Q22"> over other venues.</p><div
+                    need to develop a <input type="text" class="gap-input"
+                      name="q22" aria-label="Q22"> over other venues.</p><div
                     class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 23–26</h3>
+            <div class="q-group"><h3>Questions 23–26</h3>
               <div class="q-instr"><p>Complete the summary below.</p><p>Choose
                   <strong>NO MORE THAN TWO WORDS</strong> from the text for each
                   answer.</p></div>
-              <p style="font-weight:700;margin:6px 0 12px;">Survey Findings</p>
+              <p style="font-weight:700;margin:6px 0 12px">Survey Findings</p>
               <div class="q" data-q="23"><div class="q-num">23</div><div
                   class="q-body"><p>Despite financial constraints due to the
-                    <input type="text" name="q23" aria-label="Q23">, a
-                    significant percentage of airports provide and wish to
-                    further support business meeting facilities.</p><div
-                    class="feedback"></div></div></div>
+                    <input type="text" class="gap-input" name="q23"
+                      aria-label="Q23">, a significant percentage of airports
+                    provide and wish to further support business meeting
+                    facilities.</p><div class="feedback"></div></div></div>
               <div class="q" data-q="24"><div class="q-num">24</div><div
                   class="q-body"><p>Also, just under 30% of the airports
                     surveyed plan to provide these facilities within <input
-                      type="text" name="q24" aria-label="Q24">.</p><div
+                      type="text" class="gap-input" name="q24"
+                      aria-label="Q24">.</p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="25"><div class="q-num">25</div><div
                   class="q-body"><p>However, the main users of the facilities
-                    are <input type="text" name="q25" aria-label="Q25">.</p><div
+                    are <input type="text" class="gap-input" name="q25"
+                      aria-label="Q25">.</p><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="26"><div class="q-num">26</div><div
                   class="q-body"><p>As many as 16% of respondents to the survey
                     stated that their users did not take any <input type="text"
-                      name="q26" aria-label="Q26"> at the airport.</p><div
-                    class="feedback"></div></div></div>
+                      class="gap-input" name="q26" aria-label="Q26"> at the
+                    airport.</p><div class="feedback"></div></div></div>
             </div>
           </section>
-
-          <!-- ============ PART 3 ============ -->
           <section class="q-section" data-part="3">
-            <div class="q-group">
-              <h3>Questions 27–30</h3>
+            <div class="q-group"><h3>Questions 27–30</h3>
               <div class="q-instr"><p>Choose the correct letter, A, B, C or
                   D.</p></div>
               <div class="q" data-q="27"><div class="q-num">27</div><div
                   class="q-body"><p>What is the writer's main point in the first
-                    paragraph?</p><div class="options stack"><label><input
-                        type="radio" name="q27" value="A"> A. Photography is
-                      used for many different purposes.</label><label><input
-                        type="radio" name="q27" value="B"> B. Photographers and
-                      artists have the same principal aims.</label><label><input
-                        type="radio" name="q27" value="C"> C. Photography has
-                      not always been a readily accepted art
-                      form.</label><label><input type="radio" name="q27"
-                        value="D"> D. Photographers today are more creative than
-                      those of the past.</label></div><div
+                    paragraph?</p>
+                  <div class="option-row"><input type="radio" name="q27"
+                      value="A"><span>A. Photography is used for many different
+                      purposes.</span></div>
+                  <div class="option-row"><input type="radio" name="q27"
+                      value="B"><span>B. Photographers and artists have the same
+                      principal aims.</span></div>
+                  <div class="option-row"><input type="radio" name="q27"
+                      value="C"><span>C. Photography has not always been a
+                      readily accepted art form.</span></div>
+                  <div class="option-row"><input type="radio" name="q27"
+                      value="D"><span>D. Photographers today are more creative
+                      than those of the past.</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="28"><div class="q-num">28</div><div
                   class="q-body"><p>What public view about artists was shared by
-                    the French and the English?</p><div
-                    class="options stack"><label><input type="radio" name="q28"
-                        value="A"> A. that only artists could reflect a
-                      culture's true values</label><label><input type="radio"
-                        name="q28" value="B"> B. that only artists were
-                      qualified to judge photography</label><label><input
-                        type="radio" name="q28" value="C"> C. that artists could
-                      lose work as a result of photography</label><label><input
-                        type="radio" name="q28" value="D"> D. that artistic
-                      success raised a country's international
-                      profile</label></div><div
+                    the French and the English?</p>
+                  <div class="option-row"><input type="radio" name="q28"
+                      value="A"><span>A. that only artists could reflect a
+                      culture's true values</span></div>
+                  <div class="option-row"><input type="radio" name="q28"
+                      value="B"><span>B. that only artists were qualified to
+                      judge photography</span></div>
+                  <div class="option-row"><input type="radio" name="q28"
+                      value="C"><span>C. that artists could lose work as a
+                      result of photography</span></div>
+                  <div class="option-row"><input type="radio" name="q28"
+                      value="D"><span>D. that artistic success raised a
+                      country's international profile</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="29"><div class="q-num">29</div><div
                   class="q-body"><p>What does the writer mean by
-                    'the handwriting on the wall'?</p><div
-                    class="options stack"><label><input type="radio" name="q29"
-                        value="A"> A. an example of poor
-                      talent</label><label><input type="radio" name="q29"
-                        value="B"> B. a message that cannot be
-                      trusted</label><label><input type="radio" name="q29"
-                        value="C"> C. an advertisement for something
-                      new</label><label><input type="radio" name="q29"
-                        value="D"> D. a signal that something bad will
-                      happen</label></div><div
+                    'the handwriting on the wall'?</p>
+                  <div class="option-row"><input type="radio" name="q29"
+                      value="A"><span>A. an example of poor talent</span></div>
+                  <div class="option-row"><input type="radio" name="q29"
+                      value="B"><span>B. a message that cannot be
+                      trusted</span></div>
+                  <div class="option-row"><input type="radio" name="q29"
+                      value="C"><span>C. an advertisement for something
+                      new</span></div>
+                  <div class="option-row"><input type="radio" name="q29"
+                      value="D"><span>D. a signal that something bad will
+                      happen</span></div><div
                     class="feedback"></div></div></div>
               <div class="q" data-q="30"><div class="q-num">30</div><div
                   class="q-body"><p>What was the result of the widespread
-                    availability of photographs to the middle classes?</p><div
-                    class="options stack"><label><input type="radio" name="q30"
-                        value="A"> A. The most educated worried about its impact
-                      on public taste.</label><label><input type="radio"
-                        name="q30" value="B"> B. It helped artists appreciate
-                      the merits of photography.</label><label><input
-                        type="radio" name="q30" value="C"> C. Improvements were
-                      made in photographic methods.</label><label><input
-                        type="radio" name="q30" value="D"> D. It led to a
-                      reduction in the price of photographs.</label></div><div
+                    availability of photographs to the middle classes?</p>
+                  <div class="option-row"><input type="radio" name="q30"
+                      value="A"><span>A. The most educated worried about its
+                      impact on public taste.</span></div>
+                  <div class="option-row"><input type="radio" name="q30"
+                      value="B"><span>B. It helped artists appreciate the merits
+                      of photography.</span></div>
+                  <div class="option-row"><input type="radio" name="q30"
+                      value="C"><span>C. Improvements were made in photographic
+                      methods.</span></div>
+                  <div class="option-row"><input type="radio" name="q30"
+                      value="D"><span>D. It led to a reduction in the price of
+                      photographs.</span></div><div
                     class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 31–34</h3>
+            <div class="q-group"><h3>Questions 31–34</h3>
               <div class="q-instr"><p>Complete the summary of Paragraph 3 using
-                  the list of words, A–G, below.</p></div>
-              <p style="font-weight:700;margin:6px 0 12px;">Camera art</p>
-              <div class="word-bank"><span>A. inventive</span><span>B.
-                  similar</span><span>C. beneficial</span><span>D.
-                  next</span><span>E. mixed</span><span>F.
-                  justified</span><span>G. inferior</span></div>
-              <div class="q" data-q="31"><div class="q-num">31</div><div
-                  class="q-body"><p>In the early days of photography, opinions
-                    on its future were <select name="q31"
-                      aria-label="Q31"><option
-                        value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>,
-                    but three clear views emerged.</p><div
+                  the list of words, A–G, below. Drag the correct option into
+                  each gap.</p></div>
+              <p style="font-weight:700;margin:6px 0 12px">Camera art</p>
+              <div class="summary-drop-bank">
+                <div class="summary-drop-item" draggable="true" data-word="A">A.
+                  inventive</div>
+                <div class="summary-drop-item" draggable="true" data-word="B">B.
+                  similar</div>
+                <div class="summary-drop-item" draggable="true" data-word="C">C.
+                  beneficial</div>
+                <div class="summary-drop-item" draggable="true" data-word="D">D.
+                  next</div>
+                <div class="summary-drop-item" draggable="true" data-word="E">E.
+                  mixed</div>
+                <div class="summary-drop-item" draggable="true" data-word="F">F.
+                  justified</div>
+                <div class="summary-drop-item" draggable="true" data-word="G">G.
+                  inferior</div>
+              </div>
+              <div class="summary-box">
+                <p>In the early days of photography, opinions on its future were
+                  <span class="qnum">31</span><span class="summary-drop-slot"
+                    data-q="31" data-answer="E"></span>, but three clear views
+                  emerged.</p>
+                <p>A large number of artists and ordinary people saw photographs
+                  as <span class="qnum">32</span><span class="summary-drop-slot"
+                    data-q="32" data-answer="G"></span> to paintings because of
+                  the way they were produced.</p>
+                <p>Another popular view was that photographs could have a role
+                  to play in the art world, despite the photographer being less
+                  <span class="qnum">33</span><span class="summary-drop-slot"
+                    data-q="33" data-answer="A"></span>.</p>
+                <p>Finally, a smaller number of people suspected that the impact
+                  of photography on art and society could be <span
+                    class="qnum">34</span><span class="summary-drop-slot"
+                    data-q="34" data-answer="C"></span>.</p>
+              </div>
+              <div class="q" data-q="31" style="display:none"><div
+                  class="q-num">31</div><div class="q-body"><div
                     class="feedback"></div></div></div>
-              <div class="q" data-q="32"><div class="q-num">32</div><div
-                  class="q-body"><p>A large number of artists and ordinary
-                    people saw photographs as <select name="q32"
-                      aria-label="Q32"><option
-                        value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
-                    to paintings because of the way they were produced.</p><div
+              <div class="q" data-q="32" style="display:none"><div
+                  class="q-num">32</div><div class="q-body"><div
                     class="feedback"></div></div></div>
-              <div class="q" data-q="33"><div class="q-num">33</div><div
-                  class="q-body"><p>Another popular view was that photographs
-                    could have a role to play in the art world, despite the
-                    photographer being less <select name="q33"
-                      aria-label="Q33"><option
-                        value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>.</p><div
+              <div class="q" data-q="33" style="display:none"><div
+                  class="q-num">33</div><div class="q-body"><div
                     class="feedback"></div></div></div>
-              <div class="q" data-q="34"><div class="q-num">34</div><div
-                  class="q-body"><p>Finally, a smaller number of people
-                    suspected that the impact of photography on art and society
-                    could be <select name="q34" aria-label="Q34"><option
-                        value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>.</p><div
+              <div class="q" data-q="34" style="display:none"><div
+                  class="q-num">34</div><div class="q-body"><div
                     class="feedback"></div></div></div>
             </div>
-
-            <div class="q-group">
-              <h3>Questions 35–40</h3>
+            <div class="q-group"><h3>Questions 35–40</h3>
               <div class="q-instr"><p>Look at the following statements and the
                   list of people, A–E, below. Match each statement with the
                   correct person.</p></div>
-              <ul class="people-list">
-                <li><strong>A.</strong> Jean-Auguste-Dominique Ingres</li>
-                <li><strong>B.</strong> Francis Wey</li>
-                <li><strong>C.</strong> Charles Baudelaire</li>
-                <li><strong>D.</strong> Eugene Delacroix</li>
-                <li><strong>E.</strong> Philip Gilbert Hamerton</li>
-              </ul>
-              <div class="q" data-q="35"><div class="q-num">35</div><div
-                  class="q-body"><p>He claimed that photography would make
-                    paintings more realistic.</p><select name="q35"
-                    aria-label="Q35"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
-              <div class="q" data-q="36"><div class="q-num">36</div><div
-                  class="q-body"><p>He highlighted the limitations and
-                    deceptions of the camera.</p><select name="q36"
-                    aria-label="Q36"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
-              <div class="q" data-q="37"><div class="q-num">37</div><div
-                  class="q-body"><p>He documented his production of artwork by
-                    photographing his works.</p><select name="q37"
-                    aria-label="Q37"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
-              <div class="q" data-q="38"><div class="q-num">38</div><div
-                  class="q-body"><p>He noted the potential for photography to
-                    enrich artistic talent.</p><select name="q38"
-                    aria-label="Q38"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
-              <div class="q" data-q="39"><div class="q-num">39</div><div
-                  class="q-body"><p>He based some of the scenes in his paintings
-                    on photographs.</p><select name="q39"
-                    aria-label="Q39"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
-              <div class="q" data-q="40"><div class="q-num">40</div><div
-                  class="q-body"><p>He felt photography was part of the trend
-                    towards greater mechanisation.</p><select name="q40"
-                    aria-label="Q40"><option
-                      value>—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div
-                    class="feedback"></div></div></div>
+              <ul class="people-list"><li><strong>A.</strong>
+                  Jean-Auguste-Dominique Ingres</li><li><strong>B.</strong>
+                  Francis Wey</li><li><strong>C.</strong> Charles
+                  Baudelaire</li><li><strong>D.</strong> Eugene
+                  Delacroix</li><li><strong>E.</strong> Philip Gilbert
+                  Hamerton</li></ul>
+              <table class="matching-table">
+                <thead><tr><th class="match-num-head">#</th><th
+                      class="match-statement-head">Statement</th><th
+                      class="match-option-head">A</th><th
+                      class="match-option-head">B</th><th
+                      class="match-option-head">C</th><th
+                      class="match-option-head">D</th><th
+                      class="match-option-head">E</th></tr></thead>
+                <tbody>
+                  <tr class="q" data-q="35"><td
+                      class="match-num-cell">35</td><td
+                      class="match-statement-cell">He claimed that photography
+                      would make paintings more realistic.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q35" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q35" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q35" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q35" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q35" value="E"></label></td></tr>
+                  <tr class="q" data-q="36"><td
+                      class="match-num-cell">36</td><td
+                      class="match-statement-cell">He highlighted the
+                      limitations and deceptions of the camera.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q36" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q36" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q36" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q36" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q36" value="E"></label></td></tr>
+                  <tr class="q" data-q="37"><td
+                      class="match-num-cell">37</td><td
+                      class="match-statement-cell">He documented his production
+                      of artwork by photographing his works.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q37" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q37" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q37" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q37" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q37" value="E"></label></td></tr>
+                  <tr class="q" data-q="38"><td
+                      class="match-num-cell">38</td><td
+                      class="match-statement-cell">He noted the potential for
+                      photography to enrich artistic talent.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q38" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q38" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q38" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q38" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q38" value="E"></label></td></tr>
+                  <tr class="q" data-q="39"><td
+                      class="match-num-cell">39</td><td
+                      class="match-statement-cell">He based some of the scenes
+                      in his paintings on photographs.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q39" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q39" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q39" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q39" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q39" value="E"></label></td></tr>
+                  <tr class="q" data-q="40"><td
+                      class="match-num-cell">40</td><td
+                      class="match-statement-cell">He felt photography was part
+                      of the trend towards greater mechanisation.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q40" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q40" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q40" value="C"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q40" value="D"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q40" value="E"></label></td></tr>
+                </tbody>
+              </table>
             </div>
           </section>
-
-        </form>
-      </div>
+        </form></div>
     </div>
-
-    <!-- =========================================================
-     BOTTOM PANEL
-     ========================================================= -->
-    <div class="bottom-panel">
-      <div class="bottom-inner">
-
-        <div class="part-tabs">
-          <button class="part-tab active" data-part="1">
-            <span class="tab-part-name">Part 1</span>
-            <span class="tab-qcount">Questions 1–13</span>
-            <span class="skim-btn" data-part="1">Skim (1x)</span>
-          </button>
-          <button class="part-tab" data-part="2">
-            <span class="tab-part-name">Part 2</span>
-            <span class="tab-qcount">Questions 14–26</span>
-            <span class="skim-btn" data-part="2">Skim (1x)</span>
-          </button>
-          <button class="part-tab" data-part="3">
-            <span class="tab-part-name">Part 3</span>
-            <span class="tab-qcount">Questions 27–40</span>
-            <span class="skim-btn" data-part="3">Skim (1x)</span>
-          </button>
-        </div>
-
-        <div class="ielts-reading-question-palette" id="palette"></div>
-
-        <div class="ielts-reading-bottom-controls">
-          <div class="ielts-reading-question-control-buttons">
-            <button id="prevBtn" title="Previous question">←</button>
-            <button id="nextBtn" title="Next question">→</button>
-          </div>
-          <div class="ielts-reading-test-control-buttons">
-            <button class="ielts-reading-review-button" id="reviewBtn">📋
-              Review</button>
-            <button class="ielts-reading-submit-button" id="submitBtn">Submit
-              ✈</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ================= RESULT OVERLAY ================= -->
-    <div class="overlay" id="resultOverlay">
-      <div class="overlay-card">
-        <div class="overlay-head">
-          <h3>Your Results</h3>
-          <button class="close-x" data-close="resultOverlay">×</button>
-        </div>
-        <div class="overlay-body">
-          <div class="score-summary">
-            <div class="big" id="resultScore">0 / 40</div>
-            <div class="sub" id="resultSub">Band estimate: —</div>
-          </div>
-          <div class="legend-row">
-            <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No
-              answer</span>
-          </div>
-          <table class="result-tbl">
-            <thead><tr><th>#</th><th>Your Answer</th><th>Correct
-                  Answer</th></tr></thead>
-            <tbody id="resultBody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= PREVIEW OVERLAY ================= -->
-    <div class="overlay" id="previewOverlay">
-      <div class="overlay-card">
-        <div class="overlay-head">
-          <h3>Review Your Answers</h3>
-          <button class="close-x" data-close="previewOverlay">×</button>
-        </div>
-        <div class="overlay-body">
-          <table class="result-tbl">
-            <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-            <tbody id="previewBody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= HIGHLIGHT TOOLBAR ================= -->
-    <div id="hl-popup">
-      <button id="hl-highlight">🖍 Highlight</button>
-      <button id="hl-dehighlight">🧽 Clear</button>
-      <button id="hl-note">📝 Note</button>
-      <button id="hl-flashcard">🃏 Flashcard</button>
-    </div>
-
-    <!-- ================= NOTE POPUP ================= -->
-    <div id="note-popup">
-      <div class="np-card">
-        <h4>Add a note</h4>
-        <textarea id="note-text"
-          placeholder="Write your note about this text..."></textarea>
-        <div class="np-actions">
-          <button type="button" class="np-cancel"
-            id="note-cancel">Cancel</button>
-          <button type="button" class="np-save" id="note-save">Save
-            Note</button>
-        </div>
-      </div>
-    </div>
-
+    <div class="bottom-panel"><div class="bottom-inner"><div class="part-tabs">
+          <button class="part-tab active" data-part="1"><span
+              class="tab-part-name">Part 1</span><span
+              class="tab-qcount">Questions 1–13</span><span class="skim-btn"
+              data-part="1">Skim (1x)</span></button>
+          <button class="part-tab" data-part="2"><span
+              class="tab-part-name">Part 2</span><span
+              class="tab-qcount">Questions 14–26</span><span class="skim-btn"
+              data-part="2">Skim (1x)</span></button>
+          <button class="part-tab" data-part="3"><span
+              class="tab-part-name">Part 3</span><span
+              class="tab-qcount">Questions 27–40</span><span class="skim-btn"
+              data-part="3">Skim (1x)</span></button>
+        </div><div class="ielts-reading-question-palette"
+          id="palette"></div><div class="ielts-reading-bottom-controls"><div
+            class="ielts-reading-question-control-buttons"><button
+              id="prevBtn">←</button><button id="nextBtn">→</button></div><div
+            class="ielts-reading-test-control-buttons"><button
+              class="ielts-reading-review-button" id="reviewBtn">📋
+              Review</button><button class="ielts-reading-submit-button"
+              id="submitBtn">Submit ✈</button></div></div></div></div>
+    <div class="overlay" id="resultOverlay"><div class="overlay-card"><div
+          class="overlay-head"><h3>Your Results</h3><button class="close-x"
+            data-close="resultOverlay">×</button></div><div
+          class="overlay-body"><div class="score-summary"><div class="big"
+              id="resultScore">0 / 40</div><div class="sub" id="resultSub">Band
+              estimate: —</div></div><div class="legend-row"><span>🟩
+              Correct</span><span>🟥 Incorrect</span><span>⬜ No
+              answer</span></div><table
+            class="result-tbl"><thead><tr><th>#</th><th>Your
+                  Answer</th><th>Correct Answer</th></tr></thead><tbody
+              id="resultBody"></tbody></table></div></div></div>
+    <div class="overlay" id="previewOverlay"><div class="overlay-card"><div
+          class="overlay-head"><h3>Review Your Answers</h3><button
+            class="close-x" data-close="previewOverlay">×</button></div><div
+          class="overlay-body"><table
+            class="result-tbl"><thead><tr><th>#</th><th>Your
+                  Answer</th></tr></thead><tbody
+              id="previewBody"></tbody></table></div></div></div>
+    <div id="hl-popup"><button id="hl-highlight">🖍 Highlight</button><button
+        id="hl-dehighlight">🧽 Clear</button><button id="hl-note">📝
+        Note</button><button id="hl-flashcard">🃏 Flashcard</button></div>
+    <div id="note-popup"><div class="np-card"><h4>Add a note</h4><textarea
+          id="note-text"
+          placeholder="Write your note about this text..."></textarea><div
+          class="np-actions"><button type="button" class="np-cancel"
+            id="note-cancel">Cancel</button><button type="button"
+            class="np-save" id="note-save">Save Note</button></div></div></div>
     <div class="toast" id="toast"></div>
-
     <script>
-/* =========================================================
-   ANSWER KEY
-   ========================================================= */
-const ANSWER_KEY = {
-  1:["road"],2:["conference"],3:["proposals"],4:["launch"],5:["exhibition"],
-  6:["TRUE"],7:["FALSE"],8:["FALSE"],9:["NOT GIVEN"],
-  10:["six metres","6 metres","six meters","6 meters","six metre","6 metre"],
-  11:["moss"],12:["hull shape","the hull shape","hull"],
-  13:["cost and time","time and cost","cost, time","cost time","cost,time"],
-  14:["E"],15:["B"],16:["G"],17:["A"],18:["C"],
-  19:["security procedures","security procedure"],20:["final destination"],
-  21:["airlines","airline"],22:["competitive advantage"],
-  23:["global economic downturn","economic downturn","the global economic downturn","global economic crisis","economic crisis"],
-  24:["five years","5 years","five year","5 year"],
-  25:["local","local area","the local area","local people"],
-  26:["flights","flight"],
-  27:["C"],28:["D"],29:["D"],30:["A"],
-  31:["E"],32:["G"],33:["A"],34:["C"],
-  35:["B"],36:["E"],37:["A"],38:["D"],39:["A"],40:["C"]
-};
-
-const PART_QUESTIONS = {
-  1: Array.from({length:13},(_,i)=>i+1),
-  2: Array.from({length:13},(_,i)=>i+14),
-  3: Array.from({length:14},(_,i)=>i+27)
-};
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-function normalize(s){
-  return (s||"").toString().trim().toLowerCase()
-    .replace(/[.,;:!?'"()]/g,"").replace(/\s+/g," ");
-}
-function getUserAnswer(n){
-  const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
-  if (r) return r.value;
-  const s = document.querySelector(`select[name=q${n}]`);
-  if (s) return s.value;
-  const t = document.querySelector(`input[type=text][name=q${n}]`);
-  if (t) return t.value;
-  return "";
-}
-function isCorrect(n, ua){
-  const keys = ANSWER_KEY[n] || [];
-  const v = normalize(ua);
-  if (!v) return false;
-  return keys.some(k => normalize(k) === v);
-}
-function estimateBand(score){
-  if (score>=39) return "9.0"; if (score>=37) return "8.5";
-  if (score>=35) return "8.0"; if (score>=33) return "7.5";
-  if (score>=30) return "7.0"; if (score>=27) return "6.5";
-  if (score>=23) return "6.0"; if (score>=19) return "5.5";
-  if (score>=15) return "5.0"; if (score>=13) return "4.5";
-  if (score>=10) return "4.0"; if (score>=8)  return "3.5";
-  if (score>=6)  return "3.0"; if (score>=4)  return "2.5";
-  return "2.0 or below";
-}
-let toastTimer=null;
-function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg; el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove("show"),2000);
-}
-
-/* =========================================================
-   BUILD PALETTE
-   ========================================================= */
-const palette = document.getElementById("palette");
-Object.keys(PART_QUESTIONS).forEach(part => {
-  const section = document.createElement("div");
-  section.className = "ielts-reading-palette-section";
-  section.dataset.part = part;
-
-  const label = document.createElement("strong");
-  label.className = "ielts-reading-palette-section-part";
-  label.textContent = `Part ${part}:`;
-  section.appendChild(label);
-
-  PART_QUESTIONS[part].forEach(n => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "ielts-reading-palette-item";
-    btn.dataset.q = n;
-    btn.textContent = n;
-    btn.addEventListener("click", () => goToQuestion(n));
-    section.appendChild(btn);
+const ANSWER_KEY={1:["road"],2:["conference"],3:["proposals"],4:["launch"],5:["exhibition"],6:["TRUE"],7:["FALSE"],8:["FALSE"],9:["NOT GIVEN"],10:["six metres","6 metres","six meters","6 meters","six metre","6 metre"],11:["moss"],12:["hull shape","the hull shape","hull"],13:["cost and time","time and cost","cost, time","cost time","cost,time"],14:["E"],15:["B"],16:["G"],17:["A"],18:["C"],19:["security procedures","security procedure"],20:["final destination"],21:["airlines","airline"],22:["competitive advantage"],23:["global economic downturn","economic downturn","the global economic downturn","global economic crisis","economic crisis"],24:["five years","5 years","five year","5 year"],25:["local","local area","the local area","local people"],26:["flights","flight"],27:["C"],28:["D"],29:["D"],30:["A"],31:["E"],32:["G"],33:["A"],34:["C"],35:["B"],36:["E"],37:["A"],38:["D"],39:["A"],40:["C"]};
+const PART_QUESTIONS={1:Array.from({length:13},(_,i)=>i+1),2:Array.from({length:13},(_,i)=>i+14),3:Array.from({length:14},(_,i)=>i+27)};const TOTAL_QUESTIONS=40;const TEST_DURATION_SECONDS=3600;
+function normalize(s){return(s||"").toString().trim().toLowerCase().replace(/[.,;:!?\'"()]/g,"").replace(/\s+/g," ")}
+function getUserAnswer(n){const r=document.querySelector(`input[type=radio][name=q${n}]:checked`);if(r)return r.value;const t=document.querySelector(`input[type=text][name=q${n}]`);if(t)return t.value;const slot=document.querySelector(`.summary-drop-slot[data-q="${n}"]`);if(slot)return slot.dataset.word||"";const qEl=document.querySelector(`.q[data-q="${n}"]`);if(qEl&&qEl.dataset.answer)return qEl.dataset.answer;return""}
+function isCorrect(n,ua){const keys=ANSWER_KEY[n]||[];const v=normalize(ua);return !!v&&keys.some(k=>normalize(k)===v)}
+function estimateBand(score){if(score>=39)return"9.0";if(score>=37)return"8.5";if(score>=35)return"8.0";if(score>=33)return"7.5";if(score>=30)return"7.0";if(score>=27)return"6.5";if(score>=23)return"6.0";if(score>=19)return"5.5";if(score>=15)return"5.0";if(score>=13)return"4.5";if(score>=10)return"4.0";if(score>=8)return"3.5";if(score>=6)return"3.0";if(score>=4)return"2.5";return"2.0 or below"}
+let toastTimer=null;function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
+/* Drag-and-drop for summary slots (Q31–34) — shows the full option label after drop */
+function initSummaryDragDrop(){
+  document.querySelectorAll(".summary-drop-item").forEach(item=>{
+    item.addEventListener("dragstart",e=>{
+      e.dataTransfer.setData("text/plain", item.dataset.word);
+      e.dataTransfer.effectAllowed="move";
+      item.classList.add("dragging");
+    });
+    item.addEventListener("dragend",()=>item.classList.remove("dragging"));
   });
-
-  const count = document.createElement("em");
-  count.className = "ielts-reading-palette-section-question-count";
-  count.textContent = `${PART_QUESTIONS[part].length} questions`;
-  section.appendChild(count);
-
-  palette.appendChild(section);
-});
-
-/* =========================================================
-   PART SWITCHING
-   ========================================================= */
-let currentPart = 1;
-let currentQuestion = 1;
-
-function switchPart(part){
-  currentPart = parseInt(part,10);
-
-  document.querySelectorAll(".part-tab").forEach(t =>
-    t.classList.toggle("active", t.dataset.part === String(part)));
-
-  document.querySelectorAll(".passage").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-
-  document.querySelectorAll(".q-section").forEach(s =>
-    s.classList.toggle("active", s.dataset.part === String(part)));
-
-  document.querySelectorAll(".ielts-reading-palette-section").forEach(p =>
-    p.classList.toggle("active", p.dataset.part === String(part)));
-
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-
-  currentQuestion = PART_QUESTIONS[part][0];
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-
-document.querySelectorAll(".part-tab").forEach(tab => {
-  tab.addEventListener("click", (e) => {
-    if (e.target.closest(".skim-btn")) return;
-    switchPart(tab.dataset.part);
-  });
-});
-
-/* =========================================================
-   SKIMMING
-   ========================================================= */
-let skimInterval=null, skimPart=null;
-document.querySelectorAll(".skim-btn").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const part = btn.dataset.part;
-    if (skimInterval && skimPart === part){
-      clearInterval(skimInterval); skimInterval=null; skimPart=null;
-      btn.classList.remove("on"); btn.textContent="Skim (1x)";
-      toast("Skimming stopped."); return;
-    }
-    if (skimInterval){
-      clearInterval(skimInterval);
-      document.querySelectorAll(".skim-btn").forEach(b=>{
-        b.classList.remove("on"); b.textContent="Skim (1x)";
-      });
-    }
-    if (String(currentPart) !== String(part)) switchPart(part);
-    const pane = document.getElementById("passagesPane");
-    pane.scrollTop = 0;
-    skimPart = part;
-    btn.classList.add("on"); btn.textContent="Stop";
-    skimInterval = setInterval(() => {
-      pane.scrollTop += 1.2;
-      if (pane.scrollTop + pane.clientHeight >= pane.scrollHeight - 2){
-        clearInterval(skimInterval); skimInterval=null; skimPart=null;
-        btn.classList.remove("on"); btn.textContent="Skim (1x)";
-        toast("Skimming complete.");
+  document.querySelectorAll(".summary-drop-slot").forEach(slot=>{
+    slot.addEventListener("dragover",e=>{e.preventDefault();if(!slot.dataset.word)slot.classList.add("drag-over")});
+    slot.addEventListener("dragleave",()=>slot.classList.remove("drag-over"));
+    slot.addEventListener("drop",e=>{
+      e.preventDefault();
+      slot.classList.remove("drag-over");
+      const w=e.dataTransfer.getData("text/plain");
+      if(!w)return;
+      if(slot.dataset.word){
+        const old=document.querySelector(`.summary-drop-item[data-word="${CSS.escape(slot.dataset.word)}"]`);
+        if(old)old.classList.remove("used");
       }
-    }, 28);
-    toast("Skimming started — read quickly.");
-  });
-});
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-function goToQuestion(n){
-  n = parseInt(n,10);
-  if (!n || n<1 || n>40) return;
-  let part = 1;
-  for (const p of [1,2,3]) if (PART_QUESTIONS[p].includes(n)) { part=p; break; }
-  if (part !== currentPart) switchPart(part);
-  currentQuestion = n;
-  const qEl = document.querySelector(`.q[data-q="${n}"]`);
-  if (qEl){
-    qEl.scrollIntoView({behavior:"smooth", block:"center"});
-    qEl.classList.add("highlight");
-    setTimeout(()=>qEl.classList.remove("highlight"), 1600);
-  }
-  updatePaletteCurrent();
-  updateNavButtons();
-}
-
-function updatePaletteCurrent(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.toggle("current", parseInt(b.dataset.q,10) === currentQuestion));
-}
-function updateNavButtons(){
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  document.getElementById("prevBtn").disabled = (idx<=0 && currentPart===1);
-  document.getElementById("nextBtn").disabled = (idx>=all.length-1 && currentPart===3);
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx > 0) goToQuestion(all[idx-1]);
-  else if (currentPart > 1){
-    const prev = PART_QUESTIONS[currentPart-1];
-    goToQuestion(prev[prev.length-1]);
-  }
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  const all = PART_QUESTIONS[currentPart];
-  const idx = all.indexOf(currentQuestion);
-  if (idx < all.length-1) goToQuestion(all[idx+1]);
-  else if (currentPart < 3) goToQuestion(PART_QUESTIONS[currentPart+1][0]);
-});
-
-document.querySelectorAll(".q").forEach(qEl => {
-  qEl.addEventListener("focusin", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-  qEl.addEventListener("click", () => {
-    currentQuestion = parseInt(qEl.dataset.q,10);
-    updatePaletteCurrent(); updateNavButtons();
-  });
-});
-
-/* =========================================================
-   PALETTE ANSWERED STATE
-   ========================================================= */
-function refreshPaletteAnswered(){
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b => {
-    const n = parseInt(b.dataset.q,10);
-    const ua = getUserAnswer(n);
-    b.classList.toggle("answered", ua.trim() !== "");
+      const bankItem=document.querySelector(`.summary-drop-item[data-word="${CSS.escape(w)}"]`);
+      /* Show the full visible label (e.g. "E. mixed") in the slot, but store only the letter */
+      slot.textContent = bankItem ? bankItem.textContent.trim() : w;
+      slot.dataset.word = w;
+      slot.classList.add("filled");
+      if(bankItem) bankItem.classList.add("used");
+      refreshPaletteAnswered();
+    });
+    slot.addEventListener("click",()=>{
+      if(!slot.dataset.word)return;
+      const item=document.querySelector(`.summary-drop-item[data-word="${CSS.escape(slot.dataset.word)}"]`);
+      if(item)item.classList.remove("used");
+      slot.textContent="";
+      delete slot.dataset.word;
+      slot.classList.remove("filled","correct","wrong");
+      refreshPaletteAnswered();
+    });
   });
 }
-document.getElementById("quiz").addEventListener("input", refreshPaletteAnswered);
-document.getElementById("quiz").addEventListener("change", refreshPaletteAnswered);
+/* Paragraph matching Q14–18 */
+function initParagraphMatch(){
+  const questions=[14,15,16,17,18];
+  const assignments=new Map();
+  const handles=new Map();
+  const placeholderHTML='<span class="slot-placeholder">Drop a question here</span>';
 
-/* =========================================================
-   RESIZER
-   ========================================================= */
-(function(){
-  const resizer = document.getElementById("resizer");
-  const passagesPane = document.getElementById("passagesPane");
-  const questionsPane = document.getElementById("questionsPane");
-  let dragging = false;
-  resizer.addEventListener("mousedown", e => {
-    e.preventDefault(); dragging = true;
-    document.body.style.cursor = "col-resize";
-    document.body.style.userSelect = "none";
-  });
-  document.addEventListener("mousemove", e => {
-    if (!dragging) return;
-    const rect = document.getElementById("mainSplit").getBoundingClientRect();
-    let pct = ((e.clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(25, Math.min(75, pct));
-    passagesPane.style.flex = `0 0 ${pct}%`;
-    questionsPane.style.flex = "1 1 auto";
-  });
-  document.addEventListener("mouseup", () => {
-    if (!dragging) return;
-    dragging = false;
-    document.body.style.cursor = "";
-    document.body.style.userSelect = "";
-  });
-})();
-
-/* =========================================================
-   TIMER
-   ========================================================= */
-let seconds = 0;
-setInterval(() => {
-  seconds++;
-  const h = String(Math.floor(seconds/3600)).padStart(2,"0");
-  const m = String(Math.floor((seconds%3600)/60)).padStart(2,"0");
-  const s = String(seconds%60).padStart(2,"0");
-  document.getElementById("timer").textContent = `${h}:${m}:${s}`;
-}, 1000);
-
-/* =========================================================
-   HIGHLIGHT / NOTE FEATURE
-   ========================================================= */
-const hlPopup = document.getElementById("hl-popup");
-const notePopup = document.getElementById("note-popup");
-const passagesEl = document.getElementById("passagesPane");
-const questionsEl = document.getElementById("questionsPane");
-const fab = document.getElementById("hl-fab");
-
-let savedRange = null;
-let pendingNoteRange = null;
-let highlighterOn = false;
-let currentMark = null;
-let noteSaveTarget = null;
-
-/* Toggle highlighter mode via the floating FAB */
-fab.addEventListener("click", () => {
-  highlighterOn = !highlighterOn;
-  fab.classList.toggle("active", highlighterOn);
-  toast(highlighterOn
-    ? "Highlighter ON — select text or click a word"
-    : "Highlighter OFF — normal selection");
-});
-
-function showPopupAt(rect){
-  hlPopup.style.top = (window.scrollY + rect.top - 50) + "px";
-  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + "px";
-  hlPopup.classList.add("show");
-}
-
-function isEditableTarget(el){
-  return el && (el.closest("input") || el.closest("select") ||
-                el.closest("button") || el.closest("label") ||
-                el.closest(".transcript-toggle"));
-}
-
-/* SELECTION (mouseup) */
-document.addEventListener("mouseup", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-
-  setTimeout(() => {
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      const range = sel.getRangeAt(0);
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        if (isEditableTarget(e.target)) return;
-        savedRange = range.cloneRange();
-        currentMark = null;
-        showPopupAt(range.getBoundingClientRect());
-        return;
-      }
+  function undoAssignment(n){
+    const letter=assignments.get(n);
+    if(!letter)return;
+    assignments.delete(n);
+    const slot=document.querySelector(`.matching-drop-slot[data-letter="${letter}"]`);
+    const pill=slot?.querySelector(`[data-q-pill="${n}"]`);
+    if(pill)pill.remove();
+    if(slot&&!slot.querySelector("[data-q-pill]"))slot.innerHTML=placeholderHTML;
+    const paragraph=document.querySelector(`.matching-drop-target[data-drop-letter="${letter}"]`);
+    if(paragraph&&!paragraph.querySelector("[data-q-pill]"))paragraph.classList.remove("matched");
+    const handle=handles.get(n);
+    if(handle){
+      handle.draggable=true;
+      handle.classList.remove("is-assigned");
+      handle.removeAttribute("aria-disabled");
+      handle.removeAttribute("title");
     }
-  }, 0);
-});
-
-/* SINGLE-CLICK ON A WORD */
-document.addEventListener("click", (e) => {
-  if (e.target.closest("#hl-popup") || e.target.closest("#note-popup")) return;
-  if (isEditableTarget(e.target)) return;
-
-  const inP = e.target.closest(".passages");
-  const inQ = e.target.closest(".questions");
-  if (!inP && !inQ) return;
-
-  const existingMark = e.target.tagName === "MARK" ? e.target :
-                       (e.target.closest ? e.target.closest("mark.hl-user") : null);
-  const existingNote = e.target.closest ? e.target.closest(".hl-note") : null;
-
-  if (existingNote) {
-    const note = existingNote.dataset.note || "";
-    document.getElementById("note-text").value = note;
-    pendingNoteRange = null;
-    notePopup.classList.add("show");
-    noteSaveTarget = existingNote;
-    return;
+    const question=document.querySelector(`.q[data-q="${n}"]`);
+    if(question)question.dataset.answer="";
+    refreshPaletteAnswered();
+    toast(`Q${n} assignment removed`);
   }
 
-  if (existingMark) {
-    savedRange = null;
-    currentMark = existingMark;
-    showPopupAt(existingMark.getBoundingClientRect());
-    return;
-  }
+  questions.forEach(n=>{
+    const question=document.querySelector(`.q[data-q="${n}"]`);
+    if(!question)return;
+    question.dataset.answer="";
+    const handle=question.querySelector(`.matching-drag-handle[data-drag-question="${n}"]`);
+    if(!handle)return;
+    handles.set(n,handle);
+    handle.draggable=true;
+    handle.addEventListener("dragstart",e=>{
+      if(!handle.draggable||handle.classList.contains("is-assigned")){e.preventDefault();return}
+      e.dataTransfer.setData("text/plain",String(n));
+      e.dataTransfer.effectAllowed="move";
+      document.querySelectorAll(".matching-drop-target").forEach(p=>p.classList.add("drop-ready"));
+    });
+    handle.addEventListener("dragend",()=>document.querySelectorAll(".matching-drop-target").forEach(p=>p.classList.remove("drop-ready","drop-over")));
+  });
 
-  if (highlighterOn) {
-    const sel = window.getSelection();
-    let range = null;
-    if (sel && sel.rangeCount && !sel.isCollapsed) {
-      range = sel.getRangeAt(0);
-    } else {
-      const wordRange = getWordRangeFromPoint(e.clientX, e.clientY);
-      if (wordRange) range = wordRange;
-    }
-    if (range) {
-      const container = range.commonAncestorContainer;
-      const el = container.nodeType === 1 ? container : container.parentElement;
-      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        highlightRange(range);
-        window.getSelection().removeAllRanges();
-        hlPopup.classList.remove("show");
-        savedRange = null;
-      }
-    }
-  }
-});
+  document.querySelectorAll('.passage[data-part="2"] p').forEach(paragraph=>{
+    const heading=paragraph.querySelector(":scope > strong");
+    if(!heading)return;
+    const letter=heading.textContent.trim().toUpperCase();
+    if(!/^[A-H]$/.test(letter))return;
+    paragraph.classList.add("matching-drop-target");
+    paragraph.dataset.dropLetter=letter;
+    const slot=document.createElement("span");
+    slot.className="matching-drop-slot";
+    slot.dataset.letter=letter;
+    slot.innerHTML=placeholderHTML;
+    paragraph.insertBefore(slot,heading);
 
-/* Get word range at given point */
-function getWordRangeFromPoint(x, y){
-  let node, offset;
-  if (document.caretRangeFromPoint){
-    const r = document.caretRangeFromPoint(x, y);
-    if (!r) return null;
-    node = r.startContainer; offset = r.startOffset;
-  } else if (document.caretPositionFromPoint){
-    const pos = document.caretPositionFromPoint(x, y);
-    if (!pos) return null;
-    node = pos.offsetNode; offset = pos.offset;
-  } else return null;
-  if (!node || node.nodeType !== 3) return null;
-  const text = node.textContent;
-  if (!text || !text.trim()) return null;
-  let start = offset, end = offset;
-  const isWord = c => /[\w'’\-]/i.test(c);
-  while (start > 0 && isWord(text[start-1])) start--;
-  while (end < text.length && isWord(text[end])) end++;
-  if (start === end) {
-    if (offset < text.length) end = offset + 1;
-  }
-  if (start >= end) return null;
-  const range = document.createRange();
-  try {
-    range.setStart(node, start);
-    range.setEnd(node, end);
-  } catch(err){ return null; }
-  return range;
+    slot.addEventListener("click",e=>{
+      const undoButton=e.target.closest("[data-undo-question]");
+      if(!undoButton)return;
+      e.preventDefault();
+      e.stopPropagation();
+      undoAssignment(Number(undoButton.dataset.undoQuestion));
+    });
+    paragraph.addEventListener("dragover",e=>{
+      e.preventDefault();
+      if(e.dataTransfer)e.dataTransfer.dropEffect="move";
+      paragraph.classList.add("drop-over");
+    });
+    paragraph.addEventListener("dragleave",e=>{
+      if(!paragraph.contains(e.relatedTarget))paragraph.classList.remove("drop-over");
+    });
+    paragraph.addEventListener("drop",e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      paragraph.classList.remove("drop-over","drop-ready");
+      const n=Number(e.dataTransfer.getData("text/plain"));
+      if(!questions.includes(n)||assignments.has(n))return;
+      const handle=handles.get(n);
+      if(!handle||handle.classList.contains("is-assigned"))return;
+
+      const pill=document.createElement("span");
+      pill.className="assigned-question";
+      pill.dataset.qPill=String(n);
+      const label=document.createElement("span");
+      label.className="assigned-question-label";
+      label.textContent=`Q${n}: ${handle.textContent.trim()}`;
+      const undo=document.createElement("button");
+      undo.type="button";
+      undo.className="matching-undo";
+      undo.dataset.undoQuestion=String(n);
+      undo.setAttribute("aria-label",`Undo Q${n} assignment to paragraph ${letter}`);
+      undo.textContent="Undo";
+      pill.append(label,undo);
+      slot.querySelector(".slot-placeholder")?.remove();
+      slot.appendChild(pill);
+      assignments.set(n,letter);
+      const question=document.querySelector(`.q[data-q="${n}"]`);
+      if(question)question.dataset.answer=letter;
+      handle.draggable=false;
+      handle.classList.add("is-assigned");
+      handle.setAttribute("aria-disabled","true");
+      handle.title=`Assigned to paragraph ${letter}. Use Undo in the passage to change it.`;
+      paragraph.classList.add("matched");
+      refreshPaletteAnswered();
+      toast(`Q${n} assigned to paragraph ${letter}`);
+    });
+  });
+
+  window._resetParagraphMatch=function(){
+    assignments.clear();
+    document.querySelectorAll(".matching-drop-slot").forEach(slot=>slot.innerHTML=placeholderHTML);
+    document.querySelectorAll(".matching-drop-target").forEach(p=>p.classList.remove("matched","drop-ready","drop-over"));
+    handles.forEach(handle=>{
+      handle.draggable=true;
+      handle.classList.remove("is-assigned");
+      handle.removeAttribute("aria-disabled");
+      handle.removeAttribute("title");
+    });
+    questions.forEach(n=>{
+      const question=document.querySelector(`.q[data-q="${n}"]`);
+      if(question)question.dataset.answer="";
+    });
+    refreshPaletteAnswered();
+  };
 }
-
-/* Highlight button */
-document.getElementById("hl-highlight").addEventListener("click", () => {
-  if (currentMark) { hlPopup.classList.remove("show"); return; }
-  if (!savedRange) { toast("Select text or turn on the highlighter"); return; }
-  highlightRange(savedRange);
-  window.getSelection().removeAllRanges();
-  hlPopup.classList.remove("show");
-  savedRange = null;
-  toast("Text highlighted");
-});
-
-/* Clear button */
-document.getElementById("hl-dehighlight").addEventListener("click", () => {
-  if (currentMark){
-    const parent = currentMark.parentNode;
-    while (currentMark.firstChild) parent.insertBefore(currentMark.firstChild, currentMark);
-    parent.removeChild(currentMark);
-    currentMark = null;
-    hlPopup.classList.remove("show");
-    toast("Highlight removed");
-    return;
-  }
-  if (savedRange){
-    clearHighlightInRange(savedRange);
-    window.getSelection().removeAllRanges();
-    hlPopup.classList.remove("show");
-    savedRange = null;
-    toast("Highlight removed");
-  } else {
-    hlPopup.classList.remove("show");
-  }
-});
-
-/* Note button */
-document.getElementById("hl-note").addEventListener("click", () => {
-  if (!savedRange) { toast("Select text first"); return; }
-  pendingNoteRange = savedRange.cloneRange();
-  noteSaveTarget = null;
-  document.getElementById("note-text").value = "";
-  notePopup.classList.add("show");
-  hlPopup.classList.remove("show");
-});
-
-/* Flashcard button */
-document.getElementById("hl-flashcard").addEventListener("click", () => {
-  const text = savedRange ? savedRange.toString().trim() : (currentMark ? currentMark.textContent.trim() : "");
-  if (!text) { toast("Select text first"); return; }
-  toast(`Saved "${text.substring(0,40)}${text.length>40?"…":""}" as flashcard`);
-  hlPopup.classList.remove("show");
-});
-
-/* Core highlight function */
-function highlightRange(range){
-  try {
-    const mark = document.createElement("mark");
-    mark.className = "hl-user";
-    mark.appendChild(range.extractContents());
-    range.insertNode(mark);
-  } catch(err){
-    console.warn("Highlight failed:", err);
-  }
-}
-
-function clearHighlightInRange(range){
-  const container = range.commonAncestorContainer;
-  const root = container.nodeType === 1 ? container : (container.parentElement || container.parentNode);
-  if (!root || !root.querySelectorAll) return;
-  const marks = root.querySelectorAll("mark.hl-user");
-  marks.forEach(m => {
-    try {
-      if (range.intersectsNode(m)) {
-        const parent = m.parentNode;
-        while (m.firstChild) parent.insertBefore(m.firstChild, m);
-        parent.removeChild(m);
-      }
-    } catch(err){}
-  });
-}
-
-/* NOTE popup handlers */
-document.getElementById("note-cancel").addEventListener("click", () => {
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-  noteSaveTarget = null;
-});
-
-document.getElementById("note-save").addEventListener("click", () => {
-  const noteText = document.getElementById("note-text").value.trim();
-
-  if (noteSaveTarget){
-    if (noteText){
-      noteSaveTarget.dataset.note = noteText;
-      noteSaveTarget.title = "Note: " + noteText;
-      toast("Note updated");
-    } else {
-      const parent = noteSaveTarget.parentNode;
-      while (noteSaveTarget.firstChild) parent.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
-      parent.removeChild(noteSaveTarget);
-      toast("Note removed");
-    }
-    noteSaveTarget = null;
-    notePopup.classList.remove("show");
-    document.getElementById("note-text").value = "";
-    return;
-  }
-
-  if (!noteText || !pendingNoteRange) {
-    notePopup.classList.remove("show");
-    pendingNoteRange = null;
-    return;
-  }
-  try {
-    const span = document.createElement("span");
-    span.className = "hl-note";
-    span.title = "Note: " + noteText;
-    span.dataset.note = noteText;
-    span.appendChild(pendingNoteRange.extractContents());
-    pendingNoteRange.insertNode(span);
-    toast("Note saved");
-  } catch(err){
-    console.warn("Note failed:", err);
-  }
-  document.getElementById("note-text").value = "";
-  notePopup.classList.remove("show");
-  pendingNoteRange = null;
-});
-
-/* Clear highlights from menu */
-document.getElementById("clearHighlightsLink")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (!confirm("Remove all highlights and notes from this test?")) return;
-  document.querySelectorAll("mark.hl-user, .hl-note").forEach(el => {
-    const parent = el.parentNode;
-    while (el.firstChild) parent.insertBefore(el.firstChild, el);
-    parent.removeChild(el);
-  });
-  toast("Highlights cleared");
-});
-
-/* =========================================================
-   SUBMIT
-   ========================================================= */
-document.getElementById("submitBtn").addEventListener("click", () => {
-  let score = 0, answered = 0;
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong"));
-
-  const rows = [];
-  for (let n=1; n<=40; n++){
-    const qEl = document.querySelector(`.q[data-q="${n}"]`);
-    if (!qEl) continue;
-    const ua = getUserAnswer(n);
-    if (ua.trim() !== "") answered++;
-    const ok = isCorrect(n, ua);
-    if (ok) score++;
-    qEl.classList.add(ok ? "correct" : "wrong");
-    const fb = qEl.querySelector(".feedback");
-    if (fb){
-      const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
-      fb.textContent = ok ? "✓ Correct" : `✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`;
-    }
-    const pal = document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
-    if (pal) pal.classList.add(ok ? "correct" : "wrong");
-    rows.push({ n, ua: ua.trim() || "—", key: (ANSWER_KEY[n]||[])[0] });
-  }
-
-  document.getElementById("resultScore").textContent = `${score} / 40`;
-  document.getElementById("resultSub").textContent =
-    `Band estimate: ${estimateBand(score)} · Answered: ${answered} / 40`;
-
-  const tbody = document.getElementById("resultBody");
-  tbody.innerHTML = "";
-  rows.forEach(r => {
-    const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
-    tbody.appendChild(tr);
-  });
-
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "Band " + estimateBand(score);
-  chip.classList.add("show");
-
-  document.getElementById("resultOverlay").classList.add("show");
-});
-
-/* =========================================================
-   REVIEW
-   ========================================================= */
-document.getElementById("reviewBtn").addEventListener("click", () => {
-  const tbody = document.getElementById("previewBody");
-  tbody.innerHTML = "";
-  for (let n=1; n<=40; n++){
-    const ua = getUserAnswer(n);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
-    tbody.appendChild(tr);
-  }
-  document.getElementById("previewOverlay").classList.add("show");
-});
-
-document.querySelectorAll("[data-close]").forEach(btn =>
-  btn.addEventListener("click", () =>
-    document.getElementById(btn.dataset.close).classList.remove("show")));
-document.querySelectorAll(".overlay").forEach(ov =>
-  ov.addEventListener("click", e => {
-    if (e.target === ov) ov.classList.remove("show");
-  }));
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape"){
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("show"));
-    hlPopup.classList.remove("show");
-    notePopup.classList.remove("show");
-  }
-});
-
-/* =========================================================
-   MENU
-   ========================================================= */
-const menuPop = document.getElementById("menuPop");
-document.getElementById("menuBtn").addEventListener("click", e => {
-  e.stopPropagation(); menuPop.classList.toggle("show");
-});
-document.addEventListener("click", () => menuPop.classList.remove("show"));
-menuPop.addEventListener("click", e => e.stopPropagation());
-
-document.getElementById("exportLink").addEventListener("click", e => {
-  e.preventDefault(); window.print();
-});
-document.getElementById("resetLink").addEventListener("click", e => {
-  e.preventDefault(); doReset();
-});
-document.getElementById("gotoTop").addEventListener("click", e => {
-  e.preventDefault();
-  window.scrollTo({top:0, behavior:"smooth"});
-  document.getElementById("passagesPane").scrollTop = 0;
-  document.getElementById("questionsPane").scrollTop = 0;
-});
-
-/* =========================================================
-   RESET
-   ========================================================= */
-function doReset(){
-  if (!confirm("Clear all answers and reset the test?")) return;
-  document.getElementById("quiz").reset();
-  document.querySelectorAll(".q").forEach(q => {
-    q.classList.remove("correct","wrong");
-    const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
-  });
-  document.querySelectorAll(".ielts-reading-palette-item").forEach(b =>
-    b.classList.remove("correct","wrong","answered"));
-  const chip = document.getElementById("bandChip");
-  chip.textContent = "--"; chip.classList.remove("show");
-  document.getElementById("resultOverlay").classList.remove("show");
-  document.getElementById("previewOverlay").classList.remove("show");
-  switchPart(1);
-  toast("Test reset. Good luck!");
-}
-
-/* =========================================================
-   FOCUS MODE
-   ========================================================= */
-document.getElementById("focusBtn").addEventListener("click", () =>
-  document.body.classList.add("focus-mode"));
-document.getElementById("exitFocusBtn").addEventListener("click", () =>
-  document.body.classList.remove("focus-mode"));
-
-/* =========================================================
-   INIT
-   ========================================================= */
-switchPart(1);
-refreshPaletteAnswered();
-updateNavButtons();
+const palette=document.getElementById("palette");Object.keys(PART_QUESTIONS).forEach(part=>{const section=document.createElement("div");section.className="ielts-reading-palette-section";section.dataset.part=part;const label=document.createElement("strong");label.className="ielts-reading-palette-section-part";label.textContent=`Part ${part}:`;section.appendChild(label);PART_QUESTIONS[part].forEach(n=>{const btn=document.createElement("button");btn.type="button";btn.className="ielts-reading-palette-item";btn.dataset.q=n;btn.textContent=n;btn.addEventListener("click",()=>goToQuestion(n));section.appendChild(btn)});const count=document.createElement("em");count.className="ielts-reading-palette-section-question-count";count.textContent=`${PART_QUESTIONS[part].length} questions`;section.appendChild(count);palette.appendChild(section)});
+let currentPart=1,currentQuestion=1;function switchPart(part){currentPart=parseInt(part,10);document.querySelectorAll(".part-tab").forEach(t=>t.classList.toggle("active",t.dataset.part===String(part)));document.querySelectorAll(".passage").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.querySelectorAll(".q-section").forEach(s=>s.classList.toggle("active",s.dataset.part===String(part)));document.querySelectorAll(".ielts-reading-palette-section").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;currentQuestion=PART_QUESTIONS[part][0];updatePaletteCurrent();updateNavButtons()}
+document.querySelectorAll(".part-tab").forEach(tab=>tab.addEventListener("click",e=>{if(e.target.closest(".skim-btn"))return;switchPart(tab.dataset.part)}));
+let skimInterval=null,skimPart=null;document.querySelectorAll(".skim-btn").forEach(btn=>btn.addEventListener("click",e=>{e.stopPropagation();const part=btn.dataset.part;if(skimInterval&&skimPart===part){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming stopped.");return}if(skimInterval){clearInterval(skimInterval);document.querySelectorAll(".skim-btn").forEach(b=>{b.classList.remove("on");b.textContent="Skim (1x)"})}if(String(currentPart)!==String(part))switchPart(part);const pane=document.getElementById("passagesPane");pane.scrollTop=0;skimPart=part;btn.classList.add("on");btn.textContent="Stop";skimInterval=setInterval(()=>{pane.scrollTop+=1.2;if(pane.scrollTop+pane.clientHeight>=pane.scrollHeight-2){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming complete.")}},28);toast("Skimming started — read quickly.")}));
+function goToQuestion(n){n=parseInt(n,10);if(!n||n<1||n>TOTAL_QUESTIONS)return;let part=1;for(const p of [1,2,3])if(PART_QUESTIONS[p].includes(n)){part=p;break}if(part!==currentPart)switchPart(part);currentQuestion=n;let target=document.querySelector(`.q[data-q="${n}"]`);if(target&&target.style.display==="none"){const s=document.querySelector(`.summary-drop-slot[data-q="${n}"]`);if(s)target=s.closest("p")||s}if(target){target.scrollIntoView({behavior:"smooth",block:"center"});target.classList.add("highlight");setTimeout(()=>target.classList.remove("highlight"),1600)}updatePaletteCurrent();updateNavButtons()}
+function updatePaletteCurrent(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.toggle("current",parseInt(b.dataset.q,10)===currentQuestion))}function updateNavButtons(){const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);document.getElementById("prevBtn").disabled=idx<=0&&currentPart===1;document.getElementById("nextBtn").disabled=idx>=all.length-1&&currentPart===3}
+document.getElementById("prevBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);if(idx>0)goToQuestion(all[idx-1]);else if(currentPart>1){const prev=PART_QUESTIONS[currentPart-1];goToQuestion(prev[prev.length-1])}});document.getElementById("nextBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);if(idx<all.length-1)goToQuestion(all[idx+1]);else if(currentPart<3)goToQuestion(PART_QUESTIONS[currentPart+1][0])});document.querySelectorAll(".q").forEach(q=>{q.addEventListener("focusin",()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()});q.addEventListener("click",()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()})});
+function refreshPaletteAnswered(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>{const ua=getUserAnswer(parseInt(b.dataset.q,10));b.classList.toggle("answered",ua.trim()!=="")})}document.getElementById("quiz").addEventListener("input",refreshPaletteAnswered);document.getElementById("quiz").addEventListener("change",refreshPaletteAnswered);
+(function(){const resizer=document.getElementById("resizer"),left=document.getElementById("passagesPane"),right=document.getElementById("questionsPane");let dragging=false;resizer.addEventListener("mousedown",e=>{e.preventDefault();dragging=true;document.body.style.cursor="col-resize";document.body.style.userSelect="none"});document.addEventListener("mousemove",e=>{if(!dragging)return;const rect=document.getElementById("mainSplit").getBoundingClientRect();let pct=(e.clientX-rect.left)/rect.width*100;pct=Math.max(25,Math.min(75,pct));left.style.flex=`0 0 ${pct}%`;right.style.flex="1 1 auto"});document.addEventListener("mouseup",()=>{if(!dragging)return;dragging=false;document.body.style.cursor="";document.body.style.userSelect=""})})();
+let seconds=TEST_DURATION_SECONDS;const timerChip=document.getElementById("timerChip"),timerEl=document.getElementById("timer");let timerInterval=null;function renderTimer(){timerEl.textContent=`${String(Math.floor(seconds/60)).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`;timerChip.classList.toggle("warn",seconds<=600&&seconds>300);timerChip.classList.toggle("danger",seconds<=300)}function startTimer(){clearInterval(timerInterval);renderTimer();timerInterval=setInterval(()=>{if(seconds>0){seconds--;renderTimer()}else{clearInterval(timerInterval);toast("Time is up!")}},1000)}startTimer();
+const hlPopup=document.getElementById("hl-popup"),notePopup=document.getElementById("note-popup"),passagesEl=document.getElementById("passagesPane"),questionsEl=document.getElementById("questionsPane");let savedRange=null,pendingNoteRange=null,currentMark=null,noteSaveTarget=null;
+function showPopupAt(rect){hlPopup.style.top=Math.max(8,rect.top-48)+"px";hlPopup.style.left=Math.max(8,rect.left+rect.width/2-150)+"px";hlPopup.classList.add("show")}function isEditableTarget(el){return el&&(el.closest("input")||el.closest("select")||el.closest("button")||el.closest("label"))}
+document.addEventListener("mouseup",e=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup")||isEditableTarget(e.target))return;setTimeout(()=>{const sel=window.getSelection();if(sel&&sel.rangeCount&&!sel.isCollapsed){const range=sel.getRangeAt(0),c=range.commonAncestorContainer,el=c.nodeType===1?c:c.parentElement;if(el&&(passagesEl.contains(el)||questionsEl.contains(el))){savedRange=range.cloneRange();currentMark=null;showPopupAt(range.getBoundingClientRect())}}},0)});
+document.addEventListener("click",e=>{if(e.target.closest("#hl-popup")||e.target.closest("#note-popup"))return;if(!e.target.closest(".passages")&&!e.target.closest(".questions"))return;const em=e.target.closest("mark.hl-user"),en=e.target.closest(".hl-note");if(en){document.getElementById("note-text").value=en.dataset.note||"";pendingNoteRange=null;notePopup.classList.add("show");noteSaveTarget=en;return}if(em){savedRange=null;currentMark=em;showPopupAt(em.getBoundingClientRect())}});
+function highlightRange(r){try{const m=document.createElement("mark");m.className="hl-user";m.appendChild(r.extractContents());r.insertNode(m)}catch(e){}}
+function clearHighlightInRange(r){const c=r.commonAncestorContainer,root=c.nodeType===1?c:(c.parentElement||c.parentNode);if(!root||!root.querySelectorAll)return;root.querySelectorAll("mark.hl-user").forEach(m=>{try{if(r.intersectsNode(m)){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m)}}catch(e){}})}
+document.getElementById("hl-highlight").addEventListener("click",()=>{if(currentMark){hlPopup.classList.remove("show");return}if(!savedRange){toast("Select text to highlight");return}highlightRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Text highlighted")});document.getElementById("hl-dehighlight").addEventListener("click",()=>{if(currentMark){const p=currentMark.parentNode;while(currentMark.firstChild)p.insertBefore(currentMark.firstChild,currentMark);p.removeChild(currentMark);currentMark=null;hlPopup.classList.remove("show");toast("Highlight removed");return}if(savedRange){clearHighlightInRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Highlight removed")}else hlPopup.classList.remove("show")});document.getElementById("hl-note").addEventListener("click",()=>{if(!savedRange){toast("Select text first");return}pendingNoteRange=savedRange.cloneRange();noteSaveTarget=null;document.getElementById("note-text").value="";notePopup.classList.add("show");hlPopup.classList.remove("show")});document.getElementById("hl-flashcard").addEventListener("click",()=>{const t=savedRange?savedRange.toString().trim():(currentMark?currentMark.textContent.trim():"");if(!t){toast("Select text first");return}toast(`Saved "${t.substring(0,40)}${t.length>40?"…":""}" as flashcard`);hlPopup.classList.remove("show")});
+document.getElementById("note-cancel").addEventListener("click",()=>{notePopup.classList.remove("show");pendingNoteRange=null;noteSaveTarget=null});document.getElementById("note-save").addEventListener("click",()=>{const nt=document.getElementById("note-text").value.trim();if(noteSaveTarget){if(nt){noteSaveTarget.dataset.note=nt;noteSaveTarget.title="Note: "+nt;toast("Note updated")}else{const p=noteSaveTarget.parentNode;while(noteSaveTarget.firstChild)p.insertBefore(noteSaveTarget.firstChild,noteSaveTarget);p.removeChild(noteSaveTarget);toast("Note removed")}noteSaveTarget=null;notePopup.classList.remove("show");document.getElementById("note-text").value="";return}if(!nt||!pendingNoteRange){notePopup.classList.remove("show");pendingNoteRange=null;return}try{const sp=document.createElement("span");sp.className="hl-note";sp.title="Note: "+nt;sp.dataset.note=nt;sp.appendChild(pendingNoteRange.extractContents());pendingNoteRange.insertNode(sp);toast("Note saved")}catch(e){}document.getElementById("note-text").value="";notePopup.classList.remove("show");pendingNoteRange=null});
+document.getElementById("clearHighlightsLink").addEventListener("click",e=>{e.preventDefault();if(!confirm("Remove all highlights and notes?"))return;document.querySelectorAll("mark.hl-user,.hl-note").forEach(el=>{const p=el.parentNode;while(el.firstChild)p.insertBefore(el.firstChild,el);p.removeChild(el)});toast("Highlights cleared")});
+document.getElementById("submitBtn").addEventListener("click",()=>{let score=0,answered=0;document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".summary-drop-slot").forEach(s=>s.classList.remove("correct","wrong"));document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong"));const rows=[];for(let n=1;n<=TOTAL_QUESTIONS;n++){const q=document.querySelector(`.q[data-q="${n}"]`);if(!q)continue;const ua=getUserAnswer(n);if(ua.trim())answered++;const ok=isCorrect(n,ua);if(ok)score++;q.classList.add(ok?"correct":"wrong");const fb=q.querySelector(".feedback");if(fb){const key=(ANSWER_KEY[n]||[]).slice(0,3).join(" / ");fb.textContent=ok?"✓ Correct":`✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`}const slot=document.querySelector(`.summary-drop-slot[data-q="${n}"]`);if(slot)slot.classList.add(ok?"correct":"wrong");const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);if(pal)pal.classList.add(ok?"correct":"wrong");rows.push({n,ua:ua.trim()||"—",key:(ANSWER_KEY[n]||[])[0],ok})}document.getElementById("resultScore").textContent=`${score} / ${TOTAL_QUESTIONS}`;document.getElementById("resultSub").textContent=`Band estimate: ${estimateBand(score)} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;const tbody=document.getElementById("resultBody");tbody.innerHTML="";rows.forEach(r=>{const tr=document.createElement("tr");const c1=document.createElement("td"),c2=document.createElement("td"),c3=document.createElement("td");c1.textContent=r.n;c2.textContent=r.ua;c2.className=r.ok?"correct":"wrong";c3.textContent=r.key;tr.append(c1,c2,c3);tbody.appendChild(tr)});const chip=document.getElementById("bandChip");chip.textContent="Band "+estimateBand(score);chip.classList.add("show");document.getElementById("resultOverlay").classList.add("show")});
+document.getElementById("reviewBtn").addEventListener("click",()=>{const tbody=document.getElementById("previewBody");tbody.innerHTML="";for(let n=1;n<=TOTAL_QUESTIONS;n++){const tr=document.createElement("tr"),a=document.createElement("td"),b=document.createElement("td");a.textContent=n;b.textContent=getUserAnswer(n).trim()||"—";tr.append(a,b);tbody.appendChild(tr)}document.getElementById("previewOverlay").classList.add("show")});document.querySelectorAll("[data-close]").forEach(btn=>btn.addEventListener("click",()=>document.getElementById(btn.dataset.close).classList.remove("show")));document.querySelectorAll(".overlay").forEach(ov=>ov.addEventListener("click",e=>{if(e.target===ov)ov.classList.remove("show")}));document.addEventListener("keydown",e=>{if(e.key==="Escape"){document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("show"));hlPopup.classList.remove("show");notePopup.classList.remove("show")}});
+const menuPop=document.getElementById("menuPop");document.getElementById("menuBtn").addEventListener("click",e=>{e.stopPropagation();menuPop.classList.toggle("show")});document.addEventListener("click",()=>menuPop.classList.remove("show"));menuPop.addEventListener("click",e=>e.stopPropagation());document.getElementById("exportLink").addEventListener("click",e=>{e.preventDefault();window.print()});document.getElementById("resetLink").addEventListener("click",e=>{e.preventDefault();doReset()});document.getElementById("gotoTop").addEventListener("click",e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0});
+function doReset(){if(!confirm("Clear all answers and reset the test?"))return;document.getElementById("quiz").reset();document.querySelectorAll(".summary-drop-slot").forEach(s=>{s.textContent="";delete s.dataset.word;s.classList.remove("filled","correct","wrong","drag-over")});document.querySelectorAll(".summary-drop-item").forEach(i=>i.classList.remove("used","dragging"));if(typeof window._resetParagraphMatch==="function")window._resetParagraphMatch();document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong","answered"));const chip=document.getElementById("bandChip");chip.textContent="--";chip.classList.remove("show");document.getElementById("resultOverlay").classList.remove("show");document.getElementById("previewOverlay").classList.remove("show");seconds=TEST_DURATION_SECONDS;startTimer();switchPart(1);refreshPaletteAnswered();toast("Test reset. Good luck!")}
+document.getElementById("focusBtn").addEventListener("click",()=>document.body.classList.add("focus-mode"));document.getElementById("exitFocusBtn").addEventListener("click",()=>document.body.classList.remove("focus-mode"));
+initSummaryDragDrop();initParagraphMatch();switchPart(1);refreshPaletteAnswered();updateNavButtons();
 </script>
-
   </body>
 </html>
