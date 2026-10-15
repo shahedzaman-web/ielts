@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IELTS Writing Task 1 · Cambridge 11–21 Model Answers &amp; Practice</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IELTS Writing Task 1 · Cambridge 11–21 Model Answers &amp;
+      Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@500;700;800&display=swap"
+      rel="stylesheet" />
+    <style>
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
   .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
   body {
@@ -205,10 +208,8 @@
   .essay-body p {
     font-size: .875rem; color: #334155; line-height: 1.75; margin: 0 0 .85rem 0;
   }
-  .essay-body p:last-child { margin-bottom: 0; }
+  .essay-body p:last-child { margin-bottom: 0;  }
   .essay-body {
-    border-left: 3px solid #fbbf24;
-    background: linear-gradient(135deg, #fffbeb, #fef9c3);
     border-radius: .75rem;
     padding: 1.15rem 1.35rem;
   }
@@ -287,26 +288,80 @@
 
   .lightbox {
     position: fixed; inset: 0; z-index: 100;
-    background: rgba(15,23,42,.92); backdrop-filter: blur(8px);
+    background: rgba(8,15,30,.88); backdrop-filter: blur(12px);
     display: none; align-items: center; justify-content: center;
-    padding: 2rem; cursor: zoom-out;
+    padding: 4.25rem 1.25rem 1.25rem; cursor: zoom-out;
   }
   .lightbox.open { display: flex; }
-  .lightbox img {
-    max-width: 95vw; max-height: 90vh;
-    border-radius: .75rem; background: #fff;
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,.7);
+  .lightbox-panel {
+    width: min(1500px, 100%); height: min(90vh, 980px);
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+    border: 1px solid rgba(255,255,255,.15); border-radius: 1.2rem;
+    overflow: hidden; background: #fff; cursor: default;
+    box-shadow: 0 32px 100px -24px rgba(0,0,0,.65);
   }
+  .lightbox-media {
+    min-width: 0; min-height: 0; display: flex; flex-direction: column;
+    background: #f8fafc; padding: 1rem; border-right: 1px solid #e2e8f0;
+  }
+  .lightbox-image-meta {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+    gap: .5rem; padding: .15rem .1rem .8rem; color: #64748b;
+    font-size: .66rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  }
+  .lightbox-image-meta span:first-child { color: #b45309; }
+  .lightbox-media img {
+    display: block; width: 100%; height: 100%; min-height: 0; flex: 1;
+    object-fit: contain; border-radius: .7rem; background: #fff;
+    box-shadow: 0 2px 10px rgba(15,23,42,.05);
+  }
+  .lightbox-image-error {
+    margin: auto; padding: 2rem 1rem; text-align: center; color: #64748b;
+    display: flex; flex-direction: column; align-items: center; gap: .6rem; line-height: 1.5;
+  }
+  .lightbox-image-error strong { color: #334155; font-size: .95rem; }
+  .lightbox-image-error a { color: #b45309; font-size: .8rem; font-weight: 800; text-decoration: underline; }
+  .lightbox-answer {
+    display: flex; flex-direction: column; min-width: 0; min-height: 0;
+    background: #fff; padding: 1.25rem 1.35rem;
+  }
+  .lightbox-answer-top {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem;
+    padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0;
+  }
+  .lightbox-eyebrow { color: #b45309; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .lightbox-answer-top h2 { font-size: 1.15rem; line-height: 1.3; font-weight: 800; color: #0f172a; margin: .3rem 0 .25rem; }
+  .lightbox-answer-top p { font-size: .72rem; color: #64748b; margin: 0; line-height: 1.45; }
+  .lightbox-copy { flex-shrink: 0; padding: .48rem .75rem; border: 1px solid #fde68a; background: #fffbeb; color: #92400e; font-size: .72rem; font-weight: 800; border-radius: 999px; cursor: pointer; }
+  .lightbox-copy:hover { background: #fef3c7; border-color: #f59e0b; }
+  .lightbox-answer-body { flex: 1; min-height: 0; overflow: auto; padding: 1.05rem 1.15rem; }
+  .lightbox-answer-body p { font-size: .84rem; line-height: 1.78; }
   .lightbox .lb-close {
-    position: absolute; top: 1.2rem; right: 1.5rem;
-    color: #fff; font-size: 1.6rem; font-weight: 800;
+    position: absolute; top: .8rem; right: 1rem; z-index: 2;
+    color: #fff; font-size: 1.3rem; font-weight: 800;
     width: 2.5rem; height: 2.5rem; border-radius: 999px;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28);
     cursor: pointer; transition: all .2s ease;
     display: flex; align-items: center; justify-content: center;
   }
-  .lightbox .lb-close:hover { background: rgba(255,255,255,.22); }
+  .lightbox .lb-close:hover { background: rgba(255,255,255,.24); transform: rotate(90deg); }
+  .img-frame { outline: none; }
+  .img-frame:focus-visible { outline: 3px solid #f59e0b; outline-offset: 3px; }
+  .img-frame .img-zoom { opacity: 1; }
+  @media (max-width: 900px) {
+    .lightbox { align-items: flex-start; overflow-y: auto; padding: 4.1rem .65rem .65rem; }
+    .lightbox-panel { height: auto; min-height: 0; grid-template-columns: minmax(0,1fr); overflow: visible; }
+    .lightbox-media { min-height: 260px; max-height: 52vh; border-right: 0; border-bottom: 1px solid #e2e8f0; }
+    .lightbox-media img { height: 42vh; flex: initial; }
+    .lightbox-answer { min-height: 42vh; padding: 1rem; }
+    .lightbox-answer-body { overflow: visible; }
+  }
+  @media (max-width: 520px) {
+    .lightbox-image-meta span:last-child { display: none; }
+    .lightbox-answer-top { flex-direction: column; }
+    .lightbox-copy { align-self: flex-start; }
+    .lightbox-answer-top h2 { font-size: 1.03rem; }
+  }
 
   .practice-modal {
     position: fixed; inset: 0; z-index: 90;
@@ -625,283 +680,405 @@
     .writing-area textarea { min-height: 220px; }
   }
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<!-- ================= HERO ================= -->
-<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
-  <div class="aurora"></div>
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
-      <div class="md:w-2/3">
-        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
-          📊 Cambridge IELTS 11 – 21
-        </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
-          Writing Task 1<br />
-          <span class="text-amber-300">Model Answers &amp; Practice</span>
-        </h1>
-        <p class="text-lg md:text-xl text-amber-100/80 mt-4 max-w-2xl leading-relaxed">
-          Every Task 1 question from Cambridge Books 11–21 — with chart images,
-          Band 7–9 model answers, and a split-view practice mode with a 20-minute timer.
-        </p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#bank" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-amber-900/30 flex items-center gap-2">
-            🔍 Browse the Bank <span>→</span>
-          </a>
-          <a href="#howto" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
-            📘 How to Answer Each Type
-          </a>
-        </div>
-      </div>
-      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
-        <div class="stat-box"><div class="number" id="statTotal">—</div><div class="label">Questions</div></div>
-        <div class="stat-box"><div class="number">11</div><div class="label">Books</div></div>
-        <div class="stat-box"><div class="number">7</div><div class="label">Chart Types</div></div>
-        <div class="stat-box"><div class="number">20</div><div class="label">Min Timer</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FILTER BAR ================= -->
-<div class="filter-shell" id="bank">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-    <div class="flex flex-col gap-3">
-      <div class="flex flex-wrap items-center gap-2.5">
-        <select class="book-select" id="bookFilter">
-          <option value="all">All Books</option>
-        </select>
-        <div class="relative flex-1 min-w-[180px]">
-          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-          </svg>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search questions, topics or keywords…" />
-        </div>
-        <button id="resetBtn" class="seg-btn" style="border-color:#fecaca;color:#b91c1c;">Reset</button>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
-        <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Chart Type:</span>
-      </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-2.5">
-        <div class="flex items-center gap-2">
-          <span class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
-          <button id="collapseAllBtn" class="tool-btn">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 9l7 7 7-7"/></svg>
-            Collapse All
-          </button>
-          <button id="expandAllBtn" class="tool-btn">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 15l-7-7-7 7"/></svg>
-            Expand All
-          </button>
-        </div>
-        <div class="text-xs text-slate-500 font-medium">
-          Showing <span id="resultCount" class="font-extrabold text-amber-600">0</span> questions
-          <span id="activeSummary" class="text-slate-400"></span>
+    <!-- ================= HERO ================= -->
+    <section
+      class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+      <div class="aurora"></div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="md:w-2/3">
+            <div
+              class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+              📊 Cambridge IELTS 11 – 21
+            </div>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+              Writing Task 1<br />
+              <span class="text-amber-300">Model Answers &amp; Practice</span>
+            </h1>
+            <p
+              class="text-lg md:text-xl text-amber-100/80 mt-4 max-w-2xl leading-relaxed">
+              Every Task 1 question from Cambridge Books 11–21 — with chart
+              images,
+              Band 7–9 model answers, and a split-view practice mode with a
+              20-minute timer.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#bank"
+                class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-amber-900/30 flex items-center gap-2">
+                🔍 Browse the Bank <span>→</span>
+              </a>
+              <a href="#howto"
+                class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium px-6 py-2.5 rounded-full transition border border-white/20 flex items-center gap-2">
+                📘 How to Answer Each Type
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+            <div class="stat-box"><div class="number" id="statTotal">—</div><div
+                class="label">Questions</div></div>
+            <div class="stat-box"><div class="number">11</div><div
+                class="label">Books</div></div>
+            <div class="stat-box"><div class="number">7</div><div
+                class="label">Chart Types</div></div>
+            <div class="stat-box"><div class="number">20</div><div
+                class="label">Min Timer</div></div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- ================= RESULTS ================= -->
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
-  <div id="results"></div>
-
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="howto" />
-
-  <section>
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
-      <div>
-        <h2 class="section-title">
-          <span class="emoji-wrap bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700">📘</span>
-          How to Answer Each Task 1 Type
-        </h2>
-        <p class="section-sub">Structure and paragraphing for every visual type</p>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="howto-card border-blue-200 bg-gradient-to-br from-blue-50/80 to-white">
-        <h4 class="text-blue-800"><span>📈</span> Line Graph</h4>
-        <p>Show trends over time. Group data by similarity, not by listing every year.</p>
-        <span class="formula">Intro → Overview: 2 main trends → Body 1: rising → Body 2: falling/stable</span>
-      </div>
-      <div class="howto-card border-emerald-200 bg-gradient-to-br from-emerald-50/80 to-white">
-        <h4 class="text-emerald-800"><span>📊</span> Bar Chart</h4>
-        <p>Compare categories. Highlight the highest, lowest, and any surprising result.</p>
-        <span class="formula">Intro → Overview: 2 key contrasts → Body 1: top → Body 2: bottom</span>
-      </div>
-      <div class="howto-card border-pink-200 bg-gradient-to-br from-pink-50/80 to-white">
-        <h4 class="text-pink-800"><span>🥧</span> Pie Chart</h4>
-        <p>Focus on proportions. Note the largest and smallest slices.</p>
-        <span class="formula">Intro → Overview: biggest & smallest → Body 1: dominant → Body 2: smaller</span>
-      </div>
-      <div class="howto-card border-purple-200 bg-gradient-to-br from-purple-50/80 to-white">
-        <h4 class="text-purple-800"><span>📋</span> Table</h4>
-        <p>Do not describe every cell. Group rows or columns with similar patterns.</p>
-        <span class="formula">Intro → Overview: 2 patterns → Body 1: highest → Body 2: lowest</span>
-      </div>
-      <div class="howto-card border-amber-200 bg-gradient-to-br from-amber-50/80 to-white">
-        <h4 class="text-amber-800"><span>🗺️</span> Map / Plan</h4>
-        <p>Present tense for "now", future/passive for "planned". Describe location changes.</p>
-        <span class="formula">Intro → Overview: 2 biggest changes → Body 1: north/east → Body 2: south/west</span>
-      </div>
-      <div class="howto-card border-teal-200 bg-gradient-to-br from-teal-50/80 to-white">
-        <h4 class="text-teal-800"><span>⚙️</span> Process Diagram</h4>
-        <p>Describe stages in order. Use passive voice and sequencing words.</p>
-        <span class="formula">Intro → Overview: X stages → Body 1: first half → Body 2: second half</span>
-      </div>
-      <div class="howto-card border-rose-200 bg-gradient-to-br from-rose-50/80 to-white">
-        <h4 class="text-rose-800"><span>🔀</span> Mixed Visuals</h4>
-        <p>Cover both visuals. Link them explicitly.</p>
-        <span class="formula">Intro → Overview: 2 findings → Body 1: visual A → Body 2: visual B</span>
-      </div>
-    </div>
-
-    <div class="mt-7 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50/70 to-orange-50/60 px-6 py-5 flex gap-3">
-      <span class="text-2xl shrink-0">💡</span>
-      <div>
-        <p class="font-extrabold text-amber-800 text-sm mb-1.5 m-0">Universal Task 1 principles</p>
-        <ul class="text-sm text-slate-700 m-0 pl-4 list-disc space-y-1">
-          <li><strong>Word count:</strong> 150+ words (aim for 160–190).</li>
-          <li><strong>No opinions:</strong> describe what you see. Do not explain causes.</li>
-          <li><strong>Overview is essential:</strong> missing it caps you at Band 5.</li>
-          <li><strong>Time:</strong> 20 minutes max — 3 min plan, 15 min write, 2 min check.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="mt-7 rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm">
-      <h3 class="text-lg font-extrabold text-slate-900 m-0 mb-3 flex items-center gap-2">
-        <span>🗣️</span> Useful Task 1 Language Bank
-      </h3>
-      <div class="mb-4">
-        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Describing trends</p>
-        <div class="flex flex-wrap">
-          <span class="phrase-pill">rose sharply</span><span class="phrase-pill">increased steadily</span>
-          <span class="phrase-pill">declined gradually</span><span class="phrase-pill">plummeted</span>
-          <span class="phrase-pill">peaked at</span><span class="phrase-pill">fluctuated</span>
-          <span class="phrase-pill">remained stable</span><span class="phrase-pill">plateaued</span>
-        </div>
-      </div>
-      <div class="mb-4">
-        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Comparing figures</p>
-        <div class="flex flex-wrap">
-          <span class="phrase-pill">roughly double</span><span class="phrase-pill">three times as high as</span>
-          <span class="phrase-pill">marginally above</span><span class="phrase-pill">in sharp contrast to</span>
-          <span class="phrase-pill">whereas</span><span class="phrase-pill">similarly</span>
-        </div>
-      </div>
-      <div class="mb-4">
-        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Maps &amp; plans</p>
-        <div class="flex flex-wrap">
-          <span class="phrase-pill">was converted into</span><span class="phrase-pill">will be replaced by</span>
-          <span class="phrase-pill">to the north of</span><span class="phrase-pill">adjacent to</span>
-          <span class="phrase-pill">was relocated to</span><span class="phrase-pill">demolished</span>
-        </div>
-      </div>
-      <div>
-        <p class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Process diagrams</p>
-        <div class="flex flex-wrap">
-          <span class="phrase-pill">initially</span><span class="phrase-pill">subsequently</span>
-          <span class="phrase-pill">following this</span><span class="phrase-pill">once completed</span>
-          <span class="phrase-pill">is passed through</span><span class="phrase-pill">is then transported to</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer-note">
-    <p class="font-extrabold text-slate-800 text-base m-0">📊 IELTS Writing Task 1 · Cambridge 11–21</p>
-    <p class="text-sm mt-1.5 m-0">Model answers + chart images + 20-minute practice timer</p>
-    <p class="text-xs text-gray-400 mt-2.5 m-0">Image sources: engnovate.com · Built for personal study</p>
-  </div>
-</main>
-
-<!-- ================= LIGHTBOX ================= -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lightboxClose" aria-label="Close">✕</button>
-  <img id="lightboxImg" src="" alt="Chart" />
-</div>
-
-<!-- ================= PRACTICE MODAL ================= -->
-<div class="practice-modal" id="practiceModal">
-  <div class="practice-shell">
-
-    <div class="pm-header">
-      <h2>
-        <span>⏱️</span>
-        <span>Practice Mode</span>
-        <span class="text-amber-300 text-sm font-bold">· 20 minutes</span>
-      </h2>
-      <button type="button" class="pm-close" id="pmClose" aria-label="Close practice">✕</button>
-    </div>
-
-    <div class="pm-body">
-
-      <div class="timer-row" id="timerRow">
-        <div class="timer-left">
-          <div class="timer-display mono" id="timerDisplay">20:00</div>
-          <div class="timer-label" id="timerLabel">Ready to start</div>
-        </div>
-        <div class="timer-btns">
-          <button type="button" class="tm-btn tm-btn-primary" id="timerStart">
-            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span id="timerStartText">Start</span>
-          </button>
-          <button type="button" class="tm-btn tm-btn-secondary" id="timerReset">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
-            Reset
-          </button>
-        </div>
-      </div>
-
-      <div class="pm-workspace" id="pmSplit">
-
-        <div class="pm-col pm-col-left">
-          <div class="pm-pane pm-pane-question">
-            <div class="pm-pane-label">📝 Question</div>
-            <div class="pm-topic" id="pmTopic">—</div>
-            <p class="pm-q" id="pmQuestion">—</p>
-            <div class="pm-meta" id="pmMeta"></div>
+    <!-- ================= FILTER BAR ================= -->
+    <div class="filter-shell" id="bank">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <select class="book-select" id="bookFilter">
+              <option value="all">All Books</option>
+            </select>
+            <div class="relative flex-1 min-w-[180px]">
+              <svg
+                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+              <input type="text" id="searchInput" class="search-input"
+                placeholder="Search questions, topics or keywords…" />
+            </div>
+            <button id="resetBtn" class="seg-btn"
+              style="border-color:#fecaca;color:#b91c1c;">Reset</button>
           </div>
 
-          <div class="pm-pane pm-pane-chart">
-            <div class="pm-pane-label">📊 Chart</div>
-            <div class="pm-img-wrap" id="pmImgContainer">
-              <div class="pm-img-fallback">Loading chart…</div>
+          <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
+            <span
+              class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Chart
+              Type:</span>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+              <span
+                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
+              <button id="collapseAllBtn" class="tool-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5" d="M5 9l7 7 7-7" /></svg>
+                Collapse All
+              </button>
+              <button id="expandAllBtn" class="tool-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
+                    stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2.5" d="M19 15l-7-7-7 7" /></svg>
+                Expand All
+              </button>
+            </div>
+            <div class="text-xs text-slate-500 font-medium">
+              Showing <span id="resultCount"
+                class="font-extrabold text-amber-600">0</span> questions
+              <span id="activeSummary" class="text-slate-400"></span>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="pm-divider" id="pmDivider">
-          <span class="pm-divider-hint">Drag to resize</span>
-        </div>
+    <!-- ================= RESULTS ================= -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+      <div id="results"></div>
 
-        <div class="pm-col pm-col-right">
-          <div class="writing-area">
-            <div class="wa-header">
-              <span class="wa-title">✍️ Your Answer</span>
-              <span class="wa-count" id="pmWordCount">0 words</span>
-            </div>
-            <textarea id="pmTextarea" placeholder="Write your Task 1 response here. Aim for 150+ words. Describe the main features and make comparisons where relevant. Do not give opinions."></textarea>
-            <div class="wa-footer">
-              <span>Target: <strong class="text-amber-700">150–190 words</strong></span>
-              <span id="pmStatus">Not started</span>
-            </div>
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="howto" />
+
+      <section>
+        <div
+          class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+          <div>
+            <h2 class="section-title">
+              <span
+                class="emoji-wrap bg-gradient-to-br from-amber-100 to-orange-100 text-amber-700">📘</span>
+              How to Answer Each Task 1 Type
+            </h2>
+            <p class="section-sub">Structure and paragraphing for every visual
+              type</p>
           </div>
         </div>
 
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            class="howto-card border-blue-200 bg-gradient-to-br from-blue-50/80 to-white">
+            <h4 class="text-blue-800"><span>📈</span> Line Graph</h4>
+            <p>Show trends over time. Group data by similarity, not by listing
+              every year.</p>
+            <span class="formula">Intro → Overview: 2 main trends → Body 1:
+              rising → Body 2: falling/stable</span>
+          </div>
+          <div
+            class="howto-card border-emerald-200 bg-gradient-to-br from-emerald-50/80 to-white">
+            <h4 class="text-emerald-800"><span>📊</span> Bar Chart</h4>
+            <p>Compare categories. Highlight the highest, lowest, and any
+              surprising result.</p>
+            <span class="formula">Intro → Overview: 2 key contrasts → Body 1:
+              top → Body 2: bottom</span>
+          </div>
+          <div
+            class="howto-card border-pink-200 bg-gradient-to-br from-pink-50/80 to-white">
+            <h4 class="text-pink-800"><span>🥧</span> Pie Chart</h4>
+            <p>Focus on proportions. Note the largest and smallest slices.</p>
+            <span class="formula">Intro → Overview: biggest & smallest → Body 1:
+              dominant → Body 2: smaller</span>
+          </div>
+          <div
+            class="howto-card border-purple-200 bg-gradient-to-br from-purple-50/80 to-white">
+            <h4 class="text-purple-800"><span>📋</span> Table</h4>
+            <p>Do not describe every cell. Group rows or columns with similar
+              patterns.</p>
+            <span class="formula">Intro → Overview: 2 patterns → Body 1: highest
+              → Body 2: lowest</span>
+          </div>
+          <div
+            class="howto-card border-amber-200 bg-gradient-to-br from-amber-50/80 to-white">
+            <h4 class="text-amber-800"><span>🗺️</span> Map / Plan</h4>
+            <p>Present tense for "now", future/passive for "planned". Describe
+              location changes.</p>
+            <span class="formula">Intro → Overview: 2 biggest changes → Body 1:
+              north/east → Body 2: south/west</span>
+          </div>
+          <div
+            class="howto-card border-teal-200 bg-gradient-to-br from-teal-50/80 to-white">
+            <h4 class="text-teal-800"><span>⚙️</span> Process Diagram</h4>
+            <p>Describe stages in order. Use passive voice and sequencing
+              words.</p>
+            <span class="formula">Intro → Overview: X stages → Body 1: first
+              half → Body 2: second half</span>
+          </div>
+          <div
+            class="howto-card border-rose-200 bg-gradient-to-br from-rose-50/80 to-white">
+            <h4 class="text-rose-800"><span>🔀</span> Mixed Visuals</h4>
+            <p>Cover both visuals. Link them explicitly.</p>
+            <span class="formula">Intro → Overview: 2 findings → Body 1: visual
+              A → Body 2: visual B</span>
+          </div>
+        </div>
+
+        <div
+          class="mt-7 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50/70 to-orange-50/60 px-6 py-5 flex gap-3">
+          <span class="text-2xl shrink-0">💡</span>
+          <div>
+            <p
+              class="font-extrabold text-amber-800 text-sm mb-1.5 m-0">Universal
+              Task 1 principles</p>
+            <ul class="text-sm text-slate-700 m-0 pl-4 list-disc space-y-1">
+              <li><strong>Word count:</strong> 150+ words (aim for
+                160–190).</li>
+              <li><strong>No opinions:</strong> describe what you see. Do not
+                explain causes.</li>
+              <li><strong>Overview is essential:</strong> missing it caps you at
+                Band 5.</li>
+              <li><strong>Time:</strong> 20 minutes max — 3 min plan, 15 min
+                write, 2 min check.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="mt-7 rounded-2xl border border-slate-200 bg-white p-6 md:p-7 shadow-sm">
+          <h3
+            class="text-lg font-extrabold text-slate-900 m-0 mb-3 flex items-center gap-2">
+            <span>🗣️</span> Useful Task 1 Language Bank
+          </h3>
+          <div class="mb-4">
+            <p
+              class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Describing
+              trends</p>
+            <div class="flex flex-wrap">
+              <span class="phrase-pill">rose sharply</span><span
+                class="phrase-pill">increased steadily</span>
+              <span class="phrase-pill">declined gradually</span><span
+                class="phrase-pill">plummeted</span>
+              <span class="phrase-pill">peaked at</span><span
+                class="phrase-pill">fluctuated</span>
+              <span class="phrase-pill">remained stable</span><span
+                class="phrase-pill">plateaued</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p
+              class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Comparing
+              figures</p>
+            <div class="flex flex-wrap">
+              <span class="phrase-pill">roughly double</span><span
+                class="phrase-pill">three times as high as</span>
+              <span class="phrase-pill">marginally above</span><span
+                class="phrase-pill">in sharp contrast to</span>
+              <span class="phrase-pill">whereas</span><span
+                class="phrase-pill">similarly</span>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p
+              class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Maps
+              &amp; plans</p>
+            <div class="flex flex-wrap">
+              <span class="phrase-pill">was converted into</span><span
+                class="phrase-pill">will be replaced by</span>
+              <span class="phrase-pill">to the north of</span><span
+                class="phrase-pill">adjacent to</span>
+              <span class="phrase-pill">was relocated to</span><span
+                class="phrase-pill">demolished</span>
+            </div>
+          </div>
+          <div>
+            <p
+              class="text-[0.7rem] font-extrabold uppercase tracking-wider text-amber-700 mb-2">Process
+              diagrams</p>
+            <div class="flex flex-wrap">
+              <span class="phrase-pill">initially</span><span
+                class="phrase-pill">subsequently</span>
+              <span class="phrase-pill">following this</span><span
+                class="phrase-pill">once completed</span>
+              <span class="phrase-pill">is passed through</span><span
+                class="phrase-pill">is then transported to</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <p class="font-extrabold text-slate-800 text-base m-0">📊 IELTS Writing
+          Task 1 · Cambridge 11–21</p>
+        <p class="text-sm mt-1.5 m-0">Model answers + chart images + 20-minute
+          practice timer</p>
+        <p class="text-xs text-gray-400 mt-2.5 m-0">Image sources: engnovate.com
+          · Built for personal study</p>
       </div>
+    </main>
 
+    <!-- ================= CHART + MODEL ANSWER VIEWER ================= -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+      aria-label="Chart and model answer">
+      <button class="lb-close" id="lightboxClose"
+        aria-label="Close viewer">✕</button>
+      <div class="lightbox-panel" role="document">
+        <section class="lightbox-media" aria-label="Question image">
+          <div class="lightbox-image-meta"><span
+              id="lightboxImageLabel">QUESTION IMAGE</span><span>Click outside
+              or press Esc to close</span></div>
+          <img id="lightboxImg" src
+            alt="IELTS Writing Task 1 chart or diagram" />
+          <div class="lightbox-image-error" id="lightboxImageError"
+            style="display:none;">
+            <strong>Chart preview unavailable.</strong>
+            <span>The model answer is still available on the right.</span>
+            <a id="lightboxOriginalLink" href="#" target="_blank"
+              rel="noopener noreferrer">Open the original image ↗</a>
+          </div>
+        </section>
+        <aside class="lightbox-answer" aria-label="Model answer">
+          <div class="lightbox-answer-top">
+            <div class="min-w-0">
+              <div class="lightbox-eyebrow">✦ SAMPLE RESPONSE</div>
+              <h2 id="lightboxAnswerTitle">Model answer</h2>
+              <p id="lightboxAnswerMeta"></p>
+            </div>
+            <button type="button" class="lightbox-copy" id="lightboxCopy">Copy
+              answer</button>
+          </div>
+          <div class="lightbox-answer-body essay-body"
+            id="lightboxAnswerBody"></div>
+        </aside>
+      </div>
     </div>
-  </div>
-</div>
 
-<script>
+    <!-- ================= PRACTICE MODAL ================= -->
+    <div class="practice-modal" id="practiceModal">
+      <div class="practice-shell">
+
+        <div class="pm-header">
+          <h2>
+            <span>⏱️</span>
+            <span>Practice Mode</span>
+            <span class="text-amber-300 text-sm font-bold">· 20 minutes</span>
+          </h2>
+          <button type="button" class="pm-close" id="pmClose"
+            aria-label="Close practice">✕</button>
+        </div>
+
+        <div class="pm-body">
+
+          <div class="timer-row" id="timerRow">
+            <div class="timer-left">
+              <div class="timer-display mono" id="timerDisplay">20:00</div>
+              <div class="timer-label" id="timerLabel">Ready to start</div>
+            </div>
+            <div class="timer-btns">
+              <button type="button" class="tm-btn tm-btn-primary"
+                id="timerStart">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path
+                    d="M8 5v14l11-7z" /></svg>
+                <span id="timerStartText">Start</span>
+              </button>
+              <button type="button" class="tm-btn tm-btn-secondary"
+                id="timerReset">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round"><path
+                    d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="pm-workspace" id="pmSplit">
+
+            <div class="pm-col pm-col-left">
+              <div class="pm-pane pm-pane-question">
+                <div class="pm-pane-label">📝 Question</div>
+                <div class="pm-topic" id="pmTopic">—</div>
+                <p class="pm-q" id="pmQuestion">—</p>
+                <div class="pm-meta" id="pmMeta"></div>
+              </div>
+
+              <div class="pm-pane pm-pane-chart">
+                <div class="pm-pane-label">📊 Chart</div>
+                <div class="pm-img-wrap" id="pmImgContainer">
+                  <div class="pm-img-fallback">Loading chart…</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pm-divider" id="pmDivider">
+              <span class="pm-divider-hint">Drag to resize</span>
+            </div>
+
+            <div class="pm-col pm-col-right">
+              <div class="writing-area">
+                <div class="wa-header">
+                  <span class="wa-title">✍️ Your Answer</span>
+                  <span class="wa-count" id="pmWordCount">0 words</span>
+                </div>
+                <textarea id="pmTextarea"
+                  placeholder="Write your Task 1 response here. Aim for 150+ words. Describe the main features and make comparisons where relevant. Do not give opinions."></textarea>
+                <div class="wa-footer">
+                  <span>Target: <strong class="text-amber-700">150–190
+                      words</strong></span>
+                  <span id="pmStatus">Not started</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
 /* =========================================================================
    IMAGES
    ========================================================================= */
@@ -933,7 +1110,7 @@ const IMAGES = {
   "17-1": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-1-1.png",
   "17-2": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-2-1.png",
   "17-3":"https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/d53bfc6c33a0fcca",
-  "17-4": "https://engnovate.com/wp-content/uploads/2023/08/cambridge-ielts-17-academic-writing-test-4-1.png",
+  "17-4": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/82cefd91b425cc03",
   "18-1": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/a4398fc18f9d0e27",
   "18-2": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/aa26dfb4b4c9839b",
   "18-3": "https://engnovatewebsitestorage.blob.core.windows.net/ielts-writing-task-1-images/db4c45da8f17cc8f",
@@ -958,13 +1135,13 @@ const IMAGES = {
 const QUESTIONS = [
 [11,1,"Pie Chart","Water usage · Six world regions",
  "The charts below show the percentage of water used for different purposes in six areas of the world. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The pie chart indicates the proportion of water consumed for various purposes in six regions of the world.
+`The pie charts compare how water is used for agriculture, industry and domestic purposes in six world regions.
 
-Overall, it is clear that industrial water usage is the highest in North America and Europe, while other regions are dominated by agricultural use. Moreover, domestic water usage accounts for only a small percentage across all regions.
+Overall, agriculture accounts for by far the largest share of water consumption in Africa, Central Asia, Southeast Asia and South America. By contrast, industry is the main user in Europe and North America. Domestic consumption represents the smallest share in every region.
 
-In general, the percentage of agricultural water usage is notably higher, ranging between 81% and 88% in Africa, Central Asia, and Southeast Asia. In contrast, the other three areas show a more balanced distribution, with agricultural use at 39% in North America, 71% in South America, and 32% in Europe.
+Agricultural use reaches approximately 88% in Central Asia, 84% in Africa and 81% in Southeast Asia. The figure is lower in South America, at 71%, while the proportions are 39% in North America and 32% in Europe. The pattern is reversed for industrial use: Europe records the highest proportion, at 53%, followed by North America at 48%. Industry accounts for a much smaller share in the other regions.
 
-Focusing on domestic water usage, the proportion of total water consumption is significantly lower than that of industrial and agricultural usage. Domestic water usage stands at 7% in both Central Asia and South Asia, while it makes up the highest percentage in South America at 19%. Additionally, the remaining percentages are 13% in North America, 15% in Europe, and 9% in Africa. By contrast, industrial water usage is most prominent in Europe, where it reaches 53%, much higher than North America's 48%. The remaining regions show much lower levels, all below 12%.`],
+Domestic water use is highest in South America, where it makes up 19% of consumption. The corresponding figures are 15% in Europe and 13% in North America, compared with 9% in Africa. Central Asia and Southeast Asia have the lowest domestic shares, at 7% each. These figures show that water-use patterns differ considerably by region.`],
 
 [11,2,"Pie Chart","British students · Additional languages",
  "The charts below show the proportions of British students at one university in England who were able to speak other languages in addition to English, in 2000 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -976,15 +1153,15 @@ Spanish accounted for the largest share of foreign languages in 2000. However, e
 
 Similarly, Spanish speakers comprised the biggest category in the 2010 survey, with 35 percent. In contrast to the previous results, those speaking English only had been replaced by those using another language in the second place. The latter group constituted a fifth of all survey respondents in 2010. French users, German students, and those speaking no foreign language made up ten percent each.`],
 
-[11,3,"Line Graph","CO2 emissions · Four European countries",
+[11,3,"Line Graph","CO₂ emissions · Four European countries",
  "The graph below shows average carbon dioxide (CO2) emissions per person in the United Kingdom, Sweden, Italy and Portugal between 1967 and 2007. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph compares the amount of carbon dioxide (CO2) produced per person in four different countries over a period of 40 years, starting from 1967.
+`The line graph compares average annual carbon dioxide emissions per person in the United Kingdom, Sweden, Italy and Portugal between 1967 and 2007.
 
-Overall, it is clear that the average CO2 emissions per person in Italy and Portugal witnessed an upward trend, while the opposite was true for the figure in the United Kingdom and Sweden. Additionally, during most of the period, the amount of CO2 emitted in the United Kingdom was the highest.
+Overall, emissions declined in the UK and Sweden, whereas Italy and Portugal experienced upward trends. The UK recorded the highest level for most of the period, while Portugal started with the lowest figure.
 
-Turning to the specific data, the United Kingdom commenced with the highest average CO2 emissions per person, standing close to 11 metric tonnes in 1967. It then declined steadily over the years, reaching around 9 metric tonnes in 2007. In contrast, Sweden saw a slightly different pattern. Sweden's CO2 emissions started at 9 metric tonnes; this figure then rose gradually to just over 10 metric tonnes in 1997 before decreasing significantly to about 5.5 metric tonnes in 2007.
+In 1967, the UK produced about 11 tonnes of CO₂ per person. This figure fell steadily over the following four decades to roughly 8.5–9 tonnes in 2007. Sweden began at around 8.5–9 tonnes and rose to a peak of just over 10 tonnes in 1977. It then dropped markedly, reaching approximately 5.5 tonnes by 2007.
 
-Moving on to Italy and Portugal, in 1967 the amount of CO2 produced per person in Italy stood at nearly 4.2 metric tonnes. It then rose to around 7.8 metric tonnes in 1997 and remained relatively stable until 2007. Similarly, Portugal's figure saw a significant increase of 4.5 metric tonnes between 1967 and 1997 and remained at roughly 5.5 until 2007.`],
+Italy's emissions stood at just over 4 tonnes per person in 1967. They increased gradually, reaching around 7.8 tonnes in 1997, and then remained broadly stable until 2007. Portugal started at only about 1.2 tonnes. Although its level rose throughout the period, the increase was especially clear after 1987, when emissions climbed to approximately 5.3–5.5 tonnes by the final year. By 2007, Portugal and Sweden had similar figures, despite following opposite trends.`],
 
 [11,4,"Mixed","Ashdown Museum · Visitors & satisfaction",
  "The table below shows the numbers of visitors to Ashdown Museum during the year before and the year after it was refurbished. The charts show the result of surveys asking visitors how satisfied they were with their visit, during the same two periods. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -998,13 +1175,13 @@ According to the table, throughout the year before the museum underwent renovati
 
 [12,1,"Bar Chart","Australian physical activity · Men & women",
  "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The bar chart shows the percentage of Australian men and women of different ages who engaged in regular exercise in the year 2010.
+`The bar chart compares the proportions of Australian men and women in six age groups who took part in regular physical activity in 2010.
 
-Overall, female participation generally increased with age, while the reverse was true for males until middle age, and males experienced a lower peak and trough than the corresponding figures for females.
+Overall, women were more active than men in every age group except the youngest one. Male participation fell during early and middle adulthood before recovering, while the female rate generally rose to a middle-age peak and then declined among the oldest participants.
 
-In the youngest age group, males outnumbered females, with 52.8% of 15- to 24-year-olds taking part in regular activity compared to 47.7% of females. However, this was the peak age range for men as numbers declined from this point on, reaching their lowest point at 35 to 44 years, when just under 40% exercised regularly. Although the figure increased again from the age of 45, male participation rates remained below 50% for almost all age groups.
+Among people aged 15–24, 52.8% of men exercised regularly, compared with 47.7% of women. The male figure then dropped to 42.2% for the 25–34 group and reached a low of 39.5% among those aged 35–44. It recovered in the older groups, rising to 43.1% at ages 45–54, 45.1% at 55–64 and 46.7% among people aged 65 and over.
 
-In contrast, the younger females generally exercised less than their older counterparts. From the age of 25, female participation rates increased marginally but steadily, peaking at 55.3% between the ages of 45 and 54, then falling to their lowest point (47.1%) in the oldest group. Notably, more than 50% of women aged 35 to 64 exercised on a regular basis. Only from age 65 and over were the figures for both genders near parity at 46.7% (males) and 47.1% (females).`],
+For women, the rate increased from 47.7% in the youngest group to 48.9% among 25–34-year-olds and 52.5% among those aged 35–44. It peaked at 53.3% for the 45–54 group, edged down slightly to 53.0% among 55–64-year-olds, and then fell to 47.1% in the oldest group. The gender gap was therefore widest in middle age and almost disappeared after age 65.`],
 
 [12,2,"Map / Plan","Islip town centre · Proposed development",
  "The maps below show the centre of a small town called Islip as it is now, and plans for its development. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1083,14 +1260,14 @@ Looking closely at the charts, dinner contains the highest average sodium and sa
 As for snacks and breakfast, the proportions of sodium consumed are the same, at 14%. In the case of saturated fat, the greater percentage is found in snacks, registering 21%, than in breakfasts, at 16%. By comparison, added sugar emerges as the most prevalent nutritional component in snacks (42%), while the opposite is true for breakfast with the lowest intake of added sugar and saturated fat, both accounting for 16%.`],
 
 [14,2,"Mixed","Country exports · Five product categories",
- "The chart below shows the value of one country's exports in various categories during 2015 and 2016. The table shows the percentage change in each category of exports in 2018 compared with 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The bar graph and accompanying table illustrate the export revenues of a country across five distinct product categories for the years 2015 and 2016, alongside the percentage changes experienced within this period.
+ "The chart below shows the value of one country's exports in various categories during 2015 and 2016. The table shows the percentage change in each category of exports in 2016 compared with 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar chart compares the export values of five product categories in 2015 and 2016, while the table shows the percentage change over the same period.
 
-Overall, there was a notable variation in export values, with the most significant increase recorded in textiles, while agricultural products exhibited minimal change.
+Overall, export earnings increased in four categories, with textiles recording the fastest growth. Gems and jewellery was the only category to decline, whereas agriculture changed very little. Petroleum products and engineered goods remained among the most valuable exports.
 
-In 2015, the export earnings from petroleum products amounted to approximately $60 billion; however, this figure experienced a slight decline of 3% in 2016, resulting in revenues of around $58 billion. Engineered goods, contrastingly, saw a remarkable increase from $50 billion in 2015 to $54 billion in 2016, marking an increase of 8.5%. Similarly, agricultural products remained stable at around $22 billion, reflecting a modest rise of 0.81% over the same period.
+Petroleum exports rose by about 3%, from roughly $61 billion in 2015 to around $63 billion in 2016. Engineered goods also grew, increasing by approximately 8.5% from about $58 billion to $62 billion. Although these two categories generated the highest revenues, their growth was slower than that of textiles.
 
-The category of gems and jewellery faced a downturn, with exports decreasing from about $42 billion in 2015 to approximately $38 billion in 2016, corresponding to a decrease of 5.18%. Notably, textiles demonstrated the most profound growth, with revenues increasing sharply from around $18 billion to approximately $20 billion, which translates to a substantial rise of 15.24%.`],
+Textile exports rose by 15.24%, from around $26 billion to approximately $30 billion, the largest proportional increase shown. Agricultural exports were almost unchanged, edging up by just 0.81% from about $31 billion. In contrast, gems and jewellery fell by 5.18%, declining from approximately $43 billion to $41 billion. Thus, the main change was the strong performance of textiles, while the value of gems and jewellery moved in the opposite direction.`],
 
 [14,3,"Process Diagram","Hydroelectric power station · Electricity generation",
  "The diagram below shows how electricity is generated in a hydroelectric power station. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1124,13 +1301,13 @@ In comparison, the proportion of people who bought fresh coffee was never as hig
 
 [15,2,"Line Graph","Caribbean island · Tourist numbers",
  "The graph below shows the number of tourists visiting a particular Caribbean island between 2010 and 2017. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The provided line graph illustrates the influx of tourists to a specific Caribbean island from 2010 to 2017, categorising them into three distinct groups: those residing on cruise ships, those staying on the island, and the aggregate number of visitors.
+`The line graph shows the total number of tourists visiting a Caribbean island from 2010 to 2017, distinguishing between visitors who stayed on the island and those who stayed on cruise ships.
 
-A general observation reveals a consistent upward trajectory in tourism across all three categories throughout the designated period, with visitors who opted to stay on the island representing the largest segment of the total.
+Overall, the total number of visitors increased substantially, from about 1 million in 2010 to 3.5 million in 2017. The number staying on cruise ships grew more rapidly and overtook the number staying on the island in 2016.
 
-In 2010, the number of cruise ship visitors was approximately 0.5 million, while those choosing to stay on the island totalled around 1 million, culminating in an overall visitor count of about 1.5 million. By 2017, the number of cruise ship visitors experienced a notable rise, reaching about 1.25 million. This group represented an increasing share of the total, which expanded to around 4 million.
+At the beginning of the period, approximately 750,000 tourists stayed on the island, compared with 250,000 cruise-ship visitors. The number of island-based visitors remained close to 750,000 in 2011, then climbed to around 1.25 million in 2012 and 1.5 million in 2013. It stayed at roughly 1.5 million for several years, dipped to 1.25 million in 2016 and recovered to 1.5 million in 2017.
 
-On the other hand, the segment of visitors staying on the island displayed a more pronounced growth trajectory. Starting at around 1 million in 2010, this figure surged to approximately 2.75 million by 2017.`],
+Cruise-ship visitor numbers fluctuated at first, moving from 250,000 in 2010 to 500,000 in 2011, before dropping to 250,000 in 2012. They then rose steadily, reaching 1 million in 2014 and 1.5 million in 2016. In 2017, the figure reached 2 million, exceeding the island-stay total by about half a million and driving the overall growth in tourism.`],
 
 [15,3,"Process Diagram","Instant noodles · Manufacturing",
  "The diagram below shows the process of manufacturing instant noodles. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1152,13 +1329,13 @@ Turning to salaries after five years, government sector employees were the highe
 
 [16,1,"Line Graph","Electrical appliances · Housework time",
  "The charts below show the changes in ownership of electrical appliances and amount of time spent doing housework in households in one country between 1920 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The provided line charts illustrate changes in ownership of electrical appliances and time spent on household chores in households of a particular country from 1920 to 2019.
+`The line charts illustrate changes in household ownership of refrigerators, vacuum cleaners and washing machines, together with the average weekly time spent on housework, between 1920 and 2019.
 
-Overall, a significant increase in the adoption of electrical appliances, such as washing machines, refrigerators, and vacuum cleaners, can be observed, while there was a notable decline in the hours dedicated to housework per week.
+Overall, ownership of all three appliances increased substantially, while the time required for housework fell sharply. Refrigerators and vacuum cleaners eventually became almost universal, whereas washing-machine ownership rose more gradually and fluctuated slightly.
 
-Notably, in 1920, no households owned a refrigerator, but by 1960, the ownership had surged to 90% and eventually reached 100% in 1980, maintaining that level until 2019. Similarly, the ownership of vacuum cleaners started at 0% in 1920, increased to 60% by 1960, and reached full saturation by 2000 after remaining stable at 80% from 1980. The ownership of washing machines saw a steep rise from 30% in 1920 to over 70% in 1960, slightly dropped to 60% in 1980, and then increased again to over 70% by 2019.
+In 1920, virtually no households owned a refrigerator. By contrast, around 30% had a vacuum cleaner and about 40% owned a washing machine. Refrigerator ownership then increased rapidly, reaching approximately 90% by 1960 and 100% in 1980, after which it remained at that level. Vacuum-cleaner ownership also rose steadily and reached full penetration by about 2000. Washing-machine ownership climbed to around 70% in 1960, dipped by several percentage points around 1980, and recovered to roughly three quarters by 2019.
 
-In contrast, the time spent on housework per week experienced a sharp decline from 50 hours in 1920 to 30 hours by 1960, further decreasing to 20 hours in 1980, and finally settling at 15 hours from 2000 to 2019.`],
+The amount of housework followed the opposite pattern. Households spent about 50 hours per week on domestic tasks in 1920, but this figure had fallen to around 20 hours by 1960. It declined further to approximately 15 hours in 1980 and then to about 10 hours a week by 2019. The growing availability of labour-saving appliances coincided with this long-term reduction in housework time.`],
 
 [16,2,"Process Diagram","Sugar · Manufacturing from sugar cane",
  "The diagram below shows the manufacturing process for making sugar from sugar cane. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1200,81 +1377,83 @@ In the proposed redevelopment, all factories will be replaced with housing units
  "The table and charts below give information on the police budget for 2017 and 2018 in one area of Britain. The table shows where the money came from and the charts show how it was distributed. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
 `The table and pie charts depict data about how the British police received and spent money in 2017 and 2018.
 
-Overall, the national government was the leading primary source of the police budget, whereas grants occupied the bottom-most position in both years. The highest expenditure was on salaries; however, technology was the least spent area.
+Overall, the national government was the leading primary source of the police budget, whereas other sources made the smallest contribution in both years. The highest expenditure was on salaries; however, technology was the least spent area.
 
 Focusing on the police budget, the contribution of the national government and local taxes was increased by 2.3 and 11.1 million pounds, respectively, from 2017 to 2018. However, there was a slight increment on the budget allocated from other sources, with 38 million in 2017 to 38.5 million in 2018.
 
 As for the budget expenditure, although the maximum amount was spent on police salaries, a 6% decline was witnessed between 2017 and 2018. Surprisingly, buildings and transport took the same amount of money in both years (17%). Additionally, the technology expenditure almost doubled in one year, increasing from 8% in 2017 to 14% in 2018.`],
 
-[17,3,"Line Graph","Shops · Closures and openings 2011–2018",
+[17,3,"Bar Chart","Weekly family expenditure · 1968 vs 2018",
+ "The chart below gives information about how families in one country spent their weekly income in 1968 and in 2018. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+`The bar chart compares the proportions of weekly household income spent on eight categories in one country in 1968 and 2018.
+
+Overall, the spending pattern changed considerably over the 50-year period. Food, clothing and footwear, fuel and power, and personal goods took smaller shares in 2018, while housing, transport and especially leisure accounted for larger proportions. Leisure became the biggest category by the end of the period.
+
+Food was by far the largest item in 1968, representing about 35% of weekly income. By 2018, its share had fallen to approximately 17%. Spending on clothing and footwear also halved, from around 10% to 5%, while personal goods declined from roughly 9% to 4%. Fuel and power followed a similar downward trend, decreasing from about 6% to 4%. Household goods showed comparatively little change, remaining at around 8%.
+
+In contrast, housing almost doubled as a share of income, rising from about 10% in 1968 to 19% in 2018. Transport spending also increased, from approximately 8% to 14%. The most dramatic rise was in leisure, which grew from roughly 9% to 22%, making it the largest spending category in 2018. Overall, the figures suggest that families devoted a smaller share to essentials such as food and clothing and a larger share to leisure, housing and transport.`],
+
+[17,4,"Line Graph","Shop closures and openings · 2011–2018",
  "The graph below shows the number of shops that closed and the number of new shops that opened in one country between 2011 and 2018. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The provided line graph illustrates the trends in shop closures and openings within a particular country from 2011 to 2018.
+`The line graph compares the numbers of shop closures and new shop openings in one country between 2011 and 2018.
 
-Overall, the data reveals that shop closures consistently outnumbered openings throughout the period under review, with notable fluctuations in both categories.
+Overall, new openings followed a general downward trend, despite a recovery in the middle of the period. Closures fluctuated much more dramatically: they peaked in 2013, fell exceptionally sharply in 2015, and then returned to around 5,000 per year. Openings outnumbered closures in 2011 and 2015, while closures were higher in most of the other years.
 
-In 2011, approximately 5,400 shops closed while the number of newly opened shops was slightly higher at around 5,900. However, in 2012, closures increased sharply to approximately 7,300, contrasting with a decline in openings to roughly 5,600. Following this period of decline, new shops surged to about 7,000 in 2013, only for closures to peak at 8,000 the following year. In 2015, shop openings dropped to an alarming low of around 3,200, while closures fell to 5,800 before witnessing a gradual increase in subsequent years.
+Around 8,500 new shops opened in 2011, compared with approximately 6,400 closures. Openings then fell to about 3,900 in 2012, before recovering to 5,000 in 2013 and approximately 6,200 in 2014. The figure dropped to around 4,000 in 2015 and stayed near that level in 2016, edged up slightly to 4,200 in 2017, and finally declined to about 3,000 in 2018.
 
-From 2016 onwards, shop openings showed a gradual recovery, reaching 6,300 by 2018, albeit still remaining lower than closures, which peaked at 6,600 in the same year.`],
+Closures rose from roughly 6,400 in 2011 to 7,200 in 2013, before easing to about 6,500 in 2014. The most striking change occurred in 2015, when closures plunged to only around 600. They rebounded to approximately 5,200 in 2016, slipped to 5,000 in 2017 and ended at roughly 5,200 in 2018. By the final year, closures exceeded openings by about 2,200 shops.`],
 
-[17,4,"Line Graph","Asian countries · Urban population growth",
+[18,1,"Line Graph","Asian countries · Urban population growth",
  "The graph below gives information about the percentage of the population in four Asian countries living in cities from 1970 to 2020, with predictions for 2030 and 2040. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph delineates the percentage of urban population in four Asian nations — Philippines, Malaysia, Thailand, and Indonesia — over a period spanning from 1970 to 2040.
+`The line graph shows the proportions of people living in urban areas in the Philippines, Malaysia, Thailand and Indonesia between 1970 and 2020, with projections to 2040.
 
-A discernible upward trajectory in urbanisation is evident across all four countries throughout the designated timeframe, with projections indicating that the Philippines is likely to exceed 80%, while Malaysia and Thailand are anticipated to stabilise around 70%, alongside Indonesia reaching just above 60% by 2040.
+Overall, the share of city dwellers is expected to rise in all four countries. Malaysia is projected to have the highest urbanisation rate by 2040, while Thailand remains the least urbanised of the four. The Philippines is the only country to show periods of decline rather than a continuous increase.
 
-In 1970, the proportion of the urban population in Malaysia and the Philippines was relatively modest, each at approximately 30%, whereas Thailand and Indonesia recorded even lower figures, around 15%. Over the subsequent decades, Malaysia exhibited the most pronounced increase, soaring to 70% by 2020 and projected to approach nearly 90% by 2040. The Philippines also demonstrated significant urban growth, reaching nearly 80% by 2020 and continuing on an upward trajectory toward 2040.
+In 1970, around 32% of the population of the Philippines lived in cities, slightly above Malaysia at 30%. The Philippine figure rose to the mid-30s in 1980, then reached about 49% in 1990. It subsequently declined to around 43% in 2010 before recovering to roughly 46% in 2020; it is projected to reach about 56% by 2040.
 
-Conversely, Thailand's urban population experienced noticeable growth, advancing to approximately 30% by 1990. Indonesia, initially possessing the lowest urban population percentage, mirrored this growth pattern, reaching approximately 40% by 2020, with expectations of achieving 60% by 2040.`],
+Malaysia's urban share increased more consistently, from 30% in 1970 to 60% in 2000 and approximately 75% in 2020. It is expected to rise further to about 83% by 2040. Indonesia also records strong growth, moving from around 13% in 1970 to 43% in 2010 and a projected 64% in 2040. Thailand rises more slowly, from approximately 18% in 1970 to 33% in 2020, and is forecast to reach around 50% by the end of the period.`],
 
-[18,1,"Bar Chart","US households · Annual income",
+[18,2,"Bar Chart","US households · Annual income",
  "The chart below shows the number of households in the US by their annual income in 2007, 2011, and 2015. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The bar chart illustrates the number of households in the US based on their annual income for three different years: 2007, 2011, and 2015.
+`The bar chart compares the numbers of US households in five annual-income bands in 2007, 2011 and 2015.
 
-Overall, while the numbers of middle-class and upper-middle-class individuals remained almost steady throughout the given years, the numbers of lower-class, lower-middle-class, and upper-class individuals fluctuated in various ways.
+Overall, the number of households earning more than $100,000 increased substantially by 2015, while the two lowest-income groups fluctuated. The $50,000–$75,000 band changed relatively little and remained at just over 20 million households across the three years.
 
-It can be observed that the number of people earning between 50 and 75 thousand dollars stayed roughly the same across all three years, with their figures slightly exceeding 20 million. Similarly, the number of individuals in the upper-middle class, earning between 75 and 100 thousand dollars, did not change significantly over time.
+In 2007, approximately 25 million households earned less than $25,000 a year. This figure rose to just under 30 million in 2011, before falling to around 27 million in 2015. The $25,000–$49,999 group was larger initially, at roughly 33–34 million, but its total declined slightly over time.
 
-On the other hand, the number of lower-class individuals rose from just over 25 million to just under 30 million between 2007 and 2011, then slightly decreased to around 27 million in 2015. However, the number of individuals with incomes exceeding 100 thousand dollars decreased from 2007 to 2011 but then increased to over 30 million after 2011.`],
+The number of households in the $50,000–$74,999 bracket stayed close to 21–22 million throughout the period. A broadly similar, lower figure was recorded for households earning $75,000–$99,999, with only modest changes between the years. By contrast, the highest-income group showed a more notable pattern: after falling slightly in 2011, the number of households receiving at least $100,000 rose sharply to more than 30 million in 2015. By the final year, this was one of the largest income groups on the chart.`],
 
-[18,2,"Map / Plan","Public library · Floor plan 20 years ago vs now",
+[18,3,"Map / Plan","Public library · Floor plan 20 years ago vs now",
  "The diagram below shows the floor plan of a public library 20 years ago and how it looks now. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The diagram illustrates the transformation of the Central Library's floor plan over the past 20 years, revealing significant changes in the layout and allocation of space.
+`The two plans compare the layout of a public library twenty years ago with its present arrangement.
 
-The two floor plans demonstrate a notable shift in the library's design, with various areas being repurposed or replaced to accommodate changing needs and technologies.
+Overall, the library has been modernised, with several traditional collections and service areas replaced or reorganised to provide more space for activities and contemporary media. The changes indicate a shift towards offering a wider range of services in addition to book lending.
 
-One of the most striking differences between the two layouts is the relocation and repurposing of various sections. For instance, the area previously dedicated to children's books has been converted into a lecture room, while the space housing CDs, videos, and computer games has been expanded and transformed into an area for storytelling events and fiction books.
+In the earlier plan, much of the floor space was allocated to conventional collections, including children's books, adult books and reference materials. In the current layout, the area formerly used for children's books has been converted into a lecture room. Other sections have also been repurposed, with the former CD and video area replaced by a computer-related facility and a broader range of media. These changes reduce the emphasis on storing older physical formats and make room for activities and digital access.
 
-Furthermore, the removal of tables and chairs has resulted in a more open-plan design. The adult fiction section has been relocated from the left to the right side of the passage, accompanied by self-service machines and an information desk. Additionally, a new area has been created for all reference books, and the reading room and enquiry desk have been replaced by a computer room and café, respectively.`],
+The service areas have also been reorganised to improve the use of the available space. Although some book collections and core library functions remain, the new plan is less focused on shelves alone and incorporates areas for visitors to study, attend events and use modern resources. In summary, the library has moved from a predominantly book-centred layout to a more flexible, multi-purpose public space.`],
 
-[18,3,"Line Graph","Metal prices · Average monthly change 2014",
+[18,4,"Line Graph","Metal prices · Average monthly change in 2014",
  "The graph below shows the average monthly change in the prices of three metals during 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph illustrates the average monthly percentage change in the prices of three metals, namely copper, nickel, and zinc, throughout the year 2014.
+`The line graph illustrates the average monthly percentage changes in the prices of copper, nickel and zinc in 2014.
 
-Overall, the prices of all three metals exhibited considerable fluctuations over the course of the year, with nickel experiencing the most significant peaks and troughs compared to copper and zinc.
+Overall, nickel experienced by far the greatest fluctuations, including a sharp fall in the middle of the year. Copper changed comparatively little, while zinc rose early in the year, declined around mid-year and recovered towards December.
 
-Copper commenced the year at approximately 0% in January, experiencing a notable decline to around -2.2% in February. From March to October, the price fluctuations were relatively subdued, with averages oscillating between -1% and 1%. By the end of the year, in December, the price declined slightly to about -1.2%.
+Nickel began with a rise of about 6% in January and remained positive at approximately 4% in February. Its monthly change then fell to around 1% in March and April and to about 0.5% in May. The decline became more pronounced in June, at roughly -3%, and the figure stayed negative through October, reaching around -2% in that month. Nickel then recovered to approximately 1% in both November and December.
 
-In contrast, nickel initiated the year with a decrease of around -0.8% in January, plunging further to -2.8% in February. It reached its zenith in May at 5.8%. By December, nickel exhibited a recovery, concluding with a final increase to approximately 1.2%. Similarly, zinc started at -0.5% in January, falling to -1.8% in February, but it achieved a peak of 3.2% in July.`],
+Copper showed a much narrower range. It stood at about 2% in January and eased to around 1% in February and approximately 0.5% in March and April. The monthly change dipped slightly below zero in May and June, before returning to around 1% from July to September. It eased to about 0.5% in October and November and climbed to approximately 1.5% in December.
 
-[18,4,"Line Graph","Social centre · Activity participation",
+Zinc peaked at about 3% in February, after roughly 1% in January. Its rate declined gradually, turning negative in June and remaining slightly below zero until October, before recovering to around 2% in December.`],
+
+[19,1,"Line Graph","Social centre · Activity participation 2000–2020",
  "The graph below gives information on the number of participants for different activities at one social centre in Melbourne, Australia for the period 2000 to 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph illustrates the number of members participating in various activities at a social centre in Melbourne, Australia between 2000 and 2020.
+`The line graph compares participation in five activities at a social centre in Melbourne between 2000 and 2020.
 
-Overall, it is evident that the attendance for Martial Arts and Film clubs remained relatively stable throughout the period. Table Tennis and Musical Performance saw an increase over the years, whereas Amateur Dramatics experienced a decline in popularity.
+Overall, the film club attracted the largest number of participants for most of the period and finished at about 66 people. Table tennis grew substantially, while amateur dramatics declined. Martial arts remained comparatively stable, and musical performances became more popular after they were introduced.
 
-Initially, Table Tennis was the most popular activity in 2000 with around 65 participants. It then dropped to 60 by 2010 before returning to 65 in 2020. Similarly, Martial Arts ranked second in 2000 with just over 35 participants, experienced fluctuations, but eventually settled back to the initial level (35).
+The film club began with around 60 participants in 2000 and rose overall to approximately 66 in 2020, remaining the most popular activity. Table-tennis participation increased from about 16 people in 2000 to 54 by 2020. It overtook amateur dramatics in 2010 and martial arts in 2015, becoming one of the centre's leading activities.
 
-Additionally, two other activities, Musical Performance and Amateur Dramatics, are examined. Musical Performance debuted in 2005 with zero participants and attracted about 15 individuals over the span of 15 years. Meanwhile, there were 25 participants interested in Amateur Dramatics, but this number dwindled to approximately 5 individuals, making it the least popular activity.`],
-
-[19,1,"Line Graph","Social centre · Melbourne activities 2000–2020",
- "The graph below gives information on the number of participants for different activities at one social centre in Melbourne, Australia for the period 2000 to 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph illustrates the number of members participating in various activities at a social centre in Melbourne, Australia between 2000 and 2020.
-
-Overall, it is evident that the attendance for Martial Arts and Film clubs remained relatively stable throughout the period. Table Tennis and Musical Performance saw an increase over the years, whereas Amateur Dramatics experienced a decline in popularity.
-
-Initially, Table Tennis was the most popular activity in 2000 with around 65 participants. It then dropped to 60 by 2010 before returning to 65 in 2020. Similarly, Martial Arts ranked second in 2000 with just over 35 participants, experienced fluctuations, but eventually settled back to the initial level (35).
-
-Additionally, two other activities, Musical Performance and Amateur Dramatics, are examined. Musical Performance debuted in 2005 with zero participants and attracted about 15 individuals over the span of 15 years. Meanwhile, there were 25 participants interested in Amateur Dramatics, but this number dwindled to approximately 5 individuals.`],
+Amateur dramatics moved in the opposite direction. After reaching around 28 participants in 2005, its numbers fell steadily to just 6 by 2020, the lowest figure on the chart. Martial arts fluctuated within a relatively narrow range of roughly 32 to 38 people and ended at around 36, close to its starting level. Musical performances were introduced after 2005; attendance then rose, reaching about 12 in 2010 and 18 in 2020. Thus, the clearest gains were in table tennis and musical performances, while amateur dramatics lost popularity markedly.`],
 
 [19,2,"Map / Plan","Porth Harbour · 2000 vs today",
  "The plans below show a harbour in 2000 and how it looks today. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1326,13 +1505,15 @@ Vacation cottages have replaced the barn's original location from 1950. Simultan
 
 [20,3,"Mixed","Little Chalfont library · Members, loans, trends",
  "The charts below give information about a public library in a town called Little Chalfont. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The provided charts illustrate various aspects of the public library situated in Little Chalfont, encompassing member demographics, category-wise loan distributions, and annual loan trends over a decade.
+`The charts show the age profile of Little Chalfont library members in 2016, the distribution of loans by book category in that year, and the total number of loans between 2007 and 2016.
 
-Overall, adults aged 18 to 64 represent the predominant age group among library members, while children's fiction emerges as the most popular lending category.
+Overall, adults aged 18–64 formed the largest membership group. Fiction accounted for the greatest share of borrowing, and the library's annual number of loans increased over the decade despite a couple of temporary falls.
 
-In terms of membership demographics as of 2016, the pie chart reveals that the largest segment consists of adults aged 18 to 64, accounting for 51% of the total members. This is followed by children, who comprise 22% of the library's patrons. Young adults aged 13 to 17 represent 16%, while adults aged 65 and above make up the smallest group, contributing only 11% to the overall membership.
+In terms of membership, adults aged 18–64 represented 51% of members. Children made up 22%, while young adults accounted for 15%. The remaining 12% were people aged 65 and over.
 
-As evidenced by the table detailing total loans by category in 2016, children's fiction and adult fiction each constituted 38% of all loans, indicating a strong preference for narrative literature across these demographics. Meanwhile, children's non-fiction and children's DVDs received 6%, suggesting that while fiction is favoured, there remains some interest in non-fiction and audiovisual materials.`],
+The loan data show that children's fiction and adult fiction were joint leading categories, each accounting for 38% of all loans in 2016. Adult non-fiction contributed 13%, while children's non-fiction represented 6%. Much smaller proportions were recorded for adult audio books and young-adult books, at 2% each, and children's DVDs, at just 1%.
+
+Annual borrowing rose overall from approximately 15,500 loans in 2007 to about 21,500 in 2016. The upward movement was not continuous: totals dipped around 2012 and 2013 before recovering and reaching their highest level at the end of the period. Taken together, the charts indicate a library used mainly by working-age adults, with strong demand for both adult and children's fiction.`],
 
 [20,4,"Process Diagram","Bamboo · Fabric manufacturing",
  "The diagram below shows how fabric is manufactured from bamboo. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1344,13 +1525,13 @@ In the next sequence, the liquid pulp is filtered to separate the long fibres fr
 
 [21,1,"Line Graph","US economy · Jobs in four sectors",
  "The graph below gives information about the number of jobs in four sectors of the economy in the US between 1960 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The line graph illustrates the number of employees in four sectors of the economy in the US between 1960 and 2020.
+`The line graph shows the number of jobs in four US economic sectors—manufacturing, retail, healthcare and agriculture—from 1960 to 2020.
 
-Overall, the number of retail and healthcare workers increased, albeit at varying rates, while the reverse was true for manufacturing and agriculture. However, the number of manufacturing workers stood out among the other categories with consistently higher figures.
+Overall, employment in retail and healthcare increased considerably, whereas manufacturing and agriculture ended the period below their earlier levels. Manufacturing had the largest number of jobs at the beginning and peaked around 1980, but retail and healthcare both rose to roughly 16 million by 2020.
 
-Focusing on the increases first, the number of retail jobs started at about 6 million in 1960. Over the six decades, it experienced a significant increase from 6 million in 1960 to 16 million in 2020. Similarly, the number of healthcare jobs grew dramatically from 2 million in 1960 to 16 million in 2020.
+Manufacturing employment started at about 15 million in 1960 and increased to around 20 million in 1980. It then fell over the following four decades, reaching approximately 13 million in 2020. Agriculture showed a much steadier decline: its workforce decreased from about 6 million in 1960 to roughly 3 million by 1980 and only around 2 million at the end of the period.
 
-By contrast, the number of manufacturing and agriculture jobs decreased over the period. The number of manufacturing jobs increased steadily from 15 million in 1960 to 20 million in 1980, but this was followed by a significant decrease to 13 million in the final year. The number of agriculture jobs declined gradually from 5 million in 1960 to about 2 million in 2020.`],
+By contrast, retail employment rose from approximately 6 million in 1960 to about 16 million in 2020. Healthcare had the lowest initial figure, at around 2 million, but grew continuously and reached a similar level to retail by the end of the period. Consequently, the ranking of the sectors changed substantially: manufacturing was no longer the largest employer in 2020, while retail and healthcare had become the leading sectors among those shown.`],
 
 [21,2,"Map / Plan","College café · Before redesign and today",
  "The plans below show a college café before it was redesigned and how it looks now. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
@@ -1374,13 +1555,13 @@ After that, the air crosses the top of the mountain and moves down the leeward s
 
 [21,4,"Mixed","University library · Users & satisfaction",
  "The chart and table below show the results of a survey of library users at a university. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-`The pie chart illustrates the categories of library users, while the table demonstrates the results of a survey regarding library user satisfaction at a university.
+`The pie chart shows the proportions of different groups using a university library, while the table summarises their satisfaction with five aspects of the service.
 
-Overall, it is remarkable that the full-time undergraduate students constituted the largest share of total library users. Regarding user satisfaction, the helpfulness of staff and library opening hours were the most positively received aspects, whereas the availability of journals experienced the highest level of dissatisfaction.
+Overall, full-time undergraduates formed the largest group of users. Staff helpfulness received the strongest positive rating, whereas the availability of journals and Wi-Fi attracted the highest dissatisfaction levels.
 
-Looking at the pie graph, it is clear that the most significant portion goes to full-time undergraduates, making up 44%, with full-time postgraduates at 25%. Part-time postgraduates represented exactly 16% of the total dataset. Meanwhile, the percentages for distance learning and academic staff exhibited a near-equal distribution, sitting at 8% and 7%, respectively.
+Full-time undergraduates accounted for 44% of library users, followed by full-time postgraduates at 25%. Part-time postgraduates represented 16%. The remaining users were distance learners and academic staff, at 8% and 7% respectively.
 
-As detailed in the table, the figures reveal library user satisfaction. Library opening hours and helpfulness of staff registered a zero-percent dissatisfaction rate, with 65% and 95% being very satisfied, respectively. In contrast, almost half of users were very satisfied with the availability of journals and reliability of Wi-Fi, representing 45% and 48%, respectively.`]
+The satisfaction table shows that 95% of respondents were very satisfied with staff helpfulness, and none reported being dissatisfied with it. Opening hours also received a positive assessment: 65% were very satisfied, with no dissatisfaction recorded. Book availability was rated very satisfactory by 50% of users, while 10% were not satisfied. The corresponding figures for journal availability were 45% and 20%, making journals the least favourably rated aspect among these categories. Wi-Fi reliability was rated very satisfactory by 48% of respondents, while 19% were dissatisfied. Overall, users were most positive about staff and opening hours and less satisfied with access to journals and wireless internet.`],
 ];
 
 /* =========================================================================
@@ -1591,7 +1772,7 @@ function cardHTML(item) {
   const imgUrl = item.image || '';
 
   return '' +
-  '<article class="essay-card p-5" id="' + cardId + '">' +
+  '<article class="essay-card p-5" id="' + cardId + '" data-task-key="' + item.book + '-' + item.test + '">' +
     '<div class="card-split">' +
 
       /* ---------------- LEFT: chart side ---------------- */
@@ -1604,9 +1785,9 @@ function cardHTML(item) {
         '</div>' +
         '<p class="text-[0.66rem] font-bold uppercase tracking-wider text-slate-400 mb-1.5">' + esc(item.topic) + '</p>' +
         '<h3 class="text-[0.95rem] font-extrabold text-slate-900 leading-snug m-0 mb-4">' + esc(item.question) + '</h3>' +
-        '<div class="img-frame" data-img="' + esc(imgUrl) + '">' +
+        '<div class="img-frame" data-img="' + esc(imgUrl) + '" role="button" tabindex="0" aria-label="Open chart and model answer for Book ' + item.book + ', Test ' + item.test + '" title="Click to view the chart and sample answer">' +
           '<span class="img-badge">' + icon + ' ' + esc(item.type) + '</span>' +
-          '<span class="img-zoom">🔍 Click to enlarge</span>' +
+          '<span class="img-zoom">↗ View chart + answer</span>' +
           '<div class="img-fallback"><span class="big-ico">' + icon + '</span>Loading chart…</div>' +
         '</div>' +
       '</div>' +
@@ -1631,10 +1812,18 @@ function attachCardHandlers() {
   resultsEl.querySelectorAll('.img-frame').forEach(loadFrameImage);
 
   resultsEl.querySelectorAll('.img-frame').forEach(frame => {
+    const openFrame = () => {
+      const key = frame.closest('.essay-card')?.dataset.taskKey || '';
+      const item = ALL.find(entry => (entry.book + '-' + entry.test) === key);
+      const img = frame.querySelector('img');
+      openLightbox((img && img.complete && img.naturalWidth > 0) ? (img.currentSrc || img.src) : frame.dataset.img, item);
+    };
     frame.addEventListener('click', (e) => {
       if (e.target.closest('a') || e.target.closest('.img-retry')) return;
-      const img = frame.querySelector('img');
-      if (img && img.complete && img.naturalWidth > 0) openLightbox(img.currentSrc || img.src);
+      openFrame();
+    });
+    frame.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFrame(); }
     });
   });
 
@@ -1689,20 +1878,80 @@ resultsEl.addEventListener('click', (e) => {
    ========================================================================= */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
-function openLightbox(src) {
-  if (!src) return;
-  lightboxImg.src = src;
-  lightboxImg.referrerPolicy = 'no-referrer';
+const lightboxImageError = document.getElementById('lightboxImageError');
+const lightboxOriginalLink = document.getElementById('lightboxOriginalLink');
+const lightboxImageLabel = document.getElementById('lightboxImageLabel');
+const lightboxAnswerTitle = document.getElementById('lightboxAnswerTitle');
+const lightboxAnswerMeta = document.getElementById('lightboxAnswerMeta');
+const lightboxAnswerBody = document.getElementById('lightboxAnswerBody');
+const lightboxCopy = document.getElementById('lightboxCopy');
+let lightboxCurrentAnswer = '';
+function openLightbox(src, item) {
+  if (!src && !item) return;
+  const activeItem = item || null;
+  lightboxImg.alt = activeItem ? ('Chart for Cambridge IELTS ' + activeItem.book + ', Test ' + activeItem.test + ': ' + activeItem.topic) : 'IELTS Writing Task 1 chart or diagram';
+  lightboxImageError.style.display = 'none';
+  if (src) {
+    lightboxImg.src = src;
+    lightboxImg.referrerPolicy = 'no-referrer';
+    lightboxImg.style.display = '';
+    lightboxOriginalLink.href = src;
+  } else {
+    lightboxImg.removeAttribute('src');
+    lightboxImg.style.display = 'none';
+    lightboxOriginalLink.href = '#';
+  }
+  if (activeItem) {
+    lightboxImageLabel.textContent = 'BOOK ' + activeItem.book + ' · TEST ' + activeItem.test + ' · ' + activeItem.type;
+    lightboxAnswerTitle.textContent = activeItem.topic || 'Model answer';
+    lightboxAnswerMeta.textContent = 'Cambridge IELTS ' + activeItem.book + ' · Writing Task 1 · ' + wordCount(activeItem.essay) + ' words';
+    lightboxAnswerBody.innerHTML = nl2p(activeItem.essay);
+    lightboxCurrentAnswer = activeItem.essay || '';
+  } else {
+    lightboxImageLabel.textContent = 'QUESTION IMAGE';
+    lightboxAnswerTitle.textContent = 'Model answer';
+    lightboxAnswerMeta.textContent = '';
+    lightboxAnswerBody.innerHTML = '<p>Sample answer is not available for this image.</p>';
+    lightboxCurrentAnswer = '';
+  }
   lightbox.classList.add('open');
   document.body.classList.add('modal-open');
 }
+lightboxImg.addEventListener('error', () => {
+  if (!lightbox.classList.contains('open')) return;
+  lightboxImg.style.display = 'none';
+  lightboxImageError.style.display = 'flex';
+  if (lightboxImg.src) lightboxOriginalLink.href = lightboxImg.src;
+});
+lightboxImg.addEventListener('load', () => {
+  lightboxImageError.style.display = 'none';
+  lightboxImg.style.display = '';
+});
 function closeLightbox() {
   lightbox.classList.remove('open');
-  lightboxImg.src = '';
+  lightboxImg.removeAttribute('src');
+  lightboxImageError.style.display = 'none';
+  lightboxAnswerBody.innerHTML = '';
   if (!practiceModal.classList.contains('open')) document.body.classList.remove('modal-open');
 }
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox || e.target.id === 'lightboxClose') closeLightbox();
+});
+lightboxCopy.addEventListener('click', async () => {
+  if (!lightboxCurrentAnswer) return;
+  const original = lightboxCopy.textContent;
+  try {
+    await navigator.clipboard.writeText(lightboxCurrentAnswer);
+    lightboxCopy.textContent = 'Copied ✓';
+  } catch (err) {
+    const helper = document.createElement('textarea');
+    helper.value = lightboxCurrentAnswer;
+    helper.style.position = 'fixed'; helper.style.opacity = '0';
+    document.body.appendChild(helper); helper.select();
+    const ok = document.execCommand('copy'); helper.remove();
+    lightboxCopy.textContent = ok ? 'Copied ✓' : 'Select and copy';
+  }
+  setTimeout(() => { lightboxCopy.textContent = original; }, 1400);
 });
 
 /* =========================================================================
@@ -1737,6 +1986,7 @@ let secondsLeft = TOTAL_SECONDS;
 let timerRunning = false;
 let timerFinished = false;
 let currentCardKey = '';
+let currentPracticeItem = null;
 
 function fmtTime(s) {
   const m = Math.floor(s / 60);
@@ -1837,6 +2087,7 @@ function updateWordCount() {
 pmTextarea.addEventListener('input', updateWordCount);
 
 function openPracticeFromCard(card) {
+  currentPracticeItem = ALL.find(entry => (entry.book + '-' + entry.test) === card.dataset.taskKey) || null;
   const question = card.querySelector('h3')?.textContent || '';
   const topic = card.querySelector('p.text-\\[0\\.66rem\\]')?.textContent || '';
   const bookBadge = card.querySelector('.b-book')?.textContent || '';
@@ -1875,7 +2126,7 @@ function openPracticeFromCard(card) {
       clearTimeout(timer);
       img.style.display = '';
       if (fb) fb.remove();
-      img.addEventListener('click', () => openLightbox(img.currentSrc || img.src));
+      img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, currentPracticeItem));
     }
     function fail() {
       if (settled) return;
@@ -2028,5 +2279,5 @@ document.getElementById('expandAllBtn').addEventListener('click', () => {
 render();
 </script>
 
-</body>
+  </body>
 </html>

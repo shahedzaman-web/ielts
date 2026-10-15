@@ -11,7 +11,7 @@
 .main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.pane{overflow-y:auto;padding:24px 30px;scroll-behavior:smooth}.passages{flex:0 0 50%;background:#fcfdff}.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}.resizer:hover{background:#cbd5e1}.resizer:after{content:"⇔";font-size:10px;color:#64748b}.passage{display:none}.passage.active{display:block}.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}.passage p{margin:0 0 14px}.passage em{color:var(--muted)}
 .para-head{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:#0f766e;color:#fff;font-size:15px;font-weight:800;border-radius:8px;margin:18px 0 8px;line-height:1}.para-head:first-of-type{margin-top:8px}.para-body{margin:0 0 14px}
 .q-section{display:none}.q-section.active{display:block}.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}.q-group:last-child{border-bottom:0;margin-bottom:0}.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}.q-instr p{margin:0 0 3px}.q-instr p:last-child{margin:0}.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px}.q:last-child{border-bottom:0}.q.highlight{background:#fffbeb}.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.q-body{flex:1;min-width:0}.q-body p{margin:0 0 7px}
-.gap-input{border:1px solid var(--line);border-bottom:2px solid var(--accent);border-radius:6px;padding:5px 10px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;transition:border-color .15s,background .15s}.gap-input:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}.gap-input.wide{min-width:220px}
+.gap-input{border:1px solid var(--line);border:2px solid var(--line);border-radius:6px;padding:5px 10px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;transition:border-color .15s,background .15s}.gap-input:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}.gap-input.wide{min-width:220px}
 .option-row{display:flex;align-items:flex-start;gap:8px;margin:3px 0;padding:5px 7px;border-radius:6px;line-height:1.45;cursor:default}.option-row:hover{background:#f8fafc}.option-row>span{flex:1;min-width:0;cursor:default}.option-row input[type=radio]{flex:0 0 16px;width:16px;height:16px;margin:3px 0 0;cursor:pointer;pointer-events:auto;accent-color:var(--accent)}.option-row:has(input:checked){background:var(--accent-soft)}
 table.matching-table{width:100%;table-layout:fixed;border-collapse:collapse;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px;margin:6px 0}table.matching-table th,table.matching-table td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}table.matching-table thead th{background:#f8fafc;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--accent);text-align:center;height:42px;position:sticky;top:0;z-index:2}table.matching-table thead th.match-num-head{width:48px}table.matching-table thead th.match-option-head{width:48px}table.matching-table thead th.match-statement-head{text-align:left}table.matching-table tbody tr.q{display:table-row;border-bottom:0;padding:0}table.matching-table td.match-num-cell{width:48px;text-align:center;font-weight:700;color:#334155;background:#f8fafc}table.matching-table td.match-statement-cell{text-align:left;line-height:1.45}table.matching-table td.match-option-cell{width:48px;text-align:center;padding:0}table.matching-table td.match-option-cell label{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;cursor:pointer;padding:0}table.matching-table td.match-option-cell label:hover{background:#f1f5f9}table.matching-table td.match-option-cell label:has(input:checked){background:var(--accent-soft)}table.matching-table tr.q.correct td.match-num-cell{background:var(--good-soft);color:var(--good)}table.matching-table tr.q.wrong td.match-num-cell{background:var(--bad-soft);color:var(--bad)}table.matching-table tr.q.correct td.match-statement-cell{color:var(--good);font-weight:600}table.matching-table tr.q.wrong td.match-statement-cell{color:var(--bad);font-weight:600}table.matching-table tr.q .feedback{display:none;font-size:12px;margin-top:6px;font-weight:600}table.matching-table tr.q.correct .feedback,table.matching-table tr.q.wrong .feedback{display:block}table.matching-table tr.q.correct .feedback{color:var(--good)}table.matching-table tr.q.wrong .feedback{color:var(--bad)}
 .matching-table-wrap{overflow-x:auto;margin:6px 0}
@@ -23,6 +23,25 @@ table.matching-table.heading-table thead th.match-num-head{width:52px}
 table.matching-table.heading-table td.match-num-cell{width:52px;font-size:15px;font-weight:800;color:#0f766e;background:#f0fdfa}
 table.matching-table.heading-table td.match-statement-cell{font-size:13px;color:var(--text)}
 .people-list{list-style:none;padding:12px 16px;margin:0 0 14px;font-size:13px;background:#f8fafc;border-radius:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 18px}.people-list li{margin-bottom:3px}
+/* ==== drag & drop (heading matching) ==== */
+.summary-drop-bank{display:flex;flex-wrap:wrap;gap:8px 10px;background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin-bottom:14px}
+.summary-drop-item{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;cursor:grab;user-select:none;-webkit-user-select:none;transition:.12s}
+.summary-drop-item:hover{border-color:var(--accent);background:#f0fdfa}
+.summary-drop-item.dragging{opacity:.4;cursor:grabbing}
+.summary-drop-item.used{opacity:.3;pointer-events:none}
+.summary-drop-item.selected{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px #0f766e38}
+.matching-drop-target{display:block;margin:18px 0;padding:12px;border:1px dashed transparent;border-radius:8px;transition:background .15s,border-color .15s,box-shadow .15s}
+.matching-drop-target.drop-ready{background:#f0fdfa;border-color:#b7d8d4}
+.matching-drop-target.drop-over{background:#ccfbf1;border:1px dashed #0f766e;box-shadow:inset 0 0 0 2px #0f766e}
+.matching-drop-target.matched{background:#f0fdfa;border-color:#99f6e4;box-shadow:inset 4px 0 0 var(--accent)}
+.matching-drop-slot{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;max-width:100%;min-width:132px;min-height:32px;padding:4px 8px;margin:0 8px 0 0;border:1.5px dashed #cbd5e1;border-radius:7px;background:#f8fafc;color:#64748b;font-size:12px;font-weight:600;text-align:center;vertical-align:middle;box-sizing:border-box;transition:background .15s,border-color .15s}
+.matching-drop-target.drop-over .matching-drop-slot{border-color:#0f766e;background:#ccfbf1;color:#115e59}
+.matching-drop-target.matched .matching-drop-slot{border-style:solid;border-color:#0f766e;background:#fff;color:#0f766e}
+.slot-placeholder{opacity:.85}
+.assigned-question{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;max-width:100%;margin:1px;padding:4px 6px 4px 9px;border:1px solid #0f766e;border-radius:5px;background:#0f766e;color:#fff;font-size:12px;font-weight:700;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.assigned-question-label{flex:1 1 auto;min-width:0}
+.matching-undo{flex:0 0 auto;padding:2px 5px;border:1px solid #99f6e4;border-radius:3px;background:#fff;color:#115e59;font-size:11px;font-weight:700;line-height:1.3}
+.matching-undo:hover{background:#ccfbf1}
 .q.correct .q-num{background:var(--good-soft);color:var(--good)}.q.wrong .q-num{background:var(--bad-soft);color:var(--bad)}.q.correct .gap-input{border-color:var(--good);background:var(--good-soft)}.q.wrong .gap-input{border-color:var(--bad);background:var(--bad-soft)}.q .feedback{font-size:12px;margin-top:5px;display:none;font-weight:600}.q.correct .feedback,.q.wrong .feedback{display:block}.q.correct .feedback{color:var(--good)}.q.wrong .feedback{color:var(--bad)}
 .bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px #0f172a0f;padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}.bottom-inner{max-width:1600px;margin:0 auto}.part-tabs{display:flex;gap:8px;margin-bottom:8px}.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;align-items:center;gap:10px;transition:.15s;opacity:.85}.part-tab:hover{opacity:1;background:#f1f5f9}.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}.skim-btn:hover{background:#bae6fd}.skim-btn.on{background:var(--accent);color:#fff}.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}.ielts-reading-palette-section.active{display:flex}.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}.ielts-reading-palette-item:hover{background:#e2e8f0}.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px #0f766e38}.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}.ielts-reading-palette-section-question-count{font-size:11px;color:var(--muted);font-style:italic;margin-left:6px;white-space:nowrap}.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto}.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s}.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed}.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto}.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.12s}.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s}.ielts-reading-submit-button:hover{background:#0d5c56;box-shadow:0 4px 12px #0f766e40}
 .overlay{display:none;position:fixed;inset:0;z-index:200;background:#0f172a8c;align-items:center;justify-content:center;padding:24px}.overlay.show{display:flex}.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px #0f172a4d;overflow:hidden}.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.overlay-head h3{margin:0;font-size:18px}.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}.close-x:hover{color:var(--text)}.overlay-body{padding:18px 22px;overflow-y:auto;min-width:0}.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}table.result-tbl{width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;font-size:13px}table.result-tbl th,table.result-tbl td{box-sizing:border-box;padding:9px 10px;border:1px solid var(--line);text-align:left;vertical-align:middle;line-height:1.4;overflow-wrap:anywhere;word-break:normal}table.result-tbl thead th{position:sticky;top:0;z-index:2;background:#f8fafc;font-weight:700;font-size:12px}#resultOverlay table.result-tbl th:first-child,#resultOverlay table.result-tbl td:first-child{width:9%;text-align:center}#resultOverlay table.result-tbl th:nth-child(2),#resultOverlay table.result-tbl td:nth-child(2),#resultOverlay table.result-tbl th:nth-child(3),#resultOverlay table.result-tbl td:nth-child(3){width:45.5%}#previewOverlay table.result-tbl th:first-child,#previewOverlay table.result-tbl td:first-child{width:12%;text-align:center}#previewOverlay table.result-tbl th:nth-child(2),#previewOverlay table.result-tbl td:nth-child(2){width:88%}table.result-tbl td.correct{color:var(--good);font-weight:700}table.result-tbl td.wrong{color:var(--bad);font-weight:700}.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
@@ -425,617 +444,493 @@ mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
                 <p>The text has six paragraphs, <strong>A–F</strong>.</p>
                 <p>Choose the correct heading for each paragraph from the list
                   of headings below.</p>
-                <p>Write the correct number, <strong>i–ix</strong>.</p>
-              </div>
-              <ul class="people-list">
-                <li><strong>i.</strong> Tackling the issue using a different
-                  approach</li>
-                <li><strong>ii.</strong> A significant improvement on last
-                  time</li>
-                <li><strong>iii.</strong> How robots can save human lives</li>
-                <li><strong>iv.</strong> Examples of robots at work</li>
-                <li><strong>v.</strong> Not what it seemed to be</li>
-                <li><strong>vi.</strong> Why timescales are impossible to
-                  predict</li>
-                <li><strong>vii.</strong> The reason why robots rarely move</li>
-                <li><strong>viii.</strong> Following the pattern of an earlier
-                  development</li>
-                <li><strong>ix.</strong> The ethical issues of robotics</li>
-              </ul>
-              <div class="matching-table-wrap">
-                <table class="matching-table heading-table">
-                  <thead>
-                    <tr>
-                      <th class="match-num-head">#</th>
-                      <th class="match-statement-head">Information</th>
-                      <th class="match-option-head">A</th><th
-                        class="match-option-head">B</th><th
-                        class="match-option-head">C</th>
-                      <th class="match-option-head">D</th><th
-                        class="match-option-head">E</th><th
-                        class="match-option-head">F</th>
+                <p>Choose the correct number, i-ix, in boxes 14-19 on your answer sheet.</p>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="q" data-q="14"><td
-                        class="match-num-cell">14</td><td
-                        class="match-statement-cell">Tackling the issue using a
-                        different approach
-                        <div class="feedback"></div></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="A"></label></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="B"></label></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="C"></label></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="D"></label></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="E"></label></td><td
-                        class="match-option-cell"><label><input type="radio"
-                            name="q14" value="F"></label></tr>
-                      <tr class="q" data-q="15"><td
-                          class="match-num-cell">15</td><td
-                          class="match-statement-cell">A significant improvement
-                          on last
-                          time<div class="feedback"></div></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="A"></label></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="B"></label></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="C"></label></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="D"></label></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="E"></label></td><td
-                          class="match-option-cell"><label><input type="radio"
-                              name="q14" value="F"></label></tr>
-                        <tr class="q" data-q="16"><td
-                            class="match-num-cell">16</td><td
-                            class="match-statement-cell">
-                            How robots can save human lives
-                            <div class="feedback"></div></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="A"></label></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="B"></label></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="C"></label></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="D"></label></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="E"></label></td><td
-                            class="match-option-cell"><label><input type="radio"
-                                name="q14" value="F"></label></tr>
-                          <tr class="q" data-q="17"><td
-                              class="match-num-cell">17</td><td
-                              class="match-statement-cell">Examples of robots at work<div class="feedback"></div></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="A"></label></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="B"></label></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="C"></label></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="D"></label></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="E"></label></td><td
-                              class="match-option-cell"><label><input
-                                  type="radio"
-                                  name="q14" value="F"></label></tr>
-                            <tr class="q" data-q="18"><td
-                                class="match-num-cell">18</td><td
-                                class="match-statement-cell">A significant
-                                improvement
-                                on last
-                                time<div class="feedback"></div></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="A"></label></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="B"></label></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="C"></label></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="D"></label></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="E"></label></td><td
-                                class="match-option-cell"><label><input
-                                    type="radio"
-                                    name="q14" value="F"></label></tr>
-                              <tr class="q" data-q="15"><td
-                                  class="match-num-cell">15</td><td
-                                  class="match-statement-cell">A significant
-                                  improvement
-                                  on last
-                                  time<div class="feedback"></div></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="A"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="B"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="C"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="D"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="E"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q14" value="F"></label></tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="q-group"><h3>Questions 20–23</h3>
-                          <div class="q-instr"><p>Look at the following
-                              statements and
-                              the
-                              list of people below.</p><p>Match each statement
-                              with the
-                              correct person, A, B or C.</p><p><em>NB You may
-                                use any
-                                letter
-                                more than once.</em></p></div>
-                          <ul class="people-list"><li><strong>A.</strong> Bill
-                              Gates</li><li><strong>B.</strong> Nello
-                              Cristianini</li><li><strong>C.</strong> Ron
-                              Chrisley</li></ul>
-                          <table class="matching-table">
-                            <thead><tr><th class="match-num-head">#</th><th
-                                  class="match-statement-head">Statement</th><th
-                                  class="match-option-head">A</th><th
-                                  class="match-option-head">B</th><th
-                                  class="match-option-head">C</th></tr></thead>
-                            <tbody>
-                              <tr class="q" data-q="20"><td
-                                  class="match-num-cell">20</td><td
-                                  class="match-statement-cell">An important
-                                  concern for
-                                  scientists is to ensure that robots do not
-                                  seem
-                                  frightening.<div
-                                    class="feedback"></div></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q20" value="A"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q20" value="B"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q20" value="C"></label></td></tr>
-                              <tr class="q" data-q="21"><td
-                                  class="match-num-cell">21</td><td
-                                  class="match-statement-cell">We have stopped
-                                  trying to
-                                  enable robots to perceive objects as humans
-                                  do.<div
-                                    class="feedback"></div></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q21" value="A"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q21" value="B"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q21" value="C"></label></td></tr>
-                              <tr class="q" data-q="22"><td
-                                  class="match-num-cell">22</td><td
-                                  class="match-statement-cell">It will take
-                                  considerable
-                                  time for modern robots to match the ones we
-                                  have
-                                  created
-                                  in films and books.<div
-                                    class="feedback"></div></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q22" value="A"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q22" value="B"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q22" value="C"></label></td></tr>
-                              <tr class="q" data-q="23"><td
-                                  class="match-num-cell">23</td><td
-                                  class="match-statement-cell">We need to enable
-                                  robots
-                                  to
-                                  move freely before we think about trying to
-                                  communicate
-                                  with them.<div class="feedback"></div></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q23" value="A"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q23" value="B"></label></td><td
-                                  class="match-option-cell"><label><input
-                                      type="radio"
-                                      name="q23" value="C"></label></td></tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="q-group"><h3>Questions 24–26</h3>
-                          <div class="q-instr"><p>Complete the notes
-                              below.</p><p>Choose
-                              <strong>NO MORE THAN THREE WORDS</strong> from the
-                              text
-                              for
-                              each answer.</p></div>
-                          <p style="font-weight:700;margin:6px 0 12px">Robot
-                            features</p>
-                          <div class="q" data-q="24"><div
-                              class="q-num">24</div><div
-                              class="q-body"><p><strong>DARPA race
-                                  cars:</strong> <input
-                                  type="text" class="gap-input" name="q24"
-                                  aria-label="Q24">
-                                provides maps and plans for route</p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="25"><div
-                              class="q-num">25</div><div
-                              class="q-body"><p><strong>Electrolux
-                                  Trilobite:</strong>
-                                builds an image of a room by sending out <input
-                                  type="text"
-                                  class="gap-input" name="q25"
-                                  aria-label="Q25"></p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="26"><div
-                              class="q-num">26</div><div
-                              class="q-body"><p><strong>Robot Kitchen
-                                  humanoids:</strong>
-                                have a <input type="text" class="gap-input"
-                                  name="q26"
-                                  aria-label="Q26"> to take orders</p><div
-                                class="feedback"></div></div></div>
-                        </div>
-                      </section>
-                      <section class="q-section" data-part="3">
-                        <div class="q-group"><h3>Questions 27–31</h3>
-                          <div class="q-instr"><p>Do the following statements
-                              agree with
-                              the
-                              claims of the writer in the text?</p><p>Write
-                              <strong>YES</strong> if the statement agrees,
-                              <strong>NO</strong> if it contradicts, <strong>NOT
-                                GIVEN</strong> if impossible to say.</p></div>
-                          <div class="q" data-q="27"><div
-                              class="q-num">27</div><div
-                              class="q-body"><p>Doctors make decisions according
-                                to the
-                                symptoms that a patient describes.</p><div
-                                class="option-row"><input type="radio"
-                                  name="q27"
-                                  value="YES"><span>YES</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q27"
-                                  value="NO"><span>NO</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q27"
-                                  value="NOT GIVEN"><span>NOT
-                                  GIVEN</span></div><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="28"><div
-                              class="q-num">28</div><div
-                              class="q-body"><p>Our ability to deal with a lot
-                                of input
-                                material has improved over time.</p><div
-                                class="option-row"><input type="radio"
-                                  name="q28"
-                                  value="YES"><span>YES</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q28"
-                                  value="NO"><span>NO</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q28"
-                                  value="NOT GIVEN"><span>NOT
-                                  GIVEN</span></div><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="29"><div
-                              class="q-num">29</div><div
-                              class="q-body"><p>We tend to know when we have
-                                made an
-                                error
-                                of judgement.</p><div class="option-row"><input
-                                  type="radio"
-                                  name="q29"
-                                  value="YES"><span>YES</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q29"
-                                  value="NO"><span>NO</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q29"
-                                  value="NOT GIVEN"><span>NOT
-                                  GIVEN</span></div><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="30"><div
-                              class="q-num">30</div><div
-                              class="q-body"><p>A legal trial could be
-                                significantly
-                                affected by change blindness.</p><div
-                                class="option-row"><input type="radio"
-                                  name="q30"
-                                  value="YES"><span>YES</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q30"
-                                  value="NO"><span>NO</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q30"
-                                  value="NOT GIVEN"><span>NOT
-                                  GIVEN</span></div><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="31"><div
-                              class="q-num">31</div><div
-                              class="q-body"><p>Scientists have concluded that
-                                we try to
-                                take in as much detail as possible from our
-                                surroundings.</p><div class="option-row"><input
-                                  type="radio"
-                                  name="q31"
-                                  value="YES"><span>YES</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q31"
-                                  value="NO"><span>NO</span></div><div
-                                class="option-row"><input type="radio"
-                                  name="q31"
-                                  value="NOT GIVEN"><span>NOT
-                                  GIVEN</span></div><div
-                                class="feedback"></div></div></div>
-                        </div>
-                        <div class="q-group"><h3>Questions 32–36</h3>
-                          <div class="q-instr"><p>Complete the table
-                              below.</p><p>Choose
-                              <strong>NO MORE THAN TWO WORDS</strong> from the
-                              text for
-                              each
-                              answer.</p></div>
-                          <p
-                            style="font-weight:700;margin:6px 0 12px">Experiments
-                            in
-                            change
-                            blindness</p>
-                          <div class="q" data-q="32"><div
-                              class="q-num">32</div><div
-                              class="q-body"><p><strong>Simons &amp; Levi,
-                                  1998</strong>
-                                —
-                                to illustrate change blindness caused by a
-                                <input
-                                  type="text" class="gap-input" name="q32"
-                                  aria-label="Q32">
-                                such as an object</p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="33"><div
-                              class="q-num">33</div><div
-                              class="q-body"><p>Situation for participants:
-                                giving
-                                <input
-                                  type="text" class="gap-input" name="q33"
-                                  aria-label="Q33">
-                                to a stranger</p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="34"><div
-                              class="q-num">34</div><div
-                              class="q-body"><p>Focus of participants'
-                                attention: the
-                                movement of <input type="text" class="gap-input"
-                                  name="q34"
-                                  aria-label="Q34"> (46.6% unaware)</p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="35"><div
-                              class="q-num">35</div><div
-                              class="q-body"><p><strong>Davies &amp; Hine,
-                                  2007</strong>
-                                —
-                                to assess the impact of change blindness on
-                                <input
-                                  type="text" class="gap-input" name="q35"
-                                  aria-label="Q35">
-                                by eyewitnesses</p><div
-                                class="feedback"></div></div></div>
-                          <div class="q" data-q="36"><div
-                              class="q-num">36</div><div
-                              class="q-body"><p>Focus of participants'
-                                attention: the
-                                collection of <input type="text"
-                                  class="gap-input"
-                                  name="q36" aria-label="Q36"> (61%
-                                unaware)</p><div
-                                class="feedback"></div></div></div>
-                        </div>
-                        <div class="q-group"><h3>Questions 37–38</h3>
-                          <div class="q-instr"><p>Choose <strong>TWO</strong>
-                              letters,
-                              A–E.</p><p>Which TWO statements are true for both
-                              the
-                              supermarket and voice experiments?</p></div>
-                          <div class="q" data-q="37"><div
-                              class="q-num">37</div><div
-                              class="q-body">
-                              <div class="option-row"><input type="checkbox"
-                                  name="q37"
-                                  value="A"><span>A. The researchers focused on
-                                  non-visual
-                                  material.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q37"
-                                  value="B"><span>B. The participants were asked
-                                  to
-                                  explain
-                                  their preferences.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q37"
-                                  value="C"><span>C. Some of the choices made by
-                                  participants were altered.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q37"
-                                  value="D"><span>D. The participants were
-                                  influenced by
-                                  each other's choices.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q37"
-                                  value="E"><span>E. Percentage results were
-                                  surprisingly
-                                  low.</span></div>
-                              <div class="feedback"></div>
-                            </div></div>
-                          <div class="q" data-q="38" style="display:none"><div
-                              class="q-num">38</div><div class="q-body"><div
-                                class="feedback"></div></div></div>
-                        </div>
-                        <div class="q-group"><h3>Questions 39–40</h3>
-                          <div class="q-instr"><p>Choose <strong>TWO</strong>
-                              letters,
-                              A–E.</p><p>Which TWO statements are true for the
-                              psychology
-                              experiment conducted by Merckelbach, Jelicic, and
-                              Pieters?</p></div>
-                          <div class="q" data-q="39"><div
-                              class="q-num">39</div><div
-                              class="q-body">
-                              <div class="option-row"><input type="checkbox"
-                                  name="q39"
-                                  value="A"><span>A. The participants had to
-                                  select
-                                  their
-                                  two most common symptoms.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q39"
-                                  value="B"><span>B. The participants gave each
-                                  symptom
-                                  a
-                                  1–5 rating.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q39"
-                                  value="C"><span>C. Shyness proved to be the
-                                  most
-                                  highly
-                                  rated symptom.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q39"
-                                  value="D"><span>D. The participants changed
-                                  their
-                                  minds
-                                  about some of their ratings.</span></div>
-                              <div class="option-row"><input type="checkbox"
-                                  name="q39"
-                                  value="E"><span>E. The researchers focused on
-                                  the
-                                  strength
-                                  and regularity of symptoms.</span></div>
-                              <div class="feedback"></div>
-                            </div></div>
-                          <div class="q" data-q="40" style="display:none"><div
-                              class="q-num">40</div><div class="q-body"><div
-                                class="feedback"></div></div></div>
-                        </div>
-                      </section>
-                    </form></div>
-                </div>
-                <div class="bottom-panel"><div class="bottom-inner"><div
-                      class="part-tabs">
-                      <button class="part-tab active" data-part="1"><span
-                          class="tab-part-name">Part 1</span><span
-                          class="tab-qcount">Questions 1–13</span><span
-                          class="skim-btn"
-                          data-part="1">Skim (1x)</span></button>
-                      <button class="part-tab" data-part="2"><span
-                          class="tab-part-name">Part 2</span><span
-                          class="tab-qcount">Questions 14–26</span><span
-                          class="skim-btn"
-                          data-part="2">Skim (1x)</span></button>
-                      <button class="part-tab" data-part="3"><span
-                          class="tab-part-name">Part 3</span><span
-                          class="tab-qcount">Questions 27–40</span><span
-                          class="skim-btn"
-                          data-part="3">Skim (1x)</span></button>
-                    </div><div class="ielts-reading-question-palette"
-                      id="palette"></div><div
-                      class="ielts-reading-bottom-controls"><div
-                        class="ielts-reading-question-control-buttons"><button
-                          id="prevBtn">←</button><button
-                          id="nextBtn">→</button></div><div
-                        class="ielts-reading-test-control-buttons"><button
-                          class="ielts-reading-review-button" id="reviewBtn">📋
-                          Review</button><button
-                          class="ielts-reading-submit-button"
-                          id="submitBtn">Submit
-                          ✈</button></div></div></div></div>
-                <div class="overlay" id="resultOverlay"><div
-                    class="overlay-card"><div
-                      class="overlay-head"><h3>Your Results</h3><button
-                        class="close-x"
-                        data-close="resultOverlay">×</button></div><div
-                      class="overlay-body"><div class="score-summary"><div
-                          class="big"
-                          id="resultScore">0 / 40</div><div class="sub"
-                          id="resultSub">Band
-                          estimate: —</div></div><div
-                        class="legend-row"><span>🟩
-                          Correct</span><span>🟥 Incorrect</span><span>⬜ No
-                          answer</span></div><table
-                        class="result-tbl"><thead><tr><th>#</th><th>Your
-                              Answer</th><th>Correct
-                              Answer</th></tr></thead><tbody
-                          id="resultBody"></tbody></table></div></div></div>
-                <div class="overlay" id="previewOverlay"><div
-                    class="overlay-card"><div
-                      class="overlay-head"><h3>Review Your Answers</h3><button
-                        class="close-x"
-                        data-close="previewOverlay">×</button></div><div
-                      class="overlay-body"><table
-                        class="result-tbl"><thead><tr><th>#</th><th>Your
-                              Answer</th></tr></thead><tbody
-                          id="previewBody"></tbody></table></div></div></div>
-                <div id="hl-popup"><button id="hl-highlight">🖍
-                    Highlight</button><button
-                    id="hl-dehighlight">🧽 Clear</button><button id="hl-note">📝
-                    Note</button><button id="hl-flashcard">🃏
-                    Flashcard</button></div>
-                <div id="note-popup"><div class="np-card"><h4>Add a
-                      note</h4><textarea
-                      id="note-text"
-                      placeholder="Write your note about this text..."></textarea><div
-                      class="np-actions"><button type="button" class="np-cancel"
-                        id="note-cancel">Cancel</button><button type="button"
-                        class="np-save" id="note-save">Save
-                        Note</button></div></div></div>
-                <div class="toast" id="toast"></div>
-                <script>
+              </div>
+              <div class="summary-drop-bank" id="headingBank">
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="i">i. Tackling the issue using a different
+                  approach</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="ii">ii. A significant improvement on last
+                  time</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="iii">iii. How robots can save human lives</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="iv">iv. Examples of robots at work</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="v">v. Not what it seemed to be</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="vi">vi. Why timescales are impossible to
+                  predict</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="vii">vii. The reason why robots rarely
+                  move</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="viii">viii. Following the pattern of an earlier
+                  development</div>
+                <div class="summary-drop-item" draggable="true"
+                  data-heading="ix">ix. The ethical issues of robotics</div>
+              </div>
+              <div class="q" data-q="14" style="display:none"><div
+                  class="q-num">14</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="15" style="display:none"><div
+                  class="q-num">15</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="16" style="display:none"><div
+                  class="q-num">16</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="17" style="display:none"><div
+                  class="q-num">17</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="18" style="display:none"><div
+                  class="q-num">18</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="19" style="display:none"><div
+                  class="q-num">19</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+            </div>
+            <div class="q-group"><h3>Questions 20–23</h3>
+              <div class="q-instr"><p>Look at the following statements and the
+                  list of people below.</p><p>Match each statement with the
+                  correct person, A, B or C.</p><p><em>NB You may use any letter
+                    more than once.</em></p></div>
+              <ul class="people-list"><li><strong>A.</strong> Bill Gates</li>
+                <li><strong>B.</strong> Nello Cristianini</li>
+                <li><strong>C.</strong> Ron Chrisley</li></ul>
+              <table class="matching-table">
+                <thead><tr><th class="match-num-head">#</th><th
+                      class="match-statement-head">Statement</th><th
+                      class="match-option-head">A</th><th
+                      class="match-option-head">B</th><th
+                      class="match-option-head">C</th></tr></thead>
+                <tbody>
+                  <tr class="q" data-q="20"><td
+                      class="match-num-cell">20</td><td
+                      class="match-statement-cell">An important concern for
+                      scientists is to ensure that robots do not seem
+                      frightening.<div class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q20" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q20" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q20" value="C"></label></td></tr>
+                  <tr class="q" data-q="21"><td
+                      class="match-num-cell">21</td><td
+                      class="match-statement-cell">We have stopped trying to
+                      enable robots to perceive objects as humans do.<div
+                        class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q21" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q21" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q21" value="C"></label></td></tr>
+                  <tr class="q" data-q="22"><td
+                      class="match-num-cell">22</td><td
+                      class="match-statement-cell">It will take considerable
+                      time for modern robots to match the ones we have created
+                      in films and books.<div class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q22" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q22" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q22" value="C"></label></td></tr>
+                  <tr class="q" data-q="23"><td
+                      class="match-num-cell">23</td><td
+                      class="match-statement-cell">We need to enable robots to
+                      move freely before we think about trying to communicate
+                      with them.<div class="feedback"></div></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q23" value="A"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q23" value="B"></label></td><td
+                      class="match-option-cell"><label><input type="radio"
+                          name="q23" value="C"></label></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="q-group"><h3>Questions 24–26</h3>
+              <div class="q-instr"><p>Complete the notes below.</p><p>Choose
+                  <strong>NO MORE THAN THREE WORDS</strong> from the text for
+                  each answer.</p></div>
+              <p style="font-weight:700;margin:6px 0 12px">Robot features</p>
+              <div class="q" data-q="24"><div class="q-num">24</div><div
+                  class="q-body"><p><strong>DARPA race cars:</strong> <input
+                      type="text" class="gap-input" name="q24" aria-label="Q24">
+                    provides maps and plans for route</p><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="25"><div class="q-num">25</div><div
+                  class="q-body"><p><strong>Electrolux Trilobite:</strong>
+                    builds an image of a room by sending out <input type="text"
+                      class="gap-input" name="q25" aria-label="Q25"></p><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="26"><div class="q-num">26</div><div
+                  class="q-body"><p><strong>Robot Kitchen humanoids:</strong>
+                    have a <input type="text" class="gap-input" name="q26"
+                      aria-label="Q26"> to take orders</p><div
+                    class="feedback"></div></div></div>
+            </div>
+          </section>
+          <section class="q-section" data-part="3">
+            <div class="q-group"><h3>Questions 27–31</h3>
+              <div class="q-instr"><p>Do the following statements agree with the
+                  claims of the writer in the text?</p><p>Write
+                  <strong>YES</strong> if the statement agrees,
+                  <strong>NO</strong> if it contradicts, <strong>NOT
+                    GIVEN</strong> if impossible to say.</p></div>
+              <div class="q" data-q="27"><div class="q-num">27</div><div
+                  class="q-body"><p>Doctors make decisions according to the
+                    symptoms that a patient describes.</p><div
+                    class="option-row"><input type="radio" name="q27"
+                      value="YES"><span>YES</span></div><div
+                    class="option-row"><input type="radio" name="q27"
+                      value="NO"><span>NO</span></div><div
+                    class="option-row"><input type="radio" name="q27"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="28"><div class="q-num">28</div><div
+                  class="q-body"><p>Our ability to deal with a lot of input
+                    material has improved over time.</p><div
+                    class="option-row"><input type="radio" name="q28"
+                      value="YES"><span>YES</span></div><div
+                    class="option-row"><input type="radio" name="q28"
+                      value="NO"><span>NO</span></div><div
+                    class="option-row"><input type="radio" name="q28"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="29"><div class="q-num">29</div><div
+                  class="q-body"><p>We tend to know when we have made an error
+                    of judgement.</p><div class="option-row"><input
+                      type="radio" name="q29" value="YES"><span>YES</span></div>
+                  <div class="option-row"><input type="radio" name="q29"
+                      value="NO"><span>NO</span></div><div
+                    class="option-row"><input type="radio" name="q29"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="30"><div class="q-num">30</div><div
+                  class="q-body"><p>A legal trial could be significantly
+                    affected by change blindness.</p><div
+                    class="option-row"><input type="radio" name="q30"
+                      value="YES"><span>YES</span></div><div
+                    class="option-row"><input type="radio" name="q30"
+                      value="NO"><span>NO</span></div><div
+                    class="option-row"><input type="radio" name="q30"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="31"><div class="q-num">31</div><div
+                  class="q-body"><p>Scientists have concluded that we try to
+                    take in as much detail as possible from our
+                    surroundings.</p><div class="option-row"><input
+                      type="radio" name="q31" value="YES"><span>YES</span></div>
+                  <div class="option-row"><input type="radio" name="q31"
+                      value="NO"><span>NO</span></div><div
+                    class="option-row"><input type="radio" name="q31"
+                      value="NOT GIVEN"><span>NOT GIVEN</span></div><div
+                    class="feedback"></div></div></div>
+            </div>
+            <div class="q-group"><h3>Questions 32–36</h3>
+              <div class="q-instr"><p>Complete the table below.</p><p>Choose
+                  <strong>NO MORE THAN TWO WORDS</strong> from the text for each
+                  answer.</p></div>
+              <p style="font-weight:700;margin:6px 0 12px">Experiments in change
+                blindness</p>
+              <div class="q" data-q="32"><div class="q-num">32</div><div
+                  class="q-body"><p><strong>Simons &amp; Levi, 1998</strong> —
+                    to illustrate change blindness caused by a <input
+                      type="text" class="gap-input" name="q32"
+                      aria-label="Q32"> such as an object</p><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="33"><div class="q-num">33</div><div
+                  class="q-body"><p>Situation for participants: giving <input
+                      type="text" class="gap-input" name="q33" aria-label="Q33">
+                    to a stranger</p><div class="feedback"></div></div></div>
+              <div class="q" data-q="34"><div class="q-num">34</div><div
+                  class="q-body"><p>Focus of participants' attention: the
+                    movement of <input type="text" class="gap-input" name="q34"
+                      aria-label="Q34"> (46.6% unaware)</p><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="35"><div class="q-num">35</div><div
+                  class="q-body"><p><strong>Davies &amp; Hine, 2007</strong> —
+                    to assess the impact of change blindness on <input
+                      type="text" class="gap-input" name="q35"
+                      aria-label="Q35"> by eyewitnesses</p><div
+                    class="feedback"></div></div></div>
+              <div class="q" data-q="36"><div class="q-num">36</div><div
+                  class="q-body"><p>Focus of participants' attention: the
+                    collection of <input type="text" class="gap-input"
+                      name="q36" aria-label="Q36"> (61% unaware)</p><div
+                    class="feedback"></div></div></div>
+            </div>
+            <div class="q-group"><h3>Questions 37–38</h3>
+              <div class="q-instr"><p>Choose <strong>TWO</strong> letters,
+                  A–E.</p><p>Which TWO statements are true for both the
+                  supermarket and voice experiments?</p></div>
+              <div class="q" data-q="37"><div class="q-num">37</div><div
+                  class="q-body">
+                  <div class="option-row"><input type="checkbox" name="q37"
+                      value="A"><span>A. The researchers focused on non-visual
+                      material.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q37"
+                      value="B"><span>B. The participants were asked to explain
+                      their preferences.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q37"
+                      value="C"><span>C. Some of the choices made by
+                      participants were altered.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q37"
+                      value="D"><span>D. The participants were influenced by
+                      each other's choices.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q37"
+                      value="E"><span>E. Percentage results were surprisingly
+                      low.</span></div>
+                  <div class="feedback"></div>
+                </div></div>
+              <div class="q" data-q="38" style="display:none"><div
+                  class="q-num">38</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+            </div>
+            <div class="q-group"><h3>Questions 39–40</h3>
+              <div class="q-instr"><p>Choose <strong>TWO</strong> letters,
+                  A–E.</p><p>Which TWO statements are true for the psychology
+                  experiment conducted by Merckelbach, Jelicic, and
+                  Pieters?</p></div>
+              <div class="q" data-q="39"><div class="q-num">39</div><div
+                  class="q-body">
+                  <div class="option-row"><input type="checkbox" name="q39"
+                      value="A"><span>A. The participants had to select their
+                      two most common symptoms.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q39"
+                      value="B"><span>B. The participants gave each symptom a
+                      1–5 rating.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q39"
+                      value="C"><span>C. Shyness proved to be the most highly
+                      rated symptom.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q39"
+                      value="D"><span>D. The participants changed their minds
+                      about some of their ratings.</span></div>
+                  <div class="option-row"><input type="checkbox" name="q39"
+                      value="E"><span>E. The researchers focused on the strength
+                      and regularity of symptoms.</span></div>
+                  <div class="feedback"></div>
+                </div></div>
+              <div class="q" data-q="40" style="display:none"><div
+                  class="q-num">40</div><div class="q-body"><div
+                    class="feedback"></div></div></div>
+            </div>
+          </section>
+        </form></div>
+    </div>
+    <div class="bottom-panel"><div class="bottom-inner"><div class="part-tabs">
+          <button class="part-tab active" data-part="1"><span
+              class="tab-part-name">Part 1</span><span
+              class="tab-qcount">Questions 1–13</span><span class="skim-btn"
+              data-part="1">Skim (1x)</span></button>
+          <button class="part-tab" data-part="2"><span
+              class="tab-part-name">Part 2</span><span
+              class="tab-qcount">Questions 14–26</span><span class="skim-btn"
+              data-part="2">Skim (1x)</span></button>
+          <button class="part-tab" data-part="3"><span
+              class="tab-part-name">Part 3</span><span
+              class="tab-qcount">Questions 27–40</span><span class="skim-btn"
+              data-part="3">Skim (1x)</span></button>
+        </div><div class="ielts-reading-question-palette"
+          id="palette"></div><div
+          class="ielts-reading-bottom-controls"><div
+            class="ielts-reading-question-control-buttons"><button
+              id="prevBtn">←</button><button id="nextBtn">→</button></div><div
+            class="ielts-reading-test-control-buttons"><button
+              class="ielts-reading-review-button" id="reviewBtn">📋
+              Review</button><button class="ielts-reading-submit-button"
+              id="submitBtn">Submit ✈</button></div></div></div></div>
+    <div class="overlay" id="resultOverlay"><div class="overlay-card"><div
+          class="overlay-head"><h3>Your Results</h3><button class="close-x"
+            data-close="resultOverlay">×</button></div><div
+          class="overlay-body"><div class="score-summary"><div class="big"
+              id="resultScore">0 / 40</div><div class="sub" id="resultSub">Band
+              estimate: —</div></div><div class="legend-row"><span>🟩
+              Correct</span><span>🟥 Incorrect</span><span>⬜ No
+              answer</span></div><table
+            class="result-tbl"><thead><tr><th>#</th><th>Your
+                  Answer</th><th>Correct Answer</th></tr></thead><tbody
+              id="resultBody"></tbody></table></div></div></div>
+    <div class="overlay" id="previewOverlay"><div class="overlay-card"><div
+          class="overlay-head"><h3>Review Your Answers</h3><button
+            class="close-x" data-close="previewOverlay">×</button></div><div
+          class="overlay-body"><table
+            class="result-tbl"><thead><tr><th>#</th><th>Your
+                  Answer</th></tr></thead><tbody
+              id="previewBody"></tbody></table></div></div></div>
+    <div id="hl-popup"><button id="hl-highlight">🖍 Highlight</button><button
+        id="hl-dehighlight">🧽 Clear</button><button id="hl-note">📝
+        Note</button><button id="hl-flashcard">🃏 Flashcard</button></div>
+    <div id="note-popup"><div class="np-card"><h4>Add a note</h4><textarea
+          id="note-text"
+          placeholder="Write your note about this text..."></textarea><div
+          class="np-actions"><button type="button" class="np-cancel"
+            id="note-cancel">Cancel</button><button type="button"
+            class="np-save" id="note-save">Save Note</button></div></div></div>
+    <div class="toast" id="toast"></div>
+    <script>
 const ANSWER_KEY={1:["retronasal smell","retronasal"],2:["umami"],3:["toxins","toxin"],4:["internal scents","internal scent"],5:["disciplines","discipline"],6:["spatial map"],7:["social life"],8:["air molecules","air molecule"],9:["flavors","flavours","flavor","flavour"],10:["memories","memory"],11:["prey"],12:["chocolate"],13:["appetites","appetite"],14:["v"],15:["ii"],16:["viii"],17:["vii"],18:["i"],19:["iv"],20:["C"],21:["B"],22:["A"],23:["C"],24:["on-board computer","onboard computer","on board computer"],25:["ultrasound signals","ultrasound signal"],26:["touch-screen","touch screen","touchscreen"],27:["NOT GIVEN"],28:["NO"],29:["NO"],30:["YES"],31:["NO"],32:["visual disturbance","visual distraction"],33:["directions","direction"],34:["a door","the door","door"],35:["eyewitness identification"],36:["valuables","valuable"],37:["A,C","C,A"],38:["A,C","C,A"],39:["B,E","E,B"],40:["B,E","E,B"]};
 const CHECKBOX_GROUPS={37:{name:"q37",correct:["A","C"]},38:{name:"q37",correct:["A","C"]},39:{name:"q39",correct:["B","E"]},40:{name:"q39",correct:["B","E"]}};
 const PART_QUESTIONS={1:Array.from({length:13},(_,i)=>i+1),2:Array.from({length:13},(_,i)=>i+14),3:Array.from({length:14},(_,i)=>i+27)};
 const TOTAL_QUESTIONS=40;const TEST_DURATION_SECONDS=3600;
 function normalize(s){return(s||"").toString().trim().toLowerCase().replace(/[.,;:!?\'"()]/g,"").replace(/\s+/g," ")}
-function getUserAnswer(n){if(CHECKBOX_GROUPS[n]){return Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`)).map(c=>c.value).sort().join(",")}const r=document.querySelector(`input[type=radio][name=q${n}]:checked`);if(r)return r.value;const t=document.querySelector(`input[type=text][name=q${n}]`);if(t)return t.value;return""}
+function getUserAnswer(n){if(CHECKBOX_GROUPS[n]){return Array.from(document.querySelectorAll(`input[type=checkbox][name="${CHECKBOX_GROUPS[n].name}"]:checked`)).map(c=>c.value).sort().join(",")}const r=document.querySelector(`input[type=radio][name=q${n}]:checked`);if(r)return r.value;const t=document.querySelector(`input[type=text][name=q${n}]`);if(t)return t.value;const qEl=document.querySelector(`.q[data-q="${n}"]`);if(qEl&&qEl.dataset.answer)return qEl.dataset.answer;return""}
 function isCorrect(n,ua){if(CHECKBOX_GROUPS[n]){const c=CHECKBOX_GROUPS[n].correct.slice().sort(),u=ua.split(",").filter(Boolean).sort();return u.length===c.length&&u.every((v,i)=>v===c[i])}const keys=ANSWER_KEY[n]||[];const v=normalize(ua);return !!v&&keys.some(k=>normalize(k)===v)}
 function estimateBand(score){if(score>=39)return"9.0";if(score>=37)return"8.5";if(score>=35)return"8.0";if(score>=33)return"7.5";if(score>=30)return"7.0";if(score>=27)return"6.5";if(score>=23)return"6.0";if(score>=19)return"5.5";if(score>=15)return"5.0";if(score>=13)return"4.5";if(score>=10)return"4.0";if(score>=8)return"3.5";if(score>=6)return"3.0";if(score>=4)return"2.5";return"2.0 or below"}
 let toastTimer=null;function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
+
+/* ================= Heading matching Q14–19 : drag & drop onto the passage ================= */
+function initHeadingMatch(){
+  const PARA_TO_Q={A:14,B:15,C:16,D:17,E:18,F:19};
+  const SLOT_HTML='<span class="slot-placeholder">Drop heading here</span>';
+  const placed={};    // paragraph letter -> roman numeral
+  const targets={};   // paragraph letter -> {para, slot}
+  const items={};     // roman numeral -> chip element
+
+  document.querySelectorAll('.summary-drop-item[data-heading]').forEach(item=>{
+    const roman=item.dataset.heading;
+    items[roman]=item;
+    item.addEventListener('dragstart',e=>{
+      if(item.classList.contains('used')){e.preventDefault();return}
+      try{e.dataTransfer.setData('text/plain',roman)}catch(err){}
+      e.dataTransfer.effectAllowed='move';
+      item.classList.add('dragging');
+      document.querySelectorAll('.matching-drop-target').forEach(t=>t.classList.add('drop-ready'));
+    });
+    item.addEventListener('dragend',()=>{
+      item.classList.remove('dragging');
+      document.querySelectorAll('.matching-drop-target').forEach(t=>t.classList.remove('drop-ready','drop-over'));
+    });
+    item.addEventListener('click',()=>{
+      if(item.classList.contains('used'))return;
+      const wasSelected=item.classList.contains('selected');
+      document.querySelectorAll('.summary-drop-item.selected').forEach(i=>i.classList.remove('selected'));
+      if(!wasSelected){
+        item.classList.add('selected');
+        toast('Heading selected — now tap the paragraph you want.');
+      }
+    });
+  });
+
+  document.querySelectorAll('.passage[data-part="2"] .para-head').forEach(head=>{
+    const letter=(head.textContent||'').trim().toUpperCase();
+    if(!/^[A-F]$/.test(letter))return;
+    const para=head.nextElementSibling;
+    if(!para||!para.classList.contains('para-body'))return;
+
+    para.classList.add('matching-drop-target');
+    para.dataset.dropLetter=letter;
+
+    const slot=document.createElement('span');
+    slot.className='matching-drop-slot';
+    slot.dataset.letter=letter;
+    slot.dataset.q=String(PARA_TO_Q[letter]);
+    slot.innerHTML=SLOT_HTML;
+    para.insertBefore(slot,para.firstChild);
+    targets[letter]={para:para,slot:slot};
+
+    para.addEventListener('dragover',e=>{
+      if(placed[letter])return;
+      e.preventDefault();
+      if(e.dataTransfer)e.dataTransfer.dropEffect='move';
+      para.classList.add('drop-over');
+    });
+    para.addEventListener('dragleave',e=>{
+      if(!para.contains(e.relatedTarget))para.classList.remove('drop-over');
+    });
+    para.addEventListener('drop',e=>{
+      e.preventDefault();e.stopPropagation();
+      para.classList.remove('drop-over','drop-ready');
+      let roman='';
+      try{roman=e.dataTransfer.getData('text/plain')}catch(err){}
+      assign(letter,roman);
+    });
+    para.addEventListener('click',e=>{
+      const undoBtn=e.target.closest('[data-undo-question]');
+      if(undoBtn){e.preventDefault();e.stopPropagation();remove(letter);return}
+      const sel=document.querySelector('.summary-drop-item.selected');
+      if(sel)assign(letter,sel.dataset.heading);
+    });
+  });
+
+  function assign(letter,roman){
+    if(!roman||!items[roman])return;
+    if(placed[letter]){toast('Paragraph '+letter+' already has a heading.');return}
+    if(items[roman].classList.contains('used')){toast('That heading has already been used.');return}
+    const t=targets[letter];
+    if(!t)return;
+    const q=PARA_TO_Q[letter];
+
+    const pill=document.createElement('span');
+    pill.className='assigned-question';
+    pill.dataset.qPill=String(q);
+    const label=document.createElement('span');
+    label.className='assigned-question-label';
+    label.textContent=items[roman].textContent.trim();
+    const undo=document.createElement('button');
+    undo.type='button';
+    undo.className='matching-undo';
+    undo.dataset.undoQuestion=String(q);
+    undo.setAttribute('aria-label','Undo Q'+q+' assignment to paragraph '+letter);
+    undo.textContent='Undo';
+    pill.append(label,undo);
+
+    const ph=t.slot.querySelector('.slot-placeholder');
+    if(ph)ph.remove();
+    t.slot.appendChild(pill);
+
+    placed[letter]=roman;
+    items[roman].classList.add('used');
+    items[roman].classList.remove('selected');
+
+    const qEl=document.querySelector('.q[data-q="'+q+'"]');
+    if(qEl)qEl.dataset.answer=roman;
+
+    t.para.classList.add('matched');
+    refreshPaletteAnswered();
+    toast('Q'+q+' (paragraph '+letter+') → heading '+roman);
+  }
+
+  function remove(letter){
+    const roman=placed[letter];
+    if(!roman)return;
+    delete placed[letter];
+    const t=targets[letter];
+    if(t){t.slot.innerHTML=SLOT_HTML;t.para.classList.remove('matched')}
+    if(items[roman])items[roman].classList.remove('used','selected');
+    const q=PARA_TO_Q[letter];
+    const qEl=document.querySelector('.q[data-q="'+q+'"]');
+    if(qEl)qEl.dataset.answer='';
+    refreshPaletteAnswered();
+    toast('Q'+q+' assignment removed');
+  }
+
+  window._resetHeadingMatch=function(){
+    Object.keys(placed).slice().forEach(l=>delete placed[l]);
+    Object.keys(targets).forEach(l=>{
+      targets[l].slot.innerHTML=SLOT_HTML;
+      targets[l].para.classList.remove('matched','drop-over','drop-ready');
+    });
+    Object.values(items).forEach(i=>i.classList.remove('used','selected','dragging'));
+    Object.keys(PARA_TO_Q).forEach(l=>{
+      const qEl=document.querySelector('.q[data-q="'+PARA_TO_Q[l]+'"]');
+      if(qEl)qEl.dataset.answer='';
+    });
+    refreshPaletteAnswered();
+  };
+}
+/* ========================================================================================= */
+
 const palette=document.getElementById("palette");Object.keys(PART_QUESTIONS).forEach(part=>{const section=document.createElement("div");section.className="ielts-reading-palette-section";section.dataset.part=part;const label=document.createElement("strong");label.className="ielts-reading-palette-section-part";label.textContent=`Part ${part}:`;section.appendChild(label);PART_QUESTIONS[part].forEach(n=>{const btn=document.createElement("button");btn.type="button";btn.className="ielts-reading-palette-item";btn.dataset.q=n;btn.textContent=n;btn.addEventListener("click",()=>goToQuestion(n));section.appendChild(btn)});const count=document.createElement("em");count.className="ielts-reading-palette-section-question-count";count.textContent=`${PART_QUESTIONS[part].length} questions`;section.appendChild(count);palette.appendChild(section)});
 let currentPart=1,currentQuestion=1;function switchPart(part){currentPart=parseInt(part,10);document.querySelectorAll(".part-tab").forEach(t=>t.classList.toggle("active",t.dataset.part===String(part)));document.querySelectorAll(".passage").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.querySelectorAll(".q-section").forEach(s=>s.classList.toggle("active",s.dataset.part===String(part)));document.querySelectorAll(".ielts-reading-palette-section").forEach(p=>p.classList.toggle("active",p.dataset.part===String(part)));document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0;currentQuestion=PART_QUESTIONS[part][0];updatePaletteCurrent();updateNavButtons()}
 document.querySelectorAll(".part-tab").forEach(tab=>tab.addEventListener("click",e=>{if(e.target.closest(".skim-btn"))return;switchPart(tab.dataset.part)}));
 let skimInterval=null,skimPart=null;document.querySelectorAll(".skim-btn").forEach(btn=>btn.addEventListener("click",e=>{e.stopPropagation();const part=btn.dataset.part;if(skimInterval&&skimPart===part){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming stopped.");return}if(skimInterval){clearInterval(skimInterval);document.querySelectorAll(".skim-btn").forEach(b=>{b.classList.remove("on");b.textContent="Skim (1x)"})}if(String(currentPart)!==String(part))switchPart(part);const pane=document.getElementById("passagesPane");pane.scrollTop=0;skimPart=part;btn.classList.add("on");btn.textContent="Stop";skimInterval=setInterval(()=>{pane.scrollTop+=1.2;if(pane.scrollTop+pane.clientHeight>=pane.scrollHeight-2){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove("on");btn.textContent="Skim (1x)";toast("Skimming complete.")}},28);toast("Skimming started — read quickly.")}));
-function goToQuestion(n){n=parseInt(n,10);if(!n||n<1||n>TOTAL_QUESTIONS)return;let part=1;for(const p of[1,2,3])if(PART_QUESTIONS[p].includes(n)){part=p;break}if(part!==currentPart)switchPart(part);currentQuestion=n;const target=document.querySelector(`.q[data-q="${n}"]`);if(target){target.scrollIntoView({behavior:"smooth",block:"center"});target.classList.add("highlight");setTimeout(()=>target.classList.remove("highlight"),1600)}updatePaletteCurrent();updateNavButtons()}
+function goToQuestion(n){n=parseInt(n,10);if(!n||n<1||n>TOTAL_QUESTIONS)return;let part=1;for(const p of[1,2,3])if(PART_QUESTIONS[p].includes(n)){part=p;break}if(part!==currentPart)switchPart(part);currentQuestion=n;let target=document.querySelector(`.q[data-q="${n}"]`);if(target&&target.style.display==="none"){const s=document.querySelector(`.matching-drop-slot[data-q="${n}"]`);if(s)target=s.closest("p")||s}if(target){target.scrollIntoView({behavior:"smooth",block:"center"});target.classList.add("highlight");setTimeout(()=>target.classList.remove("highlight"),1600)}updatePaletteCurrent();updateNavButtons()}
 function updatePaletteCurrent(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.toggle("current",parseInt(b.dataset.q,10)===currentQuestion))}function updateNavButtons(){const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);document.getElementById("prevBtn").disabled=idx<=0&&currentPart===1;document.getElementById("nextBtn").disabled=idx>=all.length-1&&currentPart===3}
 document.getElementById("prevBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);if(idx>0)goToQuestion(all[idx-1]);else if(currentPart>1){const prev=PART_QUESTIONS[currentPart-1];goToQuestion(prev[prev.length-1])}});document.getElementById("nextBtn").addEventListener("click",()=>{const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);if(idx<all.length-1)goToQuestion(all[idx+1]);else if(currentPart<3)goToQuestion(PART_QUESTIONS[currentPart+1][0])});document.querySelectorAll(".q").forEach(q=>{q.addEventListener("focusin",()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()});q.addEventListener("click",()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()})});
 function refreshPaletteAnswered(){document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>{const ua=getUserAnswer(parseInt(b.dataset.q,10));b.classList.toggle("answered",ua.trim()!=="")})}document.getElementById("quiz").addEventListener("input",refreshPaletteAnswered);document.getElementById("quiz").addEventListener("change",refreshPaletteAnswered);
@@ -1050,13 +945,13 @@ function clearHighlightInRange(r){const c=r.commonAncestorContainer,root=c.nodeT
 document.getElementById("hl-highlight").addEventListener("click",()=>{if(currentMark){hlPopup.classList.remove("show");return}if(!savedRange){toast("Select text to highlight");return}highlightRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Text highlighted")});document.getElementById("hl-dehighlight").addEventListener("click",()=>{if(currentMark){const p=currentMark.parentNode;while(currentMark.firstChild)p.insertBefore(currentMark.firstChild,currentMark);p.removeChild(currentMark);currentMark=null;hlPopup.classList.remove("show");toast("Highlight removed");return}if(savedRange){clearHighlightInRange(savedRange);window.getSelection().removeAllRanges();hlPopup.classList.remove("show");savedRange=null;toast("Highlight removed")}else hlPopup.classList.remove("show")});document.getElementById("hl-note").addEventListener("click",()=>{if(!savedRange){toast("Select text first");return}pendingNoteRange=savedRange.cloneRange();noteSaveTarget=null;document.getElementById("note-text").value="";notePopup.classList.add("show");hlPopup.classList.remove("show")});document.getElementById("hl-flashcard").addEventListener("click",()=>{const t=savedRange?savedRange.toString().trim():(currentMark?currentMark.textContent.trim():"");if(!t){toast("Select text first");return}toast(`Saved "${t.substring(0,40)}${t.length>40?"…":""}" as flashcard`);hlPopup.classList.remove("show")});
 document.getElementById("note-cancel").addEventListener("click",()=>{notePopup.classList.remove("show");pendingNoteRange=null;noteSaveTarget=null});document.getElementById("note-save").addEventListener("click",()=>{const nt=document.getElementById("note-text").value.trim();if(noteSaveTarget){if(nt){noteSaveTarget.dataset.note=nt;noteSaveTarget.title="Note: "+nt;toast("Note updated")}else{const p=noteSaveTarget.parentNode;while(noteSaveTarget.firstChild)p.insertBefore(noteSaveTarget.firstChild,noteSaveTarget);p.removeChild(noteSaveTarget);toast("Note removed")}noteSaveTarget=null;notePopup.classList.remove("show");document.getElementById("note-text").value="";return}if(!nt||!pendingNoteRange){notePopup.classList.remove("show");pendingNoteRange=null;return}try{const sp=document.createElement("span");sp.className="hl-note";sp.title="Note: "+nt;sp.dataset.note=nt;sp.appendChild(pendingNoteRange.extractContents());pendingNoteRange.insertNode(sp);toast("Note saved")}catch(e){}document.getElementById("note-text").value="";notePopup.classList.remove("show");pendingNoteRange=null});
 document.getElementById("clearHighlightsLink").addEventListener("click",e=>{e.preventDefault();if(!confirm("Remove all highlights and notes?"))return;document.querySelectorAll("mark.hl-user,.hl-note").forEach(el=>{const p=el.parentNode;while(el.firstChild)p.insertBefore(el.firstChild,el);p.removeChild(el)});toast("Highlights cleared")});
-document.getElementById("submitBtn").addEventListener("click",()=>{let score=0,answered=0;document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong"));const rows=[];for(let n=1;n<=TOTAL_QUESTIONS;n++){const q=document.querySelector(`.q[data-q="${n}"]`);if(!q)continue;const ua=getUserAnswer(n);if(ua.trim())answered++;const ok=isCorrect(n,ua);if(ok)score++;q.classList.add(ok?"correct":"wrong");const fb=q.querySelector(".feedback");if(fb){const key=CHECKBOX_GROUPS[n]?CHECKBOX_GROUPS[n].correct.join(", "):(ANSWER_KEY[n]||[]).slice(0,3).join(" / ");fb.textContent=ok?"✓ Correct":`✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`}const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);if(pal)pal.classList.add(ok?"correct":"wrong");rows.push({n,ua:ua.trim()||"—",key:CHECKBOX_GROUPS[n]?CHECKBOX_GROUPS[n].correct.join(", "):(ANSWER_KEY[n]||[])[0],ok})}document.getElementById("resultScore").textContent=`${score} / ${TOTAL_QUESTIONS}`;document.getElementById("resultSub").textContent=`Band estimate: ${estimateBand(score)} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;const tbody=document.getElementById("resultBody");tbody.innerHTML="";rows.forEach(r=>{const tr=document.createElement("tr");const c1=document.createElement("td"),c2=document.createElement("td"),c3=document.createElement("td");c1.textContent=r.n;c2.textContent=r.ua;c2.className=r.ok?"correct":"wrong";c3.textContent=r.key;tr.append(c1,c2,c3);tbody.appendChild(tr)});const chip=document.getElementById("bandChip");chip.textContent="Band "+estimateBand(score);chip.classList.add("show");document.getElementById("resultOverlay").classList.add("show")});
+document.getElementById("submitBtn").addEventListener("click",()=>{let score=0,answered=0;document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".assigned-question").forEach(p=>p.classList.remove("correct","wrong"));document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong"));const rows=[];for(let n=1;n<=TOTAL_QUESTIONS;n++){const q=document.querySelector(`.q[data-q="${n}"]`);if(!q)continue;const ua=getUserAnswer(n);if(ua.trim())answered++;const ok=isCorrect(n,ua);if(ok)score++;q.classList.add(ok?"correct":"wrong");const fb=q.querySelector(".feedback");if(fb){const key=CHECKBOX_GROUPS[n]?CHECKBOX_GROUPS[n].correct.join(", "):(ANSWER_KEY[n]||[]).slice(0,3).join(" / ");fb.textContent=ok?"✓ Correct":`✗ ${ua.trim()||"(no answer)"} — Correct answer: ${key}`}const slot=document.querySelector(`.matching-drop-slot[data-q="${n}"]`);if(slot){const pill=slot.querySelector(".assigned-question");if(pill)pill.classList.add(ok?"correct":"wrong")}const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);if(pal)pal.classList.add(ok?"correct":"wrong");rows.push({n,ua:ua.trim()||"—",key:CHECKBOX_GROUPS[n]?CHECKBOX_GROUPS[n].correct.join(", "):(ANSWER_KEY[n]||[])[0],ok})}document.getElementById("resultScore").textContent=`${score} / ${TOTAL_QUESTIONS}`;document.getElementById("resultSub").textContent=`Band estimate: ${estimateBand(score)} · Answered: ${answered} / ${TOTAL_QUESTIONS}`;const tbody=document.getElementById("resultBody");tbody.innerHTML="";rows.forEach(r=>{const tr=document.createElement("tr");const c1=document.createElement("td"),c2=document.createElement("td"),c3=document.createElement("td");c1.textContent=r.n;c2.textContent=r.ua;c2.className=r.ok?"correct":"wrong";c3.textContent=r.key;tr.append(c1,c2,c3);tbody.appendChild(tr)});const chip=document.getElementById("bandChip");chip.textContent="Band "+estimateBand(score);chip.classList.add("show");document.getElementById("resultOverlay").classList.add("show")});
 document.getElementById("reviewBtn").addEventListener("click",()=>{const tbody=document.getElementById("previewBody");tbody.innerHTML="";for(let n=1;n<=TOTAL_QUESTIONS;n++){const tr=document.createElement("tr"),a=document.createElement("td"),b=document.createElement("td");a.textContent=n;b.textContent=getUserAnswer(n).trim()||"—";tr.append(a,b);tbody.appendChild(tr)}document.getElementById("previewOverlay").classList.add("show")});document.querySelectorAll("[data-close]").forEach(btn=>btn.addEventListener("click",()=>document.getElementById(btn.dataset.close).classList.remove("show")));document.querySelectorAll(".overlay").forEach(ov=>ov.addEventListener("click",e=>{if(e.target===ov)ov.classList.remove("show")}));document.addEventListener("keydown",e=>{if(e.key==="Escape"){document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("show"));hlPopup.classList.remove("show");notePopup.classList.remove("show")}});
 const menuPop=document.getElementById("menuPop");document.getElementById("menuBtn").addEventListener("click",e=>{e.stopPropagation();menuPop.classList.toggle("show")});document.addEventListener("click",()=>menuPop.classList.remove("show"));menuPop.addEventListener("click",e=>e.stopPropagation());document.getElementById("exportLink").addEventListener("click",e=>{e.preventDefault();window.print()});document.getElementById("resetLink").addEventListener("click",e=>{e.preventDefault();doReset()});document.getElementById("gotoTop").addEventListener("click",e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});document.getElementById("passagesPane").scrollTop=0;document.getElementById("questionsPane").scrollTop=0});
 document.querySelectorAll('input[type=checkbox][name="q37"],input[type=checkbox][name="q39"]').forEach(cb=>cb.addEventListener("change",()=>{const ch=document.querySelectorAll(`input[type=checkbox][name="${cb.name}"]:checked`);if(ch.length>2){cb.checked=false;toast("Max 2 options")}refreshPaletteAnswered()}));
-function doReset(){if(!confirm("Clear all answers and reset the test?"))return;document.getElementById("quiz").reset();document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong","answered"));const chip=document.getElementById("bandChip");chip.textContent="--";chip.classList.remove("show");document.getElementById("resultOverlay").classList.remove("show");document.getElementById("previewOverlay").classList.remove("show");seconds=TEST_DURATION_SECONDS;startTimer();switchPart(1);refreshPaletteAnswered();toast("Test reset. Good luck!")}
+function doReset(){if(!confirm("Clear all answers and reset the test?"))return;document.getElementById("quiz").reset();if(typeof window._resetHeadingMatch==="function")window._resetHeadingMatch();document.querySelectorAll(".q").forEach(q=>{q.classList.remove("correct","wrong");const fb=q.querySelector(".feedback");if(fb)fb.textContent=""});document.querySelectorAll(".assigned-question").forEach(p=>p.classList.remove("correct","wrong"));document.querySelectorAll(".ielts-reading-palette-item").forEach(b=>b.classList.remove("correct","wrong","answered"));const chip=document.getElementById("bandChip");chip.textContent="--";chip.classList.remove("show");document.getElementById("resultOverlay").classList.remove("show");document.getElementById("previewOverlay").classList.remove("show");seconds=TEST_DURATION_SECONDS;startTimer();switchPart(1);refreshPaletteAnswered();toast("Test reset. Good luck!")}
 document.getElementById("focusBtn").addEventListener("click",()=>document.body.classList.add("focus-mode"));document.getElementById("exitFocusBtn").addEventListener("click",()=>document.body.classList.remove("focus-mode"));
-switchPart(1);refreshPaletteAnswered();updateNavButtons();
+initHeadingMatch();switchPart(1);refreshPaletteAnswered();updateNavButtons();
 </script>
-              </body>
-            </html>
+  </body>
+</html>

@@ -59,17 +59,23 @@ button{font-family:inherit;cursor:pointer;border:none;}
 .q-instr p:last-child{margin:0;}
 .summary-box{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:#fdfefe;font-size:14.5px;line-height:2.2;}
 .summary-box .qnum{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin:0 2px;background:#f1f5f9;color:#334155;border-radius:5px;font-size:12px;font-weight:700;vertical-align:middle;}
-.summary-drop-bank{display:flex;flex-wrap:wrap;gap:8px 10px;background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin-bottom:14px;}
-.summary-drop-item{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:13px;cursor:grab;user-select:none;transition:.12s;}
-.summary-drop-item:hover{border-color:var(--accent);background:#f0fdfa;}
-.summary-drop-item.dragging{opacity:.4;cursor:grabbing;}
-.summary-drop-item.used{opacity:.3;pointer-events:none;}
-.summary-drop-slot{display:inline-flex;align-items:center;justify-content:center;min-width:130px;height:30px;padding:2px 12px;border:1px dashed var(--line);border-radius:6px;background:#fff;vertical-align:middle;margin:0 3px;font-size:13.5px;cursor:pointer;transition:.12s;color:var(--muted);}
-.summary-drop-slot:hover{border-color:var(--accent);}
-.summary-drop-slot.drag-over{border-color:var(--accent);background:var(--accent-soft);border-style:solid;}
-.summary-drop-slot.filled{border-style:solid;background:#e0f2fe;color:#0c4a6e;font-weight:600;}
-.summary-drop-slot.correct{border-color:var(--good);background:var(--good-soft);color:var(--good);}
-.summary-drop-slot.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad);}
+.summary-box{overflow-wrap:break-word;}
+.summary-box .gap-input{display:inline-block;width:112px;min-width:88px;max-width:100%;height:32px;margin:2px 4px;padding:4px 7px;border:1px solid #94a3b8;border-radius:6px;background:#fff;color:var(--text);font:inherit;font-size:14px;line-height:1.2;vertical-align:middle;box-shadow:0 1px 1px rgba(15,23,42,.03);}
+.summary-box .gap-input:focus{outline:2px solid #99f6e4;outline-offset:1px;border-color:var(--accent);}
+.summary-box .gap-input[data-q="2"]{width:148px;}
+.summary-box .gap-input[data-q="4"],.summary-box .gap-input[data-q="5"]{width:154px;}
+.summary-box .gap-input[data-q="6"]{width:164px;}
+.summary-box .gap-input[data-q="7"]{width:174px;}
+.summary-box .gap-input.correct{border-color:var(--good);background:var(--good-soft);box-shadow:0 0 0 1px rgba(22,163,74,.12);}
+.summary-box .gap-input.wrong{border-color:var(--bad);background:var(--bad-soft);box-shadow:0 0 0 1px rgba(220,38,38,.10);}
+@media(max-width:640px){
+  .summary-box{padding:10px;font-size:14px;line-height:2.1;}
+  .summary-box .gap-input{height:30px;margin:2px 2px;padding:3px 5px;font-size:13px;}
+  .summary-box .gap-input[data-q="2"]{width:132px;}
+  .summary-box .gap-input[data-q="4"],.summary-box .gap-input[data-q="5"]{width:136px;}
+  .summary-box .gap-input[data-q="6"]{width:145px;}
+  .summary-box .gap-input[data-q="7"]{width:152px;}
+}
 .ielts-reading-question-section-content{border:1px solid var(--line);border-radius:8px;padding:14px 18px;background:#fdfefe;margin-bottom:16px;font-size:14.5px;line-height:1.65;}
 .ielts-reading-question-section-content p{margin:0 0 8px;}
 .ielts-reading-question-section-content p:last-child{margin-bottom:0;}
@@ -364,62 +370,45 @@ body.fullscreen-active .main-split{height:100vh;max-width:none;margin:0;border-r
             <div class="q-group">
               <h3>Questions 1–7</h3>
               <div class="q-instr">
-                <p>Complete the following summary of the paragraphs of the
-                  Reading Passage. Drag the correct word or phrase from the bank
-                  into each blank.</p>
+                <p>Complete the summary below. Write <strong>NO MORE THAN THREE
+                    WORDS</strong> from the passage for each answer.</p>
                 <p>Write your answers in boxes <strong>1–7</strong> on your
                   answer sheet.</p>
               </div>
 
-              <div class="summary-drop-bank" id="summary-bank-q1-7">
-                <div class="summary-drop-item" draggable="true"
-                  data-word="hunting">hunting</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="overkill model">overkill model</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="disease">disease</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="empirical evidence">empirical evidence</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="climatic instability">climatic instability</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="geographical ranges">geographical ranges</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="Younger Dryas event">Younger Dryas event</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="mammoths">mammoths</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="North America">North America</div>
-                <div class="summary-drop-item" draggable="true"
-                  data-word="fossils">fossils</div>
-              </div>
-
-              <div class="summary-box">
-                The reason why had big size mammals become extinct 11,000 years
-                ago is under hot debate. First explanation is that <span
-                  class="qnum">1</span><span class="summary-drop-slot"
-                  data-q="1" data-answer="hunting"></span> of human made it
-                happen. This so called <span class="qnum">2</span><span
-                  class="summary-drop-slot" data-q="2"
-                  data-answer="overkill model"></span> began from 1960s
-                suggested by an expert, who however received criticism of lack
-                of further information. Another assumption promoted by MacPhee
-                is that deadly <span class="qnum">3</span><span
-                  class="summary-drop-slot" data-q="3"
-                  data-answer="disease"></span> from human causes their demises.
-                However his hypothesis required more <span
-                  class="qnum">4</span><span class="summary-drop-slot"
-                  data-q="4" data-answer="empirical evidence"></span> to testify
-                its validity. Graham proposed a third hypothesis that <span
-                  class="qnum">5</span><span class="summary-drop-slot"
-                  data-q="5" data-answer="climatic instability"></span> in
-                Pleistocene epoch drove some species disappear, reduced <span
-                  class="qnum">6</span><span class="summary-drop-slot"
-                  data-q="6" data-answer="geographical ranges"></span> posed a
-                dangerous signal to these giants, and <span
-                  class="qnum">7</span><span class="summary-drop-slot"
-                  data-q="7" data-answer="Younger Dryas event"></span> finally
-                wiped them out.
+              <div class="summary-box"
+                aria-label="Questions 1 to 7: summary completion">
+                The cause of the extinction of large mammals around 11,000 years
+                ago remains debated. One explanation is that human
+                <span class="qnum">1</span><input class="gap-input" type="text"
+                  name="q1" data-q="1" aria-label="Question 1 answer"
+                  autocomplete="off" spellcheck="false"> caused the extinctions.
+                This theory, known as the
+                <span class="qnum">2</span><input class="gap-input" type="text"
+                  name="q2" data-q="2" aria-label="Question 2 answer"
+                  autocomplete="off" spellcheck="false">, was proposed in the
+                1960s. Another hypothesis suggests that a deadly
+                <span class="qnum">3</span><input class="gap-input" type="text"
+                  name="q3" data-q="3" aria-label="Question 3 answer"
+                  autocomplete="off" spellcheck="false"> introduced by humans
+                caused the animals' demise. However, this theory still needs
+                more
+                <span class="qnum">4</span><input class="gap-input" type="text"
+                  name="q4" data-q="4" aria-label="Question 4 answer"
+                  autocomplete="off" spellcheck="false"> to support it. A third
+                explanation links the extinction to
+                <span class="qnum">5</span><input class="gap-input" type="text"
+                  name="q5" data-q="5" aria-label="Question 5 answer"
+                  autocomplete="off" spellcheck="false"> during the Pleistocene.
+                Habitat changes left many large mammals with shrinking
+                <span class="qnum">6</span><input class="gap-input" type="text"
+                  name="q6" data-q="6" aria-label="Question 6 answer"
+                  autocomplete="off" spellcheck="false">, and the final major
+                climate fluctuation, the
+                <span class="qnum">7</span><input class="gap-input" type="text"
+                  name="q7" data-q="7" aria-label="Question 7 answer"
+                  autocomplete="off" spellcheck="false">, pushed them towards
+                extinction.
               </div>
 
               <div class="q" data-q="1" style="display:none"><div
@@ -639,10 +628,8 @@ function normalize(s){
 function getUserAnswer(n){
   const r = document.querySelector(`input[type=radio][name=q${n}]:checked`);
   if (r) return r.value;
-  const t = document.querySelector(`input[type=text][name=q${n}]`);
+  const t = document.querySelector(`.gap-input[name=q${n}], input[type=text][name=q${n}]`);
   if (t) return t.value;
-  const slot = document.querySelector(`.summary-drop-slot[data-q="${n}"]`);
-  if (slot) return slot.dataset.word || "";
   return "";
 }
 function isCorrect(n, ua){
@@ -760,13 +747,14 @@ function goToQuestion(n){
   }
   if (part !== currentPart) switchPart(part);
   currentQuestion = n;
-  const qEl = document.querySelector(`.q[data-q="${n}"]`);
+  const gapInput = document.querySelector(`.gap-input[name=q${n}]`);
+  const qEl = document.querySelector(`tr.q[data-q="${n}"]`) || gapInput || document.querySelector(`.q[data-q="${n}"]`);
   if (qEl){
     qEl.scrollIntoView({behavior:"smooth", block:"center"});
     qEl.classList.add("highlight");
     setTimeout(()=>qEl.classList.remove("highlight"), 1600);
   }
-  const input = document.querySelector(`input[name=q${n}], input[type=radio][name=q${n}]`);
+  const input = document.querySelector(`input[name=q${n}]`);
   if (input && !input.disabled) input.focus({preventScroll:true});
   updatePaletteCurrent();
   updateNavButtons();
@@ -896,52 +884,6 @@ fullscreenBtn.addEventListener("click", async () => {
   } catch(err){ toast("Fullscreen not supported in this browser."); }
 });
 document.addEventListener("fullscreenchange", updateFullscreenUI);
-
-/* ================= SUMMARY DRAG-AND-DROP ================= */
-function initSummaryDragDrop(){
-  document.querySelectorAll(".summary-drop-item").forEach(item => {
-    item.addEventListener("dragstart", e => {
-      e.dataTransfer.setData("text/plain", item.dataset.word);
-      e.dataTransfer.effectAllowed = "move";
-      item.classList.add("dragging");
-    });
-    item.addEventListener("dragend", () => item.classList.remove("dragging"));
-  });
-  document.querySelectorAll(".summary-drop-slot").forEach(slot => {
-    slot.addEventListener("dragover", e => {
-      e.preventDefault();
-      if (slot.dataset.word) return;
-      slot.classList.add("drag-over");
-    });
-    slot.addEventListener("dragleave", () => slot.classList.remove("drag-over"));
-    slot.addEventListener("drop", e => {
-      e.preventDefault();
-      slot.classList.remove("drag-over");
-      const word = e.dataTransfer.getData("text/plain");
-      if (!word) return;
-      if (slot.dataset.word){
-        const oldItem = document.querySelector(`.summary-drop-item[data-word="${slot.dataset.word}"]`);
-        if (oldItem) oldItem.classList.remove("used");
-      }
-      slot.textContent = word;
-      slot.dataset.word = word;
-      slot.classList.add("filled");
-      const bankItem = document.querySelector(`.summary-drop-item[data-word="${word}"]`);
-      if (bankItem) bankItem.classList.add("used");
-      refreshPaletteAnswered();
-    });
-    slot.addEventListener("click", () => {
-      if (!slot.dataset.word) return;
-      const oldItem = document.querySelector(`.summary-drop-item[data-word="${slot.dataset.word}"]`);
-      if (oldItem) oldItem.classList.remove("used");
-      slot.textContent = "";
-      delete slot.dataset.word;
-      slot.classList.remove("filled","correct","wrong");
-      refreshPaletteAnswered();
-    });
-  });
-}
-initSummaryDragDrop();
 
 /* ================= HIGHLIGHT / NOTE ================= */
 const hlPopup = document.getElementById("hl-popup");
@@ -1135,7 +1077,7 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     q.classList.remove("correct","wrong");
     const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
   });
-  document.querySelectorAll(".summary-drop-slot").forEach(s => s.classList.remove("correct","wrong"));
+  document.querySelectorAll(".gap-input").forEach(input => input.classList.remove("correct","wrong"));
   document.querySelectorAll(".ielts-reading-palette-item").forEach(b => b.classList.remove("correct","wrong"));
 
   const rows = [];
@@ -1147,8 +1089,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     const ok = isCorrect(n, ua);
     if (ok) score++;
     qEl.classList.add(ok ? "correct" : "wrong");
-    const slot = document.querySelector(`.summary-drop-slot[data-q="${n}"]`);
-    if (slot) slot.classList.add(ok ? "correct" : "wrong");
+    const gapInput = document.querySelector(`.gap-input[name=q${n}]`);
+    if (gapInput) {
+      gapInput.classList.add(ok ? "correct" : "wrong");
+      gapInput.setAttribute("aria-invalid", ok ? "false" : "true");
+    }
     const fb = qEl.querySelector(".feedback");
     if (fb){
       const key = (ANSWER_KEY[n]||[]).slice(0,3).join(" / ");
@@ -1166,7 +1111,14 @@ document.getElementById("submitBtn").addEventListener("click", () => {
   rows.forEach(r => {
     const ok = isCorrect(r.n, r.ua === "—" ? "" : r.ua);
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${r.n}</td><td class="${ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    const numCell = document.createElement("td");
+    const answerCell = document.createElement("td");
+    const keyCell = document.createElement("td");
+    numCell.textContent = r.n;
+    answerCell.textContent = r.ua;
+    answerCell.className = ok ? "correct" : "wrong";
+    keyCell.textContent = r.key || "—";
+    tr.append(numCell, answerCell, keyCell);
     tbody.appendChild(tr);
   });
   const chip = document.getElementById("bandChip");
@@ -1183,7 +1135,11 @@ document.getElementById("reviewBtn").addEventListener("click", () => {
   for (let n=1; n<=TOTAL_QUESTIONS; n++){
     const ua = getUserAnswer(n);
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || "—"}</td>`;
+    const numCell = document.createElement("td");
+    const answerCell = document.createElement("td");
+    numCell.textContent = n;
+    answerCell.textContent = ua.trim() || "—";
+    tr.append(numCell, answerCell);
     tbody.appendChild(tr);
   }
   document.getElementById("previewOverlay").classList.add("show");
@@ -1222,10 +1178,10 @@ function doReset(){
     q.classList.remove("correct","wrong");
     const fb = q.querySelector(".feedback"); if (fb) fb.textContent = "";
   });
-  document.querySelectorAll(".summary-drop-slot").forEach(s => {
-    s.textContent = ""; delete s.dataset.word; s.classList.remove("filled","correct","wrong");
+  document.querySelectorAll(".gap-input").forEach(input => {
+    input.classList.remove("correct","wrong");
+    input.removeAttribute("aria-invalid");
   });
-  document.querySelectorAll(".summary-drop-item").forEach(i => i.classList.remove("used"));
   document.querySelectorAll(".ielts-reading-palette-item").forEach(b => b.classList.remove("correct","wrong","answered"));
   const chip = document.getElementById("bandChip");
   chip.textContent = "--"; chip.classList.remove("show");
