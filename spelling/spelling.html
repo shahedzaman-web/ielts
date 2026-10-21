@@ -446,14 +446,44 @@ function hintFor(word){
   return h;
 }
 
-/* ============ BOOT / SEED / LOAD ============ */
-async function seedIfEmpty(){
-  const existing = await dbAll('words');
-  if (existing.length > 0) return;
-  const now = Date.now();
-  // Seed in parallel so a fresh install does not wait for hundreds of individual transactions.
-  await Promise.all(SEED.map(text => dbAdd('words', { text, mistakes:0, totalCorrect:0, totalWrong:0, mastered:0, createdAt:now }).catch(() => {})));
+/* ============ SEED SYNC ============ */
+// Older versions of this app only seeded the database once, on the empty
+// first load. That meant words added to data.js later were never imported.
+// These helpers fix that: on every boot we insert only the seed words that
+// are not already present, and we remember deletions so they don't reappear.
+async function getRemovedSeed(){
+  const s = await dbAll('settings');
+  const row = s.find(x => x.key === 'removedSeedWords');
+  return new Set((row && Array.isArray(row.value) ? row.value : []).map(norm));
 }
+async function rememberRemovedSeed(text){
+  const s = await dbAll('settings');
+  const row = s.find(x => x.key === 'removedSeedWords');
+  const list = new Set((row && Array.isArray(row.value) ? row.value : []).map(norm));
+  list.add(norm(text));
+  await dbPut('settings', { key:'removedSeedWords', value: [...list] });
+}
+async function syncSeedWords(){
+  const [existing, removed] = await Promise.all([dbAll('words'), getRemovedSeed()]);
+  const have = new Set(existing.map(w => norm(w.text)));
+  const now = Date.now();
+
+  // Only insert seed words that are neither stored nor explicitly removed.
+  const missing = SEED.filter(text => !have.has(norm(text)) && !removed.has(norm(text)));
+  if (!missing.length) return;
+
+  await Promise.all(missing.map(text =>
+    dbAdd('words', {
+      text,
+      mistakes: 0,
+      totalCorrect: 0,
+      totalWrong: 0,
+      mastered: 0,
+      createdAt: now
+    }).catch(() => {})   // ignore unique-index collisions from races
+  ));
+}
+
 async function loadAll(){
   state.words = await dbAll('words');
   state.words.sort((a,b) => a.id - b.id);
@@ -982,6 +1012,11 @@ function renderManage(){
       else if (btn.dataset.act === 'del'){
         if (!confirm(`Delete "${w.text}"?`)) return;
         await dbDel('words', id);
+        // If this text comes from SEED, remember the removal so syncSeedWords
+        // does not put it back on the next reload.
+        if (SEED.some(t => norm(t) === norm(w.text))){
+          try { await rememberRemovedSeed(w.text); } catch(_){}
+        }
         await loadAll();
         renderManage(); renderPicker(); updateHeader();
         toast('Deleted', 'ok');
@@ -1152,7 +1187,7 @@ $('input').addEventListener('keydown', e => { if (e.key === 'Escape'){ $('input'
 (async function boot(){
   try {
     await openDB();
-    await seedIfEmpty();
+    await syncSeedWords();   // was seedIfEmpty(): now also imports new SEED entries
     await loadAll();
     renderPicker();
     updateHeader();

@@ -1552,8 +1552,11 @@ quaintly|adverb|পুরোনো দিনের মনোরম ঢঙে / �
 sedentary|adj|বেশির ভাগ সময় বসে থাকা / কম শারীরিক সক্রিয়তাপূর্ণ|Inactive, Seated|health
 tranquillity|noun|প্রশান্তি / নিরুপদ্রব শান্ত অবস্থা|Peace, Calm, Serenity|env
 unravel|verb|উন্মোচন করা, জট খোলা|Solve, Untangle, Decipher|acad
-vulnerable|adj|অরক্ষিত / সহজে ক্ষতিগ্রস্ত হতে পারে এমন|Exposed, Defenceless, At Risk|health`;
-
+vulnerable|adj|অরক্ষিত / সহজে ক্ষতিগ্রস্ত হতে পারে এমন|Exposed, Defenceless, At Risk|health
+derelict|adj|অসম্পন্ন / অসম্পন্ন স্থান|Abandoned, Defunct, Inactive|env
+burial urn|n|দাফনের কলস|Casket, Tomb, Coffin|env
+descriptivists |n|ভাষা বর্ণনাবাদ|Descriptivist, Descriptive, Descriptive Literature|desc
+`
 
 
 /* =========================================================
