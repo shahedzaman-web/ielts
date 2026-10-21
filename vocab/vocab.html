@@ -87,11 +87,15 @@
   .flashcard{
     background:linear-gradient(160deg,rgba(167,139,250,.08),rgba(34,211,238,.05));
     border:1.5px solid var(--border);border-radius:20px;
-    padding:32px 24px;min-height:300px;
+    padding:76px 24px 28px;min-height:320px;
     display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-    margin-bottom:16px;position:relative;transition:all .25s ease;
+    margin-bottom:14px;position:relative;
+    transition:border-color .25s ease,background .25s ease;
+    cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;
+    will-change:transform;
   }
-  .flashcard.revealed{border-color:rgba(34,197,94,.4);background:linear-gradient(160deg,rgba(34,197,94,.08),rgba(34,211,238,.05))}
+  .flashcard:active{cursor:grabbing}
+  .flashcard.dragging{transition:none}
   .flashcard .fc-tag{position:absolute;top:14px;left:16px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
   .flashcard .fc-pos{position:absolute;top:14px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);background:rgba(167,139,250,.15);padding:3px 9px;border-radius:999px}
   .flashcard .fc-topic{
@@ -100,25 +104,27 @@
     padding:3px 9px;border-radius:999px;
     background:rgba(34,211,238,.15);color:#67e8f9;
   }
-  .flashcard .fc-word{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;word-break:break-word;line-height:1.15;margin-top:20px}
-  .flashcard .fc-bangla{font-size:22px;font-weight:700;color:#fde68a;margin-bottom:10px}
-  .flashcard .fc-hint{font-size:13px;color:var(--muted);font-style:italic}
-  .flashcard .fc-def{font-size:15.5px;line-height:1.55;color:var(--text);max-width:600px;margin-bottom:14px}
+  .flashcard .fc-word{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;word-break:break-word;line-height:1.15}
+  .flashcard .fc-bangla{font-size:22px;font-weight:700;color:#fde68a;margin-bottom:12px}
+  .flashcard .fc-def{font-size:15.5px;line-height:1.55;color:var(--text);max-width:600px;margin-bottom:12px}
   .flashcard .fc-example{
     font-size:14px;color:var(--muted);font-style:italic;
     padding:12px 16px;border-left:3px solid var(--purple);background:rgba(167,139,250,.06);
-    border-radius:8px;max-width:600px;text-align:left;margin-bottom:10px;
+    border-radius:8px;max-width:600px;text-align:left;margin-bottom:12px;
   }
   .flashcard .fc-syn{font-size:12.5px;color:var(--muted);max-width:600px;text-align:center}
   .flashcard .fc-syn b{color:var(--accent2)}
 
-  .rating-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+  .rating-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:6px}
   .rate-btn{padding:14px 10px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-weight:700;font-size:13px;transition:all .15s ease}
   .rate-btn:hover{transform:translateY(-1px)}
   .rate-btn.hard:hover{border-color:#ef4444;color:#fca5a5}
   .rate-btn.good:hover{border-color:#f59e0b;color:#fde68a}
   .rate-btn.easy:hover{border-color:#22c55e;color:#86efac}
+  .rate-btn.known:hover{border-color:#22d3ee;color:#67e8f9}
   .rate-btn small{display:block;font-weight:500;color:var(--muted);font-size:11px;margin-top:2px}
+
+  .swipe-hint{text-align:center;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:12px;opacity:.75}
 
   .play-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;justify-content:center}
   .btn{appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease,background .18s ease,border-color .18s ease}
@@ -128,7 +134,7 @@
   .btn.primary:hover{filter:brightness(1.08)}
   .btn.ghost{background:transparent}
   .btn.small{padding:6px 11px;font-size:12px}
-  .actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;align-items:center}
+  .actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;align-items:center}
   .actions .spacer{flex:1}
 
   .session-summary{text-align:center;padding:24px 8px}
@@ -202,8 +208,8 @@
     .word-row{grid-template-columns:1fr auto}
     .flashcard .fc-word{font-size:26px}
     .flashcard .fc-bangla{font-size:18px}
-    .flashcard{padding:24px 18px;min-height:260px}
-    .rating-row{grid-template-columns:1fr;gap:6px}
+    .flashcard{padding:64px 18px 22px;min-height:260px}
+    .rating-row{grid-template-columns:repeat(2,1fr);gap:6px}
   }
 </style>
   </head>
@@ -308,46 +314,33 @@
               </div>
 
               <div class="flashcard" id="flashcard">
-                <div class="fc-tag" id="fcTag">WORD</div>
+                <div class="fc-tag">WORD</div>
                 <div class="fc-pos" id="fcPos">—</div>
                 <div class="fc-topic" id="fcTopic">—</div>
                 <div class="fc-word" id="fcWord">—</div>
                 <div class="fc-bangla" id="fcBangla"></div>
-                <div class="fc-hint" id="fcHint">Tap
-                  "Reveal meaning" to check</div>
-                <div id="fcBack"
-                  style="display:none;width:100%;flex-direction:column;align-items:center">
-                  <div class="fc-def" id="fcDef"></div>
-                  <div class="fc-example"
-                    id="fcExample"></div>
-                  <div class="fc-syn" id="fcSyn"></div>
-                </div>
+                <div class="fc-def" id="fcDef"></div>
+                <div class="fc-example" id="fcExample"></div>
+                <div class="fc-syn" id="fcSyn"></div>
               </div>
 
-              <div class="play-row" id="revealRow">
-                <button class="btn primary" id="bReveal">👁 Reveal
-                  meaning</button>
-                <button class="btn" id="bPlay">🔊 Play word</button>
-                <button class="btn know" id="bKnow">✅ Already
-                  know</button>
-              </div>
-
-              <div class="rating-row" id="ratingRow"
-                style="display:none">
+              <div class="rating-row" id="ratingRow">
                 <button class="rate-btn hard" data-rate="hard"
-                  type="button">😰 Hard<small>Show again
-                    soon</small></button>
+                  type="button">😰 Hard<small>← or 1</small></button>
                 <button class="rate-btn good" data-rate="good"
-                  type="button">🙂 Good<small>Normal
-                    interval</small></button>
+                  type="button">🙂 Good<small>or 2</small></button>
                 <button class="rate-btn easy" data-rate="easy"
-                  type="button">😎 Easy<small>Longer
-                    interval</small></button>
+                  type="button">😎 Easy<small>→ or 3</small></button>
+                <button class="rate-btn known" data-rate="known"
+                  type="button">✅ Known<small>↑ or K</small></button>
               </div>
+
+              <div class="swipe-hint">💡 Swipe the card, use arrow keys, or
+                click a button</div>
 
               <div class="actions">
-                <button class="btn ghost small" id="bFlip"
-                  type="button">🔄 Flip card</button>
+                <button class="btn ghost small" id="bPlay"
+                  type="button">🔊 Play word</button>
                 <span class="spacer"></span>
                 <button class="btn ghost small" id="bExit"
                   type="button">Exit</button>
@@ -364,7 +357,9 @@
                 id="listCount"
                 style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
             <p class="section-sub">Add, edit, search, sort or remove
-              words.</p>
+              words. Use Export / Import to back up everything (words +
+              progress + streak) or transfer your data to another
+              device.</p>
             <div class="search-row">
               <input type="text" id="search"
                 placeholder="Search word, Bangla, meaning…" />
@@ -404,8 +399,12 @@
               </select>
               <button class="btn primary" id="bAdd">+ Add
                 word</button>
-              <button class="btn" id="bExport">Export</button>
-              <button class="btn" id="bImport">Import</button>
+              <button class="btn" id="bExport"
+                title="Download all data — words, progress, streak &amp; history">💾
+                Export all</button>
+              <button class="btn" id="bImport"
+                title="Restore from a previous backup (merge progress)">📥
+                Import</button>
               <button class="btn ghost" id="bReseed">↻
                 Reset</button>
               <input type="file" id="importFile" accept=".json"
@@ -2055,7 +2054,7 @@ function parseSeed(){
   return out;
 }
 
-const DECK_SIZE = 25, DB_NAME = 'VocabTopicDB', DB_VERSION = 1;
+const DECK_SIZE = 25, DB_NAME = 'VocabTopicDB', DB_VERSION = 2;
 
 let FALLBACK = false;
 
@@ -2104,7 +2103,7 @@ function toast(msg, kind){
   el.textContent = msg;
   el.className = 'toast show ' + (kind||'');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>{ el.className = 'toast ' + (kind||''); }, 2000);
+  toastTimer = setTimeout(()=>{ el.className = 'toast ' + (kind||''); }, 2200);
 }
 
 /* ============ SPEECH ============ */
@@ -2174,6 +2173,13 @@ async function loadAll(){
     w.easy = Math.max(0, Math.floor(Number(w.easy)||0));
     w.known = Math.max(0, Math.floor(Number(w.known)||0));
     if (!w.topic) w.topic = 'every';
+
+    // Legacy "Already know" migration
+    if (w.known === 0 && w.level >= MAX_LEVEL && w.reviews === 1 &&
+        w.easy === 1 && w.hard === 0 && w.good === 0) {
+      w.known = 1;
+      try { await dbPut('words', w); } catch(_){}
+    }
   }
   const settings = await dbAll('settings').catch(()=>[]);
   settings.forEach(s => { if (s.key === 'streak') state.streak = s.value || 0; });
@@ -2203,16 +2209,17 @@ $('tabs').addEventListener('click', e => {
 
 /* ============ COUNTS ============ */
 function getCounts(){
-  let total = 0, mastered = 0, learning = 0, fresh = 0, hardTotal = 0, reviewTotal = 0;
+  let total = 0, mastered = 0, learning = 0, fresh = 0, hardTotal = 0, reviewTotal = 0, knownTotal = 0;
   for (const w of state.words){
     total++;
     reviewTotal += Number(w.reviews)||0;
     hardTotal += Number(w.hard)||0;
+    knownTotal += Number(w.known)||0;
     if (isMastered(w)) mastered++;
     else if (isNew(w)) fresh++;
     else learning++;
   }
-  return { total, mastered, learning, fresh, hardTotal, reviewTotal,
+  return { total, mastered, learning, fresh, hardTotal, reviewTotal, knownTotal,
            masteredPct: total ? Math.round((mastered/total)*100) : 0 };
 }
 function updateHeader(){
@@ -2244,8 +2251,9 @@ function renderTopics(){
   const stats = {};
   for (const w of state.words){
     const t = w.topic || 'every';
-    if (!stats[t]) stats[t] = { total:0, mastered:0, learning:0, fresh:0 };
+    if (!stats[t]) stats[t] = { total:0, mastered:0, learning:0, fresh:0, known:0 };
     stats[t].total++;
+    if ((Number(w.known)||0) > 0) stats[t].known++;
     if (isMastered(w)) stats[t].mastered++;
     else if (isNew(w)) stats[t].fresh++;
     else stats[t].learning++;
@@ -2262,6 +2270,7 @@ function renderTopics(){
     const cls = ['topic-card'];
     if (allDone) cls.push('done');
     else if (s.learning > 0) cls.push('in-progress');
+    const knownMeta = s.known > 0 ? `✅ ${s.known} · ` : '';
     html += `
       <div class="${cls.join(' ')}" data-topic="${esc(code)}" role="button" tabindex="0">
         <span class="tc-icon">${t.icon}</span>
@@ -2272,7 +2281,7 @@ function renderTopics(){
         </div>
         <div class="tc-meta">
           <span>🏆 ${s.mastered} · 📚 ${s.learning}</span>
-          <span>✨ ${s.fresh} new</span>
+          <span>${knownMeta}✨ ${s.fresh}</span>
         </div>
       </div>`;
   }
@@ -2428,6 +2437,14 @@ function buildPool(mode){
 
 function shuffleArr(a){ const x = a.slice(); for (let i = x.length-1; i>0; i--){ const j = Math.floor(Math.random()*(i+1)); [x[i],x[j]] = [x[j],x[i]]; } return x; }
 
+function resetFlashcardSwipe(){
+  const fc = $('flashcard'); if (!fc) return;
+  fc.classList.remove('dragging');
+  fc.style.transition = '';
+  fc.style.transform = '';
+  fc.style.opacity = '';
+}
+
 function startSession(mode){
   let pool = buildPool(mode);
   if (!pool.length){ toast('Nothing to practise here 🎉', 'ok'); return; }
@@ -2440,11 +2457,12 @@ function startSession(mode){
     ratings: { hard:0, good:0, easy:0, known:0 },
     start: Date.now(),
     current: null,
-    revealed: false
+    revealed: true
   };
   $('picker').style.display = 'none';
   $('active').style.display = 'block';
   $('done').style.display = 'none';
+  resetFlashcardSwipe();
   nextCard();
 }
 
@@ -2460,7 +2478,6 @@ function nextCard(){
   if (!active.length) return endSession();
   const id = active[0];
   s.current = id;
-  s.revealed = false;
   renderCard();
   const w = state.words.find(x => x.id === id);
   if (w) setTimeout(() => speak(w.word), 140);
@@ -2469,57 +2486,33 @@ function nextCard(){
 function renderCard(){
   const s = state.session, w = currentWord();
   if (!s || !w) return;
+
+  // Reset any lingering swipe animation
+  resetFlashcardSwipe();
+
   $('sBar').style.width = ((s.reviewed.size / s.pool.length) * 100).toFixed(1) + '%';
   $('sLabel').textContent = s.label;
   $('sReviewed').textContent = s.reviewed.size;
   $('sTotal').textContent = s.pool.length;
 
-  $('flashcard').classList.remove('revealed');
-  $('fcTag').textContent = 'WORD';
   $('fcPos').textContent = w.pos || '—';
   const ti = topicInfo(w.topic);
   $('fcTopic').textContent = `${ti.icon} ${ti.name}`;
   $('fcWord').textContent = w.word;
-  $('fcBangla').textContent = '';
-  $('fcBangla').style.display = 'none';
-  $('fcHint').style.display = 'block';
-  $('fcHint').textContent = 'Tap "Reveal meaning" to check';
-  $('fcBack').style.display = 'none';
-  $('revealRow').style.display = 'flex';
-  $('ratingRow').style.display = 'none';
-  updateHeader();
-}
-
-function revealCard(){
-  const s = state.session, w = currentWord();
-  if (!s || !w || s.revealed) return;
-  s.revealed = true;
-  $('flashcard').classList.add('revealed');
-  $('fcTag').textContent = 'MEANING';
-  $('fcPos').textContent = w.pos || '—';
-  $('fcWord').textContent = w.word;
-  $('fcHint').style.display = 'none';
   $('fcBangla').textContent = w.bangla || '';
   $('fcBangla').style.display = w.bangla ? 'block' : 'none';
-  $('fcBack').style.display = 'flex';
   $('fcDef').textContent = w.definition || '';
+  $('fcDef').style.display = w.definition ? 'block' : 'none';
   $('fcExample').textContent = w.example ? `“${w.example}”` : '';
   $('fcExample').style.display = w.example ? 'block' : 'none';
   $('fcSyn').innerHTML = w.synonyms ? `<b>Synonyms:</b> ${esc(w.synonyms)}` : '';
   $('fcSyn').style.display = w.synonyms ? 'block' : 'none';
-  $('revealRow').style.display = 'none';
-  $('ratingRow').style.display = 'grid';
-}
-
-function flipCard(){
-  const w = currentWord(); if (!w) return;
-  if (state.session.revealed){ renderCard(); } else { revealCard(); }
+  updateHeader();
 }
 
 function rateCard(rating){
   const s = state.session, w = currentWord();
   if (!s || !w) return;
-  if (!s.revealed) return;
   if (s.reviewed.has(w.id)) return;
   const before = Number(w.level)||0;
   let after = before;
@@ -2536,12 +2529,30 @@ function rateCard(rating){
   const label = rating === 'easy' ? '⭐ Easy' : rating === 'good' ? '👍 Good' : '😰 Hard';
   toast(`${label}: ${w.word} · L${before} → L${after}`, rating === 'hard' ? 'err' : 'ok');
   updateHeader();
-  setTimeout(nextCard, 350);
+  setTimeout(nextCard, 300);
+}
+
+function markKnown(){
+  const s = state.session, w = currentWord();
+  if (!s || !w) return;
+  if (s.reviewed.has(w.id)) return;
+  w.level = MAX_LEVEL;
+  w.reviews = (Number(w.reviews)||0) + 1;
+  w.known = (Number(w.known)||0) + 1;
+  w.lastReviewed = Date.now();
+  saveWord(w);
+  saveStreak();
+  s.ratings.known = (s.ratings.known||0) + 1;
+  s.reviewed.add(w.id);
+  toast(`✅ Already known: ${w.word}`, 'ok');
+  updateHeader();
+  setTimeout(nextCard, 300);
 }
 
 function endSession(){
   const s = state.session;
   if (!s) return;
+  resetFlashcardSwipe();
   const duration = Math.round((Date.now() - s.start) / 1000);
   if (!FALLBACK){
     dbAdd('history', { label:s.label, reviewed:s.reviewed.size, total:s.pool.length,
@@ -2580,11 +2591,82 @@ function endSession(){
 function exitSession(){
   if (!state.session) return;
   if (!confirm('Exit this session? Progress is saved.')) return;
+  resetFlashcardSwipe();
   state.session = null;
   $('active').style.display = 'none';
   $('picker').style.display = 'block';
   renderPicker();
 }
+
+/* ============ SWIPE GESTURE (mouse + touch) ============ */
+(function setupSwipe(){
+  const fc = $('flashcard');
+  if (!fc) return;
+  let start = null;
+  const T = 90; // pixels threshold
+
+  fc.addEventListener('pointerdown', e => {
+    if (!state.session) return;
+    if (e.target.closest('button')) return;
+    start = { x: e.clientX, y: e.clientY, pointerId: e.pointerId };
+    fc.classList.add('dragging');
+    try { fc.setPointerCapture(e.pointerId); } catch(_) {}
+  });
+
+  fc.addEventListener('pointermove', e => {
+    if (!start) return;
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
+    const rotate = dx * 0.06;
+    fc.style.transform = `translate(${dx}px, ${dy}px) rotate(${rotate}deg)`;
+    if (Math.abs(dx) > 6 || Math.abs(dy) > 6){
+      try { e.preventDefault(); } catch(_) {}
+    }
+  });
+
+  function finish(e){
+    if (!start) return;
+    fc.classList.remove('dragging');
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
+    const wasPointerId = start.pointerId;
+    start = null;
+
+    let action = null;
+    if (Math.abs(dy) > Math.abs(dx) && dy < -T) action = 'known';
+    else if (dx > T) action = 'easy';
+    else if (dx < -T) action = 'hard';
+
+    if (action){
+      const tx = action === 'easy' ? 600 : action === 'hard' ? -600 : 0;
+      const ty = action === 'known' ? -600 : 0;
+      const rot = tx * 0.06;
+      fc.style.transition = 'transform .25s ease, opacity .25s ease';
+      fc.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
+      fc.style.opacity = '0';
+      setTimeout(() => {
+        if (action === 'known') markKnown(); else rateCard(action);
+      }, 200);
+    } else {
+      fc.style.transition = 'transform .2s ease';
+      fc.style.transform = '';
+      fc.style.opacity = '';
+      setTimeout(() => { fc.style.transition = ''; }, 220);
+    }
+    try { fc.releasePointerCapture(wasPointerId); } catch(_) {}
+  }
+
+  fc.addEventListener('pointerup', finish);
+  fc.addEventListener('pointercancel', () => {
+    if (!start) return;
+    start = null;
+    fc.classList.remove('dragging');
+    fc.style.transition = 'transform .2s ease';
+    fc.style.transform = '';
+    fc.style.opacity = '';
+    setTimeout(() => { fc.style.transition = ''; }, 220);
+  });
+})();
 
 /* ============ MANAGE ============ */
 function sortWords(list, sortBy){
@@ -2792,23 +2874,35 @@ $('bReseed').addEventListener('click', async () => {
   toast('Word list reloaded', 'ok');
 });
 
-/* ============ IMPORT / EXPORT ============ */
-$('bExport').addEventListener('click', () => {
+/* ============ EXPORT / IMPORT (full backup) ============ */
+$('bExport').addEventListener('click', async () => {
+  const history = FALLBACK ? [] : await dbAll('history').catch(()=>[]);
   const data = {
+    app: 'vocab-hub',
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    streak: state.streak,
     words: state.words.map(w => ({
-      word:w.word, pos:w.pos||'', bangla:w.bangla||'', definition:w.definition||'',
-      example:w.example||'', synonyms:w.synonyms||'', topic:w.topic||'every',
-      level:w.level||0, reviews:w.reviews||0, hard:w.hard||0, good:w.good||0, easy:w.easy||0, known:w.known||0
+      word: w.word, pos: w.pos||'', bangla: w.bangla||'', definition: w.definition||'',
+      example: w.example||'', synonyms: w.synonyms||'', topic: w.topic||'every',
+      level: w.level||0, reviews: w.reviews||0, hard: w.hard||0, good: w.good||0,
+      easy: w.easy||0, known: w.known||0
     })),
-    exportedAt: new Date().toISOString(), version: 1
+    history: history.map(h => ({
+      label: h.label||'', reviewed: h.reviewed||0, total: h.total||0,
+      hard: h.hard||0, good: h.good||0, easy: h.easy||0, known: h.known||0,
+      duration: h.duration||0, ts: h.ts||Date.now()
+    }))
   };
+  const stamp = new Date().toISOString().slice(0,10);
   const blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = `vocab-topic-words-${Date.now()}.json`; a.click();
-  URL.revokeObjectURL(url);
-  toast('Exported', 'ok');
+  a.href = url; a.download = `vocab-backup-${stamp}.json`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast(`Exported ${data.words.length} words · streak ${data.streak} · ${data.history.length} sessions`, 'ok');
 });
+
 $('bImport').addEventListener('click', () => $('importFile').click());
 $('importFile').addEventListener('change', async e => {
   const f = e.target.files[0]; if (!f) return;
@@ -2816,35 +2910,83 @@ $('importFile').addEventListener('change', async e => {
     const text = await f.text();
     const data = JSON.parse(text);
     const incoming = Array.isArray(data) ? data : (data.words || []);
-    let added = 0, skipped = 0;
+
+    // 1) Restore streak
+    if (typeof data.streak === 'number' && data.streak >= 0){
+      state.streak = data.streak;
+      await saveStreak();
+    }
+
+    // 2) Merge words (highest progress wins — works for device transfer)
+    let added = 0, updated = 0, skipped = 0;
     for (const item of incoming){
       const word = (item.word || item.text || '').trim();
       const definition = (item.definition || item.meaning || '').trim();
-      if (!word || !definition) continue;
-      if (state.words.find(x => norm(x.word) === norm(word))){ skipped++; continue; }
-      const obj = {
-        word, definition,
-        pos: item.pos || '',
-        topic: TOPICS[item.topic] ? item.topic : 'every',
-        bangla: item.bangla || '',
-        example: item.example || '',
-        synonyms: item.synonyms || '',
-        level: Math.max(0, Math.min(MAX_LEVEL, Math.floor(Number(item.level)||0))),
-        reviews: Math.max(0, Math.floor(Number(item.reviews)||0)),
-        hard: Math.max(0, Math.floor(Number(item.hard)||0)),
-        good: Math.max(0, Math.floor(Number(item.good)||0)),
-        easy: Math.max(0, Math.floor(Number(item.easy)||0)),
-        known: Math.max(0, Math.floor(Number(item.known)||0)),
-        createdAt: Date.now(), lastReviewed: 0
-      };
-      if (FALLBACK){ obj.id = state._nextId++; state.words.push(obj); }
-      else { try { await dbAdd('words', obj); } catch(_) { skipped++; continue; } }
-      added++;
+      if (!word) continue;
+
+      const fileLevel   = Math.max(0, Math.min(MAX_LEVEL, Math.floor(Number(item.level)||0)));
+      const fileReviews = Math.max(0, Math.floor(Number(item.reviews)||0));
+      const fileHard    = Math.max(0, Math.floor(Number(item.hard)||0));
+      const fileGood    = Math.max(0, Math.floor(Number(item.good)||0));
+      const fileEasy    = Math.max(0, Math.floor(Number(item.easy)||0));
+      const fileKnown   = Math.max(0, Math.floor(Number(item.known)||0));
+
+      const existing = state.words.find(x => norm(x.word) === norm(word));
+      if (existing){
+        let changed = false;
+        if (fileLevel   > (Number(existing.level)  ||0)){ existing.level   = fileLevel;   changed = true; }
+        if (fileReviews > (Number(existing.reviews)||0)){ existing.reviews = fileReviews; changed = true; }
+        if (fileHard    > (Number(existing.hard)   ||0)){ existing.hard    = fileHard;    changed = true; }
+        if (fileGood    > (Number(existing.good)   ||0)){ existing.good    = fileGood;    changed = true; }
+        if (fileEasy    > (Number(existing.easy)   ||0)){ existing.easy    = fileEasy;    changed = true; }
+        if (fileKnown   > (Number(existing.known)  ||0)){ existing.known   = fileKnown;   changed = true; }
+        if (changed){ await saveWord(existing); updated++; }
+        else { skipped++; }
+      } else {
+        if (!definition) { skipped++; continue; }
+        const obj = {
+          word, definition,
+          pos: item.pos || '',
+          topic: TOPICS[item.topic] ? item.topic : 'every',
+          bangla: item.bangla || '',
+          example: item.example || '',
+          synonyms: item.synonyms || '',
+          level: fileLevel, reviews: fileReviews,
+          hard: fileHard, good: fileGood, easy: fileEasy, known: fileKnown,
+          createdAt: Date.now(), lastReviewed: 0
+        };
+        if (FALLBACK){ obj.id = state._nextId++; state.words.push(obj); added++; }
+        else {
+          try { await dbAdd('words', obj); added++; }
+          catch(_) { skipped++; }
+        }
+      }
     }
+
+    // 3) Merge history (skip duplicate ts)
+    if (Array.isArray(data.history) && !FALLBACK){
+      const existing = await dbAll('history').catch(()=>[]);
+      const existingTs = new Set(existing.map(h => h.ts));
+      for (const h of data.history){
+        if (!h || !h.ts || existingTs.has(h.ts)) continue;
+        try {
+          await dbAdd('history', {
+            label: h.label || 'Imported',
+            reviewed: h.reviewed || 0, total: h.total || 0,
+            hard: h.hard || 0, good: h.good || 0, easy: h.easy || 0, known: h.known || 0,
+            duration: h.duration || 0, ts: h.ts
+          });
+        } catch(_){}
+      }
+    }
+
     await loadAll();
     renderManage(); renderPicker(); updateHeader();
-    toast(`Imported ${added}, skipped ${skipped}`, 'ok');
-  } catch (_) { toast('Invalid file', 'err'); }
+    toast(`Imported: ${added} new, ${updated} updated, ${skipped} skipped`, 'ok');
+  } catch (err) {
+    console.error(err);
+    toast('Invalid backup file', 'err');
+  }
   e.target.value = '';
 });
 
@@ -2856,6 +2998,7 @@ async function renderStats(){
     <div class="stat-card"><b>${c.mastered}</b><span>Mastered</span></div>
     <div class="stat-card"><b>${c.learning}</b><span>Learning</span></div>
     <div class="stat-card"><b>${c.fresh}</b><span>New</span></div>
+    <div class="stat-card"><b>${c.knownTotal}</b><span>Already Known</span></div>
     <div class="stat-card"><b>${c.masteredPct}%</b><span>Complete</span></div>
     <div class="stat-card"><b>${c.reviewTotal}</b><span>Total reviews</span></div>
     <div class="stat-card"><b>${c.hardTotal}</b><span>Hard ratings</span></div>
@@ -2873,6 +3016,7 @@ async function renderStats(){
             ${isMastered(w) ? '<span class="badge mastered">Mastered</span>'
               : isNew(w) ? '<span class="badge new">New</span>'
               : `<span class="badge learning">Learning · L${lvl}</span>`}
+            ${(Number(w.known)||0) > 0 ? `<span class="badge known">${w.known} known</span>` : ''}
             <span class="badge topic">${ti.icon} ${esc(ti.name)}</span>
           </div>
         </div>
@@ -2893,12 +3037,12 @@ async function renderStats(){
     startSession({ type:'repeat', ids:[id], label:'Quick review' });
   }));
 
-  // Topic stats
   const stats = {};
   for (const w of state.words){
     const t = w.topic || 'every';
-    if (!stats[t]) stats[t] = { total:0, mastered:0, learning:0, fresh:0 };
+    if (!stats[t]) stats[t] = { total:0, mastered:0, learning:0, fresh:0, known:0 };
     stats[t].total++;
+    if ((Number(w.known)||0) > 0) stats[t].known++;
     if (isMastered(w)) stats[t].mastered++;
     else if (isNew(w)) stats[t].fresh++;
     else stats[t].learning++;
@@ -2913,6 +3057,7 @@ async function renderStats(){
     const cls = ['topic-card'];
     if (allDone) cls.push('done');
     else if (s.learning > 0) cls.push('in-progress');
+    const knownMeta = s.known > 0 ? `✅ ${s.known} · ` : '';
     return `
       <div class="${cls.join(' ')}" data-topic-stat="${esc(code)}" role="button" tabindex="0">
         <span class="tc-icon">${t.icon}</span>
@@ -2921,7 +3066,7 @@ async function renderStats(){
           <i class="m" style="width:${masteredPct}%"></i>
           <i class="l" style="width:${learningPct}%"></i>
         </div>
-        <div class="tc-meta"><span>🏆 ${s.mastered} · 📚 ${s.learning}</span><span>${Math.round(masteredPct)}%</span></div>
+        <div class="tc-meta"><span>🏆 ${s.mastered} · 📚 ${s.learning}</span><span>${knownMeta}${Math.round(masteredPct)}%</span></div>
       </div>`;
   }).join('');
   $('statTopics').querySelectorAll('[data-topic-stat]').forEach(el => {
@@ -2962,37 +3107,25 @@ $('bPractice').addEventListener('click', () => {
 });
 
 /* ============ EVENTS ============ */
-$('bReveal').addEventListener('click', revealCard);
-$('bFlip').addEventListener('click', flipCard);
 $('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
-$('bKnow').addEventListener('click', () => {
-  const s = state.session, w = currentWord();
-  if (!s || !w) return;
-  if (s.reviewed.has(w.id)) return;
-  w.level = MAX_LEVEL;
-  w.reviews = (Number(w.reviews)||0) + 1;
-  w.known = (Number(w.known)||0) + 1;
-  w.lastReviewed = Date.now();
-  saveWord(w);
-  saveStreak();
-  s.ratings.known = (s.ratings.known||0) + 1;
-  s.reviewed.add(w.id);
-  toast(`✅ Already known: ${w.word}`, 'ok');
-  updateHeader();
-  setTimeout(nextCard, 350);
-});
 $('bExit').addEventListener('click', exitSession);
-$$('.rate-btn').forEach(b => b.addEventListener('click', () => { if (!b.disabled) rateCard(b.dataset.rate); }));
+$$('.rate-btn').forEach(b => b.addEventListener('click', () => {
+  if (!b.disabled){
+    const r = b.dataset.rate;
+    if (r === 'known') markKnown(); else rateCard(r);
+  }
+}));
 
+/* ============ KEYBOARD ============ */
 document.addEventListener('keydown', e => {
   if (state.view !== 'practice' || !state.session) return;
   if (document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
-  if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); if (!state.session.revealed) revealCard(); }
-  else if (state.session.revealed && ['1','2','3'].includes(e.key)){
-    e.preventDefault();
-    rateCard(e.key === '1' ? 'hard' : e.key === '2' ? 'good' : 'easy');
-  }
-  else if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); $('bKnow').click(); }
+  if ($('modalBg').classList.contains('open')) return;
+
+  if (e.key === '1' || e.key === 'ArrowLeft'){ e.preventDefault(); rateCard('hard'); }
+  else if (e.key === '2'){ e.preventDefault(); rateCard('good'); }
+  else if (e.key === '3' || e.key === 'ArrowRight'){ e.preventDefault(); rateCard('easy'); }
+  else if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowUp'){ e.preventDefault(); markKnown(); }
   else if (e.key === 'Escape'){ exitSession(); }
 });
 
