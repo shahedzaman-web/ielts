@@ -31,7 +31,7 @@
   .view.active{display:block}
   .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 24px 50px -40px rgba(0,0,0,.8)}
   .card + .card{margin-top:14px}
-  .section-title{font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .section-title{font-size:15px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .section-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
 
   .mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
@@ -74,7 +74,7 @@
   .practice-card{max-width:720px;margin:0 auto}
   .progress-bar{height:6px;background:rgba(255,255,255,.05);border-radius:999px;overflow:hidden;margin-bottom:14px}
   .progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--accent));transition:width .35s ease}
-  .practice-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .practice-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:16px;gap:10px;flex-wrap:wrap}
   .practice-meta b{color:var(--text)}
 
   /* ────── FLASHCARD ────── */
@@ -89,13 +89,14 @@
     text-align: center;
     color: var(--text);
     cursor: grab;
-    touch-action: none;
+    touch-action: pan-y;
     -webkit-user-select: none;
     user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    will-change: transform;
   }
   .flashcard .fc-tag{
     position: absolute; top: 14px; left: 16px;
@@ -145,14 +146,15 @@
 
   .rating-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:6px}
   .rate-btn{padding:14px 8px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-weight:700;font-size:13px;transition:all .15s ease}
-  .rate-btn:hover{transform:translateY(-1px)}
-  .rate-btn.hard:hover{border-color:#ef4444;color:#fca5a5}
-  .rate-btn.good:hover{border-color:#f59e0b;color:#fde68a}
-  .rate-btn.easy:hover{border-color:#22c55e;color:#86efac}
-  .rate-btn.known:hover{border-color:#22d3ee;color:#67e8f9}
+  .rate-btn:hover:not(:disabled){transform:translateY(-1px)}
+  .rate-btn:disabled{opacity:.35;cursor:not-allowed}
+  .rate-btn.hard:hover:not(:disabled){border-color:#ef4444;color:#fca5a5}
+  .rate-btn.good:hover:not(:disabled){border-color:#f59e0b;color:#fde68a}
+  .rate-btn.easy:hover:not(:disabled){border-color:#22c55e;color:#86efac}
+  .rate-btn.known:hover:not(:disabled){border-color:#22d3ee;color:#67e8f9}
   .rate-btn small{display:block;font-weight:500;color:var(--muted);font-size:10.5px;margin-top:3px}
 
-  .swipe-hint{text-align:center;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:12px;opacity:.75}
+  .swipe-hint{text-align:center;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:12px;opacity:.85}
 
   .play-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;justify-content:center}
   .btn{appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease,background .18s ease,border-color .18s ease}
@@ -322,7 +324,7 @@
               <div class="progress-bar"><i id="sBar"></i></div>
               <div class="practice-meta">
                 <p><b id="sLabel">—</b></p>
-                <p>Reviewed <b id="sReviewed">0</b> / <b id="sTotal">0</b></p>
+                <p>Card <b id="sNavPos">1</b>/<b id="sTotal">0</b> · ✅ <b id="sReviewed">0</b></p>
               </div>
 
               <div class="flashcard" id="flashcard">
@@ -338,17 +340,16 @@
 
               <div class="rating-row" id="ratingRow">
                 <button class="rate-btn hard" data-rate="hard" type="button">😰
-                  Hard<small>← or 1</small></button>
+                  Hard<small>1</small></button>
                 <button class="rate-btn good" data-rate="good" type="button">🙂
-                  Good<small>or 2</small></button>
+                  Good<small>2</small></button>
                 <button class="rate-btn easy" data-rate="easy" type="button">😎
-                  Easy<small>→ or 3</small></button>
+                  Easy<small>3</small></button>
                 <button class="rate-btn known" data-rate="known" type="button">✅
-                  Known<small>↑ or K</small></button>
+                  Known<small>K</small></button>
               </div>
 
-              <div class="swipe-hint">💡 Swipe the card, use arrow keys, or
-                click a button</div>
+              <div class="swipe-hint">💡 Swipe ← / → or use arrow keys to browse cards · rate with buttons or 1 / 2 / 3 / K</div>
 
               <div class="actions">
                 <button class="btn ghost small" id="bPlay" type="button">🔊 Play
@@ -368,8 +369,8 @@
             <div class="section-title">📚 Word list <span id="listCount"
                 style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
             <p class="section-sub">Add, edit, search, sort or remove words. Use
-              Export / Import to back up everything (words + progress + streak)
-              or transfer to another device.</p>
+              Export / Import to back up everything (words + progress + streak
+              + history) or transfer to another device.</p>
             <div class="search-row">
               <input type="text" id="search"
                 placeholder="Search word, Bangla, meaning…" />
@@ -431,8 +432,14 @@
           </div>
           <div class="card">
             <div class="section-title">🕒 Recent sessions</div>
-            <p class="section-sub">Last 10 sessions.</p>
+            <p class="section-sub">
+              Last 50 sessions ·
+              <button class="btn small" id="bExportHistory" type="button">📤 Export history</button>
+              <button class="btn small" id="bImportHistory" type="button">📥 Import history</button>
+              <button class="btn small ghost" id="bClearHistory" type="button">🗑 Clear history</button>
+            </p>
             <div class="mistake-list" id="historyList"></div>
+            <input type="file" id="importHistoryFile" accept=".json" style="display:none" />
           </div>
         </section>
       </div>
@@ -489,14 +496,18 @@ function openDB(){
     catch (e) { FALLBACK = true; return rej(e); }
     r.onupgradeneeded = e => {
       const db = e.target.result;
-      if (db.objectStoreNames.contains('words')) db.deleteObjectStore('words');
-      if (db.objectStoreNames.contains('settings')) db.deleteObjectStore('settings');
-      if (db.objectStoreNames.contains('history')) db.deleteObjectStore('history');
-      const s = db.createObjectStore('words', { keyPath: 'id', autoIncrement: true });
-      s.createIndex('word', 'word', { unique: true });
-      s.createIndex('topic', 'topic');
-      db.createObjectStore('settings', { keyPath: 'key' });
-      db.createObjectStore('history', { keyPath: 'id', autoIncrement: true });
+      // SAFE upgrade — never delete existing stores. Only create if missing.
+      if (!db.objectStoreNames.contains('words')){
+        const s = db.createObjectStore('words', { keyPath: 'id', autoIncrement: true });
+        s.createIndex('word', 'word', { unique: true });
+        s.createIndex('topic', 'topic');
+      }
+      if (!db.objectStoreNames.contains('settings')){
+        db.createObjectStore('settings', { keyPath: 'key' });
+      }
+      if (!db.objectStoreNames.contains('history')){
+        db.createObjectStore('history', { keyPath: 'id', autoIncrement: true });
+      }
     };
     r.onsuccess = () => { _db = r.result; res(_db); };
     r.onerror = () => { FALLBACK = true; rej(r.error); };
@@ -584,7 +595,6 @@ async function seedIfEmpty(){
 }
 
 async function loadAll(){
-  // ═══ FALLBACK 1: no IndexedDB at all → use seed ═══
   if (FALLBACK){
     if (!state.words.length){
       state.words = parseSeed().map((w, i) => ({ ...w, id: i + 1 }));
@@ -593,7 +603,6 @@ async function loadAll(){
     updateHeader();
     return;
   }
-  // ═══ FALLBACK 2: DB read fails → use seed ═══
   try { state.words = await dbAll('words'); }
   catch(_) {
     FALLBACK = true;
@@ -604,7 +613,6 @@ async function loadAll(){
     updateHeader();
     return;
   }
-  // ═══ FALLBACK 3: DB empty → use seed ═══
   if (!state.words || !state.words.length){
     state.words = parseSeed().map((w, i) => ({ ...w, id: i + 1 }));
     state._nextId = state.words.length + 1;
@@ -621,7 +629,6 @@ async function loadAll(){
     w.easy = Math.max(0, Math.floor(Number(w.easy) || 0));
     w.known = Math.max(0, Math.floor(Number(w.known) || 0));
     if (!w.topic) w.topic = 'every';
-    // Legacy "Already know" migration
     if (w.known === 0 && w.level >= MAX_LEVEL && w.reviews === 1 &&
         w.easy === 1 && w.hard === 0 && w.good === 0) {
       w.known = 1;
@@ -646,7 +653,6 @@ function switchTab(view){
   state.view = view;
   $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
   $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
-  // When returning to Practice, if a session is active keep the card, otherwise show picker
   if (view === 'practice'){
     if (state.session){
       $('picker').style.display = 'none';
@@ -911,11 +917,9 @@ function shuffleArr(a){
 function resetFlashcardSwipe(){
   const fc = $('flashcard'); if (!fc) return;
   fc.classList.remove('dragging');
-  // Hard reset — clear all inline styles set by the swipe gesture
   fc.style.transition = 'none';
   fc.style.transform = '';
   fc.style.opacity = '';
-  // force reflow so subsequent transitions work
   void fc.offsetWidth;
   fc.style.transition = '';
 }
@@ -924,6 +928,7 @@ function startSession(mode){
   let pool = buildPool(mode);
   if (!pool.length){ toast('Nothing to practise here 🎉', 'ok'); return; }
   pool = shuffleArr(pool);
+  const firstId = pool[0].id;
   state.session = {
     mode,
     label: mode.label || 'Practice',
@@ -931,31 +936,52 @@ function startSession(mode){
     reviewed: new Set(),
     ratings: { hard: 0, good: 0, easy: 0, known: 0 },
     start: Date.now(),
-    current: null
+    current: firstId,
+    navPos: 0
   };
   $('picker').style.display = 'none';
   $('active').style.display = 'block';
   $('done').style.display = 'none';
   resetFlashcardSwipe();
-  nextCard();
+  renderCard();
+  const w = currentWord();
+  if (w) setTimeout(() => speak(w.word), 140);
 }
 
 function currentWord(){
   if (!state.session || state.session.current == null) return null;
-  // Type-safe match (handles number/string ID mismatches)
   const cur = state.session.current;
   return state.words.find(w => w.id === cur)
       || state.words.find(w => String(w.id) === String(cur))
       || null;
 }
 
-function nextCard(){
+/* ── Navigate to previous / next card (does not rate) ── */
+function navigateCard(delta){
+  const s = state.session;
+  if (!s || !s.pool.length) return;
+  const newPos = s.navPos + delta;
+  if (newPos < 0){ resetFlashcardSwipe(); toast('⏮ First card', 'err'); return; }
+  if (newPos >= s.pool.length){ resetFlashcardSwipe(); toast('Last card ⏭', 'err'); return; }
+  s.navPos = newPos;
+  s.current = s.pool[newPos];
+  renderCard();
+  const w = currentWord();
+  if (w) setTimeout(() => speak(w.word), 140);
+}
+
+/* ── After rating, jump to the next unrated card (wraps around) ── */
+function advanceToNextUnrated(){
   const s = state.session;
   if (!s) return;
-  const active = s.pool.filter(id => !s.reviewed.has(id));
-  if (!active.length) return endSession();
-  const id = active[0];
-  s.current = id;
+  let found = -1;
+  for (let i = 1; i <= s.pool.length; i++){
+    const idx = (s.navPos + i) % s.pool.length;
+    if (!s.reviewed.has(s.pool[idx])){ found = idx; break; }
+  }
+  if (found === -1){ endSession(); return; }
+  s.navPos = found;
+  s.current = s.pool[found];
   renderCard();
   const w = currentWord();
   if (w) setTimeout(() => speak(w.word), 140);
@@ -966,17 +992,15 @@ function renderCard(){
   if (!s) return;
   const w = currentWord();
 
-  // Reset swipe (moves card back to center)
   resetFlashcardSwipe();
 
-  // Progress bar
   const barEl = $('sBar');
   if (barEl) barEl.style.width = s.pool.length ? ((s.reviewed.size / s.pool.length) * 100).toFixed(1) + '%' : '0%';
   const labelEl = $('sLabel'); if (labelEl) labelEl.textContent = s.label;
+  const navEl = $('sNavPos'); if (navEl) navEl.textContent = (s.navPos || 0) + 1;
   const revEl = $('sReviewed'); if (revEl) revEl.textContent = s.reviewed.size;
   const totalEl = $('sTotal'); if (totalEl) totalEl.textContent = s.pool.length;
 
-  // Word — ALWAYS display something so the card is never blank
   const wordEl = $('fcWord');
   if (wordEl){
     const txt = (w && w.word != null && String(w.word).trim()) ? String(w.word) : '(no word)';
@@ -986,11 +1010,12 @@ function renderCard(){
     wordEl.style.opacity = '1';
   }
 
-  if (!w){
-    // Still update header, but leave other fields blank
-    updateHeader();
-    return;
-  }
+  const isReviewed = !!(w && s.reviewed.has(w.id));
+  $$('.rate-btn').forEach(b => {
+    b.disabled = isReviewed;
+  });
+
+  if (!w){ updateHeader(); return; }
 
   const posEl = $('fcPos');
   if (posEl) posEl.textContent = w.pos || '—';
@@ -1047,7 +1072,7 @@ function rateCard(rating){
   const label = rating === 'easy' ? '⭐ Easy' : rating === 'good' ? '👍 Good' : '😰 Hard';
   toast(`${label}: ${w.word} · L${before} → L${after}`, rating === 'hard' ? 'err' : 'ok');
   updateHeader();
-  setTimeout(nextCard, 300);
+  setTimeout(advanceToNextUnrated, 250);
 }
 
 function markKnown(){
@@ -1064,7 +1089,7 @@ function markKnown(){
   s.reviewed.add(w.id);
   toast(`✅ Already known: ${w.word}`, 'ok');
   updateHeader();
-  setTimeout(nextCard, 300);
+  setTimeout(advanceToNextUnrated, 250);
 }
 
 function endSession(){
@@ -1117,12 +1142,12 @@ function exitSession(){
   renderPicker();
 }
 
-/* ============ SWIPE GESTURE ============ */
+/* ============ SWIPE = prev / next navigation ============ */
 (function setupSwipe(){
   const fc = $('flashcard');
   if (!fc) return;
   let startX = 0, startY = 0, active = false, pointerId = null;
-  const T = 80;
+  const T = 60;
 
   function down(e){
     if (!state.session) return;
@@ -1138,29 +1163,25 @@ function exitSession(){
     if (!active) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
-    fc.style.transform = `translate(${dx}px, ${dy}px) rotate(${dx * 0.05}deg)`;
-    fc.style.opacity = String(Math.max(0.4, 1 - Math.abs(dx) / 600));
+    // Only allow horizontal movement visually (small vertical drift)
+    fc.style.transform = `translate(${dx}px, ${dy * 0.15}px) rotate(${dx * 0.03}deg)`;
+    fc.style.opacity = String(Math.max(0.5, 1 - Math.abs(dx) / 700));
   }
   function up(e){
     if (!active) return;
     active = false;
     const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
     fc.style.transition = 'transform .22s ease, opacity .22s ease';
 
-    let action = null;
-    if (Math.abs(dy) > Math.abs(dx) && dy < -T) action = 'known';
-    else if (dx > T) action = 'easy';
-    else if (dx < -T) action = 'hard';
+    let dir = 0;
+    if (dx > T) dir = 1;
+    else if (dx < -T) dir = -1;
 
-    if (action){
-      const tx = action === 'easy' ? 600 : action === 'hard' ? -600 : 0;
-      const ty = action === 'known' ? -600 : 0;
-      fc.style.transform = `translate(${tx}px, ${ty}px) rotate(${tx * 0.05}deg)`;
+    if (dir !== 0){
+      const tx = dir > 0 ? 600 : -600;
+      fc.style.transform = `translate(${tx}px, 0) rotate(${tx * 0.03}deg)`;
       fc.style.opacity = '0';
-      setTimeout(() => {
-        if (action === 'known') markKnown(); else rateCard(action);
-      }, 180);
+      setTimeout(() => navigateCard(dir), 150);
     } else {
       fc.style.transform = '';
       fc.style.opacity = '';
@@ -1494,6 +1515,75 @@ $('importFile').addEventListener('change', async e => {
   e.target.value = '';
 });
 
+/* ============ HISTORY-ONLY EXPORT / IMPORT ============ */
+$('bExportHistory').addEventListener('click', async () => {
+  if (FALLBACK){ toast('History unavailable in fallback mode', 'err'); return; }
+  const history = await dbAll('history').catch(() => []);
+  if (!history.length){ toast('No history to export', 'err'); return; }
+  const data = {
+    app: 'vocab-hub',
+    type: 'history',
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    history: history.map(h => ({
+      label: h.label || '', reviewed: h.reviewed || 0, total: h.total || 0,
+      hard: h.hard || 0, good: h.good || 0, easy: h.easy || 0, known: h.known || 0,
+      duration: h.duration || 0, ts: h.ts || Date.now()
+    }))
+  };
+  const stamp = new Date().toISOString().slice(0, 10);
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `vocab-history-${stamp}.json`; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast(`Exported ${data.history.length} sessions`, 'ok');
+});
+
+$('bImportHistory').addEventListener('click', () => $('importHistoryFile').click());
+$('importHistoryFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const text = await f.text();
+    const data = JSON.parse(text);
+    const incoming = Array.isArray(data) ? data : (data.history || []);
+    if (!incoming.length){ toast('No history in file', 'err'); return; }
+    if (FALLBACK){ toast('History import unavailable in fallback mode', 'err'); return; }
+
+    const existing = await dbAll('history').catch(() => []);
+    const existingTs = new Set(existing.map(h => h.ts));
+    let added = 0, skipped = 0;
+    for (const h of incoming){
+      if (!h || !h.ts){ skipped++; continue; }
+      if (existingTs.has(h.ts)){ skipped++; continue; }
+      try {
+        await dbAdd('history', {
+          label: h.label || 'Imported',
+          reviewed: h.reviewed || 0, total: h.total || 0,
+          hard: h.hard || 0, good: h.good || 0, easy: h.easy || 0, known: h.known || 0,
+          duration: h.duration || 0, ts: h.ts
+        });
+        added++;
+        existingTs.add(h.ts);
+      } catch(_){ skipped++; }
+    }
+    await renderStats();
+    toast(`History: ${added} imported, ${skipped} skipped`, 'ok');
+  } catch (err){
+    console.error(err);
+    toast('Invalid history file', 'err');
+  }
+  e.target.value = '';
+});
+
+$('bClearHistory').addEventListener('click', async () => {
+  if (!confirm('Delete ALL session history? This cannot be undone. (Export first if you want a backup.)')) return;
+  if (FALLBACK){ toast('History unavailable in fallback mode', 'err'); return; }
+  try { await dbClear('history'); } catch(_){}
+  await renderStats();
+  toast('History cleared', 'ok');
+});
+
 /* ============ STATS ============ */
 async function renderStats(){
   const c = getCounts();
@@ -1583,7 +1673,7 @@ async function renderStats(){
   }
   const history = await dbAll('history').catch(() => []);
   history.sort((a, b) => b.ts - a.ts);
-  const recent = history.slice(0, 10);
+  const recent = history.slice(0, 50);
   $('historyList').innerHTML = recent.length ? recent.map(h => {
     const d = new Date(h.ts);
     const when = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -1600,7 +1690,7 @@ async function renderStats(){
         <div style="color:var(--muted);font-size:11px">${esc(when)}</div>
         <div></div>
       </div>`;
-  }).join('') : '<div class="empty"><div class="e">📊</div>No sessions yet.</div>';
+  }).join('') + (history.length > 50 ? `<div class="empty" style="padding:16px;font-size:12px">Showing latest 50 of ${history.length} sessions. Export history to keep the full log.</div>` : '') : '<div class="empty"><div class="e">📊</div>No sessions yet.</div>';
 }
 
 $('bPractice').addEventListener('click', () => {
@@ -1626,10 +1716,12 @@ document.addEventListener('keydown', e => {
   if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
   if ($('modalBg').classList.contains('open')) return;
 
-  if (e.key === '1' || e.key === 'ArrowLeft'){ e.preventDefault(); rateCard('hard'); }
+  if (e.key === '1'){ e.preventDefault(); rateCard('hard'); }
   else if (e.key === '2'){ e.preventDefault(); rateCard('good'); }
-  else if (e.key === '3' || e.key === 'ArrowRight'){ e.preventDefault(); rateCard('easy'); }
-  else if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowUp'){ e.preventDefault(); markKnown(); }
+  else if (e.key === '3'){ e.preventDefault(); rateCard('easy'); }
+  else if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); markKnown(); }
+  else if (e.key === 'ArrowLeft'){ e.preventDefault(); navigateCard(-1); }
+  else if (e.key === 'ArrowRight'){ e.preventDefault(); navigateCard(1); }
   else if (e.key === 'Escape'){ exitSession(); }
 });
 
@@ -1639,7 +1731,6 @@ document.addEventListener('keydown', e => {
     await openDB().catch(() => { FALLBACK = true; });
     await seedIfEmpty();
     await loadAll();
-    // Ensure state.words is always non-empty on first paint
     if (!state.words.length){
       state.words = parseSeed().map((w, i) => ({ ...w, id: i + 1 }));
       state._nextId = state.words.length + 1;
