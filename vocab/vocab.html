@@ -58,8 +58,13 @@
   .topic-card .tc-icon{font-size:22px;display:block;margin-bottom:6px}
   .topic-card .tc-name{font-weight:800;font-size:13.5px;margin-bottom:3px;line-height:1.25}
   .topic-card .tc-meta{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:8px;font-weight:700}
-  .topic-card .tc-bar{height:4px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;margin-top:6px}
-  .topic-card .tc-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--accent));transition:width .3s ease}
+.topic-card .tc-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;margin-top:6px;display:flex}
+.topic-card .tc-bar i{display:block;height:100%;transition:width .3s ease}
+.topic-card .tc-bar i.m{background:linear-gradient(90deg,var(--good),#4ade80)}
+.topic-card .tc-bar i.l{background:linear-gradient(90deg,var(--warn),#fbbf24)}
+.topic-card.in-progress{border-color:rgba(245,158,11,.35)}
+.btn.know{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#86efac}
+.btn.know:hover{background:rgba(34,197,94,.25);border-color:#22c55e}
   .topic-card.done{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.06)}
 
   .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;max-height:600px;overflow-y:auto;padding-right:6px}
@@ -318,10 +323,10 @@
               </div>
 
               <div class="play-row" id="revealRow">
-                <button class="btn primary" id="bReveal">👁
-                  Reveal meaning</button>
-                <button class="btn" id="bPlay">🔊 Play
-                  word</button>
+                <button class="btn primary" id="bReveal">👁 Reveal
+                  meaning</button>
+                <button class="btn" id="bPlay">🔊 Play word</button>
+                <button class="btn know" id="bKnow">✅ Already know</button>
               </div>
 
               <div class="rating-row" id="ratingRow"
@@ -368,16 +373,19 @@
                 <option value="new">New</option>
                 <option value="learning">Learning</option>
                 <option value="mastered">Mastered</option>
-                <option value="hard">Difficult (hard
-                  rating)</option>
+                <option value="easy">Rated Easy</option>
+                <option value="good">Rated Good</option>
+                <option value="hard">Rated Hard</option>
               </select>
               <select id="sort">
-                <option value="learning-first">Sort: Learning
-                  first</option>
-                <option value="new-first">Sort: New
-                  first</option>
-                <option value="hardest">Sort: Hardest
-                  first</option>
+                <option value="learning-first">Sort: Learning first</option>
+                <option value="new-first">Sort: New first</option>
+                <option value="hardest">Sort: Hardest first</option>
+                <option value="easiest">Sort: Easiest first</option>
+                <option value="most-easy">Sort: Most Easy ratings</option>
+                <option value="most-good">Sort: Most Good ratings</option>
+                <option value="most-hard">Sort: Most Hard ratings</option>
+                <option value="most-reviewed">Sort: Most reviews</option>
                 <option value="az">Sort: A → Z</option>
                 <option value="za">Sort: Z → A</option>
                 <option value="newest">Sort: Newest</option>
@@ -2221,7 +2229,6 @@ function renderTopics(){
     $('cTopics').textContent = '';
     return;
   }
-  // Count words per topic
   const stats = {};
   for (const w of state.words){
     const t = w.topic || 'every';
@@ -2231,25 +2238,29 @@ function renderTopics(){
     else if (isNew(w)) stats[t].fresh++;
     else stats[t].learning++;
   }
-  const codes = Object.keys(stats).sort((a,b) => {
-    const na = topicInfo(a).name, nb = topicInfo(b).name;
-    return na.localeCompare(nb);
-  });
+  const codes = Object.keys(stats).sort((a,b) => topicInfo(a).name.localeCompare(topicInfo(b).name));
   $('cTopics').textContent = `· ${codes.length} topics`;
   let html = '';
   for (const code of codes){
     const t = topicInfo(code);
     const s = stats[code];
-    const pct = s.total ? (s.mastered / s.total) * 100 : 0;
+    const masteredPct = s.total ? (s.mastered / s.total) * 100 : 0;
+    const learningPct = s.total ? (s.learning / s.total) * 100 : 0;
     const allDone = s.total > 0 && s.mastered === s.total;
+    const cls = ['topic-card'];
+    if (allDone) cls.push('done');
+    else if (s.learning > 0) cls.push('in-progress');
     html += `
-      <div class="topic-card ${allDone ? 'done' : ''}" data-topic="${esc(code)}" role="button" tabindex="0">
+      <div class="${cls.join(' ')}" data-topic="${esc(code)}" role="button" tabindex="0">
         <span class="tc-icon">${t.icon}</span>
         <div class="tc-name">${esc(t.name)}</div>
-        <div class="tc-bar"><i style="width:${pct}%"></i></div>
+        <div class="tc-bar">
+          <i class="m" style="width:${masteredPct}%"></i>
+          <i class="l" style="width:${learningPct}%"></i>
+        </div>
         <div class="tc-meta">
-          <span>${s.mastered}/${s.total} mastered</span>
-          <span>${s.fresh} new</span>
+          <span>🏆 ${s.mastered} · 📚 ${s.learning}</span>
+          <span>✨ ${s.fresh} new</span>
         </div>
       </div>`;
   }
@@ -2260,7 +2271,6 @@ function renderTopics(){
     el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); } });
   });
 }
-
 function renderDecks(){
   const grid = $('deckGrid');
   const total = state.words.length;
@@ -2488,10 +2498,17 @@ function flipCard(){
   const w = currentWord(); if (!w) return;
   if (state.session.revealed){ renderCard(); } else { revealCard(); }
 }
-
-function rateCard(rating){
   const s = state.session, w = currentWord();
   if (!s || !w) return;
+  if (!s.revealed) return;              // ← NEW: must be revealed before rating
+  if (s.reviewed.has(w.id)) return;     // ← NEW: prevent double-rating
+  const before = Number(w.level)||0;
+function rateCard(rating){
+
+  const s = state.session, w = currentWord();
+  if (!s || !w) return;
+  if (!s.revealed) return;              // ← NEW: must be revealed before rating
+  if (s.reviewed.has(w.id)) return;     // ← NEW: prevent double-rating
   const before = Number(w.level)||0;
   let after = before;
   if (rating === 'hard'){ after = Math.max(0, before - 1); w.hard = (Number(w.hard)||0) + 1; state.streak = 0; }
@@ -2576,6 +2593,11 @@ function sortWords(list, sortBy){
         return a.word.localeCompare(b.word);
       });
     case 'hardest': return arr.sort((a,b) => difficulty(b) - difficulty(a) || a.word.localeCompare(b.word));
+    case 'easiest': return arr.sort((a,b) => difficulty(a) - difficulty(b) || a.word.localeCompare(b.word));
+    case 'most-easy': return arr.sort((a,b) => (Number(b.easy)||0) - (Number(a.easy)||0) || a.word.localeCompare(b.word));
+    case 'most-good': return arr.sort((a,b) => (Number(b.good)||0) - (Number(a.good)||0) || a.word.localeCompare(b.word));
+    case 'most-hard': return arr.sort((a,b) => (Number(b.hard)||0) - (Number(a.hard)||0) || a.word.localeCompare(b.word));
+    case 'most-reviewed': return arr.sort((a,b) => (Number(b.reviews)||0) - (Number(a.reviews)||0) || a.word.localeCompare(b.word));
     case 'az': return arr.sort((a,b) => a.word.localeCompare(b.word));
     case 'za': return arr.sort((a,b) => b.word.localeCompare(a.word));
     case 'newest': return arr.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
@@ -2609,6 +2631,8 @@ function renderManage(){
   if (filt === 'mastered') list = list.filter(isMastered);
   else if (filt === 'learning') list = list.filter(isLearning);
   else if (filt === 'new') list = list.filter(isNew);
+  else if (filt === 'easy') list = list.filter(w => (Number(w.easy)||0) > 0);
+  else if (filt === 'good') list = list.filter(w => (Number(w.good)||0) > 0);
   else if (filt === 'hard') list = list.filter(w => (Number(w.hard)||0) > 0);
   list = sortWords(list, sortBy);
   $('listCount').textContent = `· ${list.length} shown`;
@@ -2853,22 +2877,31 @@ async function renderStats(){
   const stats = {};
   for (const w of state.words){
     const t = w.topic || 'every';
-    if (!stats[t]) stats[t] = { total:0, mastered:0 };
+    if (!stats[t]) stats[t] = { total:0, mastered:0, learning:0, fresh:0 };
     stats[t].total++;
     if (isMastered(w)) stats[t].mastered++;
+    else if (isNew(w)) stats[t].fresh++;
+    else stats[t].learning++;
   }
   const codes = Object.keys(stats).sort((a,b) => topicInfo(a).name.localeCompare(topicInfo(b).name));
   $('statTopics').innerHTML = codes.map(code => {
     const t = topicInfo(code);
     const s = stats[code];
-    const pct = s.total ? (s.mastered / s.total) * 100 : 0;
+    const masteredPct = s.total ? (s.mastered / s.total) * 100 : 0;
+    const learningPct = s.total ? (s.learning / s.total) * 100 : 0;
     const allDone = s.mastered === s.total && s.total > 0;
+    const cls = ['topic-card'];
+    if (allDone) cls.push('done');
+    else if (s.learning > 0) cls.push('in-progress');
     return `
-      <div class="topic-card ${allDone ? 'done' : ''}" data-topic-stat="${esc(code)}" role="button" tabindex="0">
+      <div class="${cls.join(' ')}" data-topic-stat="${esc(code)}" role="button" tabindex="0">
         <span class="tc-icon">${t.icon}</span>
         <div class="tc-name">${esc(t.name)}</div>
-        <div class="tc-bar"><i style="width:${pct}%"></i></div>
-        <div class="tc-meta"><span>${s.mastered}/${s.total} mastered</span><span>${Math.round(pct)}%</span></div>
+        <div class="tc-bar">
+          <i class="m" style="width:${masteredPct}%"></i>
+          <i class="l" style="width:${learningPct}%"></i>
+        </div>
+        <div class="tc-meta"><span>🏆 ${s.mastered} · 📚 ${s.learning}</span><span>${Math.round(masteredPct)}%</span></div>
       </div>`;
   }).join('');
   $('statTopics').querySelectorAll('[data-topic-stat]').forEach(el => {
@@ -2912,6 +2945,22 @@ $('bPractice').addEventListener('click', () => {
 $('bReveal').addEventListener('click', revealCard);
 $('bFlip').addEventListener('click', flipCard);
 $('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
+$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
+$('bKnow').addEventListener('click', () => {
+  const s = state.session, w = currentWord();
+  if (!s || !w) return;
+  w.level = MAX_LEVEL;
+  w.reviews = (Number(w.reviews)||0) + 1;
+  w.easy = (Number(w.easy)||0) + 1;
+  w.lastReviewed = Date.now();
+  saveWord(w);
+  saveStreak();
+  s.ratings.easy = (s.ratings.easy||0) + 1;
+  s.reviewed.add(w.id);
+  toast(`✅ Already known: ${w.word}`, 'ok');
+  updateHeader();
+  setTimeout(nextCard, 350);
+});
 $('bExit').addEventListener('click', exitSession);
 $$('.rate-btn').forEach(b => b.addEventListener('click', () => { if (!b.disabled) rateCard(b.dataset.rate); }));
 
@@ -2922,7 +2971,8 @@ document.addEventListener('keydown', e => {
   else if (state.session.revealed && ['1','2','3'].includes(e.key)){
     e.preventDefault();
     rateCard(e.key === '1' ? 'hard' : e.key === '2' ? 'good' : 'easy');
-  } else if (e.key === 'Escape'){ exitSession(); }
+  }   else if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); $('bKnow').click(); }
+  else if (e.key === 'Escape'){ exitSession(); }
 });
 
 /* ============ BOOT ============ */
