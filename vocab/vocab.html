@@ -58,14 +58,15 @@
   .topic-card .tc-icon{font-size:22px;display:block;margin-bottom:6px}
   .topic-card .tc-name{font-weight:800;font-size:13.5px;margin-bottom:3px;line-height:1.25}
   .topic-card .tc-meta{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:8px;font-weight:700}
-.topic-card .tc-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;margin-top:6px;display:flex}
-.topic-card .tc-bar i{display:block;height:100%;transition:width .3s ease}
-.topic-card .tc-bar i.m{background:linear-gradient(90deg,var(--good),#4ade80)}
-.topic-card .tc-bar i.l{background:linear-gradient(90deg,var(--warn),#fbbf24)}
-.topic-card.in-progress{border-color:rgba(245,158,11,.35)}
-.btn.know{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#86efac}
-.btn.know:hover{background:rgba(34,197,94,.25);border-color:#22c55e}
+  .topic-card .tc-bar{height:5px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;margin-top:6px;display:flex}
+  .topic-card .tc-bar i{display:block;height:100%;transition:width .3s ease}
+  .topic-card .tc-bar i.m{background:linear-gradient(90deg,var(--good),#4ade80)}
+  .topic-card .tc-bar i.l{background:linear-gradient(90deg,var(--warn),#fbbf24)}
+  .topic-card.in-progress{border-color:rgba(245,158,11,.35)}
   .topic-card.done{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.06)}
+
+  .btn.know{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#86efac}
+  .btn.know:hover{background:rgba(34,197,94,.25);border-color:#22c55e}
 
   .deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;max-height:600px;overflow-y:auto;padding-right:6px}
   .deck{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:all .18s ease}
@@ -326,7 +327,8 @@
                 <button class="btn primary" id="bReveal">👁 Reveal
                   meaning</button>
                 <button class="btn" id="bPlay">🔊 Play word</button>
-                <button class="btn know" id="bKnow">✅ Already know</button>
+                <button class="btn know" id="bKnow">✅ Already
+                  know</button>
               </div>
 
               <div class="rating-row" id="ratingRow"
@@ -378,14 +380,19 @@
                 <option value="hard">Rated Hard</option>
               </select>
               <select id="sort">
-                <option value="learning-first">Sort: Learning first</option>
+                <option value="learning-first">Sort: Learning
+                  first</option>
                 <option value="new-first">Sort: New first</option>
                 <option value="hardest">Sort: Hardest first</option>
                 <option value="easiest">Sort: Easiest first</option>
-                <option value="most-easy">Sort: Most Easy ratings</option>
-                <option value="most-good">Sort: Most Good ratings</option>
-                <option value="most-hard">Sort: Most Hard ratings</option>
-                <option value="most-reviewed">Sort: Most reviews</option>
+                <option value="most-easy">Sort: Most Easy
+                  ratings</option>
+                <option value="most-good">Sort: Most Good
+                  ratings</option>
+                <option value="most-hard">Sort: Most Hard
+                  ratings</option>
+                <option value="most-reviewed">Sort: Most
+                  reviews</option>
                 <option value="az">Sort: A → Z</option>
                 <option value="za">Sort: Z → A</option>
                 <option value="newest">Sort: Newest</option>
@@ -2271,6 +2278,7 @@ function renderTopics(){
     el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); } });
   });
 }
+
 function renderDecks(){
   const grid = $('deckGrid');
   const total = state.words.length;
@@ -2498,17 +2506,12 @@ function flipCard(){
   const w = currentWord(); if (!w) return;
   if (state.session.revealed){ renderCard(); } else { revealCard(); }
 }
-  const s = state.session, w = currentWord();
-  if (!s || !w) return;
-  if (!s.revealed) return;              // ← NEW: must be revealed before rating
-  if (s.reviewed.has(w.id)) return;     // ← NEW: prevent double-rating
-  const before = Number(w.level)||0;
-function rateCard(rating){
 
+function rateCard(rating){
   const s = state.session, w = currentWord();
   if (!s || !w) return;
-  if (!s.revealed) return;              // ← NEW: must be revealed before rating
-  if (s.reviewed.has(w.id)) return;     // ← NEW: prevent double-rating
+  if (!s.revealed) return;
+  if (s.reviewed.has(w.id)) return;
   const before = Number(w.level)||0;
   let after = before;
   if (rating === 'hard'){ after = Math.max(0, before - 1); w.hard = (Number(w.hard)||0) + 1; state.streak = 0; }
@@ -2609,9 +2612,10 @@ function sortWords(list, sortBy){
 function populateTopicFilter(){
   const sel = $('topicFilter');
   const codes = topicsInUse().sort((a,b) => topicInfo(a).name.localeCompare(topicInfo(b).name));
-  // keep first "all"
+  const current = sel.value;
   sel.innerHTML = '<option value="all">All topics</option>' +
     codes.map(c => `<option value="${esc(c)}">${topicInfo(c).icon} ${esc(topicInfo(c).name)}</option>`).join('');
+  if (current && [...sel.options].some(o => o.value === current)) sel.value = current;
 }
 
 function renderManage(){
@@ -2652,6 +2656,8 @@ function renderManage(){
     else badges.push(`<span class="badge learning">Learning · L${lvl}</span>`);
     if (w.pos) badges.push(`<span class="badge pos">${esc(w.pos)}</span>`);
     if ((Number(w.hard)||0) > 0) badges.push(`<span class="badge new" style="background:rgba(239,68,68,.15);color:#fca5a5">${w.hard} hard</span>`);
+    if ((Number(w.easy)||0) > 0) badges.push(`<span class="badge" style="background:rgba(34,197,94,.15);color:#86efac">${w.easy} easy</span>`);
+    if ((Number(w.good)||0) > 0) badges.push(`<span class="badge" style="background:rgba(245,158,11,.15);color:#fde68a">${w.good} good</span>`);
     badges.push(`<span class="badge topic">${ti.icon} ${esc(ti.name)}</span>`);
     const cls = (Number(w.hard)||0) > 0 ? 'has-history' : '';
     return `
@@ -2945,10 +2951,10 @@ $('bPractice').addEventListener('click', () => {
 $('bReveal').addEventListener('click', revealCard);
 $('bFlip').addEventListener('click', flipCard);
 $('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
-$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
 $('bKnow').addEventListener('click', () => {
   const s = state.session, w = currentWord();
   if (!s || !w) return;
+  if (s.reviewed.has(w.id)) return;
   w.level = MAX_LEVEL;
   w.reviews = (Number(w.reviews)||0) + 1;
   w.easy = (Number(w.easy)||0) + 1;
@@ -2971,7 +2977,8 @@ document.addEventListener('keydown', e => {
   else if (state.session.revealed && ['1','2','3'].includes(e.key)){
     e.preventDefault();
     rateCard(e.key === '1' ? 'hard' : e.key === '2' ? 'good' : 'easy');
-  }   else if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); $('bKnow').click(); }
+  }
+  else if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); $('bKnow').click(); }
   else if (e.key === 'Escape'){ exitSession(); }
 });
 
