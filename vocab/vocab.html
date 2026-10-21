@@ -158,6 +158,7 @@
   .badge.seen{background:rgba(148,163,184,.15);color:#cbd5e1}
   .badge.pos{background:rgba(34,211,238,.12);color:#67e8f9}
   .badge.topic{background:rgba(167,139,250,.15);color:#c4b5fd}
+  .badge.known{background:rgba(34,211,238,.15);color:#67e8f9}
   .empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:14px}
   .empty .e{font-size:42px;margin-bottom:8px}
 
@@ -378,6 +379,7 @@
                 <option value="easy">Rated Easy</option>
                 <option value="good">Rated Good</option>
                 <option value="hard">Rated Hard</option>
+                <option value="known">Already Known</option>
               </select>
               <select id="sort">
                 <option value="learning-first">Sort: Learning
@@ -391,6 +393,8 @@
                   ratings</option>
                 <option value="most-hard">Sort: Most Hard
                   ratings</option>
+                <option value="most-known">Sort: Most
+                  Already-Known</option>
                 <option value="most-reviewed">Sort: Most
                   reviews</option>
                 <option value="az">Sort: A → Z</option>
@@ -2044,7 +2048,7 @@ function parseSeed(){
       example: '',
       synonyms: synonyms.trim(),
       topic: (topic || 'every').trim(),
-      level:0, reviews:0, hard:0, good:0, easy:0,
+      level:0, reviews:0, hard:0, good:0, easy:0, known:0,
       createdAt: Date.now(), lastReviewed:0
     });
   }
@@ -2168,6 +2172,7 @@ async function loadAll(){
     w.hard = Math.max(0, Math.floor(Number(w.hard)||0));
     w.good = Math.max(0, Math.floor(Number(w.good)||0));
     w.easy = Math.max(0, Math.floor(Number(w.easy)||0));
+    w.known = Math.max(0, Math.floor(Number(w.known)||0));
     if (!w.topic) w.topic = 'every';
   }
   const settings = await dbAll('settings').catch(()=>[]);
@@ -2317,18 +2322,20 @@ function renderDecks(){
 function openTopicMenu(topicCode){
   const t = topicInfo(topicCode);
   const words = state.words.filter(w => (w.topic || 'every') === topicCode);
-  const newWords = words.filter(isNew);
-  const learningWords = words.filter(isLearning);
-  const masteredWords = words.filter(isMastered);
+  const easyWords  = words.filter(w => (Number(w.easy)||0)  > 0);
+  const goodWords  = words.filter(w => (Number(w.good)||0)  > 0);
+  const hardWords  = words.filter(w => (Number(w.hard)||0)  > 0);
+  const knownWords = words.filter(w => (Number(w.known)||0) > 0);
   const opts = [
-    { key:'topic-all', label:'Practice all words in this topic', sub:`${words.length} total words`, primary: true },
-    { key:'topic-new', label:'Learn new words', sub:`${newWords.length} never reviewed`, disabled: newWords.length === 0 },
-    { key:'topic-learning', label:'Practice learning words', sub:`${learningWords.length} in progress`, disabled: learningWords.length === 0 },
-    { key:'topic-mastered', label:'Review mastered words', sub:`${masteredWords.length} mastered`, disabled: masteredWords.length === 0 }
+    { key:'topic-easy',  label:'Rated Easy',    sub:`${easyWords.length} word${easyWords.length===1?'':'s'}`,   disabled: easyWords.length  === 0 },
+    { key:'topic-good',  label:'Rated Good',    sub:`${goodWords.length} word${goodWords.length===1?'':'s'}`,   disabled: goodWords.length  === 0 },
+    { key:'topic-hard',  label:'Rated Hard',    sub:`${hardWords.length} word${hardWords.length===1?'':'s'}`,   disabled: hardWords.length  === 0 },
+    { key:'topic-all',   label:'All words',     sub:`${words.length} total words`,                                primary: true },
+    { key:'topic-known', label:'Already Known', sub:`${knownWords.length} word${knownWords.length===1?'':'s'}`, disabled: knownWords.length === 0 }
   ];
   $('modal').innerHTML = `
     <h3>${t.icon} ${esc(t.name)}</h3>
-    <p class="m-sub">${newWords.length} new · ${learningWords.length} learning · ${masteredWords.length} mastered</p>
+    <p class="m-sub">${easyWords.length} easy · ${goodWords.length} good · ${hardWords.length} hard · ${knownWords.length} known · ${words.length} total</p>
     <div class="modal-actions column">
       ${opts.map(o => `
         <button class="btn ${o.primary ? 'primary' : ''}" data-opt="${o.key}" type="button" ${o.disabled ? 'disabled' : ''}>
@@ -2342,8 +2349,9 @@ function openTopicMenu(topicCode){
     if (btn.disabled) return;
     btn.addEventListener('click', () => {
       const key = btn.dataset.opt;
+      const opt = opts.find(o => o.key === key);
       closeModal();
-      startSession({ type:key, topic:topicCode, label:t.name });
+      startSession({ type:key, topic:topicCode, label:`${t.name} · ${opt.label}` });
     });
   });
   $('topicCancel').addEventListener('click', closeModal);
@@ -2409,9 +2417,10 @@ function buildPool(mode){
     case 'deck-mastered': return state.words.filter((w,i) => inDeck(w,i) && isMastered(w));
     case 'deck-all':      return state.words.filter((w,i) => inDeck(w,i));
     case 'topic-all':      return state.words.filter(inTopic);
-    case 'topic-new':      return state.words.filter(w => inTopic(w) && isNew(w));
-    case 'topic-learning': return state.words.filter(w => inTopic(w) && isLearning(w)).sort((a,b) => difficulty(b) - difficulty(a));
-    case 'topic-mastered': return state.words.filter(w => inTopic(w) && isMastered(w));
+    case 'topic-easy':     return state.words.filter(w => inTopic(w) && (Number(w.easy)||0)  > 0);
+    case 'topic-good':     return state.words.filter(w => inTopic(w) && (Number(w.good)||0)  > 0);
+    case 'topic-hard':     return state.words.filter(w => inTopic(w) && (Number(w.hard)||0)  > 0);
+    case 'topic-known':    return state.words.filter(w => inTopic(w) && (Number(w.known)||0) > 0);
     case 'repeat':         return state.words.filter(w => Array.isArray(mode.ids) && mode.ids.includes(w.id));
     default: return [];
   }
@@ -2428,7 +2437,7 @@ function startSession(mode){
     label: mode.label || 'Practice',
     pool: pool.map(w => w.id),
     reviewed: new Set(),
-    ratings: { hard:0, good:0, easy:0 },
+    ratings: { hard:0, good:0, easy:0, known:0 },
     start: Date.now(),
     current: null,
     revealed: false
@@ -2536,13 +2545,13 @@ function endSession(){
   const duration = Math.round((Date.now() - s.start) / 1000);
   if (!FALLBACK){
     dbAdd('history', { label:s.label, reviewed:s.reviewed.size, total:s.pool.length,
-      hard:s.ratings.hard||0, good:s.ratings.good||0, easy:s.ratings.easy||0, duration, ts:Date.now() }).catch(()=>{});
+      hard:s.ratings.hard||0, good:s.ratings.good||0, easy:s.ratings.easy||0, known:s.ratings.known||0, duration, ts:Date.now() }).catch(()=>{});
   }
   $('active').style.display = 'none';
   $('done').style.display = 'block';
   const total = s.reviewed.size;
-  const easy = s.ratings.easy||0, good = s.ratings.good||0, hard = s.ratings.hard||0;
-  const quality = total ? Math.round(((easy + good*0.7) / total) * 100) : 0;
+  const easy = s.ratings.easy||0, good = s.ratings.good||0, hard = s.ratings.hard||0, known = s.ratings.known||0;
+  const quality = total ? Math.round(((easy + known + good*0.7) / total) * 100) : 0;
   $('done').innerHTML = `
     <div class="card practice-card">
       <div class="session-summary">
@@ -2554,6 +2563,7 @@ function endSession(){
           <div class="s"><b>${easy}</b><span>Easy</span></div>
           <div class="s"><b>${good}</b><span>Good</span></div>
           <div class="s"><b>${hard}</b><span>Hard</span></div>
+          <div class="s"><b>${known}</b><span>Known</span></div>
           <div class="s"><b>${quality}%</b><span>Retention</span></div>
         </div>
         <button class="btn primary" id="backBtn" type="button">Back to modes</button>
@@ -2600,6 +2610,7 @@ function sortWords(list, sortBy){
     case 'most-easy': return arr.sort((a,b) => (Number(b.easy)||0) - (Number(a.easy)||0) || a.word.localeCompare(b.word));
     case 'most-good': return arr.sort((a,b) => (Number(b.good)||0) - (Number(a.good)||0) || a.word.localeCompare(b.word));
     case 'most-hard': return arr.sort((a,b) => (Number(b.hard)||0) - (Number(a.hard)||0) || a.word.localeCompare(b.word));
+    case 'most-known': return arr.sort((a,b) => (Number(b.known)||0) - (Number(a.known)||0) || a.word.localeCompare(b.word));
     case 'most-reviewed': return arr.sort((a,b) => (Number(b.reviews)||0) - (Number(a.reviews)||0) || a.word.localeCompare(b.word));
     case 'az': return arr.sort((a,b) => a.word.localeCompare(b.word));
     case 'za': return arr.sort((a,b) => b.word.localeCompare(a.word));
@@ -2638,6 +2649,7 @@ function renderManage(){
   else if (filt === 'easy') list = list.filter(w => (Number(w.easy)||0) > 0);
   else if (filt === 'good') list = list.filter(w => (Number(w.good)||0) > 0);
   else if (filt === 'hard') list = list.filter(w => (Number(w.hard)||0) > 0);
+  else if (filt === 'known') list = list.filter(w => (Number(w.known)||0) > 0);
   list = sortWords(list, sortBy);
   $('listCount').textContent = `· ${list.length} shown`;
 
@@ -2658,6 +2670,7 @@ function renderManage(){
     if ((Number(w.hard)||0) > 0) badges.push(`<span class="badge new" style="background:rgba(239,68,68,.15);color:#fca5a5">${w.hard} hard</span>`);
     if ((Number(w.easy)||0) > 0) badges.push(`<span class="badge" style="background:rgba(34,197,94,.15);color:#86efac">${w.easy} easy</span>`);
     if ((Number(w.good)||0) > 0) badges.push(`<span class="badge" style="background:rgba(245,158,11,.15);color:#fde68a">${w.good} good</span>`);
+    if ((Number(w.known)||0) > 0) badges.push(`<span class="badge known">${w.known} known</span>`);
     badges.push(`<span class="badge topic">${ti.icon} ${esc(ti.name)}</span>`);
     const cls = (Number(w.hard)||0) > 0 ? 'has-history' : '';
     return `
@@ -2752,7 +2765,7 @@ function openWordModal(existing){
       Object.assign(existing, patch);
       await saveWord(existing);
     } else {
-      const obj = { ...patch, level:0, reviews:0, hard:0, good:0, easy:0, createdAt: Date.now(), lastReviewed:0 };
+      const obj = { ...patch, level:0, reviews:0, hard:0, good:0, easy:0, known:0, createdAt: Date.now(), lastReviewed:0 };
       if (FALLBACK){ obj.id = state._nextId++; state.words.push(obj); }
       else { await dbAdd('words', obj); }
     }
@@ -2785,7 +2798,7 @@ $('bExport').addEventListener('click', () => {
     words: state.words.map(w => ({
       word:w.word, pos:w.pos||'', bangla:w.bangla||'', definition:w.definition||'',
       example:w.example||'', synonyms:w.synonyms||'', topic:w.topic||'every',
-      level:w.level||0, reviews:w.reviews||0, hard:w.hard||0, good:w.good||0, easy:w.easy||0
+      level:w.level||0, reviews:w.reviews||0, hard:w.hard||0, good:w.good||0, easy:w.easy||0, known:w.known||0
     })),
     exportedAt: new Date().toISOString(), version: 1
   };
@@ -2821,6 +2834,7 @@ $('importFile').addEventListener('change', async e => {
         hard: Math.max(0, Math.floor(Number(item.hard)||0)),
         good: Math.max(0, Math.floor(Number(item.good)||0)),
         easy: Math.max(0, Math.floor(Number(item.easy)||0)),
+        known: Math.max(0, Math.floor(Number(item.known)||0)),
         createdAt: Date.now(), lastReviewed: 0
       };
       if (FALLBACK){ obj.id = state._nextId++; state.words.push(obj); }
@@ -2931,7 +2945,7 @@ async function renderStats(){
           <div class="word-text">${esc(h.label || 'Session')}</div>
           <div class="word-badges">
             <span class="badge mastered">${h.reviewed}/${h.total} reviewed</span>
-            <span class="badge new">${h.easy||0}E · ${h.good||0}G · ${h.hard||0}H</span>
+            <span class="badge new">${h.easy||0}E · ${h.good||0}G · ${h.hard||0}H · ${h.known||0}K</span>
           </div>
         </div>
         <div style="color:var(--muted);font-size:11px">${esc(when)}</div>
@@ -2957,11 +2971,11 @@ $('bKnow').addEventListener('click', () => {
   if (s.reviewed.has(w.id)) return;
   w.level = MAX_LEVEL;
   w.reviews = (Number(w.reviews)||0) + 1;
-  w.easy = (Number(w.easy)||0) + 1;
+  w.known = (Number(w.known)||0) + 1;
   w.lastReviewed = Date.now();
   saveWord(w);
   saveStreak();
-  s.ratings.easy = (s.ratings.easy||0) + 1;
+  s.ratings.known = (s.ratings.known||0) + 1;
   s.reviewed.add(w.id);
   toast(`✅ Already known: ${w.word}`, 'ok');
   updateHeader();
