@@ -157,11 +157,15 @@
   .swipe-hint{text-align:center;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:12px;opacity:.85}
 
   .play-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;justify-content:center}
-  .btn{appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease,background .18s ease,border-color .18s ease}
+  .btn{appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:10px 15px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;transition:transform .12s ease,background .18s ease,border-color .18s ease,filter .18s ease}
   .btn:hover{background:#232c50;border-color:#3b4778}
   .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;filter:grayscale(.5)}
+  .btn:disabled:hover{background:var(--surface2);border-color:var(--border)}
   .btn.primary{background:linear-gradient(135deg,var(--purple),#7c5eff);border-color:transparent;color:#fff}
   .btn.primary:hover{filter:brightness(1.08)}
+  .btn.practice{background:linear-gradient(135deg,#22d3ee,#0891b2);border-color:transparent;color:#06252c}
+  .btn.practice:hover{filter:brightness(1.1)}
   .btn.ghost{background:transparent}
   .btn.small{padding:6px 11px;font-size:12px}
   .actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;align-items:center}
@@ -324,7 +328,8 @@
               <div class="progress-bar"><i id="sBar"></i></div>
               <div class="practice-meta">
                 <p><b id="sLabel">—</b></p>
-                <p>Card <b id="sNavPos">1</b>/<b id="sTotal">0</b> · ✅ <b id="sReviewed">0</b></p>
+                <p>Card <b id="sNavPos">1</b>/<b id="sTotal">0</b> · ✅ <b
+                    id="sReviewed">0</b></p>
               </div>
 
               <div class="flashcard" id="flashcard">
@@ -349,7 +354,8 @@
                   Known<small>K</small></button>
               </div>
 
-              <div class="swipe-hint">💡 Swipe ← / → or use arrow keys to browse cards · rate with buttons or 1 / 2 / 3 / K</div>
+              <div class="swipe-hint">💡 Swipe ← / → or use arrow keys to browse
+                cards · rate with buttons or 1 / 2 / 3 / K</div>
 
               <div class="actions">
                 <button class="btn ghost small" id="bPlay" type="button">🔊 Play
@@ -368,9 +374,9 @@
           <div class="card">
             <div class="section-title">📚 Word list <span id="listCount"
                 style="font-weight:600;color:var(--muted);font-size:12px"></span></div>
-            <p class="section-sub">Add, edit, search, sort or remove words. Use
-              Export / Import to back up everything (words + progress + streak
-              + history) or transfer to another device.</p>
+            <p class="section-sub">Add, edit, search, sort, practise, or remove
+              words. Use Export / Import to back up everything (words + progress
+              + streak + history) or transfer to another device.</p>
             <div class="search-row">
               <input type="text" id="search"
                 placeholder="Search word, Bangla, meaning…" />
@@ -401,6 +407,9 @@
                 <option value="newest">Sort: Newest</option>
                 <option value="oldest">Sort: Oldest</option>
               </select>
+              <button class="btn practice" id="bPracticeFiltered"
+                title="Choose how to practise the currently filtered + sorted words">▶
+                Practice</button>
               <button class="btn primary" id="bAdd">+ Add word</button>
               <button class="btn" id="bExport"
                 title="Download all data — words, progress, streak &amp; history">💾
@@ -408,7 +417,6 @@
               <button class="btn" id="bImport"
                 title="Restore from a previous backup (merge progress)">📥
                 Import</button>
-              <button class="btn ghost" id="bReseed">↻ Reset</button>
               <input type="file" id="importFile" accept=".json"
                 style="display:none" />
             </div>
@@ -434,12 +442,16 @@
             <div class="section-title">🕒 Recent sessions</div>
             <p class="section-sub">
               Last 50 sessions ·
-              <button class="btn small" id="bExportHistory" type="button">📤 Export history</button>
-              <button class="btn small" id="bImportHistory" type="button">📥 Import history</button>
-              <button class="btn small ghost" id="bClearHistory" type="button">🗑 Clear history</button>
+              <button class="btn small" id="bExportHistory" type="button">📤
+                Export history</button>
+              <button class="btn small" id="bImportHistory" type="button">📥
+                Import history</button>
+              <button class="btn small ghost" id="bClearHistory"
+                type="button">🗑 Clear history</button>
             </p>
             <div class="mistake-list" id="historyList"></div>
-            <input type="file" id="importHistoryFile" accept=".json" style="display:none" />
+            <input type="file" id="importHistoryFile" accept=".json"
+              style="display:none" />
           </div>
         </section>
       </div>
@@ -522,6 +534,8 @@ const dbClear = store => tx(store, 'readwrite').then(s => new Promise((res, rej)
 
 /* ============ STATE ============ */
 const state = { words: [], session: null, streak: 0, view: 'practice', _nextId: 1 };
+let lastPracticeList = [];   // full filtered word objects (respects current search/topic/filter/sort)
+let lastPracticePool = [];   // ids of the same list, kept for quick access
 
 /* ============ HELPERS ============ */
 const $ = id => document.getElementById(id);
@@ -873,6 +887,62 @@ function openDeckMenu(deckIdx){
   $('deckCancel').addEventListener('click', closeModal);
 }
 
+/* ============ PRACTICE MENU (from Words → ▶ Practice) ============ */
+function openPracticeMenu(){
+  const list = lastPracticeList;
+  if (!list.length){ toast('No words match the current filters', 'err'); return; }
+
+  const newW      = list.filter(isNew);
+  const learnW    = list.filter(isLearning);
+  const masteredW = list.filter(isMastered);
+  const hardW     = list.filter(w => (Number(w.hard) || 0) > 0);
+
+  const opts = [
+    { key: 'filtered-order',   label: 'All · in current order', sub: `${list.length} word${list.length === 1 ? '' : 's'} · respects the active sort`, primary: true, disabled: list.length === 0 },
+    { key: 'filtered-shuffle', label: 'All · shuffled',         sub: `${list.length} word${list.length === 1 ? '' : 's'} · random order`,                 disabled: list.length === 0 },
+    { key: 'filtered-new',     label: 'New only',               sub: `${newW.length} word${newW.length === 1 ? '' : 's'}`,                                disabled: newW.length === 0 },
+    { key: 'filtered-learning',label: 'Learning only',          sub: `${learnW.length} word${learnW.length === 1 ? '' : 's'}`,                            disabled: learnW.length === 0 },
+    { key: 'filtered-mastered',label: 'Mastered only',          sub: `${masteredW.length} word${masteredW.length === 1 ? '' : 's'}`,                      disabled: masteredW.length === 0 },
+    { key: 'filtered-hard',    label: 'Rated Hard only',        sub: `${hardW.length} word${hardW.length === 1 ? '' : 's'}`,                              disabled: hardW.length === 0 }
+  ];
+
+  $('modal').innerHTML = `
+    <h3>🎴 Practice options</h3>
+    <p class="m-sub">${list.length} word${list.length === 1 ? '' : 's'} match your current filters. Choose what to practise.</p>
+    <div class="modal-actions column">
+      ${opts.map(o => `
+        <button class="btn ${o.primary ? 'primary' : ''}" data-opt="${o.key}" type="button" ${o.disabled ? 'disabled' : ''}>
+          ${esc(o.label)}
+          <small>${esc(o.sub)}</small>
+        </button>`).join('')}
+      <button class="btn ghost" id="practiceCancel" type="button">Cancel</button>
+    </div>`;
+  $('modalBg').classList.add('open');
+
+  const run = (key) => {
+    closeModal();
+    if (key === 'filtered-order'){
+      startSession({ type: 'custom-list', ids: list.map(w => w.id), label: `Filtered · ${list.length} in order`, noShuffle: true });
+    } else if (key === 'filtered-shuffle'){
+      startSession({ type: 'custom-list', ids: list.map(w => w.id), label: `Filtered · ${list.length} shuffled`, noShuffle: false });
+    } else if (key === 'filtered-new'){
+      startSession({ type: 'custom-list', ids: newW.map(w => w.id), label: `New · ${newW.length}`, noShuffle: true });
+    } else if (key === 'filtered-learning'){
+      startSession({ type: 'custom-list', ids: learnW.map(w => w.id), label: `Learning · ${learnW.length}`, noShuffle: true });
+    } else if (key === 'filtered-mastered'){
+      startSession({ type: 'custom-list', ids: masteredW.map(w => w.id), label: `Mastered · ${masteredW.length}`, noShuffle: true });
+    } else if (key === 'filtered-hard'){
+      startSession({ type: 'custom-list', ids: hardW.map(w => w.id), label: `Rated Hard · ${hardW.length}`, noShuffle: true });
+    }
+  };
+
+  $$('#modal [data-opt]').forEach(btn => {
+    if (btn.disabled) return;
+    btn.addEventListener('click', () => run(btn.dataset.opt));
+  });
+  $('practiceCancel').addEventListener('click', closeModal);
+}
+
 /* ============ MODE CARD CLICKS ============ */
 $$('.mode-card').forEach(card => {
   card.addEventListener('click', () => {
@@ -901,6 +971,11 @@ function buildPool(mode){
     case 'topic-hard':     return state.words.filter(w => inTopic(w) && (Number(w.hard) || 0)  > 0);
     case 'topic-known':    return state.words.filter(w => inTopic(w) && (Number(w.known) || 0) > 0);
     case 'repeat':         return state.words.filter(w => Array.isArray(mode.ids) && mode.ids.includes(w.id));
+    case 'custom-list': {
+      // Preserves the exact order of mode.ids (used by "Practice filtered list")
+      const byId = new Map(state.words.map(w => [w.id, w]));
+      return (mode.ids || []).map(id => byId.get(id)).filter(Boolean);
+    }
     default: return [];
   }
 }
@@ -927,7 +1002,7 @@ function resetFlashcardSwipe(){
 function startSession(mode){
   let pool = buildPool(mode);
   if (!pool.length){ toast('Nothing to practise here 🎉', 'ok'); return; }
-  pool = shuffleArr(pool);
+  if (!mode.noShuffle) pool = shuffleArr(pool);
   const firstId = pool[0].id;
   state.session = {
     mode,
@@ -1261,6 +1336,16 @@ function renderManage(){
   else if (filt === 'hard') list = list.filter(w => (Number(w.hard) || 0) > 0);
   else if (filt === 'known') list = list.filter(w => (Number(w.known) || 0) > 0);
   list = sortWords(list, sortBy);
+
+  // Keep the filtered word objects (and their exact order) for the Practice menu.
+  lastPracticeList = list.slice();
+  lastPracticePool = list.map(w => w.id);
+  const pbtn = $('bPracticeFiltered');
+  if (pbtn){
+    pbtn.textContent = list.length ? `▶ Practice ${list.length}` : '▶ Practice';
+    pbtn.disabled = list.length === 0;
+  }
+
   $('listCount').textContent = `· ${list.length} shown`;
 
   const el = $('wordList');
@@ -1319,6 +1404,9 @@ $('search').addEventListener('input', renderManage);
 $('topicFilter').addEventListener('change', renderManage);
 $('filter').addEventListener('change', renderManage);
 $('sort').addEventListener('change', renderManage);
+
+/* ============ PRACTICE FILTERED LIST ============ */
+$('bPracticeFiltered').addEventListener('click', openPracticeMenu);
 
 /* ============ WORD MODAL ============ */
 function closeModal(){ $('modalBg').classList.remove('open'); }
@@ -1386,21 +1474,6 @@ function openWordModal(existing){
   });
 }
 $('bAdd').addEventListener('click', () => openWordModal(null));
-
-/* ============ RESET ============ */
-$('bReseed').addEventListener('click', async () => {
-  if (!confirm('This will delete all words and progress, then reload the built-in word list. Continue?')) return;
-  if (FALLBACK){
-    state.words = parseSeed().map((w, i) => ({ ...w, id: i + 1 }));
-    state._nextId = state.words.length + 1;
-  } else {
-    try { await dbClear('words'); await dbClear('settings'); await dbClear('history'); } catch(_){}
-    await seedIfEmpty();
-    await loadAll();
-  }
-  renderManage(); renderPicker(); updateHeader();
-  toast('Word list reloaded', 'ok');
-});
 
 /* ============ EXPORT / IMPORT (full backup) ============ */
 $('bExport').addEventListener('click', async () => {
@@ -1741,7 +1814,7 @@ document.addEventListener('keydown', e => {
     renderPicker();
     updateHeader();
     if (state.words.length === 0){
-      toast('No words found. Go to Words → ↻ Reset.', 'err');
+      toast('No words found. Import a backup or add words in the Words tab.', 'err');
     }
   } catch (err){
     console.error('Init failed:', err);
