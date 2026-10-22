@@ -1556,6 +1556,10 @@ vulnerable|adj|অরক্ষিত / সহজে ক্ষতিগ্রস�
 derelict|adj|অসম্পন্ন / অসম্পন্ন স্থান|Abandoned, Defunct, Inactive|env
 burial urn|n|দাফনের কলস|Casket, Tomb, Coffin|env
 descriptivists |n|ভাষা বর্ণনাবাদ|Descriptivist, Descriptive, Descriptive Literature|desc
+closure|n|সম্পূর্ণতা|Closure, Completion|desc
+hostile|adj|বিরুদ্ধ |Opposing, Hostile, unfriendly, aggressive, or showing active opposition|conf
+saline |adj|সমীপ|Salty, Saline, salty or containing salt, or it refers to a liquid mixture made of sodium chloride (table salt) and water|env
+
 `
 
 
@@ -1563,25 +1567,25 @@ descriptivists |n|ভাষা বর্ণনাবাদ|Descriptivist, Descri
    TOPICS DICTIONARY
    ========================================================= */
 export const TOPICS = {
-    acad: { name: 'Academic & Research', icon: '🎓', color: '#7c8cff' },
-    env: { name: 'Environment & Nature', icon: '🌿', color: '#22c55e' },
-    sci: { name: 'Science & Technology', icon: '🔬', color: '#22d3ee' },
-    soc: { name: 'Society & Culture', icon: '🏛️', color: '#a78bfa' },
-    biz: { name: 'Business & Economy', icon: '💼', color: '#f59e0b' },
-    law: { name: 'Law & Politics', icon: '⚖️', color: '#ef4444' },
-    health: { name: 'Health & Medicine', icon: '🩺', color: '#ec4899' },
-    emo: { name: 'Emotion & Feeling', icon: '❤️', color: '#f43f5e' },
-    char: { name: 'Character & Personality', icon: '👤', color: '#8b5cf6' },
-    desc: { name: 'Description & Quality', icon: '🎨', color: '#06b6d4' },
-    move: { name: 'Movement & Travel', icon: '✈️', color: '#0ea5e9' },
-    comm: { name: 'Communication & Language', icon: '💬', color: '#14b8a6' },
-    time: { name: 'Time & Change', icon: '⏳', color: '#eab308' },
-    conf: { name: 'Conflict & Struggle', icon: '⚔️', color: '#dc2626' },
-    struct: { name: 'Structure & Form', icon: '🏗️', color: '#64748b' },
-    food: { name: 'Food & Agriculture', icon: '🍎', color: '#84cc16' },
-    body: { name: 'Body & Biology', icon: '🧬', color: '#f472b6' },
-    geo: { name: 'Geography & Places', icon: '🗺️', color: '#10b981' },
-    art: { name: 'Art & Creativity', icon: '🎭', color: '#d946ef' },
-    every: { name: 'Everyday & General', icon: '🌐', color: '#94a3b8' }
+   acad: { name: 'Academic & Research', icon: '🎓', color: '#7c8cff' },
+   env: { name: 'Environment & Nature', icon: '🌿', color: '#22c55e' },
+   sci: { name: 'Science & Technology', icon: '🔬', color: '#22d3ee' },
+   soc: { name: 'Society & Culture', icon: '🏛️', color: '#a78bfa' },
+   biz: { name: 'Business & Economy', icon: '💼', color: '#f59e0b' },
+   law: { name: 'Law & Politics', icon: '⚖️', color: '#ef4444' },
+   health: { name: 'Health & Medicine', icon: '🩺', color: '#ec4899' },
+   emo: { name: 'Emotion & Feeling', icon: '❤️', color: '#f43f5e' },
+   char: { name: 'Character & Personality', icon: '👤', color: '#8b5cf6' },
+   desc: { name: 'Description & Quality', icon: '🎨', color: '#06b6d4' },
+   move: { name: 'Movement & Travel', icon: '✈️', color: '#0ea5e9' },
+   comm: { name: 'Communication & Language', icon: '💬', color: '#14b8a6' },
+   time: { name: 'Time & Change', icon: '⏳', color: '#eab308' },
+   conf: { name: 'Conflict & Struggle', icon: '⚔️', color: '#dc2626' },
+   struct: { name: 'Structure & Form', icon: '🏗️', color: '#64748b' },
+   food: { name: 'Food & Agriculture', icon: '🍎', color: '#84cc16' },
+   body: { name: 'Body & Biology', icon: '🧬', color: '#f472b6' },
+   geo: { name: 'Geography & Places', icon: '🗺️', color: '#10b981' },
+   art: { name: 'Art & Creativity', icon: '🎭', color: '#d946ef' },
+   every: { name: 'Everyday & General', icon: '🌐', color: '#94a3b8' }
 };
 

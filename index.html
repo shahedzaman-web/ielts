@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
     <title>English Grammar &amp; IELTS Resource Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,31 +12,43 @@
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
       rel="stylesheet" />
     <style>
+  :root {
+    --bg: #070b14;
+    --surface: #0d1526;
+    --surface-2: #121c30;
+    --border: rgba(148,163,184,.16);
+    --border-strong: rgba(148,163,184,.30);
+    --text: #e6edf7;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+  }
+
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: dark; }
 
   body {
     background:
-      radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.07), transparent 60%),
-      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
-      #f8fafc;
+      radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.16), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.12), transparent 60%),
+      var(--bg);
     margin: 0;
-    color: #0f172a;
+    color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
 
   /* ================= HERO ================= */
   .hero-gradient {
-    background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #1e3a8a 100%);
+    background: linear-gradient(145deg, #060a13 0%, #0b1424 55%, #14265c 100%);
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid rgba(148,163,184,.10);
   }
   .aurora {
     position: absolute; inset: -40% -20% auto -20%; height: 420px;
     background:
-      radial-gradient(closest-side, rgba(79,70,229,.32), transparent 70%),
-      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
-      radial-gradient(closest-side, rgba(16,185,129,.20), transparent 70%);
+      radial-gradient(closest-side, rgba(99,102,241,.40), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.30), transparent 70%),
+      radial-gradient(closest-side, rgba(16,185,129,.22), transparent 70%);
     filter: blur(70px);
     animation: drift 18s ease-in-out infinite alternate;
     pointer-events: none;
@@ -46,7 +59,7 @@
   }
 
   .stat-box {
-    background: rgba(255,255,255,.06);
+    background: rgba(255,255,255,.05);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255,255,255,.10);
     border-radius: .9rem;
@@ -56,8 +69,8 @@
     transition: transform .25s ease, background .25s ease, border-color .25s ease;
   }
   .stat-box:hover {
-    background: rgba(255,255,255,.11);
-    border-color: rgba(255,255,255,.20);
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.22);
     transform: translateY(-3px);
   }
   .stat-box .number { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1.1; }
@@ -66,29 +79,29 @@
   /* ================= STICKY NAV ================= */
   .nav-shell {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(248,250,252,.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 4px 24px -16px rgba(15,23,42,.25);
+    background: rgba(7,11,20,.78);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 30px -20px rgba(0,0,0,.9);
   }
   .nav-link {
     padding: .45rem .9rem; border-radius: 999px;
-    font-size: .78rem; font-weight: 700; color: #475569;
+    font-size: .78rem; font-weight: 700; color: #94a3b8;
     text-decoration: none;
     transition: all .18s ease; white-space: nowrap;
     display: inline-flex; align-items: center; gap: .35rem;
   }
-  .nav-link:hover { background: #eef2ff; color: #4338ca; }
+  .nav-link:hover { background: rgba(99,102,241,.16); color: #c7d2fe; }
   .nav-link.primary {
     background: linear-gradient(135deg, #4f46e5, #0ea5e9);
     color: #fff;
-    box-shadow: 0 6px 18px -8px rgba(79,70,229,.7);
+    box-shadow: 0 6px 18px -8px rgba(79,70,229,.9);
   }
-  .nav-link.primary:hover { box-shadow: 0 8px 22px -8px rgba(79,70,229,.85); }
+  .nav-link.primary:hover { box-shadow: 0 8px 22px -8px rgba(79,70,229,1); }
 
   /* ================= SECTION TITLES ================= */
   .section-title {
-    font-size: 1.65rem; font-weight: 800; color: #0f172a;
+    font-size: 1.65rem; font-weight: 800; color: #f1f5f9;
     letter-spacing: -.025em; display: flex; align-items: center; gap: .6rem;
     margin: 0;
   }
@@ -96,23 +109,24 @@
     width: 2.6rem; height: 2.6rem; border-radius: .75rem;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.35rem; flex-shrink: 0;
-    box-shadow: 0 4px 14px -6px rgba(15,23,42,.25);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 4px 14px -8px rgba(0,0,0,.9);
   }
   .section-title .count {
-    font-size: .68rem; font-weight: 800; color: #4338ca;
-    background: #eef2ff; padding: .2rem .65rem;
+    font-size: .68rem; font-weight: 800; color: #a5b4fc;
+    background: rgba(99,102,241,.16); padding: .2rem .65rem;
     border-radius: 999px; letter-spacing: .05em;
     text-transform: uppercase;
     margin-left: .15rem;
+    border: 1px solid rgba(99,102,241,.22);
   }
   .section-sub {
-    font-size: .85rem; color: #64748b; font-weight: 500;
+    font-size: .85rem; color: var(--muted); font-weight: 500;
     margin-top: .35rem;
   }
 
   .divider {
     border: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, #cbd5e1 20%, #cbd5e1 80%, transparent);
+    background: linear-gradient(90deg, transparent, rgba(148,163,184,.24) 20%, rgba(148,163,184,.24) 80%, transparent);
     margin: 3.5rem 0;
     position: relative;
   }
@@ -120,8 +134,8 @@
     content: '◆';
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    color: #cbd5e1; font-size: .55rem;
-    background: #f8fafc; padding: 0 .55rem;
+    color: #334155; font-size: .55rem;
+    background: var(--bg); padding: 0 .55rem;
     line-height: 1;
   }
 
@@ -134,11 +148,11 @@
 
   .resource-card {
     position: relative; overflow: hidden;
-    background: #fff;
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
     border-radius: 1.1rem;
     padding: 1.4rem 1.4rem 1.5rem;
-    border: 1px solid #eef2f6;
-    box-shadow: 0 2px 8px rgba(15,23,42,.03);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0,0,0,.35);
     display: flex; flex-direction: column; height: 100%;
     text-decoration: none;
     transition: transform .28s cubic-bezier(.2,.7,.2,1),
@@ -152,8 +166,8 @@
   }
   .resource-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 24px 44px -24px rgba(15,23,42,.30), 0 8px 20px -14px rgba(15,23,42,.15);
-    border-color: #dbeafe;
+    box-shadow: 0 26px 50px -26px rgba(0,0,0,.95), 0 0 0 1px rgba(99,102,241,.18);
+    border-color: rgba(99,102,241,.45);
   }
   .resource-card:hover::before { transform: scaleX(1); }
 
@@ -161,17 +175,18 @@
     width: 50px; height: 50px; border-radius: .85rem;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.45rem; margin-bottom: .85rem; flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
     transition: transform .3s cubic-bezier(.2,.7,.2,1);
   }
   .resource-card:hover .icon-wrap { transform: scale(1.08) rotate(-3deg); }
 
   .resource-card .title {
     font-weight: 700; font-size: 1.02rem;
-    color: #0f172a; margin-bottom: .35rem; line-height: 1.35;
+    color: #f1f5f9; margin-bottom: .35rem; line-height: 1.35;
     letter-spacing: -.01em;
   }
   .resource-card .description {
-    font-size: .855rem; color: #64748b; line-height: 1.6;
+    font-size: .855rem; color: var(--muted); line-height: 1.6;
     flex-grow: 1; margin-bottom: 1rem;
   }
 
@@ -185,17 +200,18 @@
     text-transform: uppercase; letter-spacing: .06em;
     white-space: nowrap;
   }
-  .badge-grammar  { background: #dbeafe; color: #1d4ed8; }
-  .badge-ielts    { background: #d1fae5; color: #065f46; }
-  .badge-advanced { background: #fef3c7; color: #92400e; }
-  .badge-interactive { background: #ede9fe; color: #5b21b6; }
-  .badge-strategy { background: #fce7f3; color: #9d174d; }
-  .badge-intermediate { background: #e0f2fe; color: #0369a1; }
+  .badge-grammar     { background: rgba(59,130,246,.16); color: #93c5fd; }
+  .badge-ielts       { background: rgba(16,185,129,.16); color: #6ee7b7; }
+  .badge-advanced    { background: rgba(245,158,11,.16); color: #fcd34d; }
+  .badge-interactive { background: rgba(139,92,246,.18); color: #c4b5fd; }
+  .badge-strategy    { background: rgba(236,72,153,.16); color: #f9a8d4; }
+  .badge-intermediate{ background: rgba(14,165,233,.16); color: #7dd3fc; }
 
   .open-btn {
     display: inline-flex; align-items: center; gap: .4rem;
     font-weight: 700; font-size: .78rem;
-    color: var(--open-color, #4f46e5);
+    color: var(--open-color, #818cf8);
+    filter: brightness(1.55) saturate(1.05);
     transition: gap .2s ease;
     letter-spacing: .01em;
   }
@@ -210,29 +226,30 @@
   .qs-card {
     border-radius: 1rem;
     padding: 1.25rem 1.35rem;
-    border: 1px solid;
-    transition: transform .25s ease, box-shadow .25s ease;
+    border: 1px solid var(--border);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     position: relative; overflow: hidden;
   }
   .qs-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 32px -22px rgba(15,23,42,.3);
+    box-shadow: 0 16px 32px -22px rgba(0,0,0,.95);
+    border-color: var(--border-strong);
   }
   .qs-card .qs-num {
     position: absolute; top: 1rem; right: 1rem;
     font-size: 3rem; font-weight: 800; line-height: 1;
-    opacity: .1; letter-spacing: -.05em;
+    opacity: .12; letter-spacing: -.05em;
   }
   .qs-list a {
     color: inherit;
     text-decoration: none;
     display: inline-flex; align-items: center; gap: .35rem;
     padding: .22rem 0;
-    transition: gap .18s ease, opacity .18s ease;
+    transition: gap .18s ease, opacity .18s ease, color .18s ease;
     font-weight: 500;
-    opacity: .85;
+    opacity: .9;
   }
-  .qs-list a:hover { gap: .55rem; opacity: 1; }
+  .qs-list a:hover { gap: .55rem; opacity: 1; color: #fff; }
   .qs-list a::before {
     content: '→'; font-weight: 800; opacity: .5; font-size: .8em;
   }
@@ -246,26 +263,26 @@
     transition: background .18s ease, transform .18s ease, border-color .18s ease;
     border: 1px solid transparent;
     text-decoration: none;
-    color: #334155;
+    color: #cbd5e1;
     font-weight: 500;
   }
   .link-item:hover {
-    background: #fff;
-    border-color: rgba(79,70,229,.22);
+    background: rgba(255,255,255,.055);
+    border-color: rgba(99,102,241,.35);
     transform: translateX(3px);
-    box-shadow: 0 8px 18px -14px rgba(79,70,229,.55);
+    box-shadow: 0 8px 18px -14px rgba(0,0,0,.9);
   }
   .link-item .arrow {
     opacity: 0; transform: translateX(-5px);
     transition: opacity .2s ease, transform .2s ease;
-    color: #4f46e5; font-weight: 800;
+    color: #818cf8; font-weight: 800;
   }
   .link-item:hover .arrow { opacity: 1; transform: translateX(0); }
 
   .num {
     display: inline-flex; align-items: center; justify-content: center;
     width: 1.4rem; height: 1.4rem; border-radius: .45rem;
-    background: #eef2ff; color: #4338ca;
+    background: rgba(99,102,241,.16); color: #a5b4fc;
     font-size: .68rem; font-weight: 800;
     flex: 0 0 auto;
   }
@@ -280,65 +297,75 @@
   /* ================= HIGHLIGHT CARD (Cambridge) ================= */
   .highlight-shell {
     position: relative; overflow: hidden;
-    background: #fff;
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
     border-radius: 1.5rem;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 30px 60px -30px rgba(15,23,42,.28), 0 8px 24px -16px rgba(15,23,42,.12);
+    border: 1px solid var(--border);
+    box-shadow: 0 34px 70px -34px rgba(0,0,0,1), 0 8px 24px -16px rgba(0,0,0,.6);
   }
 
   .feat-card {
     border-radius: 1.1rem;
     padding: 1.35rem 1.4rem;
-    border: 1px solid;
-    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.010));
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease, border-color .28s ease;
     position: relative; overflow: hidden;
   }
   .feat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 44px -24px rgba(15,23,42,.28);
+    box-shadow: 0 24px 44px -24px rgba(0,0,0,1);
+    border-color: var(--border-strong);
+  }
+  .feat-card.feat-indigo {
+    background: linear-gradient(180deg, rgba(99,102,241,.14), rgba(99,102,241,.02));
+    border-color: rgba(99,102,241,.28);
+  }
+  .feat-card.feat-emerald {
+    background: linear-gradient(180deg, rgba(16,185,129,.14), rgba(16,185,129,.02));
+    border-color: rgba(16,185,129,.28);
   }
 
   .stat-mini {
     border-radius: .85rem;
     padding: .85rem 1rem;
-    border: 1px solid #e2e8f0;
-    background: linear-gradient(135deg, #f8fafc, #fff);
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
     transition: transform .22s ease, border-color .22s ease;
   }
-  .stat-mini:hover { transform: translateY(-2px); border-color: #c7d2fe; }
+  .stat-mini:hover { transform: translateY(-2px); border-color: rgba(99,102,241,.45); }
   .stat-mini .sm-num {
-    font-size: 1.35rem; font-weight: 800; color: #0f172a; line-height: 1;
+    font-size: 1.35rem; font-weight: 800; color: #f1f5f9; line-height: 1;
     letter-spacing: -.02em;
   }
   .stat-mini .sm-lbl {
-    font-size: .6rem; font-weight: 700; color: #64748b;
+    font-size: .6rem; font-weight: 700; color: var(--muted);
     text-transform: uppercase; letter-spacing: .07em;
     margin-top: .3rem;
   }
 
   /* ================= SIMPLE SECTION CARD ================= */
   .simple-card {
-    background: #fff;
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
     border-radius: 1.25rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border);
     padding: 1.6rem 1.75rem;
-    box-shadow: 0 4px 18px -14px rgba(15,23,42,.14);
+    box-shadow: 0 4px 18px -14px rgba(0,0,0,.9);
     transition: box-shadow .25s ease, border-color .25s ease;
   }
   .simple-card:hover {
-    box-shadow: 0 12px 30px -20px rgba(15,23,42,.22);
-    border-color: #dbeafe;
+    box-shadow: 0 16px 34px -22px rgba(0,0,0,1);
+    border-color: rgba(99,102,241,.35);
   }
 
   /* ================= FOOTER ================= */
   .footer-note {
-    background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+    background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
     border-radius: 1.25rem;
     padding: 2rem 2rem;
     text-align: center;
-    color: #475569;
+    color: var(--muted);
     font-size: .9rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border);
     margin-top: 3.5rem;
     position: relative; overflow: hidden;
   }
@@ -354,10 +381,12 @@
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1; border-radius: 999px;
-    border: 3px solid #f8fafc;
+    background: #24314a; border-radius: 999px;
+    border: 3px solid var(--bg);
   }
-  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a4c6e; }
+
+  ::selection { background: rgba(99,102,241,.40); color: #fff; }
 
   @media (prefers-reduced-motion: reduce) {
     .aurora { animation: none; }
@@ -373,6 +402,55 @@
     .section-title .emoji-wrap { width: 2.25rem; height: 2.25rem; font-size: 1.15rem; }
     .divider { margin: 2.5rem 0; }
   }
+
+  /* ============================================================ */
+  /*  DARK OVERRIDES FOR LIGHT TAILWIND UTILITIES USED IN MARKUP   */
+  /* ============================================================ */
+
+  .text-slate-900, .text-gray-900 { color: #f1f5f9 !important; }
+  .text-slate-800 { color: #e2e8f0 !important; }
+  .text-slate-700 { color: #cbd5e1 !important; }
+  .text-slate-600, .text-slate-500 { color: #94a3b8 !important; }
+  .text-slate-400, .text-gray-400 { color: #7c8ba1 !important; }
+
+  .text-blue-600, .text-blue-700, .text-blue-800, .text-blue-900 { color: #93c5fd !important; }
+  .text-indigo-600, .text-indigo-700 { color: #a5b4fc !important; }
+  .text-violet-600 { color: #c4b5fd !important; }
+  .text-purple-600, .text-purple-700 { color: #c4b5fd !important; }
+  .text-emerald-600, .text-emerald-700, .text-emerald-800 { color: #6ee7b7 !important; }
+  .text-teal-600, .text-teal-700 { color: #5eead4 !important; }
+  .text-green-700 { color: #86efac !important; }
+  .text-sky-600, .text-sky-700 { color: #7dd3fc !important; }
+  .text-pink-600 { color: #f9a8d4 !important; }
+  .text-rose-600, .text-rose-700 { color: #fda4af !important; }
+  .text-amber-500, .text-amber-600, .text-amber-700, .text-amber-800 { color: #fcd34d !important; }
+  .text-yellow-600 { color: #fde047 !important; }
+  .text-orange-700 { color: #fdba74 !important; }
+
+  .bg-blue-50, .bg-blue-900\/10 { background-color: rgba(59,130,246,.13) !important; }
+  .bg-indigo-50 { background-color: rgba(99,102,241,.13) !important; }
+  .bg-violet-50 { background-color: rgba(139,92,246,.13) !important; }
+  .bg-purple-50 { background-color: rgba(168,85,247,.13) !important; }
+  .bg-emerald-50 { background-color: rgba(16,185,129,.13) !important; }
+  .bg-green-50 { background-color: rgba(34,197,94,.13) !important; }
+  .bg-teal-50 { background-color: rgba(20,184,166,.13) !important; }
+  .bg-sky-50 { background-color: rgba(14,165,233,.13) !important; }
+  .bg-pink-50 { background-color: rgba(236,72,153,.13) !important; }
+  .bg-rose-50 { background-color: rgba(244,63,94,.13) !important; }
+  .bg-amber-50 { background-color: rgba(245,158,11,.13) !important; }
+  .bg-yellow-50 { background-color: rgba(234,179,8,.13) !important; }
+  .bg-orange-50 { background-color: rgba(249,115,22,.13) !important; }
+
+  .bg-indigo-100 { background-color: rgba(99,102,241,.22) !important; }
+  .bg-emerald-100 { background-color: rgba(16,185,129,.22) !important; }
+  .bg-amber-100 { background-color: rgba(245,158,11,.22) !important; }
+
+  .border-blue-100 { border-color: rgba(59,130,246,.30) !important; }
+  .border-indigo-100 { border-color: rgba(99,102,241,.30) !important; }
+  .border-emerald-100 { border-color: rgba(16,185,129,.30) !important; }
+  .border-amber-100 { border-color: rgba(245,158,11,.30) !important; }
+  .ring-indigo-100 { --tw-ring-color: rgba(99,102,241,.35) !important; }
+  .ring-emerald-100 { --tw-ring-color: rgba(16,185,129,.35) !important; }
 </style>
   </head>
   <body>
@@ -383,7 +461,7 @@
         <div class="flex items-center justify-between gap-3">
           <a href="#" class="flex items-center gap-2.5 shrink-0 no-underline">
             <span
-              class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-indigo-500/30">EG</span>
+              class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-indigo-500/40">EG</span>
             <span class="hidden sm:block">
               <span
                 class="block text-[0.82rem] font-extrabold text-slate-900 leading-tight tracking-tight">English
@@ -430,7 +508,7 @@
                 IELTS Mastery</span>
             </h1>
             <p
-              class="text-lg md:text-xl text-blue-100/80 mt-5 max-w-2xl leading-relaxed">
+              class="text-lg md:text-xl text-blue-100/70 mt-5 max-w-2xl leading-relaxed">
               Your complete library of grammar guides, interactive exercises,
               IELTS writing strategies, and speaking resources — all in one
               place.
@@ -443,7 +521,7 @@
                   class="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a href="#ielts"
-                class="group bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-full transition shadow-lg shadow-blue-900/40 flex items-center gap-2">
+                class="group bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-full transition shadow-lg shadow-blue-900/50 flex items-center gap-2">
                 🎯 IELTS Resources
                 <span
                   class="transition-transform group-hover:translate-x-1">→</span>
@@ -471,13 +549,13 @@
       <!-- ============================================================ -->
       <!--  GRAMMAR SECTION                                              -->
       <!-- ============================================================ -->
-      <section id="grammar" class="scroll-mt-20">
+      <section id="grammar" class="scroll-mt-24">
         <div
           class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
           <div>
             <h2 class="section-title">
               <span
-                class="emoji-wrap bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">📖</span>
+                class="emoji-wrap bg-gradient-to-br from-blue-500/25 to-indigo-500/20">📖</span>
               Grammar Resources
               <span class="count">11</span>
             </h2>
@@ -698,13 +776,13 @@
       <!-- ============================================================ -->
       <!--  IELTS SECTION                                                 -->
       <!-- ============================================================ -->
-      <section id="ielts" class="scroll-mt-20">
+      <section id="ielts" class="scroll-mt-24">
         <div
           class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
           <div>
             <h2 class="section-title">
               <span
-                class="emoji-wrap bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700">🎯</span>
+                class="emoji-wrap bg-gradient-to-br from-emerald-500/25 to-teal-500/20">🎯</span>
               IELTS Resources
               <span class="count">8</span>
             </h2>
@@ -894,11 +972,11 @@
       <!-- ============================================================ -->
       <!--  QUICK START GUIDE                                             -->
       <!-- ============================================================ -->
-      <section id="quickstart" class="scroll-mt-20">
+      <section id="quickstart" class="scroll-mt-24">
         <div class="simple-card">
           <div class="flex items-center gap-3 mb-2">
             <span
-              class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center text-2xl">🚀</span>
+              class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500/25 to-orange-500/20 flex items-center justify-center text-2xl">🚀</span>
             <div>
               <h2
                 class="text-2xl font-extrabold text-gray-900 m-0 tracking-tight">Quick
@@ -918,15 +996,10 @@
               </span>
               <ul
                 class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
-                <li><a href="subject_verb_agreement.html"
-                    class="text-blue-700 hover:text-blue-900">Subject–Verb
+                <li><a href="subject_verb_agreement.html">Subject–Verb
                     Agreement</a></li>
-                <li><a href="tense.html"
-                    class="text-blue-700 hover:text-blue-900">Verb
-                    Tenses</a></li>
-                <li><a href="article.html"
-                    class="text-blue-700 hover:text-blue-900">Articles &amp;
-                    Nouns</a></li>
+                <li><a href="tense.html">Verb Tenses</a></li>
+                <li><a href="article.html">Articles &amp; Nouns</a></li>
               </ul>
             </div>
 
@@ -939,13 +1012,10 @@
               </span>
               <ul
                 class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
-                <li><a href="prepositions.html"
-                    class="text-emerald-700 hover:text-emerald-900">Prepositions</a></li>
-                <li><a href="pronouns.html"
-                    class="text-emerald-700 hover:text-emerald-900">Pronouns</a></li>
-                <li><a href="essential_grammar.html"
-                    class="text-emerald-700 hover:text-emerald-900">Essential
-                    Grammar (Interactive)</a></li>
+                <li><a href="prepositions.html">Prepositions</a></li>
+                <li><a href="pronouns.html">Pronouns</a></li>
+                <li><a href="essential_grammar.html">Essential Grammar
+                    (Interactive)</a></li>
               </ul>
             </div>
 
@@ -958,18 +1028,14 @@
               </span>
               <ul
                 class="qs-list list-none p-0 m-0 mt-2 text-sm text-slate-700 space-y-1">
-                <li><a href="task1_marged.html"
-                    class="text-amber-700 hover:text-amber-900">Task 1 ·
-                    Complete Manual</a></li>
-                <li><a href="rachel_mitchell_task1.html"
-                    class="text-amber-700 hover:text-amber-900">Rachel Mitchell
-                    Task 1</a></li>
-                <li><a href="rachel_mitchell_task2.html"
-                    class="text-amber-700 hover:text-amber-900">Rachel Mitchell
-                    Task 2</a></li>
-                <li><a href="simon_task2.html"
-                    class="text-amber-700 hover:text-amber-900">Simon Task 2
-                    (Model Essays)</a></li>
+                <li><a href="task1_marged.html">Task 1 · Complete
+                    Manual</a></li>
+                <li><a href="rachel_mitchell_task1.html">Rachel Mitchell Task
+                    1</a></li>
+                <li><a href="rachel_mitchell_task2.html">Rachel Mitchell Task
+                    2</a></li>
+                <li><a href="simon_task2.html">Simon Task 2 (Model
+                    Essays)</a></li>
               </ul>
             </div>
           </div>
@@ -981,16 +1047,16 @@
       <!-- ============================================================ -->
       <!--  IELTS READING & LISTENING (Cambridge Guidelines)             -->
       <!-- ============================================================ -->
-      <section id="reading-listening" class="scroll-mt-20">
+      <section id="reading-listening" class="scroll-mt-24">
         <div class="highlight-shell">
-          <div class="aurora" style="opacity:.4"></div>
+          <div class="aurora" style="opacity:.35"></div>
 
           <div class="relative p-6 md:p-10">
 
             <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-7">
               <div class="flex items-center gap-4">
                 <div
-                  class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                  class="shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-sky-500 flex items-center justify-center shadow-lg shadow-indigo-500/40">
                   <span class="text-3xl leading-none"
                     aria-hidden="true">📖</span>
                 </div>
@@ -1031,12 +1097,11 @@
 
             <div class="grid md:grid-cols-2 gap-5">
 
-              <div
-                class="feat-card border-indigo-100 bg-gradient-to-b from-indigo-50/60 to-white">
+              <div class="feat-card feat-indigo">
                 <div class="flex items-center justify-between mb-4">
                   <div class="flex items-center gap-3">
                     <div
-                      class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/30">
+                      class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-500/40">
                       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round"
@@ -1102,12 +1167,11 @@
                 </ul>
               </div>
 
-              <div
-                class="feat-card border-emerald-100 bg-gradient-to-b from-emerald-50/60 to-white">
+              <div class="feat-card feat-emerald">
                 <div class="flex items-center justify-between mb-4">
                   <div class="flex items-center gap-3">
                     <div
-                      class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/30">
+                      class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-500/40">
                       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round"
@@ -1175,7 +1239,7 @@
             </div>
 
             <div
-              class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4">
+              class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
               <div class="flex items-start gap-3">
                 <div
                   class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
@@ -1195,7 +1259,7 @@
                 </div>
               </div>
               <a href="#"
-                class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 text-white text-sm font-semibold px-4 py-2.5 hover:bg-slate-800 transition shrink-0">
+                class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 text-white text-sm font-semibold px-4 py-2.5 hover:bg-indigo-500 transition shrink-0 shadow-lg shadow-indigo-900/40">
                 Start Practising
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1215,13 +1279,13 @@
       <!-- ============================================================ -->
       <!--  IELTS SPEAKING                                                -->
       <!-- ============================================================ -->
-      <section id="speaking" class="scroll-mt-20">
+      <section id="speaking" class="scroll-mt-24">
         <div
           class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
           <div>
             <h2 class="section-title">
               <span
-                class="emoji-wrap bg-gradient-to-br from-purple-100 to-pink-100 text-purple-700">🗣️</span>
+                class="emoji-wrap bg-gradient-to-br from-purple-500/25 to-pink-500/20">🗣️</span>
               IELTS Speaking
               <span class="count">4</span>
             </h2>
@@ -1311,15 +1375,15 @@
       <hr class="divider" />
 
       <!-- ============================================================ -->
-      <!--  PRACTICE TOOLS                                                -->
+      <!--  PRACTICE TOOLS (merged)                                       -->
       <!-- ============================================================ -->
-      <section id="trainer" class="scroll-mt-20">
+      <section id="trainer" class="scroll-mt-24">
         <div
           class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
           <div>
             <h2 class="section-title">
               <span
-                class="emoji-wrap bg-gradient-to-br from-sky-100 to-cyan-100 text-sky-700">🎧</span>
+                class="emoji-wrap bg-gradient-to-br from-sky-500/25 to-cyan-500/20">🎧</span>
               Practice Tools
               <span class="count">3</span>
             </h2>
@@ -1332,7 +1396,7 @@
           <div class="simple-card">
             <div class="flex items-center gap-3 mb-4">
               <span
-                class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-100 to-cyan-100 flex items-center justify-center text-2xl">🎧</span>
+                class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500/25 to-cyan-500/20 flex items-center justify-center text-2xl">🎧</span>
               <div>
                 <h3
                   class="text-base font-extrabold text-gray-900 m-0 tracking-tight">IELTS
@@ -1351,7 +1415,7 @@
           <div class="simple-card">
             <div class="flex items-center gap-3 mb-4">
               <span
-                class="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center text-2xl">✍️</span>
+                class="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500/25 to-indigo-500/20 flex items-center justify-center text-2xl">✍️</span>
               <div>
                 <h3
                   class="text-base font-extrabold text-gray-900 m-0 tracking-tight">Spelling
@@ -1370,7 +1434,7 @@
           <div class="simple-card">
             <div class="flex items-center gap-3 mb-4">
               <span
-                class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center text-2xl">📚</span>
+                class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500/25 to-teal-500/20 flex items-center justify-center text-2xl">📚</span>
               <div>
                 <h3
                   class="text-base font-extrabold text-gray-900 m-0 tracking-tight">Vocabulary
@@ -1389,32 +1453,37 @@
 
         </div>
       </section>
-      <!-- Reading practice passages -->
-      <section id="reading-practice" class="scroll-mt-20">
+
+      <hr class="divider" />
+
+      <!-- ============================================================ -->
+      <!--  READING PRACTICE PASSAGES                                    -->
+      <!-- ============================================================ -->
+      <section id="reading-practice" class="scroll-mt-24">
         <div
           class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
           <div>
             <h2 class="section-title">
               <span
-                class="emoji-wrap bg-gradient-to-br from-orange-100 to-yellow-100 text-orange-700">📖</span>
+                class="emoji-wrap bg-gradient-to-br from-orange-500/25 to-yellow-500/20">📖</span>
               Reading Practice Passages
-              <span class="count">5</span>
+              <span class="count">10</span>
             </h2>
             <p class="section-sub">Practice passages for IELTS reading</p>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4">
+        <div class="grid md:grid-cols-2 gap-4">
 
           <div class="simple-card">
             <div class="flex items-center gap-3 mb-4">
               <span
-                class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center text-2xl">📖</span>
+                class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/25 to-yellow-500/20 flex items-center justify-center text-2xl">📖</span>
               <div>
                 <h3
-                  class="text-base font-extrabold text-gray-900 m-0 tracking-tight">Reading
-                  Passage 1</h3>
-                <p class="text-xs text-slate-500 m-0 mt-0.5">Passage for
+                  class="text-base font-extrabold text-gray-900 m-0 tracking-tight">Passages
+                  1–5</h3>
+                <p class="text-xs text-slate-500 m-0 mt-0.5">Passages for
                   practice</p>
               </div>
             </div>
@@ -1440,49 +1509,61 @@
                     class="flex items-center gap-2"><span class="num">5</span>
                     Passage 5</span><span class="arrow">→</span></a></li>
             </ul>
-            <li><a class="link-item"
-                href="./reading_practice/test_6.html"><span
-                  class="flex items-center gap-2"><span class="num">6</span>
-                  Passage 6</span><span class="arrow">→</span></a></li>
-            <li><a class="link-item"
-                href="./reading_practice/test_7.html"><span
-                  class="flex items-center gap-2"><span class="num">7</span>
-                  Passage 7</span><span class="arrow">→</span></a></li>
-            <li>
-              <a class="link-item"
-                href="./reading_practice/test_8.html"><span
-                  class="flex items-center gap-2"><span class="num">8</span>
-                  Passage 8</span><span class="arrow">→</span></a>
-            </li>
-            <li><a class="link-item"
-                href="./reading_practice/test_9.html"><span
-                  class="flex items-center gap-2"><span class="num">9</span>
-                  Passage 9</span><span class="arrow">→</span></a></li>
-            <li><a class="link-item"
-                href="./reading_practice/test_10.html"><span
-                  class="flex items-center gap-2"><span class="num">10</span>
-                  Passage 10</span><span class="arrow">→</span></a></li>
-
           </div>
 
-          <!-- Additional reading passages can be added here -->
+          <div class="simple-card">
+            <div class="flex items-center gap-3 mb-4">
+              <span
+                class="w-11 h-11 rounded-xl bg-gradient-to-br from-orange-500/25 to-yellow-500/20 flex items-center justify-center text-2xl">📖</span>
+              <div>
+                <h3
+                  class="text-base font-extrabold text-gray-900 m-0 tracking-tight">Passages
+                  6–10</h3>
+                <p class="text-xs text-slate-500 m-0 mt-0.5">Passages for
+                  practice</p>
+              </div>
+            </div>
+            <ul class="space-y-1.5 text-sm list-none p-0 m-0">
+              <li><a class="link-item"
+                  href="./reading_practice/test_6.html"><span
+                    class="flex items-center gap-2"><span class="num">6</span>
+                    Passage 6</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item"
+                  href="./reading_practice/test_7.html"><span
+                    class="flex items-center gap-2"><span class="num">7</span>
+                    Passage 7</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item"
+                  href="./reading_practice/test_8.html"><span
+                    class="flex items-center gap-2"><span class="num">8</span>
+                    Passage 8</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item"
+                  href="./reading_practice/test_9.html"><span
+                    class="flex items-center gap-2"><span class="num">9</span>
+                    Passage 9</span><span class="arrow">→</span></a></li>
+              <li><a class="link-item"
+                  href="./reading_practice/test_10.html"><span
+                    class="flex items-center gap-2"><span class="num">10</span>
+                    Passage 10</span><span class="arrow">→</span></a></li>
+            </ul>
+          </div>
 
         </div>
+      </section>
 
-        <!-- ============================================================ -->
-        <!--  FOOTER                                                        -->
-        <!-- ============================================================ -->
-        <div class="footer-note">
-          <p class="font-extrabold text-slate-800 text-base m-0">📚 English
-            Grammar &amp; IELTS Resource Hub</p>
-          <p class="text-sm mt-1.5 m-0">All resources compiled for easy
-            reference
-            · Built with ❤️ using HTML &amp; Tailwind CSS</p>
-          <p class="text-xs text-gray-400 mt-2.5 m-0">© 2026 · Free to use for
-            personal study</p>
-        </div>
+      <!-- ============================================================ -->
+      <!--  FOOTER                                                        -->
+      <!-- ============================================================ -->
+      <div class="footer-note">
+        <p class="font-extrabold text-slate-800 text-base m-0">📚 English
+          Grammar &amp; IELTS Resource Hub</p>
+        <p class="text-sm mt-1.5 m-0">All resources compiled for easy
+          reference
+          · Built with ❤️ using HTML &amp; Tailwind CSS</p>
+        <p class="text-xs text-gray-400 mt-2.5 m-0">© 2026 · Free to use for
+          personal study</p>
+      </div>
 
-      </main>
+    </main>
 
-    </body>
-  </html>
+  </body>
+</html>
