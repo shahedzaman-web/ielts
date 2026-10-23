@@ -20,10 +20,16 @@
   .tab{border:0;background:transparent;color:var(--muted);padding:7px 14px;border-radius:9px;font-weight:700;font-size:13px;transition:all .15s ease}
   .tab:hover{color:var(--text);background:rgba(255,255,255,.04)}
   .tab.active{background:linear-gradient(135deg,var(--purple),#7c5eff);color:#fff}
-  .stats-mini{display:flex;gap:6px}
+  .stats-mini{display:flex;gap:6px;align-items:center}
   .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 10px;border-radius:10px;text-align:center;min-width:58px}
   .stat b{display:block;font-size:14px;line-height:1.1}
   .stat span{font-size:9.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  .sound-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);
+    width:36px;height:36px;border-radius:10px;font-size:16px;display:flex;align-items:center;
+    justify-content:center;transition:all .15s ease}
+  .sound-btn:hover{border-color:var(--purple);background:rgba(255,255,255,.08)}
+  .sound-btn.off{color:var(--muted);border-color:rgba(239,68,68,.35)}
+  .sound-btn.off:hover{border-color:rgba(239,68,68,.7)}
 
   main{flex:1;padding:22px 18px}
   .container{max-width:1080px;margin:0 auto}
@@ -40,6 +46,8 @@
   .mode-card.new{border-color:rgba(124,140,255,.35)}
   .mode-card.learning{border-color:rgba(245,158,11,.35)}
   .mode-card.mastered{border-color:rgba(34,197,94,.35)}
+  .mode-card.unfinished{border-color:rgba(34,211,238,.35)}
+  .mode-card.unfinished .m-count{background:rgba(34,211,238,.15);color:#67e8f9}
   .mode-card .m-icon{font-size:22px;margin-bottom:8px;display:block}
   .mode-card .m-title{font-weight:800;font-size:14.5px;margin-bottom:3px}
   .mode-card .m-sub{font-size:11.5px;color:var(--muted);line-height:1.5}
@@ -267,6 +275,9 @@
           <div class="stat"><b id="hTotal">0</b><span>Total</span></div>
           <div class="stat"><b id="hMastered">0</b><span>Mastered</span></div>
           <div class="stat"><b id="hStreak">0</b><span>Streak</span></div>
+          <button class="sound-btn" id="bSound" type="button"
+            title="Toggle sound"
+            aria-label="Toggle sound" aria-pressed="true">🔊</button>
         </div>
       </div>
     </header>
@@ -290,6 +301,13 @@
                   <span class="m-icon">📚</span>
                   <div class="m-title">Learning</div>
                   <div class="m-sub">Words in progress. Hardest first.</div>
+                </div>
+                <div class="mode-card unfinished" data-mode="unfinished">
+                  <span class="m-count" id="cUnfinished">0</span>
+                  <span class="m-icon">🚧</span>
+                  <div class="m-title">Unfinished</div>
+                  <div class="m-sub">Everything not yet mastered. New +
+                    learning.</div>
                 </div>
                 <div class="mode-card mastered" data-mode="mastered">
                   <span class="m-count" id="cMastered">0</span>
@@ -386,6 +404,7 @@
                 <option value="all">All words</option>
                 <option value="new">New</option>
                 <option value="learning">Learning</option>
+                <option value="unfinished">Unfinished (not mastered)</option>
                 <option value="mastered">Mastered</option>
                 <option value="easy">Rated Easy</option>
                 <option value="good">Rated Good</option>
@@ -464,7 +483,6 @@
     <script type="module">
       import { SEED_RAW , TOPICS } from './words.js';
 
-
 /* =========================================================
    BUILD SEED OBJECTS
    ========================================================= */
@@ -533,7 +551,7 @@ const dbDel = (store, id) => tx(store, 'readwrite').then(s => new Promise((res, 
 const dbClear = store => tx(store, 'readwrite').then(s => new Promise((res, rej) => { const r = s.clear(); r.onsuccess = () => res(); r.onerror = () => rej(r.error); }));
 
 /* ============ STATE ============ */
-const state = { words: [], session: null, streak: 0, view: 'practice', _nextId: 1 };
+const state = { words: [], session: null, streak: 0, soundOn: true, view: 'practice', _nextId: 1 };
 let lastPracticeList = [];   // full filtered word objects (respects current search/topic/filter/sort)
 let lastPracticePool = [];   // ids of the same list, kept for quick access
 
@@ -557,8 +575,10 @@ function toast(msg, kind){
 let voices = [];
 function loadVoices(){ try { voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; } catch(_) { voices = []; } }
 if (window.speechSynthesis){ loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
-function speak(text, rate){
-  if (!window.speechSynthesis || !text) return;
+function speak(text, rate, force){
+  if (!text) return;
+  if (!state.soundOn && !force) return;   // muted → no auto-pronunciation
+  if (!window.speechSynthesis) return;
   try {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -567,6 +587,18 @@ function speak(text, rate){
     if (v) u.voice = v;
     window.speechSynthesis.speak(u);
   } catch(_){}
+}
+
+function updateSoundBtn(){
+  const b = $('bSound'); if (!b) return;
+  b.textContent = state.soundOn ? '🔊' : '🔇';
+  b.classList.toggle('off', !state.soundOn);
+  b.title = state.soundOn ? 'Sound on — click to mute' : 'Sound off — click to unmute';
+  b.setAttribute('aria-pressed', String(state.soundOn));
+}
+async function saveSound(){
+  if (FALLBACK) return;
+  try { await dbPut('settings', { key: 'sound', value: state.soundOn }); } catch(_){}
 }
 
 /* ============ SR ============ */
@@ -650,7 +682,10 @@ async function loadAll(){
     }
   }
   const settings = await dbAll('settings').catch(() => []);
-  settings.forEach(s => { if (s.key === 'streak') state.streak = s.value || 0; });
+  settings.forEach(s => {
+    if (s.key === 'streak') state.streak = s.value || 0;
+    if (s.key === 'sound')  state.soundOn = s.value !== false;
+  });
 }
 
 async function saveWord(w){
@@ -700,7 +735,8 @@ function getCounts(){
     else if (isNew(w)) fresh++;
     else learning++;
   }
-  return { total, mastered, learning, fresh, hardTotal, reviewTotal, knownTotal,
+  return { total, mastered, learning, fresh, unfinished: total - mastered,
+           hardTotal, reviewTotal, knownTotal,
            masteredPct: total ? Math.round((mastered / total) * 100) : 0 };
 }
 function updateHeader(){
@@ -717,6 +753,7 @@ function renderPicker(){
   const set = (id, v) => { const el = $(id); if (el) el.textContent = v; };
   set('cNew', c.fresh);
   set('cLearning', c.learning);
+  set('cUnfinished', c.unfinished);
   set('cMastered', c.mastered);
   set('cAll', c.total);
   renderTopics();
@@ -819,16 +856,18 @@ function openTopicMenu(topicCode){
   const goodWords  = words.filter(w => (Number(w.good) || 0)  > 0);
   const hardWords  = words.filter(w => (Number(w.hard) || 0)  > 0);
   const knownWords = words.filter(w => (Number(w.known) || 0) > 0);
+  const unfinishedWords = words.filter(w => !isMastered(w));
   const opts = [
     { key: 'topic-easy',  label: 'Rated Easy',    sub: `${easyWords.length} word${easyWords.length === 1 ? '' : 's'}`,   disabled: easyWords.length  === 0 },
     { key: 'topic-good',  label: 'Rated Good',    sub: `${goodWords.length} word${goodWords.length === 1 ? '' : 's'}`,   disabled: goodWords.length  === 0 },
     { key: 'topic-hard',  label: 'Rated Hard',    sub: `${hardWords.length} word${hardWords.length === 1 ? '' : 's'}`,   disabled: hardWords.length  === 0 },
+    { key: 'topic-unfinished', label: 'Unfinished', sub: `${unfinishedWords.length} word${unfinishedWords.length === 1 ? '' : 's'} not mastered`, disabled: unfinishedWords.length === 0 },
     { key: 'topic-all',   label: 'All words',     sub: `${words.length} total words`,                                    primary: true },
     { key: 'topic-known', label: 'Already Known', sub: `${knownWords.length} word${knownWords.length === 1 ? '' : 's'}`, disabled: knownWords.length === 0 }
   ];
   $('modal').innerHTML = `
     <h3>${t.icon} ${esc(t.name)}</h3>
-    <p class="m-sub">${easyWords.length} easy · ${goodWords.length} good · ${hardWords.length} hard · ${knownWords.length} known · ${words.length} total</p>
+    <p class="m-sub">${easyWords.length} easy · ${goodWords.length} good · ${hardWords.length} hard · ${unfinishedWords.length} unfinished · ${knownWords.length} known · ${words.length} total</p>
     <div class="modal-actions column">
       ${opts.map(o => `
         <button class="btn ${o.primary ? 'primary' : ''}" data-opt="${o.key}" type="button" ${o.disabled ? 'disabled' : ''}>
@@ -858,15 +897,17 @@ function openDeckMenu(deckIdx){
   const newWords = slice.filter(isNew);
   const learningWords = slice.filter(isLearning);
   const masteredWords = slice.filter(isMastered);
+  const unfinishedWords = slice.filter(w => !isMastered(w));
   const options = [
     { key: 'deck-new', label: 'Learn new words', sub: `${newWords.length} never reviewed`, disabled: newWords.length === 0, primary: newWords.length > 0 },
     { key: 'deck-learning', label: 'Practice learning words', sub: `${learningWords.length} in progress`, disabled: learningWords.length === 0 },
+    { key: 'deck-unfinished', label: 'Unfinished words', sub: `${unfinishedWords.length} not mastered yet`, disabled: unfinishedWords.length === 0 },
     { key: 'deck-mastered', label: 'Review mastered words', sub: `${masteredWords.length} mastered`, disabled: masteredWords.length === 0 },
     { key: 'deck-all', label: 'Practice every word', sub: `All ${slice.length} words in this deck`, disabled: slice.length === 0 }
   ];
   $('modal').innerHTML = `
     <h3>Deck ${deckIdx + 1}</h3>
-    <p class="m-sub">${newWords.length} new · ${learningWords.length} learning · ${masteredWords.length} mastered</p>
+    <p class="m-sub">${newWords.length} new · ${learningWords.length} learning · ${unfinishedWords.length} unfinished · ${masteredWords.length} mastered</p>
     <div class="modal-actions column">
       ${options.map(o => `
         <button class="btn ${o.primary ? 'primary' : ''}" data-opt="${o.key}" type="button" ${o.disabled ? 'disabled' : ''}>
@@ -896,12 +937,14 @@ function openPracticeMenu(){
   const learnW    = list.filter(isLearning);
   const masteredW = list.filter(isMastered);
   const hardW     = list.filter(w => (Number(w.hard) || 0) > 0);
+  const unfinishedW = list.filter(w => !isMastered(w));
 
   const opts = [
     { key: 'filtered-order',   label: 'All · in current order', sub: `${list.length} word${list.length === 1 ? '' : 's'} · respects the active sort`, primary: true, disabled: list.length === 0 },
     { key: 'filtered-shuffle', label: 'All · shuffled',         sub: `${list.length} word${list.length === 1 ? '' : 's'} · random order`,                 disabled: list.length === 0 },
     { key: 'filtered-new',     label: 'New only',               sub: `${newW.length} word${newW.length === 1 ? '' : 's'}`,                                disabled: newW.length === 0 },
     { key: 'filtered-learning',label: 'Learning only',          sub: `${learnW.length} word${learnW.length === 1 ? '' : 's'}`,                            disabled: learnW.length === 0 },
+    { key: 'filtered-unfinished',label: 'Unfinished only',      sub: `${unfinishedW.length} word${unfinishedW.length === 1 ? '' : 's'} not mastered`,      disabled: unfinishedW.length === 0 },
     { key: 'filtered-mastered',label: 'Mastered only',          sub: `${masteredW.length} word${masteredW.length === 1 ? '' : 's'}`,                      disabled: masteredW.length === 0 },
     { key: 'filtered-hard',    label: 'Rated Hard only',        sub: `${hardW.length} word${hardW.length === 1 ? '' : 's'}`,                              disabled: hardW.length === 0 }
   ];
@@ -929,6 +972,8 @@ function openPracticeMenu(){
       startSession({ type: 'custom-list', ids: newW.map(w => w.id), label: `New · ${newW.length}`, noShuffle: true });
     } else if (key === 'filtered-learning'){
       startSession({ type: 'custom-list', ids: learnW.map(w => w.id), label: `Learning · ${learnW.length}`, noShuffle: true });
+    } else if (key === 'filtered-unfinished'){
+      startSession({ type: 'custom-list', ids: unfinishedW.map(w => w.id), label: `Unfinished · ${unfinishedW.length}`, noShuffle: true });
     } else if (key === 'filtered-mastered'){
       startSession({ type: 'custom-list', ids: masteredW.map(w => w.id), label: `Mastered · ${masteredW.length}`, noShuffle: true });
     } else if (key === 'filtered-hard'){
@@ -947,7 +992,8 @@ function openPracticeMenu(){
 $$('.mode-card').forEach(card => {
   card.addEventListener('click', () => {
     const mode = card.dataset.mode;
-    const labels = { new: 'New words', learning: 'Learning', mastered: 'Mastered · review', all: 'All words' };
+    const labels = { new: 'New words', learning: 'Learning', unfinished: 'Unfinished',
+                     mastered: 'Mastered · review', all: 'All words' };
     startSession({ type: mode, label: labels[mode] });
   });
 });
@@ -959,16 +1005,19 @@ function buildPool(mode){
   switch (mode.type){
     case 'new':       return state.words.filter(isNew);
     case 'learning':  return state.words.filter(isLearning).sort((a, b) => difficulty(b) - difficulty(a));
+    case 'unfinished': return state.words.filter(w => !isMastered(w));
     case 'mastered':  return state.words.filter(isMastered);
     case 'all':       return state.words.slice();
     case 'deck-new':      return state.words.filter((w, i) => inDeck(w, i) && isNew(w));
     case 'deck-learning': return state.words.filter((w, i) => inDeck(w, i) && isLearning(w)).sort((a, b) => difficulty(b) - difficulty(a));
+    case 'deck-unfinished': return state.words.filter((w, i) => inDeck(w, i) && !isMastered(w));
     case 'deck-mastered': return state.words.filter((w, i) => inDeck(w, i) && isMastered(w));
     case 'deck-all':      return state.words.filter((w, i) => inDeck(w, i));
     case 'topic-all':      return state.words.filter(inTopic);
     case 'topic-easy':     return state.words.filter(w => inTopic(w) && (Number(w.easy) || 0)  > 0);
     case 'topic-good':     return state.words.filter(w => inTopic(w) && (Number(w.good) || 0)  > 0);
     case 'topic-hard':     return state.words.filter(w => inTopic(w) && (Number(w.hard) || 0)  > 0);
+    case 'topic-unfinished': return state.words.filter(w => inTopic(w) && !isMastered(w));
     case 'topic-known':    return state.words.filter(w => inTopic(w) && (Number(w.known) || 0) > 0);
     case 'repeat':         return state.words.filter(w => Array.isArray(mode.ids) && mode.ids.includes(w.id));
     case 'custom-list': {
@@ -1331,6 +1380,7 @@ function renderManage(){
   if (filt === 'mastered') list = list.filter(isMastered);
   else if (filt === 'learning') list = list.filter(isLearning);
   else if (filt === 'new') list = list.filter(isNew);
+  else if (filt === 'unfinished') list = list.filter(w => !isMastered(w));
   else if (filt === 'easy') list = list.filter(w => (Number(w.easy) || 0) > 0);
   else if (filt === 'good') list = list.filter(w => (Number(w.good) || 0) > 0);
   else if (filt === 'hard') list = list.filter(w => (Number(w.hard) || 0) > 0);
@@ -1387,7 +1437,7 @@ function renderManage(){
       const id = Number(btn.dataset.id);
       const w = state.words.find(x => x.id === id);
       if (!w) return;
-      if (btn.dataset.act === 'play') speak(w.word, 0.95);
+      if (btn.dataset.act === 'play') speak(w.word, 0.95, true);
       else if (btn.dataset.act === 'edit') openWordModal(w);
       else if (btn.dataset.act === 'del'){
         if (!confirm(`Delete "${w.word}"?`)) return;
@@ -1664,6 +1714,7 @@ async function renderStats(){
     <div class="stat-card"><b>${c.total}</b><span>Total words</span></div>
     <div class="stat-card"><b>${c.mastered}</b><span>Mastered</span></div>
     <div class="stat-card"><b>${c.learning}</b><span>Learning</span></div>
+    <div class="stat-card"><b>${c.unfinished}</b><span>Unfinished</span></div>
     <div class="stat-card"><b>${c.fresh}</b><span>New</span></div>
     <div class="stat-card"><b>${c.knownTotal}</b><span>Already Known</span></div>
     <div class="stat-card"><b>${c.masteredPct}%</b><span>Complete</span></div>
@@ -1696,7 +1747,7 @@ async function renderStats(){
   }).join('') : '<div class="empty"><div class="e">✨</div>No words yet.</div>';
   $('mistakeList').querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => {
     const w = state.words.find(x => x.id === Number(b.dataset.play));
-    if (w) speak(w.word, 0.95);
+    if (w) speak(w.word, 0.95, true);
   }));
   $('mistakeList').querySelectorAll('[data-practice-word]').forEach(b => b.addEventListener('click', () => {
     const id = Number(b.dataset.practiceWord);
@@ -1774,7 +1825,18 @@ $('bPractice').addEventListener('click', () => {
 });
 
 /* ============ EVENTS ============ */
-$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9); });
+$('bSound').addEventListener('click', () => {
+  state.soundOn = !state.soundOn;
+  if (!state.soundOn && window.speechSynthesis){
+    try { window.speechSynthesis.cancel(); } catch(_){}
+  }
+  saveSound();
+  updateSoundBtn();
+  toast(state.soundOn ? '🔊 Sound on' : '🔇 Sound off', 'ok');
+  if (state.soundOn){ const w = currentWord(); if (w) speak(w.word, 0.9, true); }
+});
+
+$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.word, 0.9, true); });
 $('bExit').addEventListener('click', exitSession);
 $$('.rate-btn').forEach(b => b.addEventListener('click', () => {
   if (!b.disabled){
@@ -1813,6 +1875,7 @@ document.addEventListener('keydown', e => {
     $('done').style.display = 'none';
     renderPicker();
     updateHeader();
+    updateSoundBtn();
     if (state.words.length === 0){
       toast('No words found. Import a backup or add words in the Words tab.', 'err');
     }
@@ -1823,6 +1886,7 @@ document.addEventListener('keydown', e => {
     state._nextId = state.words.length + 1;
     renderPicker();
     updateHeader();
+    updateSoundBtn();
   }
 })();
 </script>
