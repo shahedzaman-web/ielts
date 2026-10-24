@@ -350,7 +350,7 @@
     <div class="toast" id="toast"></div>
 
     <script type="module">
-      import { SEED } from './data.js';
+  import { SEED } from './data.js';
 /* ============ SEED ============ */
 
 const CHUNK_SIZE = 50, DB_NAME = 'SpellingHubDB', DB_VERSION = 1;
@@ -383,8 +383,8 @@ const dbDel = (store,id) => tx(store,'readwrite').then(s => new Promise((res,rej
 
 /* ============ STATE ============ */
 const state = {
-  words: [],       // all words
-  session: null,   // { pool:[ids], cleared:Set, label, mode, firstTry, attempts, start }
+  words: [],
+  session: null,
   streak: 0,
   view: 'practice'
 };
@@ -395,7 +395,6 @@ const $$ = sel => document.querySelectorAll(sel);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => String(s).trim().toLowerCase().replace(/\s+/g,' ');
 
-// Safe listener binding: warns instead of crashing when an element is missing.
 function bind(id, ev, fn){
   const el = typeof id === 'string' ? document.getElementById(id) : id;
   if (!el){
@@ -538,7 +537,7 @@ bind('tabs', 'click', e => {
   switchTab(btn.dataset.view);
 });
 
-/* ============ COUNTS (single source of truth) ============ */
+/* ============ COUNTS ============ */
 function getCounts(){
   const total = state.words.length;
   const mastered = state.words.filter(w => !!w.mastered && !hasDebt(w)).length;
@@ -966,9 +965,6 @@ function sortWords(list, sortBy){
   }
 }
 
-// Returns the current word list after applying search + filter + sort.
-// Single source of truth so the table and the "Practice list" button
-// always operate on exactly the same set.
 function getFilteredList(){
   const searchEl = $('search'), filterEl = $('filter'), sortEl = $('sort');
   const q = (searchEl && searchEl.value || '').toLowerCase().trim();
@@ -985,7 +981,6 @@ function getFilteredList(){
   return sortWords(list, sortBy);
 }
 
-// Human-readable label describing the current filter + search.
 function describeFilter(){
   const filterEl = $('filter'), searchEl = $('search');
   const filt = filterEl ? filterEl.value : 'all';
@@ -1007,7 +1002,6 @@ function renderManage(){
   const list = getFilteredList();
   const el = $('wordList');
 
-  // Keep the "Practice list" button in sync with the current view.
   const pb = $('bPracticeList');
   if (pb){
     pb.disabled = list.length === 0;
@@ -1196,7 +1190,8 @@ async function exportData(kind){
     mistakes: w.mistakes || 0,
     totalCorrect: w.totalCorrect || 0,
     totalWrong: w.totalWrong || 0,
-    mastered: w.mastered || 0
+    mastered: w.mastered || 0,
+    createdAt: w.createdAt || 0
   }));
   const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
 
@@ -1242,47 +1237,125 @@ function exportCSV(){
 bind('bExport', 'click', openExportModal);
 
 bind('bImport', 'click', () => { const f = $('importFile'); if (f) f.click(); });
+
 bind('importFile', 'change', async e => {
-  const f = e.target.files && e.target.files[0]; if (!f) return;
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+
   try {
     const text = await f.text();
     const data = JSON.parse(text);
-    const isFull = data && data.kind === 'full';
-    const incoming = Array.isArray(data) ? data : (data.words || []);
 
-    let added = 0, skipped = 0;
-    for (const item of incoming){
-      const word = (item.text || item.word || '').trim();
-      if (!word) continue;
-      if (state.words.find(x => norm(x.text) === norm(word))){ skipped++; continue; }
-      const mistakes = Math.max(0, Math.floor(Number(item.mistakes) || 0));
-      const totalWrong = Math.max(0, Math.floor(Number(item.totalWrong) || 0), mistakes);
-      await dbAdd('words', {
-        text: word,
-        sentence: item.sentence || '',
-        definition: item.definition || '',
-        mistakes,
-        totalCorrect: Math.max(0, Math.floor(Number(item.totalCorrect) || 0)),
-        totalWrong,
-        mastered: (Number(item.mastered) > 0 && mistakes === 0) ? 1 : 0,
-        createdAt: Date.now()
-      });
-      added++;
+    // Accept:
+    //   • array (["apple", ...] or [{text:"apple"}, ...])
+    //   • { words: [...] }        ← older "words only" exports
+    //   • { kind:"full", words, history, settings }  ← full backups
+    // A file with `history` is treated as a full backup even if it
+    // predates the `kind` field.
+    const isFull = !!(data && (data.kind === 'full' || Array.isArray(data.history)));
+    const incoming = Array.isArray(data) ? data : (data && data.words) || [];
+
+    if (!Array.isArray(incoming) || !incoming.length){
+      toast('No words found in file', 'err');
+      e.target.value = '';
+      return;
     }
 
-    let historyAdded = 0;
-    if (isFull && Array.isArray(data.history)){
-      const existing = await dbAll('history');
-      const seen = new Set(existing.map(h => `${h.ts}|${h.label}|${h.total}`));
-      for (const h of data.history){
-        const key = `${h.ts}|${h.label}|${h.total}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        const { id, ...rest } = h;
-        try { await dbAdd('history', rest); historyAdded++; } catch(_){}
+    // Local lookup so duplicate words inside the same file are caught and
+    // existing words have their progress merged, not silently skipped.
+    const existing = new Map(state.words.map(w => [norm(w.text), w]));
+    let added = 0, merged = 0, unchanged = 0, failed = 0;
+
+    for (const item of incoming){
+      // Accept "apple" or {text:"apple"} or {word:"apple"}
+      let word = '';
+      if (typeof item === 'string') word = item.trim();
+      else if (item && typeof item === 'object') word = String(item.text || item.word || '').trim();
+      if (!word) continue;
+
+      const key = norm(word);
+      const itemMistakes     = Math.max(0, Math.floor(Number(item.mistakes)     || 0));
+      const itemTotalWrong   = Math.max(0, Math.floor(Number(item.totalWrong)   || 0), itemMistakes);
+      const itemTotalCorrect = Math.max(0, Math.floor(Number(item.totalCorrect) || 0));
+      const itemMastered     = Number(item.mastered) > 0 && itemMistakes === 0;
+      const itemSentence     = typeof item.sentence   === 'string' ? item.sentence   : '';
+      const itemDefinition   = typeof item.definition === 'string' ? item.definition : '';
+      const itemCreatedAt    = Number(item.createdAt) || Date.now();
+
+      const local = existing.get(key);
+
+      if (local){
+        // MERGE — keep the highest progress on each counter so importing an
+        // older backup can't wipe newer progress, and importing a newer
+        // backup can restore what was lost.
+        const newMistakes     = Math.max(Number(local.mistakes)     || 0, itemMistakes);
+        const newTotalWrong   = Math.max(Number(local.totalWrong)   || 0, itemTotalWrong);
+        const newTotalCorrect = Math.max(Number(local.totalCorrect) || 0, itemTotalCorrect);
+        const newMastered     = (newMistakes === 0 && (!!local.mastered || itemMastered)) ? 1 : 0;
+        const newSentence     = itemSentence   || local.sentence   || '';
+        const newDefinition   = itemDefinition || local.definition || '';
+
+        const changed =
+          newMistakes     !== (Number(local.mistakes)     || 0) ||
+          newTotalWrong   !== (Number(local.totalWrong)   || 0) ||
+          newTotalCorrect !== (Number(local.totalCorrect) || 0) ||
+          newMastered     !== (Number(local.mastered)     || 0) ||
+          newSentence     !== (local.sentence   || '') ||
+          newDefinition   !== (local.definition || '');
+
+        if (!changed){ unchanged++; continue; }
+
+        local.mistakes     = newMistakes;
+        local.totalWrong   = newTotalWrong;
+        local.totalCorrect = newTotalCorrect;
+        local.mastered     = newMastered;
+        local.sentence     = newSentence;
+        local.definition   = newDefinition;
+        try { await saveWord(local); merged++; }
+        catch (err){ console.warn('Merge failed for', word, err); failed++; }
+        continue;
+      }
+
+      // NEW word — isolated so one failure can't abort the import.
+      try {
+        await dbAdd('words', {
+          text: word,
+          sentence: itemSentence,
+          definition: itemDefinition,
+          mistakes: itemMistakes,
+          totalCorrect: itemTotalCorrect,
+          totalWrong: itemTotalWrong,
+          mastered: itemMastered ? 1 : 0,
+          createdAt: itemCreatedAt
+        });
+        added++;
+        // Remember it so a duplicate within the same file is skipped rather
+        // than triggering a unique-index ConstraintError.
+        existing.set(key, { text: word });
+      } catch (err){
+        console.warn('Insert failed for', word, err);
+        failed++;
       }
     }
 
+    // History (full backups only). Dedupe by ts|label|total.
+    let historyAdded = 0, historySkipped = 0;
+    if (isFull && Array.isArray(data.history)){
+      const current = await dbAll('history');
+      const seen = new Set(current.map(h => `${h.ts}|${h.label}|${h.total}`));
+      for (const h of data.history){
+        if (!h || typeof h !== 'object') continue;
+        const hKey = `${h.ts}|${h.label}|${h.total}`;
+        if (seen.has(hKey)){ historySkipped++; continue; }
+        seen.add(hKey);
+        const { id, ...rest } = h;
+        try { await dbAdd('history', rest); historyAdded++; }
+        catch (err){ console.warn('History insert failed', err); failed++; }
+      }
+    }
+
+    // Settings (full backups only). Merge removedSeedWords; adopt a streak
+    // only when the local one is empty.
     if (isFull && Array.isArray(data.settings)){
       const local = await dbAll('settings');
       const localRemoved = local.find(s => s.key === 'removedSeedWords');
@@ -1301,18 +1374,32 @@ bind('importFile', 'change', async e => {
       }
     }
 
+    // Rebuild state from the DB and re-render.
     await loadAll();
     renderManage(); renderPicker(); updateHeader();
+    if (state.view === 'stats') renderStats();
 
-    const bits = [`${added} word${added === 1 ? '' : 's'}`];
-    if (skipped) bits.push(`${skipped} skipped`);
-    if (historyAdded) bits.push(`${historyAdded} session${historyAdded === 1 ? '' : 's'}`);
-    toast(`Imported ${bits.join(', ')}`, 'ok');
+    // Switch to Words so the user can see what changed.
+    if (added || merged || historyAdded) switchTab('manage');
+
+    // Detailed, honest summary.
+    const bits = [];
+    if (added)          bits.push(`${added} added`);
+    if (merged)         bits.push(`${merged} merged`);
+    if (unchanged)      bits.push(`${unchanged} unchanged`);
+    if (historyAdded)   bits.push(`${historyAdded} session${historyAdded === 1 ? '' : 's'}`);
+    if (historySkipped) bits.push(`${historySkipped} sessions already present`);
+    if (failed)         bits.push(`${failed} failed`);
+
+    toast(bits.length ? `Import — ${bits.join(', ')}` : 'Nothing to import',
+          failed ? 'err' : 'ok');
+
   } catch (err){
     console.error('Import failed:', err);
-    toast('Invalid file', 'err');
+    toast('Import failed: ' + (err && err.message ? err.message : 'unreadable file'), 'err');
+  } finally {
+    e.target.value = '';
   }
-  e.target.value = '';
 });
 
 /* ============ STATS ============ */
