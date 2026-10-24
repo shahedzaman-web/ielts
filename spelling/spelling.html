@@ -79,6 +79,7 @@
   .btn.primary:hover{filter:brightness(1.08)}
   .btn.ghost{background:transparent}
   .btn.small{padding:6px 11px;font-size:12px}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
   .field{display:flex;align-items:center;gap:10px;background:#0e1428;border:1.5px solid var(--border);border-radius:14px;padding:6px 6px 6px 16px;transition:border-color .18s ease,box-shadow .18s ease}
   .field:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(124,140,255,.14)}
   .field.ok{border-color:var(--good);box-shadow:0 0 0 4px rgba(34,197,94,.14)}
@@ -312,6 +313,8 @@
                 <option value="newest">Sort: Newest</option>
                 <option value="oldest">Sort: Oldest</option>
               </select>
+              <button class="btn primary" id="bPracticeList">▶ Practice
+                list</button>
               <button class="btn primary" id="bAdd">+ Add word</button>
               <button class="btn" id="bExport">Export</button>
               <button class="btn" id="bImport">Import</button>
@@ -355,7 +358,6 @@ const CHUNK_SIZE = 50, DB_NAME = 'SpellingHubDB', DB_VERSION = 1;
 /* ============ INDEXEDDB ============ */
 let _db = null;
 
-
 function openDB(){
   if (_db) return Promise.resolve(_db);
   return new Promise((res, rej) => {
@@ -393,9 +395,21 @@ const $$ = sel => document.querySelectorAll(sel);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => String(s).trim().toLowerCase().replace(/\s+/g,' ');
 
+// Safe listener binding: warns instead of crashing when an element is missing.
+function bind(id, ev, fn){
+  const el = typeof id === 'string' ? document.getElementById(id) : id;
+  if (!el){
+    console.warn(`[Spelling Hub] Missing #${id} — ${ev} listener not attached`);
+    return null;
+  }
+  el.addEventListener(ev, fn);
+  return el;
+}
+
 let toastTimer;
 function toast(msg, kind){
   const el = $('toast');
+  if (!el) return;
   el.textContent = msg;
   el.className = 'toast show ' + (kind||'');
   clearTimeout(toastTimer);
@@ -447,10 +461,6 @@ function hintFor(word){
 }
 
 /* ============ SEED SYNC ============ */
-// Older versions of this app only seeded the database once, on the empty
-// first load. That meant words added to data.js later were never imported.
-// These helpers fix that: on every boot we insert only the seed words that
-// are not already present, and we remember deletions so they don't reappear.
 async function getRemovedSeed(){
   const s = await dbAll('settings');
   const row = s.find(x => x.key === 'removedSeedWords');
@@ -468,7 +478,6 @@ async function syncSeedWords(){
   const have = new Set(existing.map(w => norm(w.text)));
   const now = Date.now();
 
-  // Only insert seed words that are neither stored nor explicitly removed.
   const missing = SEED.filter(text => !have.has(norm(text)) && !removed.has(norm(text)));
   if (!missing.length) return;
 
@@ -480,15 +489,13 @@ async function syncSeedWords(){
       totalWrong: 0,
       mastered: 0,
       createdAt: now
-    }).catch(() => {})   // ignore unique-index collisions from races
+    }).catch(() => {})
   ));
 }
 
 async function loadAll(){
   state.words = await dbAll('words');
   state.words.sort((a,b) => a.id - b.id);
-  // Normalise older records so lifetime wrong attempts and outstanding debt
-  // remain separate, consistent values across counts, lists, and sessions.
   const repairs = [];
   for (const w of state.words){
     const before = JSON.stringify({ mistakes:w.mistakes, totalWrong:w.totalWrong, totalCorrect:w.totalCorrect, mastered:w.mastered });
@@ -496,10 +503,7 @@ async function loadAll(){
     w.totalWrong = Math.max(0, Math.floor(Number(w.totalWrong) || 0), w.mistakes);
     w.totalCorrect = Math.max(0, Math.floor(Number(w.totalCorrect) || 0));
     w.mastered = Number(w.mastered) > 0 ? 1 : 0;
-    // Older app versions only marked a word mastered after a correct answer.
-    // Restore that evidence when older records lack the totalCorrect counter.
     if (w.mastered && w.totalCorrect === 0 && w.totalWrong === 0 && w.mistakes === 0) w.totalCorrect = 1;
-    // A word with unresolved mistake debt cannot also be mastered.
     if (w.mistakes > 0 && w.mastered) w.mastered = 0;
     const after = JSON.stringify({ mistakes:w.mistakes, totalWrong:w.totalWrong, totalCorrect:w.totalCorrect, mastered:w.mastered });
     if (before !== after) repairs.push(saveWord(w));
@@ -509,13 +513,10 @@ async function loadAll(){
   settings.forEach(s => { if (s.key === 'streak') state.streak = s.value || 0; });
 }
 function wrongCount(w){
-  // Legacy records may have debt but no totalWrong field; never undercount them.
   return Math.max(0, Number(w.totalWrong) || 0, Number(w.mistakes) || 0);
 }
 function hasMistakeHistory(w){ return wrongCount(w) > 0 || (Number(w.mistakes) || 0) > 0; }
 function hasDebt(w){ return (Number(w.mistakes) || 0) > 0; }
-// Correct-in-first means the word has actually been answered correctly and has
-// never had a wrong answer. A word that has never been attempted is not eligible.
 function isCorrectInFirst(w){ return (Number(w.totalCorrect) || 0) > 0 && !hasMistakeHistory(w); }
 function isUntried(w){ return (Number(w.totalCorrect) || 0) === 0 && !hasMistakeHistory(w); }
 async function saveWord(w){ await dbPut('words', w); }
@@ -532,7 +533,7 @@ function switchTab(view){
   if (view === 'manage') renderManage();
   if (view === 'stats') renderStats();
 }
-$('tabs').addEventListener('click', e => {
+bind('tabs', 'click', e => {
   const btn = e.target.closest('.tab'); if (!btn) return;
   switchTab(btn.dataset.view);
 });
@@ -543,8 +544,6 @@ function getCounts(){
   const mastered = state.words.filter(w => !!w.mastered && !hasDebt(w)).length;
   const remaining = state.words.filter(w => !w.mastered || hasDebt(w));
   const clean = state.words.filter(isCorrectInFirst).length;
-  // Frequent mistakes are words with any wrong-answer history, not just words
-  // whose unresolved debt is still above zero. This includes completed words.
   const mistakes = state.words.filter(hasMistakeHistory).length;
   const debtWords = state.words.filter(hasDebt).length;
   const debt = state.words.reduce((sum,w) => sum + Math.max(0, Number(w.mistakes) || 0), 0);
@@ -555,18 +554,20 @@ function getCounts(){
 /* ============ HEADER ============ */
 function updateHeader(){
   const c = getCounts();
-  $('hTotal').textContent = c.total;
-  $('hMastered').textContent = c.mastered;
-  $('hStreak').textContent = state.streak;
+  const ht = $('hTotal'), hm = $('hMastered'), hs = $('hStreak');
+  if (ht) ht.textContent = c.total;
+  if (hm) hm.textContent = c.mastered;
+  if (hs) hs.textContent = state.streak;
 }
 
 /* ============ PICKER ============ */
 function renderPicker(){
   updateHeader();
   const c = getCounts();
-  $('cClean').textContent = c.clean;
-  $('cMistakes').textContent = c.mistakes;
-  $('cAll').textContent = c.all;
+  const cClean = $('cClean'), cMistakes = $('cMistakes'), cAll = $('cAll');
+  if (cClean) cClean.textContent = c.clean;
+  if (cMistakes) cMistakes.textContent = c.mistakes;
+  if (cAll) cAll.textContent = c.all;
   renderTopList();
   renderChunks();
 }
@@ -576,8 +577,10 @@ function renderTopList(){
     .filter(hasMistakeHistory)
     .sort((a,b) => wrongCount(b) - wrongCount(a) || (Number(b.mistakes)||0) - (Number(a.mistakes)||0) || a.text.localeCompare(b.text))
     .slice(0, 8);
-  $('cTop').textContent = top.length ? `· ${top.length} shown` : '';
+  const cTop = $('cTop');
+  if (cTop) cTop.textContent = top.length ? `· ${top.length} shown` : '';
   const el = $('topList');
+  if (!el) return;
   if (!top.length){
     el.innerHTML = '<div class="empty" style="padding:20px"><div class="e">✨</div>No mistakes yet. Great start!</div>';
     return;
@@ -598,6 +601,7 @@ function renderTopList(){
 
 function renderChunks(){
   const grid = $('chunkGrid');
+  if (!grid) return;
   const total = state.words.length;
   if (!total){
     grid.innerHTML = '<div class="empty"><div class="e">📭</div>No words yet.</div>';
@@ -655,7 +659,8 @@ function openChunkMenu(chunkIdx){
     { key:'chunk-mistakes', label:'Practice frequent mistakes', sub:`${historyWords.length} words with wrong-answer history, including mastered words`, disabled:historyWords.length === 0 },
     { key:'chunk-review', label:'Review all words in this chunk', sub:`All ${slice.length} words, including mastered + mistake words`, disabled:slice.length === 0 }
   ];
-  $('modal').innerHTML = `
+  const modal = $('modal'); if (!modal) return;
+  modal.innerHTML = `
     <h3>Chunk ${chunkIdx + 1}</h3>
     <p class="m-sub">${masteredWords.length} mastered · ${correctFirstWords.length} correct-in-first · ${untriedWords.length} never tried · ${unmasteredMistakes.length} unfinished with wrong history · ${historyWords.length} total with wrong history</p>
     <div class="modal-actions column">
@@ -666,7 +671,7 @@ function openChunkMenu(chunkIdx){
         </button>`).join('')}
       <button class="btn ghost" id="chunkCancel" type="button">Cancel</button>
     </div>`;
-  $('modalBg').classList.add('open');
+  const bg = $('modalBg'); if (bg) bg.classList.add('open');
   $$('#modal [data-opt]').forEach(btn => {
     if (btn.disabled) return;
     btn.addEventListener('click', () => {
@@ -678,7 +683,7 @@ function openChunkMenu(chunkIdx){
       else if (key === 'chunk-review') startSession({ type:'chunk-review', chunk:chunkIdx, label:`Chunk ${chunkIdx+1} · Review all` });
     });
   });
-  $('chunkCancel').addEventListener('click', closeModal);
+  bind('chunkCancel', 'click', closeModal);
 }
 
 /* ============ MODE CARD CLICKS ============ */
@@ -716,7 +721,6 @@ function buildPool(mode){
 }
 
 function startSession(mode){
-  // Compute chunk from index if not passed
   const pool = buildPool(mode);
   if (!pool.length){
     toast('Nothing to practise here 🎉', 'ok');
@@ -738,9 +742,10 @@ function startSession(mode){
     resolved: false
   };
 
-  $('picker').style.display = 'none';
-  $('active').style.display = 'block';
-  $('done').style.display = 'none';
+  const picker = $('picker'), active = $('active'), done = $('done');
+  if (picker) picker.style.display = 'none';
+  if (active) active.style.display = 'block';
+  if (done) done.style.display = 'none';
   nextWord();
 }
 
@@ -756,7 +761,6 @@ function nextWord(){
   if (!active.length) return endSession();
   const words = active.map(id => state.words.find(w => w.id === id)).filter(Boolean);
   if (!words.length) return endSession();
-  // Prioritise words with a longer wrong-answer history, especially in mistake mode.
   const mistakeMode = ['mistakes','chunk-mistakes','repeat'].includes(s.mode.type);
   const boost = mistakeMode ? 2 : 1.25;
   const weights = words.map(w => 1 + Math.pow(wrongCount(w) + (Number(w.mistakes)||0), boost));
@@ -778,52 +782,53 @@ function renderSession(){
   const s = state.session, w = currentWord();
   if (!s || !w) return;
   const processed = s.cleared.size + s.skipped.size;
-  $('sBar').style.width = ((processed / s.pool.length) * 100).toFixed(1) + '%';
-  $('sLabel').textContent = s.label;
-  $('sCleared').textContent = processed;
-  $('sTotal').textContent = s.pool.length;
-  $('hint').style.display = 'none';
-  $('feedback').className = 'feedback';
-  $('feedback').innerHTML = '';
-  $('field').classList.remove('ok','err');
-  $('input').value = '';
-  $('input').disabled = false;
-  $('bCheck').disabled = false;
-  $('input').focus();
-  $('bSentence').style.display = w.sentence ? 'inline-flex' : 'none';
+  const sBar = $('sBar'), sLabel = $('sLabel'), sCleared = $('sCleared'), sTotal = $('sTotal');
+  if (sBar) sBar.style.width = ((processed / s.pool.length) * 100).toFixed(1) + '%';
+  if (sLabel) sLabel.textContent = s.label;
+  if (sCleared) sCleared.textContent = processed;
+  if (sTotal) sTotal.textContent = s.pool.length;
+  const hint = $('hint'); if (hint) hint.style.display = 'none';
+  const feedback = $('feedback');
+  if (feedback){ feedback.className = 'feedback'; feedback.innerHTML = ''; }
+  const field = $('field'); if (field) field.classList.remove('ok','err');
+  const input = $('input');
+  if (input){ input.value = ''; input.disabled = false; input.focus(); }
+  const bCheck = $('bCheck'); if (bCheck) bCheck.disabled = false;
+  const bSentence = $('bSentence'); if (bSentence) bSentence.style.display = w.sentence ? 'inline-flex' : 'none';
   updateHeader();
 }
 
 function checkAnswer(){
   const s = state.session, w = currentWord();
   if (!s || !w || s.resolved) return;
-  const guess = $('input').value.trim();
-  if (!guess){ $('field').classList.add('err'); return; }
+  const input = $('input'), field = $('field'), feedback = $('feedback'), bCheck = $('bCheck');
+  if (!input || !field || !feedback) return;
+  const guess = input.value.trim();
+  if (!guess){ field.classList.add('err'); return; }
   s.attempts++;
   const ok = norm(guess) === norm(w.text);
   if (ok){
     s.correctAnswers++;
-    $('field').classList.remove('err');
-    $('field').classList.add('ok');
-    s.resolved = true; // Prevent double submissions before the next word loads.
-    $('input').disabled = true;
-    $('bCheck').disabled = true;
+    field.classList.remove('err');
+    field.classList.add('ok');
+    s.resolved = true;
+    input.disabled = true;
+    if (bCheck) bCheck.disabled = true;
     w.totalCorrect = (Number(w.totalCorrect)||0) + 1;
     if (s.triesThisWord === 0){
       s.firstTry++;
       const debt = Number(w.mistakes) || 0;
       if (debt > 0){
-        // First-try correct answers pay down one unit of unresolved debt.
         w.mistakes = debt - 1;
         if (w.mistakes > 0) w.mastered = 0;
-        $('feedback').className = 'feedback ok';
-        $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(debt ${debt} → ${w.mistakes})</small>`;
+        feedback.className = 'feedback ok';
+        feedback.innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(debt ${debt} → ${w.mistakes})</small>`;
         toast(`Debt reduced: ${w.text}`, 'ok');
       } else {
         const wasMastered = !!w.mastered;
         w.mastered = 1;
-        $('feedback').className = 'feedback ok';
-        $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span>`;
+        feedback.className = 'feedback ok';
+        feedback.innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span>`;
         if (!wasMastered) toast('Mastered: ' + w.text, 'ok');
       }
       state.streak++;
@@ -831,12 +836,11 @@ function checkAnswer(){
       s.cleared.add(w.id);
       setTimeout(nextWord, 600);
     } else {
-      // Getting it right after retries clears this session item but does not erase debt.
       w.mastered = 0;
       state.streak = 0;
       saveStreak();
-      $('feedback').className = 'feedback ok';
-      $('feedback').innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(after retries; debt unchanged)</small>`;
+      feedback.className = 'feedback ok';
+      feedback.innerHTML = `✅ Correct! <span class="ans">— ${esc(w.text)}</span> <small style="color:var(--muted)">(after retries; debt unchanged)</small>`;
       s.cleared.add(w.id);
       setTimeout(nextWord, 700);
     }
@@ -844,9 +848,8 @@ function checkAnswer(){
     updateHeader();
     return;
   }
-  // Wrong answers update both lifetime wrong attempts and current recovery debt.
-  $('field').classList.remove('ok');
-  $('field').classList.add('err');
+  field.classList.remove('ok');
+  field.classList.add('err');
   s.triesThisWord++;
   w.totalWrong = Math.max(Number(w.totalWrong)||0, Number(w.mistakes)||0) + 1;
   w.mistakes = (Number(w.mistakes)||0) + 1;
@@ -855,13 +858,12 @@ function checkAnswer(){
   state.streak = 0;
   saveStreak();
   const diff = diffHTML(guess, w.text);
-  $('feedback').className = 'feedback err';
-  $('feedback').innerHTML = `❌ Not quite. Correct: <span class="ans">${esc(w.text)}</span><span class="diff">${diff}</span><small style="display:block;color:var(--muted);margin-top:5px">Wrong attempts: ${w.totalWrong} · Unresolved debt: ${w.mistakes}</small>`;
+  feedback.className = 'feedback err';
+  feedback.innerHTML = `❌ Not quite. Correct: <span class="ans">${esc(w.text)}</span><span class="diff">${diff}</span><small style="display:block;color:var(--muted);margin-top:5px">Wrong attempts: ${w.totalWrong} · Unresolved debt: ${w.mistakes}</small>`;
   speak(w.text, 0.85);
   updateHeader();
 }
 
-// Keep the rendered counts in sync after persistent word changes.
 function awaitSaveWord(w){
   saveWord(w).then(() => refreshAfterWordChange()).catch(() => toast('Could not save progress', 'err'));
 }
@@ -874,14 +876,15 @@ function refreshAfterWordChange(){
 
 function showHint(){
   const w = currentWord(); if (!w) return;
-  const h = $('hint');
+  const h = $('hint'); if (!h) return;
   h.style.display = 'block';
   h.innerHTML = '<b>Hint:</b> ' + hintFor(w.text);
 }
 function revealAnswer(){
   const w = currentWord(); if (!w) return;
-  $('feedback').className = 'feedback err';
-  $('feedback').innerHTML = `💡 Answer: <span class="ans">${esc(w.text)}</span>`;
+  const feedback = $('feedback'); if (!feedback) return;
+  feedback.className = 'feedback err';
+  feedback.innerHTML = `💡 Answer: <span class="ans">${esc(w.text)}</span>`;
   speak(w.text, 0.8);
 }
 function skipWord(){
@@ -899,10 +902,12 @@ function endSession(){
   const eligibleItems = Math.max(0, s.pool.length - s.skipped.size);
   const firstTryRate = eligibleItems ? Math.round((s.firstTry / eligibleItems) * 100) : 0;
   dbAdd('history', { label:s.label, cleared:s.cleared.size, skipped:s.skipped.size, total:s.pool.length, attempts:s.attempts, correctAnswers:s.correctAnswers, firstTry:s.firstTry, accuracy, firstTryRate, duration, ts:Date.now() }).catch(()=>{});
-  $('active').style.display = 'none';
-  $('done').style.display = 'block';
+  const active = $('active'), done = $('done');
+  if (active) active.style.display = 'none';
+  if (!done) return;
+  done.style.display = 'block';
   const canRepeatMistakes = ['mistakes','chunk-mistakes'].includes(s.mode.type) || !!s.mode.repeatMistakes;
-  $('done').innerHTML = `
+  done.innerHTML = `
     <div class="card practice-card">
       <div class="session-summary">
         <div class="emoji">🎉</div>
@@ -918,15 +923,14 @@ function endSession(){
         <button class="btn ${canRepeatMistakes ? 'ghost' : 'primary'}" id="backBtn" type="button" style="margin-left:6px">Back to modes</button>
       </div>
     </div>`;
-  const repeatBtn = $('repeatMistakesBtn');
-  if (repeatBtn) repeatBtn.addEventListener('click', () => {
+  bind('repeatMistakesBtn', 'click', () => {
     const ids = s.pool.slice();
     startSession({ type:'repeat', ids, label:'Repeat mistake words', repeatMistakes:true });
   });
-  $('backBtn').addEventListener('click', () => {
+  bind('backBtn', 'click', () => {
     state.session = null;
-    $('done').style.display = 'none';
-    $('picker').style.display = 'block';
+    done.style.display = 'none';
+    const picker = $('picker'); if (picker) picker.style.display = 'block';
     renderPicker();
   });
 }
@@ -935,8 +939,9 @@ function exitSession(){
   if (!state.session) return;
   if (!confirm('Exit this session? Progress is saved.')) return;
   state.session = null;
-  $('active').style.display = 'none';
-  $('picker').style.display = 'block';
+  const active = $('active'), picker = $('picker');
+  if (active) active.style.display = 'none';
+  if (picker) picker.style.display = 'block';
   renderPicker();
 }
 
@@ -946,8 +951,6 @@ function sortWords(list, sortBy){
   switch (sortBy){
     case 'correct-first':
       return arr.sort((a,b) => {
-        // Put answered-correctly-on-first-try words first, untried words second,
-        // and anything with wrong-answer history last.
         const group = w => isCorrectInFirst(w) ? 0 : (isUntried(w) ? 1 : 2);
         const ga = group(a), gb = group(b);
         if (ga !== gb) return ga - gb;
@@ -963,10 +966,14 @@ function sortWords(list, sortBy){
   }
 }
 
-function renderManage(){
-  const q = ($('search').value || '').toLowerCase().trim();
-  const filt = $('filter').value;
-  const sortBy = $('sort').value;
+// Returns the current word list after applying search + filter + sort.
+// Single source of truth so the table and the "Practice list" button
+// always operate on exactly the same set.
+function getFilteredList(){
+  const searchEl = $('search'), filterEl = $('filter'), sortEl = $('sort');
+  const q = (searchEl && searchEl.value || '').toLowerCase().trim();
+  const filt = filterEl ? filterEl.value : 'all';
+  const sortBy = sortEl ? sortEl.value : 'correct-first';
 
   let list = state.words.slice();
   if (q) list = list.filter(w => w.text.toLowerCase().includes(q));
@@ -975,9 +982,41 @@ function renderManage(){
   else if (filt === 'correct-first') list = list.filter(isCorrectInFirst);
   else if (filt === 'mistakes') list = list.filter(hasMistakeHistory);
   else if (filt === 'new') list = list.filter(w => !w.mastered && isUntried(w));
-  list = sortWords(list, sortBy);
+  return sortWords(list, sortBy);
+}
 
+// Human-readable label describing the current filter + search.
+function describeFilter(){
+  const filterEl = $('filter'), searchEl = $('search');
+  const filt = filterEl ? filterEl.value : 'all';
+  const q = searchEl ? searchEl.value.trim() : '';
+  const names = {
+    'all': 'All words',
+    'mastered': 'Mastered',
+    'learning': 'Learning',
+    'correct-first': 'Correct-in-first',
+    'mistakes': 'Frequent mistakes',
+    'new': 'New words'
+  };
+  let label = names[filt] || 'Filtered';
+  if (q) label += ` · "${q}"`;
+  return label;
+}
+
+function renderManage(){
+  const list = getFilteredList();
   const el = $('wordList');
+
+  // Keep the "Practice list" button in sync with the current view.
+  const pb = $('bPracticeList');
+  if (pb){
+    pb.disabled = list.length === 0;
+    pb.textContent = list.length
+      ? `▶ Practice ${list.length} word${list.length === 1 ? '' : 's'}`
+      : '▶ Practice list';
+  }
+
+  if (!el) return;
   if (!list.length){
     el.innerHTML = '<div class="empty"><div class="e">🔍</div>No words match.</div>';
     return;
@@ -1012,8 +1051,6 @@ function renderManage(){
       else if (btn.dataset.act === 'del'){
         if (!confirm(`Delete "${w.text}"?`)) return;
         await dbDel('words', id);
-        // If this text comes from SEED, remember the removal so syncSeedWords
-        // does not put it back on the next reload.
         if (SEED.some(t => norm(t) === norm(w.text))){
           try { await rememberRemovedSeed(w.text); } catch(_){}
         }
@@ -1024,9 +1061,18 @@ function renderManage(){
     });
   });
 }
-$('search').addEventListener('input', renderManage);
-$('filter').addEventListener('change', renderManage);
-$('sort').addEventListener('change', renderManage);
+bind('search', 'input', renderManage);
+bind('filter', 'change', renderManage);
+bind('sort', 'change', renderManage);
+
+bind('bPracticeList', 'click', () => {
+  const list = getFilteredList();
+  if (!list.length){ toast('No words to practice', 'err'); return; }
+  const ids = list.map(w => w.id);
+  const label = `${describeFilter()} · ${list.length} word${list.length === 1 ? '' : 's'}`;
+  switchTab('practice');
+  startSession({ type: 'repeat', ids, label });
+});
 
 function practiceSingleWord(id){
   const w = state.words.find(x => x.id === Number(id));
@@ -1036,14 +1082,21 @@ function practiceSingleWord(id){
 }
 
 /* ============ WORD MODAL ============ */
-function closeModal(){ $('modalBg').classList.remove('open'); }
-$('modalBg').addEventListener('click', e => { if (e.target === $('modalBg')) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('modalBg').classList.contains('open')) closeModal(); });
+function closeModal(){
+  const bg = $('modalBg');
+  if (bg) bg.classList.remove('open');
+}
+bind('modalBg', 'click', e => { if (e.target === $('modalBg')) closeModal(); });
+document.addEventListener('keydown', e => {
+  const bg = $('modalBg');
+  if (e.key === 'Escape' && bg && bg.classList.contains('open')) closeModal();
+});
 
 function openWordModal(existing){
   const isEdit = !!existing;
   const w = existing || { text:'', sentence:'', definition:'' };
-  $('modal').innerHTML = `
+  const modal = $('modal'); if (!modal) return;
+  modal.innerHTML = `
     <h3>${isEdit ? 'Edit word' : 'Add new word'}</h3>
     <label>Word *</label>
     <input type="text" id="mWord" value="${esc(w.text)}" autocomplete="off" spellcheck="false" />
@@ -1055,21 +1108,28 @@ function openWordModal(existing){
       <button class="btn ghost" id="mCancel" type="button">Cancel</button>
       <button class="btn primary" id="mSave" type="button">${isEdit ? 'Save' : 'Add'}</button>
     </div>`;
-  $('modalBg').classList.add('open');
-  setTimeout(() => $('mWord').focus(), 60);
-  $('mCancel').addEventListener('click', closeModal);
-  $('mSave').addEventListener('click', async () => {
-    const text = $('mWord').value.trim();
+  const bg = $('modalBg'); if (bg) bg.classList.add('open');
+  setTimeout(() => { const mw = $('mWord'); if (mw) mw.focus(); }, 60);
+  bind('mCancel', 'click', closeModal);
+  bind('mSave', 'click', async () => {
+    const mw = $('mWord'); if (!mw) return;
+    const text = mw.value.trim();
     if (!text){ toast('Enter a word', 'err'); return; }
     const dup = state.words.find(x => norm(x.text) === norm(text) && (!isEdit || x.id !== existing.id));
     if (dup){ toast('Word already exists', 'err'); return; }
+    const ms = $('mSentence'), md = $('mDef');
     if (isEdit){
       existing.text = text;
-      existing.sentence = $('mSentence').value.trim();
-      existing.definition = $('mDef').value.trim();
+      existing.sentence = ms ? ms.value.trim() : '';
+      existing.definition = md ? md.value.trim() : '';
       await saveWord(existing);
     } else {
-      await dbAdd('words', { text, sentence:$('mSentence').value.trim(), definition:$('mDef').value.trim(), mistakes:0, totalCorrect:0, totalWrong:0, mastered:0, createdAt: Date.now() });
+      await dbAdd('words', {
+        text,
+        sentence: ms ? ms.value.trim() : '',
+        definition: md ? md.value.trim() : '',
+        mistakes:0, totalCorrect:0, totalWrong:0, mastered:0, createdAt: Date.now()
+      });
     }
     await loadAll();
     closeModal();
@@ -1077,117 +1137,271 @@ function openWordModal(existing){
     toast(isEdit ? 'Saved' : 'Added', 'ok');
   });
 }
-$('bAdd').addEventListener('click', () => openWordModal(null));
+bind('bAdd', 'click', () => openWordModal(null));
 
 /* ============ IMPORT / EXPORT ============ */
-$('bExport').addEventListener('click', () => {
-  const data = {
-    words: state.words.map(w => ({ text:w.text, sentence:w.sentence||'', definition:w.definition||'', mistakes:w.mistakes||0, totalCorrect:w.totalCorrect||0, totalWrong:w.totalWrong||0, mastered:w.mastered||0 })),
-    exportedAt: new Date().toISOString(), version: 1
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
+function downloadBlob(blob, filename){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = `spelling-words-${Date.now()}.json`; a.click();
-  URL.revokeObjectURL(url);
-  toast('Exported', 'ok');
-});
-$('bImport').addEventListener('click', () => $('importFile').click());
-$('importFile').addEventListener('change', async e => {
-  const f = e.target.files[0]; if (!f) return;
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function openExportModal(){
+  const modal = $('modal'); if (!modal) return;
+  modal.innerHTML = `
+    <h3>Export data</h3>
+    <p class="m-sub">Choose a format. Files download to your device.</p>
+    <div class="modal-actions column">
+      <button class="btn primary" data-export="words" type="button">
+        Words only (JSON)
+        <small>${state.words.length} word${state.words.length === 1 ? '' : 's'} with progress — good for sharing or importing into another copy</small>
+      </button>
+      <button class="btn" data-export="full" type="button">
+        Full backup (JSON)
+        <small>Words, session history and settings — restores the whole app</small>
+      </button>
+      <button class="btn" data-export="csv" type="button">
+        Words spreadsheet (CSV)
+        <small>Open in Excel / Google Sheets for analysis</small>
+      </button>
+      <button class="btn ghost" id="exportCancel" type="button">Cancel</button>
+    </div>`;
+  const bg = $('modalBg'); if (bg) bg.classList.add('open');
+  bind('exportCancel', 'click', closeModal);
+  $$('#modal [data-export]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const kind = btn.dataset.export;
+      closeModal();
+      try {
+        if (kind === 'csv') exportCSV();
+        else await exportData(kind);
+      } catch (err){
+        console.error('Export failed:', err);
+        toast('Export failed', 'err');
+      }
+    });
+  });
+}
+
+async function exportData(kind){
+  const words = state.words.map(w => ({
+    text: w.text,
+    sentence: w.sentence || '',
+    definition: w.definition || '',
+    mistakes: w.mistakes || 0,
+    totalCorrect: w.totalCorrect || 0,
+    totalWrong: w.totalWrong || 0,
+    mastered: w.mastered || 0
+  }));
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+
+  if (kind === 'full'){
+    const [history, settings] = await Promise.all([dbAll('history'), dbAll('settings')]);
+    const data = {
+      version: 1,
+      kind: 'full',
+      exportedAt: new Date().toISOString(),
+      words,
+      history: history.map(({ id, ...rest }) => rest),
+      settings
+    };
+    downloadBlob(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }),
+                 `spelling-backup-${stamp}.json`);
+    toast('Backup exported', 'ok');
+  } else {
+    const data = { version: 1, kind: 'words', exportedAt: new Date().toISOString(), words };
+    downloadBlob(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }),
+                 `spelling-words-${stamp}.json`);
+    toast('Words exported', 'ok');
+  }
+}
+
+function exportCSV(){
+  const header = ['Word', 'Sentence', 'Definition', 'Unresolved debt', 'Total correct', 'Total wrong', 'Mastered'];
+  const rows = state.words.map(w => [
+    w.text, w.sentence || '', w.definition || '',
+    w.mistakes || 0, w.totalCorrect || 0, w.totalWrong || 0,
+    w.mastered ? 'yes' : 'no'
+  ]);
+  const escape = cell => {
+    const s = String(cell ?? '');
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
+  const csv = '\ufeff' + [header, ...rows].map(r => r.map(escape).join(',')).join('\r\n');
+  const stamp = new Date().toISOString().slice(0, 10);
+  downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }),
+               `spelling-words-${stamp}.csv`);
+  toast('CSV exported', 'ok');
+}
+
+bind('bExport', 'click', openExportModal);
+
+bind('bImport', 'click', () => { const f = $('importFile'); if (f) f.click(); });
+bind('importFile', 'change', async e => {
+  const f = e.target.files && e.target.files[0]; if (!f) return;
   try {
     const text = await f.text();
     const data = JSON.parse(text);
+    const isFull = data && data.kind === 'full';
     const incoming = Array.isArray(data) ? data : (data.words || []);
+
     let added = 0, skipped = 0;
     for (const item of incoming){
       const word = (item.text || item.word || '').trim();
       if (!word) continue;
       if (state.words.find(x => norm(x.text) === norm(word))){ skipped++; continue; }
-      const mistakes = Math.max(0, Math.floor(Number(item.mistakes)||0));
-      const totalWrong = Math.max(0, Math.floor(Number(item.totalWrong)||0), mistakes);
-      await dbAdd('words', { text:word, sentence:item.sentence||'', definition:item.definition||'', mistakes, totalCorrect:Math.max(0, Math.floor(Number(item.totalCorrect)||0)), totalWrong, mastered:(Number(item.mastered) > 0 && mistakes === 0) ? 1 : 0, createdAt:Date.now() });
+      const mistakes = Math.max(0, Math.floor(Number(item.mistakes) || 0));
+      const totalWrong = Math.max(0, Math.floor(Number(item.totalWrong) || 0), mistakes);
+      await dbAdd('words', {
+        text: word,
+        sentence: item.sentence || '',
+        definition: item.definition || '',
+        mistakes,
+        totalCorrect: Math.max(0, Math.floor(Number(item.totalCorrect) || 0)),
+        totalWrong,
+        mastered: (Number(item.mastered) > 0 && mistakes === 0) ? 1 : 0,
+        createdAt: Date.now()
+      });
       added++;
     }
+
+    let historyAdded = 0;
+    if (isFull && Array.isArray(data.history)){
+      const existing = await dbAll('history');
+      const seen = new Set(existing.map(h => `${h.ts}|${h.label}|${h.total}`));
+      for (const h of data.history){
+        const key = `${h.ts}|${h.label}|${h.total}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const { id, ...rest } = h;
+        try { await dbAdd('history', rest); historyAdded++; } catch(_){}
+      }
+    }
+
+    if (isFull && Array.isArray(data.settings)){
+      const local = await dbAll('settings');
+      const localRemoved = local.find(s => s.key === 'removedSeedWords');
+      const importedRemoved = data.settings.find(s => s.key === 'removedSeedWords');
+      if (importedRemoved && Array.isArray(importedRemoved.value)){
+        const set = new Set(
+          ((localRemoved && Array.isArray(localRemoved.value)) ? localRemoved.value : [])
+            .concat(importedRemoved.value).map(norm)
+        );
+        await dbPut('settings', { key: 'removedSeedWords', value: [...set] });
+      }
+      const localStreak = local.find(s => s.key === 'streak');
+      const importedStreak = data.settings.find(s => s.key === 'streak');
+      if (importedStreak && (!localStreak || !localStreak.value) && importedStreak.value){
+        await dbPut('settings', { key: 'streak', value: importedStreak.value });
+      }
+    }
+
     await loadAll();
     renderManage(); renderPicker(); updateHeader();
-    toast(`Imported ${added}, skipped ${skipped}`, 'ok');
-  } catch (_) { toast('Invalid file', 'err'); }
+
+    const bits = [`${added} word${added === 1 ? '' : 's'}`];
+    if (skipped) bits.push(`${skipped} skipped`);
+    if (historyAdded) bits.push(`${historyAdded} session${historyAdded === 1 ? '' : 's'}`);
+    toast(`Imported ${bits.join(', ')}`, 'ok');
+  } catch (err){
+    console.error('Import failed:', err);
+    toast('Invalid file', 'err');
+  }
   e.target.value = '';
 });
 
 /* ============ STATS ============ */
 async function renderStats(){
   const c = getCounts();
-  $('statGrid').innerHTML = `
-    <div class="stat-card"><b>${c.total}</b><span>Total words</span></div>
-    <div class="stat-card"><b>${c.mastered}</b><span>Mastered</span></div>
-    <div class="stat-card"><b>${c.clean}</b><span>Answered correctly first try</span></div>
-    <div class="stat-card"><b>${c.mistakes}</b><span>Words ever wrong</span></div>
-    <div class="stat-card"><b>${c.debtWords}</b><span>Words with active debt</span></div>
-    <div class="stat-card"><b>${c.debt}</b><span>Total active debt</span></div>
-    <div class="stat-card"><b>${c.wrongAttempts}</b><span>Recorded wrong attempts</span></div>
-    <div class="stat-card"><b>${c.total ? Math.round((c.mastered/c.total)*100) : 0}%</b><span>Complete</span></div>`;
+  const grid = $('statGrid');
+  if (grid){
+    grid.innerHTML = `
+      <div class="stat-card"><b>${c.total}</b><span>Total words</span></div>
+      <div class="stat-card"><b>${c.mastered}</b><span>Mastered</span></div>
+      <div class="stat-card"><b>${c.clean}</b><span>Answered correctly first try</span></div>
+      <div class="stat-card"><b>${c.mistakes}</b><span>Words ever wrong</span></div>
+      <div class="stat-card"><b>${c.debtWords}</b><span>Words with active debt</span></div>
+      <div class="stat-card"><b>${c.debt}</b><span>Total active debt</span></div>
+      <div class="stat-card"><b>${c.wrongAttempts}</b><span>Recorded wrong attempts</span></div>
+      <div class="stat-card"><b>${c.total ? Math.round((c.mastered/c.total)*100) : 0}%</b><span>Complete</span></div>`;
+  }
   const top = state.words
     .filter(hasMistakeHistory)
     .sort((a,b) => wrongCount(b) - wrongCount(a) || (Number(b.mistakes)||0) - (Number(a.mistakes)||0) || a.text.localeCompare(b.text))
     .slice(0, 25);
-  $('mistakeList').innerHTML = top.length ? top.map((w,i) => `
-    <div class="mistake-row">
-      <div class="mistake-rank">${i+1}</div>
-      <div><div class="word-text">${esc(w.text)}</div><div class="word-badges"><span class="badge ${w.mastered ? 'mastered' : 'learning'}">${w.mastered ? 'Mastered' : 'Not mastered'}</span></div></div>
-      <div class="mistake-count" title="Lifetime wrong answers; debt is unresolved mistakes">${wrongCount(w)}× wrong <small style="display:block;color:var(--muted);font-size:10px">debt ${Number(w.mistakes)||0}</small></div>
-      <div style="display:flex;gap:5px"><button class="btn ghost small" data-play="${w.id}" type="button" aria-label="Play ${esc(w.text)}">🔊</button><button class="btn small" data-practice-word="${w.id}" type="button">Practice</button></div>
-    </div>`).join('') : '<div class="empty"><div class="e">✨</div>No mistakes yet.</div>';
-  $('mistakeList').querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => {
-    const w = state.words.find(x => x.id === Number(b.dataset.play));
-    if (w) speak(w.text, 0.95);
-  }));
-  $('mistakeList').querySelectorAll('[data-practice-word]').forEach(b => b.addEventListener('click', () => practiceSingleWord(Number(b.dataset.practiceWord))));
+  const list = $('mistakeList');
+  if (list){
+    list.innerHTML = top.length ? top.map((w,i) => `
+      <div class="mistake-row">
+        <div class="mistake-rank">${i+1}</div>
+        <div><div class="word-text">${esc(w.text)}</div><div class="word-badges"><span class="badge ${w.mastered ? 'mastered' : 'learning'}">${w.mastered ? 'Mastered' : 'Not mastered'}</span></div></div>
+        <div class="mistake-count" title="Lifetime wrong answers; debt is unresolved mistakes">${wrongCount(w)}× wrong <small style="display:block;color:var(--muted);font-size:10px">debt ${Number(w.mistakes)||0}</small></div>
+        <div style="display:flex;gap:5px"><button class="btn ghost small" data-play="${w.id}" type="button" aria-label="Play ${esc(w.text)}">🔊</button><button class="btn small" data-practice-word="${w.id}" type="button">Practice</button></div>
+      </div>`).join('') : '<div class="empty"><div class="e">✨</div>No mistakes yet.</div>';
+    list.querySelectorAll('[data-play]').forEach(b => b.addEventListener('click', () => {
+      const w = state.words.find(x => x.id === Number(b.dataset.play));
+      if (w) speak(w.text, 0.95);
+    }));
+    list.querySelectorAll('[data-practice-word]').forEach(b => b.addEventListener('click', () => practiceSingleWord(Number(b.dataset.practiceWord))));
+  }
 
   const history = await dbAll('history');
   history.sort((a,b) => b.ts - a.ts);
   const recent = history.slice(0, 10);
-  $('historyList').innerHTML = recent.length ? recent.map(h => {
-    const d = new Date(h.ts);
-    const when = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
-    return `
-      <div class="mistake-row">
-        <div class="mistake-rank">📖</div>
-        <div>
-          <div class="word-text">${esc(h.label || 'Session')}</div>
-          <div class="word-badges"><span class="badge mastered">${h.cleared}/${h.total} cleared</span><span class="badge new">${h.attempts} guesses</span><span class="badge learning">${h.firstTryRate ?? (h.total ? Math.round(((h.firstTry||0)/h.total)*100) : 0)}% first-try rate</span></div>
-        </div>
-        <div style="color:var(--muted);font-size:11px">${esc(when)}</div>
-        <div></div>
-      </div>`;
-  }).join('') : '<div class="empty"><div class="e">📊</div>No sessions yet.</div>';
+  const hList = $('historyList');
+  if (hList){
+    hList.innerHTML = recent.length ? recent.map(h => {
+      const d = new Date(h.ts);
+      const when = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+      return `
+        <div class="mistake-row">
+          <div class="mistake-rank">📖</div>
+          <div>
+            <div class="word-text">${esc(h.label || 'Session')}</div>
+            <div class="word-badges"><span class="badge mastered">${h.cleared}/${h.total} cleared</span><span class="badge new">${h.attempts} guesses</span><span class="badge learning">${h.firstTryRate ?? (h.total ? Math.round(((h.firstTry||0)/h.total)*100) : 0)}% first-try rate</span></div>
+          </div>
+          <div style="color:var(--muted);font-size:11px">${esc(when)}</div>
+          <div></div>
+        </div>`;
+    }).join('') : '<div class="empty"><div class="e">📊</div>No sessions yet.</div>';
+  }
 }
 
 /* Practice these now */
-$('bPractice').addEventListener('click', () => {
+bind('bPractice', 'click', () => {
   if (!state.words.some(hasMistakeHistory)){ toast('No mistake history yet — great job!', 'ok'); return; }
   switchTab('practice');
   startSession({ type:'mistakes', label:'Frequent mistakes' });
 });
 
 /* ============ SESSION EVENTS ============ */
-$('form').addEventListener('submit', e => { e.preventDefault(); checkAnswer(); });
-$('bCheck').addEventListener('click', e => { e.preventDefault(); checkAnswer(); });
-$('bPlay').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.text, 0.95); });
-$('bSlow').addEventListener('click', () => { const w = currentWord(); if (w) speak(w.text, 0.65); });
-$('bHint').addEventListener('click', showHint);
-$('bReveal').addEventListener('click', revealAnswer);
-$('bSkip').addEventListener('click', skipWord);
-$('bExit').addEventListener('click', exitSession);
-$('bSentence').addEventListener('click', () => { const w = currentWord(); if (w && w.sentence) speak(w.sentence, 0.9); });
-$('input').addEventListener('keydown', e => { if (e.key === 'Escape'){ $('input').value = ''; $('field').classList.remove('ok','err'); } });
+bind('form', 'submit', e => { e.preventDefault(); checkAnswer(); });
+bind('bCheck', 'click', e => { e.preventDefault(); checkAnswer(); });
+bind('bPlay', 'click', () => { const w = currentWord(); if (w) speak(w.text, 0.95); });
+bind('bSlow', 'click', () => { const w = currentWord(); if (w) speak(w.text, 0.65); });
+bind('bHint', 'click', showHint);
+bind('bReveal', 'click', revealAnswer);
+bind('bSkip', 'click', skipWord);
+bind('bExit', 'click', exitSession);
+bind('bSentence', 'click', () => { const w = currentWord(); if (w && w.sentence) speak(w.sentence, 0.9); });
+bind('input', 'keydown', e => {
+  if (e.key === 'Escape'){
+    const inp = $('input'), fld = $('field');
+    if (inp) inp.value = '';
+    if (fld) fld.classList.remove('ok','err');
+  }
+});
 
 /* ============ BOOT ============ */
-(async function boot(){
+async function boot(){
   try {
     await openDB();
-    await syncSeedWords();   // was seedIfEmpty(): now also imports new SEED entries
+    await syncSeedWords();
     await loadAll();
     renderPicker();
     updateHeader();
@@ -1195,7 +1409,13 @@ $('input').addEventListener('keydown', e => { if (e.key === 'Escape'){ $('input'
     console.error('Spelling Hub initialisation failed:', err);
     toast('Could not load saved words. Check browser storage permissions.', 'err');
   }
-})();
+}
+
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', boot, { once: true });
+} else {
+  boot();
+}
 </script>
   </body>
 </html>

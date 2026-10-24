@@ -1559,6 +1559,7 @@ descriptivists |n|ভাষা বর্ণনাবাদ|Descriptivist, Descri
 closure|n|সম্পূর্ণতা|Closure, Completion|desc
 hostile|adj|বিরুদ্ধ |Opposing, Hostile, unfriendly, aggressive, or showing active opposition|conf
 saline |adj|সমীপ|Salty, Saline, salty or containing salt, or it refers to a liquid mixture made of sodium chloride (table salt) and water|env
+disputed|adj|বিতর্কিত|Disputed, Controversial|conf
 
 `
 
