@@ -3,1092 +3,1584 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ultimate Grammar: Subject–Verb Agreement</title>
-        <script src="https://cdn.tailwindcss.com">
-    </script>
+        <title>Ultimate Grammar: Subject–Verb Agreement — Dark Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
 
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+:root{
+  --bg:#070b16;
+  --surface:#0d1526;
+  --surface-2:#101b2e;
+  --border:#1e2b45;
+  --border-soft:#17233a;
+  --text:#dbe4f3;
+  --muted:#8fa3c0;
+  --accent:#818cf8;
+  --accent-2:#a78bfa;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+}
 
-        .prose h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #1e293b;
-            letter-spacing: -0.01em;
-        }
-        .prose h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #334155;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-            line-height: 1.75;
-            color: #334155;
-        }
-        .prose ul,
-        .prose ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            color: #334155;
-        }
-        .prose li {
-            margin-bottom: 0.4rem;
-            line-height: 1.6;
-        }
-        .prose .rule-box {
-            background: #f1f5f9;
-            border-left: 4px solid #6366f1;
-            padding: 1rem 1.25rem;
-            border-radius: 0.5rem;
-            margin: 1.25rem 0;
-        }
-        .prose .rule-box strong {
-            color: #1e293b;
-        }
-        .prose .example {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            margin: 0.5rem 0 1rem 0;
-            font-family: 'Inter', monospace;
-            font-size: 0.95rem;
-            color: #0f172a;
-        }
-        .prose .example .highlight {
-            color: #7c3aed;
-            font-weight: 600;
-        }
-        .prose .example .highlight-green {
-            color: #059669;
-            font-weight: 600;
-        }
-        .prose .badge {
-            display: inline-block;
-            background: #6366f1;
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.15rem 0.65rem;
-            border-radius: 9999px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-        .prose .badge-gold {
-            background: #f59e0b;
-        }
-        .prose .badge-red {
-            background: #ef4444;
-        }
-        .prose .badge-green {
-            background: #22c55e;
-        }
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(700px circle at 8% -8%, rgba(99,102,241,.20), transparent 62%),
+    radial-gradient(760px circle at 96% 2%, rgba(168,85,247,.15), transparent 62%),
+    radial-gradient(620px circle at 50% 108%, rgba(16,185,129,.10), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
 
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
-        }
-        .table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        .table-wrap th {
-            background: #f8fafc;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            color: #0f172a;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        .table-wrap td {
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid #f1f5f9;
-            color: #1e293b;
-        }
-        .table-wrap tr:last-child td {
-            border-bottom: none;
-        }
+/* ---------- Typography ---------- */
+.h-sec{
+  font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd;
+}
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
 
-        .quiz-card {
-            transition: all 0.15s ease;
-        }
-        .quiz-card:hover {
-            border-color: #a5b4fc;
-        }
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+  box-shadow:0 1px 0 rgba(255,255,255,.02) inset;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
 
-        .quiz-option {
-            transition: all 0.1s ease;
-            cursor: pointer;
-        }
-        .quiz-option:hover {
-            background: #f1f5f9;
-        }
-        .quiz-option.selected-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
-        .quiz-option.selected-wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-        }
-        .quiz-option.show-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
 
-        .btn-ripple {
-            position: relative;
-            overflow: hidden;
-        }
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
 
-        .anchor-link {
-            scroll-margin-top: 6rem;
-        }
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
 
-        .bg-grid {
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
 
-        @media (max-width: 640px) {
-            .prose h2 {
-                font-size: 1.25rem;
-            }
-            .prose h3 {
-                font-size: 1rem;
-            }
-        }
-    </style>
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+tr:last-child td{ border-bottom:none; }
+tbody tr:hover td{ background:#0e1729; }
+
+/* ---------- Chips ---------- */
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* ---------- Exercise cards ---------- */
+.ex-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1rem 1.1rem;
+  transition:.15s;
+}
+.ex-card:hover{ border-color:#31446b; }
+.ex-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.5rem; height:1.5rem; padding:0 .35rem;
+  background:#16233c; color:#93a7c7;
+  font-size:.68rem; font-weight:700; border-radius:7px;
+  flex-shrink:0;
+}
+.ex-tag{
+  font-size:.62rem; font-weight:700; letter-spacing:.04em;
+  color:#6b7f9e; background:#0f1a2e;
+  border:1px solid #1c2942; border-radius:6px;
+  padding:.12rem .38rem; flex-shrink:0;
+}
+.ex-opt{
+  padding:.45rem 1.05rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.86rem; font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:74px;
+}
+.ex-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.ex-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.ex-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.ex-opt.missed{
+  border-color:#34d399; color:#6ee7b7; border-style:dashed;
+}
+.ex-exp{
+  margin-top:.7rem; padding-top:.7rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem; color:#8fa3c0; line-height:1.6;
+}
+
+/* ---------- Quiz ---------- */
+.quiz-option{
+  padding:.5rem 1.15rem;
+  border-radius:10px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.88rem; font-weight:600;
+  cursor:pointer; transition:.12s;
+  user-select:none;
+}
+.quiz-option:hover{ background:#152340; border-color:#3d5280; }
+.quiz-option.selected{ background:rgba(99,102,241,.18); border-color:#818cf8; color:#c7d2fe; }
+.quiz-option.selected-correct{ background:rgba(16,185,129,.16); border-color:#34d399; color:#6ee7b7; }
+.quiz-option.selected-wrong{ background:rgba(248,113,113,.14); border-color:#f87171; color:#fca5a5; }
+.quiz-option.show-correct{ border-color:#34d399; color:#6ee7b7; border-style:dashed; }
+
+/* ---------- Buttons ---------- */
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+/* ---------- Nav ---------- */
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+/* ---------- Anchor offset ---------- */
+.anchor{ scroll-margin-top:5.5rem; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+/* ---------- Fade in ---------- */
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+</style>
     </head>
+
     <body>
 
-        <!-- ====== NAVBAR ====== -->
+        <!-- ==================== NAVBAR ==================== -->
         <nav
-            class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b16]/85 backdrop-blur-xl">
             <div
                 class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-                <div class="flex items-center gap-2">
-                    <a href="/" class="flex items-center gap-2">
-                       <span class="text-2xl font-bold text-indigo-600">📘</span>
-                       </a>
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">📘</span>
                     <span
-                        class="font-semibold text-gray-800 text-lg hidden sm:block">Grammar<span
-                            class="text-indigo-600">Hub</span></span>
-                </div>
-                <div class="flex items-center gap-3 text-sm font-medium">
-                    <a href="#rules"
-                        class="text-gray-600 hover:text-indigo-600 transition">Rules</a>
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">Grammar<span
+                            class="text-indigo-400">Hub</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#rules" class="navlink">Rules</a>
                     <a href="#chart"
-                        class="text-gray-600 hover:text-indigo-600 transition">Chart</a>
-                    <a href="#quiz"
-                        class="text-gray-600 hover:text-indigo-600 transition">Quiz</a>
+                        class="navlink hidden sm:inline-block">Chart</a>
+                    <a href="#exercises" class="navlink">Exercises</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
                     <a href="#faq"
-                        class="text-gray-600 hover:text-indigo-600 transition hidden sm:inline">FAQ</a>
+                        class="navlink hidden md:inline-block">FAQ</a>
                 </div>
             </div>
         </nav>
 
-        <!-- ====== HERO ====== -->
-        <section
-            class="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 border-b border-gray-200/60">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-                <div class="grid md:grid-cols-5 gap-8 items-center">
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
                     <div class="md:col-span-3">
                         <span
-                            class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide">📚
-                            ULTIMATE GRAMMAR GUIDE</span>
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            📚 Ultimate Grammar Guide · Dark Edition
+                        </span>
                         <h1
-                            class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
                             Subject–Verb<br />
-                            <span class="text-indigo-600">Agreement</span>
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Agreement</span>
                         </h1>
                         <p
-                            class="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                            Master the essential rule that your verb must match
-                            your subject in number and person.
-                            Clear rules, real examples, and a practice quiz —
-                            all in one place.
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            Master the one rule that holds every English
+                            sentence together — the verb must match
+                            its subject in <strong
+                                class="text-slate-200">number</strong> and
+                            <strong class="text-slate-200">person</strong>. 17
+                            rules, 40+ examples,
+                            <strong class="text-indigo-300">170 practice
+                                exercises</strong> and a scored quiz.
                         </p>
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <a href="#rules"
-                                class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
-                                Start Learning <span>→</span>
-                            </a>
-                            <a href="#quiz"
-                                class="bg-white hover:bg-gray-50 text-gray-700 font-medium px-6 py-2.5 rounded-full border border-gray-300 transition flex items-center gap-2">
-                                Take Quiz <span>✏️</span>
-                            </a>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#rules" class="btn-primary">Start Learning
+                                →</a>
+                            <a href="#exercises" class="btn-ghost">Practice 170
+                                Exercises ✏️</a>
+                            <a href="#quiz" class="btn-ghost">Take Quiz 🎯</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">17</span>
+                                rules</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">170</span>
+                                exercises</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">12</span>
+                                quiz questions</div>
                         </div>
                     </div>
-                    <div class="md:col-span-2 hidden md:flex justify-center">
+
+                    <div class="md:col-span-2 hidden md:block">
                         <div
-                            class="bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 w-full max-w-xs">
-                            <div class="flex items-center gap-3 mb-4">
+                            class="rounded-2xl border border-[#1e2b45] bg-gradient-to-b from-[#0e1729] to-[#0a1120] p-6 shadow-2xl shadow-indigo-950/40">
+                            <div class="flex items-center gap-2.5 mb-5">
                                 <div
-                                    class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg">S</div>
+                                    class="w-9 h-9 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 font-bold">S</div>
+                                <span
+                                    class="text-xs font-semibold text-slate-400">Subject</span>
+                                <span class="text-slate-600">⚡</span>
                                 <div
-                                    class="text-sm font-medium text-gray-700">Subject</div>
-                                <span class="text-gray-400">⚡</span>
-                                <div
-                                    class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-lg">V</div>
-                                <div
-                                    class="text-sm font-medium text-gray-700">Verb</div>
+                                    class="w-9 h-9 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 font-bold">V</div>
+                                <span
+                                    class="text-xs font-semibold text-slate-400">Verb</span>
                             </div>
+
                             <div
-                                class="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
-                                <p class="text-sm text-gray-500 mb-1">✅
+                                class="rounded-xl bg-[#0a1120] border border-[#1b2740] p-4">
+                                <p
+                                    class="text-[.7rem] uppercase tracking-wider text-emerald-400 font-bold mb-1">✅
                                     Correct</p>
                                 <p
-                                    class="text-lg font-semibold text-gray-800">She
+                                    class="text-lg font-semibold text-slate-200">She
                                     <span
-                                        class="text-indigo-600">writes</span></p>
-                                <p class="text-sm text-gray-500 mt-3 mb-1">❌
+                                        class="text-indigo-400">writes</span></p>
+                                <div class="h-px bg-[#1b2740] my-3"></div>
+                                <p
+                                    class="text-[.7rem] uppercase tracking-wider text-red-400 font-bold mb-1">❌
                                     Incorrect</p>
                                 <p
-                                    class="text-lg font-semibold text-gray-800 line-through decoration-red-400">She
-                                    <span class="text-red-500">write</span></p>
+                                    class="text-lg font-semibold text-slate-500 line-through decoration-red-500/60">She
+                                    <span class="text-red-400">write</span></p>
                             </div>
                             <p
-                                class="text-xs text-center text-gray-400 mt-3">Singular
+                                class="text-[.72rem] text-center text-slate-500 mt-4">Singular
                                 subject → singular verb</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- ====== MAIN CONTENT ====== -->
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-            <!-- ============================================================ -->
-            <!--  SECTION: WHAT IS SUBJECT-VERB AGREEMENT?                     -->
-            <!-- ============================================================ -->
-            <section id="intro" class="anchor-link prose max-w-none">
-                <div class="flex items-center gap-3 mb-2">
+            <!-- ==================== INTRO ==================== -->
+            <section id="intro" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
                     <span class="text-3xl">🤝</span>
-                    <h2 class="!mt-0">What Is Subject–Verb Agreement?</h2>
+                    <h2 class="h-sec">What Is Subject–Verb Agreement?</h2>
                 </div>
-                <p class="text-lg text-gray-700 leading-relaxed">
-                    <strong>Subject-verb agreement</strong> is the grammatical
-                    rule that the verb in a sentence must match the
-                    subject in <strong>number</strong> and
-                    <strong>person</strong>. In English, the verb primarily
-                    needs to match
-                    the number — singular or plural.
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    <strong class="text-slate-200">Subject–verb
+                        agreement</strong> (also called
+                    <em>concord</em>) is the grammatical rule that the verb in a
+                    sentence must match its
+                    subject in <strong class="text-slate-200">number</strong>
+                    (singular or plural) and
+                    <strong class="text-slate-200">person</strong> (first,
+                    second or third).
                 </p>
-                <div class="rule-box">
-                    <p class="!mb-0 text-gray-800">
-                        <strong>💡 Core Rule:</strong> If the subject is <span
-                            class="text-indigo-600 font-semibold">singular</span>,
-                        the verb must be <span
-                            class="text-indigo-600 font-semibold">singular</span>.
-                        If the subject is <span
-                            class="text-emerald-600 font-semibold">plural</span>,
-                        the verb must be <span
-                            class="text-emerald-600 font-semibold">plural</span>.
+
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 Core Rule:</strong> A
+                        <span
+                            class="text-indigo-300 font-semibold">singular</span>
+                        subject takes a
+                        <span
+                            class="text-indigo-300 font-semibold">singular</span>
+                        verb. A
+                        <span
+                            class="text-emerald-300 font-semibold">plural</span>
+                        subject takes a
+                        <span
+                            class="text-emerald-300 font-semibold">plural</span>
+                        verb.
                     </p>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-4 my-4">
+
+                <div class="grid sm:grid-cols-2 gap-4 my-5">
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                        <p class="text-sm text-indigo-600 font-semibold">✅
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4">
+                        <p
+                            class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1.5">✅
                             Singular</p>
-                        <p class="text-lg font-medium text-gray-800">The boy
-                            <span class="text-indigo-600 font-bold">runs</span>
+                        <p class="text-lg font-medium text-slate-200">The boy
+                            <span class="text-indigo-400 font-bold">runs</span>
                             fast.</p>
-                        <p class="text-sm text-gray-500 mt-1">Singular subject +
-                            singular verb</p>
+                        <p class="text-xs text-slate-500 mt-1.5">Singular
+                            subject + singular verb</p>
                     </div>
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                        <p class="text-sm text-emerald-600 font-semibold">✅
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4">
+                        <p
+                            class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1.5">✅
                             Plural</p>
-                        <p class="text-lg font-medium text-gray-800">The boys
-                            <span class="text-emerald-600 font-bold">run</span>
+                        <p class="text-lg font-medium text-slate-200">The boys
+                            <span class="text-emerald-400 font-bold">run</span>
                             fast.</p>
-                        <p class="text-sm text-gray-500 mt-1">Plural subject +
-                            plural verb</p>
+                        <p class="text-xs text-slate-500 mt-1.5">Plural subject
+                            + plural verb</p>
                     </div>
                 </div>
-                <p class="text-sm text-gray-500 mt-2">
-                    <span class="badge">Updated June 28, 2022</span>
-                    <span class="badge badge-gold ml-2">Grammar Tips</span>
-                </p>
+
+                <div class="tip">
+                    <strong>Why it matters:</strong> agreement errors are the
+                    single most common grammar
+                    mistake in academic and professional writing. They don't
+                    usually change the meaning, but
+                    they instantly signal carelessness to a reader.
+                </div>
             </section>
 
-            <!-- ============================================================ -->
-            <!--  SECTION: BASIC RULES                                         -->
-            <!-- ============================================================ -->
+            <!-- ==================== RULES ==================== -->
             <section id="rules"
-                class="anchor-link prose max-w-none mt-14 border-t border-gray-200/70 pt-10">
-                <div class="flex items-center gap-3 mb-2">
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
                     <span class="text-3xl">📋</span>
-                    <h2 class="!mt-0">Subject–Verb Agreement Rules</h2>
+                    <h2 class="h-sec">The 17 Rules — In Detail</h2>
                 </div>
-                <p class="text-gray-600">Here are the essential rules you need
-                    to know, with clear examples for each.</p>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    Every rule below includes the rule itself, extra
+                    explanation, real examples, and the
+                    traps that examiners love to test.
+                </p>
 
-                <!-- Rule 1 -->
+                <!-- RULE 1 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">1</span> Singular ↔ Plural</h3>
+                    <h3 class="rule-title"><span class="num-badge">1</span>
+                        Singular ↔ Plural (The Base Rule)</h3>
                     <p>A singular subject takes a singular verb; a plural
-                        subject takes a plural verb.</p>
-                    <div class="example"><span class="highlight">Rachel</span>
-                        <span class="highlight-green">spends</span> her free
-                        time listening to music.</div>
-                    <div class="example"><span class="highlight">Blaine and
-                            Kurt</span> <span
-                            class="highlight-green">play</span> the piano.</div>
-                    <div class="example"><span class="highlight">She</span>
-                        <span class="highlight-green">likes</span> dessert after
-                        every meal.</div>
+                        subject takes a plural verb. In the
+                        present simple, the <em>only</em> change is the
+                        <strong>-s / -es</strong> added to the
+                        third-person singular.</p>
+                    <p class="text-slate-400 text-sm">Regular verbs: <span
+                            class="hlg">work</span> →
+                        he <span class="hlg">works</span> · <span
+                            class="hlg">watch</span> → she
+                        <span class="hlg">watches</span> · <span
+                            class="hlg">study</span> → it
+                        <span class="hlg">studies</span> · <span
+                            class="hlg">go</span> → he
+                        <span class="hlg">goes</span></p>
+                    <div class="example"><span class="hl">Rachel</span> <span
+                            class="hlg">spends</span> her free time listening to
+                        music.</div>
+                    <div class="example"><span class="hl">Blaine and Kurt</span>
+                        <span class="hlg">play</span> the piano.</div>
+                    <div class="example"><span class="hl">She</span> <span
+                            class="hlg">likes</span> dessert after every
+                        meal.</div>
+                    <div class="example"><span class="hl">The children</span>
+                        <span class="hlg">run</span> in the garden.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> the -s goes on the
+                        <em>verb</em>, not the noun. “The dogs <span
+                            class="hlg">bark</span>” — not “the dogs
+                        barks”.</div>
                 </div>
 
-                <!-- Rule 2: Be verbs -->
+                <!-- RULE 2 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">2</span> The Verb <em>Be</em></h3>
-                    <p>The verb <strong>be</strong> changes based on both number
-                        <em>and</em> person.</p>
+                    <h3 class="rule-title"><span class="num-badge">2</span> The
+                        Verb <em>Be</em> (am / is / are / was / were)</h3>
+                    <p><strong>Be</strong> is the only English verb that changes
+                        for both
+                        <strong>number</strong> and <strong>person</strong>. You
+                        must memorise this table.</p>
                     <div class="table-wrap">
                         <table>
-                            <thead>
-                                <tr><th>Person</th><th>Pronoun</th><th>Verb</th><th>Example</th></tr>
-                            </thead>
-                            <tbody class="bg-white">
-                                <tr><td>First
-                                        singular</td><td>I</td><td><strong>am</strong></td><td>I
+                            <thead><tr><th>Person</th><th>Pronoun</th><th>Present</th><th>Past</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>1st singular</td><td>I</td><td><strong
+                                            class="text-indigo-300">am</strong></td><td><strong
+                                            class="text-indigo-300">was</strong></td><td>I
                                         am confident.</td></tr>
-                                <tr><td>First
-                                        plural</td><td>We</td><td><strong>are</strong></td><td>We
+                                <tr><td>2nd</td><td>You</td><td><strong
+                                            class="text-emerald-300">are</strong></td><td><strong
+                                            class="text-emerald-300">were</strong></td><td>You
                                         are confident.</td></tr>
-                                <tr><td>Second</td><td>You</td><td><strong>are</strong></td><td>You
-                                        are confident.</td></tr>
-                                <tr><td>Third singular</td><td>He / She /
-                                        It</td><td><strong>is</strong></td><td>She
+                                <tr><td>3rd singular</td><td>He / She /
+                                        It</td><td><strong
+                                            class="text-indigo-300">is</strong></td><td><strong
+                                            class="text-indigo-300">was</strong></td><td>She
                                         is a singer.</td></tr>
-                                <tr><td>Third
-                                        plural</td><td>They</td><td><strong>are</strong></td><td>They
+                                <tr><td>1st plural</td><td>We</td><td><strong
+                                            class="text-emerald-300">are</strong></td><td><strong
+                                            class="text-emerald-300">were</strong></td><td>We
+                                        are confident.</td></tr>
+                                <tr><td>3rd plural</td><td>They</td><td><strong
+                                            class="text-emerald-300">are</strong></td><td><strong
+                                            class="text-emerald-300">were</strong></td><td>They
                                         are confident.</td></tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="example">The girls <span
-                            class="highlight-green">are</span> waiting for
-                        you.</div>
-                    <div class="example">I <span
-                            class="highlight-green">was</span> reading the
-                        latest book.</div>
-                    <div class="example text-sm text-gray-500">💡
-                        <strong>Note:</strong> “Every boy and every girl <span
-                            class="highlight-green">was</span> given a bar of
-                        chocolate.”</div>
+                    <div class="example">The girls <span class="hlg">are</span>
+                        waiting for you.</div>
+                    <div class="example">I <span class="hlg">was</span> reading
+                        the latest book.</div>
+                    <div class="example">The results <span
+                            class="hlg">were</span> announced yesterday.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “You” is always
+                        plural in form, even when it means one person: “You
+                        <span class="hlg">are</span> late,” never “you
+                        is”.</div>
+                    <div class="tip"><strong>💡 Note:</strong> “Every boy and
+                        every girl <span class="hlg">was</span> given a bar of
+                        chocolate.” — <em>every</em> keeps the subject singular
+                        even with <em>and</em>.</div>
                 </div>
 
-                <!-- Rule 3: Have / Has -->
+                <!-- RULE 3 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">3</span> Have vs. Has</h3>
+                    <h3 class="rule-title"><span class="num-badge">3</span> Have
+                        vs. Has</h3>
                     <p><strong>Has</strong> → third-person singular (he, she,
-                        it, singular names). <strong>Have</strong> → I, you, we,
-                        they, and all plural subjects.</p>
-                    <div class="example">I <span
-                            class="highlight-green">have</span> a younger
-                        brother.</div>
-                    <div class="example">Swetha <span
-                            class="highlight-green">has</span> a pet dog.</div>
-                    <div class="example">Finn <span
-                            class="highlight-green">has</span> been waiting to
-                        talk to you.</div>
+                        it, a singular name).
+                        <strong>Have</strong> → I, you, we, they and every
+                        plural subject.</p>
+                    <div class="example">I <span class="hlg">have</span> a
+                        younger brother.</div>
+                    <div class="example">Swetha <span class="hlg">has</span> a
+                        pet dog.</div>
+                    <div class="example">Finn <span class="hlg">has</span> been
+                        waiting to talk to you.</div>
+                    <div class="example">The students <span
+                            class="hlg">have</span> finished their exams.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> in “has/have + past
+                        participle” the same rule applies — “She <span
+                            class="hlg">has</span> left”, “They <span
+                            class="hlg">have</span> left”.</div>
                 </div>
 
-                <!-- Rule 4: And -->
+                <!-- RULE 4 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">4</span> Compound Subjects with
-                        <em>And</em></h3>
-                    <p>Two or more subjects joined by <strong>and</strong> take
-                        a plural verb.</p>
-                    <div class="example"><span class="highlight">Krish and
-                            Radha</span> <span
-                            class="highlight-green">are</span> on their way to
-                        the airport.</div>
-                    <div class="example"><span class="highlight">Caren, Sheela
-                            and Akash</span> <span
-                            class="highlight-green">have</span> completed their
-                        assessments.</div>
+                    <h3 class="rule-title"><span class="num-badge">4</span>
+                        Compound Subjects with <em>And</em></h3>
+                    <p>Two or more subjects joined by <strong>and</strong>
+                        normally make a
+                        <strong>plural</strong> subject → plural verb.</p>
+                    <div class="example"><span class="hl">Krish and Radha</span>
+                        <span class="hlg">are</span> on their way to the
+                        airport.</div>
+                    <div class="example"><span class="hl">Caren, Sheela and
+                            Akash</span> <span class="hlg">have</span> completed
+                        their assessments.</div>
+                    <div class="warn"><b>⚠️ Exception:</b> if the two nouns
+                        describe <em>one single idea or thing</em>, use a
+                        singular verb — “Bread and butter <span
+                            class="hlg">is</span> my favourite breakfast.” ·
+                        “Rice and curry <span class="hlg">is</span> a classic
+                        dish.”</div>
                 </div>
 
-                <!-- Rule 5: Or / Nor -->
+                <!-- RULE 5 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">5</span> <em>Or / Nor</em> – Proximity
-                        Rule</h3>
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        <em>Or / Nor</em> — The Proximity Rule</h3>
                     <p>With <strong>or</strong> or <strong>nor</strong>, the
-                        verb agrees with the subject closest to it.</p>
+                        verb agrees with the subject
+                        <strong>closest</strong> to it (the nearest noun).</p>
                     <div class="example">Celery or spring onion <span
-                            class="highlight-green">works</span> fine.</div>
+                            class="hlg">works</span> fine.</div>
                     <div class="example">The teacher or the students <span
-                            class="highlight-green">are</span> coming.</div>
+                            class="hlg">are</span> coming.</div>
                     <div class="example">Neither Ricky nor Gina <span
-                            class="highlight-green">is</span> here yet.</div>
+                            class="hlg">is</span> here yet.</div>
+                    <div class="tip"><strong>💡 Memory trick:</strong> “the verb
+                        hugs its nearest neighbour”.</div>
                 </div>
 
-                <!-- Rule 6: Indefinite pronouns -->
+                <!-- RULE 6 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">6</span> Indefinite Pronouns</h3>
-                    <p>Words like <em>anybody, everyone, nobody, somebody</em>
-                        are <strong>singular</strong>.</p>
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        Indefinite Pronouns</h3>
+                    <p>These are always <strong>singular</strong>:</p>
+                    <p class="text-sm text-slate-400">
+                        <span class="hl">anybody · anyone · anything · everybody
+                            · everyone · everything ·
+                            nobody · no one · nothing · somebody · someone ·
+                            something · each · either · neither ·
+                            one</span>
+                    </p>
                     <div class="example">Everybody <span
-                            class="highlight-green">loves</span> using correct
+                            class="hlg">loves</span> using correct
                         grammar!</div>
-                    <div class="example">Nobody <span
-                            class="highlight-green">has</span> understood
-                        anything.</div>
-                    <div class="example">Everyone <span
-                            class="highlight-green">was</span> happy with the
-                        outcome.</div>
+                    <div class="example">Nobody <span class="hlg">has</span>
+                        understood anything.</div>
+                    <div class="example">Everyone <span class="hlg">was</span>
+                        happy with the outcome.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “Everybody <span
+                            class="hlg">has</span> their own opinion” is
+                        accepted in modern usage, but the verb stays singular —
+                        only the possessive pronoun shifts.</div>
                 </div>
 
-                <!-- Rule 7: Either / Neither -->
+                <!-- RULE 7 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">7</span> <em>Either…or /
-                            Neither…nor</em></h3>
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        <em>Either…or / Neither…nor</em></h3>
                     <p>The verb agrees with the noun or pronoun that comes
                         <strong>just before</strong> the verb.</p>
                     <div class="example">Neither the children nor their parents
-                        <span class="highlight-green">are</span> aware.</div>
+                        <span class="hlg">are</span> aware.</div>
                     <div class="example">Either the teacher or the students
-                        <span class="highlight-green">have</span> to take
-                        initiative.</div>
+                        <span class="hlg">have</span> to take initiative.</div>
+                    <div class="example">Neither the manager nor his assistants
+                        <span class="hlg">were</span> informed.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> when <em>either</em>
+                        / <em>neither</em> stands alone as a subject (not in a
+                        pair), it is singular: “Neither of the answers <span
+                            class="hlg">is</span> correct.”</div>
                 </div>
 
-                <!-- Rule 8: Plural-looking nouns -->
+                <!-- RULE 8 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">8</span> Tricky Nouns</h3>
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        Tricky Nouns</h3>
                     <p>Some nouns look plural but are singular; others are
                         always plural.</p>
-                    <div class="grid sm:grid-cols-2 gap-3">
-                        <div>
-                            <p
-                                class="font-semibold text-sm text-gray-700 mb-1">Singular
-                                in meaning</p>
-                            <div class="example text-sm">The <span
-                                    class="highlight">news</span> <span
-                                    class="highlight-green">has</span> been
-                                depressing.</div>
-                            <div class="example text-sm"><span
-                                    class="highlight">Mathematics</span> <span
-                                    class="highlight-green">is</span> my
-                                favorite subject.</div>
-                        </div>
-                        <div>
-                            <p
-                                class="font-semibold text-sm text-gray-700 mb-1">Plural
-                                in meaning</p>
-                            <div class="example text-sm">The <span
-                                    class="highlight">police</span> <span
-                                    class="highlight-green">have</span> been
-                                looking.</div>
-                            <div class="example text-sm">The <span
-                                    class="highlight">scissors</span> <span
-                                    class="highlight-green">do</span> not
-                                work.</div>
-                        </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Singular in meaning</th><th>Plural in
+                                        meaning</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>news · mathematics · physics · economics
+                                        · measles · mumps · politics</td>
+                                    <td>police · cattle · scissors · trousers ·
+                                        glasses · clothes · belongings</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <div class="example">The <span class="hl">news</span> <span
+                            class="hlg">has</span> been depressing.</div>
+                    <div class="example"><span class="hl">Mathematics</span>
+                        <span class="hlg">is</span> my favorite subject.</div>
+                    <div class="example">The <span class="hl">police</span>
+                        <span class="hlg">have</span> been looking for
+                        him.</div>
+                    <div class="example">The <span class="hl">scissors</span>
+                        <span class="hlg">do</span> not work.</div>
+                    <div class="tip"><strong>💡 Pair nouns:</strong> for items
+                        made of two joined parts (glasses, scissors, trousers)
+                        use <em>a pair of</em> + singular verb: “A pair of
+                        scissors <span class="hlg">is</span> on the
+                        table.”</div>
                 </div>
 
-                <!-- Rule 9: Negative sentences -->
+                <!-- RULE 9 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">9</span> Negative Sentences</h3>
-                    <p>Use <strong>do</strong> with plural subjects and <em>I,
-                            you, we, they</em>. Use <strong>does</strong> with
-                        third-person singular.</p>
-                    <div class="example">The children <span
-                            class="highlight-green">do not</span> like
-                        trigonometry.</div>
-                    <div class="example">My father <span
-                            class="highlight-green">does not</span> work at the
-                        bank anymore.</div>
+                    <h3 class="rule-title"><span class="num-badge">9</span>
+                        Negative Sentences (do / does)</h3>
+                    <p>Use <strong>do not</strong> with plural subjects and with
+                        <em>I, you, we, they</em>.
+                        Use <strong>does not</strong> with third-person singular
+                        subjects.</p>
+                    <div class="example">The children <span class="hlg">do
+                            not</span> like trigonometry.</div>
+                    <div class="example">My father <span class="hlg">does
+                            not</span> work at the bank anymore.</div>
+                    <div class="example">It <span class="hlg">does not</span>
+                        matter.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> after <em>does</em>,
+                        the main verb loses its -s: “She <span class="hlg">does
+                            not work</span>”, never “does not works”.</div>
                 </div>
 
-                <!-- Rule 10: Questions -->
+                <!-- RULE 10 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">10</span> Interrogative Sentences</h3>
+                    <h3 class="rule-title"><span class="num-badge">10</span>
+                        Interrogative Sentences</h3>
                     <p>The helping verb at the beginning must agree with the
-                        subject.</p>
-                    <div class="example"><span class="highlight-green">Do</span>
-                        you read thriller novels?</div>
-                    <div class="example"><span
-                            class="highlight-green">Does</span> she know you
-                        already?</div>
-                    <div class="example"><span
-                            class="highlight-green">Has</span> Sharon submitted
-                        her project?</div>
+                        subject that follows it.</p>
+                    <div class="example"><span class="hlg">Do</span> you read
+                        thriller novels?</div>
+                    <div class="example"><span class="hlg">Does</span> she know
+                        you already?</div>
+                    <div class="example"><span class="hlg">Has</span> Sharon
+                        submitted her project?</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> in
+                        <em>wh-</em>questions the subject may come after the
+                        verb — “Where <span class="hlg">are</span> my keys?”
+                        (subject = keys, plural).</div>
                 </div>
 
-                <!-- Rule 11: Here / There -->
+                <!-- RULE 11 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">11</span> Sentences Beginning with
-                        <em>Here / There</em></h3>
-                    <p>The subject follows the verb, so the verb agrees with the
-                        <strong>real subject</strong> that comes after.</p>
-                    <div class="example">Here <span
-                            class="highlight-green">is</span> your book.</div>
-                    <div class="example">There <span
-                            class="highlight-green">are</span> new maps in the
-                        DLC.</div>
-                    <div class="example">There <span
-                            class="highlight-green">have</span> been many
-                        changes.</div>
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Sentences Beginning with <em>Here / There</em></h3>
+                    <p><em>Here</em> and <em>there</em> are never the real
+                        subject. The verb agrees with the
+                        noun that comes <strong>after</strong> it.</p>
+                    <div class="example">Here <span class="hlg">is</span> your
+                        book.</div>
+                    <div class="example">There <span class="hlg">are</span> new
+                        maps in the DLC.</div>
+                    <div class="example">There <span class="hlg">have</span>
+                        been many changes.</div>
+                    <div class="tip"><strong>💡 Test:</strong> flip the sentence
+                        — “Your book <span class="hlg">is</span> here.” The
+                        subject becomes obvious.</div>
                 </div>
 
-                <!-- Rule 12: Abstract / Uncountable -->
+                <!-- RULE 12 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">12</span> Abstract &amp; Uncountable
-                        Nouns</h3>
-                    <p>They are considered singular and take a singular
-                        verb.</p>
-                    <div class="example">Honesty <span
-                            class="highlight-green">is</span> the best
-                        policy.</div>
-                    <div class="example">Love <span
-                            class="highlight-green">makes</span> people do crazy
-                        things.</div>
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        Abstract &amp; Uncountable Nouns</h3>
+                    <p>Uncountable / abstract nouns are treated as singular and
+                        take a singular verb:
+                        <span class="hl">honesty, love, water, information,
+                            furniture, advice, luggage,
+                            knowledge, happiness, patience, milk</span>.</p>
+                    <div class="example">Honesty <span class="hlg">is</span> the
+                        best policy.</div>
+                    <div class="example">Love <span class="hlg">makes</span>
+                        people do crazy things.</div>
+                    <div class="example">The information <span
+                            class="hlg">was</span> very useful.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> never add -s to
+                        uncountable nouns — “informations”, “furnitures” and
+                        “advices” do not exist.</div>
                 </div>
 
-                <!-- Rule 13: Time / Distance / Money -->
+                <!-- RULE 13 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">13</span> Time, Distance &amp;
-                        Money</h3>
-                    <p>When taken as a whole, use a singular verb.</p>
+                    <h3 class="rule-title"><span class="num-badge">13</span>
+                        Time, Distance &amp; Money</h3>
+                    <p>When a quantity is treated as <strong>one single
+                            unit</strong>, use a singular verb.</p>
                     <div class="example">1,267 kilometres <span
-                            class="highlight-green">is</span> too long for
-                        us.</div>
-                    <div class="example">10 years <span
-                            class="highlight-green">is</span> not considered
-                        optimum.</div>
-                    <div class="example">₹1,000 <span
-                            class="highlight-green">is</span> a little too
-                        much.</div>
+                            class="hlg">is</span> too long for us.</div>
+                    <div class="example">10 years <span class="hlg">is</span>
+                        not considered optimum.</div>
+                    <div class="example">$1,000 <span class="hlg">is</span> a
+                        little too much.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> if you mean separate
+                        items, use a plural verb — “Ten dollars <span
+                            class="hlg">were</span> lying on the table.”</div>
                 </div>
 
-                <!-- Rule 14: Collective nouns -->
+                <!-- RULE 14 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">14</span> Collective Nouns</h3>
-                    <p>Can be singular (acting together) or plural (acting
-                        separately).</p>
-                    <div class="example">The team <span
-                            class="highlight-green">goes</span> to practice at
-                        4:00. <span
-                            class="text-sm text-gray-500">(together)</span></div>
-                    <div class="example">The team <span
-                            class="highlight-green">go</span> to their own
-                        homes. <span
-                            class="text-sm text-gray-500">(separately)</span></div>
-                    <div class="example">My family <span
-                            class="highlight-green">is</span> settled in
-                        Australia.</div>
+                    <h3 class="rule-title"><span class="num-badge">14</span>
+                        Collective Nouns</h3>
+                    <p>Words like <em>team, family, committee, jury, government,
+                            staff, audience, class</em>
+                        can be <strong>singular</strong> (acting as one unit) or
+                        <strong>plural</strong>
+                        (members acting separately).</p>
+                    <div class="example">The team <span class="hlg">goes</span>
+                        to practice at 4:00. <span
+                            class="note">(together)</span></div>
+                    <div class="example">The team <span class="hlg">go</span> to
+                        their own homes. <span
+                            class="note">(separately)</span></div>
+                    <div class="example">My family <span class="hlg">is</span>
+                        settled in Australia.</div>
+                    <div class="tip"><strong>💡 Test:</strong> if you can
+                        replace the noun with <em>it</em>, use singular; if you
+                        can replace it with <em>they</em>, use plural.</div>
                 </div>
 
-                <!-- Rule 15: All / Some / A lot of -->
+                <!-- RULE 15 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">15</span> <em>All / Some / A lot
-                            of</em></h3>
+                    <h3 class="rule-title"><span class="num-badge">15</span>
+                        <em>All / Some / Most / A lot of / Half of</em></h3>
                     <p>The verb agrees with the noun that follows the
-                        preposition.</p>
+                        preposition <em>of</em> — not with the
+                        quantifier.</p>
                     <div class="example">All of my dresses <span
-                            class="highlight-green">have</span> become
-                        tight.</div>
+                            class="hlg">have</span> become tight. <span
+                            class="note">(dresses = plural)</span></div>
                     <div class="example">A lot of food <span
-                            class="highlight-green">is</span> left out.</div>
+                            class="hlg">is</span> left out. <span
+                            class="note">(food = uncountable)</span></div>
                     <div class="example">Some of the books <span
-                            class="highlight-green">are</span> torn.</div>
+                            class="hlg">are</span> torn.</div>
+                    <div class="example">Half of the work <span
+                            class="hlg">is</span> done.</div>
                 </div>
 
-                <!-- Rule 16: Each / Every -->
+                <!-- RULE 16 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">16</span> <em>Each / Every</em></h3>
-                    <p>When used as the subject, they are singular.</p>
+                    <h3 class="rule-title"><span class="num-badge">16</span>
+                        <em>Each / Every</em></h3>
+                    <p>When used as the subject, <em>each</em> and
+                        <em>every</em> are always singular, even
+                        when followed by <em>of</em> + plural noun.</p>
                     <div class="example">Each student <span
-                            class="highlight-green">has</span> been asked to
-                        provide a letter.</div>
+                            class="hlg">has</span> been asked to provide a
+                        letter.</div>
                     <div class="example">Every teacher, parent and student <span
-                            class="highlight-green">is</span> expected to work
+                            class="hlg">is</span> expected to work
                         together.</div>
+                    <div class="example">Each of the rooms <span
+                            class="hlg">was</span> cleaned.</div>
                 </div>
 
-                <!-- Rule 17: Wishes / Requests -->
+                <!-- RULE 17 -->
                 <div class="rule-box">
-                    <h3
-                        class="!mt-0 !mb-1 flex items-center gap-2 text-base"><span
-                            class="badge">17</span> Wishes &amp; Requests</h3>
-                    <p>Subjunctive mood uses <strong>were</strong> for all
-                        subjects in wishes.</p>
-                    <div class="example">I wish I <span
-                            class="highlight-green">were</span> a bird.</div>
-                    <div class="example">If you <span
-                            class="highlight-green">were</span> here, I would
-                        not be sad.</div>
+                    <h3 class="rule-title"><span class="num-badge">17</span>
+                        Wishes, Hypotheticals &amp; Requests (Subjunctive)</h3>
+                    <p>After <em>wish</em> and in unreal <em>if</em>-clauses,
+                        use <strong>were</strong> for
+                        every subject — including <em>I, he, she, it</em>. After
+                        verbs of demand, suggestion
+                        and request, use the <strong>base form</strong> of the
+                        verb.</p>
+                    <div class="example">I wish I <span class="hlg">were</span>
+                        a bird.</div>
+                    <div class="example">If you <span class="hlg">were</span>
+                        here, I would not be sad.</div>
                     <div class="example">We request that everyone <span
-                            class="highlight-green">make</span> their choices
-                        now.</div>
+                            class="hlg">make</span> their choices now.</div>
+                    <div class="example">It is essential that she <span
+                            class="hlg">be</span> on time.</div>
+                    <div class="tip"><strong>💡 Triggers:</strong> suggest,
+                        recommend, demand, insist, request, propose, it is
+                        essential/vital/important that…</div>
                 </div>
 
                 <div
-                    class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6 text-sm text-amber-800 flex items-start gap-3">
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
                     <span class="text-xl">📌</span>
                     <div>
-                        <strong>Summary:</strong> The verb must always match the
+                        <strong>Summary:</strong> the verb must always match the
                         subject in number.
-                        Watch out for tricky subjects like collective nouns,
-                        indefinite pronouns, and phrases that come between.
+                        Strip away prepositional phrases, ignore
+                        <em>here</em>/<em>there</em>, and watch out for
+                        collective nouns, indefinite pronouns and quantifiers.
                     </div>
                 </div>
             </section>
 
-            <!-- ============================================================ -->
-            <!--  SECTION: CHART                                               -->
-            <!-- ============================================================ -->
+            <!-- ==================== CHART ==================== -->
             <section id="chart"
-                class="anchor-link prose max-w-none mt-14 border-t border-gray-200/70 pt-10">
-                <div class="flex items-center gap-3 mb-2">
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
                     <span class="text-3xl">📊</span>
-                    <h2 class="!mt-0">Subject–Verb Agreement Rules Chart</h2>
+                    <h2 class="h-sec">Quick-Reference Chart</h2>
                 </div>
-                <p class="text-gray-600">A quick-reference summary of the most
-                    important patterns.</p>
+                <p class="text-slate-400 mb-2">The most important patterns on
+                    one screen.</p>
 
                 <div class="table-wrap">
                     <table>
                         <thead>
                             <tr><th style="width:30%">Condition</th><th
-                                    style="width:35%">Subject</th><th
-                                    style="width:35%">Verb</th></tr>
+                                    style="width:28%">Subject</th><th
+                                    style="width:42%">Correct Verb</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Singular subject</td><td>The
                                     horse</td><td><span
-                                        class="text-indigo-600 font-semibold">walks</span>
+                                        class="text-indigo-300 font-semibold">walks</span>
                                     down the street.</td></tr>
                             <tr><td>Plural subject</td><td>The
                                     horses</td><td><span
-                                        class="text-emerald-600 font-semibold">walk</span>
+                                        class="text-emerald-300 font-semibold">walk</span>
                                     down the street.</td></tr>
-                            <tr><td>Subject = <em>I</em> or
+                            <tr><td>Subject = <em>I</em> /
                                     <em>You</em></td><td>I / You</td><td><span
-                                        class="text-indigo-600 font-semibold">ride</span>
+                                        class="text-indigo-300 font-semibold">ride</span>
                                     the bicycle.</td></tr>
                             <tr><td>Linking verb (singular)</td><td>He / She /
                                     It</td><td><span
-                                        class="text-indigo-600 font-semibold">was
+                                        class="text-indigo-300 font-semibold">was
                                         / has / is / does</span></td></tr>
                             <tr><td>Linking verb (plural)</td><td>They /
                                     We</td><td><span
-                                        class="text-emerald-600 font-semibold">were
+                                        class="text-emerald-300 font-semibold">were
                                         / have / are / do</span></td></tr>
                             <tr><td>Compound with <em>and</em></td><td>Tom and
                                     Jerry</td><td><span
-                                        class="text-emerald-600 font-semibold">are</span>
+                                        class="text-emerald-300 font-semibold">are</span>
                                     friends.</td></tr>
                             <tr><td>Indefinite
                                     pronoun</td><td>Everybody</td><td><span
-                                        class="text-indigo-600 font-semibold">loves</span>
+                                        class="text-indigo-300 font-semibold">loves</span>
                                     grammar.</td></tr>
                             <tr><td>Mass noun</td><td>Love</td><td><span
-                                        class="text-indigo-600 font-semibold">makes</span>
+                                        class="text-indigo-300 font-semibold">makes</span>
                                     the world go round.</td></tr>
                             <tr><td>Time / Distance / Money</td><td>10
                                     years</td><td><span
-                                        class="text-indigo-600 font-semibold">is</span>
+                                        class="text-indigo-300 font-semibold">is</span>
                                     a long time.</td></tr>
                             <tr><td>Collective (together)</td><td>The
                                     team</td><td><span
-                                        class="text-indigo-600 font-semibold">plays</span>
+                                        class="text-indigo-300 font-semibold">plays</span>
                                     well.</td></tr>
                             <tr><td>Collective (separate)</td><td>The
                                     team</td><td><span
-                                        class="text-emerald-600 font-semibold">go</span>
+                                        class="text-emerald-300 font-semibold">go</span>
                                     their own ways.</td></tr>
+                            <tr><td>Proximity (<em>or / nor</em>)</td><td>Either
+                                    the pen or the pens</td><td><span
+                                        class="text-emerald-300 font-semibold">are</span>
+                                    missing.</td></tr>
+                            <tr><td><em>Here / There</em></td><td>There … many
+                                    people</td><td><span
+                                        class="text-emerald-300 font-semibold">are</span></td></tr>
+                            <tr><td>Subjunctive wish</td><td>I wish
+                                    I</td><td><span
+                                        class="text-indigo-300 font-semibold">were</span>
+                                    taller.</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-4 mt-4">
                     <div
-                        class="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-                        <p class="font-semibold text-indigo-800 text-sm">✅
+                        class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4">
+                        <p class="font-semibold text-indigo-300 text-sm">✅
                             Singular verbs often end in <span
-                                class="bg-indigo-200 px-2 py-0.5 rounded">-s</span></p>
-                        <p class="text-sm text-gray-700 mt-1">He
-                            <strong>runs</strong>, she <strong>likes</strong>,
-                            it <strong>goes</strong></p>
+                                class="bg-indigo-500/25 px-2 py-0.5 rounded">-s</span></p>
+                        <p class="text-sm text-slate-400 mt-1">He <strong
+                                class="text-slate-200">runs</strong>, she
+                            <strong class="text-slate-200">likes</strong>, it
+                            <strong class="text-slate-200">goes</strong></p>
                     </div>
                     <div
-                        class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-                        <p class="font-semibold text-emerald-800 text-sm">✅
+                        class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.07] p-4">
+                        <p class="font-semibold text-emerald-300 text-sm">✅
                             Plural verbs <span
-                                class="bg-emerald-200 px-2 py-0.5 rounded">do
+                                class="bg-emerald-500/25 px-2 py-0.5 rounded">do
                                 not</span> end in -s</p>
-                        <p class="text-sm text-gray-700 mt-1">They
-                            <strong>run</strong>, we <strong>like</strong>, you
-                            <strong>go</strong></p>
+                        <p class="text-sm text-slate-400 mt-1">They <strong
+                                class="text-slate-200">run</strong>, we <strong
+                                class="text-slate-200">like</strong>, you
+                            <strong class="text-slate-200">go</strong></p>
                     </div>
                 </div>
             </section>
 
-            <!-- ============================================================ -->
-            <!--  SECTION: QUIZ                                                -->
-            <!-- ============================================================ -->
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 170 Questions</h2>
+                </div>
+                <p class="text-slate-400 mb-5 max-w-3xl">
+                    Ten exercises for every one of the 17 rules. Pick a rule to
+                    drill it, or work through
+                    all 170. Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">170</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
+
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
+
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
+
+            <!-- ==================== QUIZ ==================== -->
             <section id="quiz"
-                class="anchor-link prose max-w-none mt-14 border-t border-gray-200/70 pt-10">
-                <div class="flex items-center gap-3 mb-2">
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
                     <span class="text-3xl">🧠</span>
-                    <h2 class="!mt-0">Practice Quiz</h2>
+                    <h2 class="h-sec">Timed-Style Practice Quiz</h2>
                 </div>
-                <p class="text-gray-600">Choose the correct verb form for each
-                    sentence. Check your answers at the end.</p>
+                <p class="text-slate-400 mb-6">Twelve mixed questions — choose
+                    the correct verb, then check your score.</p>
 
-                <div id="quizContainer" class="space-y-4 mt-6">
-                    <!-- Questions will be injected by JS -->
-                </div>
+                <div id="quizContainer" class="grid gap-3"></div>
 
-                <div class="flex flex-wrap gap-4 mt-6">
-                    <button id="checkQuizBtn"
-                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
-                        ✅ Check Answers
-                    </button>
-                    <button id="resetQuizBtn"
-                        class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-8 py-3 rounded-full transition">
-                        🔄 Reset
-                    </button>
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
                 </div>
 
                 <div id="quizResult"
                     class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
             </section>
 
-            <!-- ============================================================ -->
-            <!--  SECTION: FAQ                                                 -->
-            <!-- ============================================================ -->
+            <!-- ==================== FAQ ==================== -->
             <section id="faq"
-                class="anchor-link prose max-w-none mt-14 border-t border-gray-200/70 pt-10">
-                <div class="flex items-center gap-3 mb-2">
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
                     <span class="text-3xl">❓</span>
-                    <h2 class="!mt-0">Frequently Asked Questions</h2>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
                 </div>
 
-                <div class="space-y-4 mt-4">
+                <div class="grid gap-3 mt-5">
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                        <p class="font-semibold text-gray-800">What is
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is
                             subject-verb agreement?</p>
-                        <p class="text-gray-600 text-sm mt-1">Subject-verb
-                            agreement is the grammatical rule that the subject
-                            and verb in a sentence must use the same number and
-                            person. With the exception of <em>be</em>, in
-                            English it's about matching the number.</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">It
+                            is the grammatical rule that the subject and verb in
+                            a sentence must share the same number and person.
+                            Apart from the verb <em>be</em>, English agreement
+                            is almost entirely about number.</p>
                     </div>
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                        <p class="font-semibold text-gray-800">How does
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How does
                             subject-verb agreement work?</p>
-                        <p class="text-gray-600 text-sm mt-1">If the subject is
-                            singular, use the singular form of the verb; if
-                            plural, use the plural form. The only exception is
-                            <em>be</em>, which changes based on number and
-                            person.</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">If
+                            the subject is singular, use the singular form of
+                            the verb; if plural, use the plural form. The verb
+                            <em>be</em> is the exception — it changes for both
+                            number and person (am / is / are, was / were).</p>
                     </div>
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                        <p class="font-semibold text-gray-800">What are examples
-                            of subject-verb agreement?</p>
-                        <p class="text-gray-600 text-sm mt-1"><strong>Cats
-                                make</strong> great pets. → plural subject +
-                            plural verb.<br /><strong>A cat makes</strong> a
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What are
+                            examples of subject-verb agreement?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong
+                                class="text-slate-200">Cats make</strong> great
+                            pets. → plural subject + plural verb.<br /><strong
+                                class="text-slate-200">A cat makes</strong> a
                             great pet. → singular subject + singular verb.</p>
                     </div>
                     <div
-                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                        <p class="font-semibold text-gray-800">Why is
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why is
                             subject-verb agreement important?</p>
-                        <p class="text-gray-600 text-sm mt-1">It ensures clarity
-                            and correctness in writing and speech. Errors can
-                            confuse readers and make your writing seem less
-                            professional.</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">It
+                            keeps writing clear and correct. Agreement errors
+                            confuse readers and make even good ideas look
+                            unpolished — especially in exams, applications and
+                            professional emails.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            trickiest part?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Words
+                            between the subject and verb. In “The box of
+                            chocolates <em>is</em> on the table”, the subject is
+                            <em>box</em>, not <em>chocolates</em>. Always find
+                            the head noun before choosing the verb.</p>
                     </div>
                 </div>
 
                 <div
-                    class="mt-6 text-sm text-gray-500 bg-gray-50 rounded-xl p-4 border border-gray-200">
-                    <p class="mb-0">📖 <strong>Source:</strong> Matt Ellis,
-                        Grammarly — Updated June 28, 2022. Additional rules and
-                        examples compiled for this ultimate guide.</p>
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Source:</strong> Matt
+                    Ellis, Grammarly — updated June 28, 2022.
+                    Additional rules, explanations and 170 exercises compiled
+                    for this guide.
                 </div>
             </section>
 
-            <!-- ====== FOOTER ====== -->
+            <!-- ==================== FOOTER ==================== -->
             <footer
-                class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-400 pb-8">
-                <p class="mb-0">📘 GrammarHub &bull; Ultimate Subject–Verb
-                    Agreement Guide &bull; 2026</p>
-                <p class="text-xs mt-1">Built with ❤️ using HTML &amp; Tailwind
-                    CSS</p>
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>📘 GrammarHub · Ultimate Subject–Verb Agreement Guide ·
+                    2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
             </footer>
-
         </main>
 
-        <!-- ============================================================ -->
-        <!--  JAVASCRIPT – QUIZ LOGIC                                      -->
-        <!-- ============================================================ -->
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (170 items)
+     Format: [rule, sentence, [optionA, optionB], correctIndex, explanation]
+     ============================================================ -->
         <script>
-        (function() {
-            // ----- QUIZ DATA -----
-            const questions = [{
-                id: 1,
-                text: 'The amenities of the farmhouse ____ quite impressive.',
-                options: ['is', 'are'],
-                correct: 1
-            }, {
-                id: 2,
-                text: 'Man and woman ____ complementary to each other.',
-                options: ['is', 'are'],
-                correct: 1
-            }, {
-                id: 3,
-                text: 'The leader as well as his supporters ____ to the same tribe.',
-                options: ['belong', 'belongs'],
-                correct: 1
-            }, {
-                id: 4,
-                text: 'The students accompanied by their professor ____ gone on a trip.',
-                options: ['has', 'have'],
-                correct: 1
-            }, {
-                id: 5,
-                text: 'A large sum of money ____ stolen.',
-                options: ['was', 'were'],
-                correct: 0
-            }, {
-                id: 6,
-                text: 'A lot of buildings ____ collapsed in the storm.',
-                options: ['has', 'have'],
-                correct: 1
-            }, {
-                id: 7,
-                text: 'The government ____ criticised by the High Court for its actions.',
-                options: ['was', 'were'],
-                correct: 0
-            }, {
-                id: 8,
-                text: 'Many people ____ tried hard to climb the treacherous mountain range.',
-                options: ['have', 'has'],
-                correct: 0
-            }, {
-                id: 9,
-                text: 'All the tourists ____ excited to visit the museum.',
-                options: ['was', 'were'],
-                correct: 1
-            }, {
-                id: 10,
-                text: 'Somebody ____ waiting at the restaurant for you.',
-                options: ['is', 'are'],
-                correct: 0
-            }, {
-                id: 11,
-                text: 'The carpenter, along with his helper, ____ expected to come soon.',
-                options: ['is', 'are'],
-                correct: 0
-            }, {
-                id: 12,
-                text: 'Neither Danny nor Emily ____ gone to work.',
-                options: ['has', 'have'],
-                correct: 0
-            }];
+const EXERCISES = [
+/* ---------- RULE 1 : Singular ↔ Plural (10) ---------- */
+[1,'The cat ____ all day long.',['sleeps','sleep'],0,'“The cat” is singular, so the verb takes -s: sleeps.'],
+[1,'My friends ____ football every weekend.',['plays','play'],1,'“My friends” is plural → base form “play”.'],
+[1,'The bus ____ at 8 a.m. sharp.',['leaves','leave'],0,'“The bus” is singular → “leaves”.'],
+[1,'Those flowers ____ wonderful.',['smells','smell'],1,'“Those flowers” is plural → “smell”.'],
+[1,'The child ____ a glass of milk.',['wants','want'],0,'“The child” is singular → “wants”.'],
+[1,'Her brothers ____ in Canada.',['lives','live'],1,'“Her brothers” is plural → “live”.'],
+[1,'This laptop ____ very fast.',['runs','run'],0,'“This laptop” is singular → “runs”.'],
+[1,'The workers ____ hard every day.',['works','work'],1,'“The workers” is plural → “work”.'],
+[1,'A good book ____ you think.',['makes','make'],0,'“A good book” is singular → “makes”.'],
+[1,'The stars ____ brightly tonight.',['shines','shine'],1,'“The stars” is plural → “shine”.'],
 
-            // ----- STATE -----
-            let selected = {}; // { questionId: selectedIndex }
+/* ---------- RULE 2 : The verb Be (10) ---------- */
+[2,'I ____ ready for the test.',['am','are'],0,'First person singular “I” always takes “am”.'],
+[2,'They ____ at the park right now.',['is','are'],1,'“They” is plural → “are”.'],
+[2,'She ____ a doctor.',['is','are'],0,'Third person singular → “is”.'],
+[2,'We ____ late yesterday.',['was','were'],1,'“We” is plural and the sentence is past → “were”.'],
+[2,'It ____ raining right now.',['is','are'],0,'“It” is singular → “is”.'],
+[2,'You ____ my best friend.',['is','are'],1,'“You” always takes “are”, even for one person.'],
+[2,'The books ____ on the shelf.',['is','are'],1,'Plural subject “books” → “are”.'],
+[2,'He ____ at home last night.',['was','were'],0,'Singular “he” in the past → “was”.'],
+[2,'The teachers ____ very helpful.',['is','are'],1,'Plural “teachers” → “are”.'],
+[2,'I ____ hungry.',['am','is'],0,'“I” always takes “am”.'],
 
-            // ----- DOM REFS -----
-            const container = document.getElementById('quizContainer');
-            const checkBtn = document.getElementById('checkQuizBtn');
-            const resetBtn = document.getElementById('resetQuizBtn');
-            const resultDiv = document.getElementById('quizResult');
+/* ---------- RULE 3 : Have vs Has (10) ---------- */
+[3,'She ____ two sisters.',['has','have'],0,'Third person singular → “has”.'],
+[3,'They ____ a new car.',['has','have'],1,'Plural subject “they” → “have”.'],
+[3,'I ____ a terrible headache.',['has','have'],1,'“I” takes “have”.'],
+[3,'The dog ____ a bone.',['has','have'],0,'Singular “the dog” → “has”.'],
+[3,'We ____ finished the project.',['has','have'],1,'“We” → “have”.'],
+[3,'My brother ____ a bike.',['has','have'],0,'Singular “my brother” → “has”.'],
+[3,'The students ____ their books.',['has','have'],1,'Plural “students” → “have”.'],
+[3,'It ____ been a long day.',['has','have'],0,'“It” is singular → “has”.'],
+[3,'You ____ a great idea.',['has','have'],1,'“You” → “have”.'],
+[3,'The company ____ grown fast.',['has','have'],0,'“The company” is one singular entity → “has”.'],
 
-            // ----- RENDER -----
-            function renderQuiz() {
-                let html = '';
-                questions.forEach((q, idx) => {
-                    const sel = selected[q.id] !== undefined ? selected[q.id] : null;
-                    html += `
-                        <div class="quiz-card bg-white border border-gray-200 rounded-xl p-5 shadow-sm transition" data-qid="${q.id}">
-                            <p class="font-medium text-gray-800 mb-3 text-sm flex items-start gap-2">
-                                <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-2 py-0.5 rounded-full mt-0.5">Q${idx+1}</span>
-                                <span>${q.text}</span>
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                ${q.options.map((opt, oi) => `
-                                    <div class="quiz-option border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition select-none ${sel === oi ? 'bg-indigo-50 border-indigo-400' : ''}" 
-                                         data-qid="${q.id}" data-optindex="${oi}">
-                                        ${opt}
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                });
-                container.innerHTML = html;
+/* ---------- RULE 4 : Compound with And (10) ---------- */
+[4,'Riya and Sam ____ coming to dinner.',['is','are'],1,'Two subjects joined by “and” → plural verb.'],
+[4,'My mother and father ____ teachers.',['is','are'],1,'Compound subject → “are”.'],
+[4,'The cat and the dog ____ sleeping.',['is','are'],1,'Two subjects → plural “are”.'],
+[4,'Rice and curry ____ served together.',['is','are'],1,'Two separate items → plural verb.'],
+[4,'The manager and the clerk ____ working late.',['is','are'],1,'Compound subject → “are”.'],
+[4,'Both the coach and the players ____ excited.',['was','were'],1,'“Both … and” is always plural, and the sentence is past → “were”.'],
+[4,'Tom and his friends ____ cricket every Sunday.',['plays','play'],1,'Compound subject → base form “play”.'],
+[4,'The pen and the notebook ____ on the desk.',['is','are'],1,'Two items → “are”.'],
+[4,'My aunt and uncle ____ arrived.',['has','have'],1,'Compound subject → “have”.'],
+[4,'The singer and the dancer ____ performing tonight.',['is','are'],1,'Two people → “are”.'],
 
-                // Attach click listeners to options
-                container.querySelectorAll('.quiz-option').forEach(el => {
-                    el.addEventListener('click', function(e) {
-                        const qid = parseInt(this.dataset.qid);
-                        const optIdx = parseInt(this.dataset.optindex);
-                        // If already selected, deselect? We'll allow toggling off by clicking same.
-                        if (selected[qid] === optIdx) {
-                            delete selected[qid];
-                        } else {
-                            selected[qid] = optIdx;
-                        }
-                        renderQuiz(); // re-render to reflect selection
-                        // hide previous result
-                        resultDiv.classList.add('hidden');
-                    });
-                });
-            }
+/* ---------- RULE 5 : Or / Nor proximity (10) ---------- */
+[5,'Neither the cat nor the dogs ____ fed yet.',['is','are'],1,'The nearest subject is “dogs” (plural) → “are”.'],
+[5,'Either Ravi or his brothers ____ the key.',['has','have'],1,'Nearest subject “brothers” is plural → “have”.'],
+[5,'Neither the students nor the teacher ____ present.',['was','were'],0,'Nearest subject “the teacher” is singular → “was”.'],
+[5,'Either the pen or the pencils ____ missing.',['is','are'],1,'Nearest subject “pencils” is plural → “are”.'],
+[5,'Neither my friends nor my cousin ____ coming.',['is','are'],0,'Nearest subject “my cousin” is singular → “is”.'],
+[5,'Either the manager or the employees ____ responsible.',['is','are'],1,'Nearest subject “employees” is plural → “are”.'],
+[5,'Neither tea nor coffee ____ available.',['is','are'],0,'Both options are singular → “is”.'],
+[5,'Either you or she ____ to blame.',['is','are'],0,'Nearest subject “she” is singular → “is”.'],
+[5,'Neither the boys nor the girl ____ the answer.',['knows','know'],0,'Nearest subject “the girl” is singular → “knows”.'],
+[5,'Either the driver or the passengers ____ hurt.',['was','were'],1,'Nearest subject “passengers” is plural → “were”.'],
 
-            // ----- CHECK ANSWERS -----
-            function checkAnswers() {
-                let correctCount = 0;
-                let allAnswered = true;
+/* ---------- RULE 6 : Indefinite pronouns (10) ---------- */
+[6,'Everybody ____ a good time at the party.',['has','have'],0,'“Everybody” is singular → “has”.'],
+[6,'Nobody ____ the right answer.',['knows','know'],0,'“Nobody” is singular → “knows”.'],
+[6,'Someone ____ knocking at the door.',['is','are'],0,'“Someone” is singular → “is”.'],
+[6,'Everything ____ ready for the event.',['is','are'],0,'“Everything” is singular → “is”.'],
+[6,'Anyone ____ welcome to join us.',['is','are'],0,'“Anyone” is singular → “is”.'],
+[6,'Nothing ____ been decided yet.',['has','have'],0,'“Nothing” is singular → “has”.'],
+[6,'Each of the boys ____ a prize.',['gets','get'],0,'“Each” is singular even with “of the boys” → “gets”.'],
+[6,'Somebody ____ left a bag here.',['has','have'],0,'“Somebody” is singular → “has”.'],
+[6,'Everyone ____ to be happy.',['wants','want'],0,'“Everyone” is singular → “wants”.'],
+[6,'No one ____ the news yet.',['knows','know'],0,'“No one” is singular → “knows”.'],
 
-                questions.forEach(q => {
-                    const sel = selected[q.id];
-                    if (sel === undefined) {
-                        allAnswered = false;
-                        return;
-                    }
-                    if (sel === q.correct) correctCount++;
-                });
+/* ---------- RULE 7 : Either…or / Neither…nor (10) ---------- */
+[7,'Neither the manager nor his assistants ____ available.',['is','are'],1,'Nearest subject “assistants” is plural → “are”.'],
+[7,'Either the players or the coach ____ going to speak.',['is','are'],0,'Nearest subject “the coach” is singular → “is”.'],
+[7,'Neither the books nor the pen ____ mine.',['is','are'],0,'Nearest subject “the pen” is singular → “is”.'],
+[7,'Either my sister or my brothers ____ picking me up.',['is','are'],1,'Nearest subject “my brothers” is plural → “are”.'],
+[7,'Neither the food nor the drinks ____ fresh.',['was','were'],1,'Nearest subject “the drinks” is plural, past tense → “were”.'],
+[7,'Either the principal or the teachers ____ attending.',['is','are'],1,'Nearest subject “the teachers” is plural → “are”.'],
+[7,'Neither the dog nor the cats ____ outside.',['is','are'],1,'Nearest subject “the cats” is plural → “are”.'],
+[7,'Either the red shirt or the blue ones ____ fine.',['is','are'],1,'Nearest subject “the blue ones” is plural → “are”.'],
+[7,'Neither Ravi nor his friends ____ invited.',['was','were'],1,'Nearest subject “his friends” is plural → “were”.'],
+[7,'Either the CEO or the board members ____ to decide.',['has','have'],1,'Nearest subject “board members” is plural → “have”.'],
 
-                // Show result
-                resultDiv.classList.remove('hidden');
-                const total = questions.length;
-                const score = Math.round((correctCount / total) * 100);
+/* ---------- RULE 8 : Tricky nouns (10) ---------- */
+[8,'The news ____ good today.',['is','are'],0,'“News” looks plural but is singular → “is”.'],
+[8,'Mathematics ____ my favourite subject.',['is','are'],0,'Subject names ending in -s are singular → “is”.'],
+[8,'The police ____ investigating the case.',['is','are'],1,'“Police” is always plural → “are”.'],
+[8,'My scissors ____ dull.',['is','are'],1,'“Scissors” is a plural pair noun → “are”.'],
+[8,'Physics ____ fascinating.',['is','are'],0,'“Physics” is a singular subject name → “is”.'],
+[8,'The cattle ____ grazing in the field.',['is','are'],1,'“Cattle” is always plural → “are”.'],
+[8,'Measles ____ a serious disease.',['is','are'],0,'“Measles” is singular despite the -s → “is”.'],
+[8,'The trousers ____ too long.',['is','are'],1,'“Trousers” is a plural pair noun → “are”.'],
+[8,'Economics ____ a difficult subject.',['is','are'],0,'“Economics” is singular → “is”.'],
+[8,'The glasses ____ on the table.',['is','are'],1,'“Glasses” (spectacles) is plural → “are”.'],
 
-                let emoji = '😅';
-                let color = 'text-amber-600';
-                let bg = 'bg-amber-50 border-amber-200';
-                if (score === 100) { emoji = '🌟';
-                    color = 'text-emerald-600';
-                    bg = 'bg-emerald-50 border-emerald-200'; } else if (score >= 80) { emoji = '👏';
-                    color = 'text-emerald-600';
-                    bg = 'bg-emerald-50 border-emerald-200'; } else if (score >= 60) { emoji = '💪';
-                    color = 'text-blue-600';
-                    bg = 'bg-blue-50 border-blue-200'; } else if (score >= 40) { emoji = '📖';
-                    color = 'text-amber-600';
-                    bg = 'bg-amber-50 border-amber-200'; } else { emoji = '🔁';
-                    color = 'text-red-600';
-                    bg = 'bg-red-50 border-red-200'; }
+/* ---------- RULE 9 : Negatives do/does (10) ---------- */
+[9,'The children ____ like spinach.',['do not','does not'],0,'Plural subject → “do not”.'],
+[9,'She ____ want to go.',['do not','does not'],1,'Third person singular → “does not”.'],
+[9,'They ____ know the truth.',['do not','does not'],0,'Plural subject → “do not”.'],
+[9,'My father ____ smoke.',['do not','does not'],1,'Singular subject → “does not”.'],
+[9,'We ____ have enough time.',['do not','does not'],0,'“We” → “do not”.'],
+[9,'The machine ____ work properly.',['do not','does not'],1,'Singular subject → “does not”.'],
+[9,'I ____ understand this question.',['do not','does not'],0,'“I” → “do not”.'],
+[9,'The dogs ____ bark at night.',['do not','does not'],0,'Plural subject → “do not”.'],
+[9,'It ____ matter anymore.',['do not','does not'],1,'“It” is singular → “does not”.'],
+[9,'You ____ need to worry.',['do not','does not'],0,'“You” → “do not”.'],
 
-                let msg = '';
-                if (!allAnswered) {
-                    msg = `⚠️ You left some questions unanswered. You answered ${correctCount}/${total} correct so far.`;
-                } else {
-                    msg = `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`;
-                    if (score === 100) msg += ' Perfect! You\'re a grammar master! 🎉';
-                    else if (score >= 80) msg += ' Great job! Keep practicing!';
-                    else if (score >= 60) msg += ' Good effort! Review the rules above.';
-                    else msg += ' Review the rules and try again!';
-                }
+/* ---------- RULE 10 : Questions (10) ---------- */
+[10,'____ she play the piano?',['Do','Does'],1,'Third person singular subject “she” → “Does”.'],
+[10,'____ they live here?',['Do','Does'],0,'Plural subject “they” → “Do”.'],
+[10,'____ your brother work here?',['Do','Does'],1,'Singular subject “your brother” → “Does”.'],
+[10,'____ you like coffee?',['Do','Does'],0,'“You” → “Do”.'],
+[10,'____ the bus stop here?',['Do','Does'],1,'Singular subject “the bus” → “Does”.'],
+[10,'____ the students understand the lesson?',['Do','Does'],0,'Plural subject → “Do”.'],
+[10,'____ it rain often in this city?',['Do','Does'],1,'Singular “it” → “Does”.'],
+[10,'____ we have a meeting today?',['Do','Does'],0,'“We” → “Do”.'],
+[10,'____ Anita speak French?',['Do','Does'],1,'Singular name “Anita” → “Does”.'],
+[10,'____ your parents know about this?',['Do','Does'],0,'Plural subject → “Do”.'],
 
-                resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
-                resultDiv.innerHTML = `
-                    <p class="text-base font-medium ${color} mb-1">${msg}</p>
-                    <p class="text-sm text-gray-500 mt-2">💡 Click a selected option to deselect it, then check again.</p>
-                `;
+/* ---------- RULE 11 : Here / There (10) ---------- */
+[11,'Here ____ your keys.',['is','are'],1,'The real subject “keys” is plural → “are”.'],
+[11,'There ____ a book on the table.',['is','are'],0,'The real subject “a book” is singular → “is”.'],
+[11,'There ____ many people at the mall.',['is','are'],1,'The real subject “many people” is plural → “are”.'],
+[11,'Here ____ the bus.',['comes','come'],0,'The real subject “the bus” is singular → “comes”.'],
+[11,'There ____ been an accident.',['has','have'],0,'The real subject “an accident” is singular → “has”.'],
+[11,'There ____ several options available.',['is','are'],1,'The real subject “several options” is plural → “are”.'],
+[11,'Here ____ my friends.',['is','are'],1,'The real subject “my friends” is plural → “are”.'],
+[11,'There ____ a few problems with the plan.',['is','are'],1,'The real subject “a few problems” is plural → “are”.'],
+[11,'There ____ been many complaints.',['has','have'],1,'The real subject “many complaints” is plural → “have”.'],
+[11,'Here ____ the documents you asked for.',['is','are'],1,'The real subject “documents” is plural → “are”.'],
 
-                // Highlight correct/wrong on options
-                container.querySelectorAll('.quiz-option').forEach(el => {
-                    const qid = parseInt(el.dataset.qid);
-                    const optIdx = parseInt(el.dataset.optindex);
-                    const q = questions.find(q => q.id === qid);
-                    if (!q) return;
-                    const sel = selected[qid];
-                    // remove any previous highlight classes
-                    el.classList.remove('selected-correct', 'selected-wrong', 'show-correct');
-                    if (sel !== undefined) {
-                        if (optIdx === q.correct) {
-                            el.classList.add('show-correct');
-                        }
-                        if (sel === optIdx) {
-                            if (optIdx === q.correct) {
-                                el.classList.add('selected-correct');
-                            } else {
-                                el.classList.add('selected-wrong');
-                            }
-                        }
-                    }
-                });
-            }
+/* ---------- RULE 12 : Abstract & Uncountable (10) ---------- */
+[12,'Honesty ____ the best policy.',['is','are'],0,'Abstract nouns are singular → “is”.'],
+[12,'Love ____ people do crazy things.',['makes','make'],0,'Uncountable “love” is singular → “makes”.'],
+[12,'Water ____ at 100 degrees Celsius.',['boils','boil'],0,'Uncountable “water” is singular → “boils”.'],
+[12,'Happiness ____ more important than money.',['is','are'],0,'Abstract noun → singular verb.'],
+[12,'The information ____ very useful.',['is','are'],0,'“Information” is uncountable → “is”.'],
+[12,'Furniture ____ expensive here.',['is','are'],0,'“Furniture” is uncountable → “is”.'],
+[12,'Patience ____ the key to success.',['is','are'],0,'Abstract noun → “is”.'],
+[12,'Milk ____ good for health.',['is','are'],0,'Uncountable “milk” → “is”.'],
+[12,'Knowledge ____ power.',['is','are'],0,'Uncountable “knowledge” → “is”.'],
+[12,'Advice ____ always welcome.',['is','are'],0,'“Advice” is uncountable → “is”.'],
 
-            // ----- RESET -----
-            function resetQuiz() {
-                selected = {};
-                resultDiv.classList.add('hidden');
-                renderQuiz();
-            }
+/* ---------- RULE 13 : Time / Distance / Money (10) ---------- */
+[13,'Ten kilometres ____ a long walk.',['is','are'],0,'A distance treated as one unit → “is”.'],
+[13,'Five hundred rupees ____ too much for this.',['is','are'],0,'A sum of money as one unit → “is”.'],
+[13,'Twenty years ____ a long time.',['is','are'],0,'A period of time as one unit → “is”.'],
+[13,'Three hours ____ enough to finish.',['is','are'],0,'A duration treated as one block → “is”.'],
+[13,'Fifty dollars ____ all I have.',['is','are'],0,'A total amount → “is”.'],
+[13,'Two kilometres ____ not far.',['is','are'],0,'A single distance → “is”.'],
+[13,'Ten minutes ____ all we need.',['is','are'],0,'A single time span → “is”.'],
+[13,'A hundred metres ____ a short distance.',['is','are'],0,'A single measurement → “is”.'],
+[13,'Six months ____ passed since then.',['has','have'],0,'A single period of time → “has”.'],
+[13,'Fifty percent ____ enough.',['is','are'],0,'A single percentage figure → “is”.'],
 
-            // ----- INIT -----
-            renderQuiz();
+/* ---------- RULE 14 : Collective nouns (10) ---------- */
+[14,'The team ____ playing well today.',['is','are'],0,'The team acts as one unit → “is”.'],
+[14,'The jury ____ divided in their opinions.',['was','were'],1,'Members act separately (“their opinions”) → “were”.'],
+[14,'My family ____ going on a trip.',['is','are'],0,'The family acts as one unit → “is”.'],
+[14,'The committee ____ meeting tomorrow.',['is','are'],0,'The committee acts as one body → “is”.'],
+[14,'The class ____ taking their seats one by one.',['was','were'],1,'“One by one” shows separate action → “were”.'],
+[14,'The crowd ____ cheering loudly.',['is','are'],0,'The crowd acts as one unit → “is”.'],
+[14,'The staff ____ their own opinions.',['has','have'],1,'Members hold opinions individually → plural “have”.'],
+[14,'The audience ____ clapping enthusiastically.',['is','are'],0,'The audience acts as one unit → “is”.'],
+[14,'The government ____ announced a new policy.',['has','have'],0,'The government acts as one body → “has”.'],
+[14,'The board ____ agreed on the plan.',['has','have'],0,'The board acts as one unit → “has”.'],
 
-            // ----- EVENT LISTENERS -----
-            checkBtn.addEventListener('click', checkAnswers);
-            resetBtn.addEventListener('click', resetQuiz);
+/* ---------- RULE 15 : All / Some / A lot of (10) ---------- */
+[15,'All of the water ____ gone.',['has','have'],0,'“Water” is uncountable → singular “has”.'],
+[15,'Some of the students ____ absent.',['is','are'],1,'“Students” is plural → “are”.'],
+[15,'A lot of people ____ coming to the show.',['is','are'],1,'“People” is plural → “are”.'],
+[15,'Most of the cake ____ eaten.',['was','were'],0,'“Cake” is uncountable → singular “was”.'],
+[15,'Some of the milk ____ sour.',['is','are'],0,'“Milk” is uncountable → “is”.'],
+[15,'All of my friends ____ here.',['is','are'],1,'“Friends” is plural → “are”.'],
+[15,'A lot of information ____ available online.',['is','are'],0,'“Information” is uncountable → “is”.'],
+[15,'None of the boys ____ finished.',['has','have'],0,'“None of + plural” commonly takes a singular verb in formal writing.'],
+[15,'Most of the books ____ old.',['is','are'],1,'“Books” is plural → “are”.'],
+[15,'Half of the work ____ done.',['is','are'],0,'“Work” is uncountable → “is”.'],
 
-            // Also allow re-check after selection changes (optional)
-            // but we already re-render on selection change and hide result.
-        })();
-    </script>
+/* ---------- RULE 16 : Each / Every (10) ---------- */
+[16,'Each student ____ a uniform.',['has','have'],0,'“Each” is singular → “has”.'],
+[16,'Every child ____ milk.',['needs','need'],0,'“Every” is singular → “needs”.'],
+[16,'Each of the girls ____ present.',['was','were'],0,'“Each of” is singular → “was”.'],
+[16,'Every house ____ a garden.',['has','have'],0,'“Every” is singular → “has”.'],
+[16,'Each member ____ to vote.',['has','have'],0,'“Each” is singular → “has”.'],
+[16,'Every employee ____ a badge.',['wears','wear'],0,'“Every” is singular → “wears”.'],
+[16,'Each of the rooms ____ cleaned.',['was','were'],0,'“Each of” is singular → “was”.'],
+[16,'Every car ____ checked.',['was','were'],0,'“Every” is singular → “was”.'],
+[16,'Each player ____ given a medal.',['was','were'],0,'“Each” is singular → “was”.'],
+[16,'Every question ____ answered.',['was','were'],0,'“Every” is singular → “was”.'],
+
+/* ---------- RULE 17 : Subjunctive (10) ---------- */
+[17,'I wish I ____ taller.',['was','were'],1,'After “wish”, use “were” for every subject.'],
+[17,'If she ____ here, she would help.',['was','were'],1,'Unreal condition → “were”.'],
+[17,'He wishes he ____ rich.',['was','were'],1,'“Wish” triggers the subjunctive “were”.'],
+[17,'The teacher requests that he ____ present.',['be','is'],0,'After “request that”, use the base form “be”.'],
+[17,'I wish it ____ not raining.',['was','were'],1,'“Wish” → “were”.'],
+[17,'If I ____ you, I would accept the offer.',['was','were'],1,'The fixed unreal phrase is “If I were you”.'],
+[17,'They wish they ____ able to come.',['was','were'],1,'“Wish” → “were”.'],
+[17,'It is essential that she ____ on time.',['be','is'],0,'“It is essential that” triggers the base form “be”.'],
+[17,'We suggest that he ____ the offer.',['accepts','accept'],1,'After “suggest that”, use the base form “accept”.'],
+[17,'If he ____ honest, he would admit it.',['was','were'],1,'Unreal conditional → “were”.']
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Singular ↔ Plural', 2:'Verb Be', 3:'Have / Has', 4:'Compound "and"',
+  5:'Or / Nor', 6:'Indefinite Pronouns', 7:'Either…or / Neither…nor',
+  8:'Tricky Nouns', 9:'Negatives', 10:'Questions', 11:'Here / There',
+  12:'Abstract & Uncountable', 13:'Time / Distance / Money',
+  14:'Collective Nouns', 15:'All / Some / A lot', 16:'Each / Every',
+  17:'Wishes & Requests'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};      // id -> chosen option index
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  /* ---- build filter chips ---- */
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 17; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  /* ---- render ---- */
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'ex-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="ex-exp ${ok ? 'text-emerald-300/80' : 'text-red-300/80'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="ex-card fade">
+          <div class="flex items-start gap-3">
+            <span class="ex-num">${i + 1}</span>
+            <p class="flex-1 text-[.95rem] text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="ex-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  /* ---- stats ---- */
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  /* ---- click handling ---- */
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.ex-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;   // locked after first answer
+    answers[id] = opt;
+    render();
+  });
+
+  /* ---- reset ---- */
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'The amenities of the farmhouse ____ quite impressive.',                 options: ['is','are'], correct: 1 },
+    { id: 2,  text: 'Man and woman ____ complementary to each other.',                       options: ['is','are'], correct: 1 },
+    { id: 3,  text: 'The leader as well as his supporters ____ to the same tribe.',           options: ['belong','belongs'], correct: 1 },
+    { id: 4,  text: 'The students accompanied by their professor ____ gone on a trip.',       options: ['has','have'], correct: 1 },
+    { id: 5,  text: 'A large sum of money ____ stolen.',                                      options: ['was','were'], correct: 0 },
+    { id: 6,  text: 'A lot of buildings ____ collapsed in the storm.',                        options: ['has','have'], correct: 1 },
+    { id: 7,  text: 'The government ____ criticised by the High Court for its actions.',      options: ['was','were'], correct: 0 },
+    { id: 8,  text: 'Many people ____ tried hard to climb the treacherous mountain range.',   options: ['have','has'], correct: 0 },
+    { id: 9,  text: 'All the tourists ____ excited to visit the museum.',                     options: ['was','were'], correct: 1 },
+    { id: 10, text: 'Somebody ____ waiting at the restaurant for you.',                       options: ['is','are'], correct: 0 },
+    { id: 11, text: 'The carpenter, along with his helper, ____ expected to come soon.',      options: ['is','are'], correct: 0 },
+    { id: 12, text: 'Neither Danny nor Emily ____ gone to work.',                             options: ['has','have'], correct: 0 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => `
+              <div class="quiz-option ${sel === oi ? 'selected' : ''}"
+                   data-qid="${q.id}" data-optindex="${oi}">${opt}</div>
+            `).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.quiz-option').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — you are a grammar master! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+
+    container.querySelectorAll('.quiz-option').forEach(el => {
+      const qid = Number(el.dataset.qid);
+      const oi  = Number(el.dataset.optindex);
+      const q   = questions.find(x => x.id === qid);
+      if (!q) return;
+      const sel = selected[qid];
+      el.classList.remove('selected-correct', 'selected-wrong', 'show-correct');
+      if (sel !== undefined) {
+        if (oi === q.correct) el.classList.add('show-correct');
+        if (sel === oi) el.classList.add(oi === q.correct ? 'selected-correct' : 'selected-wrong');
+      }
+    });
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
 
     </body>
 </html>
