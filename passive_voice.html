@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Passive Voice for IELTS Writing — Dark Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
+
+:root{
+  --bg:#070b16;
+  --surface:#0d1526;
+  --surface-2:#101b2e;
+  --border:#1e2b45;
+  --text:#dbe4f3;
+  --muted:#8fa3c0;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+  --blue:#60a5fa;
+  --violet:#a78bfa;
+}
+
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px circle at 8% -8%, rgba(99,102,241,.18), transparent 62%),
+    radial-gradient(700px circle at 96% 2%, rgba(168,85,247,.13), transparent 62%),
+    radial-gradient(640px circle at 50% 108%, rgba(16,185,129,.09), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
+
+.h-sec{ font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd; }
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
+
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
+
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
+
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
+
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.hla{ color:#fbbf24; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
+
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
+
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+.table-wrap table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+.table-wrap th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+.table-wrap td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+.table-wrap tr:last-child td{ border-bottom:none; }
+.table-wrap tbody tr:hover td{ background:#0e1729; }
+
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+.q-opt{
+  padding:.45rem 1rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.85rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:70px;
+}
+.q-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.q-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.q-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.q-exp{
+  margin-top:.65rem;
+  padding-top:.65rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem;
+  line-height:1.6;
+}
+.q-tag{
+  font-size:.62rem;
+  font-weight:700;
+  color:#a5b4fc;
+  background:rgba(99,102,241,.12);
+  border:1px solid rgba(99,102,241,.25);
+  border-radius:6px;
+  padding:.1rem .4rem;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+  cursor:pointer;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+.anchor{ scroll-margin-top:5.5rem; }
+
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+
+.hero-card{
+  background:linear-gradient(180deg,#0e1729 0%, #0a1120 100%);
+  border:1px solid #1e2b45;
+  border-radius:16px;
+  padding:1.35rem;
+  box-shadow:0 20px 60px -20px rgba(99,102,241,.3);
+}
+
+/* Transformer */
+.tf-input{
+  width:100%;
+  background:#0b1424;
+  border:1px solid #2a3a5a;
+  border-radius:10px;
+  padding:.6rem .9rem;
+  color:#e2eaf8;
+  font-size:.9rem;
+  line-height:1.5;
+  resize:vertical;
+}
+.tf-input:focus{ outline:none; border-color:#6366f1; }
+.tf-out{
+  margin-top:.8rem;
+  padding:.85rem 1rem;
+  border-radius:10px;
+  border:1px solid #1e2b45;
+  background:#0a1120;
+  min-height:2.5rem;
+  font-size:.92rem;
+  line-height:1.6;
+  color:#c3d0e6;
+}
+</style>
+    </head>
+    <body>
+
+        <!-- ==================== NAVBAR ==================== -->
+        <nav
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b16]/85 backdrop-blur-xl">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">✍️</span>
+                    <span
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">IELTS
+                        <span class="text-indigo-400">Passive</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#overview" class="navlink">Overview</a>
+                    <a href="#rules"
+                        class="navlink hidden sm:inline-block">Rules</a>
+                    <a href="#ielts"
+                        class="navlink hidden md:inline-block">IELTS Tips</a>
+                    <a href="#exercises" class="navlink">Practice</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-3">
+                        <span
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            ✍️ IELTS Writing Task 1 &amp; Task 2 · Dark Edition
+                        </span>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
+                            Passive<br />
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Voice</span>
+                        </h1>
+                        <p
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            The grammar feature that appears in <strong
+                                class="text-slate-200">every band-7+ Task 1
+                                process description</strong>
+                            and most Task 2 academic essays. Master the form,
+                            learn when to use it (and when not to),
+                            and drill <strong class="text-indigo-300">150
+                                exercises</strong>.
+                        </p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#rules" class="btn-primary">Start Learning
+                                →</a>
+                            <a href="#ielts" class="btn-ghost">IELTS Strategies
+                                🎯</a>
+                            <a href="#exercises" class="btn-ghost">Practice 150
+                                Questions ✏️</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">15</span>
+                                rules</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">150</span>
+                                exercises</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">12</span>
+                                quiz questions</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 hidden md:block">
+                        <div class="hero-card">
+                            <p
+                                class="text-[.62rem] font-bold text-slate-500 mb-2.5 uppercase tracking-wider text-center">The
+                                Passive Formula</p>
+                            <div
+                                class="rounded-xl bg-[#0a1120] border border-[#1b2740] p-4 text-center">
+                                <p
+                                    class="text-lg font-bold text-slate-200 mb-2"><span
+                                        class="text-emerald-300">be</span> +
+                                    <span class="text-amber-300">past
+                                        participle</span></p>
+                                <div class="h-px bg-[#1b2740] my-3"></div>
+                                <p
+                                    class="text-xs text-slate-500 mb-1">Active:</p>
+                                <p class="text-sm text-slate-300">The council
+                                    <span class="text-indigo-300">built</span>
+                                    the bridge.</p>
+                                <p
+                                    class="text-xs text-slate-500 mb-1 mt-3">Passive:</p>
+                                <p class="text-sm text-slate-300">The bridge
+                                    <span class="text-emerald-300">was
+                                        built</span> by the council.</p>
+                            </div>
+                            <p
+                                class="text-[.62rem] text-slate-600 mt-3 text-center">Object
+                                → Subject · Verb → be + pp · Subject →
+                                by-agent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section id="overview" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🔄</span>
+                    <h2 class="h-sec">What Is Passive Voice — and Why IELTS
+                        Loves It</h2>
+                </div>
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    In the <strong class="text-slate-200">active voice</strong>,
+                    the subject does the action.
+                    In the <strong class="text-slate-200">passive
+                        voice</strong>, the subject receives the action —
+                    the <strong class="text-slate-200">doer</strong> may be
+                    mentioned with <em>by</em> or omitted entirely.
+                    IELTS examiners reward accurate passive use in Task 1
+                    process descriptions and formal Task 2 essays.
+                </p>
+
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 Core
+                            transformation:</strong>
+                        move the object to the subject position, change the verb
+                        to
+                        <strong class="text-emerald-300">be + past
+                            participle</strong>, and optionally add
+                        <strong class="text-amber-300">by + doer</strong>.
+                    </p>
+                    <div class="example">Active: The chef <span
+                            class="hl">cooked</span> the meal. → Passive: The
+                        meal <span class="hlg">was cooked</span> by the
+                        chef.</div>
+                    <div class="example">Active: They <span
+                            class="hl">build</span> houses. → Passive: Houses
+                        <span class="hlg">are built</span>.</div>
+                </div>
+
+                <div class="table-wrap mt-5">
+                    <table>
+                        <thead><tr><th style="width:34%">Voice</th><th
+                                    style="width:30%">Focus</th><th
+                                    style="width:36%">IELTS
+                                    use</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong
+                                        class="text-emerald-300">Active</strong></td><td>Who
+                                    does what</td><td>Task 2 arguments, strong
+                                    opinions, personal examples</td></tr>
+                            <tr><td><strong
+                                        class="text-indigo-300">Passive</strong></td><td>What
+                                    happens to the receiver</td><td>Task 1
+                                    processes/maps, academic hedging in Task
+                                    2</td></tr>
+                            <tr><td><strong
+                                        class="text-amber-300">Mixed</strong></td><td>Both
+                                    — normal essays</td><td>Band 7+: deliberate
+                                    variation, not accidental</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==================== RULES ==================== -->
+            <section id="rules"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📋</span>
+                    <h2 class="h-sec">The 15 Rules — In Detail</h2>
+                </div>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    Every rule includes the form, IELTS-specific examples, and
+                    the traps that cost band points.
+                </p>
+
+                <!-- RULE 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">1</span> The
+                        Basic Formula — be + Past Participle</h3>
+                    <p>Passive = <strong class="text-emerald-300">form of
+                            “be”</strong> + <strong class="text-amber-300">past
+                            participle</strong>.
+                        The “be” changes with tense; the past participle (V3)
+                        never changes.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Active</th><th>Passive</th></tr></thead>
+                            <tbody>
+                                <tr><td>The council <strong>builds</strong> the
+                                        road.</td><td>The road <strong>is
+                                            built</strong>.</td></tr>
+                                <tr><td>The council <strong>built</strong> the
+                                        road.</td><td>The road <strong>was
+                                            built</strong>.</td></tr>
+                                <tr><td>The council <strong>has built</strong>
+                                        the road.</td><td>The road <strong>has
+                                            been built</strong>.</td></tr>
+                                <tr><td>The council <strong>will build</strong>
+                                        the road.</td><td>The road <strong>will
+                                            be built</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> the past participle
+                        is the <strong>third</strong> form of the verb —
+                        <em>written, taken, made, done, built, sent</em> — not
+                        the past simple.</div>
+                </div>
+
+                <!-- RULE 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">2</span>
+                        Passive Across All Tenses</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Tense</th><th>Active</th><th>Passive</th></tr></thead>
+                            <tbody>
+                                <tr><td>Present simple</td><td>They
+                                        <strong>clean</strong> the
+                                        streets.</td><td>The streets <strong>are
+                                            cleaned</strong>.</td></tr>
+                                <tr><td>Present continuous</td><td>They
+                                        <strong>are cleaning</strong> the
+                                        streets.</td><td>The streets <strong>are
+                                            being cleaned</strong>.</td></tr>
+                                <tr><td>Present perfect</td><td>They
+                                        <strong>have cleaned</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>have been
+                                            cleaned</strong>.</td></tr>
+                                <tr><td>Past simple</td><td>They
+                                        <strong>cleaned</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>were cleaned</strong>.</td></tr>
+                                <tr><td>Past continuous</td><td>They
+                                        <strong>were cleaning</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>were being
+                                            cleaned</strong>.</td></tr>
+                                <tr><td>Past perfect</td><td>They <strong>had
+                                            cleaned</strong> the
+                                        streets.</td><td>The streets <strong>had
+                                            been cleaned</strong>.</td></tr>
+                                <tr><td>Future simple</td><td>They <strong>will
+                                            clean</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>will be
+                                            cleaned</strong>.</td></tr>
+                                <tr><td>Future perfect</td><td>They <strong>will
+                                            have cleaned</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>will have been
+                                            cleaned</strong>.</td></tr>
+                                <tr><td>Modal (can / must / should)</td><td>They
+                                        <strong>must clean</strong> the
+                                        streets.</td><td>The streets
+                                        <strong>must be
+                                            cleaned</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Not passive:</b> perfect continuous
+                        tenses (e.g. “<span class="hlr">has been being
+                            cleaned</span>”) are avoided in natural English —
+                        rewrite them instead.</div>
+                </div>
+
+                <!-- RULE 3 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">3</span> When
+                        to Use Passive — and When NOT To</h3>
+                    <div class="grid sm:grid-cols-2 gap-3 my-3">
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">✅
+                                Use it when</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                • the <strong>doer</strong> is unknown or
+                                obvious<br />
+                                • the <strong>action</strong> matters more than
+                                the doer<br />
+                                • writing <strong>Task 1 processes /
+                                    maps</strong><br />
+                                • <strong>Task 2</strong> academic hedging (“It
+                                is argued that…”)
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-rose-500/25 bg-rose-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-rose-300 uppercase tracking-wider mb-1.5">❌
+                                Avoid it when</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                • the sentence becomes <strong>vague</strong>
+                                (“Mistakes were made”)<br />
+                                • the <strong>verb is intransitive</strong> (no
+                                passive)<br />
+                                • you’re <strong>overusing</strong> it — IELTS
+                                penalises monotony<br />
+                                • <strong>Task 1</strong> bar/line charts:
+                                active is usually clearer
+                            </p>
+                        </div>
+                    </div>
+                    <div class="example">✅ <span class="hlg">The road was
+                            widened</span> to reduce congestion. <span
+                            class="note">(doer unknown/unimportant)</span></div>
+                    <div class="example">✅ <span class="hlg">It is often argued
+                            that</span> governments should invest more in public
+                        transport.</div>
+                    <div class="example">❌ <span class="hlr">It was decided that
+                            action would be taken.</span> <span
+                            class="note">(vague — who decided?)</span></div>
+                    <div class="tip"><strong>💡 Band 7 rule:</strong> use
+                        passive <strong>deliberately</strong>, not as a default.
+                        A clear active sentence beats a vague passive every
+                        time.</div>
+                </div>
+
+                <!-- RULE 4 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">4</span> The
+                        “by” Agent — Include or Omit</h3>
+                    <p>Include <strong>by + doer</strong> only when the doer
+                        adds useful information. If the doer is unknown,
+                        obvious, or unimportant, <strong>omit it</strong>.</p>
+                    <div class="example">✅ The novel was written <span
+                            class="hlg">by Orwell</span>. <span
+                            class="note">(useful — identifies the
+                            author)</span></div>
+                    <div class="example">✅ The bridge was built in 1890. <span
+                            class="note">(by whom is unimportant)</span></div>
+                    <div class="example">❌ The bridge was built <span
+                            class="hlr">by builders</span>. <span
+                            class="note">(redundant — who else?)</span></div>
+                    <div class="tip"><strong>💡 Task 1:</strong> in process
+                        descriptions, the agent is almost always omitted — “The
+                        beans <span class="hlg">are washed</span>, then <span
+                            class="hlg">roasted</span>…”</div>
+                </div>
+
+                <!-- RULE 5 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        Passive with Modal Verbs</h3>
+                    <p>Modal + <strong>be + past participle</strong>. The modal
+                        never changes the passive form.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Active</th><th>Passive</th></tr></thead>
+                            <tbody>
+                                <tr><td>We <strong>can solve</strong> the
+                                        problem.</td><td>The problem <strong>can
+                                            be solved</strong>.</td></tr>
+                                <tr><td>Governments <strong>must
+                                            protect</strong>
+                                        wildlife.</td><td>Wildlife <strong>must
+                                            be protected</strong>.</td></tr>
+                                <tr><td>They <strong>should ban</strong> plastic
+                                        bags.</td><td>Plastic bags
+                                        <strong>should be
+                                            banned</strong>.</td></tr>
+                                <tr><td>We <strong>might reduce</strong>
+                                        emissions.</td><td>Emissions
+                                        <strong>might be
+                                            reduced</strong>.</td></tr>
+                                <tr><td>You <strong>could improve</strong> the
+                                        system.</td><td>The system <strong>could
+                                            be improved</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ <span class="hlg">More funding should
+                            be allocated</span> to public transport.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> never double the
+                        modal — “<span class="hlr">must can be done</span>” ✗ →
+                        “<span class="hlg">must be done</span>” ✓.</div>
+                </div>
+
+                <!-- RULE 6 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        Impersonal Passive — “It is believed that…”</h3>
+                    <p>This is <strong>the single most useful passive structure
+                            in Task 2</strong>. It lets you present
+                        opinions without writing “I think”, which IELTS academic
+                        writing prefers to avoid.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Reporting verb</th><th>Impersonal
+                                        passive</th></tr></thead>
+                            <tbody>
+                                <tr><td>People think…</td><td><strong>It is
+                                            thought that…</strong></td></tr>
+                                <tr><td>People believe…</td><td><strong>It is
+                                            believed that…</strong></td></tr>
+                                <tr><td>People argue…</td><td><strong>It is
+                                            argued that…</strong></td></tr>
+                                <tr><td>Researchers have
+                                        found…</td><td><strong>It has been found
+                                            that…</strong></td></tr>
+                                <tr><td>Experts suggest…</td><td><strong>It is
+                                            suggested that…</strong></td></tr>
+                                <tr><td>Many people say…</td><td><strong>It is
+                                            often said that…</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ <span class="hlg">It is widely
+                            believed</span> that education is the key to social
+                        mobility.</div>
+                    <div class="example">✅ <span class="hlg">It has been
+                            argued</span> that stricter laws would reduce
+                        crime.</div>
+                    <div class="tip"><strong>💡 Alternative:</strong> “<span
+                            class="hlg">Education is widely believed to
+                            be</span> the key to social mobility.” —
+                        subject-to-infinitive passive. Also band 7+.</div>
+                </div>
+
+                <!-- RULE 7 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        Causative Passive — have / get something done</h3>
+                    <p>Use <strong>have/get + object + past participle</strong>
+                        when someone else does the action for you.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Structure</th><th>Meaning</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>have something
+                                            done</strong></td><td>arrange for
+                                        someone to do it</td><td>I <strong>had
+                                            my car repaired</strong>.</td></tr>
+                                <tr><td><strong>get something
+                                            done</strong></td><td>informal
+                                        version</td><td>She <strong>got her hair
+                                            cut</strong>.</td></tr>
+                                <tr><td><strong>have someone do
+                                            something</strong></td><td>active
+                                        causative</td><td>I <strong>had the
+                                            mechanic repair</strong> my
+                                        car.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ Many cities <span class="hlg">have
+                            their waste processed</span> in specialised plants.
+                        <span class="note">(Task 1 process)</span></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> do not confuse with
+                        “have done”. “I <span class="hlg">had my hair
+                            cut</span>” (someone else cut it) ≠ “I <span
+                            class="hlr">had cut my hair</span>” (past perfect —
+                        I cut it myself).</div>
+                </div>
+
+                <!-- RULE 8 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        Passive with Two Objects</h3>
+                    <p>Verbs like <em>give, send, offer, show, teach, tell,
+                            lend, pay</em> can take two objects.
+                        In the passive, either object can become the subject —
+                        but the <strong>person</strong> is usually
+                        preferred.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Active</th><th>Passive (person
+                                        first)</th><th>Passive (thing
+                                        first)</th></tr></thead>
+                            <tbody>
+                                <tr><td>They gave <strong>him</strong> a
+                                        <strong>medal</strong>.</td><td><strong>He
+                                            was given</strong> a
+                                        medal.</td><td>A <strong>medal was
+                                            given</strong> to him.</td></tr>
+                                <tr><td>They sent <strong>us</strong> the
+                                        <strong>documents</strong>.</td><td><strong>We
+                                            were sent</strong> the
+                                        documents.</td><td>The <strong>documents
+                                            were sent</strong> to us.</td></tr>
+                                <tr><td>They offered <strong>her</strong> a
+                                        <strong>job</strong>.</td><td><strong>She
+                                            was offered</strong> a
+                                        job.</td><td>A <strong>job was
+                                            offered</strong> to her.</td></tr>
+                                <tr><td>They taught <strong>the
+                                            students</strong>
+                                        <strong>grammar</strong>.</td><td><strong>The
+                                            students were taught</strong>
+                                        grammar.</td><td><strong>Grammar was
+                                            taught</strong> to the
+                                        students.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 IELTS:</strong> “<span
+                            class="hlg">People are often given</span> very
+                        little choice” is more natural than “Very little choice
+                        is often given to people”.</div>
+                </div>
+
+                <!-- RULE 9 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">9</span>
+                        Passive in Task 1 — Process Diagrams</h3>
+                    <p>Process descriptions are <strong>80% passive</strong>.
+                        The doer is usually the factory or the process itself,
+                        so the agent is omitted. Focus on <strong>sequencing
+                            words + passive verbs</strong>.</p>
+                    <div class="example">✅ First, the coffee beans <span
+                            class="hlg">are harvested</span>. They <span
+                            class="hlg">are then dried</span> in the sun and
+                        <span class="hlg">roasted</span> at high temperatures.
+                        Finally, the beans <span class="hlg">are ground</span>
+                        and <span class="hlg">packaged</span> for
+                        distribution.</div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Sequencing word</th><th>Passive verb
+                                        example</th></tr></thead>
+                            <tbody>
+                                <tr><td>First / Initially</td><td>…
+                                        <strong>is/are
+                                            collected</strong></td></tr>
+                                <tr><td>Next / Then / After that</td><td>…
+                                        <strong>is/are
+                                            transported</strong></td></tr>
+                                <tr><td>Following this</td><td>… <strong>is/are
+                                            processed</strong></td></tr>
+                                <tr><td>Finally / Lastly</td><td>…
+                                        <strong>is/are
+                                            distributed</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> don’t mix active and
+                        passive mid-process (“The beans are harvested, then
+                        workers dry them, then they are roasted”) — choose
+                        passive throughout for consistency.</div>
+                </div>
+
+                <!-- RULE 10 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">10</span>
+                        Passive in Task 2 — Academic Tone</h3>
+                    <p>Task 2 uses passive mainly for <strong>hedging</strong>
+                        (avoiding certainty) and
+                        <strong>impersonal argument</strong> (avoiding “I”).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Function</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>Stating common belief</td><td>It
+                                        <strong>is widely believed</strong>
+                                        that…</td></tr>
+                                <tr><td>Presenting research</td><td>It
+                                        <strong>has been shown</strong>
+                                        that…</td></tr>
+                                <tr><td>Proposing action</td><td>More resources
+                                        <strong>should be allocated</strong>
+                                        to…</td></tr>
+                                <tr><td>Describing policy</td><td>Stricter laws
+                                        <strong>must be enforced</strong>
+                                        to…</td></tr>
+                                <tr><td>Stating a general truth</td><td>Children
+                                        <strong>are often exposed</strong>
+                                        to…</td></tr>
+                                <tr><td>Describing a
+                                        process/phenomenon</td><td>Waste
+                                        <strong>is generated</strong> at an
+                                        alarming rate.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ <span class="hlg">It is often argued
+                            that</span> governments <span class="hlg">should be
+                            held accountable</span> for environmental
+                        damage.</div>
+                    <div class="tip"><strong>💡 Balance:</strong> a Band 7+ Task
+                        2 essay mixes both. Aim for roughly <strong>2–3 passive
+                            constructions per paragraph</strong>, not
+                        more.</div>
+                </div>
+
+                <!-- RULE 11 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Intransitive Verbs — No Passive!</h3>
+                    <p>Intransitive verbs have <strong>no object</strong>, so
+                        they <strong>cannot</strong> be made passive.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Verb</th><th>Correct
+                                        (active)</th><th>Wrong
+                                        (passive)</th></tr></thead>
+                            <tbody>
+                                <tr><td>happen</td><td>An accident
+                                        <strong>happened</strong>.</td><td><span
+                                            class="hlr">An accident was
+                                            happened</span> ✗</td></tr>
+                                <tr><td>arrive</td><td>They
+                                        <strong>arrived</strong>
+                                        late.</td><td><span class="hlr">They
+                                            were arrived</span> ✗</td></tr>
+                                <tr><td>occur</td><td>The change
+                                        <strong>occurred</strong>
+                                        suddenly.</td><td><span class="hlr">The
+                                            change was occurred</span>
+                                        ✗</td></tr>
+                                <tr><td>die</td><td>The plant
+                                        <strong>died</strong>.</td><td><span
+                                            class="hlr">The plant was
+                                            died</span> ✗</td></tr>
+                                <tr><td>appear</td><td>A problem
+                                        <strong>appeared</strong>.</td><td><span
+                                            class="hlr">A problem was
+                                            appeared</span> ✗</td></tr>
+                                <tr><td>rise</td><td>Prices
+                                        <strong>rose</strong>.</td><td><span
+                                            class="hlr">Prices were risen</span>
+                                        ✗</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Common IELTS error:</b> “The number
+                        of cars <span class="hlr">was increased</span>” is fine
+                        (increase is transitive), but “Prices <span
+                            class="hlr">were risen</span>” is wrong (rise is
+                        intransitive). Use <em>raise</em> for transitive: “The
+                        government <span class="hlg">raised</span> prices” →
+                        “Prices <span class="hlg">were raised</span>”.</div>
+                </div>
+
+                <!-- RULE 12 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        Common Passive Mistakes</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>❌ Wrong</th><th>✅
+                                        Right</th><th>Why</th></tr></thead>
+                            <tbody>
+                                <tr><td class="text-red-300/80">The book was
+                                        wrote by Orwell.</td><td
+                                        class="text-emerald-300/80">The book was
+                                        written by Orwell.</td><td>Past
+                                        participle, not past simple.</td></tr>
+                                <tr><td class="text-red-300/80">The house is
+                                        build every year.</td><td
+                                        class="text-emerald-300/80">The house is
+                                        built every year.</td><td>Past
+                                        participle, not base verb.</td></tr>
+                                <tr><td class="text-red-300/80">The problem can
+                                        solved.</td><td
+                                        class="text-emerald-300/80">The problem
+                                        can be solved.</td><td>Missing
+                                        “be”.</td></tr>
+                                <tr><td class="text-red-300/80">It was happened
+                                        last night.</td><td
+                                        class="text-emerald-300/80">It happened
+                                        last night.</td><td>“Happen” is
+                                        intransitive.</td></tr>
+                                <tr><td class="text-red-300/80">The car was
+                                        repairing yesterday.</td><td
+                                        class="text-emerald-300/80">The car was
+                                        repaired yesterday.</td><td>-ing form ≠
+                                        passive.</td></tr>
+                                <tr><td class="text-red-300/80">They were given
+                                        to him a medal.</td><td
+                                        class="text-emerald-300/80">He was given
+                                        a medal.</td><td>Word order in
+                                        two-object passive.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- RULE 13 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">13</span>
+                        Passive in Conditionals and Complex Structures</h3>
+                    <p>Passive works inside conditionals, relative clauses and
+                        reduced clauses.</p>
+                    <div class="example">✅ <span class="hlg">If stricter laws
+                            were introduced</span>, crime would fall. <span
+                            class="note">(second conditional,
+                            passive)</span></div>
+                    <div class="example">✅ <span class="hlg">If the report had
+                            been submitted</span> earlier, the decision would
+                        have been made. <span class="note">(third conditional,
+                            passive)</span></div>
+                    <div class="example">✅ The policy, <span class="hlg">which
+                            was implemented in 2019</span>, has failed. <span
+                            class="note">(relative clause, passive)</span></div>
+                    <div class="example">✅ <span class="hlg">Once
+                            collected</span>, the waste is sorted. <span
+                            class="note">(reduced passive clause)</span></div>
+                    <div class="tip"><strong>💡 Task 2 use:</strong> passive
+                        conditionals let you discuss hypothetical policy without
+                        naming who would do it — perfect for “should
+                        governments…” essays.</div>
+                </div>
+
+                <!-- RULE 14 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">14</span>
+                        Active vs Passive — the Band-Score Balance</h3>
+                    <p>IELTS examiners penalise <strong>overuse</strong> of
+                        passive as much as underuse. Aim for a natural mix.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Band</th><th>Typical passive
+                                        use</th><th>Score
+                                        effect</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong class="text-rose-300">Band
+                                            5</strong></td><td>Mostly active,
+                                        with occasional incorrect
+                                        passive</td><td>Grammar errors limit the
+                                        score</td></tr>
+                                <tr><td><strong class="text-amber-300">Band
+                                            6</strong></td><td>Passive used but
+                                        sometimes clumsy or
+                                        overdone</td><td>Some flexibility, but
+                                        errors persist</td></tr>
+                                <tr><td><strong class="text-emerald-300">Band
+                                            7</strong></td><td>Accurate passive
+                                        in processes and hedging; active where
+                                        clearer</td><td>Range and accuracy
+                                        rewarded</td></tr>
+                                <tr><td><strong class="text-indigo-300">Band
+                                            8–9</strong></td><td>Deliberate,
+                                        varied, and stylistically
+                                        controlled</td><td>Natural voice with
+                                        precise grammar</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 Rule of thumb:</strong> in Task
+                        1 process essays, use passive for the steps; in bar
+                        charts, use active for “increased / decreased”. In Task
+                        2, use passive for hedging, active for opinions and
+                        examples.</div>
+                </div>
+
+                <!-- RULE 15 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">15</span>
+                        Passive in Task 1 — Maps and Changes</h3>
+                    <p>Maps describe changes over time — often with passive
+                        verbs because the doer (council, planners) is obvious or
+                        unknown.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Verb</th><th>Typical passive
+                                        use</th></tr></thead>
+                            <tbody>
+                                <tr><td>build / construct</td><td>A new bridge
+                                        <strong>was built</strong> in
+                                        1990.</td></tr>
+                                <tr><td>demolish / knock down</td><td>The old
+                                        factory <strong>was
+                                            demolished</strong>.</td></tr>
+                                <tr><td>widen / expand</td><td>The road
+                                        <strong>was widened</strong>.</td></tr>
+                                <tr><td>convert / transform</td><td>The
+                                        warehouse <strong>was converted
+                                            into</strong> a museum.</td></tr>
+                                <tr><td>replace</td><td>The trees <strong>were
+                                            replaced by</strong> a car
+                                        park.</td></tr>
+                                <tr><td>develop</td><td>The area <strong>was
+                                            developed</strong> for
+                                        housing.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ In 1990, a new shopping centre <span
+                            class="hlg">was constructed</span> on the site, and
+                        the old school <span class="hlg">was demolished</span>
+                        to make way for a car park.</div>
+                </div>
+
+                <div
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
+                    <span class="text-xl">📌</span>
+                    <div>
+                        <strong>The IELTS passive routine:</strong>
+                        (1) Ask “does the <em>doer</em> matter here?”
+                        (2) If not — use passive.
+                        (3) Check the tense — <em>be</em> must match.
+                        (4) Check the participle — V3, not V2.
+                        (5) Check intransitive verbs — no passive.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== IELTS STRATEGIES ==================== -->
+            <section id="ielts"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🎯</span>
+                    <h2 class="h-sec">Passive in IELTS Writing — Task by
+                        Task</h2>
+                </div>
+
+                <!-- TASK 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">T1</span>
+                        Task 1 — When Passive Earns Marks</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Task 1 format</th><th>Passive
+                                        use</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Process
+                                            diagram</strong></td><td>✅ Heavy
+                                        passive (80%)</td><td>The beans <em>are
+                                            harvested</em>, then <em>dried</em>
+                                        and <em>roasted</em>.</td></tr>
+                                <tr><td><strong>Map — changes</strong></td><td>✅
+                                        Moderate passive</td><td>A new hospital
+                                        <em>was built</em> north of the
+                                        river.</td></tr>
+                                <tr><td><strong>Line graph</strong></td><td>⚠️
+                                        Mostly active</td><td>Sales
+                                        <em>increased</em> sharply. (not
+                                        <em>were increased</em>)</td></tr>
+                                <tr><td><strong>Bar chart</strong></td><td>⚠️
+                                        Mostly active</td><td>The UK
+                                        <em>produced</em> the most
+                                        steel.</td></tr>
+                                <tr><td><strong>Pie chart</strong></td><td>⚠️
+                                        Mostly active</td><td>Housing
+                                        <em>accounted for</em> 40% of
+                                        spending.</td></tr>
+                                <tr><td><strong>Table</strong></td><td>⚠️ Mostly
+                                        active</td><td>Japan <em>had</em> the
+                                        highest life expectancy.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example"><strong>Band 7 process intro:</strong>
+                        “The diagram <span class="hlg">illustrates how</span>
+                        coffee <span class="hlg">is produced</span>, from the
+                        harvesting of the beans to the packaging of the final
+                        product.”</div>
+                    <div class="warn"><b>⚠️ Common Task 1 error:</b> “The number
+                        of tourists <span class="hlr">was increased</span>” —
+                        for intransitive changes use active: “The number of
+                        tourists <span class="hlg">increased</span>”.</div>
+                </div>
+
+                <!-- TASK 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">T2</span>
+                        Task 2 — Passive for Academic Tone</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Function</th><th>Passive
+                                        pattern</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>Introducing common belief</td><td>It is
+                                        widely believed / argued / thought
+                                        that…</td><td>It <em>is widely
+                                            believed</em> that education reduces
+                                        poverty.</td></tr>
+                                <tr><td>Citing research</td><td>It has been
+                                        shown / found / demonstrated
+                                        that…</td><td>It <em>has been shown</em>
+                                        that early intervention works.</td></tr>
+                                <tr><td>Proposing action</td><td>More X should
+                                        be done / allocated /
+                                        invested</td><td>More funding <em>should
+                                            be allocated</em> to mental
+                                        health.</td></tr>
+                                <tr><td>Describing policy</td><td>Laws must be
+                                        enforced / tightened</td><td>Stricter
+                                        laws <em>must be enforced</em> to reduce
+                                        pollution.</td></tr>
+                                <tr><td>Describing phenomenon</td><td>X is
+                                        generated / consumed /
+                                        affected</td><td>Large amounts of waste
+                                        <em>are generated</em> daily.</td></tr>
+                                <tr><td>Hedging a claim</td><td>X can be
+                                        considered / regarded as</td><td>This
+                                        <em>can be regarded as</em> a positive
+                                        trend.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">✅ <span class="hlg">It is often argued
+                            that</span> governments <span class="hlg">should be
+                            held accountable</span> for the environment, <span
+                            class="hlg">but</span> individual action <span
+                            class="hlg">cannot be ignored</span> either.</div>
+                    <div class="tip"><strong>💡 Tip for Band 7+:</strong> pair
+                        passive hedging with an active opinion sentence: “It is
+                        often argued that A, but I believe B.” This balances
+                        academic tone with clear personal voice.</div>
+                </div>
+
+                <!-- TRANSFORMER TOOL -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">⚡</span>
+                        Interactive Tool — Active ↔ Passive Converter</h3>
+                    <p>Type a simple active sentence with a clear object and the
+                        tool will suggest the passive form. It handles common
+                        tenses and modal verbs — useful for training your eye
+                        before an IELTS Task 1 process description.</p>
+
+                    <div class="mt-4">
+                        <label
+                            class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">Active
+                            sentence</label>
+                        <textarea id="tfIn" class="tf-input" rows="2"
+                            placeholder="e.g. The council built a new bridge in 1990."></textarea>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <button id="tfGo"
+                                class="btn-primary !py-2 !px-5 !text-sm">Transform
+                                →</button>
+                            <button id="tfExample"
+                                class="btn-ghost !py-2 !px-5 !text-sm">Try an
+                                example</button>
+                        </div>
+                        <label
+                            class="block text-xs font-semibold text-slate-400 mb-1.5 mt-4 uppercase tracking-wider">Suggested
+                            passive</label>
+                        <div id="tfOut" class="tf-out">Your passive sentence
+                            will appear here.</div>
+                        <p id="tfNote" class="text-xs text-slate-500 mt-2"></p>
+                    </div>
+
+                    <div class="warn !mt-4"><b>⚠️ Note:</b> this tool handles
+                        <strong>simple, regular</strong> active sentences with a
+                        clear subject, verb and object. It is a training aid —
+                        always check your own writing against the 15 rules
+                        above.</div>
+                </div>
+            </section>
+
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 150 Questions</h2>
+                </div>
+                <p class="text-slate-400 mb-2 max-w-3xl">
+                    Ten exercises per rule. Filter by rule, or work through all
+                    150. Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+                <div
+                    class="flex flex-wrap items-center gap-2 mb-5 text-xs text-slate-500">
+                    <span>Answers lock after first click</span>
+                    <span class="text-slate-700">·</span>
+                    <span>Click a chosen option again to deselect</span>
+                </div>
+
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">150</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
+
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
+
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
+
+            <!-- ==================== QUIZ ==================== -->
+            <section id="quiz"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧠</span>
+                    <h2 class="h-sec">Practice Quiz</h2>
+                </div>
+                <p class="text-slate-400 mb-6">Twelve IELTS-style mixed
+                    questions — choose the correct passive form, then check your
+                    score.</p>
+
+                <div id="quizContainer" class="grid gap-3"></div>
+
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
+                </div>
+
+                <div id="quizResult"
+                    class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
+            </section>
+
+            <!-- ==================== FAQ ==================== -->
+            <section id="faq"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">❓</span>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="grid gap-3 mt-5">
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Do I have to use
+                            passive voice in IELTS Writing Task 1?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Only
+                            in <strong>process diagrams</strong> and (partly) in
+                            <strong>map descriptions</strong>, where the doer is
+                            unknown or unimportant. In line graphs, bar charts
+                            and tables you should mostly use
+                            <strong>active</strong> verbs (“sales increased”,
+                            “the UK produced the most steel”). Passive is not
+                            required — accurate, natural grammar is what earns
+                            marks.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How much passive
+                            is “too much” in Task 2?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">If
+                            <strong>every sentence</strong> is passive, the
+                            essay sounds vague and monotonous — examiners
+                            penalise this as a lack of grammatical range. Aim
+                            for <strong>2–3 accurate passive constructions per
+                                paragraph</strong>, mostly for hedging (“It is
+                            argued that…”) and policy statements (“Stricter laws
+                            should be enforced”). Use active for opinions and
+                            examples.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            difference between “was built” and “has been
+                            built”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>“Was
+                                built”</strong> = past simple passive — the
+                            building was constructed at a finished past point
+                            (e.g. “The bridge was built in 1890”). <strong>“Has
+                                been built”</strong> = present perfect passive —
+                            the construction is now complete, and the result is
+                            relevant now (e.g. “A new bridge has been built to
+                            reduce traffic”).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why is “an
+                            accident was happened” wrong?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>Happen</strong>
+                            is an <strong>intransitive</strong> verb — it has no
+                            object, so it cannot be made passive. The correct
+                            form is simply “An accident happened.” Common
+                            intransitive verbs in IELTS include <em>happen,
+                                occur, arrive, appear, rise, die, come,
+                                go</em>.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the best
+                            impersonal passive construction for Task 2?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>“It
+                                is [verb] that…”</strong> is the most useful
+                            pattern: <em>It is argued / believed / thought /
+                                suggested / widely accepted that…</em> It lets
+                            you present common views without writing “I think”,
+                            which academic IELTS Writing prefers to avoid. You
+                            can also use the subject-to-infinitive passive:
+                            “Education <strong>is widely believed to be</em> the
+                            key to success.”</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Note:</strong> this page
+                    is a grammar and strategy reference for IELTS Writing
+                    preparation.
+                    It is not affiliated with the IELTS test owners. Task 1 and
+                    Task 2 examples are modelled on the publicly available test
+                    format
+                    (Academic Writing Task 1 &amp; Task 2).
+                </div>
+            </section>
+
+            <!-- ==================== FOOTER ==================== -->
+            <footer
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>✍️ IELTS Passive Voice · Writing Task 1 &amp; Task 2 ·
+                    2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
+            </footer>
+        </main>
+
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (150 items)
+     ============================================================ -->
+        <script>
+const EXERCISES = [
+/* ---------- RULE 1: FORM (10) ---------- */
+[1,'The bridge ___ in 1890.',['was built','built','is building'],0,'Past passive: was + past participle → was built.'],
+[1,'The road ___ every morning.',['is cleaned','cleans','cleaning'],0,'Present passive: is + past participle → is cleaned.'],
+[1,'The letters ___ yesterday.',['were sent','sent','sending'],0,'Past passive → were sent.'],
+[1,'The results ___ tomorrow.',['will be announced','will announce','announce'],0,'Future passive → will be announced.'],
+[1,'The report ___ already ___.',['has been written','has wrote','was wrote'],0,'Present perfect passive → has been written.'],
+[1,'The house ___ at the moment.',['is being painted','is painting','paints'],0,'Present continuous passive → is being painted.'],
+[1,'The documents ___ before the meeting.',['had been signed','had signed','were signing'],0,'Past perfect passive → had been signed.'],
+[1,'The new law ___ next month.',['will be enforced','will enforce','enforces'],0,'Future passive → will be enforced.'],
+[1,'The data ___ carefully.',['must be analysed','must analyse','analysing'],0,'Modal passive → must be analysed.'],
+[1,'The cake ___ by my mother.',['was made','made','making'],0,'Past passive with by-agent → was made.'],
+
+/* ---------- RULE 2: TENSES (10) ---------- */
+[2,'They clean the streets every day. → The streets ___ every day.',['are cleaned','were cleaned','are cleaning'],0,'Present simple passive → are cleaned.'],
+[2,'They are cleaning the streets. → The streets ___ .',['are being cleaned','are cleaned','were being cleaned'],0,'Present continuous passive → are being cleaned.'],
+[2,'They have cleaned the streets. → The streets ___ .',['have been cleaned','had been cleaned','are cleaned'],0,'Present perfect passive → have been cleaned.'],
+[2,'They cleaned the streets. → The streets ___ .',['were cleaned','are cleaned','had been cleaned'],0,'Past simple passive → were cleaned.'],
+[2,'They were cleaning the streets. → The streets ___ .',['were being cleaned','were cleaned','had been cleaned'],0,'Past continuous passive → were being cleaned.'],
+[2,'They had cleaned the streets. → The streets ___ .',['had been cleaned','have been cleaned','were cleaned'],0,'Past perfect passive → had been cleaned.'],
+[2,'They will clean the streets. → The streets ___ .',['will be cleaned','will clean','are cleaned'],0,'Future passive → will be cleaned.'],
+[2,'They will have cleaned the streets. → The streets ___ .',['will have been cleaned','will be cleaned','have been cleaned'],0,'Future perfect passive → will have been cleaned.'],
+[2,'They must clean the streets. → The streets ___ .',['must be cleaned','must clean','are cleaning'],0,'Modal passive → must be cleaned.'],
+[2,'They should clean the streets. → The streets ___ .',['should be cleaned','should clean','were cleaned'],0,'Modal passive → should be cleaned.'],
+
+/* ---------- RULE 3: WHEN TO USE / NOT USE (10) ---------- */
+[3,'Which sentence is the BEST use of passive?',['The road was widened to reduce congestion.','Mistakes were made.','It was decided that action would be taken.'],0,'Clear, complete meaning — doer unimportant.'],
+[3,'Which is a WEAK use of passive in Task 2?',['It was decided that action would be taken.','Stricter laws should be enforced.','It is widely believed that education matters.'],0,'“It was decided” is vague — who decided?'],
+[3,'Which is the most natural Task 1 process sentence?',['The beans are harvested and then dried.','The beans harvest and then dry.','The beans are harvesting and drying.'],0,'Process descriptions use passive → are harvested / dried.'],
+[3,'Which is preferred in Task 1 bar charts?',['Sales increased sharply in 2019.','Sales were increased sharply in 2019.','Sales are being increased sharply.'],0,'Active is clearer for intransitive changes → increased.'],
+[3,'Which is the correct academic hedging pattern?',['It is often argued that governments should invest more.','Governments is often argued to invest more.','It often argues that governments invest more.'],0,'Impersonal passive → It is often argued that…'],
+[3,'Which passive is redundant because the doer is obvious?',['The bridge was built by builders.','The novel was written by Orwell.','The road was repaired.'],0,'“by builders” adds nothing → omit.'],
+[3,'Which sentence avoids vague passive?',['The government raised taxes last year.','Taxes were raised.','It was felt that taxes should be raised.'],0,'Active names the doer → clearer.'],
+[3,'Which is the correct passive for “Someone stole my bike”?',['My bike was stolen.','My bike stole.','My bike is stealing.'],0,'Agent unknown → passive, no “by”.'],
+[3,'Which is the best Band 7+ passive for “We must protect wildlife”?',['Wildlife must be protected.','Wildlife must protect.','Wildlife is protecting.'],0,'Modal passive → must be protected.'],
+[3,'Which is a correct impersonal passive?',['It has been shown that exercise improves mood.','It has shown that exercise improves mood.','Exercise has been shown it improves mood.'],0,'Impersonal passive → It has been shown that…'],
+
+/* ---------- RULE 4: BY-AGENT (10) ---------- */
+[4,'The novel was written ___ Orwell.',['by','from','of'],0,'Doer → by.'],
+[4,'The bridge was built ___ 1890.',['in','by','on'],0,'Year → in (not by-agent).'],
+[4,'The speech was given ___ the president.',['by','from','of'],0,'Doer → by.'],
+[4,'The window was broken ___ a ball.',['by','with','of'],0,'Cause → by.'],
+[4,'The cake was made ___ my grandmother.',['by','from','of'],0,'Doer → by.'],
+[4,'The house was designed ___ a famous architect.',['by','from','with'],0,'Doer → by.'],
+[4,'The road was built ___ builders.',['by','from','with'],0,'Doer → by — but note “by builders” is redundant.'],
+[4,'Which sentence correctly omits an obvious agent?',['The bridge was built in 1890.','The bridge was built by builders.','The bridge was built by someone.'],0,'Doer obvious → omit.'],
+[4,'Which sentence includes a USEFUL by-agent?',['The novel was written by Orwell.','The bridge was built by workers.','The house was built by builders.'],0,'Orwell adds real information.'],
+[4,'Which is INCORRECT in Task 1 process?',['The beans are harvested by farmers.','The beans are harvested.','The beans are dried.'],0,'Agent is obvious — “by farmers” is redundant.'],
+
+/* ---------- RULE 5: MODAL PASSIVE (10) ---------- */
+[5,'The problem ___ .',['can be solved','can solve','can solving'],0,'Modal + be + pp → can be solved.'],
+[5,'Wildlife ___ .',['must be protected','must protect','must protecting'],0,'Modal passive → must be protected.'],
+[5,'Plastic bags ___ .',['should be banned','should ban','should banning'],0,'Modal passive → should be banned.'],
+[5,'Emissions ___ .',['might be reduced','might reduce','might reducing'],0,'Modal passive → might be reduced.'],
+[5,'The system ___ .',['could be improved','could improve','could improving'],0,'Modal passive → could be improved.'],
+[5,'More funding ___ to public transport.',['should be allocated','should allocate','should allocating'],0,'Modal passive → should be allocated.'],
+[5,'The report ___ by Friday.',['must be submitted','must submit','must submitting'],0,'Modal passive → must be submitted.'],
+[5,'The results ___ carefully.',['need to be checked','need to check','needs to be checked'],0,'Modal-like passive → need to be checked.'],
+[5,'This issue ___ urgently.',['has to be addressed','has to address','have to addressed'],0,'“has to be” + pp → has to be addressed.'],
+[5,'The data ___ before publication.',['ought to be verified','ought to verify','ought verifying'],0,'Modal passive → ought to be verified.'],
+
+/* ---------- RULE 6: IMPERSONAL PASSIVE (10) ---------- */
+[6,'___ that education reduces poverty.',['It is widely believed','It widely believes','It is widely believing'],0,'Impersonal passive → It is widely believed that…'],
+[6,'___ that early intervention works.',['It has been shown','It has shown','It shows been'],0,'Present perfect impersonal → It has been shown that…'],
+[6,'___ that stricter laws would help.',['It has been argued','It has argued','It argues been'],0,'Present perfect impersonal → It has been argued that…'],
+[6,'___ that governments should act.',['It is often said','It often says','It is often saying'],0,'Impersonal passive → It is often said that…'],
+[6,'___ that the economy is recovering.',['It is suggested','It suggests','It is suggesting'],0,'Impersonal passive → It is suggested that…'],
+[6,'___ that the policy has failed.',['It is thought','It thinks','It is thinking'],0,'Impersonal passive → It is thought that…'],
+[6,'Education ___ the key to success.',['is widely believed to be','is widely believed being','widely believes to be'],0,'Subject-to-infinitive passive → is widely believed to be.'],
+[6,'The problem ___ to have been solved.',['is believed','believes','is believing'],0,'Subject-to-infinitive passive → is believed to have been solved.'],
+[6,'The report ___ to be inaccurate.',['is said','says','is saying'],0,'Subject-to-infinitive passive → is said to be.'],
+[6,'Crime ___ to be falling.',['is reported','reports','is reporting'],0,'Subject-to-infinitive passive → is reported to be.'],
+
+/* ---------- RULE 7: CAUSATIVE (10) ---------- */
+[7,'I ___ my car repaired yesterday.',['had','have','did'],0,'Causative → had my car repaired.'],
+[7,'She ___ her hair cut last week.',['got','get','gets'],0,'Past causative → got her hair cut.'],
+[7,'We need to ___ our house painted.',['have','do','make'],0,'Causative → have our house painted.'],
+[7,'Many cities ___ their waste processed in specialised plants.',['have','do','make'],0,'Causative → have their waste processed.'],
+[7,'He ___ his computer fixed at the shop.',['had','did','made'],0,'Causative → had his computer fixed.'],
+[7,'They ___ their garden redesigned by a professional.',['had','did','made'],0,'Causative → had their garden redesigned.'],
+[7,'I ___ my eyes tested yesterday.',['had','did','made'],0,'Causative → had my eyes tested.'],
+[7,'She ___ her dress cleaned before the wedding.',['got','get','gets'],0,'Causative → got her dress cleaned.'],
+[7,'You should ___ your roof checked before winter.',['have','do','make'],0,'Causative → have your roof checked.'],
+[7,'We ___ the windows replaced last month.',['had','did','made'],0,'Causative → had the windows replaced.'],
+
+/* ---------- RULE 8: TWO OBJECTS (10) ---------- */
+[8,'They gave him a medal. → He ___ a medal.',['was given','gave','was giving'],0,'Person-first passive → was given.'],
+[8,'They sent us the documents. → We ___ the documents.',['were sent','sent','are sending'],0,'Person-first passive → were sent.'],
+[8,'They offered her a job. → She ___ a job.',['was offered','offered','was offering'],0,'Person-first passive → was offered.'],
+[8,'They taught the students grammar. → The students ___ grammar.',['were taught','taught','were teaching'],0,'Person-first passive → were taught.'],
+[8,'They gave him a medal. → A medal ___ to him.',['was given','gave','is giving'],0,'Thing-first passive → was given to him.'],
+[8,'They sent us the documents. → The documents ___ to us.',['were sent','sent','are sending'],0,'Thing-first passive → were sent to us.'],
+[8,'They offered her a job. → A job ___ to her.',['was offered','offered','offering'],0,'Thing-first passive → was offered to her.'],
+[8,'They told him the truth. → He ___ the truth.',['was told','told','was telling'],0,'Person-first passive → was told.'],
+[8,'They showed us the results. → We ___ the results.',['were shown','showed','showing'],0,'Person-first passive → were shown.'],
+[8,'They paid him the money. → He ___ the money.',['was paid','paid','paying'],0,'Person-first passive → was paid.'],
+
+/* ---------- RULE 9: TASK 1 PROCESS (10) ---------- */
+[9,'First, the beans ___.',['are harvested','harvest','harvesting'],0,'Process passive → are harvested.'],
+[9,'Then they ___ in the sun.',['are dried','dry','drying'],0,'Process passive → are dried.'],
+[9,'After that, the beans ___ at high temperatures.',['are roasted','roast','roasting'],0,'Process passive → are roasted.'],
+[9,'Next, the beans ___ .',['are ground','grind','grinding'],0,'Process passive → are ground.'],
+[9,'Finally, the coffee ___ for distribution.',['is packaged','packages','packaging'],0,'Process passive → is packaged.'],
+[9,'Once collected, the waste ___ .',['is sorted','sorts','sorting'],0,'Process passive → is sorted.'],
+[9,'The raw materials ___ to the factory.',['are transported','transport','transporting'],0,'Process passive → are transported.'],
+[9,'The mixture ___ for two hours.',['is heated','heats','heating'],0,'Process passive → is heated.'],
+[9,'The final product ___ into boxes.',['is placed','places','placing'],0,'Process passive → is placed.'],
+[9,'The finished goods ___ to retailers.',['are delivered','deliver','delivering'],0,'Process passive → are delivered.'],
+
+/* ---------- RULE 10: TASK 2 HEDGING (10) ---------- */
+[10,'___ that education is the key to success.',['It is widely believed','It widely believes','It is widely believing'],0,'Hedging passive → It is widely believed.'],
+[10,'More funding ___ to mental health.',['should be allocated','should allocate','should allocating'],0,'Policy passive → should be allocated.'],
+[10,'Stricter laws ___ to reduce pollution.',['must be enforced','must enforce','must enforcing'],0,'Policy passive → must be enforced.'],
+[10,'Large amounts of waste ___ daily.',['are generated','generate','generating'],0,'Descriptive passive → are generated.'],
+[10,'This ___ as a positive trend.',['can be regarded','can regard','can regarding'],0,'Hedging passive → can be regarded.'],
+[10,'___ that early intervention works.',['It has been shown','It has shown','It shows been'],0,'Hedging passive → It has been shown.'],
+[10,'Children ___ to advertising from an early age.',['are often exposed','often expose','often exposing'],0,'Descriptive passive → are often exposed.'],
+[10,'The problem ___ in recent years.',['has been exacerbated','has exacerbated','has exacerbating'],0,'Descriptive passive → has been exacerbated.'],
+[10,'Governments ___ for environmental damage.',['should be held accountable','should hold accountable','should holding accountable'],0,'Policy passive → should be held accountable.'],
+[10,'Individual action ___ either.',['cannot be ignored','cannot ignore','cannot ignoring'],0,'Hedging passive → cannot be ignored.'],
+
+/* ---------- RULE 11: INTRANSITIVE (10) ---------- */
+[11,'Which sentence is CORRECT?',['An accident happened yesterday.','An accident was happened yesterday.','An accident is happened yesterday.'],0,'“Happen” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['They arrived late.','They were arrived late.','They are arrived late.'],0,'“Arrive” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['The change occurred suddenly.','The change was occurred suddenly.','The change is occurred suddenly.'],0,'“Occur” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['The plant died last week.','The plant was died last week.','The plant is died last week.'],0,'“Die” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['A problem appeared.','A problem was appeared.','A problem is appeared.'],0,'“Appear” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['Prices rose sharply.','Prices were risen sharply.','Prices are risen sharply.'],0,'“Rise” is intransitive → no passive. Use “were raised” for transitive “raise”.'],
+[11,'Which sentence is CORRECT?',['The train left at 6.','The train was left at 6.','The train is left at 6.'],0,'“Leave” (intransitive) → no passive.'],
+[11,'Which sentence is CORRECT?',['The children grew quickly.','The children were grown quickly.','The children are grown quickly.'],0,'“Grow” (intransitive, meaning increase) → no passive.'],
+[11,'Which sentence is CORRECT?',['The sun rose at 6 a.m.','The sun was risen at 6 a.m.','The sun is risen at 6 a.m.'],0,'“Rise” is intransitive → no passive.'],
+[11,'Which sentence is CORRECT?',['The meeting lasted two hours.','The meeting was lasted two hours.','The meeting is lasted two hours.'],0,'“Last” is intransitive → no passive.'],
+
+/* ---------- RULE 12: COMMON MISTAKES (10) ---------- */
+[12,'Which sentence is CORRECT?',['The book was written by Orwell.','The book was wrote by Orwell.','The book was writing by Orwell.'],0,'Past participle → written.'],
+[12,'Which sentence is CORRECT?',['The house is built every year.','The house is build every year.','The house is building every year.'],0,'Past participle → built.'],
+[12,'Which sentence is CORRECT?',['The problem can be solved.','The problem can solved.','The problem can solving.'],0,'Missing “be” → can be solved.'],
+[12,'Which sentence is CORRECT?',['It happened last night.','It was happened last night.','It is happened last night.'],0,'“Happen” is intransitive.'],
+[12,'Which sentence is CORRECT?',['The car was repaired yesterday.','The car was repairing yesterday.','The car was repair yesterday.'],0,'Passive = be + pp → was repaired.'],
+[12,'Which sentence is CORRECT?',['He was given a medal.','He was given to a medal.','They were given to him a medal.'],0,'Person-first passive → was given a medal.'],
+[12,'Which sentence is CORRECT?',['The letter has been sent.','The letter has been send.','The letter has being sent.'],0,'Present perfect passive → has been sent.'],
+[12,'Which sentence is CORRECT?',['The data was analysed.','The data was analyse.','The data was analysing.'],0,'Past participle → analysed.'],
+[12,'Which sentence is CORRECT?',['The rules must be followed.','The rules must followed.','The rules must following.'],0,'Modal passive → must be followed.'],
+[12,'Which sentence is CORRECT?',['The window was broken by a ball.','The window was broke by a ball.','The window was breaking by a ball.'],0,'Past participle → broken.'],
+
+/* ---------- RULE 13: CONDITIONALS (10) ---------- */
+[13,'If stricter laws ___ , crime would fall.',['were introduced','introduced','are introduced'],0,'Second conditional passive → were introduced.'],
+[13,'If the report ___ earlier, the decision would have been made.',['had been submitted','has been submitted','submitted'],0,'Third conditional passive → had been submitted.'],
+[13,'The policy, which ___ in 2019, has failed.',['was implemented','implemented','implements'],0,'Relative clause passive → was implemented.'],
+[13,'Once ___ , the waste is sorted.',['collected','collecting','collects'],0,'Reduced passive clause → once collected.'],
+[13,'If taxes ___ , people would complain.',['were raised','rose','raise'],0,'Second conditional passive → were raised (transitive raise).'],
+[13,'If the data ___ , the study would be invalid.',['were falsified','falsified','falsify'],0,'Second conditional passive → were falsified.'],
+[13,'If more funding ___ , the project could proceed.',['were allocated','allocated','allocating'],0,'Second conditional passive → were allocated.'],
+[13,'If the bridge ___ , traffic would improve.',['were widened','widened','widening'],0,'Second conditional passive → were widened.'],
+[13,'The scheme, which ___ last year, has helped thousands.',['was launched','launched','launching'],0,'Relative clause passive → was launched.'],
+[13,'If the proposal ___ by the board, we can start.',['is approved','approves','approving'],0,'First conditional passive → is approved.'],
+
+/* ---------- RULE 14: ACTIVE VS PASSIVE BALANCE (10) ---------- */
+[14,'Which is the BEST Task 2 sentence?',['It is widely believed that education matters, but I would argue that access is equally important.','Education is believed by many people to be mattering.','It is believed that education matters, and it is believed that access matters.'],0,'Balanced hedging + active opinion.'],
+[14,'Which is the BEST Task 1 line-graph sentence?',['Sales increased sharply in 2019.','Sales were increased sharply in 2019.','Sales are being increased sharply in 2019.'],0,'Active for intransitive changes.'],
+[14,'Which is the BEST Task 1 process sentence?',['The beans are harvested, dried and roasted.','The beans harvest, dry and roast.','The beans are harvesting, drying and roasting.'],0,'Passive throughout process → consistent.'],
+[14,'Which sentence shows a Band 7+ passive?',['Stricter laws should be enforced to reduce pollution.','Stricter laws should enforce to reduce pollution.','Stricter laws should be enforcing to reduce pollution.'],0,'Modal passive → should be enforced.'],
+[14,'Which is the WEAKEST sentence in Task 2?',['It was decided that action would be taken.','The government decided to take action.','Stricter laws should be enforced.'],0,'Vague passive — no clear agent or meaning.'],
+[14,'Which sentence avoids passive overuse?',['The government raised taxes and invested in public services.','Taxes were raised and public services were invested in.','It was decided that taxes would be raised and investment made.'],0,'Active names the doer → clearer and more varied.'],
+[14,'Which sentence correctly mixes active and passive?',['The bridge was built in 1990, and it now carries 10,000 vehicles a day.','The bridge was built in 1990, and 10,000 vehicles are carried by it a day.','The bridge was being built in 1990 and 10,000 vehicles were carried.'],0,'Active after passive → varied and natural.'],
+[14,'Which is the BEST Task 2 opinion sentence?',['I believe that governments should invest more in education.','It is believed by me that governments should invest more.','It is believed that governments should be invested more.'],0,'Active for opinion → clear and direct.'],
+[14,'Which is the BEST hedging sentence?',['It is often argued that technology improves productivity.','Technology is often argued to be improving.','It often argues that technology improves productivity.'],0,'Impersonal passive → It is often argued that.'],
+[14,'Which sentence shows passive used poorly?',['Mistakes were made and lessons were learned.','Several mistakes were made during the launch.','The launch was delayed because of errors.'],0,'Vague passive → no clear meaning.'],
+
+/* ---------- RULE 15: TASK 1 MAPS (10) ---------- */
+[15,'A new bridge ___ in 1990.',['was built','built','building'],0,'Map change passive → was built.'],
+[15,'The old factory ___ last year.',['was demolished','demolished','demolishing'],0,'Map change passive → was demolished.'],
+[15,'The road ___ to reduce congestion.',['was widened','widened','widening'],0,'Map change passive → was widened.'],
+[15,'The warehouse ___ a museum.',['was converted into','converted into','converting into'],0,'Map change passive → was converted into.'],
+[15,'The trees ___ by a car park.',['were replaced','replaced','replacing'],0,'Map change passive → were replaced.'],
+[15,'The area ___ for housing.',['was developed','developed','developing'],0,'Map change passive → was developed.'],
+[15,'A new shopping centre ___ on the site.',['was constructed','constructed','constructing'],0,'Map change passive → was constructed.'],
+[15,'The old school ___ to make way for a car park.',['was demolished','demolished','demolishing'],0,'Map change passive → was demolished.'],
+[15,'The river ___ to prevent flooding.',['was diverted','diverted','diverting'],0,'Map change passive → was diverted.'],
+[15,'The park ___ into a residential area.',['was transformed','transformed','transforming'],0,'Map change passive → was transformed.']
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Basic Form',
+  2:'All Tenses',
+  3:'When to Use / Not',
+  4:'By-Agent',
+  5:'Modal Passive',
+  6:'Impersonal Passive',
+  7:'Causative',
+  8:'Two Objects',
+  9:'Task 1 Process',
+  10:'Task 2 Hedging',
+  11:'Intransitive Verbs',
+  12:'Common Mistakes',
+  13:'Conditionals',
+  14:'Active vs Passive',
+  15:'Task 1 Maps'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 15; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'q-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="q-exp ${ok ? 'text-emerald-400' : 'text-red-400'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4 transition hover:border-[#31446b] fade">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1.5 bg-[#16233c] text-[#93a7c7] text-[.68rem] font-bold rounded-md mt-0.5">${i + 1}</span>
+            <p class="flex-1 text-sm text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="q-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.q-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;
+    answers[id] = opt;
+    render();
+  });
+
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — TRANSFORMER TOOL
+     ============================================================ -->
+        <script>
+(function () {
+  const input  = document.getElementById('tfIn');
+  const output = document.getElementById('tfOut');
+  const note   = document.getElementById('tfNote');
+
+  const IRREGULAR = {
+    built:'built', sent:'sent', wrote:'written', written:'written', made:'made',
+    took:'taken', taken:'taken', gave:'given', given:'given', saw:'seen', seen:'seen',
+    did:'done', done:'done', found:'found', bought:'bought', sold:'sold', told:'told',
+    brought:'brought', thought:'thought', caught:'caught', taught:'taught',
+    left:'left', kept:'kept', paid:'paid', said:'said', lost:'lost',
+    broke:'broken', broken:'broken', chose:'chosen', chosen:'chosen',
+    spoke:'spoken', spoken:'spoken', drove:'driven', driven:'driven',
+    ate:'eaten', eaten:'eaten', flew:'flown', flown:'flown',
+    grew:'grown', grown:'grown', knew:'known', known:'known',
+    threw:'thrown', thrown:'thrown', understood:'understood',
+    began:'begun', begun:'begun', drank:'drunk', drunk:'drunk'
+  };
+
+  const IRREG_ACTIVE_TO_PP = {
+    build:'built', send:'sent', write:'written', make:'made', take:'taken',
+    give:'given', see:'seen', do:'done', find:'found', buy:'bought', sell:'sold',
+    tell:'told', bring:'brought', think:'thought', catch:'caught', teach:'taught',
+    leave:'left', keep:'kept', pay:'paid', say:'said', lose:'lost',
+    break:'broken', choose:'chosen', speak:'spoken', drive:'driven',
+    eat:'eaten', fly:'flown', grow:'grown', know:'known', throw:'thrown',
+    understand:'understood', begin:'begun', drink:'drunk'
+  };
+
+  // Only handles simple SVO sentences with common tenses.
+  function transform(sentence) {
+    const s = sentence.trim().replace(/[.!?]+$/, '');
+    const words = s.split(/\s+/);
+
+    // Find subject (first noun phrase up to the first verb - simplified)
+    // Instead, we'll pattern-match a few common structures.
+    // Strategy: split at first verb (common verbs only).
+    const verbList = ['build','built','builds','send','sent','sends','write','wrote','writes',
+      'make','made','makes','take','took','takes','give','gave','gives','see','saw','sees',
+      'do','did','does','find','found','finds','buy','bought','buys','sell','sold','sells',
+      'tell','told','tells','bring','brought','brings','think','thought','thinks',
+      'catch','caught','catches','teach','taught','teaches','leave','left','leaves',
+      'keep','kept','keeps','pay','paid','pays','say','said','says','lose','lost','loses',
+      'break','broke','breaks','choose','chose','chooses','speak','spoke','speaks',
+      'drive','drove','drives','eat','ate','eats','fly','flew','flies',
+      'grow','grew','grows','know','knew','knows','throw','threw','throws',
+      'understand','understood','understands','begin','began','begins',
+      'drink','drank','drinks','clean','cleaned','cleans','repair','repaired','repairs',
+      'deliver','delivered','delivers','use','used','uses','open','opened','opens',
+      'close','closed','closes','destroy','destroyed','destroys','build','built'];
+
+    let verbIdx = -1;
+    for (let i = 1; i < words.length; i++) {
+      if (verbList.includes(words[i].toLowerCase())) { verbIdx = i; break; }
+    }
+    if (verbIdx === -1) {
+      return { error:'Could not detect a verb. Try a simple sentence like “The council built a bridge.”' };
+    }
+
+    const subjRaw = words.slice(0, verbIdx).join(' ');
+    const verbRaw = words[verbIdx].toLowerCase();
+    const restRaw = words.slice(verbIdx + 1).join(' ').replace(/^a |^an |^the /i, m => m);
+
+    if (!restRaw) {
+      return { error:'Could not detect an object. Passive needs a transitive verb and a clear object.' };
+    }
+
+    // Detect tense
+    const isPast = /ed$/.test(verbRaw) || ['built','sent','wrote','made','took','gave','saw','did','found','bought','sold','told','brought','thought','caught','taught','left','kept','paid','said','lost','broke','chose','spoke','drove','ate','flew','grew','knew','threw','understood','began','drank','cleaned','repaired','delivered','used','opened','closed','destroyed'].includes(verbRaw);
+    const isPresent = ['build','builds','send','sends','write','writes','make','makes','take','takes','give','gives','see','sees','do','does','find','finds','buy','buys','sell','sells','tell','tells','bring','brings','think','thinks','catch','catches','teach','teaches','leave','leaves','keep','keeps','pay','pays','say','says','lose','loses','break','breaks','choose','chooses','speak','speaks','drive','drives','eat','eats','fly','flies','grow','grows','know','knows','throw','throws','understand','understands','begin','begins','drink','drinks','clean','cleans','repair','repairs','deliver','delivers','use','uses','open','opens','close','closes','destroy','destroys'].includes(verbRaw);
+
+    // Get past participle
+    let pp = IRREG_ACTIVE_TO_PP[verbRaw];
+    if (!pp) {
+      if (/ed$/.test(verbRaw)) pp = verbRaw;
+      else if (/e$/.test(verbRaw)) pp = verbRaw + 'd';
+      else pp = verbRaw + 'ed';
+    }
+
+    // Pick "be" form
+    let beForm;
+    if (isPresent) {
+      beForm = /s$/.test(verbRaw) || ['is','was'].includes(verbRaw) ? 'is' : 'are';
+      // crude: third-person singular vs plural
+      const subjLower = subjRaw.toLowerCase();
+      if (['he','she','it'].includes(subjLower) || /\b(council|government|company|team)\b/.test(subjLower)) beForm = 'is';
+      else beForm = 'are';
+    } else {
+      const subjLower = subjRaw.toLowerCase();
+      if (['he','she','it'].includes(subjLower) || /\b(council|government|company|team)\b/.test(subjLower)) beForm = 'was';
+      else beForm = 'were';
+    }
+
+    // Split rest into object and (optional) by-agent
+    // If input has "by X", move it to end.
+    let objPart = restRaw;
+    let byPart = '';
+    const byMatch = restRaw.match(/\bby\s+([^.]+)$/i);
+    if (byMatch) {
+      byPart = byMatch[1].trim();
+      objPart = restRaw.replace(/\bby\s+[^.]+$/i, '').trim();
+    }
+
+    // Article may need adjustment; keep simple
+    const passive = `${objPart.charAt(0).toUpperCase() + objPart.slice(1)} ${beForm} ${pp}` +
+                    (byPart ? ` by ${byPart}` : '') + '.';
+
+    return { passive, note:`Detected ${isPast ? 'past' : 'present'} simple. Original subject “${subjRaw}” becomes the by-agent only if it matters.` };
+  }
+
+  document.getElementById('tfGo').addEventListener('click', () => {
+    const res = transform(input.value);
+    if (res.error) {
+      output.innerHTML = `<span class="text-red-400">${res.error}</span>`;
+      note.textContent = '';
+      return;
+    }
+    output.innerHTML = `<span class="text-emerald-300 font-semibold">${res.passive}</span>`;
+    note.textContent = res.note;
+  });
+
+  document.getElementById('tfExample').addEventListener('click', () => {
+    input.value = 'The council built a new bridge in 1990.';
+    document.getElementById('tfGo').click();
+  });
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 4 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'The bridge ___ in 1890.',                              options: ['was built','built','is building'], correct: 0 },
+    { id: 2,  text: 'They must clean the streets. → The streets ___ .',     options: ['must be cleaned','must clean','are cleaning'], correct: 0 },
+    { id: 3,  text: 'Which sentence correctly omits an obvious agent?',     options: ['The bridge was built in 1890.','The bridge was built by builders.','The bridge was built by someone.'], correct: 0 },
+    { id: 4,  text: '___ that education reduces poverty.',                  options: ['It is widely believed','It widely believes','It is widely believing'], correct: 0 },
+    { id: 5,  text: 'I ___ my car repaired yesterday.',                     options: ['had','have','did'], correct: 0 },
+    { id: 6,  text: 'They gave him a medal. → He ___ a medal.',             options: ['was given','gave','was giving'], correct: 0 },
+    { id: 7,  text: 'First, the beans ___ .',                               options: ['are harvested','harvest','harvesting'], correct: 0 },
+    { id: 8,  text: 'More funding ___ to public transport.',                options: ['should be allocated','should allocate','should allocating'], correct: 0 },
+    { id: 9,  text: 'Which sentence is CORRECT?',                           options: ['An accident happened yesterday.','An accident was happened yesterday.','An accident is happened yesterday.'], correct: 0 },
+    { id: 10, text: 'Which sentence is CORRECT?',                           options: ['The book was written by Orwell.','The book was wrote by Orwell.','The book was writing by Orwell.'], correct: 0 },
+    { id: 11, text: 'If stricter laws ___ , crime would fall.',             options: ['were introduced','introduced','are introduced'], correct: 0 },
+    { id: 12, text: 'A new bridge ___ in 1990. (Task 1 map)',               options: ['was built','built','building'], correct: 0 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => {
+              let cls = 'q-opt';
+              if (sel === oi) cls += ' selected';
+              if (sel !== undefined) {
+                if (oi === q.correct) cls += ' correct';
+                else if (sel === oi) cls += ' wrong';
+              }
+              return `<button class="${cls}" data-qid="${q.id}" data-optindex="${oi}">${opt}</button>`;
+            }).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.q-opt').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — your passive radar is sharp! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+
+    </body>
+</html>

@@ -1,814 +1,1732 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ultimate Grammar: Prepositions</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        .prose h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            letter-spacing: -0.01em;
-        }
-        .prose h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #1e293b;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-            line-height: 1.75;
-            color: #334155;
-        }
-        .prose ul,
-        .prose ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            color: #334155;
-        }
-        .prose li {
-            margin-bottom: 0.4rem;
-            line-height: 1.6;
-        }
-        .prose .rule-box {
-            background: #f1f5f9;
-            border-left: 4px solid #6366f1;
-            padding: 1rem 1.25rem;
-            border-radius: 0.5rem;
-            margin: 1.25rem 0;
-        }
-        .prose .rule-box strong {
-            color: #1e293b;
-        }
-        .prose .example {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            margin: 0.5rem 0 1rem 0;
-            font-size: 0.95rem;
-            color: #0f172a;
-        }
-        .prose .example .highlight {
-            color: #7c3aed;
-            font-weight: 600;
-        }
-        .prose .example .highlight-green {
-            color: #059669;
-            font-weight: 600;
-        }
-        .prose .badge {
-            display: inline-block;
-            background: #6366f1;
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.15rem 0.65rem;
-            border-radius: 9999px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-        .prose .badge-gold {
-            background: #f59e0b;
-        }
-        .prose .badge-green {
-            background: #22c55e;
-        }
-        .prose .badge-blue {
-            background: #3b82f6;
-        }
-        .prose .badge-rose {
-            background: #f43f5e;
-        }
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
-        }
-        .table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        .table-wrap th {
-            background: #f8fafc;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            color: #0f172a;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        .table-wrap td {
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid #f1f5f9;
-            color: #1e293b;
-        }
-        .table-wrap tr:last-child td {
-            border-bottom: none;
-        }
-        .anchor-link {
-            scroll-margin-top: 6rem;
-        }
-        .quiz-option {
-            transition: all 0.1s ease;
-            cursor: pointer;
-        }
-        .quiz-option:hover {
-            background: #f1f5f9;
-        }
-        .quiz-option.selected-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
-        .quiz-option.selected-wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-        }
-        .quiz-option.show-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
-        .quiz-card {
-            transition: all 0.15s ease;
-        }
-        .quiz-card:hover {
-            border-color: #a5b4fc;
-        }
-        .exercise-fill input,
-        .exercise-fill select {
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.85rem;
-            background: white;
-            width: 160px;
-        }
-        .exercise-fill select {
-            width: auto;
-            min-width: 120px;
-        }
-        .exercise-fill .fill-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem 1rem;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .exercise-fill .fill-row:last-child {
-            border-bottom: none;
-        }
-        .exercise-fill .fill-row .num {
-            font-weight: 600;
-            color: #64748b;
-            min-width: 24px;
-        }
-        .exercise-fill .fill-row .sentence {
-            flex: 1;
-            min-width: 200px;
-        }
-        .exercise-fill .fill-row .sentence .blank {
-            display: inline-block;
-            min-width: 90px;
-            border-bottom: 2px dashed #94a3b8;
-            margin: 0 4px;
-            padding: 0 4px;
-            color: #6366f1;
-            font-weight: 500;
-        }
-        @media (max-width: 640px) {
-            .prose h2 {
-                font-size: 1.25rem;
-            }
-            .prose h3 {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ultimate Grammar: Prepositions — Dark Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
 
-    <!-- ====== NAVBAR ====== -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div class="flex items-center gap-2">
-            <a href="/" class="flex items-center gap-2">
-                       <span class="text-2xl font-bold text-indigo-600">📘</span>
-                       </a>
-                <span class="font-semibold text-gray-800 text-lg hidden sm:block">Prep<span class="text-indigo-600">Master</span></span>
-            </div>
-            <div class="flex items-center gap-3 text-sm font-medium">
-                <a href="#overview" class="text-gray-600 hover:text-indigo-600 transition">Overview</a>
-                <a href="#types" class="text-gray-600 hover:text-indigo-600 transition">Types</a>
-                <a href="#inonat" class="text-gray-600 hover:text-indigo-600 transition">In/On/At</a>
-                <a href="#exercises" class="text-gray-600 hover:text-indigo-600 transition hidden sm:inline">Practice</a>
-            </div>
-        </div>
-    </nav>
+:root{
+  --bg:#070b16;
+  --surface:#0d1526;
+  --surface-2:#101b2e;
+  --border:#1e2b45;
+  --border-soft:#17233a;
+  --text:#dbe4f3;
+  --muted:#8fa3c0;
+  --accent:#818cf8;
+  --accent-2:#a78bfa;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+  --blue:#60a5fa;
+  --violet:#a78bfa;
+}
 
-    <!-- ====== HERO ====== -->
-    <section class="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 border-b border-gray-200/60">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-            <div class="grid md:grid-cols-5 gap-8 items-center">
-                <div class="md:col-span-3">
-                    <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide">📚 ULTIMATE GRAMMAR GUIDE</span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
-                        <span class="text-indigo-600">Prepositions</span>
-                    </h1>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                        Master English prepositions: <strong>in, on, at</strong>, and more. Learn time, place, direction,
-                        and usage rules with clear examples and interactive practice.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                        <a href="#overview" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
-                            Start Learning <span>→</span>
-                        </a>
-                        <a href="#exercises" class="bg-white hover:bg-gray-50 text-gray-700 font-medium px-6 py-2.5 rounded-full border border-gray-300 transition flex items-center gap-2">
-                            Practice <span>✏️</span>
-                        </a>
-                    </div>
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px circle at 8% -8%, rgba(99,102,241,.18), transparent 62%),
+    radial-gradient(700px circle at 96% 2%, rgba(168,85,247,.13), transparent 62%),
+    radial-gradient(640px circle at 50% 108%, rgba(16,185,129,.09), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
+
+/* ---------- Typography ---------- */
+.h-sec{
+  font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd;
+}
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
+
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
+
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
+
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
+
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.hla{ color:#fbbf24; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
+
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
+
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+.table-wrap table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+.table-wrap th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+.table-wrap td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+.table-wrap tr:last-child td{ border-bottom:none; }
+.table-wrap tbody tr:hover td{ background:#0e1729; }
+
+/* ---------- Chips ---------- */
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* ---------- Question Bank Options ---------- */
+.q-opt{
+  padding:.45rem 1rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.85rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:70px;
+}
+.q-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.q-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.q-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.q-exp{
+  margin-top:.65rem;
+  padding-top:.65rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem;
+  line-height:1.6;
+}
+.q-tag{
+  font-size:.62rem;
+  font-weight:700;
+  color:#a5b4fc;
+  background:rgba(99,102,241,.12);
+  border:1px solid rgba(99,102,241,.25);
+  border-radius:6px;
+  padding:.1rem .4rem;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+  cursor:pointer;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+/* ---------- Nav ---------- */
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+.anchor{ scroll-margin-top:5.5rem; }
+
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+
+/* ---------- Hero card ---------- */
+.hero-card{
+  background:linear-gradient(180deg,#0e1729 0%, #0a1120 100%);
+  border:1px solid #1e2b45;
+  border-radius:16px;
+  padding:1.35rem;
+  box-shadow:0 20px 60px -20px rgba(99,102,241,.3);
+}
+.hero-cell{
+  border-radius:10px; padding:.8rem .5rem; text-align:center; border:1px solid;
+  font-size:.9rem; font-weight:700;
+}
+.hero-cell.in{ background:rgba(251,191,36,.08); border-color:rgba(251,191,36,.25); color:#fbbf24; }
+.hero-cell.on{ background:rgba(52,211,153,.08); border-color:rgba(52,211,153,.25); color:#34d399; }
+.hero-cell.at{ background:rgba(96,165,250,.08); border-color:rgba(96,165,250,.25); color:#60a5fa; }
+</style>
+    </head>
+    <body>
+
+        <!-- ==================== NAVBAR ==================== -->
+        <nav
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b16]/85 backdrop-blur-xl">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">🧩</span>
+                    <span
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">Prep<span
+                            class="text-indigo-400">Master</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#overview" class="navlink">Overview</a>
+                    <a href="#rules"
+                        class="navlink hidden sm:inline-block">Rules</a>
+                    <a href="#chart"
+                        class="navlink hidden md:inline-block">Chart</a>
+                    <a href="#exercises" class="navlink">Practice</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
                 </div>
-                <div class="md:col-span-2 hidden md:flex justify-center">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 w-full max-w-xs">
-                        <div class="text-center">
-                            <div class="grid grid-cols-3 gap-1 text-xs font-medium">
-                                <div class="bg-amber-50 p-2 rounded border border-amber-200">in</div>
-                                <div class="bg-emerald-50 p-2 rounded border border-emerald-200">on</div>
-                                <div class="bg-blue-50 p-2 rounded border border-blue-200">at</div>
+            </div>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-3">
+                        <span
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            📚 Ultimate Grammar Guide · Dark Edition
+                        </span>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Prepositions</span>
+                        </h1>
+                        <p
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            Master <strong class="text-slate-200">in, on,
+                                at</strong> and every other English preposition.
+                            15 detailed rules, 60+ examples, <strong
+                                class="text-indigo-300">150 practice
+                                exercises</strong>
+                            and a scored quiz — all in a dark, focused layout.
+                        </p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#rules" class="btn-primary">Start Learning
+                                →</a>
+                            <a href="#exercises" class="btn-ghost">Practice 150
+                                Exercises ✏️</a>
+                            <a href="#quiz" class="btn-ghost">Take Quiz 🎯</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">15</span>
+                                rules</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">150</span>
+                                exercises</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">12</span>
+                                quiz questions</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 hidden md:block">
+                        <div class="hero-card">
+                            <div class="text-center">
+                                <p
+                                    class="text-[.62rem] font-bold text-slate-500 mb-2 uppercase tracking-wider">Prepositions
+                                    of Time &amp; Place</p>
+                                <div class="grid grid-cols-3 gap-1.5">
+                                    <div class="hero-cell in">in</div>
+                                    <div class="hero-cell on">on</div>
+                                    <div class="hero-cell at">at</div>
+                                </div>
+                                <div
+                                    class="mt-4 space-y-1.5 text-left text-[.7rem] text-slate-400">
+                                    <p><span
+                                            class="text-amber-300 font-bold">in</span>
+                                        1987 · the morning · France</p>
+                                    <p><span
+                                            class="text-emerald-300 font-bold">on</span>
+                                        Monday · July 4th · the table</p>
+                                    <p><span
+                                            class="text-blue-300 font-bold">at</span>
+                                        8 pm · the bus stop · noon</p>
+                                </div>
                             </div>
-                            <p class="text-[10px] text-gray-400 mt-3">Prepositions of time &amp; place</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- ====== MAIN CONTENT ====== -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- ============================================================ -->
-        <!--  SECTION: WHAT ARE PREPOSITIONS?                              -->
-        <!-- ============================================================ -->
-        <section id="overview" class="anchor-link prose max-w-none">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🧩</span>
-                <h2 class="!mt-0">What Are Prepositions?</h2>
-            </div>
-            <p class="text-lg text-gray-700 leading-relaxed">
-                <strong>Prepositions</strong> are small words that describe relationships with other words in a sentence,
-                such as <strong>where</strong> something took place (<em>in a park</em>), <strong>when</strong> (<em>at noon</em>),
-                <strong>why</strong> (<em>because of hard work</em>), or <strong>how</strong> something happens (<em>with ease</em>).
-            </p>
-            <div class="rule-box">
-                <p class="!mb-0"><strong>💡 Key idea:</strong> Prepositions are always followed by a noun (or pronoun) – the <strong>object of the preposition</strong> – forming a <strong>prepositional phrase</strong>.</p>
-                <div class="example">The book <span class="highlight">on</span> the table.</div>
-                <div class="example">She walked <span class="highlight">through</span> the park.</div>
-                <div class="example">We met <span class="highlight">at</span> noon.</div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">Updated Feb 18, 2025</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: TYPES OF PREPOSITIONS                               -->
-        <!-- ============================================================ -->
-        <section id="types" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">📋</span>
-                <h2 class="!mt-0">Types of Prepositions</h2>
-            </div>
-
-            <!-- Prepositions of Place -->
-            <h3>Prepositions of Place</h3>
-            <p>Show where something is or where something happened.</p>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="example">They're building an amusement park <span class="highlight">near</span> my apartment.</div>
-                <div class="example">I have a sandwich <span class="highlight">in</span> my bag.</div>
-                <div class="example">Meet me <span class="highlight">at</span> the restaurant.</div>
-                <div class="example">The cat is <span class="highlight">under</span> the table.</div>
-                <div class="example">The health food is <span class="highlight">between</span> the snacks and the sodas.</div>
-                <div class="example">I'm cleaning the dust <span class="highlight">above</span> the refrigerator.</div>
-            </div>
-
-            <!-- Prepositions of Time -->
-            <h3>Prepositions of Time</h3>
-            <p>Show when something happened or will happen.</p>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="example">We have to be ready <span class="highlight">at</span> 5:00 pm.</div>
-                <div class="example">Don't eat <span class="highlight">before</span> bedtime.</div>
-                <div class="example">I get energy <span class="highlight">after</span> the sun sets.</div>
-                <div class="example">Your homework is due <span class="highlight">by</span> Monday.</div>
-                <div class="example">Our teacher fell asleep <span class="highlight">during</span> recess.</div>
-            </div>
-
-            <!-- Prepositions of Direction / Movement -->
-            <h3>Prepositions of Direction / Movement</h3>
-            <p>Show how something is moving or which way it's going.</p>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="example">The dog ran <span class="highlight">across</span> the entire field.</div>
-                <div class="example">She took her first steps <span class="highlight">toward</span> her mother.</div>
-                <div class="example">He walked <span class="highlight">into</span> a river!</div>
-                <div class="example">It's easier to go <span class="highlight">through</span> the woods.</div>
-                <div class="example">He shot the ball <span class="highlight">over</span> his opponent's head.</div>
-            </div>
-
-            <!-- Prepositions of Manner, Cause, or Purpose -->
-            <h3>Prepositions of Manner, Cause, or Purpose</h3>
-            <p>Show how or why something happens.</p>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="example">He takes me to school <span class="highlight">by</span> car.</div>
-                <div class="example">She drives <span class="highlight">like</span> a maniac.</div>
-                <div class="example">He competes <span class="highlight">for</span> honor, not money.</div>
-                <div class="example">Everyone was eating <span class="highlight">in</span> silence.</div>
-                <div class="example">Ava reads <span class="highlight">with</span> difficulty.</div>
-            </div>
-
-            <!-- Additional types: possession, source, measurement -->
-            <h3>Additional Types</h3>
-            <ul>
-                <li><strong>Possession:</strong> <em>of, with</em> – The tree <span class="highlight">of</span> our neighbor; the dog <span class="highlight">with</span> black spots.</li>
-                <li><strong>Source:</strong> <em>from, by</em> – The message is <span class="highlight">from</span> outer space; made <span class="highlight">by</span> a mouse.</li>
-                <li><strong>Measurement:</strong> <em>of, by</em> – a cup <span class="highlight">of</span> flour; taffy sold <span class="highlight">by</span> the yard.</li>
-            </ul>
-
-            <p class="text-sm text-gray-500 mt-2"><span class="badge">Ginger</span> <span class="badge badge-blue ml-2">Types of Prepositions</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: IN, ON, AT – IN DEPTH                               -->
-        <!-- ============================================================ -->
-        <section id="inonat" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🎯</span>
-                <h2 class="!mt-0"><em>In, On, At</em> – Prepositions of Time &amp; Place</h2>
-            </div>
-            <p>These three prepositions are the most common and often confusing. Here's a breakdown of their uses.</p>
-
-            <!-- TIME -->
-            <h3>As Prepositions of Time</h3>
-            <div class="grid md:grid-cols-3 gap-5">
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-amber-700">IN</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• months: <em>in August</em></li>
-                        <li>• seasons: <em>in summer</em></li>
-                        <li>• years: <em>in 1982</em></li>
-                        <li>• centuries: <em>in the 20th century</em></li>
-                        <li>• times of day: <em>in the morning</em></li>
-                        <li>• periods: <em>in a few minutes</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">I was born <span class="highlight">in</span> 1982.</div>
+            <!-- ==================== OVERVIEW ==================== -->
+            <section id="overview" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧩</span>
+                    <h2 class="h-sec">What Are Prepositions?</h2>
                 </div>
-                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-emerald-700">ON</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• days: <em>on Monday</em></li>
-                        <li>• dates: <em>on July 4th</em></li>
-                        <li>• holidays: <em>on Christmas Day</em></li>
-                        <li>• weekend (AmE): <em>on the weekend</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">I was born <span class="highlight">on</span> July 4th.</div>
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    <strong class="text-slate-200">Prepositions</strong> are
+                    small words that describe relationships
+                    with other words in a sentence — <strong
+                        class="text-slate-200">where</strong> (<em>in a
+                        park</em>),
+                    <strong class="text-slate-200">when</strong> (<em>at
+                        noon</em>), <strong class="text-slate-200">why</strong>
+                    (<em>because of hard work</em>) or <strong
+                        class="text-slate-200">how</strong> (<em>with
+                        ease</em>).
+                </p>
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 Key idea:</strong> A
+                        preposition is always followed by its
+                        <strong class="text-slate-200">object</strong> — a noun
+                        or pronoun — forming a
+                        <strong class="text-slate-200">prepositional
+                            phrase</strong>.
+                    </p>
+                    <div class="example">The book <span class="hl">on</span> the
+                        table.</div>
+                    <div class="example">She walked <span
+                            class="hl">through</span> the park.</div>
+                    <div class="example">We met <span class="hl">at</span>
+                        noon.</div>
                 </div>
-                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-blue-700">AT</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• clock times: <em>at 5 pm</em></li>
-                        <li>• mealtimes: <em>at dinner</em></li>
-                        <li>• specific times: <em>at dawn, at night</em></li>
-                        <li>• weekend (BrE): <em>at the weekend</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">I was born <span class="highlight">at</span> exactly 2am.</div>
+            </section>
+
+            <!-- ==================== RULES ==================== -->
+            <section id="rules"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📋</span>
+                    <h2 class="h-sec">The 15 Rules — In Detail</h2>
                 </div>
-            </div>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    Every rule includes the core principle, extra explanation,
+                    real examples, and the traps
+                    examiners love to test.
+                </p>
 
-            <!-- PLACE -->
-            <h3>As Prepositions of Place</h3>
-            <div class="grid md:grid-cols-3 gap-5">
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-amber-700">IN</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• inside something: <em>in the room</em></li>
-                        <li>• countries/cities: <em>in France</em></li>
-                        <li>• the sky: <em>in the sky</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">The cat is <span class="highlight">in</span> the kennel.</div>
-                </div>
-                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-emerald-700">ON</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• surface: <em>on the table</em></li>
-                        <li>• streets: <em>on Main Street</em></li>
-                        <li>• floors: <em>on the fifth floor</em></li>
-                        <li>• planets: <em>on Mars</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">The cat is <span class="highlight">on</span> the table.</div>
-                </div>
-                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                    <h4 class="text-sm font-bold text-blue-700">AT</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• precise location: <em>at the bus stop</em></li>
-                        <li>• events: <em>at the concert</em></li>
-                        <li>• specific addresses: <em>at 720 Main Street</em></li>
-                    </ul>
-                    <div class="example text-sm mt-2">We can meet <span class="highlight">at</span> the crossroads.</div>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>⚠️ Important:</strong> Do not use <em>in, on, at</em> with <strong>next</strong> or <strong>last</strong> when they are used as adjectives before a time period (e.g., <em>next Friday</em>, <em>last night</em>).</p>
-                <div class="example text-sm">Let's go <span class="line-through">on next Friday</span> → Let's go <span class="highlight-green">next Friday</span>.</div>
-                <div class="example text-sm">We stayed home <span class="line-through">at last night</span> → We stayed home <span class="highlight-green">last night</span>.</div>
-            </div>
-
-            <p class="text-sm text-gray-500"><span class="badge">Grammarly</span> <span class="badge badge-blue ml-2">In, On, At</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: PREPOSITIONS LISTS & COLLOCATIONS                   -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">📚</span>
-                <h2 class="!mt-0">Preposition List &amp; Collocations</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-sm font-bold">Common Prepositions (A–Z)</h3>
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm text-gray-700 max-h-60 overflow-y-auto">
-                        aboard, about, above, across, after, against, along, alongside, amid, among, around, as, at, before, behind, below, beneath, beside, between, beyond, but, by, concerning, despite, down, during, except, for, from, in, inside, into, like, near, of, off, on, onto, opposite, outside, over, past, per, plus, regarding, since, than, through, to, toward, under, underneath, unlike, until, up, upon, versus, via, with, within, without.
+                <!-- RULE 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">1</span>
+                        Prepositions of Place</h3>
+                    <p>Show <strong>where</strong> something is or where
+                        something happened. The most common are
+                        <span class="hl">in</span> (enclosed), <span
+                            class="hl">on</span> (surface), <span
+                            class="hl">at</span> (point).</p>
+                    <div class="grid sm:grid-cols-3 gap-3 my-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">IN
+                                — enclosed</p>
+                            <div class="example text-sm">The keys are <span
+                                    class="hl">in</span> my pocket.</div>
+                            <div class="example text-sm">She lives <span
+                                    class="hl">in</span> Paris.</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">ON
+                                — surface</p>
+                            <div class="example text-sm">The book is <span
+                                    class="hlg">on</span> the shelf.</div>
+                            <div class="example text-sm">The cat is <span
+                                    class="hlg">on</span> the roof.</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">AT
+                                — point</p>
+                            <div class="example text-sm">He's <span
+                                    class="hla">at</span> the bus stop.</div>
+                            <div class="example text-sm">We met <span
+                                    class="hla">at</span> the cinema.</div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>under</strong></td><td>below
+                                        something</td><td>The cat is
+                                        <em>under</em> the table.</td></tr>
+                                <tr><td><strong>over</strong></td><td>above,
+                                        covering</td><td>There's a bridge
+                                        <em>over</em> the river.</td></tr>
+                                <tr><td><strong>above /
+                                            below</strong></td><td>higher /
+                                        lower (not touching)</td><td>The plane
+                                        flew <em>above</em> the
+                                        clouds.</td></tr>
+                                <tr><td><strong>between /
+                                            among</strong></td><td>two / more
+                                        than two</td><td>She sat
+                                        <em>between</em> John and
+                                        Mary.</td></tr>
+                                <tr><td><strong>behind</strong></td><td>at the
+                                        back of</td><td>The car is
+                                        <em>behind</em> the house.</td></tr>
+                                <tr><td><strong>beside / next
+                                            to</strong></td><td>at the side
+                                        of</td><td>She sat <em>beside</em>
+                                        me.</td></tr>
+                                <tr><td><strong>near</strong></td><td>close
+                                        to</td><td>They live <em>near</em> the
+                                        park.</td></tr>
+                                <tr><td><strong>opposite</strong></td><td>facing</td><td>The
+                                        bank is <em>opposite</em> the
+                                        school.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-sm font-bold">Common Collocations (verb + prep)</h3>
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm text-gray-700">
-                        <ul class="space-y-1">
-                            <li><strong>agree with</strong> – I agree with you.</li>
-                            <li><strong>believe in</strong> – Do you believe in ghosts?</li>
-                            <li><strong>depend on</strong> – It depends on the weather.</li>
-                            <li><strong>listen to</strong> – Listen to the music.</li>
-                            <li><strong>look at</strong> – Look at that picture.</li>
-                            <li><strong>wait for</strong> – I'm waiting for you.</li>
-                            <li><strong>apologize for</strong> – Apologize for your mistake.</li>
-                            <li><strong>suffer from</strong> – She suffers from allergies.</li>
-                            <li><strong>concentrate on</strong> – Concentrate on your work.</li>
-                            <li><strong>apply for</strong> – Apply for a job.</li>
-                        </ul>
+
+                <!-- RULE 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">2</span>
+                        Prepositions of Time</h3>
+                    <p>Show <strong>when</strong> something happened or will
+                        happen. The three core ones are
+                        <span class="hl">in</span> (long periods), <span
+                            class="hlg">on</span> (days/dates), <span
+                            class="hla">at</span> (precise times).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Preposition</th><th>Used
+                                        with</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>in</strong></td><td>months,
+                                        seasons, years, centuries, parts of
+                                        day</td><td><em>in</em> July ·
+                                        <em>in</em> summer · <em>in</em> 1987 ·
+                                        <em>in</em> the morning</td></tr>
+                                <tr><td><strong>on</strong></td><td>days, dates,
+                                        holidays</td><td><em>on</em> Monday ·
+                                        <em>on</em> July 4th · <em>on</em>
+                                        Christmas Day</td></tr>
+                                <tr><td><strong>at</strong></td><td>clock times,
+                                        mealtimes,
+                                        night/noon/midnight</td><td><em>at</em>
+                                        8 pm · <em>at</em> dinner · <em>at</em>
+                                        night</td></tr>
+                                <tr><td><strong>for</strong></td><td>duration</td><td><em>for</em>
+                                        two hours</td></tr>
+                                <tr><td><strong>since</strong></td><td>starting
+                                        point</td><td><em>since</em>
+                                        2010</td></tr>
+                                <tr><td><strong>during</strong></td><td>within a
+                                        period</td><td><em>during</em> the
+                                        summer</td></tr>
+                                <tr><td><strong>until / till</strong></td><td>up
+                                        to a time</td><td><em>until</em>
+                                        Friday</td></tr>
+                                <tr><td><strong>by</strong></td><td>not later
+                                        than</td><td><em>by</em>
+                                        Monday</td></tr>
+                                <tr><td><strong>before /
+                                            after</strong></td><td>earlier /
+                                        later</td><td><em>before</em> lunch ·
+                                        <em>after</em> work</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>in the
+                            morning</em> but <em>at night</em> — the two do not
+                        follow the same pattern.</div>
+                </div>
+
+                <!-- RULE 3 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">3</span>
+                        Prepositions of Movement &amp; Direction</h3>
+                    <p>Show <strong>how something is moving</strong> or which
+                        way it is going.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>to</strong></td><td>towards a
+                                        destination</td><td>She walked
+                                        <em>to</em> the door.</td></tr>
+                                <tr><td><strong>into</strong></td><td>movement
+                                        to inside</td><td>He walked
+                                        <em>into</em> the room.</td></tr>
+                                <tr><td><strong>onto</strong></td><td>movement
+                                        to a surface</td><td>The cat jumped
+                                        <em>onto</em> the table.</td></tr>
+                                <tr><td><strong>through</strong></td><td>in one
+                                        end, out the other</td><td>We drove
+                                        <em>through</em> the tunnel.</td></tr>
+                                <tr><td><strong>across</strong></td><td>from one
+                                        side to the other</td><td>He ran
+                                        <em>across</em> the field.</td></tr>
+                                <tr><td><strong>along</strong></td><td>following
+                                        a line</td><td>We walked <em>along</em>
+                                        the river.</td></tr>
+                                <tr><td><strong>around</strong></td><td>in a
+                                        circle</td><td>The dog ran
+                                        <em>around</em> the house.</td></tr>
+                                <tr><td><strong>over /
+                                            under</strong></td><td>above / below
+                                        something</td><td>He jumped
+                                        <em>over</em> the fence.</td></tr>
+                                <tr><td><strong>toward(s)</strong></td><td>in
+                                        the direction of</td><td>She walked
+                                        <em>towards</em> me.</td></tr>
+                                <tr><td><strong>up /
+                                            down</strong></td><td>higher /
+                                        lower</td><td>They climbed <em>up</em>
+                                        the hill.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">The dog ran <span
+                            class="hl">across</span> the entire field.</div>
+                    <div class="example">She took her first steps <span
+                            class="hl">toward</span> her mother.</div>
+                    <div class="example">He walked <span class="hl">into</span>
+                        a river!</div>
+                </div>
+
+                <!-- RULE 4 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">4</span>
+                        Prepositions of Manner</h3>
+                    <p>Show <strong>how</strong> something happens. The key ones
+                        are
+                        <span class="hl">by</span> (means), <span
+                            class="hlg">with</span> (using something),
+                        <span class="hla">in</span> (in a certain way), <span
+                            class="hl">like</span> (similarity),
+                        <span class="hl">as</span> (role).</p>
+                    <div class="example">She smiled <span
+                            class="hlg">with</span> joy.</div>
+                    <div class="example">He spoke <span class="hla">in</span> a
+                        whisper.</div>
+                    <div class="example">She writes <span
+                            class="hlg">with</span> a pen.</div>
+                    <div class="example">She sings <span class="hl">like</span>
+                        a bird.</div>
+                    <div class="example">He works <span class="hl">as</span> a
+                        teacher.</div>
+                    <div class="example">They celebrated <span
+                            class="hla">in</span> style.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>like</em> =
+                        similar to; <em>as</em> = in the role of.
+                        “He works <span class="hlg">as</span> a teacher” (his
+                        job) vs “He works <span class="hlg">like</span> a
+                        teacher” (in the same way as a teacher).</div>
+                </div>
+
+                <!-- RULE 5 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        Agent &amp; Instrument — by vs with</h3>
+                    <p><strong>By</strong> is used for the <strong>doer</strong>
+                        of an action (agent).
+                        <strong>With</strong> is used for the <strong>tool or
+                            object</strong> used to do it (instrument).</p>
+                    <div class="example">The letter was written <span
+                            class="hl">by</span> Shakespeare. <span
+                            class="note">(agent)</span></div>
+                    <div class="example">The window was broken <span
+                            class="hl">by</span> a ball. <span
+                            class="note">(cause)</span></div>
+                    <div class="example">She cut the bread <span
+                            class="hlg">with</span> a knife. <span
+                            class="note">(instrument)</span></div>
+                    <div class="example">He painted it <span
+                            class="hlg">with</span> a brush.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>by</em> is also
+                        used with means of transport (<em>by car</em>) and with
+                        -ing forms (<em>by working hard</em>).</div>
+                </div>
+
+                <!-- RULE 6 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        Purpose &amp; Reason — for, to, because of, due to</h3>
+                    <p>Show <strong>why</strong> something happens. The main
+                        options are
+                        <span class="hl">for</span> + noun, <span
+                            class="hl">to</span> + verb, and
+                        <span class="hl">because of / due to / owing to</span> +
+                        noun phrase.</p>
+                    <div class="example">I'm studying <span
+                            class="hl">for</span> an exam. <span
+                            class="note">(noun)</span></div>
+                    <div class="example">I'm studying <span class="hl">to</span>
+                        pass the exam. <span class="note">(verb)</span></div>
+                    <div class="example">Thank you <span class="hl">for</span>
+                        your help.</div>
+                    <div class="example">He was punished <span
+                            class="hl">for</span> cheating.</div>
+                    <div class="example">The game was cancelled <span
+                            class="hl">because of</span> rain.</div>
+                    <div class="example">The flight was delayed <span
+                            class="hl">due to</span> fog.</div>
+                    <div class="tip"><strong>💡 Rule of thumb:</strong>
+                        <em>for</em> + noun / -ing, <em>to</em> + base verb,
+                        <em>because of / due to</em> + noun phrase.</div>
+                </div>
+
+                <!-- RULE 7 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        Possession &amp; Measure — of, with, to</h3>
+                    <p><strong>Of</strong> is the main preposition of possession
+                        and measure.
+                        <strong>With</strong> describes a feature.
+                        <strong>To</strong> is used with the key <em>to</em> a
+                        door and the answer <em>to</em> a question.</p>
+                    <div class="example">The roof <span class="hl">of</span> the
+                        house.</div>
+                    <div class="example">A cup <span class="hl">of</span>
+                        tea.</div>
+                    <div class="example">A piece <span class="hl">of</span>
+                        cake.</div>
+                    <div class="example">A group <span class="hl">of</span>
+                        students.</div>
+                    <div class="example">A man <span class="hlg">with</span> a
+                        beard.</div>
+                    <div class="example">The key <span class="hlg">to</span> the
+                        door.</div>
+                    <div class="example">The answer <span class="hlg">to</span>
+                        the question.</div>
+                </div>
+
+                <!-- RULE 8 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        Source &amp; Origin — from, out of, off</h3>
+                    <p>Show <strong>where something comes from</strong> or
+                        <strong>where it started</strong>.</p>
+                    <div class="example">She comes <span class="hl">from</span>
+                        Spain.</div>
+                    <div class="example">This wine is <span
+                            class="hl">from</span> France.</div>
+                    <div class="example">He ran <span class="hl">out of</span>
+                        the room.</div>
+                    <div class="example">She took the book <span
+                            class="hl">off</span> the shelf.</div>
+                    <div class="example">The letter is <span
+                            class="hl">from</span> my aunt.</div>
+                    <div class="example">I borrowed money <span
+                            class="hl">from</span> him.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>from</em> =
+                        origin, <em>out of</em> = movement from inside to
+                        outside, <em>off</em> = away from a surface.</div>
+                </div>
+
+                <!-- RULE 9 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">9</span> In /
+                        On / At — Time (the full picture)</h3>
+                    <div class="grid sm:grid-cols-3 gap-3 my-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">IN</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">months
+                                · seasons · years · centuries · parts of day ·
+                                periods</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hl">in</span> August · <span
+                                    class="hl">in</span> summer · <span
+                                    class="hl">in</span> 1982 · <span
+                                    class="hl">in</span> the morning</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">ON</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">days
+                                · dates · holidays · the weekend (AmE)</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hlg">on</span> Monday · <span
+                                    class="hlg">on</span> July 4th · <span
+                                    class="hlg">on</span> Christmas Day</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">AT</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">clock
+                                times · mealtimes · precise moments · the
+                                weekend (BrE)</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hla">at</span> 5 pm · <span
+                                    class="hla">at</span> dinner · <span
+                                    class="hla">at</span> dawn · <span
+                                    class="hla">at</span> night</div>
+                        </div>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>in the
+                            morning</em> but <em>at night</em>. Also <em>at noon
+                            / at midnight</em> take no article after
+                        <em>at</em>.</div>
+                </div>
+
+                <!-- RULE 10 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">10</span> In
+                        / On / At — Place (the full picture)</h3>
+                    <div class="grid sm:grid-cols-3 gap-3 my-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">IN</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">inside
+                                something · countries · cities · the sky</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hl">in</span> the room · <span
+                                    class="hl">in</span> France · <span
+                                    class="hl">in</span> the sky</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">ON</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">surfaces
+                                · streets · floors · planets</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hlg">on</span> the table · <span
+                                    class="hlg">on</span> Main Street · <span
+                                    class="hlg">on</span> the fifth floor</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">AT</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">precise
+                                locations · events · addresses</p>
+                            <div class="example text-sm mt-2"><span
+                                    class="hla">at</span> the bus stop · <span
+                                    class="hla">at</span> the concert · <span
+                                    class="hla">at</span> 720 Main Street</div>
+                        </div>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> we say <em>on the
+                            bus</em> but <em>in a car</em>; <em>at the
+                            cinema</em> (event) but <em>in the cinema</em>
+                        (building).</div>
+                </div>
+
+                <!-- RULE 11 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Means of Transport — by, in, on</h3>
+                    <p>Most forms of transport take <strong>by</strong> with no
+                        article. But <em>in</em> and <em>on</em> are used when
+                        there is an article or possessive.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Pattern</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>by</strong> + transport (no
+                                        article)</td><td>by car · by bus · by
+                                        train · by plane · by bike · by
+                                        boat</td></tr>
+                                <tr><td><strong>on</strong> + transport (with
+                                        article)</td><td>on the bus · on the
+                                        train · on the plane · on the 8 o'clock
+                                        train</td></tr>
+                                <tr><td><strong>in</strong> + transport (with
+                                        article)</td><td>in a taxi · in a car ·
+                                        in a helicopter</td></tr>
+                                <tr><td><strong>on foot</strong></td><td>I go to
+                                        school on foot.</td></tr>
+                                <tr><td><strong>into / out of / off</strong> +
+                                        vehicle</td><td>get into the car · get
+                                        out of the car · get off the
+                                        bus</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 Test:</strong> if you can say
+                        “<em>by + noun</em>” with no article, use <em>by</em>.
+                        Otherwise use <em>in</em> or <em>on</em>.</div>
+                </div>
+
+                <!-- RULE 12 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        Time Expressions — No Preposition Needed</h3>
+                    <p>We <strong>do not</strong> use <em>in / on / at</em>
+                        before <strong>next, last, this, every, tomorrow,
+                            yesterday, today</strong>.</p>
+                    <div class="example">✅ Let's go <span class="hlg">next
+                            Friday</span>. <span class="note">(not <em>on next
+                                Friday</em>)</span></div>
+                    <div class="example">✅ We stayed home <span class="hlg">last
+                            night</span>. <span class="note">(not <em>at last
+                                night</em>)</span></div>
+                    <div class="example">✅ I'm busy <span class="hlg">this
+                            afternoon</span>.</div>
+                    <div class="example">✅ She comes <span class="hlg">every
+                            day</span>.</div>
+                    <div class="example">✅ I saw him <span
+                            class="hlg">yesterday</span>.</div>
+                    <div class="example">✅ We'll talk <span
+                            class="hlg">tomorrow</span>.</div>
+                    <div class="warn"><b>⚠️ Exception:</b> <em>in the morning /
+                            afternoon / evening</em> does take <em>the</em>;
+                        <em>at night / noon / midnight</em> does not.</div>
+                </div>
+
+                <!-- RULE 13 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">13</span>
+                        Verb + Preposition Collocations</h3>
+                    <p>Many verbs are followed by a fixed preposition. There is
+                        no logic to it — you have to learn them as chunks.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Verb +
+                                        Preposition</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>agree with</strong></td><td>I
+                                        agree <em>with</em> you.</td></tr>
+                                <tr><td><strong>depend on</strong></td><td>It
+                                        depends <em>on</em> the
+                                        weather.</td></tr>
+                                <tr><td><strong>listen
+                                            to</strong></td><td>Listen
+                                        <em>to</em> the music.</td></tr>
+                                <tr><td><strong>wait for</strong></td><td>I'm
+                                        waiting <em>for</em> you.</td></tr>
+                                <tr><td><strong>look at</strong></td><td>Look
+                                        <em>at</em> that picture.</td></tr>
+                                <tr><td><strong>believe in</strong></td><td>Do
+                                        you believe <em>in</em>
+                                        ghosts?</td></tr>
+                                <tr><td><strong>apologize
+                                            for</strong></td><td>Apologize
+                                        <em>for</em> your mistake.</td></tr>
+                                <tr><td><strong>suffer from</strong></td><td>She
+                                        suffers <em>from</em>
+                                        allergies.</td></tr>
+                                <tr><td><strong>concentrate
+                                            on</strong></td><td>Concentrate
+                                        <em>on</em> your work.</td></tr>
+                                <tr><td><strong>apply for</strong></td><td>Apply
+                                        <em>for</em> a job.</td></tr>
+                                <tr><td><strong>arrive at /
+                                            in</strong></td><td>arrive
+                                        <em>at</em> the station · arrive
+                                        <em>in</em> London</td></tr>
+                                <tr><td><strong>look for</strong></td><td>I'm
+                                        looking <em>for</em> my keys.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
 
-            <div class="rule-box mt-4">
-                <p class="!mb-0"><strong>💡 Tip:</strong> Many adjectives and nouns also have specific prepositions (e.g., <em>interested in</em>, <em>good at</em>, <em>afraid of</em>, <em>reason for</em>).</p>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: EXERCISES                                           -->
-        <!-- ============================================================ -->
-        <section id="exercises" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">✏️</span>
-                <h2 class="!mt-0">Practice Exercises</h2>
-            </div>
-            <p class="text-gray-600">Test your understanding of prepositions with these interactive exercises.</p>
-
-            <!-- Exercise 1: Fill in the blank with in/on/at -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">1</span> Fill in: <em>in, on, at</em>
-                </h3>
-                <div id="ex1" class="exercise-fill mt-3">
-                    <div class="fill-row">
-                        <span class="num">1</span>
-                        <span class="sentence">I was born <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> 1987.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">2</span>
-                        <span class="sentence">We go to school <select data-answer="on" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> Mondays.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">3</span>
-                        <span class="sentence">The cat is <select data-answer="on" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> the roof.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">4</span>
-                        <span class="sentence">We met <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> the station.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">5</span>
-                        <span class="sentence">The keys are <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> my bag.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">6</span>
-                        <span class="sentence">I'll see you <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="at">at</option>
-                            </select> 8:00 pm.</span>
+                <!-- RULE 14 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">14</span>
+                        Adjective + Preposition Collocations</h3>
+                    <p>Adjectives also take fixed prepositions. These are
+                        extremely common in exams.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Adjective +
+                                        Preposition</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>good / bad
+                                            at</strong></td><td>She's good
+                                        <em>at</em> math.</td></tr>
+                                <tr><td><strong>afraid of</strong></td><td>He's
+                                        afraid <em>of</em> spiders.</td></tr>
+                                <tr><td><strong>interested
+                                            in</strong></td><td>I'm interested
+                                        <em>in</em> music.</td></tr>
+                                <tr><td><strong>married
+                                            to</strong></td><td>She's married
+                                        <em>to</em> John.</td></tr>
+                                <tr><td><strong>proud of</strong></td><td>He's
+                                        proud <em>of</em> his work.</td></tr>
+                                <tr><td><strong>tired of</strong></td><td>I'm
+                                        tired <em>of</em> waiting.</td></tr>
+                                <tr><td><strong>worried
+                                            about</strong></td><td>She's worried
+                                        <em>about</em> the exam.</td></tr>
+                                <tr><td><strong>famous for</strong></td><td>He's
+                                        famous <em>for</em> his books.</td></tr>
+                                <tr><td><strong>angry
+                                            with</strong></td><td>They're angry
+                                        <em>with</em> me.</td></tr>
+                                <tr><td><strong>excited
+                                            about</strong></td><td>I'm excited
+                                        <em>about</em> the trip.</td></tr>
+                                <tr><td><strong>different
+                                            from</strong></td><td>This is
+                                        different <em>from</em> that.</td></tr>
+                                <tr><td><strong>responsible
+                                            for</strong></td><td>She's
+                                        responsible <em>for</em> the
+                                        team.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="checkEx1" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="resetEx1" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
-                </div>
-                <div id="resultEx1" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
 
-            <!-- Exercise 2: Choose the correct preposition -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">2</span> Choose the correct preposition
-                </h3>
-                <div id="ex2" class="exercise-fill mt-3">
-                    <div class="fill-row">
-                        <span class="num">1</span>
-                        <span class="sentence">He's very good <select data-answer="at" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="at">at</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="of">of</option>
-                            </select> math.</span>
+                <!-- RULE 15 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">15</span>
+                        Noun + Preposition Collocations</h3>
+                    <p>Finally, many nouns take fixed prepositions too —
+                        especially abstract nouns in academic and professional
+                        writing.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Noun +
+                                        Preposition</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>reason for</strong></td><td>The
+                                        reason <em>for</em> the delay.</td></tr>
+                                <tr><td><strong>cause of</strong></td><td>The
+                                        cause <em>of</em> the fire.</td></tr>
+                                <tr><td><strong>increase / decrease
+                                            in</strong></td><td>An increase
+                                        <em>in</em> prices.</td></tr>
+                                <tr><td><strong>solution to</strong></td><td>A
+                                        solution <em>to</em> the
+                                        problem.</td></tr>
+                                <tr><td><strong>answer to</strong></td><td>The
+                                        answer <em>to</em> the
+                                        question.</td></tr>
+                                <tr><td><strong>key to</strong></td><td>A key
+                                        <em>to</em> success.</td></tr>
+                                <tr><td><strong>effect of</strong></td><td>The
+                                        effect <em>of</em> the drug.</td></tr>
+                                <tr><td><strong>advantage / disadvantage
+                                            of</strong></td><td>An advantage
+                                        <em>of</em> technology.</td></tr>
+                                <tr><td><strong>interest in</strong></td><td>His
+                                        interest <em>in</em> music.</td></tr>
+                                <tr><td><strong>demand
+                                            for</strong></td><td>Demand
+                                        <em>for</em> oil.</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">2</span>
-                        <span class="sentence">She's afraid <select data-answer="of" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="at">at</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="of">of</option>
-                            </select> spiders.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">3</span>
-                        <span class="sentence">I'm interested <select data-answer="in" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="at">at</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="for">for</option>
-                            </select> learning French.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">4</span>
-                        <span class="sentence">Please wait <select data-answer="for" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="at">at</option>
-                                <option value="in">in</option>
-                                <option value="on">on</option>
-                                <option value="for">for</option>
-                            </select> me.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">5</span>
-                        <span class="sentence">He apologized <select data-answer="for" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="at">at</option>
-                                <option value="in">in</option>
-                                <option value="for">for</option>
-                                <option value="of">of</option>
-                            </select> being late.</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>reason for</em>
+                        but <em>cause of</em>. <em>Solution / answer / key
+                            to</em> — not <em>of</em>. This is one of the most
+                        tested mistakes.</div>
+                </div>
+
+                <div
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
+                    <span class="text-xl">📌</span>
+                    <div>
+                        <strong>How to choose a preposition:</strong> (1) Is it
+                        place, time, movement or manner?
+                        (2) Is it a fixed collocation with a verb, adjective or
+                        noun?
+                        (3) Is it a time expression like <em>next / last /
+                            this</em> that needs no preposition?
+                        Answer those three questions and the right preposition
+                        will usually appear.
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="checkEx2" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="resetEx2" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+            </section>
+
+            <!-- ==================== CHART ==================== -->
+            <section id="chart"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📊</span>
+                    <h2 class="h-sec">Quick-Reference Chart</h2>
                 </div>
-                <div id="resultEx2" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
+                <p class="text-slate-400 mb-2">The most important patterns on
+                    one screen.</p>
 
-            <!-- Exercise 3: Fill in the blank (mixed) -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">3</span> Fill in the blank (mixed prepositions)
-                </h3>
-                <div id="ex3" class="exercise-fill mt-3">
-                    <div class="fill-row">
-                        <span class="num">1</span>
-                        <span class="sentence">The dog ran <input type="text" data-answer="across" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> the field.</span>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:28%">Situation</th><th
+                                    style="width:22%">Preposition</th><th
+                                    style="width:50%">Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>Enclosed place</td><td><span
+                                        class="text-amber-300 font-semibold">in</span></td><td>in
+                                    the room · in France</td></tr>
+                            <tr><td>Surface</td><td><span
+                                        class="text-emerald-300 font-semibold">on</span></td><td>on
+                                    the table · on the wall</td></tr>
+                            <tr><td>Point / event</td><td><span
+                                        class="text-blue-300 font-semibold">at</span></td><td>at
+                                    the bus stop · at the concert</td></tr>
+                            <tr><td>Month / year / season</td><td><span
+                                        class="text-amber-300 font-semibold">in</span></td><td>in
+                                    July · in 1987 · in summer</td></tr>
+                            <tr><td>Day / date</td><td><span
+                                        class="text-emerald-300 font-semibold">on</span></td><td>on
+                                    Monday · on July 4th</td></tr>
+                            <tr><td>Clock time</td><td><span
+                                        class="text-blue-300 font-semibold">at</span></td><td>at
+                                    8 pm · at noon</td></tr>
+                            <tr><td>Duration</td><td><span
+                                        class="text-amber-300 font-semibold">for</span></td><td>for
+                                    two hours</td></tr>
+                            <tr><td>Starting point</td><td><span
+                                        class="text-amber-300 font-semibold">since</span></td><td>since
+                                    2010</td></tr>
+                            <tr><td>Deadline</td><td><span
+                                        class="text-amber-300 font-semibold">by</span></td><td>by
+                                    Friday</td></tr>
+                            <tr><td>Transport (general)</td><td><span
+                                        class="text-emerald-300 font-semibold">by</span></td><td>by
+                                    car · by bus · by train</td></tr>
+                            <tr><td>Transport (specific)</td><td><span
+                                        class="text-blue-300 font-semibold">on /
+                                        in</span></td><td>on the bus · in a
+                                    taxi</td></tr>
+                            <tr><td>Agent (doer)</td><td><span
+                                        class="text-indigo-300 font-semibold">by</span></td><td>written
+                                    by Shakespeare</td></tr>
+                            <tr><td>Instrument (tool)</td><td><span
+                                        class="text-emerald-300 font-semibold">with</span></td><td>cut
+                                    with a knife</td></tr>
+                            <tr><td>Purpose + noun</td><td><span
+                                        class="text-amber-300 font-semibold">for</span></td><td>for
+                                    an exam</td></tr>
+                            <tr><td>Purpose + verb</td><td><span
+                                        class="text-amber-300 font-semibold">to</span></td><td>to
+                                    pass the exam</td></tr>
+                            <tr><td>Origin</td><td><span
+                                        class="text-violet-300 font-semibold">from</span></td><td>from
+                                    Spain</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                    <div
+                        class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4">
+                        <p class="font-semibold text-indigo-300 text-sm">✅ No
+                            preposition with time expressions</p>
+                        <p
+                            class="text-sm text-slate-400 mt-1"><strong>next</strong>
+                            Friday · <strong>last</strong> night ·
+                            <strong>this</strong> afternoon ·
+                            <strong>every</strong> day ·
+                            <strong>yesterday</strong> ·
+                            <strong>tomorrow</strong></p>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">2</span>
-                        <span class="sentence">We walked <input type="text" data-answer="through" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> the tunnel.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">3</span>
-                        <span class="sentence">She sat <input type="text" data-answer="beside" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> me.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">4</span>
-                        <span class="sentence">I'll finish the project <input type="text" data-answer="by" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> Friday.</span>
-                    </div>
-                    <div class="fill-row">
-                        <span class="num">5</span>
-                        <span class="sentence">He lives <input type="text" data-answer="at" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-28 text-center"> 25 Main Street.</span>
+                    <div
+                        class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.07] p-4">
+                        <p class="font-semibold text-emerald-300 text-sm">✅
+                            Fixed collocations to memorise</p>
+                        <p class="text-sm text-slate-400 mt-1">good
+                            <strong>at</strong> · afraid <strong>of</strong> ·
+                            interested <strong>in</strong> · married
+                            <strong>to</strong> · reason <strong>for</strong> ·
+                            solution <strong>to</strong></p>
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="checkEx3" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="resetEx3" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+            </section>
+
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 150 Questions</h2>
                 </div>
-                <div id="resultEx3" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
+                <p class="text-slate-400 mb-2 max-w-3xl">
+                    Ten exercises for every one of the 15 rules. Pick a rule to
+                    drill it, or work through all 150.
+                    Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+                <div
+                    class="flex flex-wrap items-center gap-2 mb-5 text-xs text-slate-500">
+                    <span>Answers lock after first click</span>
+                    <span class="text-slate-700">·</span>
+                    <span>Click a chosen option again to deselect</span>
+                </div>
 
-        </section>
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">150</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
 
-        <!-- ====== FOOTER ====== -->
-        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-400 pb-8">
-            <p class="mb-0">📘 PrepMaster &bull; Ultimate Prepositions Guide &bull; 2026</p>
-            <p class="text-xs mt-1">Built with ❤️ using HTML &amp; Tailwind CSS</p>
-        </footer>
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
 
-    </main>
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
 
-    <!-- ============================================================ -->
-    <!--  JAVASCRIPT – EXERCISES                                       -->
-    <!-- ============================================================ -->
-    <script>
-        (function() {
-            // Helper: normalize
-            function normalize(s) {
-                return s.trim().toLowerCase().replace(/\s+/g, ' ');
-            }
+            <!-- ==================== QUIZ ==================== -->
+            <section id="quiz"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧠</span>
+                    <h2 class="h-sec">Practice Quiz</h2>
+                </div>
+                <p class="text-slate-400 mb-6">Twelve mixed questions — choose
+                    the correct preposition, then check your score.</p>
 
-            // ---------- EXERCISE 1: in/on/at (select) ----------
-            const selects1 = document.querySelectorAll('#ex1 select');
-            const result1 = document.getElementById('resultEx1');
-            document.getElementById('checkEx1').addEventListener('click', function() {
-                let correct = 0,
-                    total = selects1.length;
-                selects1.forEach(sel => {
-                    const val = sel.value;
-                    const ans = sel.dataset.answer;
-                    if (val === ans) {
-                        correct++;
-                        sel.classList.remove('border-red-400', 'bg-red-50');
-                        sel.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        sel.classList.remove('border-green-500', 'bg-green-50');
-                        if (val !== '') {
-                            sel.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            sel.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allAnswered = Array.from(selects1).every(s => s.value !== '');
-                if (!allAnswered) {
-                    result1.textContent = '⚠️ Please answer all questions.';
-                    result1.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result1.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result1.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result1.textContent += ' 🎉 Perfect!';
-                }
-                result1.classList.remove('hidden');
-            });
-            document.getElementById('resetEx1').addEventListener('click', function() {
-                selects1.forEach(sel => {
-                    sel.value = '';
-                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result1.classList.add('hidden');
-            });
+                <div id="quizContainer" class="grid gap-3"></div>
 
-            // ---------- EXERCISE 2: choose correct (select) ----------
-            const selects2 = document.querySelectorAll('#ex2 select');
-            const result2 = document.getElementById('resultEx2');
-            document.getElementById('checkEx2').addEventListener('click', function() {
-                let correct = 0,
-                    total = selects2.length;
-                selects2.forEach(sel => {
-                    const val = sel.value;
-                    const ans = sel.dataset.answer;
-                    if (val === ans) {
-                        correct++;
-                        sel.classList.remove('border-red-400', 'bg-red-50');
-                        sel.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        sel.classList.remove('border-green-500', 'bg-green-50');
-                        if (val !== '') {
-                            sel.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            sel.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allAnswered = Array.from(selects2).every(s => s.value !== '');
-                if (!allAnswered) {
-                    result2.textContent = '⚠️ Please answer all questions.';
-                    result2.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result2.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result2.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result2.textContent += ' 🎉 Perfect!';
-                }
-                result2.classList.remove('hidden');
-            });
-            document.getElementById('resetEx2').addEventListener('click', function() {
-                selects2.forEach(sel => {
-                    sel.value = '';
-                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result2.classList.add('hidden');
-            });
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
+                </div>
 
-            // ---------- EXERCISE 3: fill-in (input) ----------
-            const inputs3 = document.querySelectorAll('#ex3 input');
-            const result3 = document.getElementById('resultEx3');
-            document.getElementById('checkEx3').addEventListener('click', function() {
-                let correct = 0,
-                    total = inputs3.length;
-                inputs3.forEach(inp => {
-                    const user = inp.value.trim();
-                    const ans = inp.dataset.answer;
-                    if (normalize(user) === normalize(ans)) {
-                        correct++;
-                        inp.classList.remove('border-red-400', 'bg-red-50');
-                        inp.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        inp.classList.remove('border-green-500', 'bg-green-50');
-                        if (user !== '') {
-                            inp.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            inp.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allFilled = Array.from(inputs3).every(inp => inp.value.trim() !== '');
-                if (!allFilled) {
-                    result3.textContent = '⚠️ Please fill in all blanks.';
-                    result3.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result3.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result3.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result3.textContent += ' 🎉 Perfect!';
-                }
-                result3.classList.remove('hidden');
-            });
-            document.getElementById('resetEx3').addEventListener('click', function() {
-                inputs3.forEach(inp => {
-                    inp.value = '';
-                    inp.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result3.classList.add('hidden');
-            });
+                <div id="quizResult"
+                    class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
+            </section>
 
-            // Enter key support for input fields
-            document.querySelectorAll('.exercise-fill input').forEach(inp => {
-                inp.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        const parent = inp.closest('.bg-white');
-                        if (parent) {
-                            const btn = parent.querySelector('button[id^="check"]');
-                            if (btn) btn.click();
-                        }
-                    }
-                });
-            });
+            <!-- ==================== FAQ ==================== -->
+            <section id="faq"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">❓</span>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
+                </div>
 
-        })();
-    </script>
+                <div class="grid gap-3 mt-5">
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            difference between in, on and at?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Think
+                            of them as three levels of precision.
+                            <strong>In</strong> = enclosed or large area (in the
+                            room, in France). <strong>On</strong> = a surface
+                            (on the table, on the wall). <strong>At</strong> = a
+                            point (at the door, at the bus stop). The same logic
+                            applies to time: in = long period, on = day/date, at
+                            = precise clock time.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why do we say
+                            “in the morning” but “at night”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">This
+                            is an idiom — the pattern goes back to Old English
+                            and doesn't follow a logical rule. Parts of the day
+                            take <em>in the</em> (in the morning / afternoon /
+                            evening), but <em>night</em>, <em>noon</em> and
+                            <em>midnight</em> take <em>at</em> (at night, at
+                            noon, at midnight).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">When do I use
+                            “by” and when “with”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>By</strong>
+                            = the doer of an action (written by Shakespeare) or
+                            a method (by car, by working hard).
+                            <strong>With</strong> = the tool or object used (cut
+                            with a knife, written with a pen).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why is “on next
+                            Friday” wrong?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Because
+                            <em>next, last, this, every, yesterday,
+                                tomorrow</em> already contain the prepositional
+                            meaning of time. Adding <em>on</em> is redundant.
+                            Say “next Friday”, not “on next Friday”.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How can I
+                            remember preposition collocations?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Learn
+                            them as whole chunks — “depend on”, “afraid of”,
+                            “solution to” — rather than learning the preposition
+                            separately. Use flashcards with the full chunk on
+                            one side and the meaning on the other. The 150
+                            exercises on this page are a good place to
+                            start.</p>
+                    </div>
+                </div>
 
-</body>
+                <div
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Source:</strong>
+                    Grammarly, Ginger and Raymond Murphy, <em>English Grammar in
+                        Use</em>.
+                    Additional rules and 150 exercises compiled for this guide.
+                </div>
+            </section>
+
+            <!-- ==================== FOOTER ==================== -->
+            <footer
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>🧩 PrepMaster · Ultimate Prepositions Guide · 2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
+            </footer>
+        </main>
+
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (150 items)
+     Format: [rule, sentence, options[], correctIndex, explanation]
+     ============================================================ -->
+        <script>
+const EXERCISES = [
+/* ---------- RULE 1: Prepositions of Place (10) ---------- */
+[1,'The keys are ___ my pocket.',['in','on','at'],0,'Enclosed space → in.'],
+[1,'The book is ___ the shelf.',['in','on','at'],1,'Surface → on.'],
+[1,'He\'s waiting ___ the bus stop.',['in','on','at'],2,'Point → at.'],
+[1,'She lives ___ Paris.',['in','on','at'],0,'City → in.'],
+[1,'There\'s a bridge ___ the river.',['on','over','in'],1,'Spanning across → over.'],
+[1,'The cat is ___ the table.',['in','on','at'],1,'Surface → on.'],
+[1,'The shop is ___ the bank and the post office.',['among','between','in'],1,'Two things → between.'],
+[1,'She sat ___ me.',['beside','between','in'],0,'At the side → beside.'],
+[1,'There are flowers ___ the trees.',['between','among','in'],1,'More than two → among.'],
+[1,'The bank is ___ the school.',['opposite','in','at'],0,'Facing → opposite.'],
+
+/* ---------- RULE 2: Prepositions of Time (10) ---------- */
+[2,'I\'ll see you ___ Monday.',['in','on','at'],1,'Day → on.'],
+[2,'We met ___ 2010.',['in','on','at'],0,'Year → in.'],
+[2,'The movie starts ___ 8 pm.',['in','on','at'],2,'Clock time → at.'],
+[2,'She was born ___ July.',['in','on','at'],0,'Month → in.'],
+[2,'I\'ll finish ___ Friday.',['in','by','at'],1,'Deadline → by.'],
+[2,'We stayed ___ the summer.',['during','at','on'],0,'Within a period → during.'],
+[2,'He\'s been here ___ two hours.',['since','for','at'],1,'Duration → for.'],
+[2,'I\'ve known her ___ 2015.',['for','since','in'],1,'Starting point → since.'],
+[2,'Call me ___ 5 pm.',['after','at','in'],0,'Earlier than → before/after here “after”.'],
+[2,'Let\'s meet ___ lunch.',['after','at','on'],0,'Later than → after.'],
+
+/* ---------- RULE 3: Prepositions of Movement (10) ---------- */
+[3,'She walked ___ the door.',['through','on','at'],0,'In one end, out the other → through.'],
+[3,'He ran ___ the field.',['across','in','at'],0,'From one side to the other → across.'],
+[3,'The cat jumped ___ the table.',['onto','in','at'],0,'To a surface → onto.'],
+[3,'We drove ___ the tunnel.',['through','on','at'],0,'Through the tunnel → through.'],
+[3,'She walked ___ the street.',['along','in','at'],0,'Following a line → along.'],
+[3,'He fell ___ the stairs.',['down','up','in'],0,'Lower → down.'],
+[3,'They climbed ___ the mountain.',['up','down','in'],0,'Higher → up.'],
+[3,'The dog ran ___ the house.',['around','in','at'],0,'In a circle → around.'],
+[3,'She threw the ball ___ me.',['to','at','in'],0,'Direction toward a person → to.'],
+[3,'He walked ___ the room.',['into','on','at'],0,'Movement to inside → into.'],
+
+/* ---------- RULE 4: Prepositions of Manner (10) ---------- */
+[4,'She smiled ___ joy.',['with','in','by'],0,'Feeling → with.'],
+[4,'He spoke ___ a whisper.',['in','with','by'],0,'In a way → in.'],
+[4,'She writes ___ a pen.',['with','by','in'],0,'Instrument → with.'],
+[4,'He drives ___ a car.',['by','with','in'],0,'Means of transport → by.'],
+[4,'She sings ___ a bird.',['like','as','in'],0,'Similarity → like.'],
+[4,'He works ___ a teacher.',['as','like','in'],0,'Role → as.'],
+[4,'They celebrated ___ style.',['in','by','with'],0,'In a way → in.'],
+[4,'She answered ___ surprise.',['in','with','by'],0,'In a state → in.'],
+[4,'He ate ___ hunger.',['with','in','by'],0,'Feeling → with.'],
+[4,'She spoke ___ confidence.',['with','in','by'],0,'Feeling → with.'],
+
+/* ---------- RULE 5: Agent & Instrument (10) ---------- */
+[5,'The letter was written ___ Shakespeare.',['by','with','of'],0,'Doer → by.'],
+[5,'The cake was made ___ my mother.',['by','with','of'],0,'Doer → by.'],
+[5,'She cut the bread ___ a knife.',['with','by','of'],0,'Tool → with.'],
+[5,'The window was broken ___ a ball.',['by','with','of'],0,'Cause → by.'],
+[5,'The song was sung ___ Adele.',['by','with','of'],0,'Singer → by.'],
+[5,'He painted it ___ a brush.',['with','by','of'],0,'Tool → with.'],
+[5,'The car was repaired ___ a mechanic.',['by','with','of'],0,'Doer → by.'],
+[5,'She opened the door ___ a key.',['with','by','of'],0,'Tool → with.'],
+[5,'The book was written ___ a famous author.',['by','with','of'],0,'Author → by.'],
+[5,'The tree was cut ___ an axe.',['with','by','of'],0,'Tool → with.'],
+
+/* ---------- RULE 6: Purpose & Reason (10) ---------- */
+[6,'I\'m studying ___ an exam.',['for','to','of'],0,'Purpose + noun → for.'],
+[6,'I\'m studying ___ pass the exam.',['to','for','of'],0,'Purpose + verb → to.'],
+[6,'Thank you ___ your help.',['for','to','of'],0,'Reason → for.'],
+[6,'He was punished ___ cheating.',['for','to','of'],0,'Reason → for.'],
+[6,'She\'s famous ___ her cooking.',['for','to','of'],0,'Reason → for.'],
+[6,'We stopped ___ a break.',['for','to','of'],0,'Purpose + noun → for.'],
+[6,'He works ___ money.',['for','to','of'],0,'Purpose → for.'],
+[6,'I\'m here ___ a holiday.',['for','to','on'],0,'Purpose → for.'],
+[6,'The game was cancelled ___ rain.',['because of','because','due'],0,'Noun phrase → because of.'],
+[6,'The flight was delayed ___ fog.',['due to','due','because'],0,'Noun phrase → due to.'],
+
+/* ---------- RULE 7: Possession & Measure (10) ---------- */
+[7,'The roof ___ the house is red.',['of','with','to'],0,'Possession → of.'],
+[7,'A man ___ a beard walked in.',['with','of','to'],0,'Feature → with.'],
+[7,'A cup ___ tea, please.',['of','with','to'],0,'Measure → of.'],
+[7,'A bottle ___ water.',['of','with','to'],0,'Measure → of.'],
+[7,'The key ___ the door is lost.',['to','of','with'],0,'Fixed: key to → to.'],
+[7,'A piece ___ cake.',['of','with','to'],0,'Measure → of.'],
+[7,'A group ___ students arrived.',['of','with','to'],0,'Measure → of.'],
+[7,'A man ___ a hat.',['with','of','to'],0,'Feature → with.'],
+[7,'The colour ___ the sky.',['of','with','to'],0,'Possession → of.'],
+[7,'A slice ___ bread.',['of','with','to'],0,'Measure → of.'],
+
+/* ---------- RULE 8: Source & Origin (10) ---------- */
+[8,'She comes ___ Spain.',['from','of','to'],0,'Origin → from.'],
+[8,'This wine is ___ France.',['from','of','to'],0,'Origin → from.'],
+[8,'He ran ___ the room.',['out of','from','of'],0,'Movement from inside → out of.'],
+[8,'She took the book ___ the shelf.',['off','from','of'],0,'Away from a surface → off.'],
+[8,'The letter is ___ my aunt.',['from','of','to'],0,'Source → from.'],
+[8,'He arrived ___ the airport.',['from','of','to'],0,'Source → from.'],
+[8,'She got the idea ___ a dream.',['from','of','to'],0,'Source → from.'],
+[8,'I borrowed money ___ him.',['from','of','to'],0,'Source → from.'],
+[8,'The sound came ___ the next room.',['from','of','to'],0,'Source → from.'],
+[8,'She walked ___ the building.',['out of','from','of'],0,'Movement from inside → out of.'],
+
+/* ---------- RULE 9: In/On/At — Time (10) ---------- */
+[9,'___ 2015, I moved to London.',['In','On','At'],0,'Year → In.'],
+[9,'It\'s hot ___ summer.',['in','on','at'],0,'Season → in.'],
+[9,'We\'ll meet ___ Monday.',['in','on','at'],1,'Day → on.'],
+[9,'The meeting is ___ 3 pm.',['in','on','at'],2,'Clock time → at.'],
+[9,'I was born ___ July 4th.',['in','on','at'],1,'Date → on.'],
+[9,'She was born ___ 1985.',['in','on','at'],0,'Year → in.'],
+[9,'He\'ll arrive ___ noon.',['in','on','at'],2,'Precise moment → at.'],
+[9,'I\'ll see you ___ the morning.',['in','on','at'],0,'Part of day → in.'],
+[9,'We\'ll visit ___ Christmas Day.',['in','on','at'],1,'Holiday day → on.'],
+[9,'Let\'s meet ___ night.',['in','on','at'],2,'Fixed: at night → at.'],
+
+/* ---------- RULE 10: In/On/At — Place (10) ---------- */
+[10,'She lives ___ Italy.',['in','on','at'],0,'Country → in.'],
+[10,'The book is ___ the table.',['in','on','at'],1,'Surface → on.'],
+[10,'He\'s ___ the door.',['in','on','at'],2,'Point → at.'],
+[10,'I\'m ___ my room.',['in','on','at'],0,'Enclosed → in.'],
+[10,'We\'re ___ the bus stop.',['in','on','at'],2,'Point → at.'],
+[10,'The keys are ___ the shelf.',['in','on','at'],1,'Surface → on.'],
+[10,'She\'s ___ London.',['in','on','at'],0,'City → in.'],
+[10,'He\'s ___ the cinema.',['in','on','at'],2,'Event → at.'],
+[10,'The cat is ___ the roof.',['in','on','at'],1,'Surface → on.'],
+[10,'We met ___ the party.',['in','on','at'],2,'Event → at.'],
+
+/* ---------- RULE 11: Means of Transport (10) ---------- */
+[11,'She goes to work ___ car.',['by','in','on'],0,'General transport → by.'],
+[11,'I go to school ___ foot.',['on','by','in'],0,'Fixed: on foot → on.'],
+[11,'They traveled ___ train.',['by','in','on'],0,'General transport → by.'],
+[11,'We went ___ a taxi.',['in','by','on'],0,'With article → in.'],
+[11,'He came ___ bus.',['by','in','on'],0,'General transport → by.'],
+[11,'She arrived ___ plane.',['by','in','on'],0,'General transport → by.'],
+[11,'We went ___ the 8 o\'clock train.',['on','by','in'],0,'With article → on.'],
+[11,'He got ___ the car.',['into','in','on'],0,'Movement inside → into.'],
+[11,'We got ___ the bus.',['off','out','from'],0,'Leave a vehicle → off.'],
+[11,'They went ___ bike.',['by','in','on'],0,'General transport → by.'],
+
+/* ---------- RULE 12: Time Expressions (10) ---------- */
+[12,'I\'ll see you ___ next week.',['—','on','in'],0,'No preposition with “next”.'],
+[12,'We met ___ last year.',['—','on','in'],0,'No preposition with “last”.'],
+[12,'I\'m busy ___ this afternoon.',['—','on','in'],0,'No preposition with “this”.'],
+[12,'She comes ___ every day.',['—','on','in'],0,'No preposition with “every”.'],
+[12,'Let\'s meet ___ tomorrow.',['—','on','at'],0,'No preposition with “tomorrow”.'],
+[12,'I saw him ___ yesterday.',['—','on','at'],0,'No preposition with “yesterday”.'],
+[12,'We\'ll talk ___ next Monday.',['—','on','at'],0,'No preposition with “next”.'],
+[12,'I\'ll call you ___ this evening.',['—','on','in'],0,'No preposition with “this”.'],
+[12,'He arrived ___ last night.',['—','on','at'],0,'No preposition with “last”.'],
+[12,'We\'ll go ___ next month.',['—','on','in'],0,'No preposition with “next”.'],
+
+/* ---------- RULE 13: Verb + Preposition (10) ---------- */
+[13,'I agree ___ you.',['with','to','on'],0,'Fixed: agree with → with.'],
+[13,'It depends ___ the weather.',['on','of','in'],0,'Fixed: depend on → on.'],
+[13,'She\'s listening ___ music.',['to','at','in'],0,'Fixed: listen to → to.'],
+[13,'He\'s waiting ___ the bus.',['for','at','on'],0,'Fixed: wait for → for.'],
+[13,'They\'re looking ___ a new house.',['for','at','in'],0,'Fixed: look for → for.'],
+[13,'I believe ___ you.',['in','on','at'],0,'Fixed: believe in → in.'],
+[13,'She apologized ___ being late.',['for','to','of'],0,'Fixed: apologize for → for.'],
+[13,'He suffers ___ headaches.',['from','of','with'],0,'Fixed: suffer from → from.'],
+[13,'I\'m thinking ___ you.',['of','on','at'],0,'Fixed: think of → of.'],
+[13,'Concentrate ___ your work.',['on','in','at'],0,'Fixed: concentrate on → on.'],
+
+/* ---------- RULE 14: Adjective + Preposition (10) ---------- */
+[14,'She\'s good ___ math.',['at','in','on'],0,'Fixed: good at → at.'],
+[14,'He\'s afraid ___ spiders.',['of','from','at'],0,'Fixed: afraid of → of.'],
+[14,'I\'m interested ___ music.',['in','on','at'],0,'Fixed: interested in → in.'],
+[14,'She\'s married ___ John.',['to','with','at'],0,'Fixed: married to → to.'],
+[14,'He\'s proud ___ his work.',['of','in','at'],0,'Fixed: proud of → of.'],
+[14,'I\'m tired ___ waiting.',['of','from','at'],0,'Fixed: tired of → of.'],
+[14,'She\'s worried ___ the exam.',['about','of','on'],0,'Fixed: worried about → about.'],
+[14,'He\'s famous ___ his books.',['for','of','at'],0,'Fixed: famous for → for.'],
+[14,'They\'re angry ___ me.',['with','at','on'],0,'Fixed: angry with → with.'],
+[14,'I\'m excited ___ the trip.',['about','of','on'],0,'Fixed: excited about → about.'],
+
+/* ---------- RULE 15: Noun + Preposition (10) ---------- */
+[15,'The reason ___ the delay.',['for','of','to'],0,'Fixed: reason for → for.'],
+[15,'The cause ___ the fire.',['of','for','to'],0,'Fixed: cause of → of.'],
+[15,'An increase ___ prices.',['in','of','to'],0,'Fixed: increase in → in.'],
+[15,'A decrease ___ sales.',['in','of','to'],0,'Fixed: decrease in → in.'],
+[15,'A solution ___ the problem.',['to','of','for'],0,'Fixed: solution to → to.'],
+[15,'The answer ___ the question.',['to','of','for'],0,'Fixed: answer to → to.'],
+[15,'A key ___ success.',['to','of','for'],0,'Fixed: key to → to.'],
+[15,'The effect ___ the drug.',['of','on','to'],0,'Fixed: effect of → of.'],
+[15,'An advantage ___ technology.',['of','to','for'],0,'Fixed: advantage of → of.'],
+[15,'A disadvantage ___ the plan.',['of','to','for'],0,'Fixed: disadvantage of → of.']
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Prepositions of Place',
+  2:'Prepositions of Time',
+  3:'Movement & Direction',
+  4:'Prepositions of Manner',
+  5:'Agent & Instrument',
+  6:'Purpose & Reason',
+  7:'Possession & Measure',
+  8:'Source & Origin',
+  9:'In / On / At — Time',
+  10:'In / On / At — Place',
+  11:'Means of Transport',
+  12:'Time Expressions',
+  13:'Verb + Preposition',
+  14:'Adjective + Preposition',
+  15:'Noun + Preposition'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 15; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'q-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="q-exp ${ok ? 'text-emerald-400' : 'text-red-400'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4 transition hover:border-[#31446b] fade">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1.5 bg-[#16233c] text-[#93a7c7] text-[.68rem] font-bold rounded-md mt-0.5">${i + 1}</span>
+            <p class="flex-1 text-sm text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="q-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.q-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;
+    answers[id] = opt;
+    render();
+  });
+
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'I was born ___ 1987.',                          options: ['in','on','at'], correct: 0 },
+    { id: 2,  text: 'We go to school ___ Mondays.',                  options: ['in','on','at'], correct: 1 },
+    { id: 3,  text: 'The cat is ___ the roof.',                      options: ['in','on','at'], correct: 1 },
+    { id: 4,  text: 'We met ___ the station.',                       options: ['in','on','at'], correct: 2 },
+    { id: 5,  text: 'He\'s very good ___ math.',                     options: ['at','in','on'], correct: 0 },
+    { id: 6,  text: 'She\'s afraid ___ spiders.',                    options: ['of','from','at'], correct: 0 },
+    { id: 7,  text: 'I\'ll finish the project ___ Friday.',          options: ['by','on','in'], correct: 0 },
+    { id: 8,  text: 'She goes to work ___ car.',                     options: ['by','in','on'], correct: 0 },
+    { id: 9,  text: 'Let\'s go ___ next Friday.',                    options: ['—','on','in'], correct: 0 },
+    { id: 10, text: 'The letter was written ___ Shakespeare.',       options: ['by','with','of'], correct: 0 },
+    { id: 11, text: 'It depends ___ the weather.',                   options: ['on','of','in'], correct: 0 },
+    { id: 12, text: 'The answer ___ the question is on page 5.',     options: ['to','of','for'], correct: 0 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => {
+              let cls = 'q-opt';
+              if (sel === oi) cls += ' selected';
+              if (sel !== undefined) {
+                if (oi === q.correct) cls += ' correct';
+                else if (sel === oi) cls += ' wrong';
+              }
+              return `<button class="${cls}" data-qid="${q.id}" data-optindex="${oi}">${opt}</button>`;
+            }).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.q-opt').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — you are a grammar master! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+
+    </body>
 </html>

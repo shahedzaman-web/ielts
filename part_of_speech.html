@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Parts of Speech for IELTS Reading &amp; Listening — Dark
+            Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
+
+:root{
+  --bg:#070b16;
+  --surface:#0d1526;
+  --surface-2:#101b2e;
+  --border:#1e2b45;
+  --text:#dbe4f3;
+  --muted:#8fa3c0;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+  --blue:#60a5fa;
+  --violet:#a78bfa;
+}
+
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px circle at 8% -8%, rgba(99,102,241,.18), transparent 62%),
+    radial-gradient(700px circle at 96% 2%, rgba(168,85,247,.13), transparent 62%),
+    radial-gradient(640px circle at 50% 108%, rgba(16,185,129,.09), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
+
+/* ---------- Typography ---------- */
+.h-sec{ font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd; }
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
+
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
+
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
+
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
+
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.hla{ color:#fbbf24; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
+
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
+
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+.table-wrap table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+.table-wrap th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+.table-wrap td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+.table-wrap tr:last-child td{ border-bottom:none; }
+.table-wrap tbody tr:hover td{ background:#0e1729; }
+
+/* ---------- Chips ---------- */
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* ---------- Question Bank Options ---------- */
+.q-opt{
+  padding:.45rem 1rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.85rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:70px;
+}
+.q-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.q-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.q-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.q-exp{
+  margin-top:.65rem;
+  padding-top:.65rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem;
+  line-height:1.6;
+}
+.q-tag{
+  font-size:.62rem;
+  font-weight:700;
+  color:#a5b4fc;
+  background:rgba(99,102,241,.12);
+  border:1px solid rgba(99,102,241,.25);
+  border-radius:6px;
+  padding:.1rem .4rem;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+  cursor:pointer;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+/* ---------- Nav ---------- */
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+.anchor{ scroll-margin-top:5.5rem; }
+
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+
+/* ---------- Hero card ---------- */
+.hero-card{
+  background:linear-gradient(180deg,#0e1729 0%, #0a1120 100%);
+  border:1px solid #1e2b45;
+  border-radius:16px;
+  padding:1.35rem;
+  box-shadow:0 20px 60px -20px rgba(99,102,241,.3);
+}
+.pos-pill{
+  border-radius:8px; padding:.45rem .3rem; text-align:center; border:1px solid;
+  font-size:.66rem; font-weight:700; letter-spacing:.02em;
+}
+.pos-noun{ background:rgba(251,191,36,.08); border-color:rgba(251,191,36,.25); color:#fbbf24; }
+.pos-verb{ background:rgba(52,211,153,.08); border-color:rgba(52,211,153,.25); color:#34d399; }
+.pos-adj{ background:rgba(96,165,250,.08); border-color:rgba(96,165,250,.25); color:#60a5fa; }
+.pos-adv{ background:rgba(167,139,250,.08); border-color:rgba(167,139,250,.25); color:#a78bfa; }
+.pos-other{ background:rgba(148,163,184,.08); border-color:rgba(148,163,184,.22); color:#94a3b8; }
+
+/* ---------- Prediction tool ---------- */
+.pred-btn{
+  padding:.5rem 1.1rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.83rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+}
+.pred-btn:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.pred-btn.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+}
+.pred-btn.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+</style>
+    </head>
+    <body>
+
+        <!-- ==================== NAVBAR ==================== -->
+        <nav
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b16]/85 backdrop-blur-xl">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">🎯</span>
+                    <span
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">IELTS
+                        <span class="text-indigo-400">Word Class</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#overview" class="navlink">Overview</a>
+                    <a href="#rules"
+                        class="navlink hidden sm:inline-block">Rules</a>
+                    <a href="#ielts"
+                        class="navlink hidden md:inline-block">IELTS Tips</a>
+                    <a href="#exercises" class="navlink">Practice</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-3">
+                        <span
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            🎯 IELTS Reading &amp; Listening · Dark Edition
+                        </span>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
+                            Parts of<br />
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Speech</span>
+                        </h1>
+                        <p
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            The grammar skill that quietly decides your IELTS
+                            score.
+                            Learn to <strong class="text-slate-200">predict the
+                                answer type</strong> in Listening gap-fills,
+                            spot <strong
+                                class="text-slate-200">paraphrase</strong> in
+                            Reading, and build
+                            <strong class="text-slate-200">word
+                                families</strong> — with 12 rules, 120 exercises
+                            and a quiz.
+                        </p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#rules" class="btn-primary">Start Learning
+                                →</a>
+                            <a href="#ielts" class="btn-ghost">IELTS Strategies
+                                🎯</a>
+                            <a href="#exercises" class="btn-ghost">Practice 120
+                                Questions ✏️</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">9</span>
+                                parts of speech</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">12</span>
+                                rules</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">120</span>
+                                exercises</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 hidden md:block">
+                        <div class="hero-card">
+                            <p
+                                class="text-[.62rem] font-bold text-slate-500 mb-2.5 uppercase tracking-wider text-center">The
+                                9 Parts of Speech</p>
+                            <div class="grid grid-cols-3 gap-1.5">
+                                <div class="pos-pill pos-noun">Noun</div>
+                                <div class="pos-pill pos-verb">Verb</div>
+                                <div class="pos-pill pos-adj">Adjective</div>
+                                <div class="pos-pill pos-adv">Adverb</div>
+                                <div class="pos-pill pos-other">Pronoun</div>
+                                <div
+                                    class="pos-pill pos-other">Preposition</div>
+                                <div
+                                    class="pos-pill pos-other">Conjunction</div>
+                                <div class="pos-pill pos-other">Determiner</div>
+                                <div
+                                    class="pos-pill pos-other">Interjection</div>
+                            </div>
+                            <div
+                                class="mt-4 rounded-lg bg-[#0a1120] border border-[#1b2740] p-3">
+                                <p
+                                    class="text-[.65rem] text-slate-500 mb-1">IELTS
+                                    Listening gap-fill:</p>
+                                <p class="text-sm text-slate-300">The tour costs
+                                    <span
+                                        class="text-amber-300 font-bold">£15</span>
+                                    per <span
+                                        class="text-amber-300 font-bold">person</span>.</p>
+                                <p class="text-[.6rem] text-slate-600 mt-1.5">→
+                                    after “per” expect a <strong
+                                        class="text-amber-300">noun</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section id="overview" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧩</span>
+                    <h2 class="h-sec">Why Parts of Speech Decide Your IELTS
+                        Score</h2>
+                </div>
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    Every <strong class="text-slate-200">gap-fill</strong> in
+                    Listening, every
+                    <strong class="text-slate-200">summary completion</strong>
+                    in Reading, every
+                    <strong class="text-slate-200">sentence-ending
+                        match</strong> — they all ask the same hidden question:
+                    <em>what kind of word fits here?</em> If you can answer
+                    that, you can answer the question even when you
+                    don't understand every word.
+                </p>
+
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 The three-skill
+                            loop:</strong>
+                        <strong class="text-slate-200">1.</strong> Read the gap
+                        and identify the
+                        <strong class="text-slate-200">word class</strong>
+                        needed.
+                        <strong class="text-slate-200">2.</strong> Predict the
+                        <strong class="text-slate-200">meaning area</strong> (a
+                        number? a place? a job?).
+                        <strong class="text-slate-200">3.</strong> Listen or
+                        scan for a
+                        <strong class="text-slate-200">paraphrase</strong> of
+                        that meaning.
+                    </p>
+                </div>
+
+                <div class="table-wrap mt-5">
+                    <table>
+                        <thead>
+                            <tr><th style="width:22%">Part of speech</th><th
+                                    style="width:34%">What it does</th><th
+                                    style="width:44%">IELTS example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong
+                                        class="text-amber-300">Noun</strong></td><td>names
+                                    a person, place, thing or idea</td><td>The
+                                    <em>accommodation</em> is <em>£120</em> per
+                                    week.</td></tr>
+                            <tr><td><strong
+                                        class="text-emerald-300">Verb</strong></td><td>shows
+                                    an action or state</td><td>The museum
+                                    <em>opens</em> at 9 a.m.</td></tr>
+                            <tr><td><strong
+                                        class="text-blue-300">Adjective</strong></td><td>describes
+                                    a noun</td><td>a <em>heated</em> swimming
+                                    pool</td></tr>
+                            <tr><td><strong
+                                        class="text-violet-300">Adverb</strong></td><td>describes
+                                    a verb, adjective or another
+                                    adverb</td><td>The train runs
+                                    <em>frequently</em>.</td></tr>
+                            <tr><td><strong
+                                        class="text-slate-300">Pronoun</strong></td><td>replaces
+                                    a noun (cohesion)</td><td>The researchers
+                                    published <em>their</em> findings.</td></tr>
+                            <tr><td><strong
+                                        class="text-slate-300">Preposition</strong></td><td>shows
+                                    relationship (time, place,
+                                    direction)</td><td>The tour departs
+                                    <em>at</em> noon <em>on</em>
+                                    Monday.</td></tr>
+                            <tr><td><strong
+                                        class="text-slate-300">Conjunction</strong></td><td>joins
+                                    words or clauses (logic signals)</td><td>The
+                                    data was limited, <em>however</em> the
+                                    conclusion held.</td></tr>
+                            <tr><td><strong
+                                        class="text-slate-300">Determiner</strong></td><td>specifies
+                                    a noun (articles,
+                                    quantifiers)</td><td><em>Some</em>
+                                    participants withdrew.</td></tr>
+                            <tr><td><strong
+                                        class="text-slate-300">Interjection</strong></td><td>expresses
+                                    emotion (rare in
+                                    IELTS)</td><td><em>Well</em>, that's
+                                    surprising.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==================== RULES ==================== -->
+            <section id="rules"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📋</span>
+                    <h2 class="h-sec">The 12 Rules — In Detail</h2>
+                </div>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    The nine parts of speech, plus word families,
+                    prefixes/suffixes, and the IELTS
+                    answer-type prediction rule that ties everything together.
+                </p>
+
+                <!-- RULE 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">1</span>
+                        Nouns — The Answer Words</h3>
+                    <p>Nouns name a <strong>person, place, thing, or
+                            idea</strong>. In IELTS gap-fills,
+                        <strong>most answers are nouns</strong> — especially
+                        names, places, dates, prices and objects.</p>
+                    <div class="grid sm:grid-cols-2 gap-3 my-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">Types</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <strong class="text-slate-200">Common</strong>:
+                                student, book<br />
+                                <strong class="text-slate-200">Proper</strong>:
+                                London, Dr Patel<br />
+                                <strong
+                                    class="text-slate-200">Abstract</strong>:
+                                freedom, success<br />
+                                <strong
+                                    class="text-slate-200">Collective</strong>:
+                                team, staff<br />
+                                <strong
+                                    class="text-slate-200">Compound</strong>:
+                                swimming pool, check-in
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">IELTS
+                                signal positions</p>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                after <em>a / an / the</em><br />
+                                after <em>of</em> (a lot <strong>of</strong>
+                                ___)<br />
+                                after an adjective (a <em>new</em> ___)<br />
+                                after a preposition (<em>in</em> ___,
+                                <em>per</em> ___)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="example">The tour costs <span
+                            class="hla">£15</span> per <span
+                            class="hla">person</span>. <span class="note">(noun
+                            after “per”)</span></div>
+                    <div class="example">Accommodation is available <span
+                            class="hla">on campus</span>. <span
+                            class="note">(noun after preposition)</span></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> in Listening, a noun
+                        answer must be <strong>spelled correctly</strong> and
+                        must <strong>not exceed the word limit</strong> (“NO
+                        MORE THAN TWO WORDS”).</div>
+                </div>
+
+                <!-- RULE 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">2</span>
+                        Verbs — Actions and States</h3>
+                    <p>Verbs show <strong>what the subject does</strong> or
+                        <strong>what state it is in</strong>. They carry
+                        tense, so they tell you <strong>when</strong> something
+                        happens — vital for Reading timelines and
+                        Listening instructions.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>Function</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Main
+                                            verb</strong></td><td>carries the
+                                        meaning</td><td>The library
+                                        <em>closes</em> at 8.</td></tr>
+                                <tr><td><strong>Auxiliary</strong></td><td>helps
+                                        form tense / question /
+                                        negative</td><td>She <em>has</em>
+                                        finished. <em>Do</em> you
+                                        agree?</td></tr>
+                                <tr><td><strong>Modal</strong></td><td>adds
+                                        possibility, obligation,
+                                        advice</td><td>You <em>must</em>
+                                        register. It <em>might</em>
+                                        rain.</td></tr>
+                                <tr><td><strong>Transitive</strong></td><td>needs
+                                        an object</td><td>She <em>wrote</em> a
+                                        report.</td></tr>
+                                <tr><td><strong>Intransitive</strong></td><td>no
+                                        object needed</td><td>The train
+                                        <em>arrived</em>.</td></tr>
+                                <tr><td><strong>Stative</strong></td><td>state,
+                                        not action (no continuous)</td><td>I
+                                        <em>know</em> the answer.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 IELTS use:</strong> in Reading,
+                        verbs tell you the <strong>direction of change</strong>
+                        — <em>increase, decline, remain stable</em>. In
+                        Listening, verbs of instruction (<em>turn left, collect,
+                            register</em>) are often the answer itself.</div>
+                </div>
+
+                <!-- RULE 3 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">3</span>
+                        Adjectives — Describing Nouns</h3>
+                    <p>Adjectives <strong>describe or limit a noun</strong>. In
+                        IELTS they are the most common
+                        <strong>distractors</strong> — a wrong option often has
+                        the right meaning but the wrong word class.</p>
+                    <div class="example">a <span class="hl">heated</span>
+                        swimming pool <span class="note">(adjective +
+                            noun)</span></div>
+                    <div class="example">The <span
+                            class="hl">experimental</span> results were <span
+                            class="hl">inconclusive</span>.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> never put an
+                        adjective where a noun is needed. “The <span
+                            class="hlr">beautiful</span> of the city” ✗ → “The
+                        <span class="hlg">beauty</span> of the city” ✓.</div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Order
+                                        rule</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>Opinion → size → age → shape → colour →
+                                        origin → material → purpose</td><td>a
+                                        <em>lovely small old round brown French
+                                            wooden</em> table</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 IELTS use:</strong> in Matching
+                        Headings and True/False/Not Given, adjectives like
+                        <em>significant, marginal, dramatic, gradual</em> carry
+                        the judgement — they decide the answer.</div>
+                </div>
+
+                <!-- RULE 4 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">4</span>
+                        Adverbs — Describing Verbs &amp; Adjectives</h3>
+                    <p>Adverbs describe <strong>how, when, where, or how
+                            much</strong>. Most are formed with
+                        <strong>-ly</strong>, but many common ones are not
+                        (<em>fast, well, very, often, always, never</em>).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>Question
+                                        answered</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td>Manner</td><td>How?</td><td>quickly,
+                                        carefully, fluently</td></tr>
+                                <tr><td>Frequency</td><td>How
+                                        often?</td><td>always, usually, rarely,
+                                        never</td></tr>
+                                <tr><td>Degree</td><td>How much?</td><td>very,
+                                        extremely, slightly, highly</td></tr>
+                                <tr><td>Time</td><td>When?</td><td>yesterday,
+                                        soon, already, recently</td></tr>
+                                <tr><td>Place</td><td>Where?</td><td>here,
+                                        there, nearby, abroad</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">The train runs <span
+                            class="hl">frequently</span>. <span
+                            class="note">(adverb of frequency)</span></div>
+                    <div class="example">The temperature rose <span
+                            class="hl">gradually</span>. <span
+                            class="note">(adverb of manner)</span></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>hard</em> vs
+                        <em>hardly</em> — “She works <span
+                            class="hlg">hard</span>” (a lot) vs “She <span
+                            class="hlg">hardly</span> works” (almost not). This
+                        is a classic IELTS Listening distractor.</div>
+                </div>
+
+                <!-- RULE 5 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        Pronouns — The Glue of Reading</h3>
+                    <p>Pronouns replace nouns to avoid repetition. In IELTS
+                        Reading, tracking what a pronoun
+                        refers to is often the key to a <strong>Matching
+                            Information</strong> or
+                        <strong>Summary Completion</strong> answer.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>Pronouns</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>Subject</td><td>I, you, he, she, it, we,
+                                        they</td><td><em>They</em> found the
+                                        cause.</td></tr>
+                                <tr><td>Object</td><td>me, you, him, her, it,
+                                        us, them</td><td>The team thanked
+                                        <em>them</em>.</td></tr>
+                                <tr><td>Possessive</td><td>mine, yours, his,
+                                        hers, its, ours, theirs</td><td>The idea
+                                        was <em>theirs</em>.</td></tr>
+                                <tr><td>Reflexive</td><td>myself, yourself,
+                                        himself, herself, itself, ourselves,
+                                        themselves</td><td>They built it
+                                        <em>themselves</em>.</td></tr>
+                                <tr><td>Relative</td><td>who, whom, which, that,
+                                        whose</td><td>The study, <em>which</em>
+                                        was published in 2020, …</td></tr>
+                                <tr><td>Demonstrative</td><td>this, that, these,
+                                        those</td><td><em>These</em> findings
+                                        suggest …</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">The researchers published <span
+                            class="hlg">their</span> findings. <span
+                            class="note">(= the researchers'
+                            findings)</span></div>
+                    <div class="tip"><strong>💡 IELTS use:</strong> when a
+                        paragraph starts with “<em>This</em> suggests…”, the
+                        answer is almost always in the <strong>previous
+                            sentence</strong>. Follow the pronoun
+                        backwards.</div>
+                </div>
+
+                <!-- RULE 6 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        Prepositions — Small Words, Big Traps</h3>
+                    <p>Prepositions show the relationship of a noun to the rest
+                        of the sentence:
+                        <strong>time, place, direction, cause</strong>. In
+                        Listening they decide whether an answer is
+                        <em>at</em> 5 p.m. or <em>by</em> 5 p.m.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Use</th><th>Preposition</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>Month / year /
+                                        season</td><td><strong>in</strong></td><td>in
+                                        July, in 2019, in summer</td></tr>
+                                <tr><td>Day /
+                                        date</td><td><strong>on</strong></td><td>on
+                                        Monday, on 4 July</td></tr>
+                                <tr><td>Clock
+                                        time</td><td><strong>at</strong></td><td>at
+                                        9 a.m., at noon</td></tr>
+                                <tr><td>Deadline</td><td><strong>by</strong></td><td>submit
+                                        by Friday</td></tr>
+                                <tr><td>Duration</td><td><strong>for</strong></td><td>for
+                                        two hours</td></tr>
+                                <tr><td>Starting
+                                        point</td><td><strong>since</strong></td><td>since
+                                        2010</td></tr>
+                                <tr><td>Price per
+                                        unit</td><td><strong>per</strong></td><td>£15
+                                        per person</td></tr>
+                                <tr><td>Increase /
+                                        decrease</td><td><strong>in</strong></td><td>a
+                                        rise in demand</td></tr>
+                                <tr><td>Reason</td><td><strong>for</strong></td><td>the
+                                        reason for the decline</td></tr>
+                                <tr><td>Solution / answer /
+                                        key</td><td><strong>to</strong></td><td>a
+                                        solution to the problem</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>by</em> = not
+                        later than; <em>until</em> = up to that time. “Submit
+                        <span class="hlg">by</span> Friday” ≠ “Submit <span
+                            class="hlr">until</span> Friday”.</div>
+                </div>
+
+                <!-- RULE 7 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        Conjunctions — The Logic Signals</h3>
+                    <p>Conjunctions join ideas and <strong>tell you the
+                            relationship</strong> between them. In IELTS
+                        Reading,
+                        they are the fastest way to answer <strong>True / False
+                            / Not Given</strong> and
+                        <strong>Matching Features</strong> questions.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Logic</th><th>Conjunctions /
+                                        connectors</th><th>What it tells
+                                        you</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Addition</strong></td><td>and,
+                                        also, moreover, furthermore, in
+                                        addition</td><td>more of the same →
+                                        answer is nearby</td></tr>
+                                <tr><td><strong>Contrast</strong></td><td>but,
+                                        however, although, whereas,
+                                        nevertheless, despite</td><td>the
+                                        opposite → check for NOT</td></tr>
+                                <tr><td><strong>Cause</strong></td><td>because,
+                                        since, due to, as a result
+                                        of</td><td>the reason → look
+                                        before/after</td></tr>
+                                <tr><td><strong>Effect</strong></td><td>so,
+                                        therefore, consequently,
+                                        thus</td><td>the result</td></tr>
+                                <tr><td><strong>Condition</strong></td><td>if,
+                                        unless, provided that</td><td>a limit on
+                                        the statement</td></tr>
+                                <tr><td><strong>Time</strong></td><td>when,
+                                        while, before, after, until, as soon
+                                        as</td><td>sequence → useful for
+                                        timelines</td></tr>
+                                <tr><td><strong>Example</strong></td><td>for
+                                        example, such as, including</td><td>a
+                                        specific case</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">The study was small, <span
+                            class="hl">but</span> the results were promising.
+                        <span class="note">(contrast — both parts
+                            matter)</span></div>
+                    <div class="example">It rained heavily; <span
+                            class="hl">however</span>, the match
+                        continued.</div>
+                    <div class="tip"><strong>💡 IELTS use:</strong> if the
+                        passage says “<em>although</em> X, Y”, the statement “X
+                        caused Y” is probably <strong>False</strong> —
+                        <em>although</em> signals contrast, not cause.</div>
+                </div>
+
+                <!-- RULE 8 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        Determiners — Articles &amp; Quantifiers</h3>
+                    <p>Determiners come <strong>before a noun</strong> and
+                        specify it. They are the most common source of
+                        wrong answers in <strong>summary completion</strong> and
+                        <strong>sentence completion</strong>.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>Words</th><th>Rule</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Articles</strong></td><td>a, an,
+                                        the</td><td>a/an = one non-specific; the
+                                        = specific</td></tr>
+                                <tr><td><strong>Demonstratives</strong></td><td>this,
+                                        that, these, those</td><td>near / far,
+                                        singular / plural</td></tr>
+                                <tr><td><strong>Possessives</strong></td><td>my,
+                                        your, his, her, its, our,
+                                        their</td><td>ownership before a
+                                        noun</td></tr>
+                                <tr><td><strong>Quantifiers —
+                                            countable</strong></td><td>many,
+                                        few, a few, several, both</td><td>plural
+                                        nouns</td></tr>
+                                <tr><td><strong>Quantifiers —
+                                            uncountable</strong></td><td>much,
+                                        little, a little, a great deal
+                                        of</td><td>singular uncountable
+                                        nouns</td></tr>
+                                <tr><td><strong>Quantifiers —
+                                            both</strong></td><td>some, any, no,
+                                        all, most, plenty of, a lot
+                                        of</td><td>countable and
+                                        uncountable</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">There isn't <span
+                            class="hlg">much</span> evidence. <span
+                            class="note">(uncountable)</span></div>
+                    <div class="example"><span class="hlg">Many</span> students
+                        passed. <span class="note">(countable
+                            plural)</span></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> if the gap-fill says
+                        “a ___ number of students”, the answer must be an
+                        <strong>adjective</strong> (large / small /
+                        significant), not a quantifier. Read what surrounds the
+                        gap.</div>
+                </div>
+
+                <!-- RULE 9 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">9</span> Word
+                        Families — The IELTS Superpower</h3>
+                    <p>One root can produce four forms. IELTS paraphrases by
+                        <strong>changing the word family</strong>:
+                        the passage says <em>“the city grew rapidly”</em> and
+                        the question says <em>“rapid growth”</em>.
+                        If you know the family, you see the match.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Verb</th><th>Noun</th><th>Adjective</th><th>Adverb</th></tr></thead>
+                            <tbody>
+                                <tr><td>grow</td><td>growth</td><td>growing</td><td>—</td></tr>
+                                <tr><td>analyse</td><td>analysis</td><td>analytical</td><td>analytically</td></tr>
+                                <tr><td>conclude</td><td>conclusion</td><td>conclusive</td><td>conclusively</td></tr>
+                                <tr><td>succeed</td><td>success</td><td>successful</td><td>successfully</td></tr>
+                                <tr><td>decide</td><td>decision</td><td>decisive</td><td>decisively</td></tr>
+                                <tr><td>create</td><td>creation /
+                                        creativity</td><td>creative</td><td>creatively</td></tr>
+                                <tr><td>inform</td><td>information</td><td>informative</td><td>informatively</td></tr>
+                                <tr><td>rely</td><td>reliability</td><td>reliable</td><td>reliably</td></tr>
+                                <tr><td>differ</td><td>difference</td><td>different</td><td>differently</td></tr>
+                                <tr><td>efficient</td><td>efficiency</td><td>efficient</td><td>efficiently</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">Passage: “The city <span
+                            class="hl">grew rapidly</span>.” → Question: “<span
+                            class="hlg">rapid growth</span>” ✓</div>
+                    <div class="example">Passage: “Researchers <span
+                            class="hl">analysed</span> the data.” → Question:
+                        “the <span class="hlg">analysis</span> of the data”
+                        ✓</div>
+                    <div class="tip"><strong>💡 How to practise:</strong> take
+                        any passage and write the four forms of every key word.
+                        That single habit lifts both Reading and Writing
+                        scores.</div>
+                </div>
+
+                <!-- RULE 10 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">10</span>
+                        Prefixes — Change the Meaning</h3>
+                    <p>Prefixes go <strong>before</strong> the root and change
+                        meaning, not word class. IELTS uses them
+                        heavily in True/False/Not Given and in Listening
+                        distractors.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Prefix</th><th>Meaning</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>un-</strong></td><td>not</td><td>unfair,
+                                        unusual, unclear</td></tr>
+                                <tr><td><strong>in- / im- / il- /
+                                            ir-</strong></td><td>not</td><td>inaccurate,
+                                        impossible, illegal, irregular</td></tr>
+                                <tr><td><strong>dis-</strong></td><td>opposite /
+                                        not</td><td>disagree, dishonest,
+                                        disappear</td></tr>
+                                <tr><td><strong>non-</strong></td><td>not</td><td>non-fiction,
+                                        non-renewable</td></tr>
+                                <tr><td><strong>mis-</strong></td><td>wrongly</td><td>misunderstand,
+                                        mislead</td></tr>
+                                <tr><td><strong>re-</strong></td><td>again</td><td>rewrite,
+                                        reconsider, rebuild</td></tr>
+                                <tr><td><strong>pre- /
+                                            post-</strong></td><td>before /
+                                        after</td><td>pre-war,
+                                        postpone</td></tr>
+                                <tr><td><strong>over- /
+                                            under-</strong></td><td>too much /
+                                        too little</td><td>overestimate,
+                                        underestimate</td></tr>
+                                <tr><td><strong>inter- /
+                                            intra-</strong></td><td>between /
+                                        within</td><td>international,
+                                        intravenous</td></tr>
+                                <tr><td><strong>co- / sub- /
+                                            super-</strong></td><td>together /
+                                        under / above</td><td>co-author,
+                                        submarine, supernatural</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> the same prefix can
+                        attach to only some roots. “<em>un</em>possible” ✗ →
+                        “<em>im</em>possible” ✓. Learn the collocation, not just
+                        the prefix.</div>
+                </div>
+
+                <!-- RULE 11 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Suffixes — Change the Word Class</h3>
+                    <p>Suffixes go <strong>after</strong> the root and change
+                        the <strong>word class</strong>. This is the
+                        single most useful table for IELTS gap-fills.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Target class</th><th>Common
+                                        suffixes</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong
+                                            class="text-amber-300">Noun</strong></td><td>-tion,
+                                        -sion, -ment, -ness, -ity, -ance, -ence,
+                                        -ship, -hood, -ism, -er, -or, -ist,
+                                        -age</td><td>information, movement,
+                                        happiness, ability, performance,
+                                        friendship, teacher, actor</td></tr>
+                                <tr><td><strong
+                                            class="text-emerald-300">Verb</strong></td><td>-ise
+                                        / -ize, -ify, -en,
+                                        -ate</td><td>modernise, simplify,
+                                        strengthen, activate</td></tr>
+                                <tr><td><strong
+                                            class="text-blue-300">Adjective</strong></td><td>-able,
+                                        -ible, -al, -ive, -ous, -ful, -less,
+                                        -ic, -y, -ent, -ant</td><td>reliable,
+                                        visible, natural, creative, dangerous,
+                                        careful, hopeless, historic, sunny,
+                                        different</td></tr>
+                                <tr><td><strong
+                                            class="text-violet-300">Adverb</strong></td><td>-ly</td><td>quickly,
+                                        carefully, unfortunately</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">The <span
+                            class="hl">construction</span> (noun) → to <span
+                            class="hlg">construct</span> (verb) → <span
+                            class="hla">constructive</span> (adjective)</div>
+                    <div class="tip"><strong>💡 How to use it:</strong> look at
+                        the word <strong>before</strong> the gap and the word
+                        <strong>after</strong> the gap. “a ___ decision” →
+                        adjective. “the ___ of the plan” → noun.</div>
+                </div>
+
+                <!-- RULE 12 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        IELTS Answer-Type Prediction</h3>
+                    <p>Before you listen or scan, decide <strong>what kind of
+                            word</strong> must go in the gap. This
+                        one habit can add a full band to your Listening and
+                        Reading scores.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Gap position</th><th>Word class
+                                        needed</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>After <em>a / an /
+                                            the</em></td><td>Noun</td><td>a
+                                        <strong>museum</strong></td></tr>
+                                <tr><td>After <em>to</em>
+                                        (infinitive)</td><td>Verb</td><td>to
+                                        <strong>register</strong></td></tr>
+                                <tr><td>After <em>be</em> (is / was /
+                                        are)</td><td>Adjective or
+                                        noun</td><td>is <strong>free</strong> /
+                                        is a <strong>library</strong></td></tr>
+                                <tr><td>After an adverb like <em>very /
+                                            extremely</em></td><td>Adjective or
+                                        adverb</td><td>very
+                                        <strong>cold</strong> / very
+                                        <strong>quickly</strong></td></tr>
+                                <tr><td>Before
+                                        <em>of</em></td><td>Noun</td><td>the
+                                        <strong>cost</strong> of the
+                                        tour</td></tr>
+                                <tr><td>After a verb</td><td>Noun (object) or
+                                        adverb</td><td>collected the
+                                        <strong>tickets</strong> / ran
+                                        <strong>quickly</strong></td></tr>
+                                <tr><td>At the start of a sentence +
+                                        comma</td><td>Adverb
+                                        (connector)</td><td><strong>Unfortunately</strong>,
+                                        …</td></tr>
+                                <tr><td>After
+                                        <em>per</em></td><td>Noun</td><td>per
+                                        <strong>person</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">“The tour costs £15 per <span
+                            class="hlg">person</span>.” → after <em>per</em> →
+                        <strong>noun</strong></div>
+                    <div class="example">“The museum is <span
+                            class="hlg">free</span> on Sundays.” → after
+                        <em>is</em> → <strong>adjective</strong></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> a word can change
+                        class. <em>Book</em> is a noun in “a book” but a verb in
+                        “to book a table”. Always look at the
+                        <strong>surrounding grammar</strong>, not just the
+                        word.</div>
+                </div>
+
+                <div
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
+                    <span class="text-xl">📌</span>
+                    <div>
+                        <strong>The 4-step IELTS routine:</strong>
+                        (1) Read the gap and the words around it.
+                        (2) Decide the <strong>word class</strong>.
+                        (3) Predict the <strong>meaning area</strong> (number?
+                        place? job?).
+                        (4) Listen or scan for a <strong>paraphrase</strong> —
+                        the answer is rarely the exact word in the question.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== IELTS STRATEGIES ==================== -->
+            <section id="ielts"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🎯</span>
+                    <h2 class="h-sec">IELTS Reading &amp; Listening
+                        Strategies</h2>
+                </div>
+
+                <!-- Reading -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">R</span>
+                        Reading — How Parts of Speech Unlock Answers</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Question type</th><th>How word class
+                                        helps</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>True / False / Not
+                                            Given</strong></td><td>Check the
+                                        <strong>qualifier</strong> — adverbs
+                                        like <em>all, always, only, mainly</em>
+                                        decide the answer.</td><td>“<em>All</em>
+                                        participants agreed” vs passage
+                                        “<em>most</em>” → False</td></tr>
+                                <tr><td><strong>Matching
+                                            Headings</strong></td><td>Match the
+                                        <strong>noun phrase</strong> in the
+                                        heading to the topic noun of the
+                                        paragraph.</td><td>Heading: “The
+                                        <em>decline</em> of a species” →
+                                        paragraph about <em>falling
+                                            numbers</em></td></tr>
+                                <tr><td><strong>Summary
+                                            Completion</strong></td><td>Decide
+                                        the <strong>word class</strong> of each
+                                        gap before looking for the
+                                        word.</td><td>“a ___ of the results” →
+                                        noun</td></tr>
+                                <tr><td><strong>Matching
+                                            Information</strong></td><td>Use
+                                        <strong>pronoun reference</strong> to
+                                        follow a chain of
+                                        ideas.</td><td>“<em>This</em> discovery”
+                                        → back to the previous
+                                        sentence</td></tr>
+                                <tr><td><strong>Sentence
+                                            Endings</strong></td><td>The ending
+                                        must be <strong>grammatically
+                                            compatible</strong> with the
+                                        stem.</td><td>Stem ending in “because” →
+                                        an ending starting with a clause, not a
+                                        noun</td></tr>
+                                <tr><td><strong>Multiple
+                                            Choice</strong></td><td>Reject
+                                        options with the <strong>wrong word
+                                            class</strong> or <strong>wrong
+                                            qualifier
+                                            strength</strong>.</td><td>Option
+                                        says “proves” but passage says
+                                        “suggests” → wrong</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tip"><strong>💡 Paraphrase radar:</strong> when
+                        you find the keyword in the passage, read the
+                        <strong>whole sentence</strong> around it — the answer
+                        is usually a word family shift away.</div>
+                </div>
+
+                <!-- Listening -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">L</span>
+                        Listening — How to Predict the Answer</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Section</th><th>Typical answer
+                                        class</th><th>What to
+                                        predict</th></tr></thead>
+                            <tbody>
+                                <tr><td>Section 1 — form / table
+                                        completion</td><td>Names, numbers,
+                                        dates, addresses,
+                                        prices</td><td>Spelling of names,
+                                        digit-by-digit numbers</td></tr>
+                                <tr><td>Section 2 — map / plan
+                                        labelling</td><td>Places +
+                                        prepositions</td><td>“opposite / next to
+                                        / at the end of”</td></tr>
+                                <tr><td>Section 3 — multiple choice /
+                                        matching</td><td>Opinions,
+                                        reasons</td><td>Adjectives and adverbs
+                                        of judgement</td></tr>
+                                <tr><td>Section 4 — note
+                                        completion</td><td>Nouns, verbs,
+                                        adjectives</td><td>Word class + meaning
+                                        area</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Classic Listening traps:</b>
+                        <br />• <strong>Self-correction:</strong> “It's £15 —
+                        no, sorry, £50.” → the <em>second</em> number is the
+                        answer.
+                        <br />• <strong>Distractor words:</strong> “We <em>used
+                            to</em> open at 9, but <em>now</em> it's 10.” → 10
+                        is the answer.
+                        <br />• <strong>Spelling:</strong> names are spelled
+                        letter by letter — write as you hear, then check.
+                    </div>
+                </div>
+
+                <!-- Prediction tool -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">⚡</span>
+                        Interactive Tool — Predict the Word Class</h3>
+                    <p>Read each IELTS-style gap-fill and choose the word class
+                        needed. This is exactly the step you should do in the
+                        exam <strong>before</strong> you listen or scan.</p>
+
+                    <div id="predTool" class="mt-4 grid gap-3"></div>
+
+                    <div class="flex flex-wrap gap-3 mt-5">
+                        <button id="predReset"
+                            class="btn-ghost !py-2 !px-5 !text-sm">🔄 Reset
+                            tool</button>
+                    </div>
+                    <div id="predScore"
+                        class="mt-3 text-sm text-slate-500"></div>
+                </div>
+
+                <!-- Suffix table quick ref -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">✓</span>
+                        Quick Suffix Cheat-Sheet</h3>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">Noun
+                                endings</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">-tion
+                                · -sion · -ment · -ness · -ity · -ance · -ence ·
+                                -ship · -hood · -ism · -er · -or · -ist ·
+                                -age</p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">Verb
+                                endings</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">-ise
+                                / -ize · -ify · -en · -ate</p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">Adjective
+                                endings</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">-able
+                                · -ible · -al · -ive · -ous · -ful · -less · -ic
+                                · -y · -ent · -ant</p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-violet-500/25 bg-violet-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-violet-300 uppercase tracking-wider mb-1.5">Adverb
+                                endings</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">-ly
+                                (carefully) — but also: fast, well, hard, very,
+                                often, never, always</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 120 Questions</h2>
+                </div>
+                <p class="text-slate-400 mb-2 max-w-3xl">
+                    Ten exercises for every one of the 12 rules. Filter by rule,
+                    or work through all 120.
+                    Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+                <div
+                    class="flex flex-wrap items-center gap-2 mb-5 text-xs text-slate-500">
+                    <span>Answers lock after first click</span>
+                    <span class="text-slate-700">·</span>
+                    <span>Click a chosen option again to deselect</span>
+                </div>
+
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">120</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
+
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
+
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
+
+            <!-- ==================== QUIZ ==================== -->
+            <section id="quiz"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧠</span>
+                    <h2 class="h-sec">Practice Quiz</h2>
+                </div>
+                <p class="text-slate-400 mb-6">Twelve IELTS-style mixed
+                    questions — choose the correct word, then check your
+                    score.</p>
+
+                <div id="quizContainer" class="grid gap-3"></div>
+
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
+                </div>
+
+                <div id="quizResult"
+                    class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
+            </section>
+
+            <!-- ==================== FAQ ==================== -->
+            <section id="faq"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">❓</span>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="grid gap-3 mt-5">
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How does knowing
+                            parts of speech help in IELTS Listening?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">In
+                            gap-fill questions you can decide the <strong>word
+                                class</strong> of the answer before you listen
+                            (noun, verb, adjective, adverb). You then know what
+                            <em>kind</em> of word to catch — a name, a number, a
+                            place, a job — instead of trying to catch
+                            everything. It also warns you about word limits and
+                            spelling.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is
+                            paraphrase and why does it matter in Reading?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Paraphrase
+                            means saying the same thing with different words —
+                            often by changing the <strong>word family</strong>
+                            or using synonyms. IELTS Reading questions almost
+                            never repeat the passage word-for-word. If the
+                            passage says “the city grew rapidly”, the question
+                            may say “rapid growth”. Spotting the family shift is
+                            the key skill.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Which word
+                            classes are most common in gap-fill answers?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>Nouns</strong>
+                            are by far the most common answer type (names,
+                            places, dates, prices, objects), followed by
+                            <strong>verbs</strong> and
+                            <strong>adjectives</strong>. Adverbs appear mostly
+                            in sentence-completion and summary tasks. That is
+                            why Rule 1 and Rule 12 are the two most important
+                            rules on this page.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How do I deal
+                            with a word that can be more than one part of
+                            speech?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Look
+                            at the <strong>surrounding grammar</strong>, not the
+                            word itself. <em>Book</em> is a noun after “a” (“a
+                            book”) but a verb after “to” (“to book a table”).
+                            <em>Fast</em> is an adjective before a noun (“a fast
+                            car”) but an adverb after a verb (“he runs fast”).
+                            The position tells you the class.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Should I learn
+                            prefixes and suffixes for IELTS?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Yes
+                            — suffixes especially. They let you turn one known
+                            word into four (e.g. <em>construct → construction →
+                                constructive → constructively</em>). In both
+                            Reading and Listening, this is what lets you
+                            recognise the answer even when the exact word in the
+                            question is not in the passage.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Note:</strong> this page
+                    is a grammar and strategy reference for IELTS preparation.
+                    It is not affiliated with the IELTS test owners. Question
+                    styles are modelled on the publicly available
+                    test format (Academic &amp; General Training Reading, and
+                    Listening Sections 1–4).
+                </div>
+            </section>
+
+            <!-- ==================== FOOTER ==================== -->
+            <footer
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>🎯 IELTS Word Class · Parts of Speech for Reading &amp;
+                    Listening · 2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
+            </footer>
+        </main>
+
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (120 items)
+     Format: [rule, sentence, options[], correctIndex, explanation]
+     ============================================================ -->
+        <script>
+const EXERCISES = [
+/* ---------- RULE 1: NOUNS (10) ---------- */
+[1,'The ___ of the project surprised everyone.',['succeed','success','successful'],1,'After “the” we need a noun → success.'],
+[1,'She has a lot of ___ in teaching.',['experienced','experience','experiencing'],1,'“a lot of” + uncountable noun → experience.'],
+[1,'The ___ of the experiment were inconclusive.',['results','result','resulting'],0,'Plural subject verb “were” → results.'],
+[1,'Good ___ is essential for teamwork.',['communicate','communication','communicative'],1,'“Good ___ is” → noun → communication.'],
+[1,'The ___ of the new policy was welcomed.',['introduce','introduction','introductory'],1,'“The ___ of” → noun → introduction.'],
+[1,'There has been an increase in ___ rates.',['unemployed','unemployment','unemploying'],1,'“in ___ rates” → noun → unemployment.'],
+[1,'The ___ of the city attracts tourists.',['beautiful','beauty','beautify'],1,'“The ___ of” → noun → beauty.'],
+[1,'His ___ for the job was impressive.',['apply','application','applicable'],1,'“His ___ for” → noun → application.'],
+[1,'We need more ___ about the topic.',['inform','information','informative'],1,'“more ___” (uncountable) → information.'],
+[1,'The ___ between the two theories is clear.',['different','difference','differently'],1,'“The ___ between” → noun → difference.'],
+
+/* ---------- RULE 2: VERBS (10) ---------- */
+[2,'The scientists ___ the data carefully.',['analyse','analysis','analytical'],0,'Subject + verb needed → analyse.'],
+[2,'The company plans to ___ its operations.',['expand','expansion','expansive'],0,'After “to” → base verb → expand.'],
+[2,'We must ___ the risks before investing.',['consider','consideration','considerable'],0,'After “must” → base verb → consider.'],
+[2,'The new law will ___ all citizens.',['affect','effect','effective'],0,'After “will” → base verb → affect.'],
+[2,'They ___ the results in the journal.',['published','publication','public'],0,'Past action → verb → published.'],
+[2,'The team ___ the problem successfully.',['solved','solution','soluble'],0,'Needs a verb → solved.'],
+[2,'The government will ___ the policy next year.',['implement','implementation','implicate'],0,'After “will” → base verb → implement.'],
+[2,'Researchers ___ the samples twice.',['tested','test','testing'],0,'Past narrative → tested.'],
+[2,'The report ___ that emissions are rising.',['indicates','indication','indicative'],0,'Third person singular verb → indicates.'],
+[2,'We need to ___ our energy use.',['reduce','reduction','reductive'],0,'After “to” → base verb → reduce.'],
+
+/* ---------- RULE 3: ADJECTIVES (10) ---------- */
+[3,'The results were very ___ .',['surprise','surprising','surprisingly'],1,'After “were very” → adjective → surprising.'],
+[3,'It was an ___ experience.',['excite','exciting','excitement'],1,'Before a noun → adjective → exciting.'],
+[3,'The data is ___ and reliable.',['accuracy','accurate','accurately'],1,'After “is” → adjective → accurate.'],
+[3,'This is a ___ issue in modern society.',['significance','significant','significantly'],1,'Before a noun → adjective → significant.'],
+[3,'The ___ results were published last week.',['experiment','experimental','experimentally'],1,'Before a noun → adjective → experimental.'],
+[3,'She gave a ___ explanation.',['clear','clarity','clearly'],0,'Before a noun → adjective → clear.'],
+[3,'The ___ cost was much higher.',['economy','economic','economically'],1,'Before a noun → adjective → economic.'],
+[3,'It was a ___ decision.',['difficult','difficulty','difficultly'],0,'Before a noun → adjective → difficult.'],
+[3,'The report is highly ___ .',['inform','informative','information'],1,'After “highly” → adjective → informative.'],
+[3,'We need a more ___ approach.',['practice','practical','practically'],1,'Before a noun → adjective → practical.'],
+
+/* ---------- RULE 4: ADVERBS (10) ---------- */
+[4,'She spoke very ___ .',['clear','clarity','clearly'],2,'Modifies the verb “spoke” → adverb → clearly.'],
+[4,'The train arrived ___ .',['punctual','punctually','punctuality'],1,'Modifies the verb “arrived” → adverb → punctually.'],
+[4,'He ___ finished the task.',['quick','quickly','quickness'],1,'Modifies the verb “finished” → adverb → quickly.'],
+[4,'The results were ___ significant.',['high','highly','highness'],1,'Modifies an adjective “significant” → adverb → highly.'],
+[4,'They ___ agreed with the proposal.',['complete','completely','completion'],1,'Modifies the verb “agreed” → adverb → completely.'],
+[4,'She ___ visits her family.',['regular','regularly','regularity'],1,'Adverb of frequency → regularly.'],
+[4,'The machine works ___ .',['efficient','efficiently','efficiency'],1,'Modifies the verb “works” → adverb → efficiently.'],
+[4,'He speaks English ___ .',['fluent','fluently','fluency'],1,'Modifies the verb “speaks” → adverb → fluently.'],
+[4,'The temperature rose ___ .',['gradual','gradually','gradualness'],1,'Modifies the verb “rose” → adverb → gradually.'],
+[4,'___ , the experiment failed.',['Unfortunate','Unfortunately','Unfortunateness'],1,'Sentence-initial connector → adverb → Unfortunately.'],
+
+/* ---------- RULE 5: PRONOUNS (10) ---------- */
+[5,'The researchers published ___ findings.',['its','their','there'],1,'Plural antecedent “researchers” → their.'],
+[5,'The company changed ___ policy.',['its','their','it\'s'],0,'Singular company → its.'],
+[5,'Each student must submit ___ essay.',['their','his or her','its'],1,'Formal singular → his or her (their also accepted).'],
+[5,'Neither of the theories explains ___ fully.',['itself','themselves','it'],0,'Singular subject → itself.'],
+[5,'The data supports ___ conclusion.',['its','their','there'],0,'“Data” as a single body of information → its.'],
+[5,'Many participants said ___ preferred the second option.',['he','they','it'],1,'Plural antecedent → they.'],
+[5,'The government announced ___ new plan.',['its','their','they'],0,'Government as one unit → its.'],
+[5,'People who exercise regularly find ___ healthier.',['themselves','itself','themself'],0,'Plural reflexive → themselves.'],
+[5,'The audience clapped ___ hands.',['its','their','there'],1,'Members acting individually → their.'],
+[5,'She checked ___ work before submitting.',['her','hers','she'],0,'Possessive adjective before a noun → her.'],
+
+/* ---------- RULE 6: PREPOSITIONS (10) ---------- */
+[6,'The study was conducted ___ 2019.',['in','on','at'],0,'Year → in.'],
+[6,'The results were published ___ March.',['in','on','at'],0,'Month → in.'],
+[6,'The meeting is ___ Monday.',['in','on','at'],1,'Day → on.'],
+[6,'It starts ___ 9 a.m.',['in','on','at'],2,'Clock time → at.'],
+[6,'There is an increase ___ demand.',['in','of','on'],0,'Fixed: increase in → in.'],
+[6,'The reason ___ the decline is unclear.',['of','for','to'],1,'Fixed: reason for → for.'],
+[6,'The solution ___ the problem is complex.',['of','for','to'],2,'Fixed: solution to → to.'],
+[6,'The graph shows a rise ___ temperature.',['in','of','on'],0,'Fixed: rise in → in.'],
+[6,'It depends ___ the sample size.',['on','of','in'],0,'Fixed: depend on → on.'],
+[6,'The research focuses ___ urban areas.',['on','in','at'],0,'Fixed: focus on → on.'],
+
+/* ---------- RULE 7: CONJUNCTIONS (10) ---------- */
+[7,'The study was small, ___ the results were promising.',['but','and','or'],0,'Contrast → but.'],
+[7,'___ the data was incomplete, the conclusion was drawn.',['Although','Because','So'],0,'Concession → Although.'],
+[7,'It rained heavily; ___ , the match continued.',['however','therefore','moreover'],0,'Contrast connector → however.'],
+[7,'___ a result, sales increased.',['As','So','Because'],0,'Fixed: As a result → As.'],
+[7,'The sample was small. ___ , the findings may not generalise.',['Therefore','However','Although'],0,'Result → Therefore.'],
+[7,'She studied hard ___ she could pass.',['so that','although','unless'],0,'Purpose → so that.'],
+[7,'___ you finish the test, check your answers.',['Before','After','While'],0,'Time order → Before.'],
+[7,'The results were significant; ___ , they need replication.',['however','therefore','moreover'],0,'Contrast → however.'],
+[7,'___ the cost, the project went ahead.',['Despite','Although','Because'],0,'“Despite” + noun phrase → Despite.'],
+[7,'He was late ___ heavy traffic.',['because of','because','although'],0,'“because of” + noun phrase → because of.'],
+
+/* ---------- RULE 8: DETERMINERS (10) ---------- */
+[8,'___ number of students increased.',['The','A','An'],0,'Specific number → The.'],
+[8,'We need ___ information about the course.',['some','any','many'],0,'Uncountable positive → some.'],
+[8,'There isn\'t ___ evidence to support it.',['much','many','a few'],0,'Uncountable negative → much.'],
+[8,'___ of the participants completed the survey.',['Most','Much','A few'],0,'Most of + the → Most.'],
+[8,'She has ___ experience in this field.',['a lot of','many','few'],0,'Uncountable → a lot of.'],
+[8,'___ students passed the exam.',['Many','Much','A great deal of'],0,'Countable plural → Many.'],
+[8,'I have ___ time to finish the report.',['little','few','many'],0,'Uncountable → little.'],
+[8,'Only ___ participants attended.',['a few','a little','much'],0,'Countable plural → a few.'],
+[8,'___ information was collected.',['A great deal of','Many','Few'],0,'Uncountable → A great deal of.'],
+[8,'He has ___ knowledge of the subject.',['considerable','many','few'],0,'Uncountable → considerable.'],
+
+/* ---------- RULE 9: WORD FAMILIES (10) ---------- */
+[9,'The company reported strong ___ .',['grow','growth','growing'],1,'After “strong” → noun → growth.'],
+[9,'Her ___ was obvious to everyone.',['nervous','nervously','nervousness'],2,'“Her ___ was” → noun → nervousness.'],
+[9,'They need to ___ the process.',['simple','simplify','simplicity'],1,'After “to” → verb → simplify.'],
+[9,'The results were ___ .',['conclude','conclusion','conclusive'],2,'After “were” → adjective → conclusive.'],
+[9,'He spoke with great ___ .',['confident','confidence','confidently'],1,'After “great” → noun → confidence.'],
+[9,'The ___ of the plan was discussed.',['feasible','feasibility','feasibly'],1,'“The ___ of” → noun → feasibility.'],
+[9,'We must ___ the data.',['analysis','analyse','analytical'],1,'After “must” → verb → analyse.'],
+[9,'The ___ of the building took two years.',['construct','construction','constructive'],1,'“The ___ of” → noun → construction.'],
+[9,'She is highly ___ .',['create','creative','creativity'],1,'After “highly” → adjective → creative.'],
+[9,'The team worked ___ .',['efficiency','efficient','efficiently'],2,'Modifies “worked” → adverb → efficiently.'],
+
+/* ---------- RULE 10: PREFIXES (10) ---------- */
+[10,'It is ___ to park here.',['illegal','unlegal','dislegal'],0,'Fixed form → illegal.'],
+[10,'The results were ___ with previous studies.',['inconsistent','unconsistent','disconsistent'],0,'Fixed form → inconsistent.'],
+[10,'You should ___ the essay before submitting.',['rewrite','prewrite','miswrite'],0,'Meaning “write again” → rewrite.'],
+[10,'He ___ the instructions and got lost.',['misunderstood','ununderstood','disunderstood'],0,'Meaning “understood wrongly” → misunderstood.'],
+[10,'The ___ period was difficult for the country.',['pre-war','post-war','anti-war'],0,'Meaning “before the war” → pre-war.'],
+[10,'It is ___ to finish today.',['impossible','inpossible','unpossible'],0,'Fixed form → impossible.'],
+[10,'The company ___ the cost by 50%.',['overestimated','underestimated','reestimated'],0,'Meaning “estimated too high” → overestimated.'],
+[10,'She ___ with the plan.',['disagrees','unagrees','nonagrees'],0,'Fixed form → disagrees.'],
+[10,'This is an ___ company.',['international','intranational','intronational'],0,'Meaning “between nations” → international.'],
+[10,'The data was ___ .',['inaccurate','unaccurate','disaccurate'],0,'Fixed form → inaccurate.'],
+
+/* ---------- RULE 11: SUFFIXES (10) ---------- */
+[11,'Her ___ was admired by all.',['kindness','kindful','kindly'],0,'Noun suffix -ness → kindness.'],
+[11,'The doctor was very ___ .',['careful','carefully','carefulness'],0,'Adjective suffix -ful → careful.'],
+[11,'He works as a ___ .',['teach','teacher','teaching'],1,'Person noun suffix -er → teacher.'],
+[11,'The ___ of the plan was questioned.',['reliable','reliability','reliably'],1,'Noun suffix -ity → reliability.'],
+[11,'It was a ___ decision.',['foolish','fool','foolishly'],0,'Adjective suffix -ish → foolish.'],
+[11,'The software is user-___ .',['friendly','friend','friendliness'],0,'Adjective suffix -ly → friendly.'],
+[11,'The company offers ___ training.',['profession','professional','professionally'],1,'Adjective before a noun → professional.'],
+[11,'She completed the task ___ .',['success','successful','successfully'],2,'Adverb suffix -ly → successfully.'],
+[11,'The ___ of the river is monitored.',['deep','depth','deeply'],1,'Noun suffix -th → depth.'],
+[11,'He is a highly ___ scientist.',['respect','respectful','respectfully'],1,'Adjective suffix -ful → respectful.'],
+
+/* ---------- RULE 12: IELTS ANSWER-TYPE PREDICTION (10) ---------- */
+[12,'The museum attracts thousands of ___ each year.',['visitors','visit','visiting'],0,'After “of” → noun → visitors.'],
+[12,'The city council plans to ___ the park.',['expand','expansion','expansive'],0,'After “to” → verb → expand.'],
+[12,'The weather was extremely ___ yesterday.',['cold','coldly','coldness'],0,'After “extremely” → adjective → cold.'],
+[12,'She spoke ___ about her research.',['passionately','passionate','passion'],0,'Modifies the verb → adverb → passionately.'],
+[12,'There has been a significant ___ in sales.',['increase','increased','increasingly'],0,'After “a significant” → noun → increase.'],
+[12,'Researchers ___ the samples in a lab.',['analysed','analysis','analytical'],0,'Subject + verb → analysed.'],
+[12,'The new policy is highly ___ .',['controversial','controversy','controversially'],0,'After “highly” → adjective → controversial.'],
+[12,'___ , the results were inconclusive.',['Unfortunately','Unfortunate','Unfortunateness'],0,'Sentence-initial connector → adverb.'],
+[12,'The ___ of the site took six months.',['construction','construct','constructive'],0,'Before “of” → noun → construction.'],
+[12,'The instructions were ___ clear.',['remarkably','remarkable','remark'],0,'Modifies “clear” → adverb → remarkably.']
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Nouns',
+  2:'Verbs',
+  3:'Adjectives',
+  4:'Adverbs',
+  5:'Pronouns',
+  6:'Prepositions',
+  7:'Conjunctions',
+  8:'Determiners',
+  9:'Word Families',
+  10:'Prefixes',
+  11:'Suffixes',
+  12:'Answer-Type Prediction'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 12; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'q-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="q-exp ${ok ? 'text-emerald-400' : 'text-red-400'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4 transition hover:border-[#31446b] fade">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1.5 bg-[#16233c] text-[#93a7c7] text-[.68rem] font-bold rounded-md mt-0.5">${i + 1}</span>
+            <p class="flex-1 text-sm text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="q-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.q-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;
+    answers[id] = opt;
+    render();
+  });
+
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — PREDICTION TOOL
+     ============================================================ -->
+        <script>
+(function () {
+  const items = [
+    { s:'The museum attracts thousands of ___ each year.', a:'Noun',
+      w:'After “of” and as the object of “attracts”, the gap needs a noun (e.g. visitors).' },
+    { s:'The council plans to ___ the park next year.', a:'Verb',
+      w:'After “to” (infinitive) the gap needs a base verb (e.g. expand).' },
+    { s:'The weather was extremely ___ yesterday.', a:'Adjective',
+      w:'After “was extremely” the gap needs an adjective describing the weather (e.g. cold).' },
+    { s:'She spoke ___ about her research.', a:'Adverb',
+      w:'The gap modifies the verb “spoke”, so it needs an adverb (e.g. passionately).' },
+    { s:'There has been a significant ___ in sales.', a:'Noun',
+      w:'After “a significant” the gap needs a noun (e.g. increase).' },
+    { s:'Researchers ___ the samples in a lab.', a:'Verb',
+      w:'The subject “Researchers” has no verb yet, so the gap needs a verb (e.g. analysed).' },
+    { s:'The new policy is highly ___ .', a:'Adjective',
+      w:'After “is highly” the gap needs an adjective (e.g. controversial).' },
+    { s:'___ , the results were inconclusive.', a:'Adverb',
+      w:'A sentence-initial word followed by a comma is almost always an adverb connector (e.g. Unfortunately).' },
+    { s:'The ___ of the site took six months.', a:'Noun',
+      w:'Before “of” and as the subject of “took”, the gap needs a noun (e.g. construction).' },
+    { s:'The instructions were ___ clear.', a:'Adverb',
+      w:'The gap modifies the adjective “clear”, so it needs an adverb (e.g. remarkably).' }
+  ];
+
+  const POS = ['Noun','Verb','Adjective','Adverb'];
+  const toolEl = document.getElementById('predTool');
+  const scoreEl = document.getElementById('predScore');
+  const state = {};   // index -> chosen
+
+  function render() {
+    let html = '';
+    items.forEach((it, i) => {
+      const chosen = state[i];
+      const answered = chosen !== undefined;
+      const ok = chosen === it.a;
+
+      const btns = POS.map(p => {
+        let cls = 'pred-btn';
+        if (answered) {
+          if (p === it.a) cls += ' correct';
+          else if (p === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-i="${i}" data-p="${p}">${p}</button>`;
+      }).join('');
+
+      let exp = '';
+      if (answered) {
+        exp = `<p class="q-exp ${ok ? 'text-emerald-400' : 'text-red-400'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${it.w}
+        </p>`;
+      }
+
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0b1424] p-4">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1.5 bg-[#16233c] text-[#93a7c7] text-[.68rem] font-bold rounded-md mt-0.5">${i + 1}</span>
+            <p class="flex-1 text-sm text-slate-200 leading-relaxed">${it.s}</p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${btns}</div>
+          ${exp}
+        </div>`;
+    });
+    toolEl.innerHTML = html;
+
+    toolEl.querySelectorAll('.pred-btn').forEach(b => {
+      b.addEventListener('click', function () {
+        const i = Number(this.dataset.i);
+        if (state[i] !== undefined) return;
+        state[i] = this.dataset.p;
+        render();
+        updateScore();
+      });
+    });
+  }
+
+  function updateScore() {
+    const ids = Object.keys(state);
+    const correct = ids.filter(i => state[i] === items[i].a).length;
+    scoreEl.textContent = ids.length
+      ? `Predicted ${ids.length} / ${items.length} · correct: ${correct}`
+      : '';
+  }
+
+  document.getElementById('predReset').addEventListener('click', () => {
+    Object.keys(state).forEach(k => delete state[k]);
+    render();
+    updateScore();
+  });
+
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 4 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'The ___ of the project surprised everyone.',            options: ['succeed','success','successful'], correct: 1 },
+    { id: 2,  text: 'The company plans to ___ its operations.',              options: ['expand','expansion','expansive'], correct: 0 },
+    { id: 3,  text: 'The results were very ___ .',                           options: ['surprise','surprising','surprisingly'], correct: 1 },
+    { id: 4,  text: 'She spoke very ___ .',                                  options: ['clear','clarity','clearly'], correct: 2 },
+    { id: 5,  text: 'The researchers published ___ findings.',               options: ['its','their','there'], correct: 1 },
+    { id: 6,  text: 'There is an increase ___ demand.',                      options: ['in','of','on'], correct: 0 },
+    { id: 7,  text: 'The study was small, ___ the results were promising.',  options: ['but','and','or'], correct: 0 },
+    { id: 8,  text: 'There isn\'t ___ evidence to support it.',              options: ['much','many','a few'], correct: 0 },
+    { id: 9,  text: 'The company reported strong ___ .',                     options: ['grow','growth','growing'], correct: 1 },
+    { id: 10, text: 'It is ___ to park here.',                               options: ['illegal','unlegal','dislegal'], correct: 0 },
+    { id: 11, text: 'Her ___ was admired by all.',                           options: ['kindness','kindful','kindly'], correct: 0 },
+    { id: 12, text: 'The museum attracts thousands of ___ each year.',       options: ['visitors','visit','visiting'], correct: 0 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => {
+              let cls = 'q-opt';
+              if (sel === oi) cls += ' selected';
+              if (sel !== undefined) {
+                if (oi === q.correct) cls += ' correct';
+                else if (sel === oi) cls += ' wrong';
+              }
+              return `<button class="${cls}" data-qid="${q.id}" data-optindex="${oi}">${opt}</button>`;
+            }).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.q-opt').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — your word-class radar is sharp! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+
+    </body>
+</html>

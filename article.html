@@ -1,1107 +1,2078 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ultimate Grammar: Articles &amp; Nouns</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        .prose h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            letter-spacing: -0.01em;
-        }
-        .prose h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #1e293b;
-        }
-        .prose p {
-            margin-bottom: 1rem;
-            line-height: 1.75;
-            color: #334155;
-        }
-        .prose ul,
-        .prose ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            color: #334155;
-        }
-        .prose li {
-            margin-bottom: 0.4rem;
-            line-height: 1.6;
-        }
-        .prose .rule-box {
-            background: #f1f5f9;
-            border-left: 4px solid #6366f1;
-            padding: 1rem 1.25rem;
-            border-radius: 0.5rem;
-            margin: 1.25rem 0;
-        }
-        .prose .rule-box strong {
-            color: #1e293b;
-        }
-        .prose .example {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            margin: 0.5rem 0 1rem 0;
-            font-size: 0.95rem;
-            color: #0f172a;
-        }
-        .prose .example .highlight {
-            color: #7c3aed;
-            font-weight: 600;
-        }
-        .prose .example .highlight-green {
-            color: #059669;
-            font-weight: 600;
-        }
-        .prose .badge {
-            display: inline-block;
-            background: #6366f1;
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.15rem 0.65rem;
-            border-radius: 9999px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-        .prose .badge-gold {
-            background: #f59e0b;
-        }
-        .prose .badge-green {
-            background: #22c55e;
-        }
-        .prose .badge-blue {
-            background: #3b82f6;
-        }
-        .prose .badge-rose {
-            background: #f43f5e;
-        }
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
-        }
-        .table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        .table-wrap th {
-            background: #f8fafc;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            color: #0f172a;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        .table-wrap td {
-            padding: 0.7rem 1rem;
-            border-bottom: 1px solid #f1f5f9;
-            color: #1e293b;
-        }
-        .table-wrap tr:last-child td {
-            border-bottom: none;
-        }
-        .anchor-link {
-            scroll-margin-top: 6rem;
-        }
-        .quiz-option {
-            transition: all 0.1s ease;
-            cursor: pointer;
-        }
-        .quiz-option:hover {
-            background: #f1f5f9;
-        }
-        .quiz-option.selected-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
-        .quiz-option.selected-wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-        }
-        .quiz-option.show-correct {
-            background: #dcfce7;
-            border-color: #22c55e;
-        }
-        .quiz-card {
-            transition: all 0.15s ease;
-        }
-        .quiz-card:hover {
-            border-color: #a5b4fc;
-        }
-        .exercise-fill input {
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.85rem;
-            background: white;
-            width: 160px;
-        }
-        .exercise-fill .fill-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem 1rem;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .exercise-fill .fill-row:last-child {
-            border-bottom: none;
-        }
-        .exercise-fill .fill-row .num {
-            font-weight: 600;
-            color: #64748b;
-            min-width: 24px;
-        }
-        .exercise-fill .fill-row .sentence {
-            flex: 1;
-            min-width: 200px;
-        }
-        .exercise-fill .fill-row .sentence .blank {
-            display: inline-block;
-            min-width: 90px;
-            border-bottom: 2px dashed #94a3b8;
-            margin: 0 4px;
-            padding: 0 4px;
-            color: #6366f1;
-            font-weight: 500;
-        }
-        @media (max-width: 640px) {
-            .prose h2 {
-                font-size: 1.25rem;
-            }
-            .prose h3 {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ultimate Grammar: Articles &amp; Nouns — Dark Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
 
-    <!-- ====== NAVBAR ====== -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div class="flex items-center gap-2">
-                 <a href="/" class="flex items-center gap-2">
-                       <span class="text-2xl font-bold text-indigo-600">📘</span>
-                       </a>
-                <span class="font-semibold text-gray-800 text-lg hidden sm:block">Article<span class="text-indigo-600">Nouns</span></span>
-            </div>
-            <div class="flex items-center gap-3 text-sm font-medium">
-                <a href="#countable" class="text-gray-600 hover:text-indigo-600 transition">Countable</a>
-                <a href="#articles" class="text-gray-600 hover:text-indigo-600 transition">Articles</a>
-                <a href="#names" class="text-gray-600 hover:text-indigo-600 transition">Names</a>
-                <a href="#exercises" class="text-gray-600 hover:text-indigo-600 transition hidden sm:inline">Practice</a>
-            </div>
-        </div>
-    </nav>
+:root{
+  --bg:#070b14;
+  --surface:#0d1424;
+  --surface-2:#111a2e;
+  --border:#1e2d4a;
+  --border-soft:#17233a;
+  --text:#dbe4f3;
+  --muted:#8899b5;
+  --accent:#818cf8;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+  --blue:#60a5fa;
+  --violet:#a78bfa;
+}
 
-    <!-- ====== HERO ====== -->
-    <section class="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 border-b border-gray-200/60">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-            <div class="grid md:grid-cols-5 gap-8 items-center">
-                <div class="md:col-span-3">
-                    <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide">📚 ULTIMATE GRAMMAR GUIDE</span>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
-                        Articles &amp;<br />
-                        <span class="text-indigo-600">Countable Nouns</span>
-                    </h1>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                        Master <strong>a/an, the</strong> and the difference between <strong>countable</strong> and
-                        <strong>uncountable</strong> nouns. Clear rules, examples, and practice exercises.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                        <a href="#countable" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-2.5 rounded-full transition shadow-sm hover:shadow-md flex items-center gap-2">
-                            Start Learning <span>→</span>
-                        </a>
-                        <a href="#exercises" class="bg-white hover:bg-gray-50 text-gray-700 font-medium px-6 py-2.5 rounded-full border border-gray-300 transition flex items-center gap-2">
-                            Practice <span>✏️</span>
-                        </a>
-                    </div>
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px circle at 8% -8%, rgba(99,102,241,.18), transparent 62%),
+    radial-gradient(700px circle at 96% 2%, rgba(168,85,247,.13), transparent 62%),
+    radial-gradient(640px circle at 50% 108%, rgba(16,185,129,.09), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
+
+/* ---------- Typography ---------- */
+.h-sec{
+  font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd;
+}
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
+
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
+
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
+
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
+
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.hla{ color:#fbbf24; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
+
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
+
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+tr:last-child td{ border-bottom:none; }
+tbody tr:hover td{ background:#0e1729; }
+
+/* ---------- Chips ---------- */
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* ---------- Exercise cards ---------- */
+.ex-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1rem 1.1rem;
+  transition:.15s;
+}
+.ex-card:hover{ border-color:#31446b; }
+.ex-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.5rem; height:1.5rem; padding:0 .35rem;
+  background:#16233c; color:#93a7c7;
+  font-size:.68rem; font-weight:700; border-radius:7px;
+  flex-shrink:0;
+}
+.ex-tag{
+  font-size:.62rem; font-weight:700; letter-spacing:.04em;
+  color:#6b7f9e; background:#0f1a2e;
+  border:1px solid #1c2942; border-radius:6px;
+  padding:.12rem .38rem; flex-shrink:0;
+}
+.ex-opt{
+  padding:.45rem 1.05rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.86rem; font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:74px;
+}
+.ex-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.ex-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.ex-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.ex-exp{
+  margin-top:.7rem; padding-top:.7rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem; color:#8fa3c0; line-height:1.6;
+}
+
+/* ---------- Quiz ---------- */
+.quiz-option{
+  padding:.5rem 1.15rem;
+  border-radius:10px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.88rem; font-weight:600;
+  cursor:pointer; transition:.12s;
+  user-select:none;
+}
+.quiz-option:hover{ background:#152340; border-color:#3d5280; }
+.quiz-option.selected{ background:rgba(99,102,241,.18); border-color:#818cf8; color:#c7d2fe; }
+.quiz-option.selected-correct{ background:rgba(16,185,129,.16); border-color:#34d399; color:#6ee7b7; }
+.quiz-option.selected-wrong{ background:rgba(248,113,113,.14); border-color:#f87171; color:#fca5a5; }
+.quiz-option.show-correct{ border-color:#34d399; color:#6ee7b7; border-style:dashed; }
+
+/* ---------- Buttons ---------- */
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+  cursor:pointer;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+/* ---------- Nav ---------- */
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+.anchor{ scroll-margin-top:5.5rem; }
+
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+
+/* ---------- Hero card ---------- */
+.hero-card{
+  background:linear-gradient(180deg,#0e1729 0%, #0a1120 100%);
+  border:1px solid #1e2b45;
+  border-radius:16px;
+  padding:1.4rem;
+  box-shadow:0 20px 60px -20px rgba(99,102,241,.3);
+}
+.hero-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:.5rem;
+}
+.hero-cell{
+  border-radius:10px; padding:.7rem; text-align:center; border:1px solid;
+}
+.hero-cell.green{ background:rgba(52,211,153,.08); border-color:rgba(52,211,153,.25); }
+.hero-cell.amber{ background:rgba(251,191,36,.08); border-color:rgba(251,191,36,.25); }
+</style>
+    </head>
+    <body>
+
+        <!-- ==================== NAVBAR ==================== -->
+        <nav
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b14]/85 backdrop-blur-xl">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">📘</span>
+                    <span
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">Article<span
+                            class="text-indigo-400">Nouns</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#countable" class="navlink">Countable</a>
+                    <a href="#articles"
+                        class="navlink hidden sm:inline-block">Articles</a>
+                    <a href="#names"
+                        class="navlink hidden md:inline-block">Names</a>
+                    <a href="#exercises" class="navlink">Practice</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
                 </div>
-                <div class="md:col-span-2 hidden md:flex justify-center">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200/80 p-6 w-full max-w-xs">
-                        <div class="text-center">
-                            <div class="flex justify-center gap-4 text-xs font-semibold text-gray-400 mb-2">
-                                <span>COUNTABLE</span><span class="text-gray-300">|</span><span>UNCOUNTABLE</span>
+            </div>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-3">
+                        <span
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            📚 Ultimate Grammar Guide · Dark Edition
+                        </span>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
+                            Articles &amp;<br />
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Countable
+                                Nouns</span>
+                        </h1>
+                        <p
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            Master <strong class="text-slate-200">a/an</strong>,
+                            <strong class="text-slate-200">the</strong>
+                            and the difference between <strong
+                                class="text-slate-200">countable</strong> and
+                            <strong class="text-slate-200">uncountable</strong>
+                            nouns. 17 rules, 40+ examples,
+                            <strong class="text-indigo-300">170 practice
+                                exercises</strong> and a scored quiz.
+                        </p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#countable" class="btn-primary">Start
+                                Learning →</a>
+                            <a href="#exercises" class="btn-ghost">Practice 170
+                                Exercises ✏️</a>
+                            <a href="#quiz" class="btn-ghost">Take Quiz 🎯</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">17</span>
+                                rules</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">170</span>
+                                exercises</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">12</span>
+                                quiz questions</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 hidden md:block">
+                        <div class="hero-card">
+                            <div class="text-center mb-3">
+                                <div
+                                    class="flex justify-center gap-4 text-[.65rem] font-bold text-slate-500 mb-2 uppercase tracking-wider">
+                                    <span>Countable</span><span
+                                        class="text-slate-700">|</span><span>Uncountable</span>
+                                </div>
+                                <div class="hero-grid">
+                                    <div class="hero-cell green">
+                                        <span
+                                            class="block font-bold text-emerald-300 text-sm">a
+                                            banana</span>
+                                        <span
+                                            class="text-[.65rem] text-slate-500">two
+                                            bananas</span>
+                                    </div>
+                                    <div class="hero-cell amber">
+                                        <span
+                                            class="block font-bold text-amber-300 text-sm">rice</span>
+                                        <span
+                                            class="text-[.65rem] text-slate-500">(no
+                                            plural)</span>
+                                    </div>
+                                    <div class="hero-cell green">
+                                        <span
+                                            class="block font-bold text-emerald-300 text-sm">a
+                                            chair</span>
+                                        <span
+                                            class="text-[.65rem] text-slate-500">some
+                                            chairs</span>
+                                    </div>
+                                    <div class="hero-cell amber">
+                                        <span
+                                            class="block font-bold text-amber-300 text-sm">furniture</span>
+                                        <span
+                                            class="text-[.65rem] text-slate-500">(uncountable)</span>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-[.6rem] text-slate-600 mt-3">Countable
+                                    = can count · Uncountable = cannot count</p>
                             </div>
-                            <div class="grid grid-cols-2 gap-2 text-sm">
-                                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-                                    <span class="block font-bold text-emerald-700">a banana</span>
-                                    <span class="text-xs text-gray-500">two bananas</span>
-                                </div>
-                                <div class="bg-amber-50 p-3 rounded-lg border border-amber-200">
-                                    <span class="block font-bold text-amber-700">rice</span>
-                                    <span class="text-xs text-gray-500">(no plural)</span>
-                                </div>
-                                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-                                    <span class="block font-bold text-emerald-700">a chair</span>
-                                    <span class="text-xs text-gray-500">some chairs</span>
-                                </div>
-                                <div class="bg-amber-50 p-3 rounded-lg border border-amber-200">
-                                    <span class="block font-bold text-amber-700">furniture</span>
-                                    <span class="text-xs text-gray-500">(uncountable)</span>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-gray-400 mt-3">Countable = can count · Uncountable = cannot count</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- ====== MAIN CONTENT ====== -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <!-- ============================================================ -->
-        <!--  SECTION: COUNTABLE & UNCOUNTABLE 1 (Unit 69)                 -->
-        <!-- ============================================================ -->
-        <section id="countable" class="anchor-link prose max-w-none">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🔢</span>
-                <h2 class="!mt-0">Countable &amp; Uncountable Nouns 1</h2>
-            </div>
-            <p class="text-gray-600">A noun can be <strong>countable</strong> or <strong>uncountable</strong>. This affects how we use articles and quantities.</p>
-
-            <div class="grid md:grid-cols-2 gap-5 mt-4">
-                <div class="bg-white border border-emerald-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="!mt-0 text-emerald-700 font-bold text-base">✅ Countable</h3>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• Can be singular or plural (<em>banana / bananas</em>)</li>
-                        <li>• Can use numbers (<em>one banana, two bananas</em>)</li>
-                        <li>• Use <strong>a/an</strong> with singular (<em>a banana</em>)</li>
-                        <li>• Use <strong>some / any</strong> with plural (<em>some bananas</em>)</li>
-                    </ul>
-                    <div class="example text-sm mt-2">I eat <span class="highlight">a banana</span> every day.</div>
-                    <div class="example text-sm">Kate was singing <span class="highlight">a song</span>.</div>
+            <!-- ==================== INTRO ==================== -->
+            <section id="intro" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🔤</span>
+                    <h2 class="h-sec">Why Articles &amp; Countability
+                        Matter</h2>
                 </div>
-                <div class="bg-white border border-amber-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="!mt-0 text-amber-700 font-bold text-base">❌ Uncountable</h3>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• Only one form (<em>rice</em>, no plural)</li>
-                        <li>• Cannot use numbers (<em>not “one rice”</em>)</li>
-                        <li>• Cannot use <strong>a/an</strong> (<em>not “a rice”</em>)</li>
-                        <li>• Use <strong>some / any</strong> (<em>some rice</em>)</li>
-                    </ul>
-                    <div class="example text-sm mt-2">I eat <span class="highlight">rice</span> every day.</div>
-                    <div class="example text-sm">Kate was listening to <span class="highlight">music</span>.</div>
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    Articles — <strong class="text-slate-200">a</strong>,
+                    <strong class="text-slate-200">an</strong>,
+                    <strong class="text-slate-200">the</strong> — are the most
+                    common words in English, and also the
+                    most frequently wrong. Whether you need an article at all
+                    depends on whether the noun is
+                    <strong class="text-indigo-300">countable</strong> or
+                    <strong class="text-amber-300">uncountable</strong>,
+                    and whether it is <strong
+                        class="text-slate-200">general</strong> or <strong
+                        class="text-slate-200">specific</strong>.
+                </p>
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 The golden
+                            triangle:</strong>
+                        <span class="text-indigo-300 font-semibold">a/an</span>
+                        for one non-specific countable noun ·
+                        <span class="text-slate-200 font-semibold">the</span>
+                        for a specific one ·
+                        <span class="text-amber-300 font-semibold">∅</span> (no
+                        article) for general plural or uncountable nouns.
+                    </p>
                 </div>
-            </div>
+            </section>
 
-            <div class="rule-box mt-4">
-                <p class="!mb-0 text-gray-800"><strong>💡 Key rule:</strong> Use <strong>a/an</strong> with singular countable nouns. Use <strong>some</strong> with plural countable and uncountable nouns.</p>
-            </div>
-
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr><th></th><th>Countable</th><th>Uncountable</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong>Examples</strong></td><td>a dog, two dogs, some dogs</td><td>water, music, rice, money</td></tr>
-                        <tr><td><strong>Use a/an</strong></td><td>✅ a banana</td><td>❌ a rice</td></tr>
-                        <tr><td><strong>Use alone</strong></td><td>❌ I like banana.</td><td>✅ I like rice.</td></tr>
-                        <tr><td><strong>Use some/any</strong></td><td>✅ some apples</td><td>✅ some water</td></tr>
-                        <tr><td><strong>Use many/few</strong></td><td>✅ many pictures</td><td>❌ many water</td></tr>
-                        <tr><td><strong>Use much/little</strong></td><td>❌ much apples</td><td>✅ much water</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 69</span> <span class="badge badge-green ml-2">Countable and uncountable 1</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: COUNTABLE & UNCOUNTABLE 2 (Unit 70)                 -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🔄</span>
-                <h2 class="!mt-0">Countable &amp; Uncountable 2</h2>
-            </div>
-            <p class="text-gray-600">Many nouns can be <strong>both</strong> countable and uncountable, with a difference in meaning.</p>
-
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-sm font-bold text-emerald-700">Countable</h3>
-                    <div class="example text-sm">Did you hear <span class="highlight">a noise</span> just now? <span class="text-xs text-gray-400">(a specific noise)</span></div>
-                    <div class="example text-sm">I bought <span class="highlight">a paper</span>. <span class="text-xs text-gray-400">(a newspaper)</span></div>
-                    <div class="example text-sm">There's <span class="highlight">a hair</span> in my soup! <span class="text-xs text-gray-400">(one single hair)</span></div>
-                    <div class="example text-sm">This is <span class="highlight">a nice room</span>. <span class="text-xs text-gray-400">(a room in a house)</span></div>
-                    <div class="example text-sm">I had some interesting <span class="highlight">experiences</span>. <span class="text-xs text-gray-400">(things that happened)</span></div>
+            <!-- ==================== RULES ==================== -->
+            <section id="countable"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📋</span>
+                    <h2 class="h-sec">The 17 Rules — In Detail</h2>
                 </div>
-                <div>
-                    <h3 class="text-sm font-bold text-amber-700">Uncountable</h3>
-                    <div class="example text-sm">There's too much <span class="highlight">noise</span>. <span class="text-xs text-gray-400">(noise in general)</span></div>
-                    <div class="example text-sm">I need some <span class="highlight">paper</span> to write on. <span class="text-xs text-gray-400">(material)</span></div>
-                    <div class="example text-sm">You've got very long <span class="highlight">hair</span>. <span class="text-xs text-gray-400">(all hair on your head)</span></div>
-                    <div class="example text-sm">There isn't <span class="highlight">room</span>. <span class="text-xs text-gray-400">(space)</span></div>
-                    <div class="example text-sm">I had a lot of <span class="highlight">experience</span>. <span class="text-xs text-gray-400">(knowledge from doing)</span></div>
-                </div>
-            </div>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    Every rule includes the core principle, extra explanation,
+                    real examples, and the traps
+                    examiners love to test.
+                </p>
 
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Drinks</strong> (coffee, tea, juice, beer) are normally uncountable, but you can say <strong>a coffee</strong> (= a cup of coffee), <strong>two coffees</strong> etc.</p>
-                <div class="example text-sm mt-2">Two <span class="highlight">coffees</span> and an orange juice, please.</div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 mt-4">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <p class="font-semibold text-sm text-gray-700">Usually uncountable:</p>
-                    <div class="flex flex-wrap gap-1 text-sm text-gray-600">
-                        <span class="bg-white px-2 py-0.5 rounded border">accommodation</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">behaviour</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">bread</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">chaos</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">furniture</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">information</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">luggage</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">news</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">progress</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">scenery</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">traffic</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">weather</span>
-                        <span class="bg-white px-2 py-0.5 rounded border">work</span>
+                <!-- RULE 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">1</span>
+                        Countable &amp; Uncountable 1</h3>
+                    <p>A noun can be <strong>countable</strong> or
+                        <strong>uncountable</strong>. This affects which
+                        articles and quantifiers you can use.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">✅
+                                Countable</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Can
+                                be singular or plural (<em>banana /
+                                    bananas</em>), can take numbers, use
+                                <strong>a/an</strong> with singular and
+                                <strong>some/any</strong> with plural.</p>
+                            <div class="example text-sm mt-2">I eat <span
+                                    class="hl">a banana</span> every day.</div>
+                            <div class="example text-sm">Kate was singing <span
+                                    class="hl">a song</span>.</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">❌
+                                Uncountable</p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Only
+                                one form (<em>rice</em>, no plural), cannot take
+                                numbers, no <strong>a/an</strong>, use
+                                <strong>some/any</strong>.</p>
+                            <div class="example text-sm mt-2">I eat <span
+                                    class="hla">rice</span> every day.</div>
+                            <div class="example text-sm">Kate was listening to
+                                <span class="hla">music</span>.</div>
+                        </div>
                     </div>
-                    <p class="text-xs text-gray-400 mt-2">We do not use <strong>a/an</strong> with these. <em>I hope you have good weather.</em> (not a good weather)</p>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <p class="font-semibold text-sm text-gray-700">Countable vs uncountable pairs:</p>
-                    <div class="text-sm text-gray-600 space-y-1">
-                        <div><span class="text-emerald-600 font-medium">a job</span> vs <span class="text-amber-600 font-medium">work</span></div>
-                        <div><span class="text-emerald-600 font-medium">a view</span> vs <span class="text-amber-600 font-medium">scenery</span></div>
-                        <div><span class="text-emerald-600 font-medium">a day</span> vs <span class="text-amber-600 font-medium">weather</span></div>
-                        <div><span class="text-emerald-600 font-medium">a bag</span> vs <span class="text-amber-600 font-medium">baggage/luggage</span></div>
-                        <div><span class="text-emerald-600 font-medium">a chair</span> vs <span class="text-amber-600 font-medium">furniture</span></div>
-                        <div><span class="text-emerald-600 font-medium">a suggestion</span> vs <span class="text-amber-600 font-medium">advice</span></div>
-                        <div><span class="text-emerald-600 font-medium">a car</span> vs <span class="text-amber-600 font-medium">traffic</span></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th></th><th>Countable</th><th>Uncountable</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Examples</strong></td><td>a dog,
+                                        two dogs, some dogs</td><td>water,
+                                        music, rice, money</td></tr>
+                                <tr><td><strong>Use a/an</strong></td><td>✅ a
+                                        banana</td><td>❌ a rice</td></tr>
+                                <tr><td><strong>Use alone</strong></td><td>❌ I
+                                        like banana.</td><td>✅ I like
+                                        rice.</td></tr>
+                                <tr><td><strong>Use some/any</strong></td><td>✅
+                                        some apples</td><td>✅ some
+                                        water</td></tr>
+                                <tr><td><strong>Use many/few</strong></td><td>✅
+                                        many pictures</td><td>❌ many
+                                        water</td></tr>
+                                <tr><td><strong>Use
+                                            much/little</strong></td><td>❌ much
+                                        apples</td><td>✅ much water</td></tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> uncountable nouns are
+                        still singular in grammar — “The news <span
+                            class="hlg">is</span> good”, “Money <span
+                            class="hlg">makes</span> the world go round”.</div>
                 </div>
-            </div>
-            <p class="text-sm text-gray-500 mt-2"><span class="badge">Unit 70</span> <span class="badge badge-green ml-2">Countable and uncountable 2</span></p>
-        </section>
 
-        <!-- ============================================================ -->
-        <!--  SECTION: COUNTABLE NOUNS WITH A/AN AND SOME (Unit 71)        -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">📌</span>
-                <h2 class="!mt-0">Countable Nouns with <em>a/an</em> and <em>some</em></h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-base font-bold text-indigo-700">A / An</h3>
-                    <p class="text-sm text-gray-600">Use <strong>a/an</strong> with singular countable nouns to say what kind of thing or person.</p>
-                    <div class="example text-sm">She never wears <span class="highlight">a hat</span>.</div>
-                    <div class="example text-sm">What <span class="highlight">a beautiful day</span>!</div>
-                    <div class="example text-sm">My father is <span class="highlight">a doctor</span>.</div>
-                    <div class="example text-sm">Jack has <span class="highlight">a long nose</span>.</div>
-                    <p class="text-xs text-gray-400 mt-1">⚠️ Singular countable nouns cannot be used alone: <span class="line-through">She wears hat.</span></p>
-                </div>
-                <div>
-                    <h3 class="text-base font-bold text-emerald-700">Some</h3>
-                    <p class="text-sm text-gray-600">Use <strong>some</strong> with plural countable nouns.</p>
-                    <div class="example text-sm">I've seen <span class="highlight">some good movies</span> recently.</div>
-                    <div class="example text-sm"><span class="highlight">Some friends</span> of mine are coming.</div>
-                    <div class="example text-sm">I need <span class="highlight">some new sunglasses</span>.</div>
-                    <p class="text-sm text-gray-600 mt-2"><strong>Some</strong> also means “some but not all”:</p>
-                    <div class="example text-sm"><span class="highlight">Some children</span> learn very quickly.</div>
-                    <p class="text-xs text-gray-400 mt-1">💡 Do not use <strong>some</strong> when talking about things in general: <em>I love bananas.</em> (not some bananas)</p>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Singular vs plural:</strong></p>
-                <div class="example text-sm"><span class="highlight">A dog</span> is an animal. / <span class="highlight">Dogs</span> are animals.</div>
-                <div class="example text-sm">I'm <span class="highlight">an optimist</span>. / We're <span class="highlight">optimists</span>.</div>
-                <div class="example text-sm">What <span class="highlight">a lovely dress</span>! / What <span class="highlight">awful shoes</span>!</div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 71</span> <span class="badge badge-blue ml-2">Countable nouns with a/an and some</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: A/AN AND THE (Unit 72)                              -->
-        <!-- ============================================================ -->
-        <section id="articles" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">📖</span>
-                <h2 class="!mt-0"><em>a/an</em> and <em>the</em></h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div class="bg-white border border-indigo-200 rounded-xl p-5">
-                    <h3 class="!mt-0 text-indigo-700 font-bold">A / An</h3>
-                    <p class="text-sm text-gray-600">First time we mention something, or not specific.</p>
-                    <div class="example text-sm">I had <span class="highlight">a sandwich</span> and <span class="highlight">an apple</span>.</div>
-                    <div class="example text-sm">Tim sat down on <span class="highlight">a chair</span>.</div>
-                    <div class="example text-sm">We stayed at <span class="highlight">a very cheap hotel</span>.</div>
-                </div>
-                <div class="bg-white border border-indigo-200 rounded-xl p-5">
-                    <h3 class="!mt-0 text-indigo-700 font-bold">The</h3>
-                    <p class="text-sm text-gray-600">Specific, already known, or unique.</p>
-                    <div class="example text-sm"><span class="highlight">The sandwich</span> wasn't very good.</div>
-                    <div class="example text-sm">Tim sat down on <span class="highlight">the chair</span> nearest the door.</div>
-                    <div class="example text-sm"><span class="highlight">The hotel</span> where we stayed was cheap.</div>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Specific uses of <em>the</em>:</strong> light / floor / ceiling / door / carpet in a room, <em>the bank, the post office, the doctor, the dentist</em>.</p>
-                <div class="example text-sm mt-2">Can you turn off <span class="highlight">the light</span>, please?</div>
-                <div class="example text-sm">I have to go to <span class="highlight">the bank</span> today.</div>
-                <div class="example text-sm">Clare isn't well. She's gone to <span class="highlight">the doctor</span>.</div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Once a week / three times a day / £1.50 a kilo</strong> — use <strong>a</strong> (not <strong>the</strong>).</p>
-                <div class="example text-sm mt-2">I go to the cinema about <span class="highlight">once a month</span>.</div>
-                <div class="example text-sm">Helen works eight hours <span class="highlight">a day</span>.</div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 72</span> <span class="badge badge-blue ml-2">a/an and the</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: THE 1 (Unit 73)                                     -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🌍</span>
-                <h2 class="!mt-0"><em>the</em> 1 – Unique, Superlatives, and More</h2>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-sm font-bold">Unique things</h3>
-                    <div class="example text-sm"><span class="highlight">The equator</span>, <span class="highlight">the world</span>, <span class="highlight">the sun</span></div>
-                    <div class="example text-sm">Our apartment is on <span class="highlight">the tenth floor</span>.</div>
-                    <div class="example text-sm">Buenos Aires is <span class="highlight">the capital</span> of Argentina.</div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold">Superlatives</h3>
-                    <div class="example text-sm">What's <span class="highlight">the longest</span> river in Europe?</div>
-                    <div class="example text-sm">It's <span class="highlight">the best</span> way to learn.</div>
-                    <div class="example text-sm">Your sweater is <span class="highlight">the same</span> colour as mine.</div>
-                </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 mt-3">
-                <div>
-                    <h3 class="text-sm font-bold">With <em>the</em></h3>
-                    <div class="example text-sm"><span class="highlight">the sky</span>, <span class="highlight">the sea</span>, <span class="highlight">the ground</span></div>
-                    <div class="example text-sm"><span class="highlight">the country</span> (not town)</div>
-                    <div class="example text-sm"><span class="highlight">the cinema</span>, <span class="highlight">the theatre</span></div>
-                    <div class="example text-sm"><span class="highlight">the radio</span></div>
-                    <div class="example text-sm"><span class="highlight">the internet</span></div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold">Without <em>the</em></h3>
-                    <div class="example text-sm"><span class="highlight">space</span> (universe)</div>
-                    <div class="example text-sm"><span class="highlight">TV</span> / <span class="highlight">television</span></div>
-                    <div class="example text-sm"><span class="highlight">breakfast/lunch/dinner</span></div>
-                    <div class="example text-sm"><span class="highlight">platform 5</span>, <span class="highlight">size 43</span></div>
-                    <div class="example text-sm"><span class="highlight">room 126</span>, <span class="highlight">page 29</span></div>
-                </div>
-            </div>
-            <p class="text-sm text-gray-500 mt-2"><span class="badge">Unit 73</span> <span class="badge badge-blue ml-2">the 1</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: THE 2 (Unit 74) – school / the school etc.          -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🏫</span>
-                <h2 class="!mt-0"><em>the</em> 2 – <em>school / the school</em> etc.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
-                    <h3 class="!mt-0 text-amber-700 font-bold">General idea (no <em>the</em>)</h3>
-                    <div class="example text-sm">Ellie goes to <span class="highlight">school</span>.</div>
-                    <div class="example text-sm">When I leave school, I plan to go to <span class="highlight">university</span>.</div>
-                    <div class="example text-sm">He was taken to <span class="highlight">hospital</span>.</div>
-                    <div class="example text-sm">Ken's brother is in <span class="highlight">prison</span>.</div>
-                    <div class="example text-sm">Sarah's father goes to <span class="highlight">church</span>.</div>
-                    <div class="example text-sm">I'm going to <span class="highlight">bed</span> now.</div>
-                    <div class="example text-sm">Chris didn't go to <span class="highlight">work</span> yesterday.</div>
-                    <div class="example text-sm">Let's go <span class="highlight">home</span>.</div>
-                </div>
-                <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
-                    <h3 class="!mt-0 text-blue-700 font-bold">Specific place (with <em>the</em>)</h3>
-                    <div class="example text-sm">Ellie's mother went to <span class="highlight">the school</span>.</div>
-                    <div class="example text-sm">I went to <span class="highlight">the university</span> to meet a professor.</div>
-                    <div class="example text-sm">Jane has gone to <span class="highlight">the hospital</span> to visit Joe.</div>
-                    <div class="example text-sm">Ken went to <span class="highlight">the prison</span> to visit his brother.</div>
-                    <div class="example text-sm">Workmen went to <span class="highlight">the church</span> to repair the roof.</div>
-                    <div class="example text-sm">I sat down on <span class="highlight">the bed</span>.</div>
-                    <div class="example text-sm">I work at <span class="highlight">the</span> office.</div>
-                </div>
-            </div>
-            <p class="text-sm text-gray-500 mt-2"><span class="badge">Unit 74</span> <span class="badge badge-blue ml-2">the 2 (school / the school etc.)</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: THE 3 (Unit 75) – children / the children           -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">👥</span>
-                <h2 class="!mt-0"><em>the</em> 3 – <em>children / the children</em></h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-sm font-bold text-emerald-700">In general (no <em>the</em>)</h3>
-                    <div class="example text-sm">I'm afraid of <span class="highlight">dogs</span>.</div>
-                    <div class="example text-sm"><span class="highlight">Children</span> learn from playing.</div>
-                    <div class="example text-sm">I couldn't live without <span class="highlight">music</span>.</div>
-                    <div class="example text-sm"><span class="highlight">Sugar</span> isn't very good for you.</div>
-                    <div class="example text-sm"><span class="highlight">English people</span> drink a lot of tea.</div>
-                    <div class="example text-sm"><span class="highlight">Most shops</span> accept credit cards.</div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-blue-700">Specific (with <em>the</em>)</h3>
-                    <div class="example text-sm">We took <span class="highlight">the children</span> to the zoo.</div>
-                    <div class="example text-sm">I liked <span class="highlight">the music</span> in the film.</div>
-                    <div class="example text-sm">Can you pass <span class="highlight">the sugar</span>, please?</div>
-                    <div class="example text-sm"><span class="highlight">The English people</span> I know drink a lot.</div>
-                    <div class="example text-sm">I like <span class="highlight">the people</span> I work with.</div>
-                    <div class="example text-sm"><span class="highlight">The coffee</span> we had wasn't good.</div>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>💡 Compare:</strong> <em>I like working with <span class="highlight-green">people</span>.</em> (general) vs <em>I like <span class="highlight">the people</span> I work with.</em> (specific)</p>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 75</span> <span class="badge badge-blue ml-2">the 3 (children / the children)</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: THE 4 (Unit 76) – giraffe, telephone, old           -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🦒</span>
-                <h2 class="!mt-0"><em>the</em> 4 – <em>the giraffe / the telephone / the old</em></h2>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-sm font-bold">Types of things</h3>
-                    <div class="example text-sm"><span class="highlight">The giraffe</span> is the tallest of all animals.</div>
-                    <div class="example text-sm"><span class="highlight">The bicycle</span> is an excellent means of transport.</div>
-                    <div class="example text-sm">When was <span class="highlight">the camera</span> invented?</div>
-                    <div class="example text-sm">Can you play <span class="highlight">the guitar</span>?</div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold">Groups of people</h3>
-                    <div class="example text-sm"><span class="highlight">The rich</span> should pay higher taxes.</div>
-                    <div class="example text-sm">We need to help <span class="highlight">the homeless</span>.</div>
-                    <div class="example text-sm"><span class="highlight">The young</span> have the future in their hands.</div>
-                    <div class="example text-sm"><span class="highlight">The French</span> are famous for their food.</div>
-                    <p class="text-xs text-gray-400 mt-1">💡 <em>the old</em> = old people, <em>the French</em> = French people (plural)</p>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Man</strong> (without <em>the</em>) = human beings in general: <em>What do you know about the origins of <span class="highlight">man</span>?</em></p>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 76</span> <span class="badge badge-blue ml-2">the 4</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: NAMES WITH AND WITHOUT THE 1 (Unit 77)              -->
-        <!-- ============================================================ -->
-        <section id="names" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🌎</span>
-                <h2 class="!mt-0">Names with and without <em>the</em> 1</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-sm font-bold text-emerald-700">Without <em>the</em></h3>
-                    <p class="text-sm text-gray-600">People, continents, countries, states, cities, mountains, lakes.</p>
-                    <div class="example text-sm">Africa, South America</div>
-                    <div class="example text-sm">France, Japan, Texas</div>
-                    <div class="example text-sm">Cairo, Bangkok</div>
-                    <div class="example text-sm">Everest, Kilimanjaro</div>
-                    <div class="example text-sm">Lake Superior, Mount Etna</div>
-                    <p class="text-sm text-gray-600 mt-2">Also: <strong>Mr Johnson, Doctor Smith, President Biden</strong></p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-blue-700">With <em>the</em></h3>
-                    <p class="text-sm text-gray-600">Oceans, seas, rivers, canals, deserts, plural names.</p>
-                    <div class="example text-sm">the Atlantic (Ocean), the Red Sea</div>
-                    <div class="example text-sm">the Amazon, the Nile, the Suez Canal</div>
-                    <div class="example text-sm">the Sahara (Desert)</div>
-                    <div class="example text-sm">the Netherlands, the Philippines</div>
-                    <div class="example text-sm">the Canaries, the Andes, the Alps</div>
-                    <p class="text-sm text-gray-600 mt-2">Also: <strong>the United States, the UK, the Czech Republic</strong></p>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Directions:</strong> <em>the north of Brazil</em> but <em>northern Brazil</em> (without <em>the</em>).</p>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 77</span> <span class="badge badge-blue ml-2">Names with and without the 1</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: NAMES WITH AND WITHOUT THE 2 (Unit 78)              -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🏛️</span>
-                <h2 class="!mt-0">Names with and without <em>the</em> 2</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-sm font-bold text-emerald-700">Without <em>the</em></h3>
-                    <p class="text-sm text-gray-600">Streets, parks, stations, airports, universities, palaces.</p>
-                    <div class="example text-sm">Union Street, Fifth Avenue, Hyde Park</div>
-                    <div class="example text-sm">Manchester Airport, Victoria Station</div>
-                    <div class="example text-sm">Cambridge University, Buckingham Palace</div>
-                    <div class="example text-sm">McDonald's, Barclays, St John's Church</div>
-                    <p class="text-sm text-gray-600 mt-2">Companies: <strong>Fiat, Sony, Kodak, Singapore Airlines</strong></p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-blue-700">With <em>the</em></h3>
-                    <p class="text-sm text-gray-600">Hotels, theatres, museums, buildings, newspapers, organisations.</p>
-                    <div class="example text-sm">the Sheraton Hotel, the Holiday Inn</div>
-                    <div class="example text-sm">the Palace Theatre, the Odeon</div>
-                    <div class="example text-sm">the Guggenheim Museum</div>
-                    <div class="example text-sm">the Empire State Building, the White House</div>
-                    <div class="example text-sm">the Washington Post, the BBC</div>
-                    <p class="text-sm text-gray-600 mt-2">Names with <strong>of</strong>: <em>the Bank of England, the Tower of London</em></p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 78</span> <span class="badge badge-blue ml-2">Names with and without the 2</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: SINGULAR AND PLURAL (Unit 79)                       -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🔀</span>
-                <h2 class="!mt-0">Singular &amp; Plural</h2>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-sm font-bold">Plural words (two parts)</h3>
-                    <div class="example text-sm"><span class="highlight">glasses, trousers, jeans, shorts</span></div>
-                    <div class="example text-sm"><span class="highlight">pyjamas, binoculars, scissors</span></div>
-                    <p class="text-xs text-gray-500">Take a plural verb: <em>My trousers <span class="highlight-green">are</span> too long.</em></p>
-                    <p class="text-xs text-gray-500">Use <strong>a pair of</strong>: <em>a pair of jeans</em></p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold">Nouns ending in -ics</h3>
-                    <div class="example text-sm"><span class="highlight">athletics, gymnastics, economics</span></div>
-                    <div class="example text-sm"><span class="highlight">physics, electronics, maths</span></div>
-                    <p class="text-xs text-gray-500">Usually singular: <em>Gymnastics <span class="highlight-green">is</span> my favourite sport.</em></p>
-                    <p class="text-xs text-gray-500"><strong>News</strong> is singular: <em>The news <span class="highlight-green">was</span> unexpected.</em></p>
-                </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 mt-3">
-                <div>
-                    <h3 class="text-sm font-bold">Group nouns (plural verb common)</h3>
-                    <div class="example text-sm">audience, committee, company, family, government, staff, team</div>
-                    <div class="example text-sm">The government <span class="highlight-green">have</span> decided to increase taxes.</div>
-                    <div class="example text-sm">The police <span class="highlight-green">are</span> investigating.</div>
-                    <p class="text-xs text-gray-500">Singular verb also possible: <em>The government <span class="highlight-green">has</span> decided…</em></p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold">People</h3>
-                    <div class="example text-sm">He's a nice <span class="highlight">person</span>.</div>
-                    <div class="example text-sm">They are nice <span class="highlight">people</span>. (not persons)</div>
-                    <p class="text-xs text-gray-500">Sum of money, time, distance = singular:</p>
-                    <div class="example text-sm">Fifty thousand pounds <span class="highlight-green">was</span> stolen.</div>
-                    <div class="example text-sm">Three years <span class="highlight-green">is</span> a long time.</div>
-                </div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 79</span> <span class="badge badge-blue ml-2">Singular and plural</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: NOUN + NOUN (Unit 80)                               -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">🔗</span>
-                <h2 class="!mt-0">Noun + Noun <span class="text-sm font-normal text-gray-500">(a bus driver / a headache)</span></h2>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                    <div class="example text-sm"><span class="highlight">a bus driver</span> = the driver of a bus</div>
-                    <div class="example text-sm"><span class="highlight">income tax</span> = tax on income</div>
-                    <div class="example text-sm"><span class="highlight">the city centre</span> = the centre of the city</div>
-                    <div class="example text-sm"><span class="highlight">an apple tree</span> = a tree that has apples</div>
-                    <div class="example text-sm"><span class="highlight">a Paris hotel</span> = a hotel in Paris</div>
-                    <div class="example text-sm"><span class="highlight">my life story</span> = the story of my life</div>
-                </div>
-                <div>
-                    <div class="example text-sm"><span class="highlight">a frying pan</span> = a pan for frying</div>
-                    <div class="example text-sm"><span class="highlight">a washing machine</span></div>
-                    <div class="example text-sm"><span class="highlight">a swimming pool</span></div>
-                    <div class="example text-sm"><span class="highlight">a coffee cup</span> vs <span class="highlight">a cup of coffee</span></div>
-                    <div class="example text-sm"><span class="highlight">a shopping bag</span> vs <span class="highlight">a bag of shopping</span></div>
-                </div>
-            </div>
-
-            <div class="rule-box">
-                <p class="!mb-0"><strong>Compound nouns with numbers:</strong> first noun is singular.</p>
-                <div class="example text-sm mt-2">a <span class="highlight">three-hour</span> journey (not three-hours)</div>
-                <div class="example text-sm">a <span class="highlight">ten-pound</span> note</div>
-                <div class="example text-sm">a <span class="highlight">four-week</span> course</div>
-                <div class="example text-sm">two <span class="highlight">14-year-old</span> girls</div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 80</span> <span class="badge badge-blue ml-2">Noun + noun (a bus driver / a headache)</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: -’S AND OF ... (Unit 81)                            -->
-        <!-- ============================================================ -->
-        <section class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">✏️</span>
-                <h2 class="!mt-0"><em>-’s</em> (your sister’s name) and <em>of …</em> (the name of the book)</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <h3 class="text-sm font-bold text-indigo-700">-’s (apostrophe + s)</h3>
-                    <p class="text-sm text-gray-600">Mostly for <strong>people</strong> and <strong>animals</strong>.</p>
-                    <div class="example text-sm"><span class="highlight">Tom's</span> computer isn't working.</div>
-                    <div class="example text-sm">What is <span class="highlight">your sister's</span> name?</div>
-                    <div class="example text-sm">Don't step on <span class="highlight">the cat's</span> tail.</div>
-                    <p class="text-sm text-gray-600 mt-2"><strong>Plural nouns:</strong> <span class="highlight">my sisters'</span> room</p>
-                    <p class="text-sm text-gray-600"><strong>Irregular plurals:</strong> <span class="highlight">the men's</span> changing room</p>
-                    <p class="text-sm text-gray-600"><strong>Time words:</strong> <span class="highlight">yesterday's</span> newspaper, <span class="highlight">next week's</span> meeting</p>
-                    <p class="text-sm text-gray-600"><strong>Periods of time:</strong> <span class="highlight">a week's</span> holiday, <span class="highlight">three weeks'</span> holiday</p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-amber-700">of …</h3>
-                    <p class="text-sm text-gray-600">For <strong>things, ideas</strong> and long phrases.</p>
-                    <div class="example text-sm">the temperature <span class="highlight">of the water</span></div>
-                    <div class="example text-sm">the name <span class="highlight">of the book</span></div>
-                    <div class="example text-sm">the owner <span class="highlight">of the restaurant</span></div>
-                    <div class="example text-sm">the beginning <span class="highlight">of the month</span></div>
-                    <div class="example text-sm">the top <span class="highlight">of the hill</span></div>
-                    <p class="text-sm text-gray-600 mt-2">For organisations, both are possible:</p>
-                    <div class="example text-sm">the government's decision <span class="text-gray-400">or</span> the decision <span class="highlight">of the government</span></div>
-                    <p class="text-sm text-gray-600 mt-2">For places: <span class="highlight">the city's</span> streets, <span class="highlight">the world's</span> population</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-500"><span class="badge">Unit 81</span> <span class="badge badge-blue ml-2">-’s (your sister’s name) and of …</span></p>
-        </section>
-
-        <!-- ============================================================ -->
-        <!--  SECTION: EXERCISES                                           -->
-        <!-- ============================================================ -->
-        <section id="exercises" class="anchor-link prose max-w-none mt-12 border-t border-gray-200/70 pt-10">
-            <div class="flex items-center gap-3 mb-2">
-                <span class="text-3xl">✏️</span>
-                <h2 class="!mt-0">Practice Exercises</h2>
-            </div>
-            <p class="text-gray-600">Test your understanding of articles and countable/uncountable nouns.</p>
-
-            <!-- Exercise 69.1 – a/an -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">69.1</span> Put in <em>a/an</em> where necessary
-                </h3>
-                <div id="ex691" class="exercise-fill mt-3">
-                    <div class="fill-row">
-                        <span class="num">1</span>
-                        <span class="sentence">Joe goes everywhere by bike. He doesn't have <input type="text" data-answer="a car" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center">.</span>
+                <!-- RULE 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">2</span>
+                        Countable &amp; Uncountable 2 — Meaning Change</h3>
+                    <p>Many nouns can be <strong>both</strong> countable and
+                        uncountable, with a difference in meaning.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Noun</th><th>Countable
+                                        meaning</th><th>Uncountable
+                                        meaning</th></tr></thead>
+                            <tbody>
+                                <tr><td>noise</td><td>a noise (a specific sound)
+                                        — <em>Did you hear a
+                                            noise?</em></td><td>noise in general
+                                        — <em>There's too much
+                                            noise.</em></td></tr>
+                                <tr><td>paper</td><td>a paper (a newspaper /
+                                        document) — <em>I bought a
+                                            paper.</em></td><td>material — <em>I
+                                            need some paper.</em></td></tr>
+                                <tr><td>hair</td><td>a hair (one strand) —
+                                        <em>There's a hair in my
+                                            soup!</em></td><td>all hair on a
+                                        head — <em>You've got long
+                                            hair.</em></td></tr>
+                                <tr><td>room</td><td>a room (a space in a
+                                        building) — <em>a nice
+                                            room</em></td><td>space — <em>There
+                                            isn't room.</em></td></tr>
+                                <tr><td>experience</td><td>an experience (an
+                                        event) — <em>interesting
+                                            experiences</em></td><td>knowledge —
+                                        <em>a lot of experience</em></td></tr>
+                                <tr><td>glass</td><td>a glass (a drinking
+                                        vessel) — <em>a glass of
+                                            water</em></td><td>material —
+                                        <em>made of glass</em></td></tr>
+                                <tr><td>chicken</td><td>a chicken (the animal) —
+                                        <em>two chickens</em></td><td>the meat —
+                                        <em>I eat chicken.</em></td></tr>
+                                <tr><td>business</td><td>a business (a company)
+                                        — <em>He owns a
+                                            business.</em></td><td>activity —
+                                        <em>I'm here on business.</em></td></tr>
+                                <tr><td>light</td><td>a light (a lamp) —
+                                        <em>Turn on the
+                                            light.</em></td><td>illumination —
+                                        <em>Light travels fast.</em></td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">2</span>
-                        <span class="sentence">Helen was listening to <input type="text" data-answer="music" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center"> when I arrived. <span class="text-xs text-gray-400">(no word)</span></span>
+                    <div class="rule-box !mt-2">
+                        <p class="!mb-0"><strong>Drinks</strong> (coffee, tea,
+                            juice, beer) are normally uncountable, but you can
+                            say <strong>a coffee</strong> (= a cup of coffee),
+                            <strong>two coffees</strong> etc.</p>
+                        <div class="example text-sm mt-2">Two <span
+                                class="hl">coffees</span> and an orange juice,
+                            please.</div>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">3</span>
-                        <span class="sentence">We went to <input type="text" data-answer="a very nice restaurant" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-40 text-center"> last weekend.</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> “I had <em>a lot of
+                            experience</em>” = knowledge. “I had <em>some
+                            interesting experiences</em>” = events. The meaning
+                        flips with the article.</div>
+                </div>
+
+                <!-- RULE 3 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">3</span>
+                        Countable Nouns with <em>a/an</em> and
+                        <em>some</em></h3>
+                    <p>Use <strong>a/an</strong> with a
+                        <strong>singular</strong> countable noun to say what
+                        kind of thing or person. Use <strong>some</strong> with
+                        a <strong>plural</strong> countable noun (or an
+                        uncountable one).</p>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">A
+                                / An</p>
+                            <div class="example text-sm">She never wears <span
+                                    class="hl">a hat</span>.</div>
+                            <div class="example text-sm">What <span class="hl">a
+                                    beautiful day</span>!</div>
+                            <div class="example text-sm">My father is <span
+                                    class="hl">a doctor</span>.</div>
+                            <div class="example text-sm">Jack has <span
+                                    class="hl">a long nose</span>.</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1">Some</p>
+                            <div class="example text-sm">I've seen <span
+                                    class="hlg">some good movies</span>
+                                recently.</div>
+                            <div class="example text-sm"><span class="hlg">Some
+                                    friends</span> of mine are coming.</div>
+                            <div class="example text-sm">I need <span
+                                    class="hlg">some new
+                                    sunglasses</span>.</div>
+                            <div class="example text-sm"><span class="hlg">Some
+                                    children</span> learn very quickly.</div>
+                        </div>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">4</span>
-                        <span class="sentence">I brush my teeth with <input type="text" data-answer="toothpaste" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center">. <span class="text-xs text-gray-400">(no word)</span></span>
+                    <div class="warn"><b>⚠️ Watch out:</b> a singular countable
+                        noun cannot stand alone — <span class="hlr">She wears
+                            hat.</span> is wrong. Say “She wears <span
+                            class="hlg">a hat</span>.”</div>
+                    <div class="tip"><strong>💡 Do not use “some”</strong> when
+                        talking about things in general: “I love <span
+                            class="hlg">bananas</span>.” (not <em>some
+                            bananas</em>)</div>
+                </div>
+
+                <!-- RULE 4 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">4</span> A /
+                        An — The Sound Rule</h3>
+                    <p>Choose <strong>a</strong> or <strong>an</strong> by the
+                        <strong>sound</strong> of the next word, not its first
+                        letter.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Use <strong>a</strong> before a
+                                        consonant sound</th><th>Use
+                                        <strong>an</strong> before a vowel
+                                        sound</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>a <strong>u</strong>niversity (/juː/), a
+                                        <strong>u</strong>nicorn, a
+                                        <strong>u</strong>sual event, a
+                                        <strong>E</strong>uropean, a
+                                        <strong>o</strong>ne-way street, a
+                                        <strong>h</strong>otel, a
+                                        <strong>u</strong>seful tool</td>
+                                    <td>an <strong>h</strong>our, an
+                                        <strong>h</strong>onest man, an
+                                        <strong>h</strong>eir, an
+                                        <strong>M</strong>BA, an
+                                        <strong>u</strong>mbrella, an
+                                        <strong>u</strong>nusual event, an
+                                        <strong>o</strong>ld man, an
+                                        <strong>F</strong>BI agent</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">5</span>
-                        <span class="sentence">Can you tell me if there's <input type="text" data-answer="a bank" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center"> near here?</span>
+                    <div class="example">She's <span class="hl">a
+                            university</span> student.</div>
+                    <div class="example">He waited for <span class="hl">an
+                            hour</span>.</div>
+                    <div class="example">It's <span class="hl">a one-way</span>
+                        street.</div>
+                    <div class="example">She's <span class="hl">an honest</span>
+                        person.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “hotel” takes
+                        <em>a</em> because the /h/ is pronounced; “hour” takes
+                        <em>an</em> because the /h/ is silent.</div>
+                </div>
+
+                <!-- RULE 5 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        <em>a/an</em> vs <em>the</em> — First Mention vs
+                        Specific</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div
+                            class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1.5">A
+                                / An</p>
+                            <p class="text-sm text-slate-400 mb-2">First time we
+                                mention something, or not specific.</p>
+                            <div class="example text-sm">I had <span
+                                    class="hl">a sandwich</span> and <span
+                                    class="hl">an apple</span>.</div>
+                            <div class="example text-sm">Tim sat down on <span
+                                    class="hl">a chair</span>.</div>
+                            <div class="example text-sm">We stayed at <span
+                                    class="hl">a very cheap hotel</span>.</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">The</p>
+                            <p class="text-sm text-slate-400 mb-2">Specific,
+                                already known, or unique.</p>
+                            <div class="example text-sm"><span class="hlg">The
+                                    sandwich</span> wasn't very good.</div>
+                            <div class="example text-sm">Tim sat down on <span
+                                    class="hlg">the chair</span> nearest the
+                                door.</div>
+                            <div class="example text-sm"><span class="hlg">The
+                                    hotel</span> where we stayed was
+                                cheap.</div>
+                        </div>
+                    </div>
+                    <div class="rule-box !mt-2">
+                        <p class="!mb-0"><strong>Once a week / three times a day
+                                / £1.50 a kilo</strong> — use <strong>a</strong>
+                            (not <strong>the</strong>).</p>
+                        <div class="example text-sm mt-2">I go to the cinema
+                            about <span class="hl">once a month</span>.</div>
+                        <div class="example text-sm">Helen works eight hours
+                            <span class="hl">a day</span>.</div>
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="check691" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="reset691" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+
+                <!-- RULE 6 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        <em>the</em> 1 — Unique, Superlative &amp; Ordinal</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">Unique
+                                things</p>
+                            <div class="example text-sm"><span class="hlg">The
+                                    equator</span>, <span class="hlg">the
+                                    world</span>, <span class="hlg">the
+                                    sun</span>, <span class="hlg">the
+                                    moon</span>, <span class="hlg">the
+                                    earth</span></div>
+                            <div class="example text-sm">Our apartment is on
+                                <span class="hlg">the tenth floor</span>.</div>
+                            <div class="example text-sm">Buenos Aires is <span
+                                    class="hlg">the capital</span> of
+                                Argentina.</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1">Superlatives
+                                &amp; ordinals</p>
+                            <div class="example text-sm">What's <span
+                                    class="hlg">the longest</span> river in
+                                Europe?</div>
+                            <div class="example text-sm">It's <span
+                                    class="hlg">the best</span> way to
+                                learn.</div>
+                            <div class="example text-sm">Your sweater is <span
+                                    class="hlg">the same</span> colour as
+                                mine.</div>
+                            <div class="example text-sm">She was <span
+                                    class="hlg">the first</span> to
+                                arrive.</div>
+                        </div>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “the same” always
+                        takes <em>the</em> — “They are <span class="hlg">the
+                            same</span>.” Never “same” alone as a subject
+                        complement.</div>
                 </div>
-                <div id="result691" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
 
-            <!-- Exercise 70.1 – Countable vs uncountable -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">70.1</span> Choose the correct form
-                </h3>
-                <div id="ex701" class="space-y-2 mt-3 text-sm">
-                    <div class="fill-row flex items-center gap-3 flex-wrap">
-                        <span class="num">1</span>
-                        <span>The engine is making <select data-answer="a strange noise" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="strange noise">strange noise</option>
-                                <option value="a strange noise">a strange noise</option>
-                            </select>.</span>
+                <!-- RULE 7 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        <em>the</em> 2 — Institutions (school / the school)</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div
+                            class="rounded-xl border border-amber-500/25 bg-amber-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">General
+                                idea — no <em>the</em></p>
+                            <div class="example text-sm">Ellie goes to <span
+                                    class="hla">school</span>.</div>
+                            <div class="example text-sm">He was taken to <span
+                                    class="hla">hospital</span>.</div>
+                            <div class="example text-sm">Ken's brother is in
+                                <span class="hla">prison</span>.</div>
+                            <div class="example text-sm">I'm going to <span
+                                    class="hla">bed</span> now.</div>
+                            <div class="example text-sm">Chris didn't go to
+                                <span class="hla">work</span> yesterday.</div>
+                            <div class="example text-sm">Let's go <span
+                                    class="hla">home</span>.</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">Specific
+                                place — with <em>the</em></p>
+                            <div class="example text-sm">Ellie's mother went to
+                                <span class="hl">the school</span>.</div>
+                            <div class="example text-sm">Jane went to <span
+                                    class="hl">the hospital</span> to visit
+                                Joe.</div>
+                            <div class="example text-sm">Ken went to <span
+                                    class="hl">the prison</span> to visit his
+                                brother.</div>
+                            <div class="example text-sm">I sat down on <span
+                                    class="hl">the bed</span>.</div>
+                            <div class="example text-sm">I work at <span
+                                    class="hl">the office</span>.</div>
+                            <div class="example text-sm">Workmen went to <span
+                                    class="hl">the church</span> to repair the
+                                roof.</div>
+                        </div>
                     </div>
-                    <div class="fill-row flex items-center gap-3 flex-wrap">
-                        <span class="num">2</span>
-                        <span><select data-answer="Light" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="Light">Light</option>
-                                <option value="A light">A light</option>
-                            </select> comes from the sun.</span>
+                    <div class="tip"><strong>💡 Test:</strong> if the person is
+                        using the building for its normal purpose, use no
+                        article; if they are just visiting the building, use
+                        <em>the</em>.</div>
+                </div>
+
+                <!-- RULE 8 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        <em>the</em> 3 — General vs Specific</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1">In
+                                general — no <em>the</em></p>
+                            <div class="example text-sm">I'm afraid of <span
+                                    class="hlg">dogs</span>.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Children</span> learn from
+                                playing.</div>
+                            <div class="example text-sm">I couldn't live without
+                                <span class="hlg">music</span>.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Sugar</span> isn't very good for
+                                you.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">English people</span> drink a
+                                lot of tea.</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1">Specific
+                                — with <em>the</em></p>
+                            <div class="example text-sm">We took <span
+                                    class="hl">the children</span> to the
+                                zoo.</div>
+                            <div class="example text-sm">I liked <span
+                                    class="hl">the music</span> in the
+                                film.</div>
+                            <div class="example text-sm">Can you pass <span
+                                    class="hl">the sugar</span>, please?</div>
+                            <div class="example text-sm"><span class="hl">The
+                                    English people</span> I know drink a
+                                lot.</div>
+                            <div class="example text-sm">I like <span
+                                    class="hl">the people</span> I work
+                                with.</div>
+                        </div>
                     </div>
-                    <div class="fill-row flex items-center gap-3 flex-wrap">
-                        <span class="num">3</span>
-                        <span>I didn't have <select data-answer="time" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="time">time</option>
-                                <option value="a time">a time</option>
-                            </select> for breakfast.</span>
+                    <div class="tip"><strong>💡 Compare:</strong> <em>I like
+                            working with <span class="hlg">people</span>.</em>
+                        (general) vs <em>I like <span class="hl">the
+                                people</span> I work with.</em> (specific)</div>
+                </div>
+
+                <!-- RULE 9 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">9</span>
+                        <em>the</em> 4 — Types, Inventions &amp; The +
+                        Adjective</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">Types
+                                of things</p>
+                            <div class="example text-sm"><span class="hl">The
+                                    giraffe</span> is the tallest of all
+                                animals.</div>
+                            <div class="example text-sm"><span class="hl">The
+                                    bicycle</span> is an excellent means of
+                                transport.</div>
+                            <div class="example text-sm">When was <span
+                                    class="hl">the camera</span> invented?</div>
+                            <div class="example text-sm">Can you play <span
+                                    class="hl">the guitar</span>?</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-violet-300 uppercase tracking-wider mb-1">Groups
+                                of people</p>
+                            <div class="example text-sm"><span class="hl">The
+                                    rich</span> should pay higher taxes.</div>
+                            <div class="example text-sm">We need to help <span
+                                    class="hl">the homeless</span>.</div>
+                            <div class="example text-sm"><span class="hl">The
+                                    young</span> have the future in their
+                                hands.</div>
+                            <div class="example text-sm"><span class="hl">The
+                                    French</span> are famous for their
+                                food.</div>
+                        </div>
                     </div>
-                    <div class="fill-row flex items-center gap-3 flex-wrap">
-                        <span class="num">4</span>
-                        <span>Can I have <select data-answer="a glass of water" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="glass of water">glass of water</option>
-                                <option value="a glass of water">a glass of water</option>
-                            </select>?</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>the old</em> =
+                        old people, <em>the French</em> = French people — always
+                        plural, take a plural verb.</div>
+                    <div class="tip"><strong>💡 Note:</strong> <em>man</em>
+                        (without <em>the</em>) = human beings in general — “What
+                        do you know about the origins of <span
+                            class="hlg">man</span>?”</div>
+                </div>
+
+                <!-- RULE 10 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">10</span>
+                        Geographical Names</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">Without
+                                <em>the</em></p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Continents,
+                                countries, states, cities, single mountains,
+                                lakes, most islands.</p>
+                            <div class="example text-sm">Africa, South America,
+                                France, Japan, Texas, Cairo, Everest, Lake
+                                Superior</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">With
+                                <em>the</em></p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Oceans,
+                                seas, rivers, canals, deserts, mountain ranges,
+                                groups of islands, countries with plural
+                                names.</p>
+                            <div class="example text-sm">the Atlantic, the Red
+                                Sea, the Nile, the Suez Canal, the Sahara, the
+                                Andes, the Canaries, the Netherlands, the
+                                Philippines, the United States, the UK</div>
+                        </div>
                     </div>
-                    <div class="fill-row flex items-center gap-3 flex-wrap">
-                        <span class="num">5</span>
-                        <span>We had <select data-answer="a very nice room" class="border border-gray-300 rounded-lg px-2 py-1 text-sm bg-white">
-                                <option value="">—</option>
-                                <option value="very nice room">very nice room</option>
-                                <option value="a very nice room">a very nice room</option>
-                            </select> at the hotel.</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>the north of
+                            Brazil</em> but <em>northern Brazil</em> (no
+                        <em>the</em> before the adjective form).</div>
+                </div>
+
+                <!-- RULE 11 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Buildings, Places &amp; Company Names</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div
+                            class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1.5">Without
+                                <em>the</em></p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Streets,
+                                parks, stations, airports, universities,
+                                palaces, churches, companies.</p>
+                            <div class="example text-sm">Union Street, Hyde
+                                Park, Manchester Airport, Victoria Station,
+                                Cambridge University, Buckingham Palace, St
+                                John's Church</div>
+                            <div class="example text-sm">Fiat, Sony, Kodak,
+                                Singapore Airlines, McDonald's</div>
+                        </div>
+                        <div
+                            class="rounded-xl border border-blue-500/25 bg-blue-500/[.06] p-3">
+                            <p
+                                class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">With
+                                <em>the</em></p>
+                            <p
+                                class="text-sm text-slate-400 leading-relaxed">Hotels,
+                                theatres, museums, famous buildings, newspapers,
+                                organisations, names with <em>of</em>.</p>
+                            <div class="example text-sm">the Sheraton Hotel, the
+                                Palace Theatre, the Guggenheim Museum, the White
+                                House, the Washington Post, the BBC</div>
+                            <div class="example text-sm">the Bank of England,
+                                the Tower of London</div>
+                        </div>
+                    </div>
+                    <div class="tip"><strong>💡 Shortcut:</strong> if the name
+                        contains <em>of</em>, use <em>the</em> (the Bank
+                        <em>of</em> England). If it contains a common noun like
+                        <em>Hotel / Theatre / Museum / Building</em>, use
+                        <em>the</em>.</div>
+                </div>
+
+                <!-- RULE 12 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        Singular &amp; Plural Nouns</h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">Plural-only
+                                words (two parts)</p>
+                            <div class="example text-sm"><span
+                                    class="hl">glasses, trousers, jeans, shorts,
+                                    pyjamas, binoculars, scissors</span></div>
+                            <p class="text-sm text-slate-400 mt-1">Take a plural
+                                verb: <em>My trousers <span
+                                        class="hlg">are</span> too
+                                    long.</em></p>
+                            <p class="text-sm text-slate-400">Use <strong>a pair
+                                    of</strong>: <em>a pair of jeans</em></p>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1">-ics
+                                nouns (singular)</p>
+                            <div class="example text-sm"><span
+                                    class="hlg">athletics, gymnastics,
+                                    economics, physics, electronics,
+                                    maths</span></div>
+                            <p
+                                class="text-sm text-slate-400 mt-1"><em>Gymnastics
+                                    <span class="hlg">is</span> my favourite
+                                    sport.</em></p>
+                            <p
+                                class="text-sm text-slate-400"><strong>News</strong>
+                                is singular: <em>The news <span
+                                        class="hlg">was</span>
+                                    unexpected.</em></p>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4 mt-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1">Group
+                                nouns (plural verb common)</p>
+                            <div class="example text-sm">audience, committee,
+                                company, family, government, staff, team</div>
+                            <div class="example text-sm">The government <span
+                                    class="hlg">have</span> decided to increase
+                                taxes.</div>
+                            <div class="example text-sm">The police <span
+                                    class="hlg">are</span> investigating.</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-violet-300 uppercase tracking-wider mb-1">Sum
+                                of money, time, distance</p>
+                            <div class="example text-sm">Fifty thousand pounds
+                                <span class="hlg">was</span> stolen.</div>
+                            <div class="example text-sm">Three years <span
+                                    class="hlg">is</span> a long time.</div>
+                            <div class="example text-sm">Ten kilometres <span
+                                    class="hlg">is</span> too far to walk.</div>
+                        </div>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>people</em> is
+                        the plural of <em>person</em> — “He's a nice <span
+                            class="hlg">person</span>” but “They are nice <span
+                            class="hlg">people</span>” (not <em>persons</em> in
+                        ordinary speech).</div>
+                </div>
+
+                <!-- RULE 13 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">13</span>
+                        Noun + Noun</h3>
+                    <p>When two nouns sit together, the <strong>first</strong>
+                        noun modifies the second. It usually stays
+                        <strong>singular</strong>.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <div class="example text-sm"><span class="hl">a bus
+                                    driver</span> = the driver of a bus</div>
+                            <div class="example text-sm"><span class="hl">income
+                                    tax</span> = tax on income</div>
+                            <div class="example text-sm"><span class="hl">the
+                                    city centre</span> = the centre of the
+                                city</div>
+                            <div class="example text-sm"><span class="hl">an
+                                    apple tree</span> = a tree that has
+                                apples</div>
+                            <div class="example text-sm"><span class="hl">a
+                                    Paris hotel</span> = a hotel in Paris</div>
+                        </div>
+                        <div>
+                            <div class="example text-sm"><span class="hl">a
+                                    frying pan</span> = a pan for frying</div>
+                            <div class="example text-sm"><span class="hl">a
+                                    washing machine</span></div>
+                            <div class="example text-sm"><span class="hl">a
+                                    swimming pool</span></div>
+                            <div class="example text-sm"><span class="hl">a
+                                    coffee cup</span> vs <span class="hl">a cup
+                                    of coffee</span></div>
+                            <div class="example text-sm"><span class="hl">a
+                                    shopping bag</span> vs <span class="hl">a
+                                    bag of shopping</span></div>
+                        </div>
+                    </div>
+                    <div class="rule-box !mt-2">
+                        <p class="!mb-0"><strong>Compound nouns with
+                                numbers:</strong> the first noun is
+                            singular.</p>
+                        <div class="example text-sm mt-2">a <span
+                                class="hl">three-hour</span> journey (not
+                            three-hours)</div>
+                        <div class="example text-sm">a <span
+                                class="hl">ten-pound</span> note</div>
+                        <div class="example text-sm">a <span
+                                class="hl">four-week</span> course</div>
+                        <div class="example text-sm">two <span
+                                class="hl">14-year-old</span> girls</div>
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="check701" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="reset701" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
-                </div>
-                <div id="result701" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
 
-            <!-- Exercise 72.1 – a/an or the -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
-                <h3 class="!mt-0 text-base font-semibold flex items-center gap-2">
-                    <span class="badge">72.1</span> Put in <em>a/an</em> or <em>the</em>
-                </h3>
-                <div id="ex721" class="exercise-fill mt-3">
-                    <div class="fill-row">
-                        <span class="num">1</span>
-                        <span class="sentence">This morning I bought <input type="text" data-answer="a book and a magazine" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-44 text-center">. <input type="text" data-answer="The" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-12 text-center"> book is in my bag.</span>
+                <!-- RULE 14 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">14</span>
+                        Possessive <em>-'s</em> and <em>of …</em></h3>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <p
+                                class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">-'s
+                                (apostrophe + s)</p>
+                            <p class="text-sm text-slate-400 mb-2">Mostly for
+                                <strong>people</strong>,
+                                <strong>animals</strong> and
+                                <strong>time</strong>.</p>
+                            <div class="example text-sm"><span
+                                    class="hl">Tom's</span> computer isn't
+                                working.</div>
+                            <div class="example text-sm">What is <span
+                                    class="hl">your sister's</span> name?</div>
+                            <div class="example text-sm">Don't step on <span
+                                    class="hl">the cat's</span> tail.</div>
+                            <div class="example text-sm"><span class="hl">My
+                                    sisters'</span> room (plural owner)</div>
+                            <div class="example text-sm"><span class="hl">the
+                                    men's</span> changing room</div>
+                            <div class="example text-sm"><span
+                                    class="hl">yesterday's</span>
+                                newspaper</div>
+                            <div class="example text-sm"><span class="hl">a
+                                    week's</span> holiday / <span
+                                    class="hl">three weeks'</span> holiday</div>
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1">of
+                                …</p>
+                            <p class="text-sm text-slate-400 mb-2">For
+                                <strong>things, ideas</strong> and long
+                                phrases.</p>
+                            <div class="example text-sm">the temperature <span
+                                    class="hl">of the water</span></div>
+                            <div class="example text-sm">the name <span
+                                    class="hl">of the book</span></div>
+                            <div class="example text-sm">the owner <span
+                                    class="hl">of the restaurant</span></div>
+                            <div class="example text-sm">the beginning <span
+                                    class="hl">of the month</span></div>
+                            <div class="example text-sm">the top <span
+                                    class="hl">of the hill</span></div>
+                            <div class="example text-sm">the government's
+                                decision / the decision <span class="hl">of the
+                                    government</span></div>
+                            <div class="example text-sm"><span class="hl">the
+                                    city's</span> streets / <span class="hl">the
+                                    world's</span> population</div>
+                        </div>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">2</span>
-                        <span class="sentence">I saw <input type="text" data-answer="an accident" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center"> this morning. <input type="text" data-answer="A" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-12 text-center"> car crashed into <input type="text" data-answer="a tree" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center">.</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> for things, prefer
+                        <em>of</em> — “the name <span class="hlg">of the
+                            book</span>” is safer than “the book's name” in
+                        formal writing.</div>
+                </div>
+
+                <!-- RULE 15 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">15</span>
+                        Zero Article — Generalizations</h3>
+                    <p>When you talk about things <strong>in general</strong> —
+                        all of a class, or an abstract idea — use <strong>no
+                            article</strong> at all.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 my-3">
+                        <div>
+                            <div class="example text-sm">I like <span
+                                    class="hlg">dogs</span>. (not <em>the
+                                    dogs</em> in general)</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Children</span> learn from
+                                playing.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Life</span> is beautiful.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Water</span> is important.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Honesty</span> is the best
+                                policy.</div>
+                        </div>
+                        <div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Coffee</span> keeps me
+                                awake.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Music</span> makes me
+                                happy.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Mathematics</span> is my
+                                favourite subject.</div>
+                            <div class="example text-sm">We study <span
+                                    class="hlg">history</span> at school.</div>
+                            <div class="example text-sm"><span
+                                    class="hlg">Dogs</span> are animals.</div>
+                        </div>
                     </div>
-                    <div class="fill-row">
-                        <span class="num">3</span>
-                        <span class="sentence">My friends live in <input type="text" data-answer="an old house" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center"> in <input type="text" data-answer="a small village" placeholder="_____" class="border-b-2 border-dashed border-gray-300 bg-transparent focus:border-indigo-500 outline-none w-32 text-center">.</span>
+                    <div class="warn"><b>⚠️ Watch out:</b> don't confuse this
+                        with specific uses — “<span class="hlg">Dogs</span> are
+                        noisy” (all dogs) vs “<span class="hl">The dogs</span>
+                        next door are noisy” (specific dogs).</div>
+                </div>
+
+                <!-- RULE 16 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">16</span>
+                        Articles with Meals, Transport &amp; Time</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Expression type</th><th>Article
+                                        rule</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td>Meals</td><td>No article</td><td>have
+                                        <strong>breakfast / lunch /
+                                            dinner</strong>;
+                                        <strong>Breakfast</strong> is at
+                                        8.</td></tr>
+                                <tr><td>Transport (by + noun)</td><td>No
+                                        article</td><td>by <strong>car / bus /
+                                            train / plane / bike</strong>; on
+                                        <strong>foot</strong></td></tr>
+                                <tr><td>Specific
+                                        transport</td><td>the</td><td>take
+                                        <strong>the bus</strong>; catch
+                                        <strong>the 8 o'clock
+                                            train</strong></td></tr>
+                                <tr><td>Times of day</td><td>No article (at
+                                        night/noon/midnight); the (in the
+                                        morning/afternoon/evening)</td><td>at
+                                        <strong>night</strong>, at
+                                        <strong>noon</strong>, in <strong>the
+                                            morning</strong></td></tr>
+                                <tr><td>Bed / work / school / home</td><td>No
+                                        article (general purpose)</td><td>go to
+                                        <strong>bed</strong>, go to
+                                        <strong>work</strong>, go
+                                        <strong>home</strong></td></tr>
+                                <tr><td>Frequency</td><td>a</td><td>once
+                                        <strong>a</strong> week, twice
+                                        <strong>a</strong> day</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “in the morning”
+                        takes <em>the</em>, but “at night” does not. “At noon /
+                        at midnight” also take no article.</div>
+                </div>
+
+                <!-- RULE 17 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">17</span>
+                        Articles with Diseases &amp; Common Expressions</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>Article</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td>Common illnesses
+                                        (countable)</td><td>a</td><td>have
+                                        <strong>a cold</strong>, <strong>a
+                                            headache</strong>, <strong>a
+                                            fever</strong>, <strong>a sore
+                                            throat</strong>, <strong>a
+                                            temperature</strong></td></tr>
+                                <tr><td>Specific known
+                                        illness</td><td>the</td><td>have
+                                        <strong>the flu</strong>, catch
+                                        <strong>the measles</strong></td></tr>
+                                <tr><td>Long-term / medical
+                                        conditions</td><td>No
+                                        article</td><td>have
+                                        <strong>diabetes</strong>, have
+                                        <strong>cancer</strong>, have
+                                        <strong>asthma</strong>, have
+                                        <strong>measles</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">She has <span class="hl">a
+                            cold</span>.</div>
+                    <div class="example">He has <span class="hl">a
+                            headache</span>.</div>
+                    <div class="example">She has <span class="hl">the
+                            flu</span>.</div>
+                    <div class="example">He has <span
+                            class="hlg">diabetes</span>.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “catch
+                        <strong>a</strong> cold” but “catch <strong>the</strong>
+                        flu” — the article depends on how specific the illness
+                        is.</div>
+                </div>
+
+                <div
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
+                    <span class="text-xl">📌</span>
+                    <div>
+                        <strong>Summary:</strong> use <em>a/an</em> for one
+                        non-specific countable noun; <em>the</em> for a specific
+                        one;
+                        no article for general plural or uncountable nouns.
+                        Strip away the sentence to find the head noun before
+                        deciding.
                     </div>
                 </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="check721" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full text-sm transition shadow-sm">✅ Check</button>
-                    <button id="reset721" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-full text-sm transition">🔄 Reset</button>
+            </section>
+
+            <!-- ==================== CHART ==================== -->
+            <section id="articles"
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📊</span>
+                    <h2 class="h-sec">Quick-Reference Chart</h2>
                 </div>
-                <div id="result721" class="mt-4 text-sm font-medium hidden"></div>
-            </div>
+                <p class="text-slate-400 mb-2">The most important patterns on
+                    one screen.</p>
 
-        </section>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:28%">Situation</th><th
+                                    style="width:36%">Article</th><th
+                                    style="width:36%">Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>Singular countable, first
+                                    mention</td><td><span
+                                        class="text-indigo-300 font-semibold">a
+                                        / an</span></td><td>I saw <strong>a
+                                        dog</strong> in the park.</td></tr>
+                            <tr><td>Singular countable, already
+                                    known</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td><strong>The
+                                        dog</strong> was barking
+                                    loudly.</td></tr>
+                            <tr><td>Plural countable, general</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td><strong>Dogs</strong>
+                                    are loyal animals.</td></tr>
+                            <tr><td>Uncountable, general</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td><strong>Water</strong>
+                                    is essential.</td></tr>
+                            <tr><td>Unique thing</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td><strong>The
+                                        sun</strong> rises in the
+                                    east.</td></tr>
+                            <tr><td>Superlative</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td>She's
+                                    <strong>the best</strong> student.</td></tr>
+                            <tr><td>Institution (general purpose)</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td>She goes to
+                                    <strong>school</strong>.</td></tr>
+                            <tr><td>Institution (specific
+                                    building)</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td>Her
+                                    mother went to <strong>the
+                                        school</strong>.</td></tr>
+                            <tr><td>Geographical: country/city</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td><strong>France</strong>,
+                                    <strong>Cairo</strong></td></tr>
+                            <tr><td>Geographical:
+                                    river/ocean/desert</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td><strong>The
+                                        Nile</strong>, <strong>the
+                                        Sahara</strong></td></tr>
+                            <tr><td>Company / street / park</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td><strong>Union
+                                        Street</strong>, <strong>Hyde
+                                        Park</strong></td></tr>
+                            <tr><td>Hotel / theatre / museum</td><td><span
+                                        class="text-emerald-300 font-semibold">the</span></td><td><strong>The
+                                        Sheraton Hotel</strong></td></tr>
+                            <tr><td>Meals / transport / bed / home</td><td><span
+                                        class="text-amber-300 font-semibold">no
+                                        article</span></td><td><strong>Breakfast</strong>,
+                                    by <strong>bus</strong>, go
+                                    <strong>home</strong></td></tr>
+                            <tr><td>Frequency</td><td><span
+                                        class="text-indigo-300 font-semibold">a</span></td><td>once
+                                    <strong>a</strong> week</td></tr>
+                            <tr><td>Disease (common)</td><td><span
+                                        class="text-indigo-300 font-semibold">a</span></td><td>have
+                                    <strong>a cold</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
-        <!-- ====== FOOTER ====== -->
-        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-400 pb-8">
-            <p class="mb-0">📘 ArticleNouns &bull; Ultimate Grammar Guide &bull; 2026</p>
-            <p class="text-xs mt-1">Built with ❤️ using HTML &amp; Tailwind CSS</p>
-        </footer>
+                <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                    <div
+                        class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4">
+                        <p class="font-semibold text-indigo-300 text-sm">✅ Use
+                            <strong>a/an</strong> for one non-specific countable
+                            noun</p>
+                        <p class="text-sm text-slate-400 mt-1">I need <strong>a
+                                pen</strong> · She's <strong>an
+                                engineer</strong> · <strong>a
+                                university</strong> · <strong>an
+                                hour</strong></p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.07] p-4">
+                        <p class="font-semibold text-emerald-300 text-sm">✅ Use
+                            <strong>the</strong> for specific or unique
+                            things</p>
+                        <p class="text-sm text-slate-400 mt-1"><strong>The
+                                sun</strong> · <strong>the best</strong> ·
+                            <strong>the school</strong> (building) · <strong>the
+                                Nile</strong></p>
+                    </div>
+                </div>
+            </section>
 
-    </main>
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 170 Questions</h2>
+                </div>
+                <p class="text-slate-400 mb-2 max-w-3xl">
+                    Ten exercises for every one of the 17 rules. Pick a rule to
+                    drill it, or work through all 170.
+                    Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+                <div
+                    class="flex flex-wrap items-center gap-2 mb-5 text-xs text-slate-500">
+                    <span class="inline-flex items-center gap-1"><span
+                            class="text-indigo-400 font-bold">—</span> means “no
+                        article”</span>
+                    <span class="text-slate-700">·</span>
+                    <span>Answers lock after first click</span>
+                </div>
 
-    <!-- ============================================================ -->
-    <!--  JAVASCRIPT – EXERCISES                                       -->
-    <!-- ============================================================ -->
-    <script>
-        (function() {
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">170</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
 
-            // ---------- Helper: normalize for comparison ----------
-            function normalize(s) {
-                return s.trim().toLowerCase().replace(/\s+/g, ' ');
-            }
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
 
-            // ---------- 69.1 Fill-in ----------
-            const inputs691 = document.querySelectorAll('#ex691 input');
-            const result691 = document.getElementById('result691');
-            document.getElementById('check691').addEventListener('click', function() {
-                let correct = 0,
-                    total = inputs691.length;
-                inputs691.forEach(inp => {
-                    const user = inp.value.trim();
-                    const ans = inp.dataset.answer;
-                    if (normalize(user) === normalize(ans)) {
-                        correct++;
-                        inp.classList.remove('border-red-400', 'bg-red-50');
-                        inp.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        inp.classList.remove('border-green-500', 'bg-green-50');
-                        if (user !== '') {
-                            inp.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            inp.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allFilled = Array.from(inputs691).every(inp => inp.value.trim() !== '');
-                if (!allFilled) {
-                    result691.textContent = '⚠️ Please fill in all blanks.';
-                    result691.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result691.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result691.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result691.textContent += ' 🎉 Perfect!';
-                }
-                result691.classList.remove('hidden');
-            });
-            document.getElementById('reset691').addEventListener('click', function() {
-                inputs691.forEach(inp => {
-                    inp.value = '';
-                    inp.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result691.classList.add('hidden');
-            });
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
 
-            // ---------- 70.1 Select ----------
-            const selects701 = document.querySelectorAll('#ex701 select');
-            const result701 = document.getElementById('result701');
-            document.getElementById('check701').addEventListener('click', function() {
-                let correct = 0,
-                    total = selects701.length;
-                selects701.forEach(sel => {
-                    const val = sel.value;
-                    const ans = sel.dataset.answer;
-                    if (val === ans) {
-                        correct++;
-                        sel.classList.remove('border-red-400', 'bg-red-50');
-                        sel.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        sel.classList.remove('border-green-500', 'bg-green-50');
-                        if (val !== '') {
-                            sel.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            sel.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allAnswered = Array.from(selects701).every(s => s.value !== '');
-                if (!allAnswered) {
-                    result701.textContent = '⚠️ Please answer all questions.';
-                    result701.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result701.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result701.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result701.textContent += ' 🎉 Perfect!';
-                }
-                result701.classList.remove('hidden');
-            });
-            document.getElementById('reset701').addEventListener('click', function() {
-                selects701.forEach(sel => {
-                    sel.value = '';
-                    sel.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result701.classList.add('hidden');
-            });
+            <!-- ==================== QUIZ ==================== -->
+            <section id="quiz"
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧠</span>
+                    <h2 class="h-sec">Practice Quiz</h2>
+                </div>
+                <p class="text-slate-400 mb-6">Twelve mixed questions — choose
+                    the correct article or form, then check your score.</p>
 
-            // ---------- 72.1 Fill-in (multiple blanks) ----------
-            const inputs721 = document.querySelectorAll('#ex721 input');
-            const result721 = document.getElementById('result721');
-            document.getElementById('check721').addEventListener('click', function() {
-                let correct = 0,
-                    total = inputs721.length;
-                inputs721.forEach(inp => {
-                    const user = inp.value.trim();
-                    const ans = inp.dataset.answer;
-                    if (normalize(user) === normalize(ans)) {
-                        correct++;
-                        inp.classList.remove('border-red-400', 'bg-red-50');
-                        inp.classList.add('border-green-500', 'bg-green-50');
-                    } else {
-                        inp.classList.remove('border-green-500', 'bg-green-50');
-                        if (user !== '') {
-                            inp.classList.add('border-red-400', 'bg-red-50');
-                        } else {
-                            inp.classList.remove('border-red-400', 'bg-red-50');
-                        }
-                    }
-                });
-                const allFilled = Array.from(inputs721).every(inp => inp.value.trim() !== '');
-                if (!allFilled) {
-                    result721.textContent = '⚠️ Please fill in all blanks.';
-                    result721.className = 'mt-4 text-sm font-medium text-amber-600';
-                } else {
-                    result721.textContent = `✅ You got ${correct}/${total} correct.`;
-                    result721.className = 'mt-4 text-sm font-medium text-emerald-600';
-                    if (correct === total) result721.textContent += ' 🎉 Perfect!';
-                }
-                result721.classList.remove('hidden');
-            });
-            document.getElementById('reset721').addEventListener('click', function() {
-                inputs721.forEach(inp => {
-                    inp.value = '';
-                    inp.classList.remove('border-green-500', 'bg-green-50', 'border-red-400', 'bg-red-50');
-                });
-                result721.classList.add('hidden');
-            });
+                <div id="quizContainer" class="grid gap-3"></div>
 
-            // Enter key support for fill exercises
-            document.querySelectorAll('.exercise-fill input').forEach(inp => {
-                inp.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        const parent = inp.closest('.bg-white');
-                        if (parent) {
-                            const btn = parent.querySelector('button[id^="check"]');
-                            if (btn) btn.click();
-                        }
-                    }
-                });
-            });
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
+                </div>
 
-        })();
-    </script>
+                <div id="quizResult"
+                    class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
+            </section>
 
-</body>
+            <!-- ==================== FAQ ==================== -->
+            <section id="faq"
+                class="anchor mt-16 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">❓</span>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="grid gap-3 mt-5">
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">When do I use
+                            “a” vs “an”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">By
+                            the <strong>sound</strong>, not the letter. Use
+                            <em>a</em> before a consonant sound (<em>a
+                                university</em>, <em>a one-way street</em>) and
+                            <em>an</em> before a vowel sound (<em>an hour</em>,
+                            <em>an honest man</em>).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            difference between countable and uncountable
+                            nouns?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Countable
+                            nouns can be counted and have a plural (<em>a chair
+                                / two chairs</em>). Uncountable nouns cannot be
+                            counted and have no plural (<em>furniture, water,
+                                information</em>). Uncountable nouns take
+                            singular verbs and no <em>a/an</em>.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why do we say
+                            “go to school” but “go to the school”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">With
+                            no article, the person is using the building for its
+                            normal purpose (studying). With <em>the</em>, they
+                            are visiting the building specifically (e.g., a
+                            parent going to meet a teacher).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">When is “the”
+                            not used before a place name?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Most
+                            countries, cities, continents, single mountains,
+                            lakes and streets take no article (<em>France,
+                                Cairo, Everest, Lake Superior, Union
+                                Street</em>). Oceans, rivers, deserts, mountain
+                            ranges and plural country names take <em>the</em>
+                            (<em>the Nile, the Sahara, the Andes, the
+                                Netherlands</em>).</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            trickiest part of article usage?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Knowing
+                            whether the noun is being used
+                            <strong>generally</strong> or
+                            <strong>specifically</strong>. “I like
+                            <em>music</em>” (general) vs “I liked <em>the
+                                music</em> in the film” (specific). Always ask:
+                            am I talking about all of it, or a particular
+                            instance?</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Source:</strong> Adapted
+                    from Raymond Murphy, <em>English Grammar in Use</em> (Units
+                    69–81).
+                    Additional explanations and 170 exercises compiled for this
+                    guide.
+                </div>
+            </section>
+
+            <!-- ==================== FOOTER ==================== -->
+            <footer
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>📘 ArticleNouns · Ultimate Grammar Guide · 2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
+            </footer>
+        </main>
+
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (170 items)
+     Format: [rule, sentence, options[], correctIndex, explanation]
+     ============================================================ -->
+        <script>
+const EXERCISES = [
+/* ---------- RULE 1 : Countable vs Uncountable (10) ---------- */
+[1,'I need ___ information about trains.',['an','some','a'],1,'“Information” is uncountable — use “some”.'],
+[1,'She gave me ___ useful advice.',['an','some','a'],1,'“Advice” is uncountable — use “some”.'],
+[1,'There are ___ apples in the bowl.',['a','some','much'],1,'“Apples” is plural countable — use “some”.'],
+[1,'How ___ money do you have?',['many','much','few'],1,'“Money” is uncountable — use “much”.'],
+[1,'How ___ books did you read?',['much','many','little'],1,'“Books” is plural countable — use “many”.'],
+[1,'I have very ___ time today.',['few','little','many'],1,'“Time” is uncountable — use “little”.'],
+[1,'I have very ___ friends here.',['little','few','much'],1,'“Friends” is plural countable — use “few”.'],
+[1,'There isn\'t ___ milk left.',['many','much','few'],1,'“Milk” is uncountable — use “much”.'],
+[1,'She doesn\'t have ___ patience.',['many','much','few'],1,'“Patience” is uncountable — use “much”.'],
+[1,'There are ___ chairs in the room.',['a','some','much'],1,'“Chairs” is plural countable — use “some”.'],
+
+/* ---------- RULE 2 : Meaning change (10) ---------- */
+[2,'Did you hear ___ just now?',['a noise','noise','the noise'],0,'“A noise” = a specific sound.'],
+[2,'I need ___ to write on.',['a paper','some paper','the paper'],1,'“Paper” as material is uncountable — use “some”.'],
+[2,'There\'s ___ in my soup!',['a hair','hair','the hair'],0,'“A hair” = one single strand.'],
+[2,'Is there ___ for me in the car?',['a room','room','the room'],1,'“Room” = space (uncountable).'],
+[2,'I had ___ at the hotel.',['a nice room','nice room','the nice room'],0,'“A nice room” = a specific room in a building.'],
+[2,'She has beautiful ___.',['a hair','hair','hairs'],1,'“Hair” as mass on the head is uncountable.'],
+[2,'I bought ___ today.',['a paper','some paper','paper'],0,'“A paper” = a newspaper.'],
+[2,'There\'s too much ___ in here.',['a noise','noise','noises'],1,'“Noise” in general is uncountable.'],
+[2,'I had a lot of ___ in teaching.',['an experience','experience','experiences'],1,'“Experience” = knowledge (uncountable).'],
+[2,'I had some interesting ___ last year.',['an experience','experience','experiences'],2,'“Experiences” = events (countable).'],
+
+/* ---------- RULE 3 : A/An + Some (10) ---------- */
+[3,'She never wears ___.',['a hat','hat','some hat'],0,'Singular countable noun needs “a”.'],
+[3,'I\'ve seen ___ good movies recently.',['a','some','any'],1,'Plural countable → “some”.'],
+[3,'Jack has ___ long nose.',['a','some','the'],0,'Singular countable → “a”.'],
+[3,'I need ___ new sunglasses.',['a','some','an'],1,'Plural countable → “some”.'],
+[3,'What ___ beautiful day!',['a','some','the'],0,'Singular countable → “a”.'],
+[3,'___ friends of mine are coming.',['Some','A','An'],0,'Plural countable → “Some”.'],
+[3,'He is ___ doctor.',['a','some','the'],0,'Singular countable → “a”.'],
+[3,'I love ___.',['bananas','a bananas','some banana'],0,'General plural — no article.'],
+[3,'___ children learn very quickly.',['Some','A','An'],0,'Plural countable → “Some”.'],
+[3,'We\'re ___.',['an optimist','optimists','a optimist'],1,'Plural subject → plural noun, no article.'],
+
+/* ---------- RULE 4 : A/An Sound Rule (10) ---------- */
+[4,'He waited for ___ hour.',['a','an','the'],1,'“Hour” starts with a vowel sound (/aʊ/) — use “an”.'],
+[4,'She\'s ___ university student.',['a','an','the'],0,'“University” starts with /juː/ (consonant sound) — use “a”.'],
+[4,'He\'s ___ European.',['a','an','the'],0,'“European” starts with /j/ — use “a”.'],
+[4,'She has ___ MBA.',['a','an','the'],1,'“MBA” starts with /em/ (vowel sound) — use “an”.'],
+[4,'It\'s ___ one-way street.',['a','an','the'],0,'“One” starts with /w/ (consonant sound) — use “a”.'],
+[4,'He\'s ___ honest man.',['a','an','the'],1,'“Honest” starts with a silent h — use “an”.'],
+[4,'We stayed at ___ hotel.',['a','an','the'],0,'“Hotel” starts with /h/ (consonant sound) — use “a”.'],
+[4,'She\'s ___ heir to the fortune.',['a','an','the'],1,'“Heir” starts with a silent h — use “an”.'],
+[4,'It\'s ___ unicorn.',['a','an','the'],0,'“Unicorn” starts with /juː/ — use “a”.'],
+[4,'It was ___ unusual event.',['a','an','the'],1,'“Unusual” starts with /ʌ/ (vowel sound) — use “an”.'],
+
+/* ---------- RULE 5 : A/An vs The (10) ---------- */
+[5,'I had ___ sandwich for lunch.',['a','an','the'],0,'First mention → “a”.'],
+[5,'___ sandwich wasn\'t very good.',['A','An','The'],2,'Second mention → “the”.'],
+[5,'Tim sat down on ___ chair.',['a','an','the'],0,'First mention → “a”.'],
+[5,'Tim sat on ___ chair nearest the door.',['a','an','the'],2,'Specific chair → “the”.'],
+[5,'We stayed at ___ very cheap hotel.',['a','an','the'],0,'First mention → “a”.'],
+[5,'___ hotel where we stayed was cheap.',['A','An','The'],2,'Specific hotel → “the”.'],
+[5,'I saw ___ accident this morning.',['a','an','the'],1,'“Accident” starts with a vowel sound → “an”.'],
+[5,'___ car crashed into a tree.',['A','An','The'],0,'First mention → “A”.'],
+[5,'There\'s ___ bank near here.',['a','an','the'],0,'Non-specific → “a”.'],
+[5,'I need to go to ___ bank today.',['a','an','the'],2,'Specific known bank → “the”.'],
+
+/* ---------- RULE 6 : The — Unique/Superlative/Ordinal (10) ---------- */
+[6,'___ sun rises in the east.',['A','An','The'],2,'Unique object → “The”.'],
+[6,'___ equator divides the earth.',['A','An','The'],2,'Unique → “The”.'],
+[6,'She\'s ___ best student in the class.',['a','an','the'],2,'Superlative → “the”.'],
+[6,'Our apartment is on ___ tenth floor.',['a','an','the'],2,'Ordinal → “the”.'],
+[6,'What\'s ___ longest river in Europe?',['a','an','the'],2,'Superlative → “the”.'],
+[6,'They have ___ same colour.',['a','an','the'],2,'“The same” is fixed.'],
+[6,'She\'s ___ only person who knows.',['a','an','the'],2,'“The only” is fixed.'],
+[6,'___ world is changing fast.',['A','An','The'],2,'Unique → “The”.'],
+[6,'He was ___ first to arrive.',['a','an','the'],2,'Ordinal → “the”.'],
+[6,'___ moon is bright tonight.',['A','An','The'],2,'Unique → “The”.'],
+
+/* ---------- RULE 7 : Institutions (10) ---------- */
+[7,'Ellie goes to ___ every day.',['school','the school','a school'],0,'General purpose — no article.'],
+[7,'Ellie\'s mother went to ___ to meet the teacher.',['school','the school','a school'],1,'Specific building → “the”.'],
+[7,'He was taken to ___ after the accident.',['hospital','the hospital','a hospital'],0,'General purpose — no article.'],
+[7,'Jane went to ___ to visit Joe.',['hospital','the hospital','a hospital'],1,'Specific building → “the”.'],
+[7,'Ken\'s brother is in ___ for theft.',['prison','the prison','a prison'],0,'General purpose — no article.'],
+[7,'Ken went to ___ to visit his brother.',['prison','the prison','a prison'],1,'Specific building → “the”.'],
+[7,'I\'m going to ___ now — I\'m tired.',['bed','the bed','a bed'],0,'General purpose — no article.'],
+[7,'I sat down on ___ nearest the window.',['bed','the bed','a bed'],1,'Specific piece of furniture → “the”.'],
+[7,'Chris didn\'t go to ___ yesterday.',['work','the work','a work'],0,'General purpose — no article.'],
+[7,'Let\'s go ___ now.',['home','the home','a home'],0,'“Go home” is fixed — no article.'],
+
+/* ---------- RULE 8 : General vs Specific (10) ---------- */
+[8,'I\'m afraid of ___.',['dogs','the dogs','a dogs'],0,'General — no article.'],
+[8,'___ learn from playing.',['Children','The children','A children'],0,'General — no article.'],
+[8,'I couldn\'t live without ___.',['music','the music','a music'],0,'General — no article.'],
+[8,'We took ___ to the zoo.',['children','the children','a children'],1,'Specific children → “the”.'],
+[8,'I liked ___ in the film.',['music','the music','a music'],1,'Specific music → “the”.'],
+[8,'Can you pass ___ , please?',['sugar','the sugar','a sugar'],1,'Specific sugar at the table → “the”.'],
+[8,'___ isn\'t very good for you.',['Sugar','The sugar','A sugar'],0,'General — no article.'],
+[8,'I like ___ I work with.',['people','the people','a people'],1,'Specific people → “the”.'],
+[8,'___ drink a lot of tea.',['English people','The English people','An English people'],0,'General — no article.'],
+[8,'___ we had wasn\'t good.',['Coffee','The coffee','A coffee'],1,'Specific coffee → “the”.'],
+
+/* ---------- RULE 9 : Types/Inventions/The+Adjective (10) ---------- */
+[9,'___ giraffe is the tallest of all animals.',['A','An','The'],2,'The whole class/type → “The”.'],
+[9,'___ bicycle is an excellent means of transport.',['A','An','The'],2,'Type of thing → “The”.'],
+[9,'When was ___ camera invented?',['a','an','the'],2,'The invention → “the”.'],
+[9,'Can you play ___ guitar?',['a','an','the'],2,'Musical instruments take “the”.'],
+[9,'___ rich should pay higher taxes.',['A','An','The'],2,'The + adjective = group of people.'],
+[9,'We need to help ___.',['homeless','the homeless','a homeless'],1,'The + adjective = group.'],
+[9,'___ have the future in their hands.',['Young','The young','A young'],1,'The + adjective = group.'],
+[9,'___ are famous for their food.',['French','The French','A French'],1,'The + adjective = group.'],
+[9,'What do you know about the origins of ___?',['man','the man','a man'],0,'“Man” = human beings in general.'],
+[9,'___ telephone changed communication.',['A','An','The'],2,'The invention → “the”.'],
+
+/* ---------- RULE 10 : Geographical Names (10) ---------- */
+[10,'___ France is a beautiful country.',['A','An','—'],2,'Country names — no article.'],
+[10,'___ Netherlands is a flat country.',['A','An','The'],2,'Plural country name → “The”.'],
+[10,'___ Nile is the longest river in Africa.',['A','An','The'],2,'Rivers take “the”.'],
+[10,'___ Sahara is the largest hot desert.',['A','An','The'],2,'Deserts take “the”.'],
+[10,'___ Everest is the highest mountain.',['A','An','—'],2,'Single mountains — no article.'],
+[10,'___ Philippines is an archipelago.',['A','An','The'],2,'Plural country name → “The”.'],
+[10,'___ Andes are in South America.',['A','An','The'],2,'Mountain ranges → “the”.'],
+[10,'___ United States is a large country.',['A','An','The'],2,'Country with plural form → “The”.'],
+[10,'___ Lake Superior is very cold.',['A','An','—'],2,'Lakes — no article.'],
+[10,'___ Amazon is the largest river by volume.',['A','An','The'],2,'Rivers take “the”.'],
+
+/* ---------- RULE 11 : Buildings/Place Names (10) ---------- */
+[11,'___ Union Street is very busy.',['A','An','—'],2,'Streets — no article.'],
+[11,'___ Sheraton Hotel is expensive.',['A','An','The'],2,'Hotels take “the”.'],
+[11,'___ Hyde Park is lovely in spring.',['A','An','—'],2,'Parks — no article.'],
+[11,'___ Palace Theatre is very old.',['A','An','The'],2,'Theatres take “the”.'],
+[11,'___ Manchester Airport is very big.',['A','An','—'],2,'Airports — no article.'],
+[11,'___ White House is in Washington.',['A','An','The'],2,'Famous buildings take “the”.'],
+[11,'___ Cambridge University is prestigious.',['A','An','—'],2,'Universities — no article.'],
+[11,'___ Washington Post is a newspaper.',['A','An','The'],2,'Newspapers take “the”.'],
+[11,'___ McDonald\'s is everywhere.',['A','An','—'],2,'Companies — no article.'],
+[11,'___ Tower of London is historic.',['A','An','The'],2,'Names with “of” take “the”.'],
+
+/* ---------- RULE 12 : Singular & Plural (10) ---------- */
+[12,'My ___ are too long.',['trouser','trousers','trouseres'],1,'“Trousers” is plural-only.'],
+[12,'Gymnastics ___ my favourite sport.',['are','is','were'],1,'-ics nouns are singular.'],
+[12,'The news ___ unexpected.',['were','are','was'],2,'“News” is singular.'],
+[12,'The police ___ investigating the case.',['is','are','was'],1,'“Police” takes a plural verb.'],
+[12,'Fifty thousand pounds ___ stolen.',['were','are','was'],2,'A sum of money → singular.'],
+[12,'Three years ___ a long time.',['are','were','is'],2,'A period of time → singular.'],
+[12,'My glasses ___ broken.',['is','are','was'],1,'“Glasses” is plural-only.'],
+[12,'Physics ___ difficult but interesting.',['are','is','were'],1,'-ics nouns are singular.'],
+[12,'The government ___ decided to raise taxes.',['have','has','are'],1,'Collective noun as one unit → singular (both possible, “has” is safe).'],
+[12,'He\'s a nice ___.',['persons','people','person'],2,'Singular form is “person”.'],
+
+/* ---------- RULE 13 : Noun + Noun (10) ---------- */
+[13,'He\'s a ___ driver.',['buses','bus','a bus'],1,'First noun stays singular: “bus driver”.'],
+[13,'___ is tax on income.',['Income tax','Incomes tax','An income tax'],0,'Compound noun: “income tax”.'],
+[13,'The ___ is in the centre of town.',['city centre','cities centre','city\'s centre'],0,'Compound: “city centre”.'],
+[13,'It\'s an ___ tree.',['apples','apple','a apple'],1,'Compound: “apple tree”.'],
+[13,'We stayed at a ___ hotel.',['Paris','Paris\'s','the Paris'],0,'Compound: “Paris hotel”.'],
+[13,'I need a ___ pan.',['fry','frying','fried'],1,'Compound: “frying pan”.'],
+[13,'A ___ machine is very useful.',['wash','washing','washed'],1,'Compound: “washing machine”.'],
+[13,'It was a ___ journey.',['three-hours','three-hour','three hour'],1,'Number + singular noun: “three-hour”.'],
+[13,'I have a ___ note.',['ten-pounds','ten-pound','ten pound'],1,'Number + singular noun: “ten-pound”.'],
+[13,'She\'s a ___ girl.',['14-years-old','14-year-old','14 year old'],1,'Number + singular noun: “14-year-old”.'],
+
+/* ---------- RULE 14 : Possessive -'s and of (10) ---------- */
+[14,'___ computer isn\'t working.',['Toms','Tom\'s','Toms\''],1,'Singular owner → Tom\'s.'],
+[14,'What is ___ name?',['your sister\'s','your sisters','your sister'],0,'Singular owner → sister\'s.'],
+[14,'Don\'t step on ___ tail.',['the cats','the cat\'s','the cats\''],1,'Singular owner → cat\'s.'],
+[14,'This is ___ room.',['my sister\'s','my sisters\'','my sisters'],1,'Plural owner → sisters\'.'],
+[14,'The ___ changing room is over there.',['men\'s','mens','men'],0,'Irregular plural → men\'s.'],
+[14,'I read ___ newspaper.',['yesterday\'s','yesterdays','yesterday'],0,'Time word → yesterday\'s.'],
+[14,'We had ___ holiday.',['a week\'s','a weeks','a week'],0,'Period of time → a week\'s.'],
+[14,'The name ___ is on the cover.',['of the book','the book\'s','the books'],0,'Things prefer “of”.'],
+[14,'The temperature ___ is rising.',['of the water','the water\'s','the waters'],0,'Things prefer “of”.'],
+[14,'The ___ decision was controversial.',['government\'s','governments','government'],0,'Organisation can take \'s.'],
+
+/* ---------- RULE 15 : Zero Article (10) ---------- */
+[15,'I like ___.',['dogs','the dogs','a dogs'],0,'General — no article.'],
+[15,'___ learn from playing.',['Children','The children','A children'],0,'General — no article.'],
+[15,'___ is beautiful.',['Life','The life','A life'],0,'General — no article.'],
+[15,'___ is important for health.',['Water','The water','A water'],0,'General — no article.'],
+[15,'___ is the best policy.',['Honesty','The honesty','An honesty'],0,'General — no article.'],
+[15,'I don\'t like ___.',['coffee','the coffee','a coffee'],0,'General — no article.'],
+[15,'___ are animals.',['Dogs','The dogs','A dogs'],0,'General — no article.'],
+[15,'She loves ___.',['music','the music','a music'],0,'General — no article.'],
+[15,'___ is my favourite subject.',['Mathematics','The mathematics','A mathematics'],0,'General — no article.'],
+[15,'We study ___ at school.',['history','the history','a history'],0,'General — no article.'],
+
+/* ---------- RULE 16 : Meals / Transport / Time (10) ---------- */
+[16,'I had ___ egg for breakfast.',['a','an','the'],1,'“Egg” starts with a vowel sound → “an”.'],
+[16,'___ breakfast is the most important meal.',['A','An','—'],2,'Meals — no article.'],
+[16,'I go to school by ___.',['a bus','the bus','bus'],2,'“By bus” — no article.'],
+[16,'We travelled by ___.',['a train','the train','train'],2,'“By train” — no article.'],
+[16,'I\'m going to ___ now.',['a bed','the bed','bed'],2,'“Go to bed” — no article.'],
+[16,'He\'s at ___ now.',['a work','the work','work'],2,'“At work” — no article.'],
+[16,'I\'ll see you in ___ morning.',['a','an','the'],2,'“In the morning” takes “the”.'],
+[16,'We arrived at ___ midnight.',['a','an','—'],2,'“At midnight” — no article.'],
+[16,'She goes to ___ on Sundays.',['a church','the church','church'],2,'“Go to church” (general purpose) — no article.'],
+[16,'I need to go to ___ today.',['a bank','the bank','bank'],1,'Specific known bank → “the”.'],
+
+/* ---------- RULE 17 : Diseases & Expressions (10) ---------- */
+[17,'She has ___ cold.',['a','an','the'],0,'Common illness → “a cold”.'],
+[17,'He has ___ headache.',['a','an','the'],0,'Common illness → “a headache”.'],
+[17,'I have ___ fever.',['a','an','the'],0,'Common illness → “a fever”.'],
+[17,'She has ___ flu.',['a','an','the'],2,'Known specific illness → “the flu”.'],
+[17,'He has ___ diabetes.',['a','an','—'],2,'Long-term condition — no article.'],
+[17,'I caught ___ cold yesterday.',['a','an','the'],0,'“Catch a cold” — fixed phrase.'],
+[17,'She has ___ temperature.',['a','an','the'],0,'“Have a temperature” — fixed phrase.'],
+[17,'He has ___ cancer.',['a','an','—'],2,'Long-term condition — no article.'],
+[17,'I have ___ sore throat.',['a','an','the'],0,'Common illness → “a sore throat”.'],
+[17,'She has ___ measles.',['a','an','—'],2,'Disease name — no article.'],
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Countable vs Uncountable',
+  2:'Meaning Change',
+  3:'A/An + Some',
+  4:'A/An Sound Rules',
+  5:'A/An vs The',
+  6:'The — Unique/Superlative',
+  7:'The — Institutions',
+  8:'The — General vs Specific',
+  9:'The — Types/Inventions',
+  10:'Geographical Names',
+  11:'Buildings/Place Names',
+  12:'Singular & Plural',
+  13:'Noun + Noun',
+  14:'Possessive -\'s / of',
+  15:'Zero Article',
+  16:'Meals/Transport/Time',
+  17:'Diseases & Expressions'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 17; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'ex-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="ex-exp ${ok ? 'text-emerald-300/80' : 'text-red-300/80'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="ex-card fade">
+          <div class="flex items-start gap-3">
+            <span class="ex-num">${i + 1}</span>
+            <p class="flex-1 text-[.95rem] text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="ex-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.ex-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;
+    answers[id] = opt;
+    render();
+  });
+
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'I need ___ information about trains.',                         options: ['a','an','some'], correct: 2 },
+    { id: 2,  text: 'She waited for ___ hour.',                                       options: ['a','an','the'], correct: 1 },
+    { id: 3,  text: 'He is ___ university student.',                                  options: ['a','an','the'], correct: 0 },
+    { id: 4,  text: '___ sun rises in the east.',                                     options: ['A','An','The'], correct: 2 },
+    { id: 5,  text: 'Ellie goes to ___ every day.',                                   options: ['school','the school','a school'], correct: 0 },
+    { id: 6,  text: 'Her mother went to ___ to meet the teacher.',                    options: ['school','the school','a school'], correct: 1 },
+    { id: 7,  text: 'I liked ___ in the film.',                                       options: ['music','the music','a music'], correct: 1 },
+    { id: 8,  text: '___ Nile is the longest river in Africa.',                       options: ['A','An','The'], correct: 2 },
+    { id: 9,  text: '___ Sheraton Hotel is expensive.',                               options: ['A','An','The'], correct: 2 },
+    { id: 10, text: 'My trousers ___ too long.',                                      options: ['is','are','was'], correct: 1 },
+    { id: 11, text: 'She has ___ cold.',                                              options: ['a','an','the'], correct: 0 },
+    { id: 12, text: 'I go to school by ___.',                                         options: ['a bus','the bus','bus'], correct: 2 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => `
+              <div class="quiz-option ${sel === oi ? 'selected' : ''}"
+                   data-qid="${q.id}" data-optindex="${oi}">${opt}</div>
+            `).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.quiz-option').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — you are a grammar master! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+
+    container.querySelectorAll('.quiz-option').forEach(el => {
+      const qid = Number(el.dataset.qid);
+      const oi  = Number(el.dataset.optindex);
+      const q   = questions.find(x => x.id === qid);
+      if (!q) return;
+      const sel = selected[qid];
+      el.classList.remove('selected-correct', 'selected-wrong', 'show-correct');
+      if (sel !== undefined) {
+        if (oi === q.correct) el.classList.add('show-correct');
+        if (sel === oi) el.classList.add(oi === q.correct ? 'selected-correct' : 'selected-wrong');
+      }
+    });
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+
+    </body>
 </html>

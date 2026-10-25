@@ -1560,6 +1560,8 @@ closure|n|সম্পূর্ণতা|Closure, Completion|desc
 hostile|adj|বিরুদ্ধ |Opposing, Hostile, unfriendly, aggressive, or showing active opposition|conf
 saline |adj|সমীপ|Salty, Saline, salty or containing salt, or it refers to a liquid mixture made of sodium chloride (table salt) and water|env
 disputed|adj|বিতর্কিত|Disputed, Controversial|conf
+elusive|adj|বেশির ভাগ সময় প্রত্যাহার করা, কম শারীরিক সক্রিয়তাপূর্ণ|Inactive, Seated, hard to find, difficult to catch |health
+municipal|n| পৌর, পৌরসভা সম্পর্কিত, অথবা স্থানীয় প্রশাসনিক|City, Municipal, Municipal Corporation|env
 
 `
 
