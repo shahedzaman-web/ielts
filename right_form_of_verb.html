@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Right Form of Verbs — Dark Edition</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap');
+
+:root{
+  --bg:#070b16;
+  --surface:#0d1526;
+  --border:#1e2b45;
+  --text:#dbe4f3;
+}
+
+*{ font-family:'Inter', system-ui, -apple-system, sans-serif; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px circle at 8% -8%, rgba(99,102,241,.18), transparent 62%),
+    radial-gradient(700px circle at 96% 2%, rgba(168,85,247,.13), transparent 62%),
+    radial-gradient(640px circle at 50% 108%, rgba(16,185,129,.09), transparent 62%);
+}
+body > *{ position:relative; z-index:1; }
+
+.h-sec{ font-size:1.6rem; font-weight:800; letter-spacing:-.02em; color:#f1f5fd; }
+@media (max-width:640px){ .h-sec{ font-size:1.25rem; } }
+
+.rule-box{
+  background:linear-gradient(180deg,#0e1729 0%, #0b1220 100%);
+  border:1px solid var(--border);
+  border-left:3px solid #6366f1;
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  margin:1.1rem 0;
+}
+.rule-box p{ color:#b9c7dd; line-height:1.7; margin-bottom:.6rem; font-size:.94rem; }
+.rule-box p:last-child{ margin-bottom:0; }
+
+.rule-title{
+  display:flex; align-items:center; gap:.55rem;
+  font-size:1rem; font-weight:700; color:#e8eefb;
+  margin:0 0 .55rem 0;
+}
+
+.num-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.55rem; height:1.55rem; padding:0 .4rem;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; font-size:.72rem; font-weight:700;
+  border-radius:9999px; letter-spacing:.02em;
+  box-shadow:0 0 0 3px rgba(99,102,241,.12);
+}
+
+.example{
+  background:#0a1120;
+  border:1px solid #1b2740;
+  border-left:3px solid #334155;
+  border-radius:10px;
+  padding:.62rem .9rem;
+  margin:.42rem 0;
+  font-size:.92rem;
+  color:#c3d0e6;
+  line-height:1.55;
+}
+.example:last-child{ margin-bottom:0; }
+.hl{ color:#a5b4fc; font-weight:600; }
+.hlg{ color:#34d399; font-weight:700; }
+.hlr{ color:#f87171; font-weight:700; }
+.hla{ color:#fbbf24; font-weight:700; }
+.note{ color:#7f92ae; font-size:.84rem; }
+
+.warn{
+  background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#e8c98a;
+  line-height:1.6;
+}
+.warn b{ color:#fbbf24; }
+
+.tip{
+  background:rgba(52,211,153,.07);
+  border:1px solid rgba(52,211,153,.22);
+  border-radius:10px;
+  padding:.6rem .85rem;
+  margin-top:.7rem;
+  font-size:.85rem;
+  color:#8fe3c3;
+  line-height:1.6;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  margin:1rem 0;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a1120;
+}
+.table-wrap table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+.table-wrap th{
+  background:#111c31; text-align:left; padding:.68rem .9rem;
+  font-weight:600; color:#cbd5e1; border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+.table-wrap td{
+  padding:.6rem .9rem; border-bottom:1px solid #131f34; color:#a9b9d1;
+}
+.table-wrap tr:last-child td{ border-bottom:none; }
+.table-wrap tbody tr:hover td{ background:#0e1729; }
+
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.38rem .78rem;
+  border-radius:9999px;
+  border:1px solid var(--border);
+  background:#0c1526;
+  color:#9fb2cc;
+  font-size:.76rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+  white-space:nowrap;
+}
+.chip:hover{ border-color:#3b4d72; color:#dbe4f3; }
+.chip.active{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  border-color:#6366f1; color:#fff;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+.q-opt{
+  padding:.45rem 1rem;
+  border-radius:9px;
+  border:1px solid #2a3a5a;
+  background:#0b1424;
+  color:#b7c6dd;
+  font-size:.85rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.12s;
+  min-width:70px;
+}
+.q-opt:hover{ background:#152340; border-color:#3d5280; color:#e2eaf8; }
+.q-opt.correct{
+  background:rgba(16,185,129,.15); border-color:#34d399; color:#6ee7b7;
+  box-shadow:0 0 0 3px rgba(52,211,153,.10);
+}
+.q-opt.wrong{
+  background:rgba(248,113,113,.13); border-color:#f87171; color:#fca5a5;
+}
+.q-exp{
+  margin-top:.65rem;
+  padding-top:.65rem;
+  border-top:1px dashed #1e2b45;
+  font-size:.82rem;
+  line-height:1.6;
+}
+.q-tag{
+  font-size:.62rem;
+  font-weight:700;
+  color:#a5b4fc;
+  background:rgba(99,102,241,.12);
+  border:1px solid rgba(99,102,241,.25);
+  border-radius:6px;
+  padding:.1rem .4rem;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff; font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  transition:.15s; border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.btn-primary:hover{ filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 8px 22px -8px rgba(99,102,241,.8); }
+.btn-ghost{
+  background:#101b2e; color:#9fb2cc;
+  font-weight:600; font-size:.9rem;
+  padding:.68rem 1.6rem; border-radius:9999px;
+  border:1px solid var(--border); transition:.15s;
+  cursor:pointer;
+}
+.btn-ghost:hover{ background:#152340; color:#dbe4f3; border-color:#3b4d72; }
+
+.navlink{
+  color:#8fa3c0; font-size:.86rem; font-weight:500;
+  padding:.35rem .6rem; border-radius:8px; transition:.15s;
+}
+.navlink:hover{ color:#c7d2fe; background:#101b2e; }
+
+.anchor{ scroll-margin-top:5.5rem; }
+
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-track{ background:#080d18; }
+::-webkit-scrollbar-thumb{ background:#1e2b45; border-radius:8px; }
+::-webkit-scrollbar-thumb:hover{ background:#2c3f63; }
+
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+.fade{ animation:fadeUp .35s ease both; }
+
+.hero-card{
+  background:linear-gradient(180deg,#0e1729 0%, #0a1120 100%);
+  border:1px solid #1e2b45;
+  border-radius:16px;
+  padding:1.35rem;
+  box-shadow:0 20px 60px -20px rgba(99,102,241,.3);
+}
+.hero-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.4rem .1rem; border-bottom:1px solid #17233a;
+  font-size:.78rem;
+}
+.hero-row:last-child{ border-bottom:none; }
+.hero-key{ color:#8fa3c0; }
+.hero-val{ color:#a5b4fc; font-weight:700; }
+</style>
+    </head>
+    <body>
+
+        <!-- ==================== NAVBAR ==================== -->
+        <nav
+            class="sticky top-0 z-50 border-b border-[#1a2740] bg-[#070b16]/85 backdrop-blur-xl">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <a href="#top" class="flex items-center gap-2.5">
+                    <span class="text-2xl">📝</span>
+                    <span
+                        class="font-bold text-[#e8eefb] text-lg tracking-tight">Verb<span
+                            class="text-indigo-400">Form</span></span>
+                </a>
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="#overview" class="navlink">Overview</a>
+                    <a href="#rules"
+                        class="navlink hidden sm:inline-block">Rules</a>
+                    <a href="#chart"
+                        class="navlink hidden md:inline-block">Chart</a>
+                    <a href="#exercises" class="navlink">Practice</a>
+                    <a href="#quiz" class="navlink">Quiz</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ==================== HERO ==================== -->
+        <header id="top" class="border-b border-[#16223a]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+                <div class="grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-3">
+                        <span
+                            class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[.7rem] font-bold px-3 py-1.5 rounded-full mb-5 tracking-wider uppercase">
+                            📝 Complete Grammar Guide · Dark Edition
+                        </span>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white">
+                            Right Form<br />
+                            <span
+                                class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">of
+                                Verbs</span>
+                        </h1>
+                        <p
+                            class="mt-5 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+                            Master the 20 rules that decide which form of the
+                            verb fits the gap — subject–verb agreement,
+                            tense sequencing, conditionals, gerunds,
+                            infinitives, inversion, and more.
+                            <strong class="text-indigo-300">160 practice
+                                exercises</strong> and a scored quiz.
+                        </p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#rules" class="btn-primary">Start Learning
+                                →</a>
+                            <a href="#exercises" class="btn-ghost">Practice 160
+                                Exercises ✏️</a>
+                            <a href="#quiz" class="btn-ghost">Take Quiz 🎯</a>
+                        </div>
+                        <div
+                            class="mt-8 flex flex-wrap gap-6 text-sm text-slate-500">
+                            <div><span
+                                    class="text-indigo-400 font-bold text-lg">20</span>
+                                rules</div>
+                            <div><span
+                                    class="text-emerald-400 font-bold text-lg">160</span>
+                                exercises</div>
+                            <div><span
+                                    class="text-violet-400 font-bold text-lg">12</span>
+                                quiz questions</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 hidden md:block">
+                        <div class="hero-card">
+                            <p
+                                class="text-[.62rem] font-bold text-slate-500 mb-2 uppercase tracking-wider text-center">The
+                                Verb Family</p>
+                            <div class="hero-row"><span class="hero-key">Base
+                                    form</span><span class="hero-val">go ·
+                                    write</span></div>
+                            <div class="hero-row"><span class="hero-key">3rd
+                                    person singular</span><span
+                                    class="hero-val">goes · writes</span></div>
+                            <div class="hero-row"><span class="hero-key">Past
+                                    simple</span><span class="hero-val">went ·
+                                    wrote</span></div>
+                            <div class="hero-row"><span class="hero-key">Past
+                                    participle</span><span class="hero-val">gone
+                                    · written</span></div>
+                            <div class="hero-row"><span class="hero-key">Present
+                                    participle</span><span
+                                    class="hero-val">going ·
+                                    writing</span></div>
+                            <div class="hero-row"><span
+                                    class="hero-key">Infinitive</span><span
+                                    class="hero-val">to go · to
+                                    write</span></div>
+                            <div class="hero-row"><span
+                                    class="hero-key">Gerund</span><span
+                                    class="hero-val">going ·
+                                    writing</span></div>
+                            <p
+                                class="text-[.62rem] text-slate-600 mt-3 text-center">7
+                                forms · 20 rules · endless combinations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <!-- ==================== OVERVIEW ==================== -->
+            <section id="overview" class="anchor">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧩</span>
+                    <h2 class="h-sec">What Is “Right Form of Verbs”?</h2>
+                </div>
+                <p
+                    class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl">
+                    “Right form of verbs” is the grammar skill of choosing the
+                    <strong class="text-slate-200">correct form</strong>
+                    of a verb for a given sentence — base, -s, past, past
+                    participle, -ing, or infinitive.
+                    The choice depends on the <strong
+                        class="text-slate-200">subject</strong>, the
+                    <strong class="text-slate-200">tense</strong>, the <strong
+                        class="text-slate-200">sentence type</strong>
+                    (conditional, wish, inversion…), and the <strong
+                        class="text-slate-200">words around the gap</strong>.
+                </p>
+
+                <div class="rule-box mt-5">
+                    <p class="!mb-0">
+                        <strong class="text-indigo-300">💡 Core idea:</strong>
+                        before you choose the form, ask three questions —
+                        <strong class="text-slate-200">1.</strong> Who is the
+                        subject? (singular / plural, person)
+                        <strong class="text-slate-200">2.</strong> What time is
+                        the sentence about? (past / present / future)
+                        <strong class="text-slate-200">3.</strong> Is there a
+                        trigger word? (<em>since, wish, if, lest, hardly, enjoy,
+                            to…</em>)
+                        The answers almost always determine the form.
+                    </p>
+                </div>
+
+                <div class="table-wrap mt-5">
+                    <table>
+                        <thead><tr><th style="width:26%">Verb form</th><th
+                                    style="width:24%">When to use</th><th
+                                    style="width:50%">Example</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong class="text-emerald-300">Base
+                                        form</strong></td><td>after modals,
+                                    to-infinitives, imperatives</td><td>He can
+                                    <strong>swim</strong>. / I want <strong>to
+                                        go</strong>.</td></tr>
+                            <tr><td><strong class="text-emerald-300">-s / -es
+                                        form</strong></td><td>third person
+                                    singular, present simple</td><td>She
+                                    <strong>writes</strong> every day.</td></tr>
+                            <tr><td><strong class="text-amber-300">Past
+                                        simple</strong></td><td>finished past
+                                    actions</td><td>He <strong>wrote</strong> a
+                                    letter yesterday.</td></tr>
+                            <tr><td><strong class="text-amber-300">Past
+                                        participle</strong></td><td>perfect
+                                    tenses, passive voice</td><td>He has
+                                    <strong>written</strong>. / It was
+                                    <strong>written</strong>.</td></tr>
+                            <tr><td><strong class="text-violet-300">-ing
+                                        form</strong></td><td>after
+                                    prepositions, after enjoy/mind etc.,
+                                    continuous tenses</td><td>He is
+                                    <strong>writing</strong>. / I enjoy
+                                    <strong>reading</strong>.</td></tr>
+                            <tr><td><strong class="text-blue-300">Infinitive (to
+                                        + base)</strong></td><td>after
+                                    want/hope/decide, after adjectives</td><td>I
+                                    want <strong>to go</strong>. / It is easy
+                                    <strong>to learn</strong>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==================== RULES ==================== -->
+            <section id="rules"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📋</span>
+                    <h2 class="h-sec">The 20 Rules — In Detail</h2>
+                </div>
+                <p class="text-slate-400 mb-6 max-w-3xl">
+                    Every rule includes the principle, examples, and the trap
+                    that costs marks in exams.
+                </p>
+
+                <!-- RULE 1 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">1</span>
+                        Subject–Verb Agreement</h3>
+                    <p>A <strong>singular</strong> subject takes a singular verb
+                        (with <strong>-s</strong> in the present simple);
+                        a <strong>plural</strong> subject takes the base
+                        form.</p>
+                    <div class="example">He <span class="hlg">goes</span> to
+                        school. / They <span class="hlg">go</span> to
+                        school.</div>
+                    <div class="example">The news <span class="hlg">is</span>
+                        good. / The students <span class="hlg">are</span>
+                        ready.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> words between the
+                        subject and verb do not change the agreement —
+                        “The <em>box of chocolates</em> <span
+                            class="hlg">is</span> on the table” (subject = box,
+                        not chocolates).</div>
+                </div>
+
+                <!-- RULE 2 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">2</span>
+                        Universal Truth &amp; Habitual Fact → Present
+                        Simple</h3>
+                    <p>Scientific facts, universal truths, and habitual actions
+                        always take the
+                        <strong>present simple</strong>, even inside a
+                        past-tense sentence.</p>
+                    <div class="example">Water <span class="hlg">boils</span> at
+                        100°C.</div>
+                    <div class="example">The sun <span class="hlg">rises</span>
+                        in the east.</div>
+                    <div class="example">He <span class="hlg">goes</span> to
+                        school every day.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “The teacher told us
+                        that the earth <span class="hlg">moves</span> around the
+                        sun” — the reported clause keeps the present because it
+                        is a universal truth.</div>
+                </div>
+
+                <!-- RULE 3 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">3</span> Past
+                        Narration — Past Follows Past</h3>
+                    <p>When the main clause is in the past, the subordinate
+                        clause is also normally in the past
+                        (<strong>past simple</strong> or <strong>past
+                            perfect</strong> for an earlier action).</p>
+                    <div class="example">He said that he <span
+                            class="hlg">was</span> ill.</div>
+                    <div class="example">When I arrived, he <span
+                            class="hlg">was watching</span> TV.</div>
+                    <div class="example">She told me she <span class="hlg">had
+                            read</span> the book.</div>
+                    <div class="example">After he <span class="hlg">had
+                            eaten</span> dinner, he went to bed.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> universal truths and
+                        habitual facts are exceptions — “He said that water
+                        <span class="hlg">boils</span> at 100°C.”</div>
+                </div>
+
+                <!-- RULE 4 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">4</span>
+                        Perfect Tenses — since, for, already, just, yet, ever,
+                        never</h3>
+                    <p>These trigger words almost always require a
+                        <strong>perfect</strong> tense:
+                        <strong>present perfect</strong> (<em>have/has + past
+                            participle</em>) or
+                        <strong>present perfect continuous</strong>
+                        (<em>have/has been + -ing</em>).</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Trigger</th><th>Tense</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>since / for</td><td>present perfect
+                                        (continuous)</td><td>I <strong>have
+                                            lived</strong> here since
+                                        2010.</td></tr>
+                                <tr><td>already / just / yet</td><td>present
+                                        perfect</td><td>He <strong>has already
+                                            finished</strong>.</td></tr>
+                                <tr><td>ever / never</td><td>present perfect
+                                        (experience)</td><td>She <strong>has
+                                            never been</strong> to
+                                        Paris.</td></tr>
+                                <tr><td>so far / recently /
+                                        lately</td><td>present perfect</td><td>I
+                                        <strong>have not seen</strong> him
+                                        lately.</td></tr>
+                                <tr><td>before + past point</td><td>past
+                                        perfect</td><td>She <strong>had
+                                            left</strong> before I
+                                        arrived.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “yesterday” and “last
+                        week” are <strong>finished past</strong> — use past
+                        simple, not present perfect. “I <span class="hlr">have
+                            seen</span> him yesterday” ✗ → “I <span
+                            class="hlg">saw</span> him yesterday” ✓.</div>
+                </div>
+
+                <!-- RULE 5 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">5</span>
+                        Conditional Sentences</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Type</th><th>If-clause</th><th>Main
+                                        clause</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Zero</strong>
+                                        (fact)</td><td>present
+                                        simple</td><td>present simple</td><td>If
+                                        you heat ice, it
+                                        <strong>melts</strong>.</td></tr>
+                                <tr><td><strong>First</strong> (real
+                                        future)</td><td>present
+                                        simple</td><td>will + base</td><td>If it
+                                        rains, we <strong>will stay</strong>
+                                        home.</td></tr>
+                                <tr><td><strong>Second</strong> (unreal
+                                        present)</td><td>past
+                                        simple</td><td>would + base</td><td>If I
+                                        had money, I <strong>would
+                                            travel</strong>.</td></tr>
+                                <tr><td><strong>Third</strong> (unreal
+                                        past)</td><td>past perfect</td><td>would
+                                        have + pp</td><td>If she had studied,
+                                        she <strong>would have
+                                            passed</strong>.</td></tr>
+                                <tr><td><strong>Mixed</strong></td><td>past
+                                        perfect</td><td>would + base
+                                        (now)</td><td>If I had saved money, I
+                                        <strong>would be</strong> rich
+                                        now.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> never use
+                        <em>will</em> in the if-clause — “If it <span
+                            class="hlr">will rain</span>” ✗ → “If it <span
+                            class="hlg">rains</span>” ✓. <em>Unless</em> = “if
+                        not”.</div>
+                </div>
+
+                <!-- RULE 6 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">6</span>
+                        Modal Verbs + Base Form</h3>
+                    <p>After <strong>can, could, may, might, shall, should,
+                            will, would, must, ought to, had better, would
+                            rather, need not, dare not</strong>
+                        — use the <strong>base form</strong> (no -s, no -ed, no
+                        -ing).</p>
+                    <div class="example">He can <span class="hlg">swim</span>. /
+                        You must <span class="hlg">obey</span> the rules.</div>
+                    <div class="example">She should <span class="hlg">be</span>
+                        careful. / They may <span class="hlg">come</span>
+                        tomorrow.</div>
+                    <div class="example">You had better <span
+                            class="hlg">leave</span> now. / I would rather <span
+                            class="hlg">stay</span> home.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “ought” and “used”
+                        take <em>to</em> — “You ought <span class="hlg">to
+                            obey</span>”.</div>
+                </div>
+
+                <!-- RULE 7 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">7</span>
+                        Causative Verbs — make, let, have, get, help</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Verb</th><th>Pattern</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>make</strong></td><td>make +
+                                        object + bare infinitive</td><td>He made
+                                        me <strong>tell</strong> the
+                                        truth.</td></tr>
+                                <tr><td><strong>let</strong></td><td>let +
+                                        object + bare infinitive</td><td>Let him
+                                        <strong>answer</strong> the
+                                        question.</td></tr>
+                                <tr><td><strong>have</strong></td><td>have +
+                                        object + bare infinitive</td><td>I had
+                                        the mechanic <strong>repair</strong> my
+                                        car.</td></tr>
+                                <tr><td><strong>get</strong></td><td>get +
+                                        object +
+                                        <strong>to</strong>-infinitive</td><td>I
+                                        got him <strong>to help</strong>
+                                        me.</td></tr>
+                                <tr><td><strong>help</strong></td><td>help +
+                                        object + (to) infinitive</td><td>She
+                                        helped me <strong>(to) finish</strong>
+                                        the work.</td></tr>
+                                <tr><td><strong>have / get + object +
+                                            pp</strong></td><td>causative
+                                        passive</td><td>I had my hair
+                                        <strong>cut</strong>. / She got her car
+                                        <strong>repaired</strong>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>get</em> takes
+                        <strong>to</strong>-infinitive; <em>make, let, have</em>
+                        do not.</div>
+                </div>
+
+                <!-- RULE 8 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">8</span>
+                        Verbs of Perception — see, hear, watch, notice,
+                        feel</h3>
+                    <p>These take either the <strong>bare infinitive</strong>
+                        (complete action) or the
+                        <strong>-ing form</strong> (ongoing action).</p>
+                    <div class="example">I saw him <span
+                            class="hlg">cross</span> the road. <span
+                            class="note">(I saw the whole action)</span></div>
+                    <div class="example">I saw him <span
+                            class="hlg">crossing</span> the road. <span
+                            class="note">(I saw him while he was
+                            crossing)</span></div>
+                    <div class="example">She heard the baby <span
+                            class="hlg">cry</span>. / She heard the baby <span
+                            class="hlg">crying</span>.</div>
+                    <div class="warn"><b>⚠️ In passive:</b> use the
+                        <em>to</em>-infinitive — “He was seen <span
+                            class="hlg">to enter</span> the room.”</div>
+                </div>
+
+                <!-- RULE 9 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">9</span> Wish
+                        / As if / As though — Past Subjunctive “were”</h3>
+                    <p>After <strong>wish, as if, as though</strong>, and in
+                        unreal conditions, use
+                        <strong>were</strong> for all subjects, and past simple
+                        for a present wish.</p>
+                    <div class="example">I wish I <span class="hlg">were</span>
+                        rich.</div>
+                    <div class="example">He talks as if he <span
+                            class="hlg">knew</span> everything.</div>
+                    <div class="example">She behaves as though she <span
+                            class="hlg">were</span> the boss.</div>
+                    <div class="example">I wish I <span class="hlg">had</span>
+                        more time. <span class="note">(past simple for present
+                            unreal)</span></div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “I wish I <span
+                            class="hlr">was</span> tall” is common in speech,
+                        but exams expect “I wish I <span class="hlg">were</span>
+                        tall”.</div>
+                </div>
+
+                <!-- RULE 10 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">10</span> It
+                        is high time / It is time / Would rather / Had
+                        better</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Structure</th><th>Form</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>It is high time / It is
+                                            time</strong></td><td>+ subject +
+                                        past simple</td><td>It is high time we
+                                        <strong>left</strong>.</td></tr>
+                                <tr><td><strong>It is time</strong> (no
+                                        subject)</td><td>+
+                                        to-infinitive</td><td>It is time
+                                        <strong>to go</strong>.</td></tr>
+                                <tr><td><strong>would rather</strong> (same
+                                        subject)</td><td>+ base form</td><td>I
+                                        would rather <strong>stay</strong>
+                                        home.</td></tr>
+                                <tr><td><strong>would rather</strong> (different
+                                        subject)</td><td>+ subject + past
+                                        simple</td><td>I would rather you
+                                        <strong>left</strong> now.</td></tr>
+                                <tr><td><strong>had better</strong></td><td>+
+                                        base form</td><td>You had better
+                                        <strong>see</strong> a doctor.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “It is high time we
+                        <span class="hlr">leave</span>” ✗ → “It is high time we
+                        <span class="hlg">left</span>” ✓.</div>
+                </div>
+
+                <!-- RULE 11 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">11</span>
+                        Gerund (-ing) after Prepositions &amp; Certain
+                        Verbs</h3>
+                    <p>After <strong>prepositions</strong> (in, on, at, of, for,
+                        with, without, before, after, by, from, about, despite,
+                        in spite of…)
+                        and after verbs like <strong>enjoy, mind, avoid, finish,
+                            stop, suggest, recommend, consider, keep, deny,
+                            admit, postpone, risk, imagine, practise</strong>
+                        — use the <strong>-ing form</strong>.</p>
+                    <div class="example">He is good <span class="hl">at</span>
+                        <span class="hlg">singing</span>.</div>
+                    <div class="example">She left <span
+                            class="hl">without</span> <span
+                            class="hlg">saying</span> goodbye.</div>
+                    <div class="example">I enjoy <span
+                            class="hlg">reading</span> novels.</div>
+                    <div class="example">They apologised <span
+                            class="hl">for</span> <span class="hlg">being</span>
+                        late.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “look forward to”
+                        ends with <em>to</em>, but it is a preposition —
+                        “I look forward to <span class="hlg">seeing</span> you”
+                        (not “to see”).</div>
+                </div>
+
+                <!-- RULE 12 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">12</span>
+                        Infinitive (to + base) after Certain Verbs &amp;
+                        Adjectives</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Pattern</th><th>Examples</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>verb +
+                                            to-infinitive</strong></td><td>want,
+                                        need, hope, expect, plan, decide,
+                                        promise, refuse, agree, offer, manage,
+                                        afford, learn, forget</td></tr>
+                                <tr><td><strong>adjective +
+                                            to-infinitive</strong></td><td>happy,
+                                        glad, sad, easy, difficult, hard, ready,
+                                        eager, able, willing, afraid</td></tr>
+                                <tr><td><strong>too + adjective +
+                                            to-infinitive</strong></td><td>too
+                                        tired <strong>to walk</strong></td></tr>
+                                <tr><td><strong>adjective + enough +
+                                            to-infinitive</strong></td><td>old
+                                        enough <strong>to
+                                            drive</strong></td></tr>
+                                <tr><td><strong>in order to / so as
+                                            to</strong></td><td>in order
+                                        <strong>to pass</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="example">I want <span class="hlg">to be</span> a
+                        doctor.</div>
+                    <div class="example">It is easy <span class="hlg">to
+                            learn</span> English.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>stop</em> changes
+                        meaning — “stop <span class="hlg">smoking</span>” (quit)
+                        vs “stop <span class="hlg">to smoke</span>” (pause in
+                        order to smoke).</div>
+                </div>
+
+                <!-- RULE 13 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">13</span>
+                        used to / be used to / get used to</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Structure</th><th>Meaning</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>used to +
+                                            base</strong></td><td>past habit (no
+                                        longer true)</td><td>He <strong>used to
+                                            smoke</strong>.</td></tr>
+                                <tr><td><strong>be used to +
+                                            -ing</strong></td><td>be accustomed
+                                        to</td><td>She <strong>is used to
+                                            getting</strong> up early.</td></tr>
+                                <tr><td><strong>get used to +
+                                            -ing</strong></td><td>become
+                                        accustomed to</td><td>He <strong>will
+                                            get used to working</strong>
+                                        here.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “I <span
+                            class="hlg">used to live</span> in London” (past
+                        habit) ≠ “I <span class="hlg">am used to living</span>
+                        in London” (accustomed).</div>
+                </div>
+
+                <!-- RULE 14 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">14</span>
+                        Passive Voice — be + Past Participle</h3>
+                    <p>Passive = form of <strong>be</strong> + <strong>past
+                            participle (V3)</strong>. The tense is shown by
+                        <em>be</em>.</p>
+                    <div class="example">The letter <span class="hlg">was
+                            sent</span> yesterday.</div>
+                    <div class="example">English <span class="hlg">is
+                            spoken</span> all over the world.</div>
+                    <div class="example">The results <span class="hlg">will be
+                            announced</span> tomorrow.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> intransitive verbs
+                        (happen, arrive, occur, die, rise) have <strong>no
+                            passive</strong> — “An accident <span
+                            class="hlr">was happened</span>” ✗ → “An accident
+                        <span class="hlg">happened</span>” ✓.</div>
+                </div>
+
+                <!-- RULE 15 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">15</span>
+                        lest + should</h3>
+                    <p>After <strong>lest</strong>, use <strong>should + base
+                            form</strong> (or the bare subjunctive).</p>
+                    <div class="example">Study hard lest you <span
+                            class="hlg">should fail</span>.</div>
+                    <div class="example">Hurry up lest you <span
+                            class="hlg">should miss</span> the train.</div>
+                    <div class="example">Take an umbrella lest it <span
+                            class="hlg">should rain</span>.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> never use
+                        <em>will</em> or <em>would</em> after <em>lest</em> —
+                        “lest you <span class="hlr">will fail</span>” ✗.</div>
+                </div>
+
+                <!-- RULE 16 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">16</span> No
+                        sooner…than / Hardly…when / Scarcely…when</h3>
+                    <p>These use <strong>past perfect + inversion</strong> in
+                        the first clause, and
+                        <strong>past simple</strong> in the second.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Structure</th><th>Conjunction</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td>No sooner <strong>had</strong> + S + pp
+                                        …</td><td><strong>than</strong></td><td>No
+                                        sooner <strong>had</strong> he arrived
+                                        <strong>than</strong> it started
+                                        raining.</td></tr>
+                                <tr><td>Hardly <strong>had</strong> + S + pp
+                                        …</td><td><strong>when</strong></td><td>Hardly
+                                        <strong>had</strong> I entered
+                                        <strong>when</strong> the phone
+                                        rang.</td></tr>
+                                <tr><td>Scarcely <strong>had</strong> + S + pp
+                                        …</td><td><strong>when</strong></td><td>Scarcely
+                                        <strong>had</strong> he left
+                                        <strong>when</strong> it began to
+                                        rain.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “No sooner” pairs
+                        with <em>than</em>, not <em>when</em>. “Hardly /
+                        Scarcely” pair with <em>when</em>, not
+                        <em>than</em>.</div>
+                </div>
+
+                <!-- RULE 17 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">17</span>
+                        Each / Every / One of + Singular Verb</h3>
+                    <p><strong>Each, every, one of, either, neither</strong> (as
+                        subject) take a <strong>singular</strong> verb.</p>
+                    <div class="example">Each of the boys <span
+                            class="hlg">has</span> a book.</div>
+                    <div class="example">Every student <span
+                            class="hlg">needs</span> to submit the form.</div>
+                    <div class="example">One of my friends <span
+                            class="hlg">is</span> coming today.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> “One of my
+                        <em>friends</em> <span class="hlg">is</span> coming” —
+                        the verb agrees with <em>one</em>, not
+                        <em>friends</em>.</div>
+                </div>
+
+                <!-- RULE 18 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">18</span> The
+                        number of / A number of</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Expression</th><th>Verb</th><th>Example</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>The number of</strong> + plural
+                                        noun</td><td>singular</td><td>The number
+                                        of students <strong>is</strong>
+                                        increasing.</td></tr>
+                                <tr><td><strong>A number of</strong> + plural
+                                        noun</td><td>plural</td><td>A number of
+                                        students <strong>are</strong>
+                                        absent.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="warn"><b>⚠️ Watch out:</b> <em>the number
+                            of</em> = “the total” (singular); <em>a number
+                            of</em> = “several” (plural).</div>
+                </div>
+
+                <!-- RULE 19 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">19</span>
+                        Either…or / Neither…nor — Proximity Rule</h3>
+                    <p>The verb agrees with the subject <strong>closest</strong>
+                        to it.</p>
+                    <div class="example">Neither he nor his friends <span
+                            class="hlg">are</span> coming. <span
+                            class="note">(nearest = friends)</span></div>
+                    <div class="example">Neither his friends nor he <span
+                            class="hlg">is</span> coming. <span
+                            class="note">(nearest = he)</span></div>
+                    <div class="example">Either the teacher or the students
+                        <span class="hlg">are</span> responsible.</div>
+                    <div class="example">Either the students or the teacher
+                        <span class="hlg">is</span> responsible.</div>
+                </div>
+
+                <!-- RULE 20 -->
+                <div class="rule-box">
+                    <h3 class="rule-title"><span class="num-badge">20</span>
+                        Inversion after Negative Adverbs</h3>
+                    <p>When a sentence begins with <strong>never, seldom,
+                            rarely, hardly, scarcely, little, nowhere, not only,
+                            no sooner</strong>,
+                        the <strong>auxiliary verb comes before the
+                            subject</strong> (inversion).</p>
+                    <div class="example">Never <span class="hlg">have I
+                            seen</span> such a sight.</div>
+                    <div class="example">Seldom <span class="hlg">does he
+                            go</span> to the cinema.</div>
+                    <div class="example">Hardly <span class="hlg">had she
+                            finished</span> when the bell rang.</div>
+                    <div class="example">Not only <span class="hlg">did he
+                            sing</span>, but he also danced.</div>
+                    <div class="warn"><b>⚠️ Watch out:</b> do not forget the
+                        auxiliary — “Never <span class="hlr">I have seen</span>”
+                        ✗ → “Never <span class="hlg">have I seen</span>”
+                        ✓.</div>
+                </div>
+
+                <div
+                    class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4 mt-6 text-sm text-indigo-200 flex items-start gap-3">
+                    <span class="text-xl">📌</span>
+                    <div>
+                        <strong>The 3-question routine:</strong>
+                        (1) Who is the subject? (singular/plural, person)
+                        (2) What time is the sentence about?
+                        (3) Is there a trigger word (<em>since, wish, if, lest,
+                            hardly, enjoy, to…</em>)?
+                        Answer those three and the verb form almost always picks
+                        itself.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== CHART ==================== -->
+            <section id="chart"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📊</span>
+                    <h2 class="h-sec">Quick-Reference Chart</h2>
+                </div>
+                <p class="text-slate-400 mb-2">The most important patterns on
+                    one screen.</p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:34%">Trigger /
+                                    situation</th><th style="width:24%">Verb
+                                    form</th><th
+                                    style="width:42%">Example</th></tr></thead>
+                        <tbody>
+                            <tr><td>Singular subject (present)</td><td><span
+                                        class="text-emerald-300 font-semibold">base
+                                        + -s</span></td><td>He
+                                    <strong>writes</strong>.</td></tr>
+                            <tr><td>Plural subject (present)</td><td><span
+                                        class="text-emerald-300 font-semibold">base
+                                        form</span></td><td>They
+                                    <strong>write</strong>.</td></tr>
+                            <tr><td>Universal truth</td><td><span
+                                        class="text-emerald-300 font-semibold">present
+                                        simple</span></td><td>Water
+                                    <strong>boils</strong> at 100°C.</td></tr>
+                            <tr><td>Past narration</td><td><span
+                                        class="text-amber-300 font-semibold">past
+                                        simple / past perfect</span></td><td>He
+                                    said he <strong>was</strong> ill.</td></tr>
+                            <tr><td>since / for / already / just</td><td><span
+                                        class="text-amber-300 font-semibold">present
+                                        perfect</span></td><td>I <strong>have
+                                        lived</strong> here since
+                                    2010.</td></tr>
+                            <tr><td>If + present simple</td><td><span
+                                        class="text-violet-300 font-semibold">will
+                                        + base</span></td><td>If it rains, we
+                                    <strong>will stay</strong>.</td></tr>
+                            <tr><td>If + past simple</td><td><span
+                                        class="text-violet-300 font-semibold">would
+                                        + base</span></td><td>If I had money, I
+                                    <strong>would travel</strong>.</td></tr>
+                            <tr><td>If + past perfect</td><td><span
+                                        class="text-violet-300 font-semibold">would
+                                        have + pp</span></td><td>If she had
+                                    studied, she <strong>would have
+                                        passed</strong>.</td></tr>
+                            <tr><td>After modal verbs</td><td><span
+                                        class="text-blue-300 font-semibold">base
+                                        form</span></td><td>He can
+                                    <strong>swim</strong>.</td></tr>
+                            <tr><td>make / let / have + object</td><td><span
+                                        class="text-blue-300 font-semibold">bare
+                                        infinitive</span></td><td>He made me
+                                    <strong>tell</strong> the truth.</td></tr>
+                            <tr><td>get + object</td><td><span
+                                        class="text-blue-300 font-semibold">to-infinitive</span></td><td>I
+                                    got him <strong>to help</strong>.</td></tr>
+                            <tr><td>see / hear / watch + object</td><td><span
+                                        class="text-blue-300 font-semibold">bare
+                                        / -ing</span></td><td>I saw him
+                                    <strong>cross</strong>.</td></tr>
+                            <tr><td>wish / as if / as though</td><td><span
+                                        class="text-violet-300 font-semibold">were
+                                        / past simple</span></td><td>I wish I
+                                    <strong>were</strong> rich.</td></tr>
+                            <tr><td>It is high time</td><td><span
+                                        class="text-violet-300 font-semibold">past
+                                        simple</span></td><td>It is high time we
+                                    <strong>left</strong>.</td></tr>
+                            <tr><td>would rather + different
+                                    subject</td><td><span
+                                        class="text-violet-300 font-semibold">past
+                                        simple</span></td><td>I would rather you
+                                    <strong>left</strong>.</td></tr>
+                            <tr><td>had better</td><td><span
+                                        class="text-blue-300 font-semibold">base
+                                        form</span></td><td>You had better
+                                    <strong>see</strong> a doctor.</td></tr>
+                            <tr><td>after a preposition</td><td><span
+                                        class="text-indigo-300 font-semibold">-ing
+                                        form</span></td><td>He is good at
+                                    <strong>singing</strong>.</td></tr>
+                            <tr><td>enjoy / mind / avoid / finish</td><td><span
+                                        class="text-indigo-300 font-semibold">-ing
+                                        form</span></td><td>I enjoy
+                                    <strong>reading</strong>.</td></tr>
+                            <tr><td>want / hope / decide</td><td><span
+                                        class="text-blue-300 font-semibold">to-infinitive</span></td><td>I
+                                    want <strong>to be</strong> a
+                                    doctor.</td></tr>
+                            <tr><td>used to (past habit)</td><td><span
+                                        class="text-blue-300 font-semibold">base
+                                        form</span></td><td>He <strong>used to
+                                        smoke</strong>.</td></tr>
+                            <tr><td>be / get used to</td><td><span
+                                        class="text-indigo-300 font-semibold">-ing
+                                        form</span></td><td>She is used to
+                                    <strong>getting</strong> up early.</td></tr>
+                            <tr><td>passive</td><td><span
+                                        class="text-amber-300 font-semibold">be
+                                        + past participle</span></td><td>The
+                                    letter <strong>was sent</strong>.</td></tr>
+                            <tr><td>lest</td><td><span
+                                        class="text-violet-300 font-semibold">should
+                                        + base</span></td><td>Study hard lest
+                                    you <strong>should fail</strong>.</td></tr>
+                            <tr><td>No sooner … </td><td><span
+                                        class="text-violet-300 font-semibold">had
+                                        + pp … than</span></td><td>No sooner
+                                    <strong>had he arrived than</strong> it
+                                    rained.</td></tr>
+                            <tr><td>Hardly / Scarcely … </td><td><span
+                                        class="text-violet-300 font-semibold">had
+                                        + pp … when</span></td><td>Hardly
+                                    <strong>had I entered when</strong> the
+                                    phone rang.</td></tr>
+                            <tr><td>each / every / one of</td><td><span
+                                        class="text-emerald-300 font-semibold">singular
+                                        verb</span></td><td>Each of the boys
+                                    <strong>has</strong> a book.</td></tr>
+                            <tr><td>the number of</td><td><span
+                                        class="text-emerald-300 font-semibold">singular
+                                        verb</span></td><td>The number of
+                                    students <strong>is</strong>
+                                    increasing.</td></tr>
+                            <tr><td>a number of</td><td><span
+                                        class="text-emerald-300 font-semibold">plural
+                                        verb</span></td><td>A number of students
+                                    <strong>are</strong> absent.</td></tr>
+                            <tr><td>either…or / neither…nor</td><td><span
+                                        class="text-emerald-300 font-semibold">nearest
+                                        subject</span></td><td>Neither he nor
+                                    his friends <strong>are</strong>
+                                    coming.</td></tr>
+                            <tr><td>never / seldom / hardly
+                                    (front)</td><td><span
+                                        class="text-violet-300 font-semibold">inversion</span></td><td>Never
+                                    <strong>have I seen</strong> such a
+                                    sight.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                    <div
+                        class="rounded-xl border border-indigo-500/25 bg-indigo-500/[.07] p-4">
+                        <p class="font-semibold text-indigo-300 text-sm">✅ Verb
+                            forms to remember</p>
+                        <p class="text-sm text-slate-400 mt-1">base · -s · past
+                            · past participle · -ing · to-infinitive</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-emerald-500/25 bg-emerald-500/[.07] p-4">
+                        <p class="font-semibold text-emerald-300 text-sm">✅
+                            Trigger words to scan for</p>
+                        <p class="text-sm text-slate-400 mt-1">since · for ·
+                            already · just · wish · if · lest · hardly · enjoy ·
+                            to</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== EXERCISES ==================== -->
+            <section id="exercises"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🏋️</span>
+                    <h2 class="h-sec">Exercise Bank — 160 Questions</h2>
+                </div>
+                <p class="text-slate-400 mb-2 max-w-3xl">
+                    Eight exercises for every one of the 20 rules. Pick a rule
+                    to drill it, or work through all 160.
+                    Click an answer to check it instantly and read the
+                    explanation.
+                </p>
+                <div
+                    class="flex flex-wrap items-center gap-2 mb-5 text-xs text-slate-500">
+                    <span>Answers lock after first click</span>
+                    <span class="text-slate-700">·</span>
+                    <span>Click a chosen option again to deselect</span>
+                </div>
+
+                <!-- stats -->
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Answered</span>
+                        <span id="statAnswered"
+                            class="text-indigo-300 font-bold ml-1">0</span>
+                        <span class="text-slate-600">/</span>
+                        <span id="statTotal"
+                            class="text-slate-400 font-semibold">160</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Correct</span>
+                        <span id="statCorrect"
+                            class="text-emerald-300 font-bold ml-1">0</span>
+                    </div>
+                    <div
+                        class="rounded-lg border border-[#1e2b45] bg-[#0d1526] px-4 py-2 text-sm">
+                        <span class="text-slate-500">Accuracy</span>
+                        <span id="statPct"
+                            class="text-violet-300 font-bold ml-1">—</span>
+                    </div>
+                    <button id="resetExercises"
+                        class="btn-ghost !py-2 !px-4 !text-xs ml-auto">🔄 Reset
+                        all answers</button>
+                </div>
+
+                <!-- filters -->
+                <div id="filters" class="flex flex-wrap gap-2 mb-6"></div>
+
+                <!-- list -->
+                <div id="exList" class="grid gap-3"></div>
+            </section>
+
+            <!-- ==================== QUIZ ==================== -->
+            <section id="quiz"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🧠</span>
+                    <h2 class="h-sec">Practice Quiz</h2>
+                </div>
+                <p class="text-slate-400 mb-6">Twelve mixed questions — choose
+                    the correct verb form, then check your score.</p>
+
+                <div id="quizContainer" class="grid gap-3"></div>
+
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button id="checkQuizBtn" class="btn-primary">✅ Check
+                        Answers</button>
+                    <button id="resetQuizBtn" class="btn-ghost">🔄
+                        Reset</button>
+                </div>
+
+                <div id="quizResult"
+                    class="mt-6 p-5 rounded-xl border-2 border-transparent hidden transition-all"></div>
+            </section>
+
+            <!-- ==================== FAQ ==================== -->
+            <section id="faq"
+                class="anchor mt-14 border-t border-[#16223a] pt-12">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">❓</span>
+                    <h2 class="h-sec">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="grid gap-3 mt-5">
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">How do I choose
+                            the right form of a verb in a gap-fill?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">Ask
+                            three questions: <strong>(1)</strong> Who is the
+                            subject — singular or plural? <strong>(2)</strong>
+                            What time is the sentence about — past, present or
+                            future? <strong>(3)</strong> Is there a trigger word
+                            (<em>since, wish, if, lest, hardly, enjoy, to</em>)?
+                            The answers almost always determine whether you need
+                            the base form, -s form, past simple, past
+                            participle, -ing form or to-infinitive.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            difference between “I saw him cross” and “I saw him
+                            crossing”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">With
+                            verbs of perception, the <strong>bare
+                                infinitive</strong> (“cross”) means you saw the
+                            <em>whole</em> action from start to finish. The
+                            <strong>-ing form</strong> (“crossing”) means you
+                            saw the action <em>in progress</em> — you caught
+                            part of it. Both are grammatical; the choice depends
+                            on what you want to emphasise.</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">Why is “It is
+                            high time we leave” wrong?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed">The
+                            structure “It is high time / It is time” is followed
+                            by a <strong>past simple</strong> verb, not the
+                            present. So the correct form is “It is high time we
+                            <strong>left</strong>.” If there is no subject, use
+                            the to-infinitive: “It is time <strong>to
+                                leave</strong>.”</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">What is the
+                            difference between “the number of” and “a number
+                            of”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>The
+                                number of</strong> means “the total” and takes a
+                            <strong>singular</strong> verb — “The number of
+                            students <em>is</em> increasing.” <strong>A number
+                                of</strong> means “several” and takes a
+                            <strong>plural</strong> verb — “A number of students
+                            <em>are</em> absent.”</p>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5">
+                        <p class="font-semibold text-slate-200">When do I use
+                            “lest”?</p>
+                        <p
+                            class="text-slate-400 text-sm mt-1.5 leading-relaxed"><strong>Lest</strong>
+                            means “in case” or “so that … not” and is followed
+                            by <strong>should + base form</strong> (or the bare
+                            subjunctive). Example: “Study hard lest you
+                            <strong>should fail</strong>.” It is formal and
+                            mostly found in exams and literature, rarely in
+                            casual speech.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-6 text-sm text-slate-500 bg-[#0a1120] rounded-xl p-4 border border-[#1b2740]">
+                    📖 <strong class="text-slate-400">Note:</strong> this page
+                    is a grammar reference and practice tool. The rules are
+                    drawn from standard English grammar (Raymond Murphy,
+                    <em>English Grammar in Use</em>) and are commonly tested in
+                    SSC, HSC, university admission and IELTS examinations.
+                </div>
+            </section>
+
+            <!-- ==================== FOOTER ==================== -->
+            <footer
+                class="mt-16 pt-8 border-t border-[#16223a] text-center text-sm text-slate-500 pb-6">
+                <p>📝 VerbForm · Right Form of Verbs · 2026</p>
+                <p class="text-xs mt-1.5 text-slate-600">Built with HTML,
+                    Tailwind CSS &amp; vanilla JavaScript</p>
+            </footer>
+        </main>
+
+        <!-- ============================================================
+     SCRIPT 1 — EXERCISE BANK (160 items)
+     Format: [rule, sentence, options[], correctIndex, explanation]
+     ============================================================ -->
+        <script>
+const EXERCISES = [
+/* ---------- RULE 1: SUBJECT–VERB AGREEMENT (8) ---------- */
+[1,'He ___ to school every day.',['go','goes','going'],1,'Third person singular → goes.'],
+[1,'They ___ football on Sundays.',['plays','play','playing'],1,'Plural subject → play.'],
+[1,'The news ___ good today.',['is','are','were'],0,'“News” is singular → is.'],
+[1,'Mathematics ___ my favourite subject.',['is','are','were'],0,'Subject names ending in -s are singular → is.'],
+[1,'Each student ___ a book.',['has','have','having'],0,'“Each” is singular → has.'],
+[1,'My friends ___ coming today.',['is','are','was'],1,'Plural subject → are.'],
+[1,'One of the boys ___ absent.',['is','are','were'],0,'“One of” takes a singular verb → is.'],
+[1,'The police ___ investigating the case.',['is','are','was'],1,'“Police” is plural → are.'],
+
+/* ---------- RULE 2: UNIVERSAL TRUTH / HABIT (8) ---------- */
+[2,'Water ___ at 100°C.',['boil','boils','boiled'],1,'Universal truth → present simple → boils.'],
+[2,'The sun ___ in the east.',['rise','rises','rose'],1,'Universal truth → rises.'],
+[2,'He ___ to school every day.',['go','goes','went'],1,'Habitual action → goes.'],
+[2,'She usually ___ tea in the morning.',['drink','drinks','drank'],1,'Habit → drinks.'],
+[2,'The earth ___ around the sun.',['move','moves','moved'],1,'Universal truth → moves.'],
+[2,'My father ___ to work by bus.',['go','goes','went'],1,'Habit → goes.'],
+[2,'Honesty ___ the best policy.',['is','was','be'],0,'Universal truth → is.'],
+[2,'Trees ___ oxygen.',['produce','produces','produced'],0,'Plural subject, general fact → produce.'],
+
+/* ---------- RULE 3: PAST NARRATION (8) ---------- */
+[3,'He said that he ___ ill.',['is','was','were'],1,'Past narration → was.'],
+[3,'When I arrived, he ___ TV.',['watches','was watching','watched'],1,'Background past action → was watching.'],
+[3,'She told me she ___ the book.',['has read','had read','reads'],1,'Earlier past action → had read.'],
+[3,'I ___ him yesterday.',['meet','met','meets'],1,'Finished past → met.'],
+[3,'They ___ to the party last night.',['go','went','gone'],1,'Finished past → went.'],
+[3,'After he ___ dinner, he went to bed.',['has eaten','had eaten','ate'],1,'Earlier past action → had eaten.'],
+[3,'She ___ in London for ten years before she moved.',['lived','had lived','has lived'],1,'Action before a past event → had lived.'],
+[3,'He told me that he ___ the movie.',['has seen','had seen','saw'],1,'Reported past → had seen.'],
+
+/* ---------- RULE 4: PERFECT TENSES (8) ---------- */
+[4,'I ___ here since 2010.',['live','lived','have lived'],2,'“Since” + unfinished time → have lived.'],
+[4,'He ___ already finished.',['has','have','had'],0,'“Already” + present result → has.'],
+[4,'She ___ to Paris three times.',['has been','have been','went'],0,'Life experience → has been.'],
+[4,'They ___ not seen him for a week.',['have','has','had'],0,'“For” + unfinished time → have.'],
+[4,'It ___ raining since morning.',['has been','have been','was'],0,'Ongoing up to now → has been.'],
+[4,'We ___ each other for ten years.',['have known','has known','knew'],0,'“For” + unfinished → have known.'],
+[4,'I ___ my homework yet.',['haven\'t finished','hasn\'t finished','didn\'t finish'],0,'“Yet” + unfinished → haven\'t finished.'],
+[4,'She ___ just left.',['has','have','had'],0,'“Just” + present relevance → has.'],
+
+/* ---------- RULE 5: CONDITIONALS (8) ---------- */
+[5,'If it rains, we ___ at home.',['will stay','stayed','would stay'],0,'First conditional → will stay.'],
+[5,'If I had money, I ___ a car.',['will buy','would buy','bought'],1,'Second conditional → would buy.'],
+[5,'If she had studied, she ___ the exam.',['will pass','would pass','would have passed'],2,'Third conditional → would have passed.'],
+[5,'Unless you hurry, you ___ late.',['will be','would be','are'],0,'First conditional with “unless” → will be.'],
+[5,'If I ___ you, I would accept the offer.',['am','was','were'],2,'Second conditional → were.'],
+[5,'If he ___ harder, he would have won.',['worked','had worked','works'],1,'Third conditional → had worked.'],
+[5,'If you heat ice, it ___ .',['melts','melted','would melt'],0,'Zero conditional → melts.'],
+[5,'If she ___ , she would come.',['knows','knew','had known'],1,'Second conditional → knew.'],
+
+/* ---------- RULE 6: MODAL VERBS (8) ---------- */
+[6,'He can ___ the piano.',['play','plays','playing'],0,'After a modal → base form → play.'],
+[6,'You must ___ your homework.',['do','does','did'],0,'After “must” → base form → do.'],
+[6,'She should ___ more careful.',['be','is','was'],0,'After “should” → be.'],
+[6,'They may ___ tomorrow.',['come','comes','came'],0,'After “may” → come.'],
+[6,'We ought to ___ our parents.',['obey','obeys','obeyed'],0,'After “ought to” → base form → obey.'],
+[6,'You had better ___ now.',['leave','leaves','left'],0,'After “had better” → base form → leave.'],
+[6,'He would rather ___ at home.',['stay','stays','stayed'],0,'After “would rather” (same subject) → base form.'],
+[6,'She might ___ the answer.',['know','knows','knew'],0,'After “might” → base form → know.'],
+
+/* ---------- RULE 7: CAUSATIVE VERBS (8) ---------- */
+[7,'He made me ___ the truth.',['tell','tells','told'],0,'make + object + bare infinitive → tell.'],
+[7,'Let him ___ the question.',['answer','answers','answered'],0,'let + object + bare infinitive → answer.'],
+[7,'I had the mechanic ___ my car.',['repair','repairs','repaired'],0,'have + object + bare infinitive → repair.'],
+[7,'She got her hair ___ .',['cut','cuts','cutting'],0,'get + object + past participle → cut.'],
+[7,'They helped us ___ the work.',['finish','finishes','finished'],0,'help + object + (to) infinitive → finish.'],
+[7,'The teacher made the students ___ silent.',['keep','keeps','kept'],0,'make + object + bare infinitive → keep.'],
+[7,'I\'ll have my room ___ .',['painted','paint','painting'],0,'have + object + past participle → painted.'],
+[7,'Let\'s ___ a break.',['take','takes','took'],0,'let\'s + bare infinitive → take.'],
+
+/* ---------- RULE 8: PERCEPTION VERBS (8) ---------- */
+[8,'I saw him ___ the road.',['cross','crosses','crossed'],0,'see + object + bare infinitive → cross.'],
+[8,'She heard the baby ___ .',['cry','cries','cried'],0,'hear + object + bare infinitive → cry.'],
+[8,'We watched them ___ football.',['play','plays','played'],0,'watch + object + bare infinitive → play.'],
+[8,'I noticed her ___ the room.',['enter','enters','entered'],0,'notice + object + bare infinitive → enter.'],
+[8,'They felt the ground ___ .',['shake','shakes','shook'],0,'feel + object + bare infinitive → shake.'],
+[8,'I heard someone ___ my name.',['call','calls','called'],0,'hear + object + bare infinitive → call.'],
+[8,'We watched the sun ___ .',['set','sets','setting'],0,'watch + object + bare infinitive → set.'],
+[8,'She saw a bird ___ away.',['fly','flies','flew'],0,'see + object + bare infinitive → fly.'],
+
+/* ---------- RULE 9: WISH / AS IF (8) ---------- */
+[9,'I wish I ___ rich.',['am','was','were'],2,'After “wish” → were.'],
+[9,'He talks as if he ___ everything.',['knows','knew','know'],1,'As if + past simple → knew.'],
+[9,'She wishes she ___ taller.',['is','was','were'],2,'Wish → were.'],
+[9,'They behave as though they ___ the boss.',['are','were','be'],1,'As though → were.'],
+[9,'I wish it ___ not raining.',['is','was','were'],2,'Wish → were.'],
+[9,'He acts as if he ___ the answer.',['knows','knew','know'],1,'As if + past simple → knew.'],
+[9,'I wish I ___ more time.',['have','had','having'],1,'Wish + past simple → had.'],
+[9,'She wishes she ___ fly.',['can','could','could have'],1,'Wish + could → could.'],
+
+/* ---------- RULE 10: HIGH TIME / WOULD RATHER / HAD BETTER (8) ---------- */
+[10,'It is high time we ___ .',['leave','left','leaving'],1,'It is high time + past simple → left.'],
+[10,'It is time we ___ the meeting.',['start','started','starting'],1,'It is time + past simple → started.'],
+[10,'You had better ___ a doctor.',['see','saw','seen'],0,'Had better + base form → see.'],
+[10,'I would rather ___ at home.',['stay','stayed','staying'],0,'Would rather (same subject) + base → stay.'],
+[10,'I would rather you ___ now.',['leave','left','leaving'],1,'Would rather + different subject + past simple → left.'],
+[10,'It is high time you ___ your habits.',['change','changed','changing'],1,'High time + past simple → changed.'],
+[10,'You had better not ___ late.',['be','was','been'],0,'Had better not + base form → be.'],
+[10,'She would rather ___ than stay.',['go','went','gone'],0,'Would rather + base form → go.'],
+
+/* ---------- RULE 11: GERUND AFTER PREPOSITIONS (8) ---------- */
+[11,'He is good at ___ .',['sing','singing','sang'],1,'After a preposition → -ing → singing.'],
+[11,'She is afraid of ___ .',['fly','flying','flew'],1,'After “of” → flying.'],
+[11,'I\'m looking forward to ___ you.',['see','seeing','saw'],1,'“look forward to” + -ing → seeing.'],
+[11,'He insisted on ___ the bill.',['pay','paying','paid'],1,'After “on” → paying.'],
+[11,'They apologised for ___ late.',['be','being','was'],1,'After “for” → being.'],
+[11,'She left without ___ goodbye.',['say','saying','said'],1,'After “without” → saying.'],
+[11,'I\'m tired of ___ .',['wait','waiting','waited'],1,'After “of” → waiting.'],
+[11,'He succeeded in ___ the exam.',['pass','passing','passed'],1,'After “in” → passing.'],
+
+/* ---------- RULE 12: TO-INFINITIVE (8) ---------- */
+[12,'I want ___ a doctor.',['be','to be','being'],1,'want + to-infinitive → to be.'],
+[12,'She hopes ___ the prize.',['win','to win','winning'],1,'hope + to-infinitive → to win.'],
+[12,'He decided ___ a new car.',['buy','to buy','buying'],1,'decide + to-infinitive → to buy.'],
+[12,'They plan ___ abroad.',['go','to go','going'],1,'plan + to-infinitive → to go.'],
+[12,'It is easy ___ English.',['learn','to learn','learning'],1,'Adjective + to-infinitive → to learn.'],
+[12,'She is too tired ___ .',['walk','to walk','walking'],1,'too + adjective + to-infinitive → to walk.'],
+[12,'He is old enough ___ .',['drive','to drive','driving'],1,'adjective + enough + to-infinitive → to drive.'],
+[12,'I need ___ a new phone.',['buy','to buy','buying'],1,'need + to-infinitive → to buy.'],
+
+/* ---------- RULE 13: USED TO / BE USED TO (8) ---------- */
+[13,'He ___ smoke when he was young.',['used to','use to','uses to'],0,'Past habit → used to.'],
+[13,'She is used to ___ early.',['get up','getting up','got up'],1,'be used to + -ing → getting up.'],
+[13,'I used to ___ in London.',['live','living','lived'],0,'used to + base form → live.'],
+[13,'They are used to ___ in a cold climate.',['live','living','lived'],1,'be used to + -ing → living.'],
+[13,'He will get used to ___ here.',['work','working','worked'],1,'get used to + -ing → working.'],
+[13,'She used to ___ a lot.',['read','reading','reads'],0,'used to + base form → read.'],
+[13,'I\'m not used to ___ so early.',['wake up','waking up','woke up'],1,'be used to + -ing → waking up.'],
+[13,'We used to ___ football every Sunday.',['play','playing','played'],0,'used to + base form → play.'],
+
+/* ---------- RULE 14: PASSIVE VOICE (8) ---------- */
+[14,'The letter ___ yesterday.',['was sent','sent','sending'],0,'Past passive → was sent.'],
+[14,'English ___ all over the world.',['is spoken','speaks','spoke'],0,'Present passive → is spoken.'],
+[14,'The house ___ last year.',['was built','built','building'],0,'Past passive → was built.'],
+[14,'The results ___ tomorrow.',['will be announced','will announce','announce'],0,'Future passive → will be announced.'],
+[14,'The road ___ at the moment.',['is being repaired','is repairing','repairs'],0,'Present continuous passive → is being repaired.'],
+[14,'The documents ___ before the meeting.',['had been signed','had signed','were signing'],0,'Past perfect passive → had been signed.'],
+[14,'The problem ___ .',['has been solved','has solved','solving'],0,'Present perfect passive → has been solved.'],
+[14,'The thief ___ by the police.',['was caught','caught','catching'],0,'Past passive → was caught.'],
+
+/* ---------- RULE 15: LEST + SHOULD (8) ---------- */
+[15,'Study hard lest you ___ fail.',['should','must','will'],0,'lest + should + base → should.'],
+[15,'Hurry up lest you ___ miss the train.',['should','would','could'],0,'lest + should → should.'],
+[15,'Take an umbrella lest it ___ rain.',['should','will','would'],0,'lest + should → should.'],
+[15,'Work hard lest you ___ .',['should fail','fail','will fail'],0,'lest + should → should fail.'],
+[15,'Walk carefully lest you ___ .',['should fall','fall','will fall'],0,'lest + should → should fall.'],
+[15,'He spoke softly lest anyone ___ him.',['should hear','hears','heard'],0,'lest + should → should hear.'],
+[15,'Be quiet lest the baby ___ up.',['should wake','wakes','woke'],0,'lest + should → should wake.'],
+[15,'Read carefully lest you ___ mistakes.',['should make','make','made'],0,'lest + should → should make.'],
+
+/* ---------- RULE 16: NO SOONER / HARDLY (8) ---------- */
+[16,'No sooner had he arrived ___ it started raining.',['than','when','then'],0,'No sooner … than.'],
+[16,'Hardly had I entered ___ the phone rang.',['than','when','then'],1,'Hardly … when.'],
+[16,'Scarcely had he left ___ it began to rain.',['than','when','then'],1,'Scarcely … when.'],
+[16,'No sooner ___ he reached home than he called me.',['had','did','has'],0,'No sooner + had + subject → had.'],
+[16,'Hardly ___ the train left when it started snowing.',['had','has','did'],0,'Hardly + had → had.'],
+[16,'No sooner had she seen him ___ she ran.',['than','when','then'],0,'No sooner … than.'],
+[16,'Hardly had we sat down ___ the lights went out.',['than','when','then'],1,'Hardly … when.'],
+[16,'Scarcely had he spoken ___ everyone laughed.',['than','when','then'],1,'Scarcely … when.'],
+
+/* ---------- RULE 17: EACH / EVERY / ONE OF (8) ---------- */
+[17,'Each of the boys ___ a book.',['has','have','having'],0,'Each of + plural noun → singular verb → has.'],
+[17,'Every student ___ to submit the form.',['needs','need','needing'],0,'Every + singular noun → needs.'],
+[17,'One of my friends ___ coming today.',['is','are','were'],0,'One of + plural noun → singular verb → is.'],
+[17,'Each of the rooms ___ cleaned.',['was','were','being'],0,'Each of → singular → was.'],
+[17,'Every house ___ a garden.',['has','have','having'],0,'Every + singular → has.'],
+[17,'One of the teachers ___ absent.',['is','are','were'],0,'One of → singular → is.'],
+[17,'Each player ___ given a medal.',['was','were','being'],0,'Each → singular → was.'],
+[17,'Every question ___ answered.',['was','were','being'],0,'Every → singular → was.'],
+
+/* ---------- RULE 18: THE NUMBER OF / A NUMBER OF (8) ---------- */
+[18,'The number of students ___ increasing.',['is','are','were'],0,'The number of → singular → is.'],
+[18,'A number of students ___ absent.',['is','are','was'],1,'A number of → plural → are.'],
+[18,'The number of cars ___ risen.',['has','have','had'],0,'The number of → singular → has.'],
+[18,'A number of people ___ coming.',['is','are','was'],1,'A number of → plural → are.'],
+[18,'The number of books ___ limited.',['is','are','were'],0,'The number of → singular → is.'],
+[18,'A number of problems ___ arisen.',['has','have','had'],1,'A number of → plural → have.'],
+[18,'The number of tourists ___ increased.',['has','have','had'],0,'The number of → singular → has.'],
+[18,'A number of workers ___ resigned.',['has','have','had'],1,'A number of → plural → have.'],
+
+/* ---------- RULE 19: EITHER/NEITHER (8) ---------- */
+[19,'Neither he nor his friends ___ coming.',['is','are','was'],1,'Nearest subject = friends (plural) → are.'],
+[19,'Neither his friends nor he ___ coming.',['is','are','were'],0,'Nearest subject = he (singular) → is.'],
+[19,'Either the teacher or the students ___ responsible.',['is','are','was'],1,'Nearest = students → are.'],
+[19,'Either the students or the teacher ___ responsible.',['is','are','were'],0,'Nearest = teacher → is.'],
+[19,'Neither the cat nor the dogs ___ fed.',['is','are','was'],1,'Nearest = dogs → are.'],
+[19,'Neither the dogs nor the cat ___ fed.',['is','are','were'],0,'Nearest = cat → is.'],
+[19,'Either you or she ___ to blame.',['is','are','were'],0,'Nearest = she → is.'],
+[19,'Either she or you ___ to blame.',['is','are','were'],1,'Nearest = you → are.'],
+
+/* ---------- RULE 20: INVERSION (8) ---------- */
+[20,'Never ___ I seen such a sight.',['have','has','had'],0,'Inversion after “Never” → have I seen.'],
+[20,'Seldom ___ he go to the cinema.',['does','do','did'],0,'Inversion → does he go.'],
+[20,'Hardly ___ she finished when the bell rang.',['had','has','did'],0,'Hardly + had + subject → had.'],
+[20,'Little ___ he know the truth.',['did','does','do'],0,'Little + did + subject → did.'],
+[20,'Not only ___ he sing, but he also danced.',['did','does','do'],0,'Not only + did + subject → did.'],
+[20,'Rarely ___ we see such beauty.',['do','does','did'],0,'Rarely + do + subject → do.'],
+[20,'Never ___ he told a lie.',['has','have','had'],0,'Never + has + subject → has.'],
+[20,'Seldom ___ they visit us.',['do','does','did'],0,'Seldom + do + subject → do.']
+].map(([r,q,o,c,e],i)=>({id:i,r,q,o,c,e}));
+
+const RULE_NAMES = {
+  1:'Subject–Verb Agreement',
+  2:'Universal Truth / Habit',
+  3:'Past Narration',
+  4:'Perfect Tenses',
+  5:'Conditionals',
+  6:'Modal Verbs',
+  7:'Causative Verbs',
+  8:'Perception Verbs',
+  9:'Wish / As If',
+  10:'High Time / Would Rather',
+  11:'Gerund after Prepositions',
+  12:'To-Infinitive',
+  13:'Used To / Be Used To',
+  14:'Passive Voice',
+  15:'Lest + Should',
+  16:'No Sooner / Hardly',
+  17:'Each / Every / One Of',
+  18:'The Number Of / A Number Of',
+  19:'Either / Neither',
+  20:'Inversion'
+};
+</script>
+
+        <!-- ============================================================
+     SCRIPT 2 — EXERCISE ENGINE
+     ============================================================ -->
+        <script>
+(function () {
+  const listEl   = document.getElementById('exList');
+  const filterEl = document.getElementById('filters');
+  const statA    = document.getElementById('statAnswered');
+  const statC    = document.getElementById('statCorrect');
+  const statP    = document.getElementById('statPct');
+  const statT    = document.getElementById('statTotal');
+
+  const answers = {};
+  let currentFilter = 'all';
+
+  statT.textContent = EXERCISES.length;
+
+  function buildFilters() {
+    const counts = {};
+    EXERCISES.forEach(x => { counts[x.r] = (counts[x.r] || 0) + 1; });
+
+    let html = `<button class="chip active" data-filter="all">All rules · ${EXERCISES.length}</button>`;
+    for (let r = 1; r <= 20; r++) {
+      html += `<button class="chip" data-filter="${r}" title="${RULE_NAMES[r]}">R${r} · ${RULE_NAMES[r]} · ${counts[r]}</button>`;
+    }
+    filterEl.innerHTML = html;
+
+    filterEl.addEventListener('click', e => {
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter === 'all' ? 'all' : Number(btn.dataset.filter);
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  }
+
+  function render() {
+    const list = currentFilter === 'all'
+      ? EXERCISES
+      : EXERCISES.filter(x => x.r === currentFilter);
+
+    let html = '';
+    list.forEach((x, i) => {
+      const chosen   = answers[x.id];
+      const answered = chosen !== undefined;
+
+      const opts = x.o.map((opt, oi) => {
+        let cls = 'q-opt';
+        if (answered) {
+          if (oi === x.c) cls += ' correct';
+          else if (oi === chosen) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-id="${x.id}" data-opt="${oi}">${opt}</button>`;
+      }).join('');
+
+      let expHtml = '';
+      if (answered) {
+        const ok = chosen === x.c;
+        expHtml = `<p class="q-exp ${ok ? 'text-emerald-400' : 'text-red-400'}">
+          ${ok ? '✅ Correct — ' : '❌ Not quite — '}${x.e}
+        </p>`;
+      }
+
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-4 transition hover:border-[#31446b] fade">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1.5 bg-[#16233c] text-[#93a7c7] text-[.68rem] font-bold rounded-md mt-0.5">${i + 1}</span>
+            <p class="flex-1 text-sm text-slate-200 leading-relaxed">${x.q}</p>
+            <span class="q-tag" title="${RULE_NAMES[x.r]}">R${x.r}</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">${opts}</div>
+          ${expHtml}
+        </div>`;
+    });
+
+    listEl.innerHTML = html;
+    updateStats();
+  }
+
+  function updateStats() {
+    const ids = Object.keys(answers);
+    const answered = ids.length;
+    let correct = 0;
+    ids.forEach(id => {
+      const ex = EXERCISES[Number(id)];
+      if (ex && answers[id] === ex.c) correct++;
+    });
+    statA.textContent = answered;
+    statC.textContent = correct;
+    statP.textContent = answered ? Math.round((correct / answered) * 100) + '%' : '—';
+  }
+
+  listEl.addEventListener('click', e => {
+    const btn = e.target.closest('.q-opt');
+    if (!btn) return;
+    const id  = Number(btn.dataset.id);
+    const opt = Number(btn.dataset.opt);
+    if (answers[id] !== undefined) return;
+    answers[id] = opt;
+    render();
+  });
+
+  document.getElementById('resetExercises').addEventListener('click', () => {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    render();
+  });
+
+  buildFilters();
+  render();
+})();
+</script>
+
+        <!-- ============================================================
+     SCRIPT 3 — QUIZ
+     ============================================================ -->
+        <script>
+(function () {
+  const questions = [
+    { id: 1,  text: 'He ___ to school every day.',                    options: ['go','goes','going'], correct: 1 },
+    { id: 2,  text: 'Water ___ at 100°C.',                            options: ['boil','boils','boiled'], correct: 1 },
+    { id: 3,  text: 'She told me she ___ the book.',                  options: ['has read','had read','reads'], correct: 1 },
+    { id: 4,  text: 'I ___ here since 2010.',                         options: ['live','lived','have lived'], correct: 2 },
+    { id: 5,  text: 'If I had money, I ___ a car.',                   options: ['will buy','would buy','bought'], correct: 1 },
+    { id: 6,  text: 'You must ___ your homework.',                    options: ['do','does','did'], correct: 0 },
+    { id: 7,  text: 'He made me ___ the truth.',                      options: ['tell','tells','told'], correct: 0 },
+    { id: 8,  text: 'I saw him ___ the road.',                        options: ['cross','crosses','crossed'], correct: 0 },
+    { id: 9,  text: 'I wish I ___ rich.',                             options: ['am','was','were'], correct: 2 },
+    { id: 10, text: 'It is high time we ___ .',                       options: ['leave','left','leaving'], correct: 1 },
+    { id: 11, text: 'He is good at ___ .',                            options: ['sing','singing','sang'], correct: 1 },
+    { id: 12, text: 'No sooner had he arrived ___ it started raining.', options: ['than','when','then'], correct: 0 }
+  ];
+
+  let selected = {};
+  const container = document.getElementById('quizContainer');
+  const checkBtn  = document.getElementById('checkQuizBtn');
+  const resetBtn  = document.getElementById('resetQuizBtn');
+  const resultDiv = document.getElementById('quizResult');
+
+  function renderQuiz() {
+    let html = '';
+    questions.forEach((q, idx) => {
+      const sel = selected[q.id];
+      html += `
+        <div class="rounded-xl border border-[#1e2b45] bg-[#0d1526] p-5 transition hover:border-[#31446b]">
+          <p class="font-medium text-slate-200 mb-3 text-sm flex items-start gap-2.5">
+            <span class="inline-flex items-center justify-center min-w-[1.6rem] h-[1.6rem] px-1.5 bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-[.68rem] font-bold rounded-md mt-0.5">Q${idx + 1}</span>
+            <span class="leading-relaxed">${q.text}</span>
+          </p>
+          <div class="flex flex-wrap gap-2.5">
+            ${q.options.map((opt, oi) => {
+              let cls = 'q-opt';
+              if (sel === oi) cls += ' selected';
+              if (sel !== undefined) {
+                if (oi === q.correct) cls += ' correct';
+                else if (sel === oi) cls += ' wrong';
+              }
+              return `<button class="${cls}" data-qid="${q.id}" data-optindex="${oi}">${opt}</button>`;
+            }).join('')}
+          </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.q-opt').forEach(el => {
+      el.addEventListener('click', function () {
+        const qid = Number(this.dataset.qid);
+        const oi  = Number(this.dataset.optindex);
+        if (selected[qid] === oi) delete selected[qid];
+        else selected[qid] = oi;
+        renderQuiz();
+        resultDiv.classList.add('hidden');
+      });
+    });
+  }
+
+  function checkAnswers() {
+    let correctCount = 0, allAnswered = true;
+
+    questions.forEach(q => {
+      const sel = selected[q.id];
+      if (sel === undefined) { allAnswered = false; return; }
+      if (sel === q.correct) correctCount++;
+    });
+
+    const total = questions.length;
+    const score = Math.round((correctCount / total) * 100);
+
+    let emoji = '😅', color = 'text-amber-300', bg = 'bg-amber-500/10 border-amber-500/30';
+    if (score === 100)      { emoji = '🌟'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 80)   { emoji = '👏'; color = 'text-emerald-300'; bg = 'bg-emerald-500/10 border-emerald-500/30'; }
+    else if (score >= 60)   { emoji = '💪'; color = 'text-sky-300';     bg = 'bg-sky-500/10 border-sky-500/30'; }
+    else if (score >= 40)   { emoji = '📖'; color = 'text-amber-300';   bg = 'bg-amber-500/10 border-amber-500/30'; }
+    else                    { emoji = '🔁'; color = 'text-red-300';     bg = 'bg-red-500/10 border-red-500/30'; }
+
+    let msg = allAnswered
+      ? `${emoji} You got <strong>${correctCount}</strong> out of <strong>${total}</strong> correct (${score}%).`
+      : `⚠️ You left ${total - Object.keys(selected).length} question(s) unanswered. ${correctCount}/${total} correct so far.`;
+
+    if (allAnswered) {
+      if (score === 100)     msg += ' Perfect — you have mastered verb forms! 🎉';
+      else if (score >= 80)  msg += ' Great job — keep polishing!';
+      else if (score >= 60)  msg += ' Good effort — review the rules above.';
+      else                   msg += ' Go back to the rules and try again.';
+    }
+
+    resultDiv.className = `mt-6 p-5 rounded-xl border-2 ${bg} transition-all`;
+    resultDiv.innerHTML = `
+      <p class="text-base font-semibold ${color}">${msg}</p>
+      <p class="text-sm text-slate-500 mt-2">💡 Click a selected option again to deselect it, then check once more.</p>`;
+  }
+
+  function resetQuiz() {
+    selected = {};
+    resultDiv.classList.add('hidden');
+    renderQuiz();
+  }
+
+  renderQuiz();
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+
+    </body>
+</html>
