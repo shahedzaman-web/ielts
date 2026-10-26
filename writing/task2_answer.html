@@ -563,6 +563,7 @@
     color: #fff; border-color: transparent;
     box-shadow: 0 6px 18px -8px rgba(13,148,136,.8);
   }
+  .full-tab svg { width:16px; height:16px; flex-shrink:0; }
 
   .full-pane { display: none; }
   .full-pane.active { display: block; animation: fadeIn .3s ease; }
@@ -573,6 +574,141 @@
     margin: 0 0 1.15rem 0;
   }
   .full-essay p:last-child { margin-bottom: 0; }
+
+  /* ---------- INTERACTIVE FULL-READ ANALYSIS / PEEL COACH ---------- */
+  .essay-coach-toolbar {
+    display: flex; flex-direction: column; gap: .85rem;
+    border: 1px solid rgba(45,212,191,.24);
+    background: linear-gradient(130deg, rgba(45,212,191,.075), rgba(34,211,238,.035));
+    border-radius: 1rem; padding: 1rem 1.15rem; margin-bottom: 1.15rem;
+  }
+  .coach-topline { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+  .coach-title { display:flex; gap:.7rem; align-items:flex-start; }
+  .coach-icon {
+    display:flex; align-items:center; justify-content:center; width:2.4rem; height:2.4rem;
+    flex-shrink:0; border-radius:.75rem; color:var(--teal);
+    background:rgba(45,212,191,.12); border:1px solid rgba(45,212,191,.25);
+  }
+  .coach-title strong { display:block; font-size:.88rem; color:var(--text); font-weight:800; }
+  .coach-title p { font-size:.76rem; line-height:1.6; color:var(--text-2); margin:.22rem 0 0; max-width:650px; }
+  .coach-toggle {
+    display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+    background:rgba(45,212,191,.1); color:#99f6e4; border:1px solid rgba(45,212,191,.3);
+    border-radius:.7rem; padding:.55rem .8rem; font-size:.74rem; font-weight:800; cursor:pointer;
+    transition:background .18s ease, transform .18s ease, border-color .18s ease; white-space:nowrap;
+  }
+  .coach-toggle:hover { background:rgba(45,212,191,.18); border-color:rgba(45,212,191,.55); transform:translateY(-1px); }
+  .peel-legend { display:flex; gap:.45rem; flex-wrap:wrap; align-items:center; }
+  .peel-legend-chip { display:inline-flex; align-items:center; gap:.38rem; border-radius:999px; padding:.3rem .58rem; font-size:.66rem; font-weight:800; border:1px solid var(--border); color:var(--text-2); background:rgba(11,17,32,.52); }
+  .peel-letter { display:inline-flex; align-items:center; justify-content:center; width:1.2rem; height:1.2rem; border-radius:.38rem; font-size:.67rem; font-weight:900; }
+  .peel-p { color:#5eead4; background:rgba(45,212,191,.12); border:1px solid rgba(45,212,191,.28); }
+  .peel-explain { color:#93c5fd; background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.28); }
+  .peel-evidence { color:#fcd34d; background:rgba(251,191,36,.12); border:1px solid rgba(251,191,36,.28); }
+  .peel-link { color:#c4b5fd; background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.28); }
+  .peel-context { color:#67e8f9; background:rgba(34,211,238,.1); border:1px solid rgba(34,211,238,.25); }
+  .peel-thesis { color:#f9a8d4; background:rgba(244,114,182,.1); border:1px solid rgba(244,114,182,.25); }
+  .full-essay { display:flex; flex-direction:column; gap:.85rem; }
+  .model-essay-text { gap:1.15rem; }
+  .model-essay-text p { padding:0; border:0; border-radius:0; background:none; box-shadow:none; }
+  .model-essay-text p:hover { border-color:transparent; background:none; box-shadow:none; }
+  .paragraph-card {
+    border:1px solid rgba(71,85,105,.32); border-radius:1rem; padding:1.05rem 1.15rem .95rem;
+    background:linear-gradient(150deg,rgba(22,32,50,.56),rgba(11,17,32,.45));
+    transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    position:relative; min-width:0;
+  }
+  .paragraph-card:hover, .paragraph-card:focus-within {
+    border-color:rgba(45,212,191,.45); background:linear-gradient(150deg,rgba(22,43,59,.72),rgba(11,17,32,.62));
+    box-shadow:0 10px 28px -22px rgba(45,212,191,.65);
+  }
+  .paragraph-card.role-intro { border-left:3px solid #22d3ee; }
+  .paragraph-card.role-body { border-left:3px solid #2dd4bf; }
+  .paragraph-card.role-conclusion { border-left:3px solid #a78bfa; }
+  .paragraph-topline { display:flex; align-items:center; justify-content:space-between; gap:.6rem; flex-wrap:wrap; margin-bottom:.6rem; }
+  .paragraph-kind { display:inline-flex; gap:.4rem; align-items:center; font-size:.64rem; letter-spacing:.075em; text-transform:uppercase; font-weight:900; color:var(--text-2); }
+  .paragraph-kind svg { width:15px; height:15px; }
+  .role-intro .paragraph-kind { color:#67e8f9; }
+  .role-body .paragraph-kind { color:#5eead4; }
+  .role-conclusion .paragraph-kind { color:#c4b5fd; }
+  .paragraph-hover-hint { display:inline-flex; align-items:center; gap:.3rem; font-size:.64rem; color:var(--muted); }
+  .paragraph-hover-hint svg { width:13px; height:13px; }
+  .full-essay .paragraph-card p { margin:0; font-size:1rem; line-height:1.9; color:var(--text-2); }
+  .essay-sentence { border-radius:.2rem; transition:background .16s ease, box-shadow .16s ease; outline:none; }
+  .essay-sentence:hover, .essay-sentence:focus { background:rgba(255,255,255,.055); box-shadow:0 0 0 2px rgba(255,255,255,.035); }
+  .essay-sentence.role-point { text-decoration:underline; text-decoration-color:rgba(45,212,191,.75); text-decoration-thickness:2px; text-underline-offset:4px; }
+  .essay-sentence.role-explain { text-decoration:underline; text-decoration-color:rgba(96,165,250,.65); text-decoration-thickness:1.5px; text-underline-offset:4px; }
+  .essay-sentence.role-evidence { text-decoration:underline; text-decoration-color:rgba(251,191,36,.8); text-decoration-thickness:2px; text-underline-offset:4px; }
+  .essay-sentence.role-link { text-decoration:underline; text-decoration-color:rgba(167,139,250,.78); text-decoration-thickness:2px; text-underline-offset:4px; }
+  .essay-sentence.role-context { text-decoration:underline; text-decoration-color:rgba(34,211,238,.7); text-decoration-thickness:1.5px; text-underline-offset:4px; }
+  .essay-sentence.role-thesis { text-decoration:underline; text-decoration-color:rgba(244,114,182,.7); text-decoration-thickness:2px; text-underline-offset:4px; }
+  .essay-sentence.role-restate { text-decoration:underline; text-decoration-color:rgba(167,139,250,.78); text-decoration-thickness:2px; text-underline-offset:4px; }
+  .paragraph-analysis { display:none; margin-top:.95rem; padding-top:.9rem; border-top:1px solid rgba(71,85,105,.38); animation:analysisReveal .18s ease; }
+  .paragraph-card:hover .paragraph-analysis, .paragraph-card:focus-within .paragraph-analysis,
+  .full-essay.show-all-breakdowns .paragraph-analysis { display:block; }
+  @keyframes analysisReveal { from { opacity:0; transform:translateY(-3px); } to { opacity:1; transform:translateY(0); } }
+  .analysis-heading { display:flex; align-items:center; gap:.45rem; font-size:.7rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase; color:var(--text); margin:0 0 .65rem; }
+  .analysis-heading svg { width:15px; height:15px; color:var(--teal); }
+  .analysis-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem; }
+  .analysis-role-card { min-width:0; border-radius:.7rem; padding:.72rem .78rem; background:rgba(7,11,20,.52); border:1px solid rgba(71,85,105,.33); }
+  .analysis-role-card header { display:flex; align-items:center; gap:.42rem; margin-bottom:.38rem; }
+  .analysis-role-card strong { color:var(--text); font-size:.72rem; }
+  .analysis-role-card p { color:var(--text-2)!important; font-size:.76rem!important; line-height:1.65!important; overflow-wrap:anywhere; }
+  .analysis-role-card .role-purpose { display:block; color:var(--muted); font-size:.67rem; line-height:1.55; margin-top:.35rem; }
+  .analysis-role-card.role-p { border-top:2px solid #2dd4bf; }
+  .analysis-role-card.role-x { border-top:2px solid #60a5fa; }
+  .analysis-role-card.role-e { border-top:2px solid #fbbf24; }
+  .analysis-role-card.role-l { border-top:2px solid #a78bfa; }
+  .analysis-role-card.role-c { border-top:2px solid #22d3ee; }
+  .analysis-role-card.role-t { border-top:2px solid #f472b6; }
+  .analysis-caveat { margin:.7rem 0 0; color:var(--muted); font-size:.69rem; line-height:1.6; display:flex; align-items:flex-start; gap:.35rem; }
+  .analysis-caveat svg { width:14px; height:14px; flex-shrink:0; margin-top:1px; }
+  .analysis-note { display:flex; gap:.5rem; align-items:flex-start; margin:.85rem 0 0; color:var(--muted); font-size:.72rem; line-height:1.65; }
+  .analysis-note svg { width:15px; height:15px; flex-shrink:0; color:var(--amber); margin-top:1px; }
+
+  /* ---------- DEDICATED ESSAY BREAKDOWN TAB ---------- */
+  .breakdown-hero {
+    display:flex; align-items:flex-start; gap:.9rem; padding:1.1rem 1.2rem; margin-bottom:1rem;
+    border:1px solid rgba(45,212,191,.24); border-radius:1rem;
+    background:linear-gradient(130deg,rgba(45,212,191,.085),rgba(34,211,238,.04));
+  }
+  .breakdown-hero-icon {
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:2.65rem; height:2.65rem; border-radius:.85rem; color:var(--teal);
+    background:rgba(45,212,191,.12); border:1px solid rgba(45,212,191,.25);
+  }
+  .breakdown-hero-icon svg { width:22px; height:22px; }
+  .breakdown-eyebrow { color:var(--teal); font-size:.62rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+  .breakdown-hero h2 { color:var(--text); font-weight:900; font-size:1.15rem; line-height:1.3; margin:.18rem 0 .28rem; }
+  .breakdown-hero p { color:var(--text-2); font-size:.8rem; line-height:1.65; margin:0; }
+  .breakdown-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.65rem; margin-bottom:1rem; }
+  .breakdown-summary-card { min-width:0; padding:.8rem .85rem; border-radius:.8rem; background:rgba(22,32,50,.6); border:1px solid rgba(71,85,105,.35); }
+  .breakdown-summary-card header { display:flex; align-items:center; gap:.42rem; margin-bottom:.35rem; color:var(--text); font-weight:850; font-size:.73rem; }
+  .breakdown-summary-card header svg { width:16px; height:16px; color:var(--teal); flex-shrink:0; }
+  .breakdown-summary-card p { color:var(--muted); font-size:.69rem; line-height:1.55; margin:0; }
+  .breakdown-instruction { display:flex; align-items:flex-start; gap:.5rem; padding:.75rem .9rem; margin-bottom:1rem; border-radius:.75rem; border:1px solid rgba(251,191,36,.2); background:rgba(251,191,36,.055); color:var(--text-2); font-size:.74rem; line-height:1.6; }
+  .breakdown-instruction svg { width:16px; height:16px; flex-shrink:0; margin-top:1px; color:var(--amber); }
+  .separate-breakdown .paragraph-analysis { display:block; }
+  .separate-breakdown .paragraph-hover-hint { display:none; }
+  .separate-breakdown .paragraph-card { padding:1.15rem 1.2rem 1.05rem; }
+  .separate-breakdown .paragraph-card > p { margin:0; font-size:.95rem; line-height:1.85; color:var(--text-2); }
+  .separate-breakdown .analysis-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .breakdown-section-heading { display:flex; align-items:center; gap:.55rem; margin:1.4rem 0 .75rem; color:var(--text); font-size:.82rem; font-weight:900; }
+  .breakdown-section-heading svg { width:17px; height:17px; color:var(--teal); }
+  @media (max-width:820px) { .breakdown-summary { grid-template-columns:1fr; } }
+  @media (max-width:640px) {
+    .breakdown-hero { padding:.9rem; }
+    .breakdown-hero h2 { font-size:1rem; }
+    .separate-breakdown .paragraph-card { padding:.9rem; }
+    .separate-breakdown .analysis-grid { grid-template-columns:1fr; }
+  }
+  @media (max-width:640px) {
+    .essay-coach-toolbar { padding:.85rem; }
+    .analysis-grid { grid-template-columns:1fr; }
+    .paragraph-card { padding:.85rem .85rem .8rem; }
+    .full-essay .paragraph-card p { font-size:.92rem; line-height:1.82; }
+    .paragraph-hover-hint { font-size:.6rem; }
+    .coach-toggle { width:100%; }
+  }
   .full-essay p:first-child::first-letter {
     font-size: 2.6rem; font-weight: 800; float: left;
     line-height: 1; padding: .15rem .55rem 0 0; color: var(--teal);
@@ -1941,8 +2077,12 @@
       <div class="full-shell" role="dialog" aria-modal="true">
         <header class="full-header">
           <div class="full-meta" id="fullMeta"></div>
-          <button class="full-close" id="fullClose"
-            aria-label="Close full-screen reader">✕</button>
+          <button class="full-close" id="fullClose" title="Close reader (Esc)"
+            aria-label="Close full-screen reader"><svg fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"
+              stroke-linecap="round" width="18" height="18"
+              aria-hidden="true"><path
+                d="m6 6 12 12M18 6 6 18" /></svg></button>
         </header>
         <div class="full-body">
           <div class="full-question-block">
@@ -1950,15 +2090,106 @@
             <h1 class="full-q" id="fullQuestion">—</h1>
           </div>
 
-          <div class="full-tabs">
-            <button class="full-tab active" data-tab="essay">📝 Model
-              Essay</button>
-            <button class="full-tab" data-tab="vocab">📚 Vocabulary</button>
-            <button class="full-tab" data-tab="ts">💡 Topic Sentences</button>
+          <div class="full-tabs" role="tablist" aria-label="Essay study views">
+            <button class="full-tab active" data-tab="essay" role="tab"
+              aria-selected="true">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="2" aria-hidden="true"><path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z" /><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M14 3.5V8h4M8 12h8M8 16h8" /></svg>
+              Model Essay
+            </button>
+            <button class="full-tab" data-tab="breakdown" role="tab"
+              aria-selected="false">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="2" aria-hidden="true"><path stroke-linecap="round"
+                  stroke-linejoin="round" d="M4 5h16M4 12h16M4 19h16" /><circle
+                  cx="8" cy="5" r="1" /><circle cx="14" cy="12" r="1" /><circle
+                  cx="10" cy="19" r="1" /></svg>
+              Paragraph Breakdown
+            </button>
+            <button class="full-tab" data-tab="vocab" role="tab"
+              aria-selected="false">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="2" aria-hidden="true"><path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" /><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 5.5v16M8 7h8M8 11h7" /></svg>
+              Vocabulary
+            </button>
+            <button class="full-tab" data-tab="ts" role="tab"
+              aria-selected="false">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="2" aria-hidden="true"><path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 18h6M10 22h4M8.5 14.5a6.5 6.5 0 1 1 7 0c-.8.55-1.25 1.25-1.35 2.1h-4.3c-.1-.85-.55-1.55-1.35-2.1Z" /><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 4v2M5.5 10H7M17 10h1.5" /></svg>
+              Topic Sentences
+            </button>
           </div>
 
-          <div class="full-pane active" data-pane="essay">
-            <div class="full-essay" id="fullEssay"></div>
+          <div class="full-pane active" data-pane="essay" role="tabpanel"
+            aria-label="Full model essay">
+            <div class="full-essay model-essay-text" id="fullEssay"></div>
+          </div>
+          <div class="full-pane" data-pane="breakdown" role="tabpanel"
+            aria-label="Detailed essay and PEEL breakdown">
+            <div class="breakdown-hero">
+              <span class="breakdown-hero-icon" aria-hidden="true"><svg
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"><path
+                    d="M4 5h16M4 12h16M4 19h16" /><circle cx="8" cy="5"
+                    r="1" /><circle cx="14" cy="12" r="1" /><circle cx="10"
+                    cy="19" r="1" /></svg></span>
+              <div><span class="breakdown-eyebrow">Paragraph by
+                  paragraph</span><h2>Essay breakdown</h2><p>Review the purpose
+                  of each paragraph, see the key sentences highlighted, and
+                  inspect the suggested roles underneath. Body paragraphs are
+                  mapped to PEEL; the introduction and conclusion have their own
+                  structure.</p></div>
+            </div>
+            <div class="breakdown-summary" id="fullBreakdownSummary"
+              aria-label="Essay structure summary"></div>
+            <div class="breakdown-instruction"><svg fill="none"
+                stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+                aria-hidden="true"><circle cx="12" cy="12" r="9" /><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 11v5m0-8h.01" /></svg><span><strong>How to use this
+                  section:</strong> Read each paragraph first, then compare the
+                highlighted sentences with the breakdown cards. The labels are
+                suggested analytical cues, not an official IELTS marking
+                formula. Some sentences do more than one job, and a separate
+                example or link sentence is not always necessary.</span></div>
+            <div class="peel-legend mb-4" aria-label="Sentence role colour key">
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-context">C</span> Context /
+                focus</span>
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-p">P</span> Point</span>
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-explain">E</span> Explain</span>
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-evidence">E</span> Evidence /
+                example</span>
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-link">L</span> Link / takeaway</span>
+              <span class="peel-legend-chip"><span
+                  class="peel-letter peel-thesis">T</span> Thesis /
+                position</span>
+            </div>
+            <div class="full-essay separate-breakdown" id="fullBreakdown"></div>
+            <p class="analysis-note"><svg fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 9v4m0 4h.01M10.3 3.9 2.7 17a2 2 0 0 1 1.75-3h15.1a2 2 0 0 1 1.75 3L13.7 3.9a2 2 0 0 0-3.4 0Z" /></svg><span><strong>Study
+                  reminder:</strong> If an automated label does not fit the
+                sentence’s actual meaning, trust the argument and function of
+                the sentence rather than the label.</span></p>
           </div>
           <div class="full-pane" data-pane="vocab">
             <div class="vocab-grid" id="fullVocab"></div>
@@ -3002,11 +3233,166 @@ const fullMeta = document.getElementById('fullMeta');
 const fullTopic = document.getElementById('fullTopic');
 const fullQuestion = document.getElementById('fullQuestion');
 const fullEssay = document.getElementById('fullEssay');
+const fullBreakdown = document.getElementById('fullBreakdown');
+const fullBreakdownSummary = document.getElementById('fullBreakdownSummary');
 const fullVocab = document.getElementById('fullVocab');
 const fullTs = document.getElementById('fullTs');
 const fullClose = document.getElementById('fullClose');
 
 let currentFullKey = '';
+
+const ANALYSIS_ICONS = {
+  intro: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 7h8M8 11h7"/></svg>',
+  body: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/><path d="m17 17 2 2 3-4"/></svg>',
+  conclusion: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="m7 12 3 3 7-7"/></svg>',
+  hint: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>',
+  peel: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/><circle cx="8" cy="5" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="10" cy="19" r="1"/></svg>'
+};
+
+function splitEssayParagraphs(text) {
+  return String(text || '').trim().split(/\n\s*\n/).map(p => p.replace(/\s*\n\s*/g, ' ').trim()).filter(Boolean);
+}
+
+function splitSentences(text) {
+  // Keep common abbreviations together before splitting at sentence punctuation.
+  const protectedText = String(text || '').replace(/\b(e\.g|i\.e|Mr|Mrs|Ms|Dr|Prof|vs|etc)\./gi, m => m.replace('.', '\uE000'));
+  return (protectedText.match(/[^.!?]+[.!?]+[”’"')\]]*|[^.!?]+$/g) || [protectedText])
+    .map(s => s.replace(/\uE000/g, '.').trim()).filter(Boolean);
+}
+
+function sentenceExampleCue(sentence) {
+  return /\b(for example|for instance|to illustrate|a clear example|one example|a notable example|a study (?:in|conducted|found|shows|suggests)|research (?:indicates|shows|suggests|has found)|according to|a survey|data (?:show|suggest|indicate)|this is illustrated by|as seen in|such as)\b/i.test(sentence);
+}
+function sentenceLinkCue(sentence) {
+  return /\b(therefore|thus|consequently|as a result|for this reason|this means that|this demonstrates that|this shows that|hence|ultimately|overall|in turn|thereby|which in turn|for these reasons|this is why)\b/i.test(sentence);
+}
+
+function sentenceRoleHelp(role) {
+  const help = {
+    point: 'P · Point: states the paragraph’s central claim or reason. A reader should be able to identify the paragraph’s main idea from this sentence.',
+    explain: 'E · Explain: develops the point by explaining why it is true, how it works, or why it matters. Use cause and effect, reasoning, or clarification.',
+    evidence: 'E · Evidence / Example: gives a specific illustration, fact, situation, or example that makes the point concrete. It should directly support the claim.',
+    link: 'L · Link / takeaway: connects the paragraph back to the question or draws out the consequence of the argument. It should add value rather than simply repeat the topic sentence.',
+    context: 'Introduction · Context: opens the topic or establishes the general situation before narrowing the focus to the exact question.',
+    framing: 'Introduction · Question focus: narrows the background to the issue being discussed. Make sure the wording addresses the prompt rather than drifting into a broad, unrelated opening.',
+    thesis: 'Introduction · Thesis / position: communicates the writer’s answer, opinion, or controlling direction. For opinion questions, make the position explicit.',
+    roadmap: 'Introduction · Roadmap: signals the main areas the essay will cover when this is useful. A roadmap is optional; it should not replace a clear answer to the question.',
+    restate: 'Conclusion · Restated answer: gives the final answer or position in fresh wording, not by copying the introduction.',
+    summary: 'Conclusion · Synthesis: briefly brings together the main reasons or findings developed in the body. Avoid adding a new main argument.',
+    implication: 'Conclusion · Final implication: closes with a consequence, recommendation, or final judgement where appropriate. It should follow from the discussion, not introduce a new topic.'
+  };
+  return help[role] || '';
+}
+
+function roleSentenceHTML(sentence, role, roleLabel) {
+  return '<span class="essay-sentence role-' + role + '" tabindex="0" title="' + esc(sentenceRoleHelp(role)) + '" aria-label="' + esc(roleLabel + ': ' + sentence) + '">' + esc(sentence) + '</span>';
+}
+
+function analysisRoleCard(letter, label, roleClass, excerpt, purpose) {
+  return '<div class="analysis-role-card ' + roleClass + '">' +
+    '<header><span class="peel-letter ' + (roleClass === 'role-p' ? 'peel-p' : roleClass === 'role-x' ? 'peel-explain' : roleClass === 'role-e' ? 'peel-evidence' : roleClass === 'role-l' ? 'peel-link' : roleClass === 'role-c' ? 'peel-context' : 'peel-thesis') + '">' + esc(letter) + '</span><strong>' + esc(label) + '</strong></header>' +
+    '<p>' + esc(excerpt) + '</p>' + (purpose ? '<span class="role-purpose">' + esc(purpose) + '</span>' : '') +
+    '</div>';
+}
+
+function paragraphAnalysisHTML(kind, sentences, roleInfo) {
+  let cards = '';
+  let caveat = '';
+  if (kind === 'intro') {
+    const context = sentences[0] || 'Set the context briefly.';
+    const finalIntroSentence = sentences.length > 1 ? sentences[sentences.length - 1] : '';
+    const thesis = finalIntroSentence || 'No separate thesis sentence is visible; make the writer’s answer or controlling direction explicit.';
+    const roadmapSentence = sentences.find(s => /\b(this essay|i will|we will|will discuss|will examine|will explore|will consider|will outline|will explain)\b/i.test(s));
+    const middleSentences = sentences.length > 2 ? sentences.slice(1, -1).filter(s => s !== roadmapSentence) : [];
+    const framing = middleSentences.length ? middleSentences.join(' ') : 'Check that the opening context narrows to the exact issue in the prompt; do not use the thesis alone as a substitute for framing the question.';
+    const thesisPurpose = roadmapSentence && roadmapSentence === finalIntroSentence
+      ? 'This sentence signals the essay plan, but make sure your actual answer or opinion is also explicit when the question asks for one.'
+      : 'State a clear answer, position, or controlling direction that the body paragraphs can support.';
+    cards += analysisRoleCard('01', 'Context / background', 'role-c', context, 'Set up the topic without using an overlong or generic hook.');
+    cards += analysisRoleCard('02', 'Question focus', 'role-x', framing, 'Paraphrase or narrow the issue; keep the focus on what the prompt asks.');
+    cards += analysisRoleCard('T', 'Thesis / answer', 'role-t', thesis, thesisPurpose);
+    cards += analysisRoleCard('R', 'Roadmap (optional)', 'role-l', roadmapSentence || 'No explicit roadmap sentence was detected.', 'A roadmap can preview the essay’s direction, but it is not compulsory when the thesis is already clear.');
+    caveat = 'These are likely roles based on paragraph position. Check that the thesis actually answers every part of this specific question.';
+  } else if (kind === 'conclusion') {
+    const first = sentences[0] || 'Restate the answer to the question.';
+    const last = sentences.length > 1 ? sentences[sentences.length - 1] : 'This is a one-sentence conclusion; reinforce the answer without introducing a new argument.';
+    const middle = sentences.length > 2 ? sentences.slice(1, -1).join(' ') : 'There is no separate synthesis sentence here. Check whether a brief summary of the main reasons would make the final answer clearer.';
+    cards += analysisRoleCard('↺', 'Restated answer', 'role-t', first, 'Return directly to the question and express the position in fresh wording.');
+    cards += analysisRoleCard('Σ', 'Main-point synthesis', 'role-x', middle, 'Summarise the key reasoning rather than listing every example again.');
+    cards += analysisRoleCard('✓', 'Final takeaway', 'role-l', last, 'A final implication or recommendation can work when relevant; avoid adding a new main idea.');
+    caveat = 'A conclusion should resolve the task, not begin another body paragraph. Keep it consistent with the position developed above.';
+  } else {
+    const roles = roleInfo.roles;
+    const point = sentences[0] || 'State the paragraph’s central claim.';
+    const explain = roles.map((r, i) => r === 'explain' ? sentences[i] : null).filter(Boolean).join(' ');
+    const evidenceIdx = roles.findIndex(r => r === 'evidence');
+    const linkIdx = roles.findIndex(r => r === 'link');
+    const evidence = evidenceIdx >= 0 ? sentences[evidenceIdx] : 'No clear example/evidence sentence was detected.';
+    const link = linkIdx >= 0 ? sentences[linkIdx] : 'No separate link sentence was identified.';
+    cards += analysisRoleCard('P', 'Point', 'role-p', point, 'The main reason or claim. Keep one paragraph focused on one controlling idea.');
+    cards += analysisRoleCard('E', 'Explain', 'role-x', explain || 'Add reasoning that explains why or how the point is true.', 'Develop the logic; do not assume the reader will make the connection unaided.');
+    cards += analysisRoleCard('E', 'Evidence / Example', 'role-e', evidence, evidenceIdx >= 0 ? 'Check that the illustration is relevant and that you explain what it proves.' : 'An example is not compulsory in every paragraph, but specific support can make an abstract point more convincing.');
+    cards += analysisRoleCard('L', 'Link / takeaway', 'role-l', link, linkIdx >= 0 ? 'Connect the reasoning back to the question or show its consequence.' : 'Consider a concise link only if it adds a clear takeaway; do not repeat the point word for word.');
+    caveat = 'Sentence roles are suggestions, not a definitive automated judgement. A sentence may perform more than one function, and not every strong paragraph needs four separate sentences.';
+  }
+  return '<div class="paragraph-analysis"><h4 class="analysis-heading">' + ANALYSIS_ICONS.peel + (kind === 'body' ? ' PEEL breakdown' : kind === 'intro' ? ' Introduction breakdown' : ' Conclusion breakdown') + '</h4><div class="analysis-grid">' + cards + '</div><p class="analysis-caveat">' + ANALYSIS_ICONS.hint + '<span>' + esc(caveat) + '</span></p></div>';
+}
+
+function analyseBodyRoles(sentences) {
+  const roles = sentences.map((_, i) => i === 0 ? 'point' : 'explain');
+  if (sentences.length < 2) return { roles };
+
+  let evidenceIndex = -1;
+  for (let i = 1; i < sentences.length; i++) {
+    if (sentenceExampleCue(sentences[i])) { evidenceIndex = i; break; }
+  }
+  if (evidenceIndex >= 0) roles[evidenceIndex] = 'evidence';
+
+  let linkIndex = -1;
+  const finalIndex = sentences.length - 1;
+  // A link/takeaway normally belongs at the end of the paragraph. Do not mark
+  // an earlier "this means" sentence as the link when a concrete example follows it.
+  if (sentences.length >= 3 && finalIndex !== evidenceIndex && sentenceLinkCue(sentences[finalIndex])) {
+    linkIndex = finalIndex;
+  } else if (sentences.length >= 4 && evidenceIndex >= 1 && evidenceIndex < finalIndex && finalIndex !== evidenceIndex) {
+    // A final takeaway may follow an earlier illustration even without an explicit linker.
+    linkIndex = finalIndex;
+  }
+  if (linkIndex >= 0) roles[linkIndex] = 'link';
+  return { roles, evidenceIndex, linkIndex };
+}
+
+function renderAnnotatedEssay(item) {
+  const paragraphs = splitEssayParagraphs(item.essay);
+  const total = paragraphs.length;
+  return paragraphs.map((paragraph, index) => {
+    const sentences = splitSentences(paragraph);
+    const kind = index === 0 ? 'intro' : index === total - 1 ? 'conclusion' : 'body';
+    const bodyNo = kind === 'body' ? index : 0;
+    const label = kind === 'intro' ? 'Introduction' : kind === 'conclusion' ? 'Conclusion' : 'Body paragraph ' + bodyNo;
+    const icon = kind === 'intro' ? ANALYSIS_ICONS.intro : kind === 'conclusion' ? ANALYSIS_ICONS.conclusion : ANALYSIS_ICONS.body;
+    let roles = [];
+    let roleInfo = { roles: [] };
+    if (kind === 'body') {
+      roleInfo = analyseBodyRoles(sentences);
+      roles = roleInfo.roles;
+    } else if (kind === 'intro') {
+      roles = sentences.map((_, i) => i === 0 ? 'context' : (i === sentences.length - 1 ? 'thesis' : 'framing'));
+      const roadmapIndex = sentences.findIndex(sentence => /\b(this essay|i will|we will|will discuss|will examine|will explore|will consider|will outline|will explain)\b/i.test(sentence));
+      if (roadmapIndex >= 0 && roadmapIndex !== sentences.length - 1) roles[roadmapIndex] = 'link';
+    } else {
+      roles = sentences.map((_, i) => i === 0 ? 'restate' : (i === sentences.length - 1 ? 'link' : 'explain'));
+    }
+    const roleLabels = { point: 'Point', explain: 'Explain', evidence: 'Evidence or example', link: 'Link or takeaway', context: 'Background context', framing: 'Question focus', thesis: 'Thesis or position', restate: 'Restated answer' };
+    const sentenceHtml = sentences.map((sentence, i) => roleSentenceHTML(sentence, roles[i] || 'explain', roleLabels[roles[i]] || 'Sentence')).join(' ');
+    const guidance = kind === 'body' ? 'Hover to inspect PEEL' : kind === 'intro' ? 'Hover to inspect the introduction' : 'Hover to inspect the conclusion';
+    return '<section class="paragraph-card role-' + kind + '" aria-label="' + esc(label) + ' analysis">' +
+      '<div class="paragraph-topline"><span class="paragraph-kind">' + icon + esc(label) + '</span><span class="paragraph-hover-hint">' + ANALYSIS_ICONS.hint + esc(guidance) + '</span></div>' +
+      '<p tabindex="0">' + sentenceHtml + '</p>' +
+      paragraphAnalysisHTML(kind, sentences, roleInfo) +
+    '</section>';
+  }).join('');
+}
 
 function openFullReader(key) {
   const item = BY_KEY[key];
@@ -3022,7 +3408,20 @@ function openFullReader(key) {
 
   fullTopic.textContent = item.topic;
   fullQuestion.textContent = item.question;
-  fullEssay.innerHTML = nl2p(item.essay);
+  // Model Essay mode is intentionally distraction-free: show the essay only.
+  // Paragraph PEEL/intro/conclusion analysis lives in the separate Breakdown tab.
+  fullEssay.innerHTML = splitEssayParagraphs(item.essay)
+    .map(paragraph => '<p>' + esc(paragraph) + '</p>')
+    .join('');
+  const essayParagraphs = splitEssayParagraphs(item.essay);
+  const bodyCount = Math.max(0, essayParagraphs.length - 2);
+  if (fullBreakdown) fullBreakdown.innerHTML = renderAnnotatedEssay(item);
+  if (fullBreakdownSummary) {
+    fullBreakdownSummary.innerHTML =
+      '<article class="breakdown-summary-card"><header>' + ANALYSIS_ICONS.intro + '<span>Introduction</span></header><p>Context, question focus, and a clear thesis or answer.</p></article>' +
+      '<article class="breakdown-summary-card"><header>' + ANALYSIS_ICONS.body + '<span>' + bodyCount + ' body paragraph' + (bodyCount === 1 ? '' : 's') + '</span></header><p>Each paragraph is analysed for its point, explanation, available evidence, and link or takeaway.</p></article>' +
+      '<article class="breakdown-summary-card"><header>' + ANALYSIS_ICONS.conclusion + '<span>Conclusion</span></header><p>Restated answer, synthesis of main points, and optional final implication.</p></article>';
+  }
 
   if (item.vocab && item.vocab.length) {
     fullVocab.innerHTML = item.vocab.map(v =>
@@ -3047,10 +3446,12 @@ function openFullReader(key) {
     fullTs.innerHTML = '<div class="full-empty">No topic-sentence suggestions for this essay.</div>';
   }
 
-  document.querySelectorAll('.full-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.full-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
   document.querySelectorAll('.full-pane').forEach(p => p.classList.remove('active'));
-  document.querySelector('.full-tab[data-tab="essay"]').classList.add('active');
-  document.querySelector('.full-pane[data-pane="essay"]').classList.add('active');
+  const essayTab = document.querySelector('.full-tab[data-tab="essay"]');
+  const essayPane = document.querySelector('.full-pane[data-pane="essay"]');
+  if (essayTab) { essayTab.classList.add('active'); essayTab.setAttribute('aria-selected', 'true'); }
+  if (essayPane) essayPane.classList.add('active');
 
   fullModal.classList.add('open');
   document.body.classList.add('modal-open');
@@ -3064,13 +3465,29 @@ function closeFullReader() {
 
 fullClose.addEventListener('click', (e) => { e.preventDefault(); closeFullReader(); });
 fullModal.addEventListener('click', (e) => { if (e.target === fullModal) closeFullReader(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && fullModal.classList.contains('open')) closeFullReader();
+});
+
+const breakdownToggle = document.getElementById('toggleBreakdowns');
+if (breakdownToggle) {
+  breakdownToggle.addEventListener('click', () => {
+    const expanded = fullEssay.classList.toggle('show-all-breakdowns');
+    breakdownToggle.setAttribute('aria-pressed', String(expanded));
+    const label = breakdownToggle.querySelector('span');
+    if (label) label.textContent = expanded ? 'Hide all breakdowns' : 'Show all breakdowns';
+    breakdownToggle.title = expanded ? 'Collapse all paragraph analysis' : 'Expand all paragraph analysis';
+  });
+}
 
 document.querySelectorAll('.full-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.full-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.full-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     document.querySelectorAll('.full-pane').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
-    document.querySelector('.full-pane[data-pane="' + tab.dataset.tab + '"]').classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const pane = document.querySelector('.full-pane[data-pane="' + tab.dataset.tab + '"]');
+    if (pane) pane.classList.add('active');
   });
 });
 
