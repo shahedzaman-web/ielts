@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IELTS Idioms &amp; Natural Language · Study Guide</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IELTS Idioms &amp; Natural Language · Study Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet" />
+    <style>
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
   body {
     background:
@@ -241,249 +243,328 @@
     .stat-box .number { font-size: 1.15rem; }
   }
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<!-- ================= HERO ================= -->
-<section class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
-  <div class="aurora"></div>
-  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
-      <div class="md:w-2/3">
-        <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
-          🗣️ IELTS Speaking Reference
+    <!-- ================= HERO ================= -->
+    <section
+      class="hero-gradient text-white pt-14 pb-14 md:pt-20 md:pb-20 relative">
+      <div class="aurora"></div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="md:w-2/3">
+            <div
+              class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-wider mb-4 border border-white/10">
+              🗣️ IELTS Speaking Reference
+            </div>
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
+              Idioms &amp;<br />
+              <span class="text-purple-300">Natural Language</span>
+            </h1>
+            <p
+              class="text-lg md:text-xl text-purple-100/80 mt-4 max-w-2xl leading-relaxed">
+              35 high-value expressions — organised by topic, with natural
+              examples,
+              accuracy notes, and a practice routine for spontaneous use.
+            </p>
+
+            <div
+              class="mt-6 rounded-xl bg-white/5 border border-white/10 px-5 py-4 backdrop-blur-sm">
+              <p
+                class="text-[0.68rem] font-extrabold uppercase tracking-widest text-amber-300 mb-1.5">Core
+                principle</p>
+              <p class="text-purple-50/90 text-sm leading-relaxed m-0">
+                Use idioms as <strong class="text-white">natural
+                  accents</strong>, not as a checklist.
+                Precision, relevance and grammatical control matter more than
+                the number of
+                idioms you use.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
+            <div class="stat-box"><div class="number">35</div><div
+                class="label">Idioms</div></div>
+            <div class="stat-box"><div class="number">10</div><div
+                class="label">Topics</div></div>
+            <div class="stat-box"><div class="number">6</div><div
+                class="label">Steps</div></div>
+            <div class="stat-box"><div class="number">7</div><div
+                class="label">Checks</div></div>
+          </div>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight m-0">
-          Idioms &amp;<br />
-          <span class="text-purple-300">Natural Language</span>
-        </h1>
-        <p class="text-lg md:text-xl text-purple-100/80 mt-4 max-w-2xl leading-relaxed">
-          35 high-value expressions — organised by topic, with natural examples,
-          accuracy notes, and a practice routine for spontaneous use.
+      </div>
+    </section>
+
+    <!-- ================= FILTER BAR ================= -->
+    <div class="filter-shell" id="bank">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+        <div class="flex flex-col gap-3">
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button class="chip active" data-cat="all">All Topics</button>
+            <div id="catChips"
+              class="flex flex-wrap items-center gap-1.5"></div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div class="relative flex-1 min-w-[200px]">
+              <svg
+                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+              <input type="text" id="searchInput" class="search-input"
+                placeholder="Search idioms, meanings or examples…" />
+            </div>
+
+            <button id="quizBtn" class="mode-btn"
+              title="Hide examples and test yourself">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"
+                viewBox="0 0 24 24">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" /><circle
+                  cx="12" cy="12" r="3" />
+              </svg>
+              Quiz mode
+            </button>
+
+            <button id="resetBtn" class="chip"
+              style="border-color:#fecaca;color:#b91c1c;">Reset</button>
+          </div>
+
+          <div class="text-xs text-slate-500 font-medium">
+            Showing <span id="resultCount"
+              class="font-extrabold text-purple-600">0</span> idioms
+            <span id="activeSummary" class="text-slate-400"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= RESULTS ================= -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
+      <div id="results"></div>
+
+      <!-- ============ SECTION 3 · CHOOSING THE RIGHT IDIOM ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="topics" />
+
+      <section class="section-card p-6 md:p-9">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-3xl">🎯</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 m-0">Choosing the
+            Right Idiom</h2>
+        </div>
+        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+          Don't memorise idioms as isolated vocabulary. Group them by
+          communicative purpose
+          and by the situations you're likely to describe in the exam.
         </p>
 
-        <div class="mt-6 rounded-xl bg-white/5 border border-white/10 px-5 py-4 backdrop-blur-sm">
-          <p class="text-[0.68rem] font-extrabold uppercase tracking-widest text-amber-300 mb-1.5">Core principle</p>
-          <p class="text-purple-50/90 text-sm leading-relaxed m-0">
-            Use idioms as <strong class="text-white">natural accents</strong>, not as a checklist.
-            Precision, relevance and grammatical control matter more than the number of
-            idioms you use.
+        <div id="topicTable"
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
+
+        <div class="mt-7 grid md:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-indigo-100 bg-indigo-50/60 p-5">
+            <span
+              class="font-extrabold text-indigo-800 text-sm uppercase tracking-wide">Part
+              1</span>
+            <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+              Favour short, conversational expressions — <em>not my cup of
+                tea</em>,
+              <em>give it a shot</em>, <em>once in a blue moon</em>, <em>under
+                the weather</em>.
+            </p>
+          </div>
+          <div class="rounded-xl border border-amber-100 bg-amber-50/60 p-5">
+            <span
+              class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part
+              2</span>
+            <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+              Use an idiom when telling a story or describing a change,
+              difficulty, surprise,
+              preference or personal experience.
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-5">
+            <span
+              class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part
+              3</span>
+            <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
+              Choose neutral, analytical language first. Add an idiom only when
+              it fits
+              naturally with your argument or example.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 4 · GRAMMAR ACCURACY ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="grammar" />
+
+      <section class="section-card p-6 md:p-9">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-3xl">⚙️</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 m-0">Grammar &amp;
+            Fixed-Expression Accuracy</h2>
+        </div>
+        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+          Most idiom errors are not vocabulary errors — they are <strong>control
+            errors</strong>.
+          The meaning is known, but the article, preposition, tense or fixed
+          word order changes.
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50">
+                <th
+                  class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide w-32">Area</th>
+                <th
+                  class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide">What
+                  to control</th>
+              </tr>
+            </thead>
+            <tbody id="grammarTable"></tbody>
+          </table>
+        </div>
+
+        <div class="rule-box mt-6">
+          <span class="text-xl shrink-0">📌</span>
+          <div>
+            <p class="font-extrabold text-amber-800 text-sm m-0 mb-1">Common
+              source-list corrections</p>
+            <ul class="text-sm text-slate-700 space-y-1.5 m-0 pl-4 list-disc">
+              <li><em>Killed two birds with one stone</em> is correct for one
+                specific past action; the base form <em>kill two birds with one
+                  stone</em> is correct in general statements. Match the tense
+                to the sentence.</li>
+              <li><em>Dogs and cats</em> is understandable, but <em>raining cats
+                  and dogs</em> is the conventional fixed form.</li>
+              <li><em>Bite the bullet</em>, <em>a piece of cake</em>, <em>go the
+                  extra mile</em> and other fixed expressions keep their normal
+                articles and structure.</li>
+              <li>Several traditional origin stories are simplified or disputed.
+                Treat origins as memory cues, not facts to reproduce.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SECTION 5 · COMMON PITFALLS ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="pitfalls" />
+
+      <section class="section-card p-6 md:p-9">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-3xl">⚠️</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 m-0">Common
+            Pitfalls</h2>
+        </div>
+        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+          Relevance beats decoration. A cluster of expressions can sound
+          rehearsed rather
+          than fluent.
+        </p>
+
+        <div id="pitfallsGrid" class="grid md:grid-cols-2 gap-3.5"></div>
+
+        <div
+          class="mt-6 rounded-xl border border-rose-200 bg-rose-50/70 px-5 py-4 flex gap-3">
+          <span class="text-xl shrink-0">🚫</span>
+          <p class="text-sm text-slate-700 m-0">
+            <strong class="text-rose-800">Memorised-script warning:</strong> the
+            safest way to use an
+            idiom is to remember the <em>meaning</em> and a <em>typical
+              situation</em> — not one fixed
+            sentence that must appear in every answer.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
-        <div class="stat-box"><div class="number">35</div><div class="label">Idioms</div></div>
-        <div class="stat-box"><div class="number">10</div><div class="label">Topics</div></div>
-        <div class="stat-box"><div class="number">6</div><div class="label">Steps</div></div>
-        <div class="stat-box"><div class="number">7</div><div class="label">Checks</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <!-- ============ SECTION 6 · PRACTICE METHOD ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="practice" />
 
-<!-- ================= FILTER BAR ================= -->
-<div class="filter-shell" id="bank">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-    <div class="flex flex-col gap-3">
+      <section class="section-card p-6 md:p-9">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-3xl">🔁</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 m-0">Practice
+            Method</h2>
+        </div>
+        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+          The objective is <strong>active recall</strong>: you should be able to
+          choose an
+          expression spontaneously because the situation triggers the meaning.
+        </p>
 
-      <div class="flex flex-wrap items-center gap-2.5">
-        <button class="chip active" data-cat="all">All Topics</button>
-        <div id="catChips" class="flex flex-wrap items-center gap-1.5"></div>
-      </div>
+        <div id="stepsGrid"
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
 
-      <div class="flex flex-wrap items-center gap-2.5">
-        <div class="relative flex-1 min-w-[200px]">
-          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-          </svg>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search idioms, meanings or examples…" />
+      <!-- ============ SECTION 7 · CHECKLIST ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="checklist" />
+
+      <section class="section-card p-6 md:p-9">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">✅</span>
+            <h2 class="text-2xl font-extrabold text-slate-900 m-0">Quick
+              Revision Checklist</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            <span id="checkCount">0</span> / <span id="checkTotal">7</span>
+            complete
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm mb-5 max-w-3xl">
+          Before the test, aim to know a smaller set extremely well. Natural
+          delivery and
+          accurate grammar are stronger than memorising a long list.
+        </p>
+
+        <div class="progress-track mb-6">
+          <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <button id="quizBtn" class="mode-btn" title="Hide examples and test yourself">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>
-          </svg>
-          Quiz mode
-        </button>
+        <div id="checklistGrid" class="grid md:grid-cols-2 gap-3"></div>
 
-        <button id="resetBtn" class="chip" style="border-color:#fecaca;color:#b91c1c;">Reset</button>
+        <div
+          class="mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
+          <span class="text-xl shrink-0">💡</span>
+          <p class="text-sm text-slate-700 m-0">
+            <strong class="text-purple-800">Final takeaway:</strong> idioms
+            should function as
+            natural, precise language inside a strong answer — not as visible
+            "IELTS tricks."
+          </p>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <p class="font-bold text-slate-800">🗣️ IELTS Speaking · Idioms &amp;
+          Natural Language</p>
+        <p class="text-sm mt-1">35 expressions · 10 topic groups · accuracy
+          notes · practice routine</p>
+        <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML
+          &amp; Tailwind CSS</p>
       </div>
+    </main>
 
-      <div class="text-xs text-slate-500 font-medium">
-        Showing <span id="resultCount" class="font-extrabold text-purple-600">0</span> idioms
-        <span id="activeSummary" class="text-slate-400"></span>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ================= RESULTS ================= -->
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
-  <div id="results"></div>
-
-  <!-- ============ SECTION 3 · CHOOSING THE RIGHT IDIOM ============ -->
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="topics" />
-
-  <section class="section-card p-6 md:p-9">
-    <div class="flex items-center gap-3 mb-2">
-      <span class="text-3xl">🎯</span>
-      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Choosing the Right Idiom</h2>
-    </div>
-    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
-      Don't memorise idioms as isolated vocabulary. Group them by communicative purpose
-      and by the situations you're likely to describe in the exam.
-    </p>
-
-    <div id="topicTable" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
-
-    <div class="mt-7 grid md:grid-cols-3 gap-4">
-      <div class="rounded-xl border border-indigo-100 bg-indigo-50/60 p-5">
-        <span class="font-extrabold text-indigo-800 text-sm uppercase tracking-wide">Part 1</span>
-        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
-          Favour short, conversational expressions — <em>not my cup of tea</em>,
-          <em>give it a shot</em>, <em>once in a blue moon</em>, <em>under the weather</em>.
-        </p>
-      </div>
-      <div class="rounded-xl border border-amber-100 bg-amber-50/60 p-5">
-        <span class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part 2</span>
-        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
-          Use an idiom when telling a story or describing a change, difficulty, surprise,
-          preference or personal experience.
-        </p>
-      </div>
-      <div class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-5">
-        <span class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part 3</span>
-        <p class="text-sm text-slate-700 mt-2 leading-relaxed m-0">
-          Choose neutral, analytical language first. Add an idiom only when it fits
-          naturally with your argument or example.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 4 · GRAMMAR ACCURACY ============ -->
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="grammar" />
-
-  <section class="section-card p-6 md:p-9">
-    <div class="flex items-center gap-3 mb-2">
-      <span class="text-3xl">⚙️</span>
-      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Grammar &amp; Fixed-Expression Accuracy</h2>
-    </div>
-    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
-      Most idiom errors are not vocabulary errors — they are <strong>control errors</strong>.
-      The meaning is known, but the article, preposition, tense or fixed word order changes.
-    </p>
-
-    <div class="overflow-x-auto rounded-xl border border-slate-200">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="bg-slate-50">
-            <th class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide w-32">Area</th>
-            <th class="text-left px-4 py-3 font-extrabold text-slate-800 text-xs uppercase tracking-wide">What to control</th>
-          </tr>
-        </thead>
-        <tbody id="grammarTable"></tbody>
-      </table>
-    </div>
-
-    <div class="rule-box mt-6">
-      <span class="text-xl shrink-0">📌</span>
-      <div>
-        <p class="font-extrabold text-amber-800 text-sm m-0 mb-1">Common source-list corrections</p>
-        <ul class="text-sm text-slate-700 space-y-1.5 m-0 pl-4 list-disc">
-          <li><em>Killed two birds with one stone</em> is correct for one specific past action; the base form <em>kill two birds with one stone</em> is correct in general statements. Match the tense to the sentence.</li>
-          <li><em>Dogs and cats</em> is understandable, but <em>raining cats and dogs</em> is the conventional fixed form.</li>
-          <li><em>Bite the bullet</em>, <em>a piece of cake</em>, <em>go the extra mile</em> and other fixed expressions keep their normal articles and structure.</li>
-          <li>Several traditional origin stories are simplified or disputed. Treat origins as memory cues, not facts to reproduce.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 5 · COMMON PITFALLS ============ -->
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="pitfalls" />
-
-  <section class="section-card p-6 md:p-9">
-    <div class="flex items-center gap-3 mb-2">
-      <span class="text-3xl">⚠️</span>
-      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Common Pitfalls</h2>
-    </div>
-    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
-      Relevance beats decoration. A cluster of expressions can sound rehearsed rather
-      than fluent.
-    </p>
-
-    <div id="pitfallsGrid" class="grid md:grid-cols-2 gap-3.5"></div>
-
-    <div class="mt-6 rounded-xl border border-rose-200 bg-rose-50/70 px-5 py-4 flex gap-3">
-      <span class="text-xl shrink-0">🚫</span>
-      <p class="text-sm text-slate-700 m-0">
-        <strong class="text-rose-800">Memorised-script warning:</strong> the safest way to use an
-        idiom is to remember the <em>meaning</em> and a <em>typical situation</em> — not one fixed
-        sentence that must appear in every answer.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 6 · PRACTICE METHOD ============ -->
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="practice" />
-
-  <section class="section-card p-6 md:p-9">
-    <div class="flex items-center gap-3 mb-2">
-      <span class="text-3xl">🔁</span>
-      <h2 class="text-2xl font-extrabold text-slate-900 m-0">Practice Method</h2>
-    </div>
-    <p class="text-slate-500 text-sm mb-7 max-w-3xl">
-      The objective is <strong>active recall</strong>: you should be able to choose an
-      expression spontaneously because the situation triggers the meaning.
-    </p>
-
-    <div id="stepsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-  </section>
-
-  <!-- ============ SECTION 7 · CHECKLIST ============ -->
-  <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14" id="checklist" />
-
-  <section class="section-card p-6 md:p-9">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
-      <div class="flex items-center gap-3">
-        <span class="text-3xl">✅</span>
-        <h2 class="text-2xl font-extrabold text-slate-900 m-0">Quick Revision Checklist</h2>
-      </div>
-      <div class="text-sm font-bold text-slate-500">
-        <span id="checkCount">0</span> / <span id="checkTotal">7</span> complete
-      </div>
-    </div>
-    <p class="text-slate-500 text-sm mb-5 max-w-3xl">
-      Before the test, aim to know a smaller set extremely well. Natural delivery and
-      accurate grammar are stronger than memorising a long list.
-    </p>
-
-    <div class="progress-track mb-6">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
-    <div id="checklistGrid" class="grid md:grid-cols-2 gap-3"></div>
-
-    <div class="mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
-      <span class="text-xl shrink-0">💡</span>
-      <p class="text-sm text-slate-700 m-0">
-        <strong class="text-purple-800">Final takeaway:</strong> idioms should function as
-        natural, precise language inside a strong answer — not as visible "IELTS tricks."
-      </p>
-    </div>
-  </section>
-
-  <div class="footer-note">
-    <p class="font-bold text-slate-800">🗣️ IELTS Speaking · Idioms &amp; Natural Language</p>
-    <p class="text-sm mt-1">35 expressions · 10 topic groups · accuracy notes · practice routine</p>
-    <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML &amp; Tailwind CSS</p>
-  </div>
-</main>
-
-<script>
+    <script>
 /* =========================================================================
    DATA
    ========================================================================= */
@@ -950,5 +1031,5 @@ document.getElementById('quizBtn').addEventListener('click', function () {
 render();
 </script>
 
-</body>
+  </body>
 </html>

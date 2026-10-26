@@ -14,23 +14,25 @@
   * { font-family: 'Inter', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
   body {
     background:
-      radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.07), transparent 60%),
-      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.07), transparent 60%),
-      #f8fafc;
+      radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.16), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.12), transparent 60%),
+      #070b16;
     margin: 0;
+    color: #dbe4f3;
+    -webkit-font-smoothing: antialiased;
   }
 
   .hero-gradient {
-    background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #1e3a8a 100%);
+    background: linear-gradient(145deg, #05080f 0%, #0f172a 55%, #1e1b4b 100%);
     position: relative;
     overflow: hidden;
   }
   .aurora {
     position: absolute; inset: -40% -20% auto -20%; height: 420px;
     background:
-      radial-gradient(closest-side, rgba(79,70,229,.30), transparent 70%),
-      radial-gradient(closest-side, rgba(14,165,233,.26), transparent 70%),
-      radial-gradient(closest-side, rgba(16,185,129,.20), transparent 70%);
+      radial-gradient(closest-side, rgba(99,102,241,.35), transparent 70%),
+      radial-gradient(closest-side, rgba(14,165,233,.28), transparent 70%),
+      radial-gradient(closest-side, rgba(16,185,129,.22), transparent 70%);
     filter: blur(70px);
     animation: drift 18s ease-in-out infinite alternate;
     pointer-events: none;
@@ -40,7 +42,7 @@
     to   { transform: translate3d(3%, 2%, 0) scale(1.06); }
   }
   .stat-box {
-    background: rgba(255,255,255,.06);
+    background: rgba(255,255,255,.05);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255,255,255,.10);
     border-radius: .85rem;
@@ -53,45 +55,47 @@
 
   .filter-shell {
     position: sticky; top: 0; z-index: 40;
-    background: rgba(248,250,252,.88);
+    background: rgba(7,11,22,.90);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
+    border-bottom: 1px solid #1e2b45;
+    box-shadow: 0 4px 20px -12px rgba(0,0,0,.6);
   }
   .seg-btn {
     padding: .45rem .95rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
-    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    border: 1px solid #1e2b45; background: #0c1526; color: #9fb2cc;
     cursor: pointer; transition: all .18s ease; white-space: nowrap;
   }
-  .seg-btn:hover { border-color: #c7d2fe; color: #4338ca; }
+  .seg-btn:hover { border-color: #4f46e5; color: #c7d2fe; background: #152340; }
   .seg-btn.active {
     background: linear-gradient(135deg, #4f46e5, #0ea5e9);
     color: #fff; border-color: transparent;
-    box-shadow: 0 6px 18px -8px rgba(79,70,229,.7);
+    box-shadow: 0 6px 18px -8px rgba(79,70,229,.8);
   }
   .chip {
     padding: .28rem .7rem; border-radius: 999px; font-size: .7rem; font-weight: 700;
-    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    border: 1px solid #1e2b45; background: #0c1526; color: #8fa3c0;
     cursor: pointer; transition: all .16s ease; white-space: nowrap;
   }
-  .chip:hover { border-color: #a5b4fc; color: #4f46e5; }
-  .chip.active { background: #eef2ff; border-color: #a5b4fc; color: #4338ca; }
+  .chip:hover { border-color: #4f46e5; color: #c7d2fe; background: #152340; }
+  .chip.active { background: rgba(99,102,241,.15); border-color: #6366f1; color: #c7d2fe; }
   select.book-select {
     padding: .45rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
-    border: 1px solid #e2e8f0; background: #fff; color: #475569; cursor: pointer;
+    border: 1px solid #1e2b45; background: #0c1526; color: #dbe4f3; cursor: pointer;
     outline: none;
   }
-  select.book-select:focus { border-color: #a5b4fc; box-shadow: 0 0 0 3px rgba(99,102,241,.14); }
+  select.book-select:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.18); }
   .search-input {
     padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
-    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
+    border: 1px solid #1e2b45; background: #0c1526; color: #dbe4f3; outline: none; width: 100%;
     transition: all .18s ease;
   }
-  .search-input:focus { border-color: #a5b4fc; box-shadow: 0 0 0 3px rgba(99,102,241,.14); }
+  .search-input::placeholder { color: #5b6b85; }
+  .search-input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.18); }
 
   .q-card {
-    background: #fff; border-radius: 1rem; border: 1px solid #eef2f6;
-    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    background: linear-gradient(180deg, #0e1729 0%, #0a1120 100%);
+    border-radius: 1rem; border: 1px solid #1e2b45;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
     transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, border-color .25s ease;
     position: relative; overflow: hidden;
   }
@@ -102,8 +106,8 @@
   }
   .q-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 18px 40px -22px rgba(15,23,42,.35), 0 6px 18px -12px rgba(15,23,42,.16);
-    border-color: #dbeafe;
+    box-shadow: 0 18px 40px -22px rgba(0,0,0,.7), 0 6px 18px -12px rgba(99,102,241,.2);
+    border-color: #31446b;
   }
   .q-card:hover::after { opacity: 1; }
 
@@ -112,34 +116,34 @@
     border-radius: 999px; text-transform: uppercase; letter-spacing: .05em;
     white-space: nowrap;
   }
-  .b-part1 { background:#dbeafe; color:#1d4ed8; }
-  .b-part2 { background:#fef3c7; color:#92400e; }
-  .b-part3 { background:#d1fae5; color:#065f46; }
-  .b-book  { background:#ede9fe; color:#5b21b6; }
-  .b-type  { background:#fce7f3; color:#9d174d; }
+  .b-part1 { background:rgba(96,165,250,.18); color:#93c5fd; }
+  .b-part2 { background:rgba(251,191,36,.18); color:#fcd34d; }
+  .b-part3 { background:rgba(52,211,153,.18); color:#6ee7b7; }
+  .b-book  { background:rgba(167,139,250,.18); color:#c4b5fd; }
+  .b-type  { background:rgba(244,114,182,.18); color:#f9a8d4; }
 
   .answer-box {
     max-height: 0; overflow: hidden;
     transition: max-height .65s cubic-bezier(.4,0,.2,1), opacity .3s ease, margin-top .3s ease;
     opacity: 0; margin-top: 0;
   }
-  .answer-box.open { max-height: 6000px; opacity: 1; margin-top: .85rem; }
+  .answer-box.open { max-height: 12000px; opacity: 1; margin-top: .85rem; }
 
   .toggle-btn {
     display: inline-flex; align-items: center; gap: .4rem;
-    font-weight: 700; font-size: .78rem; color: #4f46e5;
+    font-weight: 700; font-size: .78rem; color: #a5b4fc;
     cursor: pointer; user-select: none; transition: color .18s;
   }
-  .toggle-btn:hover { color: #3730a3; }
+  .toggle-btn:hover { color: #c7d2fe; }
   .toggle-btn svg { width: 14px; height: 14px; transition: transform .25s ease; }
   .toggle-btn.open svg { transform: rotate(180deg); }
 
   .cue-item {
     display: flex; gap: .5rem; align-items: flex-start;
-    font-size: .8rem; color: #475569; padding: .18rem 0;
+    font-size: .8rem; color: #b9c7dd; padding: .18rem 0;
   }
   .cue-dot {
-    width: 5px; height: 5px; border-radius: 999px; background: #a5b4fc;
+    width: 5px; height: 5px; border-radius: 999px; background: #818cf8;
     margin-top: .45rem; flex-shrink: 0;
   }
 
@@ -148,32 +152,32 @@
     letter-spacing: .08em; margin-bottom: .45rem;
     display: inline-flex; align-items: center; gap: .35rem;
   }
-  .lbl-answer  { color: #1d4ed8; }
-  .lbl-bullets { color: #0e7490; }
-  .lbl-colloc  { color: #4338ca; }
-  .lbl-idiom   { color: #b45309; }
+  .lbl-answer  { color: #93c5fd; }
+  .lbl-bullets { color: #6ee7b7; }
+  .lbl-colloc  { color: #a5b4fc; }
+  .lbl-idiom   { color: #fcd34d; }
 
   .full-answer-box {
-    background: linear-gradient(180deg, #f0f7ff 0%, #f8fbff 100%);
-    border: 1px solid #dbeafe;
+    background: linear-gradient(180deg, #0e1a33 0%, #0a1424 100%);
+    border: 1px solid #1e3a5f;
     border-radius: .75rem;
     padding: .9rem 1rem;
   }
   .full-answer-text {
-    font-size: .875rem; color: #1e293b; line-height: 1.75; margin: 0;
+    font-size: .875rem; color: #c3d0e6; line-height: 1.75; margin: 0;
     white-space: pre-line;
   }
 
   .bullets-box {
-    background: #f0fdfa;
-    border: 1px solid #ccfbf1;
+    background: rgba(16,185,129,.06);
+    border: 1px solid rgba(52,211,153,.20);
     border-radius: .75rem;
     padding: .9rem 1rem;
     margin-top: .6rem;
   }
   .answer-bullet {
     display: flex; gap: .55rem; align-items: flex-start;
-    font-size: .85rem; color: #1e293b; line-height: 1.6;
+    font-size: .85rem; color: #b9c7dd; line-height: 1.6;
     padding: .2rem 0;
   }
   .answer-bullet .ab-dot {
@@ -187,8 +191,8 @@
     padding: .8rem .95rem;
     margin-top: .6rem;
   }
-  .colloc-box { background:#eef2ff; border:1px solid #c7d2fe; }
-  .idiom-box  { background:#fffbeb; border:1px solid #fde68a; }
+  .colloc-box { background: rgba(99,102,241,.08); border:1px solid rgba(99,102,241,.25); }
+  .idiom-box  { background: rgba(251,191,36,.06); border:1px solid rgba(251,191,36,.22); }
 
   .lang-pill {
     display: inline-block;
@@ -199,8 +203,8 @@
     margin: 0 .3rem .35rem 0;
     line-height: 1.3;
   }
-  .colloc-pill { background:#fff; color:#4338ca; border-color:#c7d2fe; }
-  .idiom-pill  { background:#fff; color:#b45309; border-color:#fde68a; }
+  .colloc-pill { background: rgba(99,102,241,.12); color:#a5b4fc; border-color: rgba(99,102,241,.30); }
+  .idiom-pill  { background: rgba(251,191,36,.10); color:#fcd34d; border-color: rgba(251,191,36,.28); }
 
   .book-heading {
     display: flex; align-items: center; gap: .75rem;
@@ -211,22 +215,23 @@
     border-radius: .6rem;
     transition: background .18s ease;
   }
-  .book-heading:hover { background: rgba(79,70,229,.04); }
+  .book-heading:hover { background: rgba(99,102,241,.06); }
   .book-heading .line {
     flex: 1; height: 1px;
-    background: linear-gradient(90deg, #cbd5e1, transparent);
+    background: linear-gradient(90deg, #2a3a5a, transparent);
   }
   .book-pill {
     font-size: .72rem; font-weight: 800; letter-spacing: .06em;
     text-transform: uppercase; color: #fff;
     background: linear-gradient(135deg, #1e293b, #334155);
+    border: 1px solid #3b4d72;
     padding: .35rem .9rem; border-radius: 999px;
-    box-shadow: 0 6px 16px -10px rgba(15,23,42,.6);
+    box-shadow: 0 6px 16px -10px rgba(0,0,0,.8);
     white-space: nowrap;
   }
 
   .test-heading {
-    font-size: .82rem; font-weight: 800; color: #0f172a;
+    font-size: .82rem; font-weight: 800; color: #e8eefb;
     display: flex; align-items: center; gap: .5rem;
     margin: 1.6rem 0 .7rem;
     cursor: pointer;
@@ -236,22 +241,22 @@
     transition: background .18s ease;
     width: fit-content;
   }
-  .test-heading:hover { background: rgba(79,70,229,.05); }
+  .test-heading:hover { background: rgba(99,102,241,.08); }
   .test-heading .dot {
     width: 8px; height: 8px; border-radius: 999px;
-    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+    background: linear-gradient(135deg, #818cf8, #0ea5e9);
     flex-shrink: 0;
   }
 
   .collapse-chevron {
     width: 1.4rem; height: 1.4rem; border-radius: .4rem;
-    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    border: 1px solid #2a3a5a; background: #0c1526; color: #8fa3c0;
     display: inline-flex; align-items: center; justify-content: center;
     flex-shrink: 0; padding: 0;
     transition: all .18s ease;
   }
   .book-heading:hover .collapse-chevron,
-  .test-heading:hover .collapse-chevron { border-color: #a5b4fc; color: #4f46e5; background: #eef2ff; }
+  .test-heading:hover .collapse-chevron { border-color: #6366f1; color: #c7d2fe; background: #152340; }
   .collapse-chevron svg {
     width: 11px; height: 11px;
     transition: transform .25s cubic-bezier(.4,0,.2,1);
@@ -264,34 +269,34 @@
   .tool-btn {
     padding: .38rem .8rem; border-radius: 999px;
     font-size: .72rem; font-weight: 700;
-    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    border: 1px solid #1e2b45; background: #0c1526; color: #9fb2cc;
     cursor: pointer; transition: all .16s ease; white-space: nowrap;
     display: inline-flex; align-items: center; gap: .35rem;
   }
-  .tool-btn:hover { border-color: #a5b4fc; color: #4f46e5; background: #eef2ff; }
+  .tool-btn:hover { border-color: #6366f1; color: #c7d2fe; background: #152340; }
   .tool-btn svg { width: 12px; height: 12px; }
   .tool-btn.primary {
     border-color: transparent;
     background: linear-gradient(135deg, #4f46e5, #0ea5e9);
     color: #fff;
-    box-shadow: 0 6px 16px -8px rgba(79,70,229,.6);
+    box-shadow: 0 6px 16px -8px rgba(79,70,229,.8);
   }
-  .tool-btn.primary:hover { filter: brightness(1.06); color:#fff; }
-  .tool-btn.warn { border-color:#fecaca; color:#b91c1c; }
-  .tool-btn.warn:hover { background:#fef2f2; }
+  .tool-btn.primary:hover { filter: brightness(1.10); color:#fff; }
+  .tool-btn.warn { border-color: rgba(239,68,68,.35); color: #fca5a5; }
+  .tool-btn.warn:hover { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.5); }
 
   .footer-note {
-    background: #f1f5f9; border-radius: 1rem; padding: 1.6rem 2rem;
-    text-align: center; color: #475569; font-size: .88rem;
-    border: 1px solid #e2e8f0; margin-top: 3rem;
+    background: #0a1120; border-radius: 1rem; padding: 1.6rem 2rem;
+    text-align: center; color: #8fa3c0; font-size: .88rem;
+    border: 1px solid #1e2b45; margin-top: 3rem;
   }
 
-  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
+  .no-results { text-align: center; padding: 4rem 1rem; color: #64748b; }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
-  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  ::-webkit-scrollbar-track { background: #080d18; }
+  ::-webkit-scrollbar-thumb { background: #1e2b45; border-radius: 999px; border: 3px solid #070b16; }
+  ::-webkit-scrollbar-thumb:hover { background: #2c3f63; }
 
   @media (prefers-reduced-motion: reduce) {
     .aurora { animation: none; }
@@ -329,7 +334,7 @@
               <span class="text-blue-300">&amp; Full Natural Answers</span>
             </h1>
             <p
-              class="text-lg md:text-xl text-blue-100/80 mt-4 max-w-2xl leading-relaxed">
+              class="text-lg md:text-xl text-blue-100/70 mt-4 max-w-2xl leading-relaxed">
               Every Part 1, Part 2 and Part 3 question from Books 11–21 — with
               full natural spoken
               answers, bullet-point structures, dedicated collocation &amp;
@@ -337,7 +342,7 @@
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
               <a href="#bank"
-                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg shadow-blue-900/40 flex items-center gap-2">
                 🔍 Browse the Bank <span>→</span>
               </a>
               <a href="#howto"
@@ -378,7 +383,7 @@
 
             <div class="relative flex-1 min-w-[180px]">
               <svg
-                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"
                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   stroke-width="2"
@@ -393,13 +398,13 @@
 
           <div class="flex flex-wrap items-center gap-1.5" id="typeFilters">
             <span
-              class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mr-1">Type:</span>
+              class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-500 mr-1">Type:</span>
           </div>
 
           <div class="flex flex-wrap items-center justify-between gap-2.5">
             <div class="flex flex-wrap items-center gap-2">
               <span
-                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Sections:</span>
+                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-500">Sections:</span>
               <button id="collapseAllBtn" class="tool-btn"
                 title="Collapse all books and tests">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
@@ -418,7 +423,7 @@
 
             <div class="flex flex-wrap items-center gap-2">
               <span
-                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400">Answers:</span>
+                class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-500">Answers:</span>
               <button id="showAllAnswersBtn" class="tool-btn primary"
                 title="Open every sample answer">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path
@@ -445,8 +450,8 @@
 
           <div class="text-xs text-slate-500 font-medium">
             Showing <span id="resultCount"
-              class="font-extrabold text-indigo-600">0</span> questions
-            <span id="activeSummary" class="text-slate-400"></span>
+              class="font-extrabold text-indigo-400">0</span> questions
+            <span id="activeSummary" class="text-slate-500"></span>
           </div>
 
         </div>
@@ -456,94 +461,97 @@
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
       <div id="results"></div>
 
-      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+      <hr class="border-0 border-t-2 border-dashed border-[#1e2b45] my-14"
         id="howto" />
 
       <section
-        class="bg-white rounded-2xl border border-slate-200 p-6 md:p-9 shadow-sm">
+        class="bg-[#0a1120] rounded-2xl border border-[#1e2b45] p-6 md:p-9 shadow-sm">
         <div class="flex items-center gap-3 mb-6">
           <span class="text-3xl">🧭</span>
-          <h2 class="text-2xl font-extrabold text-slate-900 m-0">The Band 7–8
+          <h2 class="text-2xl font-extrabold text-white m-0">The Band 7–8
             Answer Formula (Natural Speech Edition)</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5">
-          <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+          <div
+            class="bg-[rgba(96,165,250,.06)] rounded-xl p-5 border border-[rgba(96,165,250,.22)]">
             <span
-              class="font-extrabold text-blue-800 text-sm uppercase tracking-wide">Part
+              class="font-extrabold text-blue-300 text-sm uppercase tracking-wide">Part
               1 · 3–4 bullets</span>
-            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
               <li class="flex gap-2"><span
-                  class="text-blue-500 font-bold">1.</span> Direct answer,
+                  class="text-blue-400 font-bold">1.</span> Direct answer,
                 straight away</li>
               <li class="flex gap-2"><span
-                  class="text-blue-500 font-bold">2.</span> One concrete reason
+                  class="text-blue-400 font-bold">2.</span> One concrete reason
                 or detail</li>
               <li class="flex gap-2"><span
-                  class="text-blue-500 font-bold">3.</span> A conditional or
+                  class="text-blue-400 font-bold">3.</span> A conditional or
                 contrast ("If I had to pick…", "That said…")</li>
               <li class="flex gap-2"><span
-                  class="text-blue-500 font-bold">4.</span> One personal /
+                  class="text-blue-400 font-bold">4.</span> One personal /
                 Bangladeshi example</li>
               <li class="flex gap-2"><span
-                  class="text-blue-500 font-bold">5.</span> Stop naturally —
+                  class="text-blue-400 font-bold">5.</span> Stop naturally —
                 don't speechify</li>
             </ul>
           </div>
 
-          <div class="bg-amber-50 rounded-xl p-5 border border-amber-100">
+          <div
+            class="bg-[rgba(251,191,36,.06)] rounded-xl p-5 border border-[rgba(251,191,36,.22)]">
             <span
-              class="font-extrabold text-amber-800 text-sm uppercase tracking-wide">Part
+              class="font-extrabold text-amber-300 text-sm uppercase tracking-wide">Part
               2 · 4–5 bullets</span>
-            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
               <li class="flex gap-2"><span
-                  class="text-amber-500 font-bold">1.</span> Open with the topic
+                  class="text-amber-400 font-bold">1.</span> Open with the topic
                 in one line</li>
               <li class="flex gap-2"><span
-                  class="text-amber-500 font-bold">2.</span> Cover all four cue
+                  class="text-amber-400 font-bold">2.</span> Cover all four cue
                 bullets</li>
               <li class="flex gap-2"><span
-                  class="text-amber-500 font-bold">3.</span> Add sensory /
+                  class="text-amber-400 font-bold">3.</span> Add sensory /
                 concrete detail</li>
               <li class="flex gap-2"><span
-                  class="text-amber-500 font-bold">4.</span> Use past tenses for
+                  class="text-amber-400 font-bold">4.</span> Use past tenses for
                 the narrative</li>
               <li class="flex gap-2"><span
-                  class="text-amber-500 font-bold">5.</span> End with a feeling,
+                  class="text-amber-400 font-bold">5.</span> End with a feeling,
                 reflection or conditional</li>
             </ul>
           </div>
 
-          <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-100">
+          <div
+            class="bg-[rgba(52,211,153,.06)] rounded-xl p-5 border border-[rgba(52,211,153,.22)]">
             <span
-              class="font-extrabold text-emerald-800 text-sm uppercase tracking-wide">Part
+              class="font-extrabold text-emerald-300 text-sm uppercase tracking-wide">Part
               3 · 2–3 bullets</span>
-            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
               <li class="flex gap-2"><span
-                  class="text-emerald-500 font-bold">1.</span> Answer first,
+                  class="text-emerald-400 font-bold">1.</span> Answer first,
                 then explain</li>
               <li class="flex gap-2"><span
-                  class="text-emerald-500 font-bold">2.</span> WHY → EXAMPLE →
+                  class="text-emerald-400 font-bold">2.</span> WHY → EXAMPLE →
                 BALANCE</li>
               <li class="flex gap-2"><span
-                  class="text-emerald-500 font-bold">3.</span> Compare groups
+                  class="text-emerald-400 font-bold">3.</span> Compare groups
                 carefully</li>
               <li class="flex gap-2"><span
-                  class="text-emerald-500 font-bold">4.</span> Use "That said…",
+                  class="text-emerald-400 font-bold">4.</span> Use "That said…",
                 "It depends…", "If we look at…"</li>
               <li class="flex gap-2"><span
-                  class="text-emerald-500 font-bold">5.</span> Close with
+                  class="text-emerald-400 font-bold">5.</span> Close with
                 "So overall…"</li>
             </ul>
           </div>
         </div>
 
         <div class="mt-7 grid md:grid-cols-2 gap-5">
-          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
-            <p class="font-extrabold text-slate-900 text-sm mb-3">Useful Part 3
+          <div class="rounded-xl border border-[#1e2b45] bg-[#0e1729] p-5">
+            <p class="font-extrabold text-white text-sm mb-3">Useful Part 3
               language</p>
             <div
-              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
+              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-400">
               <span>I'd argue that…</span><span>I tend to think…</span>
               <span>The main reason is…</span><span>This is largely
                 because…</span>
@@ -554,11 +562,11 @@
             </div>
           </div>
 
-          <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-5">
-            <p class="font-extrabold text-slate-900 text-sm mb-3">Bangladesh
+          <div class="rounded-xl border border-[#1e2b45] bg-[#0e1729] p-5">
+            <p class="font-extrabold text-white text-sm mb-3">Bangladesh
               example bank</p>
             <div
-              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-700">
+              class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-400">
               <span>Dhaka traffic</span><span>Apartment living</span>
               <span>Eid gatherings</span><span>Pohela Boishakh</span>
               <span>Public exams</span><span>Coaching centres</span>
@@ -573,10 +581,10 @@
         </div>
 
         <div
-          class="mt-7 rounded-xl border border-amber-200 bg-amber-50/60 px-5 py-4 flex gap-3">
+          class="mt-7 rounded-xl border border-[rgba(251,191,36,.3)] bg-[rgba(251,191,36,.06)] px-5 py-4 flex gap-3">
           <span class="text-xl shrink-0">💡</span>
-          <p class="text-sm text-slate-700 m-0">
-            <strong class="text-amber-800">Golden rule:</strong> never memorise
+          <p class="text-sm text-slate-300 m-0">
+            <strong class="text-amber-300">Golden rule:</strong> never memorise
             a full answer word-for-word.
             Learn the <em>full-answer flow</em>, the <em>bullet structure</em>,
             the <em>collocations</em>, the <em>idioms</em>
@@ -586,11 +594,11 @@
       </section>
 
       <div class="footer-note">
-        <p class="font-bold text-slate-800">🎙️ Cambridge IELTS Speaking Hub ·
+        <p class="font-bold text-slate-200">🎙️ Cambridge IELTS Speaking Hub ·
           Books 11–21</p>
         <p class="text-sm mt-1">Full natural answers + bullet structures +
           collocations + idioms — filterable by part, type and book.</p>
-        <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML
+        <p class="text-xs text-slate-500 mt-2">Built for personal study · HTML
           &amp; Tailwind CSS</p>
       </div>
     </main>
@@ -5161,17 +5169,17 @@ function esc(s) {
 }
 function typeBadgeClass(t) {
   const map = {
-    'Preference':'background:#ede9fe;color:#5b21b6',
-    'Opinion':'background:#dbeafe;color:#1d4ed8',
-    'Frequency':'background:#d1fae5;color:#065f46',
-    'Habit':'background:#cffafe;color:#155e75',
-    'Past experience':'background:#fef3c7;color:#92400e',
-    'Future':'background:#e0e7ff;color:#3730a3',
-    'Comparison':'background:#fce7f3;color:#9d174d',
-    'Hypothetical':'background:#ffe4e6;color:#9f1239',
-    'Change':'background:#f3e8ff;color:#6b21a8'
+    'Preference':'background:rgba(167,139,250,.18);color:#c4b5fd',
+    'Opinion':'background:rgba(96,165,250,.18);color:#93c5fd',
+    'Frequency':'background:rgba(52,211,153,.18);color:#6ee7b7',
+    'Habit':'background:rgba(34,211,238,.18);color:#67e8f9',
+    'Past experience':'background:rgba(251,191,36,.18);color:#fcd34d',
+    'Future':'background:rgba(129,140,248,.18);color:#a5b4fc',
+    'Comparison':'background:rgba(244,114,182,.18);color:#f9a8d4',
+    'Hypothetical':'background:rgba(251,113,133,.18);color:#fda4af',
+    'Change':'background:rgba(192,132,252,.18);color:#d8b4fe'
   };
-  return map[t] || 'background:#f1f5f9;color:#475569';
+  return map[t] || 'background:rgba(148,163,184,.15);color:#cbd5e1';
 }
 function pillsHTML(list, cls) {
   if (!list || !list.length) return '';
@@ -5212,7 +5220,7 @@ function render() {
     resultsEl.innerHTML =
       '<div class="no-results">' +
         '<div class="text-5xl mb-3">🔍</div>' +
-        '<p class="font-bold text-slate-600">No questions match your filters.</p>' +
+        '<p class="font-bold text-slate-300">No questions match your filters.</p>' +
         '<p class="text-sm mt-1">Try resetting or broadening your search.</p>' +
       '</div>';
     return;
@@ -5234,7 +5242,7 @@ function render() {
     html += '<div class="book-heading" data-book="' + bookKey + '">' +
               '<button class="collapse-chevron ' + (bookCollapsed ? 'collapsed' : '') + '" aria-label="Toggle book">' + CHEVRON_SVG + '</button>' +
               '<span class="book-pill">Book ' + book + '</span>' +
-              '<span class="text-xs font-semibold text-slate-400">' + bookCount + ' question' + (bookCount!==1?'s':'') + '</span>' +
+              '<span class="text-xs font-semibold text-slate-500">' + bookCount + ' question' + (bookCount!==1?'s':'') + '</span>' +
               '<span class="line"></span>' +
             '</div>';
 
@@ -5249,7 +5257,7 @@ function render() {
                 '<button class="collapse-chevron ' + (testCollapsed ? 'collapsed' : '') + '" aria-label="Toggle test">' + CHEVRON_SVG + '</button>' +
                 '<span class="dot"></span>' +
                 'Test ' + test +
-                '<span class="text-slate-400 font-semibold">· ' + items.length + '</span>' +
+                '<span class="text-slate-500 font-semibold">· ' + items.length + '</span>' +
               '</div>';
 
       html += '<div class="section-body ' + (testCollapsed ? 'collapsed' : '') + '" data-test-body="' + testKey + '">';
@@ -5304,8 +5312,8 @@ function cardHTML(item) {
 
   let cueHTML = '';
   if (item.cue) {
-    cueHTML = '<div class="mt-3 rounded-lg bg-amber-50/70 border border-amber-100 p-3">' +
-                '<p class="text-[0.68rem] font-extrabold uppercase tracking-wider text-amber-700 mb-1.5">You should say:</p>' +
+    cueHTML = '<div class="mt-3 rounded-lg bg-[rgba(251,191,36,.06)] border border-[rgba(251,191,36,.22)] p-3">' +
+                '<p class="text-[0.68rem] font-extrabold uppercase tracking-wider text-amber-400 mb-1.5">You should say:</p>' +
                 item.cue.map(c => '<div class="cue-item"><span class="cue-dot"></span><span>' + esc(c) + '</span></div>').join('') +
               '</div>';
   }
@@ -5348,15 +5356,15 @@ function cardHTML(item) {
       '<span class="badge" style="' + typeBadgeClass(item.type) + '">' + esc(item.type) + '</span>' +
     '</div>' +
 
-    '<p class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 mb-1.5">' + esc(item.topic) + '</p>' +
+    '<p class="text-[0.68rem] font-bold uppercase tracking-wider text-slate-500 mb-1.5">' + esc(item.topic) + '</p>' +
 
-    '<h3 class="text-[0.98rem] font-extrabold text-slate-900 leading-snug m-0">' +
+    '<h3 class="text-[0.98rem] font-extrabold text-white leading-snug m-0">' +
       esc(item.question) +
     '</h3>' +
 
     cueHTML +
 
-    '<div class="mt-3 pt-3 border-t border-slate-100">' +
+    '<div class="mt-3 pt-3 border-t border-[#1e2b45]">' +
       '<span class="toggle-btn" data-target="' + id + '">' +
         '<span class="lbl">Show full answer</span>' +
         '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">' +

@@ -268,7 +268,7 @@ demise|n|মৃত্যু / পতন / অবসান|Death, End|time
 denounce|v|নিন্দা করা|Condemn, Criticize|conf
 depict|v|চিত্রিত করা / বর্ণনা করা|Describe, Illustrate, Show, Portray|art
 depicted|v|চিত্রিত হয়েছে / বর্ণনা করা হয়েছে|Described, Represented, Outlined|art
-depiction|n|চিত্রণ|Picture, Portrait, Image, Portrayal|art
+depiction|n|চিত্রণ / বর্ণনা |Picture, Portrait, Image, Portrayal|art
 depicts|v|চিত্রিত করে / তুলে ধরে|Portrays, Draw, Outline|art
 deplete|v|নিঃশেষ করা / কমিয়ে ফেলা|Drain, Consume|env
 depleted|adj|ক্ষয়প্রাপ্ত / নিঃশেষিত|Exhausted, Diminished, Drained|env
@@ -1562,6 +1562,7 @@ saline |adj|সমীপ|Salty, Saline, salty or containing salt, or it refers t
 disputed|adj|বিতর্কিত|Disputed, Controversial|conf
 elusive|adj|বেশির ভাগ সময় প্রত্যাহার করা, কম শারীরিক সক্রিয়তাপূর্ণ|Inactive, Seated, hard to find, difficult to catch |health
 municipal|n| পৌর, পৌরসভা সম্পর্কিত, অথবা স্থানীয় প্রশাসনিক|City, Municipal, Municipal Corporation|env
+rectify|verb|সঠিক করা|Rectify, Correct|desc
 
 `
 
