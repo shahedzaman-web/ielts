@@ -370,6 +370,81 @@
   .howto-card.t-e { border-left: 3px solid #a78bfa; } .howto-card.t-e h4 { color: #c4b5fd; }
   .howto-card.t-f { border-left: 3px solid #2dd4bf; } .howto-card.t-f h4 { color: #5eead4; }
 
+
+  /* ---------- DETAILED IELTS WRITING GUIDE ---------- */
+  .guide-intro {
+    border: 1px solid rgba(45,212,191,.25);
+    background: linear-gradient(145deg, rgba(45,212,191,.08), rgba(34,211,238,.035));
+    border-radius: 1rem; padding: 1.15rem 1.25rem; margin: 1.2rem 0 1.4rem;
+  }
+  .guide-intro p, .guide-type p, .guide-type li, .guide-note p {
+    color: var(--text-2); font-size: .84rem; line-height: 1.75;
+  }
+  .guide-intro p:last-child, .guide-type p:last-child, .guide-note p:last-child { margin-bottom: 0; }
+  .guide-type {
+    border: 1px solid var(--border); border-radius: 1rem; overflow: hidden;
+    background: linear-gradient(155deg, rgba(22,32,50,.68), rgba(11,17,32,.82));
+    margin: .8rem 0; scroll-margin-top: 110px;
+  }
+  .guide-type > summary {
+    padding: 1rem 1.15rem; cursor: pointer; list-style: none; display: flex;
+    align-items: center; justify-content: space-between; gap: .8rem;
+    font-weight: 800; font-size: .98rem; color: var(--text);
+  }
+  .guide-type > summary::-webkit-details-marker { display: none; }
+  .guide-type > summary::after { content: '+'; color: var(--teal); font-size: 1.35rem; line-height: 1; }
+  .guide-type[open] > summary::after { content: '−'; }
+  .guide-type[open] > summary { border-bottom: 1px solid var(--border-soft); background: rgba(45,212,191,.035); }
+  .guide-content { padding: 1.1rem 1.15rem 1.25rem; }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem; }
+  .guide-box {
+    border: 1px solid var(--border-soft); background: rgba(7,11,20,.34);
+    border-radius: .8rem; padding: .9rem 1rem; min-width: 0;
+  }
+  .guide-box.full { grid-column: 1 / -1; }
+  .guide-box h5 { margin: 0 0 .5rem; font-size: .74rem; text-transform: uppercase; letter-spacing: .07em; color: var(--teal); }
+  .guide-box p { margin: 0 0 .55rem; }
+  .guide-box ul, .guide-box ol { padding-left: 1.15rem; margin: .35rem 0 0; }
+  .guide-box li { margin: .2rem 0; }
+  .guide-example {
+    margin: .55rem 0 0; padding: .75rem .9rem; border-left: 3px solid var(--amber);
+    border-radius: .45rem; background: rgba(251,191,36,.055); color: var(--text-2);
+    font-size: .83rem; line-height: 1.75;
+  }
+  .guide-formula {
+    display: block; margin-top: .5rem; padding: .65rem .8rem; border-radius: .55rem;
+    background: rgba(34,211,238,.055); border: 1px solid rgba(34,211,238,.18);
+    color: var(--cyan); font-size: .78rem; line-height: 1.7;
+  }
+  .guide-kicker { color: var(--amber); font-size: .64rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; margin-bottom: .35rem; }
+  .guide-list-check { list-style: none; padding-left: 0 !important; }
+  .guide-list-check li { position: relative; padding-left: 1.35rem; }
+  .guide-list-check li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 900; }
+  .guide-list-warn { list-style: none; padding-left: 0 !important; }
+  .guide-list-warn li { position: relative; padding-left: 1.35rem; }
+  .guide-list-warn li::before { content: '×'; position: absolute; left: 0; color: var(--rose); font-weight: 900; }
+  .descriptor-wrap { overflow-x: auto; margin-top: .9rem; border: 1px solid var(--border); border-radius: .85rem; }
+  .descriptor-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: .76rem; line-height: 1.65; }
+  .descriptor-table th { background: rgba(45,212,191,.12); color: #99f6e4; text-align: left; font-weight: 800; }
+  .descriptor-table th, .descriptor-table td { vertical-align: top; padding: .8rem .85rem; border-bottom: 1px solid var(--border-soft); border-right: 1px solid var(--border-soft); }
+  .descriptor-table td { color: var(--text-2); }
+  .descriptor-table tr:last-child td { border-bottom: 0; }
+  .descriptor-table th:last-child, .descriptor-table td:last-child { border-right: 0; }
+  .descriptor-table tr:nth-child(even) td { background: rgba(255,255,255,.018); }
+  .band-label { display: inline-flex; align-items: center; justify-content: center; min-width: 2.1rem; border-radius: .4rem; font-weight: 900; padding: .2rem .35rem; background: rgba(45,212,191,.12); color: #5eead4; }
+  .guide-note { border: 1px solid var(--border-soft); border-radius: .85rem; padding: 1rem 1.05rem; background: rgba(22,32,50,.45); margin-top: .9rem; }
+  .guide-source { font-size: .75rem; color: var(--muted); line-height: 1.8; }
+  .guide-source a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
+  .guide-jump { display: flex; flex-wrap: wrap; gap: .45rem; margin: .75rem 0 1rem; }
+  .guide-jump a { font-size: .72rem; font-weight: 800; color: var(--text-2); border: 1px solid var(--border); border-radius: 999px; padding: .35rem .7rem; text-decoration: none; }
+  .guide-jump a:hover { color: var(--teal); border-color: var(--teal); background: rgba(45,212,191,.06); }
+  @media (max-width: 720px) {
+    .guide-grid { grid-template-columns: 1fr; }
+    .guide-box.full { grid-column: auto; }
+    .guide-type > summary { font-size: .9rem; padding: .85rem .9rem; }
+    .guide-content { padding: .85rem .8rem 1rem; }
+  }
+
   /* ---------- FOOTER ---------- */
   .footer-note {
     background: linear-gradient(150deg, rgba(22,32,50,.8), rgba(15,23,37,.9));
@@ -1065,6 +1140,762 @@
 
         </div>
 
+        <!-- ================= FULL SIX-TYPE WRITING GUIDE ================= -->
+        <section id="full-writing-guide" class="mt-10">
+          <div class="mb-5">
+            <p class="guide-kicker">The complete writing method</p>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Six
+              Task 2 question types: how to plan and write each one</h3>
+            <p class="section-sub">Use the exact instruction in the question to
+              decide what each paragraph must do. These six labels are practical
+              teaching categories; IELTS does not require you to identify a
+              formal “type” before answering.</p>
+          </div>
+
+          <div class="guide-intro">
+            <p class="font-extrabold text-teal-200 mb-2">Start with the task,
+              not a memorised template.</p>
+            <p>Underline the command words (for example, <em>agree or
+                disagree</em>, <em>discuss both views</em>, <em>outweigh</em>,
+              <em>why</em>, and <em>what can be done</em>). Count how many
+              separate things the examiner asks you to do. Before writing, make
+              a one-line answer to every part of the prompt, then choose body
+              paragraphs that prove those answers.</p>
+            <p><strong class="text-white">Practical target:</strong> write at
+              least 250 words in about 40 minutes. A focused response of roughly
+              270–310 words is often manageable, but there is no special score
+              bonus for a particular word count. Four paragraphs can work well;
+              five paragraphs may be better when the argument needs an extra
+              body paragraph. The task and clarity of development determine the
+              structure—not a rigid paragraph rule.</p>
+          </div>
+
+          <div class="guide-jump" aria-label="Jump to a question type">
+            <a href="#type-agree">1 · Agree/Disagree</a><a
+              href="#type-discuss">2 · Discuss both views</a><a
+              href="#type-advantages">3 · Advantages/Disadvantages</a><a
+              href="#type-positive">4 · Positive/Negative</a><a
+              href="#type-problem">5 · Problem/Solution</a><a
+              href="#type-two-part">6 · Two-Part</a><a
+              href="#band-descriptors">Band descriptors</a>
+          </div>
+
+          <details class="guide-type" id="type-agree" open>
+            <summary><span>01 · Agree / Disagree (Opinion essay)</span><span
+                class="badge t-agree">Give a clear position</span></summary>
+            <div class="guide-content">
+              <div class="guide-grid">
+                <div class="guide-box">
+                  <h5>How to recognise and analyse it</h5>
+                  <p>Typical wording: <em>“To what extent do you agree or
+                      disagree?”</em> or <em>“Do you agree or disagree?”</em>
+                    The examiner is asking for your judgement on one claim. You
+                    do not have to give equal space to the opposing view unless
+                    doing so helps explain your position.</p>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“Governments should spend money on
+                    railways rather than roads. To what extent do you agree or
+                    disagree?”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Choose your position before drafting</h5>
+                  <p>Pick the position you can support with two distinct,
+                    relevant reasons:</p>
+                  <ul><li><strong>Strongly agree/disagree:</strong> both main
+                      body paragraphs develop the same overall
+                      position.</li><li><strong>Partly agree:</strong> specify
+                      exactly which part you accept and which part you reject;
+                      keep that distinction consistent.</li><li><strong>Do not
+                        hedge accidentally:</strong> a sentence such as “there
+                      are advantages and disadvantages” is not itself an answer
+                      to how far you agree.</li></ul>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full paragraph-by-paragraph structure</h5>
+                  <ol>
+                    <li><strong>Introduction — 2 or 3 sentences:</strong>
+                      paraphrase the claim; state your exact position and, if
+                      useful, preview your two reasons.</li>
+                    <li><strong>Body paragraph 1 — first reason:</strong> topic
+                      sentence stating the reason; explain why/how it supports
+                      your view; give one relevant example; link the result back
+                      to the claim.</li>
+                    <li><strong>Body paragraph 2 — second reason:</strong>
+                      develop a different reason. You may briefly acknowledge an
+                      opposing point and explain why it does not change your
+                      overall judgement.</li>
+                    <li><strong>Conclusion — 1 or 2 sentences:</strong> restate
+                      the degree to which you agree and summarise the central
+                      reasons. Do not introduce a new argument.</li>
+                  </ol>
+                  <span class="guide-formula">Introduction: paraphrase + clear
+                    stance → Body 1: reason A + explanation + example → Body 2:
+                    reason B (optional counterpoint and response) → Conclusion:
+                    direct final judgement.</span>
+                </div>
+                <div class="guide-box">
+                  <h5>Model thesis and topic sentences</h5>
+                  <p><strong>Thesis:</strong> “I largely agree that railways
+                    deserve greater public investment because they can reduce
+                    transport emissions and move passengers more efficiently,
+                    although roads remain necessary for local access.”</p>
+                  <p><strong>Body 1:</strong> “The strongest case for
+                    prioritising railways is their lower environmental impact
+                    per passenger.”</p>
+                  <p><strong>Body 2:</strong> “Rail transport can also use fuel
+                    and road space more efficiently than large numbers of
+                    individual vehicles.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>Your position directly
+                      answers the statement.</li><li>The stance is clear in the
+                      introduction and remains consistent.</li><li>Each body
+                      paragraph explains a reason instead of merely naming
+                      it.</li><li>Examples support the reason rather than
+                      replace explanation.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> discussing
+                    both sides at length but never making clear how far you
+                    agree. This weakens the directness of the response.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="guide-type" id="type-discuss">
+            <summary><span>02 · Discuss Both Views and Give Your
+                Opinion</span><span class="badge t-discuss">Cover both views +
+                your view</span></summary>
+            <div class="guide-content"><div class="guide-grid">
+                <div class="guide-box">
+                  <h5>How to recognise and analyse it</h5>
+                  <p>Look for <em>“Discuss both views and give your
+                      opinion.”</em> There are three obligations: explain View
+                    A, explain View B, and give your own position. Merely
+                    describing both camps without an opinion leaves part of the
+                    task unanswered.</p>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“Some people say History is one of the
+                    most important school subjects. Others think that, in
+                    today's world, subjects like science and technology are more
+                    important than history. Discuss both views and give your
+                    opinion.”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Plan the balance</h5>
+                  <p>Give each view a fair explanation. Fair coverage does not
+                    mean you must agree with both or give identical word counts.
+                    Your opinion should be explicit early and supported through
+                    the argument. If one side is more convincing, explain
+                    why.</p>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full paragraph-by-paragraph structure</h5>
+                  <ol><li><strong>Introduction:</strong> paraphrase the debate;
+                      identify both positions; state your own view
+                      clearly.</li><li><strong>Body 1 — View A:</strong> explain
+                      the reasoning behind the first side; develop its strongest
+                      point; provide a relevant example or
+                      implication.</li><li><strong>Body 2 — View B + your
+                        evaluation:</strong> explain the second side accurately;
+                      show whether and why you find it more persuasive (or how
+                      it fits with your
+                      position).</li><li><strong>Conclusion:</strong> summarise
+                      the two sides briefly and reaffirm your opinion. Do not
+                      leave your view for the first time until the
+                      conclusion.</li></ol>
+                  <span class="guide-formula">Introduction: both positions +
+                    your opinion → Body 1: why supporters hold View A → Body 2:
+                    why supporters hold View B + your evaluation → Conclusion:
+                    final position.</span>
+                </div>
+                <div class="guide-box">
+                  <h5>Model thesis and topic sentences</h5>
+                  <p><strong>Thesis:</strong> “Although History helps students
+                    understand cultural identity and past mistakes, I believe
+                    science and technology deserve greater emphasis because they
+                    equip learners to respond to current health, environmental
+                    and economic challenges.”</p>
+                  <p><strong>Body 1:</strong> “Supporters of History argue that
+                    it helps students understand how societies developed and why
+                    past conflicts occurred.”</p>
+                  <p><strong>Body 2:</strong> “By contrast, science and
+                    technology provide practical knowledge that is increasingly
+                    important in modern careers and public problem-solving.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>Both views are explained, not
+                      just mentioned.</li><li>Your opinion is clear in the
+                      introduction and conclusion.</li><li>Your own judgement is
+                      supported by reasoning in the body.</li><li>You represent
+                      the opposing side fairly before evaluating it.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> writing two
+                    separate descriptions and forgetting “give your opinion.”
+                    Another is making one view a straw man by explaining it
+                    inaccurately.</p>
+                </div>
+              </div></div>
+          </details>
+
+          <details class="guide-type" id="type-advantages">
+            <summary><span>03 · Advantages / Disadvantages</span><span
+                class="badge t-advdis">Check whether you must weigh
+                them</span></summary>
+            <div class="guide-content"><div class="guide-grid">
+                <div class="guide-box">
+                  <h5>First, read the exact final sentence</h5>
+                  <p>There are two common forms, and they are not identical:</p>
+                  <ul><li><strong>“What are the advantages and
+                        disadvantages?”</strong> Explain both sides. A final
+                      judgement may be useful, but the question does not
+                      explicitly ask which side is stronger.</li><li><strong>“Do
+                        the advantages outweigh the disadvantages?”</strong> You
+                      must compare their relative importance and clearly answer
+                      yes, no, or partly.</li></ul>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“The population of some countries
+                    includes a relatively large number of young adults, compared
+                    with the number of older people. Do the advantages of this
+                    situation outweigh the disadvantages?”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Choose a structure that makes the comparison clear</h5>
+                  <p>For an “outweigh” question, you can present the weaker side
+                    first and the stronger side second, or use the reverse
+                    order. What matters is that the thesis and conclusion make
+                    the comparison explicit and the body explains why the
+                    benefits or drawbacks carry greater weight.</p>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full structure — for an “outweigh” question</h5>
+                  <ol><li><strong>Introduction:</strong> paraphrase the
+                      situation and state clearly whether advantages outweigh
+                      disadvantages.</li><li><strong>Body 1 — side you consider
+                        weaker:</strong> explain its main drawback or benefit
+                      fairly; show why it matters, but indicate any limitation
+                      if appropriate.</li><li><strong>Body 2 — side you consider
+                        stronger:</strong> develop the most important points and
+                      explain why they have greater overall impact. For each
+                      point, show consequences or give a specific
+                      example.</li><li><strong>Conclusion:</strong> directly
+                      answer “outweigh?” and summarise the basis of the
+                      comparison.</li></ol>
+                  <span class="guide-formula">Introduction: situation + explicit
+                    comparison → Body 1: weaker side → Body 2: stronger side +
+                    why it matters more → Conclusion: clear “outweigh”
+                    judgement.</span>
+                  <p class="mt-3"><strong>For a plain advantages/disadvantages
+                      question:</strong> Body 1 can cover the main advantages
+                    and Body 2 the main disadvantages, followed by a concise
+                    summary. Do not force an “outweigh” thesis when the prompt
+                    has not asked for one.</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Model thesis and topic sentences</h5>
+                  <p><strong>Thesis:</strong> “Overall, the advantages of a
+                    youthful population outweigh its disadvantages because a
+                    large working-age group can stimulate productivity and
+                    innovation, provided that governments invest in skills and
+                    employment.”</p>
+                  <p><strong>Body 1:</strong> “One disadvantage of a youth-heavy
+                    population is that some sectors may lack experienced
+                    professionals and leaders.”</p>
+                  <p><strong>Body 2:</strong> “Nevertheless, a large younger
+                    workforce can produce greater long-term gains through
+                    innovation, entrepreneurship and economic activity.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>You answered the exact
+                      question form.</li><li>Both sides contain explained
+                      points, not a bare list.</li><li>For “outweigh,” your
+                      comparison is explicit and reasoned.</li><li>The body
+                      paragraphs do not contradict the thesis.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> writing one
+                    paragraph about each side but never explaining which is more
+                    important when the task explicitly asks “outweigh.”</p>
+                </div>
+              </div></div>
+          </details>
+
+          <details class="guide-type" id="type-positive">
+            <summary><span>04 · Positive / Negative Development</span><span
+                class="badge t-posneg">Evaluate an overall
+                trend</span></summary>
+            <div class="guide-content"><div class="guide-grid">
+                <div class="guide-box">
+                  <h5>How to recognise and analyse it</h5>
+                  <p>Typical wording: <em>“Do you think this is a positive or
+                      negative development?”</em> You must evaluate the trend as
+                    a whole. It is sensible to acknowledge both benefits and
+                    risks, but the reader must be able to identify whether you
+                    consider the development positive, negative, or mainly one
+                    with some qualification.</p>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“Nowadays, a growing number of people
+                    with health problems are trying alternative medicines and
+                    treatments instead of visiting their usual doctor. Do you
+                    think this is a positive or a negative development?”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Do not confuse it with a simple list</h5>
+                  <p>The question asks for an evaluation, not merely a
+                    catalogue. Decide which effects matter most. Your reasoning
+                    should explain the scale, likelihood, duration or importance
+                    of the effects. If you choose “mostly negative,” the main
+                    argument should support that overall verdict even if you
+                    recognise a benefit.</p>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full structure</h5>
+                  <ol><li><strong>Introduction:</strong> paraphrase the trend
+                      and clearly label it positive, negative or mostly one of
+                      the two.</li><li><strong>Body 1 — qualification or
+                        secondary side:</strong> explain a genuine benefit or a
+                      less serious concern; do not exaggerate it just to show
+                      balance.</li><li><strong>Body 2 — main
+                        evaluation:</strong> develop the more consequential
+                      effects that determine your verdict. Explain why these
+                      effects carry more
+                      weight.</li><li><strong>Conclusion:</strong> restate your
+                      overall evaluation and the main reason for it.</li></ol>
+                  <span class="guide-formula">Introduction: describe trend +
+                    overall evaluation → Body 1: relevant secondary effects →
+                    Body 2: dominant effects that justify the evaluation →
+                    Conclusion: final positive/negative judgement.</span>
+                </div>
+                <div class="guide-box">
+                  <h5>Model thesis and topic sentences</h5>
+                  <p><strong>Thesis (largely negative):</strong> “Although some
+                    people are attracted to alternative treatments, I regard
+                    replacing a regular doctor with unverified remedies as a
+                    largely negative development because it may delay
+                    appropriate care and expose patients to inadequately tested
+                    products.”</p>
+                  <p><strong>Body 1:</strong> “Supporters may value alternative
+                    treatments because some offer comfort or are perceived as
+                    more natural.”</p>
+                  <p><strong>Body 2:</strong> “However, the more serious concern
+                    is that relying on treatments without reliable evidence can
+                    delay diagnosis and effective medical care.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>Your overall judgement is
+                      unmistakable.</li><li>You explain the significance of the
+                      effects.</li><li>Acknowledging the other side does not
+                      make your stance vague.</li><li>The conclusion matches the
+                      judgement developed in the body.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> “There are
+                    advantages and disadvantages” without deciding whether the
+                    development is positive or negative overall.</p>
+                </div>
+              </div></div>
+          </details>
+
+          <details class="guide-type" id="type-problem">
+            <summary><span>05 · Problem / Solution (including causes and
+                measures)</span><span class="badge t-probsol">Match solutions to
+                problems</span></summary>
+            <div class="guide-content"><div class="guide-grid">
+                <div class="guide-box">
+                  <h5>Analyse each verb in the prompt</h5>
+                  <p>Prompts may ask for <em>problems and solutions</em>,
+                    <em>causes and solutions</em>, or <em>reasons and
+                      measures</em>. These are related but not interchangeable.
+                    If asked “why?”, explain causes. If asked “what problems?”,
+                    explain harmful consequences. If asked “what can be done?”,
+                    propose feasible actions.</p>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“In spite of the advances made in
+                    agriculture, many people around the world still go hungry.
+                    Why is this the case? What can be done about this
+                    problem?”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Build a cause → solution chain</h5>
+                  <p>Plan a clear relationship between each issue and the
+                    response to it. For example: disrupted food distribution →
+                    protect supply routes and storage; climate-related crop
+                    losses → invest in resilient farming and early-warning
+                    systems. Avoid listing general wishes such as “governments
+                    should do more” without explaining what they should do and
+                    how it would help.</p>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full paragraph-by-paragraph structure</h5>
+                  <ol><li><strong>Introduction:</strong> paraphrase the
+                      situation and signal that you will address the
+                      causes/problems and the requested
+                      remedies.</li><li><strong>Body 1 — causes or
+                        problems:</strong> identify one or two main points;
+                      explain the mechanism behind each and its consequence; use
+                      a relevant example where helpful.</li><li><strong>Body 2 —
+                        solutions:</strong> propose practical actions that
+                      correspond directly to the causes/problems; identify who
+                      should act and explain the expected
+                      result.</li><li><strong>Conclusion:</strong> summarise the
+                      key causes/problems and the most relevant measures without
+                      adding an entirely new solution.</li></ol>
+                  <span class="guide-formula">Introduction: define the issue +
+                    roadmap → Body 1: answer “why/what problems?” → Body 2:
+                    answer “what can be done?” with linked, feasible measures →
+                    Conclusion: summarise.</span>
+                </div>
+                <div class="guide-box">
+                  <h5>Model topic sentences</h5>
+                  <p><strong>Body 1:</strong> “Hunger persists not simply
+                    because of limited food production, but also because
+                    conflict and climate-related disasters disrupt access to
+                    food.”</p>
+                  <p><strong>Body 2:</strong> “Governments and international
+                    organisations can reduce these risks by protecting
+                    food-distribution networks and supporting climate-resilient
+                    agriculture.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>Every question in the prompt
+                      is answered.</li><li>Causes are not confused with
+                      consequences.</li><li>Solutions directly address the
+                      stated causes/problems.</li><li>Each proposed action has a
+                      plausible explanation of how it would work.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> giving
+                    several possible solutions but not explaining who would
+                    implement them or how they address the causes described.</p>
+                </div>
+              </div></div>
+          </details>
+
+          <details class="guide-type" id="type-two-part">
+            <summary><span>06 · Two-Part Question (Direct questions)</span><span
+                class="badge t-twopart">Answer every question
+                mark</span></summary>
+            <div class="guide-content"><div class="guide-grid">
+                <div class="guide-box">
+                  <h5>How to recognise and analyse it</h5>
+                  <p>The prompt asks two direct questions, often about different
+                    aspects of the same topic. There may be no familiar phrase
+                    like “discuss both views.” Write a short answer to each
+                    question in your plan. Do not assume the second question
+                    always asks for an opinion; it may ask about effects,
+                    solutions, reasons or a judgement.</p>
+                  <div class="guide-example"><strong
+                      class="text-amber-200">Example from this question
+                      bank:</strong><br>“Nowadays many people choose to be
+                    self-employed, rather than to work for a company or
+                    organisation. Why might this be the case? What could be the
+                    disadvantages of being self-employed?”</div>
+                </div>
+                <div class="guide-box">
+                  <h5>Allocate paragraphs to the questions</h5>
+                  <p>If the two questions are “why?” and “what disadvantages?”,
+                    Body 1 should answer the reasons and Body 2 should answer
+                    the disadvantages. If the second question asks whether
+                    something is positive or negative, Body 2 must evaluate that
+                    instead. The structure follows the actual sub-questions, not
+                    a memorised type label.</p>
+                </div>
+                <div class="guide-box full">
+                  <h5>Full paragraph-by-paragraph structure</h5>
+                  <ol><li><strong>Introduction:</strong> paraphrase the context
+                      and briefly signpost your answers to both questions. A
+                      concise position or preview is usually
+                      enough.</li><li><strong>Body 1 — Question 1:</strong>
+                      answer the first question directly in the topic sentence;
+                      develop the most important reason or point with
+                      explanation and example.</li><li><strong>Body 2 — Question
+                        2:</strong> answer the second question directly; develop
+                      a distinct point and its consequences. If a question has
+                      several sub-parts, ensure each is explicitly
+                      covered.</li><li><strong>Conclusion:</strong> briefly
+                      synthesise the two answers. Do not introduce a third
+                      answer or repeat the entire essay.</li></ol>
+                  <span class="guide-formula">Introduction: context + brief
+                    answers/roadmap → Body 1: direct answer to Question 1 → Body
+                    2: direct answer to Question 2 → Conclusion: concise
+                    synthesis of both answers.</span>
+                </div>
+                <div class="guide-box">
+                  <h5>Model thesis and topic sentences</h5>
+                  <p><strong>Thesis:</strong> “People are often drawn to
+                    self-employment because it offers greater flexibility and
+                    independence; however, it can leave them with unstable
+                    income and fewer employment benefits.”</p>
+                  <p><strong>Body 1:</strong> “The main reason many people
+                    become self-employed is the greater control they gain over
+                    their schedules and projects.”</p>
+                  <p><strong>Body 2:</strong> “Despite this freedom,
+                    self-employed workers may face financial uncertainty and
+                    must arrange benefits that an employer would normally
+                    provide.”</p>
+                </div>
+                <div class="guide-box">
+                  <h5>Band 7+ Task Response check</h5>
+                  <ul class="guide-list-check"><li>Each question has a visible,
+                      direct answer.</li><li>Neither answer receives only a
+                      passing sentence while the other dominates.</li><li>Each
+                      main answer is developed and supported.</li><li>The body
+                      paragraphs clearly correspond to the planned
+                      answers.</li></ul>
+                  <p class="mt-2"><strong>Common problem:</strong> writing an
+                    introduction that paraphrases the topic and then discussing
+                    it generally, while leaving one of the direct questions
+                    unanswered.</p>
+                </div>
+              </div></div>
+          </details>
+        </section>
+
+        <!-- ================= BAND DESCRIPTORS ================= -->
+        <section id="band-descriptors" class="mt-14 scroll-mt-28">
+          <div class="mb-5">
+            <p class="guide-kicker">How examiners assess the essay</p>
+            <h3
+              class="text-2xl md:text-3xl font-extrabold text-white mb-2">IELTS
+              Writing Task 2 Band Descriptors: practical breakdown</h3>
+            <p class="section-sub">The four criteria apply to all six essay
+              types. Structure helps you answer the task, but a structure by
+              itself does not earn a band score.</p>
+          </div>
+          <div class="guide-intro">
+            <p class="font-extrabold text-teal-200 mb-2">Four equally weighted
+              Task 2 criteria</p>
+            <p><strong class="text-white">Task Response (TR):</strong> did you
+              answer every part, maintain a clear position where required, and
+              develop relevant ideas? <strong class="text-white">Coherence &amp;
+                Cohesion (CC):</strong> can the reader follow the logical
+              progression, paragraphing and links between ideas? <strong
+                class="text-white">Lexical Resource (LR):</strong> is vocabulary
+              sufficiently varied, accurate and appropriate? <strong
+                class="text-white">Grammatical Range &amp; Accuracy
+                (GRA):</strong> do you use a range of sentence structures
+              accurately, with well-controlled grammar and punctuation?</p>
+            <p>The official IELTS guidance says the four criteria are weighted
+              equally for each task and that Task 2 carries more weight than
+              Task 1 in the overall Writing score. These are paraphrased study
+              notes, not a replacement for the full official descriptors.</p>
+          </div>
+
+          <div class="descriptor-wrap" role="region"
+            aria-label="Band descriptors comparison table" tabindex="0">
+            <table class="descriptor-table">
+              <thead><tr><th style="width:70px">Band</th><th>Task Response
+                    (TR)</th><th>Coherence &amp; Cohesion (CC)</th><th>Lexical
+                    Resource (LR)</th><th>Grammatical Range &amp; Accuracy
+                    (GRA)</th></tr></thead>
+              <tbody>
+                <tr><td><span class="band-label">5</span></td><td>Some task
+                    elements are missed or insufficiently answered. The position
+                    may be unclear or underdeveloped; ideas are limited,
+                    repetitive or weakly supported.</td><td>Some organisation is
+                    visible, but progression may be uneven. Links can be
+                    mechanical or inaccurate; paragraphing may be weak or
+                    absent.</td><td>Vocabulary range is limited and repetitive.
+                    Word choice, spelling or word formation errors may sometimes
+                    make the message difficult to follow.</td><td>Sentence
+                    patterns are limited and repetitive. Complex sentences are
+                    often faulty; frequent grammar or punctuation errors can
+                    make reading harder.</td></tr>
+                <tr><td><span class="band-label">6</span></td><td>Main parts are
+                    addressed, but coverage may be uneven. A position is
+                    relevant, though the conclusion or some main ideas may be
+                    unclear, weakly developed or inadequately
+                    supported.</td><td>There is a generally clear progression,
+                    but connections may feel mechanical. Reference, substitution
+                    or paragraph focus may be inconsistent.</td><td>Vocabulary
+                    is generally adequate for the topic, but range and precision
+                    are limited. Some word-choice or spelling errors occur
+                    without usually blocking meaning.</td><td>Simple and complex
+                    forms are mixed, but flexibility is limited. Complex
+                    structures are less controlled than simple ones; errors
+                    rarely prevent understanding.</td></tr>
+                <tr><td><span class="band-label">7</span></td><td>All main parts
+                    are addressed appropriately and a clear position is
+                    developed. Ideas are extended and supported, though some
+                    explanation may be broad, imprecise or not fully
+                    focused.</td><td>Ideas are logically ordered and progress
+                    clearly. Cohesive devices are used with some flexibility,
+                    although occasional overuse, underuse or awkward links
+                    occur; paragraphing is generally effective.</td><td>Range is
+                    sufficient for flexibility and precision, with some less
+                    common vocabulary. Style and collocation awareness is
+                    visible, although a few inappropriate choices or spelling
+                    errors remain.</td><td>A variety of complex structures is
+                    used with some flexibility and accuracy. Error-free
+                    sentences are frequent; occasional grammar errors do not
+                    impede communication.</td></tr>
+                <tr><td><span class="band-label">8</span></td><td>The prompt is
+                    addressed sufficiently and appropriately. Position is clear
+                    and well developed; ideas are relevant, well extended and
+                    supported, with only occasional omissions or
+                    lapses.</td><td>The response is easy to follow, with logical
+                    sequencing and well-managed cohesion. Paragraphs are
+                    appropriate; only occasional lapses disturb the
+                    flow.</td><td>A wide vocabulary resource is used flexibly
+                    and precisely. Less common or idiomatic items are handled
+                    skilfully when suitable; occasional inaccuracies have little
+                    impact.</td><td>A wide range of structures is used flexibly
+                    and accurately. Most sentences are error-free; occasional
+                    non-systematic errors have minimal effect on
+                    communication.</td></tr>
+                <tr><td><span class="band-label">9</span></td><td>The task is
+                    addressed in depth. The position directly answers the
+                    question, and ideas are fully extended and well supported;
+                    content lapses are extremely rare.</td><td>The message is
+                    effortless to follow. Cohesion is natural rather than
+                    noticeable, and paragraphing is skilfully controlled with
+                    minimal lapses.</td><td>Vocabulary is wide, precise, natural
+                    and consistently appropriate. Sophisticated control is
+                    evident; minor spelling or word-formation slips are
+                    extremely rare.</td><td>A wide range of structures is
+                    controlled with great flexibility. Grammar and punctuation
+                    are consistently appropriate; errors are extremely
+                    rare.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="guide-grid mt-4">
+            <div class="guide-box">
+              <h5>1 · Task Response — the first priority</h5>
+              <p>Before submitting, mark every instruction in the question and
+                find the sentence or paragraph that answers it. For opinion
+                tasks, locate your position. For “discuss both views,” locate
+                both views and your own opinion. For “outweigh,” locate the
+                comparison. For two-part prompts, locate both answers. A
+                polished essay that misses one task requirement can still lose
+                marks.</p>
+            </div>
+            <div class="guide-box">
+              <h5>2 · Coherence &amp; Cohesion — reader journey</h5>
+              <p>Each paragraph should have one controlling idea. A topic
+                sentence introduces that idea; the following sentences explain
+                and support it. Use linking words only when they express a real
+                relationship. Pronouns and phrases such as “this policy” or
+                “such an approach” should clearly refer to an idea already
+                mentioned.</p>
+            </div>
+            <div class="guide-box">
+              <h5>3 · Lexical Resource — precise, natural wording</h5>
+              <p>Choose words for meaning, not for impressiveness. Use
+                collocations naturally (for example, “reduce emissions,” “pose a
+                risk,” “allocate funding,” and “address a problem”). Repeated or
+                inaccurately used advanced words do not outperform accurate,
+                topic-appropriate language. Avoid memorised phrases that do not
+                fit the question.</p>
+            </div>
+            <div class="guide-box">
+              <h5>4 · Grammatical Range &amp; Accuracy — controlled variety</h5>
+              <p>Combine accurate simple sentences with well-controlled complex
+                forms, such as subordinate clauses, relative clauses and
+                conditionals. Check subject–verb agreement, articles, plural
+                endings, verb forms, sentence boundaries and punctuation. Do not
+                create complex sentences merely to demonstrate complexity if the
+                grammar becomes unreliable.</p>
+            </div>
+          </div>
+
+          <div class="guide-note">
+            <p class="font-extrabold text-white mb-2">How the six question types
+              affect the criteria</p>
+            <p><strong class="text-teal-200">Task Response varies most by
+                type:</strong> each type has different required content. <strong
+                class="text-teal-200">CC, LR and GRA do not change by
+                type:</strong> the same criteria apply to every essay, so
+              logical organisation, suitable vocabulary, and accurate
+              grammatical variety matter throughout.</p>
+            <div class="descriptor-wrap mt-3">
+              <table class="descriptor-table" style="min-width:680px">
+                <thead><tr><th>Question type</th><th>Task Response requirement
+                      that must be visible</th><th>A common task-response
+                      weakness</th></tr></thead>
+                <tbody>
+                  <tr><td>Agree / Disagree</td><td>Clear degree of agreement and
+                      reasons that support it.</td><td>Two-sided discussion with
+                      no clear answer to “how far?”</td></tr>
+                  <tr><td>Discuss Both Views</td><td>Both viewpoints explained
+                      and the writer’s opinion stated.</td><td>One view is
+                      omitted or the writer’s own view is missing.</td></tr>
+                  <tr><td>Advantages / Disadvantages</td><td>Both sides
+                      developed; explicit weighing when the prompt asks
+                      “outweigh.”</td><td>Lists points but does not compare
+                      their importance.</td></tr>
+                  <tr><td>Positive / Negative</td><td>Clear overall evaluation
+                      of the development with reasons.</td><td>Mentions pros and
+                      cons but avoids an overall judgement.</td></tr>
+                  <tr><td>Problem / Solution</td><td>Answers the exact
+                      problem/cause question and offers relevant, linked
+                      measures.</td><td>Solutions are vague or do not address
+                      the stated cause/problem.</td></tr>
+                  <tr><td>Two-Part Question</td><td>Direct, developed answers to
+                      each separate question.</td><td>One question gets a full
+                      answer while the other is only touched on.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="guide-note">
+            <p class="font-extrabold text-white mb-2">A body paragraph that
+              develops an idea</p>
+            <p><strong class="text-teal-200">Claim → Explain → Example → Link
+                (CEEL):</strong> state one answer or reason; explain why/how it
+              is true; illustrate it with a specific and relevant example; then
+              connect its result back to the question or your position. This is
+              a planning aid, not a compulsory formula. Some paragraphs need
+              more explanation and less example, provided the main idea is fully
+              developed.</p>
+            <div class="guide-example"><strong class="text-amber-200">Weak
+                development:</strong> “Railways are good for the environment.
+              They are very useful. For example, many people use
+              them.”<br><br><strong class="text-teal-200">Stronger
+                development:</strong> “Railways can reduce the environmental
+              cost of transport because a single train can carry many passengers
+              in one journey. When more commuters use trains instead of separate
+              cars, fewer vehicles may be needed on busy roads, lowering fuel
+              use and congestion. For instance, a city that improves commuter
+              rail services may give workers a practical alternative to driving
+              every day. This makes rail investment a useful part of a broader
+              emissions-reduction strategy.”</div>
+          </div>
+
+          <div class="guide-note">
+            <p class="font-extrabold text-white mb-2">Final 60-second
+              checklist</p>
+            <ul class="guide-list-check"><li>I answered every command and every
+                sub-question.</li><li>My position is explicit wherever the task
+                requires one.</li><li>Every body paragraph develops one central
+                claim.</li><li>My explanation makes the logic of each claim
+                clear.</li><li>Examples are relevant and linked to the
+                point.</li><li>Paragraphs progress logically; linkers are not
+                mechanically repeated.</li><li>My vocabulary is accurate and
+                natural, not merely complicated.</li><li>I checked articles,
+                verb forms, agreement, plural endings and punctuation.</li><li>I
+                wrote at least 250 words and left time to proofread.</li></ul>
+          </div>
+
+          <p class="guide-source mt-4">Official reference points: <a
+              href="https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing"
+              target="_blank" rel="noopener">IELTS Writing test format and
+              assessment criteria</a> · <a
+              href="https://ielts.org/take-a-test/preparation-resources/writing-test-resources"
+              target="_blank" rel="noopener">IELTS Writing preparation
+              resources</a> · <a
+              href="https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf"
+              target="_blank" rel="noopener">Official IELTS Writing Band
+              Descriptors PDF (updated May 2023; check IELTS.org for
+              updates)</a>. The table above summarises the descriptors in
+            original study-guide wording; consult the official document for the
+            complete wording and all bands.</p>
+        </section>
+
         <div
           class="mt-7 rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-500/5 to-cyan-500/5 px-6 py-5 flex gap-3">
           <span class="text-2xl shrink-0">💡</span>
@@ -1072,18 +1903,23 @@
             <p class="font-extrabold text-teal-300 text-sm mb-1.5 m-0">Universal
               Task 2 principles</p>
             <ul class="text-sm text-slate-300 m-0 pl-4 list-disc space-y-1">
-              <li><strong class="text-teal-300">Word count:</strong> aim for
-                260–290 words — enough to develop ideas without rambling.</li>
-              <li><strong class="text-teal-300">Paragraphing:</strong> always 4
-                paragraphs (intro, 2 body, conclusion).</li>
+              <li><strong class="text-teal-300">Word count:</strong> write at
+                least 250 words. Around 270–310 can be a practical target, but
+                relevance and development matter more than a fixed number.</li>
+              <li><strong class="text-teal-300">Paragraphing:</strong> use a
+                clear introduction, logically developed body paragraphs and a
+                conclusion. Four paragraphs often work; use another body
+                paragraph when the argument genuinely needs it.</li>
               <li><strong class="text-teal-300">Position:</strong> state and
                 maintain a clear opinion throughout — do not sit on the fence
                 unless the question allows it.</li>
-              <li><strong class="text-teal-300">Cohesion:</strong> use a range
-                of linkers (<em>Furthermore, However, Consequently, By
-                  contrast</em>) but avoid mechanical overuse.</li>
-              <li><strong class="text-teal-300">Examples:</strong> one specific
-                example per body paragraph is better than three vague ones.</li>
+              <li><strong class="text-teal-300">Cohesion:</strong> organise
+                ideas logically and use linkers, reference and substitution
+                naturally. Do not add a transition word to every sentence.</li>
+              <li><strong class="text-teal-300">Development:</strong> explain
+                why or how each point supports your answer. A relevant example
+                can help, but an example is not compulsory in every paragraph if
+                the idea is already well developed.</li>
             </ul>
           </div>
         </div>
@@ -1092,9 +1928,9 @@
       <div class="footer-note">
         <p class="font-extrabold text-white text-base m-0">✍️ IELTS Writing Task
           2 · Cambridge 11–21 · Dark Edition</p>
-        <p class="text-sm mt-1.5 m-0 text-slate-300">44 model essays ·
-          topic-sentence options · key vocabulary · filterable by book &amp;
-          type · 40-minute practice timer</p>
+        <p class="text-sm mt-1.5 m-0 text-slate-300">Cambridge 11–21 question
+          bank · model essays · detailed six-type guide · Band 5–9 descriptor
+          breakdown · 40-minute practice timer</p>
         <p class="text-xs text-slate-500 mt-2.5 m-0">Built for personal study ·
           HTML &amp; Tailwind CSS</p>
       </div>
