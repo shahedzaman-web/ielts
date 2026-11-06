@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Multi-tasking and the Brain — IELTS Reading Practice</title>
+        <style>
+:root{
+  --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
+  --good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;
+  --header-h:56px;--bottom-h:236px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
+button{font-family:inherit;cursor:pointer;border:none}
+/* HEADER */
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-right{display:flex;align-items:center;gap:10px}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}
+.band-chip.show{opacity:1;background:var(--good)}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+.timer-chip.warning{background:#b45309}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.icon-btn:hover{background:#f1f5f9}
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+/* SPLIT */
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pane{overflow-y:auto;padding:24px 30px}
+.passages{flex:0 0 50%;background:#fcfdff}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}
+.resizer:hover{background:#cbd5e1}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.passage .subtitle{color:var(--muted);font-style:italic;margin:0 0 14px}
+.par-label{display:inline-block;font-weight:700;color:var(--accent);margin-right:6px;font-size:15px}
+.passage p{margin:0 0 14px}
+.passage em{color:var(--muted)}
+.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+/* QUESTIONS */
+.q-section{display:block}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
+.q-group:last-child{border-bottom:none;margin-bottom:0}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}
+.q-instr p{margin:0 0 3px}
+.q-instr p:last-child{margin:0}
+.q-instr strong{color:var(--text)}
+/* HEADING LIST */
+.heading-list{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+.heading-list .hl-title{font-weight:700;font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.heading-list ol{margin:0;padding-left:22px}
+.heading-list li{padding:2px 0}
+/* HEADINGS MATRIX (Q14-19) */
+.headings-matrix{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;margin-bottom:4px}
+.headings-matrix th,.headings-matrix td{border:1px solid var(--line);padding:6px 2px;text-align:center;vertical-align:middle}
+.headings-matrix thead th{background:#f8fafc;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:6px 2px}
+.headings-matrix thead th:first-child{text-align:left;padding-left:8px}
+.headings-matrix td.sec-cell{text-align:left;font-weight:600;width:20%;padding-left:8px;white-space:nowrap}
+.headings-matrix td.radio-cell{cursor:pointer;padding:4px 2px}
+.headings-matrix td.radio-cell label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;cursor:pointer;margin:0}
+.headings-matrix input[type=radio]{width:16px;height:16px;cursor:pointer;accent-color:var(--accent);margin:0}
+.headings-matrix tr.correct td{background:var(--good-soft)}
+.headings-matrix tr.wrong td{background:var(--bad-soft)}
+.headings-matrix tr.correct td.sec-cell{color:var(--good);font-weight:700}
+.headings-matrix tr.wrong td.sec-cell{color:var(--bad);font-weight:700}
+.headings-matrix tr.correct td.sec-cell::after{content:" ✓"}
+.headings-matrix tr.wrong td.sec-cell::after{content:" ✗"}
+.headings-matrix td.selected-correct{outline:2px solid var(--good);outline-offset:-2px}
+.headings-matrix td.selected-wrong{outline:2px solid var(--bad);outline-offset:-2px}
+.headings-feedback{display:none;margin-top:10px;font-size:12.5px;flex-direction:column;gap:6px}
+.graded .headings-feedback{display:flex}
+.hf-item{background:#f8fafc;border-left:3px solid var(--line);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45}
+.hf-item.ok{border-left-color:var(--good);background:rgba(220,252,231,.6)}
+.hf-item.no{border-left-color:var(--bad);background:rgba(254,226,226,.6)}
+.hf-item .hf-status{font-weight:700;margin-right:6px}
+.hf-item.ok .hf-status{color:var(--good)}
+.hf-item.no .hf-status{color:var(--bad)}
+.hf-item .hf-ev{display:block;margin-top:3px;color:#475569;font-size:11.5px}
+.hf-item .hf-ev em{font-style:italic;color:var(--text)}
+/* MATCH ROW (Q20-23) */
+.match-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
+.match-row:last-child{border-bottom:none}
+.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+.match-statement{flex:1;min-width:220px}
+.match-options{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;padding:4px 0 0}
+.letter-opt{display:inline-flex;align-items:center;justify-content:center;width:34px;height:30px;font-size:13px;font-weight:700;cursor:pointer;border-radius:6px;border:1px solid #dfe5ee;background:#f8fafc;transition:.12s;color:#334155}
+.letter-opt:hover{background:#eef2f7;border-color:#cbd5e1}
+.letter-opt input{display:none}
+.letter-opt.checked{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.18)}
+.match-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.match-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.match-row.correct .match-statement{background:rgba(220,252,231,.35)}
+.match-row.wrong .match-statement{background:rgba(254,226,226,.35)}
+.match-row.correct .letter-opt.checked{background:var(--good);border-color:var(--good)}
+.match-row.wrong .letter-opt.checked{background:var(--bad);border-color:var(--bad)}
+/* SUMMARY BLOCK */
+.summary-block{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:14.5px;line-height:2.1}
+.summary-block .q-badge{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:11px;font-weight:700;margin-right:3px;vertical-align:middle}
+input.gap{display:inline-block;width:160px;height:28px;margin:2px 4px;padding:2px 8px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font:inherit;font-size:14px;vertical-align:middle}
+input.gap:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
+input.gap.correct{border-color:var(--good);background:var(--good-soft)}
+input.gap.wrong{border-color:var(--bad);background:var(--bad-soft)}
+/* FEEDBACK */
+.feedback{font-size:12px;margin-top:4px;display:none;font-weight:600;flex-basis:100%}
+.graded .feedback{display:block}
+.feedback.no{color:var(--bad)}
+.feedback.ok{color:var(--good)}
+/* EVIDENCE */
+.evidence-line{
+  display:none;font-size:12px;margin-top:5px;color:#475569;
+  background:#f8fafc;border-left:3px solid var(--accent);
+  padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45;
+  flex-basis:100%;
+}
+.graded .evidence-line{display:block}
+.evidence-line .lbl{display:inline-block;margin-right:4px;font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.evidence-line em{color:var(--text);font-style:italic}
+mark.evidence-mark{background:#dcfce7;outline:2px solid #16a34a;border-radius:3px;padding:1px 3px;cursor:pointer;transition:background .15s;position:relative}
+mark.evidence-mark:hover{background:#bbf7d0}
+mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
+mark.evidence-mark.flash{animation:evflash 1.4s ease}
+@keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+/* HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
+/* BOTTOM */
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
+.bottom-inner{max-width:1600px;margin:0 auto}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.9}
+.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}
+.palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}
+.palette-section{display:flex;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}
+.palette-label{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}
+.palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}
+.palette-item:hover{background:#e2e8f0}
+.palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+.palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22)}
+.palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}
+.nav-buttons{display:flex;gap:6px;flex:0 0 auto}
+.nav-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav-buttons button:hover:not(:disabled){background:#f1f5f9}
+.nav-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.test-buttons{display:flex;gap:10px;align-items:center}
+.review-btn{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600}
+.review-btn:hover{background:#f1f5f9}
+.submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
+.submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.overlay-head h3{margin:0;font-size:18px}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.close-x:hover{color:var(--text)}
+.overlay-body{padding:18px 22px;overflow-y:auto}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px}
+table.result-tbl td.correct{color:var(--good);font-weight:700}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700}
+table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:italic}
+table.result-tbl tbody tr{cursor:pointer;transition:background .12s}
+table.result-tbl tbody tr:hover{background:#f8fafc}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+/* FOCUS / FULLSCREEN */
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}
+body.focus-mode{padding-bottom:0}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}
+body.focus-mode .exit-focus{display:block}
+/* FULLSCREEN FIX */
+body.fullscreen-active{overflow:hidden}
+body.fullscreen-active .main-split{
+  height:calc(100vh - var(--header-h) - var(--bottom-h));
+  min-height:0;
+  max-width:none;
+  margin:0;
+  border-radius:0;
+  border:none;
+}
+/* TOAST */
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+</style>
+    </head>
+    <body>
+
+        <header class="app-header">
+            <h1>Multi-tasking and the Brain — IELTS Reading</h1>
+            <div class="header-right">
+                <button class="icon-btn" id="fullscreenBtn">⛶
+                    Fullscreen</button>
+                <button class="icon-btn" id="focusBtn">🎯 Focus</button>
+                <div class="band-chip" id="bandChip">--</div>
+                <div class="timer-chip" id="timerChip">⏱ <strong
+                        id="timer">20:00</strong></div>
+                <div class="menu-wrap">
+                    <button class="icon-btn" id="menuBtn">☰</button>
+                    <div class="menu-pop" id="menuPop">
+                        <a href="#" id="exportLink">📄 Export as PDF</a>
+                        <a href="#" id="clearHighlightsLink">🧹 Clear All
+                            Highlights</a>
+                        <a href="#" id="resetLink">↺ Reset Test</a>
+                        <a href="#" id="gotoTop">↑ Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+        <div id="hl-popup">
+            <button id="hl-highlight">🖍 Highlight</button>
+            <button id="hl-dehighlight">🧽 Clear</button>
+            <button id="hl-note">📝 Note</button>
+        </div>
+
+        <div id="note-popup">
+            <div class="np-card">
+                <h4>Add a note</h4>
+                <textarea id="note-text"
+                    placeholder="Write your note about this text..."></textarea>
+                <div class="np-actions">
+                    <button type="button" class="np-cancel"
+                        id="note-cancel">Cancel</button>
+                    <button type="button" class="np-save" id="note-save">Save
+                        Note</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-split" id="mainSplit">
+            <!-- PASSAGE -->
+            <div class="pane passages" id="passagesPane">
+                <div class="passage">
+                    <span class="part-label">Reading Passage 2</span>
+                    <h2>Multi-tasking and the Brain</h2>
+                    <p><em>You should spend about 20 minutes on Questions
+                            14–26, which are based on the reading passage
+                            below.</em></p>
+
+                    <p><span class="par-label">A</span>Do you think you're a
+                        master of multi-tasking? Think again. Unless you are
+                        one of the three percent of super-taskers in the
+                        population, research shows that your brain isn't
+                        capable of paying close attention to more than one
+                        complex task at a time. Researchers who study attention
+                        say that effective multi-tasking is beyond most of us.
+                        Psychiatrist Edward M Hallowell even describes
+                        multi-tasking as 'a mythical activity in which people
+                        believe they can perform two or more tasks
+                        simultaneously as effectively as they can perform
+                        one'.</p>
+
+                    <p><span class="par-label">B</span>It is true that you can
+                        check your email while eating your lunch, or listen to
+                        music while walking. But innate activities like walking,
+                        chewing, and breathing do not require you to pay
+                        attention, whereas activities such as reading, tapping
+                        out a text message, or driving a car do require
+                        attention. Why is paying attention to two things at once
+                        difficult? 'The brain can perform simultaneous tasks,
+                        but attention has capacity limitations,' says Associate
+                        Professor Paul E Dux, a cognitive neuroscientist at the
+                        University of Queensland in Australia. When you do only
+                        one thing at a time, you're better at that task than
+                        when you're doing multiple things concurrently.</p>
+
+                    <p>Take the classic multi-tasking scenario of talking on a
+                        mobile phone while driving – an ill-advised activity
+                        that many people believe they have mastered. When David
+                        Strayer, Professor of Psychology at the University of
+                        Utah in the US, and his team observed 56,000 drivers as
+                        they approached an intersection, the majority of drivers
+                        who were talking on their phone failed to stop in
+                        accordance with traffic laws. And it did not matter if
+                        the driver was using a handheld or hands-free device.
+                        Even with both eyes on the road and both hands on the
+                        wheel, drivers' performance was impaired. Strayer's
+                        research shows that performance deteriorates drastically
+                        when attention is split between tasks: more mistakes are
+                        made and it takes longer to complete each activity.</p>
+
+                    <p><span class="par-label">C</span>The prefrontal cortex is
+                        the brain region responsible for choosing what to pay
+                        attention to, and for coordinating inputs from other
+                        brain areas. By scanning the prefrontal cortex of people
+                        while they multi-tasked, scientists at the French
+                        Institute of Health and Medical Research in Paris
+                        (INSERM) found that when people focused on a single
+                        thing, the right and left sides of the prefrontal cortex
+                        work together. But when people attempt to perform two
+                        things at once, the sides work independently.
+                        Neuroscientist Etienne Koechlin says his study
+                        demonstrates that while the brain can switch back and
+                        forth between two tasks, we might be in great trouble
+                        when we try to juggle more than two tasks, simply
+                        because we have only two frontal lobes.</p>
+
+                    <p><span class="par-label">D</span>To the question of
+                        whether there is a difference between the sexes,
+                        Koechlin's imaging studies uncovered no differences in
+                        the ability to switch between tasks in the prefrontal
+                        cortices of men or women. But other researchers studying
+                        real life scenarios such as finding lost keys, believe
+                        there might be some truth to the claim that women are
+                        superior multi-taskers. Women have a much better
+                        strategy for finding the keys, whereas men tend to jump
+                        to it and be far less organised and thorough. 'It's as
+                        if they don't stop to reflect and plan for a moment,'
+                        says Professor Keith Laws from the University of
+                        Hertfordshire in England. But while the ability to
+                        develop strategies for coping with the numerous tasks in
+                        everyday life could give women an advantage, 'nobody can
+                        juggle two, never mind three, "complex" tasks at the
+                        same time.'</p>
+
+                    <p><span class="par-label">E</span>However, David Strayer's
+                        research uncovered that some rare people possess
+                        extraordinary multi-tasking ability. These so-called
+                        'super-taskers' exhibit different patterns of brain
+                        activity when multi-tasking compared to ordinary people:
+                        they show less activity in the prefrontal cortex during
+                        multi-tasking, suggesting their brains are functioning
+                        with a high level of efficiency. Strayer thinks that
+                        pilots of high-performance aircraft, high-end chefs who
+                        can cook several meals at the same time to perfection,
+                        and elite doctors in hospital emergency rooms might all
+                        be more likely to be super-taskers. "All other things
+                        being equal, we suspect that super-taskers will rise to
+                        a top position in any occupation that places a high
+                        demand on juggling various tasks that demand attention
+                        at the same time."</p>
+
+                    <p><span class="par-label">F</span>The ability to
+                        multi-task probably comes down to the DNA you inherit
+                        from your parents to a large extent, says Strayer. 'You
+                        are either born with the neural structure that allows
+                        you to overcome the usual multi-tasking challenges, or
+                        you aren't. Super-taskers' brains are doing something we
+                        can't do.' All in all, these findings may have very real
+                        consequences on our lives.</p>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <!-- QUESTIONS -->
+            <div class="pane questions" id="questionsPane">
+                <form id="quiz" onsubmit="return false;">
+                    <section class="q-section">
+                        <!-- Q14-19 HEADINGS MATRIX -->
+                        <div class="q-group">
+                            <h3>Questions 14–19</h3>
+                            <div class="q-instr">
+                                <p>Reading Passage 2 has six sections,
+                                    <strong>A–F</strong>.</p>
+                                <p>Choose the correct heading for each section
+                                    from the list of headings below.</p>
+                                <p>Write the correct number, <strong>i–viii</strong>,
+                                    in boxes 14–19 on your answer sheet.</p>
+                            </div>
+
+                            <div class="heading-list">
+                                <div class="hl-title">List of headings</div>
+                                <ol type="i">
+                                    <li>Professions in which super-taskers are
+                                        likely to be found</li>
+                                    <li>The effects of multi-tasking on
+                                        neurological structure</li>
+                                    <li>A distinction between situations when
+                                        people can and can't multi-task</li>
+                                    <li>Real multi-tasking is nearly
+                                        impossible</li>
+                                    <li>Multi-tasking and gender</li>
+                                    <li>The neurological reasons for
+                                        struggling to manage more things</li>
+                                    <li>The ability to multi-task is
+                                        determined by people's genes</li>
+                                    <li>Gender and the structure of the
+                                        brain</li>
+                                </ol>
+                            </div>
+
+                            <table class="headings-matrix" id="headings-matrix">
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col span="8">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>Section</th>
+                                        <th title="Professions in which super-taskers are likely to be found">i</th>
+                                        <th title="The effects of multi-tasking on neurological structure">ii</th>
+                                        <th title="A distinction between situations when people can and can't multi-task">iii</th>
+                                        <th title="Real multi-tasking is nearly impossible">iv</th>
+                                        <th title="Multi-tasking and gender">v</th>
+                                        <th title="The neurological reasons for struggling to manage more things">vi</th>
+                                        <th title="The ability to multi-task is determined by people's genes">vii</th>
+                                        <th title="Gender and the structure of the brain">viii</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="headings-body"></tbody>
+                            </table>
+                            <div id="headings-feedback" class="headings-feedback"></div>
+                        </div>
+
+                        <!-- Q20-23 MATCHING -->
+                        <div class="q-group">
+                            <h3>Questions 20–23</h3>
+                            <div class="q-instr">
+                                <p>Look at the following statements (Questions
+                                    20–23) and the list of researchers
+                                    below.</p>
+                                <p>Match each statement with the correct
+                                    researcher, <strong>A–E</strong>.</p>
+                                <p>Write the correct letter, <strong>A–E</strong>,
+                                    in boxes 20–23 on your answer sheet.</p>
+                                <p><em>NB You may use any letter more than
+                                        once.</em></p>
+                            </div>
+
+                            <div class="heading-list">
+                                <div class="hl-title">List of Researchers</div>
+                                <ol type="A">
+                                    <li>Edward M Hallowell</li>
+                                    <li>Paul E Dux</li>
+                                    <li>David Strayer</li>
+                                    <li>Etienne Koechlin</li>
+                                    <li>Keith Laws</li>
+                                </ol>
+                            </div>
+
+                            <div id="match-container"></div>
+                        </div>
+
+                        <!-- Q24-26 SUMMARY -->
+                        <div class="q-group">
+                            <h3>Questions 24–26</h3>
+                            <div class="q-instr">
+                                <p>Complete the summary below.</p>
+                                <p>Choose <strong>ONE WORD ONLY</strong> from
+                                    the passage for each answer.</p>
+                                <p>Write your answers in boxes 24–26 on your
+                                    answer sheet.</p>
+                            </div>
+                            <div class="summary-block">
+                                <p style="font-weight:700;margin:0 0 6px;">Super-taskers</p>
+                                <p style="margin:0 0 10px;">Super-taskers are
+                                    those of us who possess special
+                                    multi-tasking ability. They can be found
+                                    in all professions. People who are pilots,
+                                    chefs and doctors are often super-taskers,
+                                    and super-taskers are most likely to
+                                    achieve a <span class="q-badge">24</span><input
+                                        class="gap" type="text" name="q24"
+                                        data-q="24" aria-label="Q24"> that is
+                                    high on the career ladder.</p>
+                                <div class="evidence-line" data-q="24"
+                                    style="margin-bottom:10px;"></div>
+                                <p style="margin:0 0 10px;">Super-taskers
+                                    typically have to undertake many tasks
+                                    simultaneously that need their <span
+                                        class="q-badge">25</span><input
+                                        class="gap" type="text" name="q25"
+                                        data-q="25" aria-label="Q25">.</p>
+                                <div class="evidence-line" data-q="25"
+                                    style="margin-bottom:10px;"></div>
+                                <p style="margin:0;">Genes play an important
+                                    role in having this capability: these
+                                    people have a special brain <span
+                                        class="q-badge">26</span><input
+                                        class="gap" type="text" name="q26"
+                                        data-q="26" aria-label="Q26">, which
+                                    helps them do what we cannot.</p>
+                                <div class="evidence-line" data-q="26"></div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+
+        <!-- BOTTOM PANEL -->
+        <div class="bottom-panel">
+            <div class="bottom-inner">
+                <div class="part-tabs">
+                    <button class="part-tab active">
+                        <span class="tab-part-name">Passage 2</span>
+                        <span class="tab-qcount">Questions 14–26 · Multi-tasking
+                            and the Brain</span>
+                    </button>
+                </div>
+                <div class="palette" id="palette"></div>
+                <div class="bottom-controls">
+                    <div class="nav-buttons">
+                        <button id="prevBtn">←</button>
+                        <button id="nextBtn">→</button>
+                    </div>
+                    <div class="test-buttons">
+                        <button class="review-btn" id="reviewBtn">📋
+                            Review</button>
+                        <button class="submit-btn" id="submitBtn">Submit
+                            ✈</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT OVERLAY -->
+        <div class="overlay" id="resultOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Your Results</h3><button
+                        class="close-x"
+                        data-close="resultOverlay">×</button></div>
+                <div class="overlay-body">
+                    <div class="score-summary">
+                        <div class="big" id="resultScore">0 / 13</div>
+                        <div class="sub" id="resultSub">Score: —</div>
+                    </div>
+                    <div class="legend-row"><span>🟩 Correct</span><span>🟥
+                            Incorrect</span><span>⬜ No answer</span><span>👉
+                            Click a row to jump to evidence</span></div>
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your
+                                    Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
+                        <tbody id="resultBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREVIEW OVERLAY -->
+        <div class="overlay" id="previewOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Review Your Answers</h3><button
+                        class="close-x"
+                        data-close="previewOverlay">×</button></div>
+                <div class="overlay-body">
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const ANSWER_KEY = {
+  14: ["iv"],
+  15: ["iii"],
+  16: ["vi"],
+  17: ["v"],
+  18: ["i"],
+  19: ["vii"],
+  20: ["C"],
+  21: ["C"],
+  22: ["A"],
+  23: ["E"],
+  24: ["position"],
+  25: ["attention"],
+  26: ["structure"]
+};
+
+const HEADING_OPTIONS = [
+  { v: "i",    label: "Professions in which super-taskers are likely to be found" },
+  { v: "ii",   label: "The effects of multi-tasking on neurological structure" },
+  { v: "iii",  label: "A distinction between situations when people can and can't multi-task" },
+  { v: "iv",   label: "Real multi-tasking is nearly impossible" },
+  { v: "v",    label: "Multi-tasking and gender" },
+  { v: "vi",   label: "The neurological reasons for struggling to manage more things" },
+  { v: "vii",  label: "The ability to multi-task is determined by people's genes" },
+  { v: "viii", label: "Gender and the structure of the brain" }
+];
+
+const SECTIONS = [
+  { q: 14, name: "Section A" },
+  { q: 15, name: "Section B" },
+  { q: 16, name: "Section C" },
+  { q: 17, name: "Section D" },
+  { q: 18, name: "Section E" },
+  { q: 19, name: "Section F" }
+];
+
+const MATCH_QUESTIONS = [
+  { q: 20, statement: "The brain of a good multi-tasker works differently from other people's." },
+  { q: 21, statement: "The rate of error is considerably higher when people multi-task." },
+  { q: 22, statement: "People are mistaken in their assumption that they can multi-task." },
+  { q: 23, statement: "One gender does not seem to pause to consider before taking action." }
+];
+
+const RESEARCHERS = [
+  { v: "A", label: "Edward M Hallowell" },
+  { v: "B", label: "Paul E Dux" },
+  { v: "C", label: "David Strayer" },
+  { v: "D", label: "Etienne Koechlin" },
+  { v: "E", label: "Keith Laws" }
+];
+
+const EVIDENCE = {
+  14: {
+    text: "Research shows that your brain isn't capable of paying close attention to more than one complex task at a time",
+    sentence: "Unless you are one of the three percent of super-taskers… research shows that <hl>your brain isn't capable of paying close attention to more than one complex task at a time</hl>… Edward M Hallowell even describes multi-tasking as 'a mythical activity'. → Real multi-tasking is nearly impossible."
+  },
+  15: {
+    text: "innate activities like walking, chewing, and breathing do not require you to pay attention",
+    sentence: "<hl>innate activities like walking, chewing, and breathing do not require you to pay attention</hl>, whereas activities such as reading, tapping out a text message, or driving a car do require attention. → A distinction between situations when people can and can't multi-task."
+  },
+  16: {
+    text: "the right and left sides of the prefrontal cortex work together",
+    sentence: "…when people focused on a single thing, <hl>the right and left sides of the prefrontal cortex work together</hl>. But when people attempt to perform two things at once, the sides work independently. → The neurological reasons for struggling to manage more things."
+  },
+  17: {
+    text: "the claim that women are superior multi-taskers",
+    sentence: "But other researchers studying real life scenarios such as finding lost keys, believe there might be some truth to <hl>the claim that women are superior multi-taskers</hl>. → Multi-tasking and gender."
+  },
+  18: {
+    text: "pilots of high-performance aircraft, high-end chefs",
+    sentence: "Strayer thinks that <hl>pilots of high-performance aircraft, high-end chefs</hl> who can cook several meals at the same time to perfection, and elite doctors in hospital emergency rooms might all be more likely to be super-taskers. → Professions in which super-taskers are likely to be found."
+  },
+  19: {
+    text: "comes down to the DNA you inherit from your parents",
+    sentence: "The ability to multi-task probably <hl>comes down to the DNA you inherit from your parents</hl> to a large extent, says Strayer. → The ability to multi-task is determined by people's genes."
+  },
+  20: {
+    text: "they show less activity in the prefrontal cortex during multi-tasking",
+    sentence: "…'super-taskers' exhibit different patterns of brain activity when multi-tasking compared to ordinary people: <hl>they show less activity in the prefrontal cortex during multi-tasking</hl>. → David Strayer (C)."
+  },
+  21: {
+    text: "more mistakes are made",
+    sentence: "Strayer's research shows that performance deteriorates drastically when attention is split between tasks: <hl>more mistakes are made</hl> and it takes longer to complete each activity. → David Strayer (C)."
+  },
+  22: {
+    text: "a mythical activity in which people believe they can perform two or more tasks simultaneously",
+    sentence: "Edward M Hallowell describes multi-tasking as '<hl>a mythical activity in which people believe they can perform two or more tasks simultaneously</hl> as effectively as they can perform one'. → Edward M Hallowell (A)."
+  },
+  23: {
+    text: "they don't stop to reflect and plan for a moment",
+    sentence: "Keith Laws: 'It's as if <hl>they don't stop to reflect and plan for a moment</hl>.' (describing men). → Keith Laws (E)."
+  },
+  24: {
+    text: "rise to a top position",
+    sentence: "…we suspect that super-taskers will <hl>rise to a top position</hl> in any occupation that places a high demand on juggling various tasks."
+  },
+  25: {
+    text: "demand attention at the same time",
+    sentence: "…occupation that places a high demand on juggling various tasks that <hl>demand attention at the same time</hl>."
+  },
+  26: {
+    text: "born with the neural structure",
+    sentence: "'You are either <hl>born with the neural structure</hl> that allows you to overcome the usual multi-tasking challenges, or you aren't.'"
+  }
+};
+
+const ALL_QUESTIONS = Array.from({ length: 13 }, (_, i) => i + 14); // 14..26
+const TOTAL_QUESTIONS = 13;
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function normalize(s) {
+  return (s || "").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g, "").replace(/\s+/g, " ");
+}
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+/* ============================================================
+   RENDER HEADINGS MATRIX (Q14-19)
+   ============================================================ */
+(function renderHeadings() {
+  const tbody = document.getElementById('headings-body');
+  SECTIONS.forEach(sec => {
+    const tr = document.createElement('tr');
+    tr.className = 'headings-tr';
+    tr.dataset.q = sec.q;
+
+    const tdSec = document.createElement('td');
+    tdSec.className = 'sec-cell';
+    tdSec.innerHTML = `<span class="q-num-badge">${sec.q}</span> ${sec.name}`;
+    tr.appendChild(tdSec);
+
+    HEADING_OPTIONS.forEach(o => {
+      const td = document.createElement('td');
+      td.className = 'radio-cell';
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `q${sec.q}`;
+      input.value = o.v;
+      input.setAttribute('aria-label', `Q${sec.q} ${o.v}`);
+      label.appendChild(input);
+      td.appendChild(label);
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+})();
+
+/* ============================================================
+   RENDER MATCHING (Q20-23)
+   ============================================================ */
+(function renderMatch() {
+  const container = document.getElementById('match-container');
+  MATCH_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'match-row';
+    row.dataset.q = item.q;
+    let html = `<span class="q-num-badge">${item.q}</span>`;
+    html += `<span class="match-statement">${item.statement}</span>`;
+    html += `<div class="match-options">`;
+    RESEARCHERS.forEach(r => {
+      html += `<label class="letter-opt" data-letter="${r.v}" title="${r.label}">
+        <input type="radio" name="q${item.q}" value="${r.v}" aria-label="Q${item.q} ${r.v}">
+        <span>${r.v}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+  container.addEventListener('change', (e) => {
+    if (e.target.type === 'radio') {
+      const row = e.target.closest('.match-row');
+      row.querySelectorAll('.letter-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+  });
+})();
+
+/* ============================================================
+   EVIDENCE HIGHLIGHTING IN PASSAGE
+   ============================================================ */
+function highlightEvidenceInPassage(text, qNum) {
+  if (!text) return;
+  const passagesEl = document.getElementById('passagesPane');
+  if (!passagesEl) return;
+  if (passagesEl.querySelector(`mark.evidence-mark[data-q="${qNum}"]`)) return;
+
+  const walker = document.createTreeWalker(
+    passagesEl,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        if (node.parentElement && node.parentElement.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && node.parentElement.closest('mark.evidence-mark')) return NodeFilter.FILTER_REJECT;
+        return node.textContent.indexOf(text) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    }
+  );
+
+  let targetNode = null;
+  let idx = -1;
+  while ((targetNode = walker.nextNode())) {
+    idx = targetNode.textContent.indexOf(text);
+    if (idx !== -1) break;
+  }
+  if (!targetNode || idx === -1) return;
+
+  try {
+    const range = document.createRange();
+    range.setStart(targetNode, idx);
+    range.setEnd(targetNode, idx + text.length);
+    const mark = document.createElement('mark');
+    mark.className = 'evidence-mark';
+    mark.dataset.q = qNum;
+    mark.title = 'Evidence for Q' + qNum + ' — click to jump';
+    mark.addEventListener('click', () => goToQuestion(qNum));
+    range.surroundContents(mark);
+  } catch (e) {
+    console.warn('Could not highlight evidence Q' + qNum, e);
+  }
+}
+
+function clearEvidenceMarks() {
+  document.querySelectorAll('mark.evidence-mark').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m);
+  });
+}
+
+/* ============================================================
+   PALETTE
+   ============================================================ */
+const palette = document.getElementById('palette');
+const paletteSection = document.createElement('div');
+paletteSection.className = 'palette-section';
+const paletteLabel = document.createElement('strong');
+paletteLabel.className = 'palette-label';
+paletteLabel.textContent = 'Questions:';
+paletteSection.appendChild(paletteLabel);
+ALL_QUESTIONS.forEach(n => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'palette-item';
+  b.dataset.q = n;
+  b.textContent = n;
+  b.addEventListener('click', () => goToQuestion(n));
+  paletteSection.appendChild(b);
+});
+palette.appendChild(paletteSection);
+
+/* ============================================================
+   ANSWER ACCESS
+   ============================================================ */
+function getUserAnswer(n) {
+  const radio = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if (radio) return radio.value;
+  const input = document.querySelector(`input[type=text][name="q${n}"]`);
+  if (input) return input.value;
+  return "";
+}
+function isCorrect(n, ua) {
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function refreshPaletteAnswered() {
+  document.querySelectorAll('.palette-item').forEach(b => {
+    const n = parseInt(b.dataset.q, 10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle('answered', ua.trim() !== '');
+  });
+}
+document.addEventListener('input', refreshPaletteAnswered);
+document.addEventListener('change', refreshPaletteAnswered);
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+let currentQuestion = 14;
+function goToQuestion(n) {
+  n = parseInt(n, 10);
+  if (!ALL_QUESTIONS.includes(n)) return;
+  currentQuestion = n;
+  let qEl = document.querySelector(`[data-q="${n}"]`);
+  if (!qEl && n >= 24 && n <= 26) {
+    qEl = document.querySelector(`input[name="q${n}"]`);
+    qEl = qEl ? qEl.closest('p') : null;
+  }
+  if (qEl) {
+    qEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const targets = qEl.tagName === 'TR'
+      ? Array.from(qEl.querySelectorAll('td'))
+      : [qEl];
+    targets.forEach(t => {
+      t.style.transition = 'background .2s';
+      t.style.background = '#fffbeb';
+    });
+    setTimeout(() => {
+      targets.forEach(t => { t.style.background = ''; });
+    }, 1200);
+  }
+  const input = document.querySelector(`input[name="q${n}"]`);
+  if (input && !input.disabled) {
+    if (input.type === 'radio') {
+      const lbl = input.closest('.letter-opt');
+      if (lbl) lbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    input.focus({ preventScroll: true });
+  }
+  updateCurrent();
+  updateNav();
+}
+function updateCurrent() {
+  document.querySelectorAll('.palette-item').forEach(b =>
+    b.classList.toggle('current', parseInt(b.dataset.q, 10) === currentQuestion));
+}
+function updateNav() {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= ALL_QUESTIONS.length - 1);
+}
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(ALL_QUESTIONS[idx - 1]);
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx < ALL_QUESTIONS.length - 1) goToQuestion(ALL_QUESTIONS[idx + 1]);
+});
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+(function () {
+  const r = document.getElementById('resizer');
+  const p = document.getElementById('passagesPane');
+  const q = document.getElementById('questionsPane');
+  let d = false;
+  r.addEventListener('mousedown', e => {
+    e.preventDefault(); d = true;
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  });
+  document.addEventListener('mousemove', e => {
+    if (!d) return;
+    const rect = document.getElementById('mainSplit').getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    p.style.flex = `0 0 ${pct}%`;
+    q.style.flex = '1 1 auto';
+  });
+  document.addEventListener('mouseup', () => {
+    d = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+})();
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+let secondsLeft = 20 * 60;
+let timerInterval;
+const timerEl = document.getElementById('timer');
+const timerChip = document.getElementById('timerChip');
+function renderTimer() {
+  const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+  const s = String(secondsLeft % 60).padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+  timerChip.classList.remove('warning', 'danger');
+  if (secondsLeft <= 60) timerChip.classList.add('danger');
+  else if (secondsLeft <= 300) timerChip.classList.add('warning');
+}
+function startTimer() {
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(() => {
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      timerChip.classList.add('danger');
+      timerEl.textContent = '00:00';
+      toast('⏰ Time is up!');
+      return;
+    }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast('1 minute remaining!');
+    if (secondsLeft === 300) toast('5 minutes remaining.');
+  }, 1000);
+}
+
+/* ============================================================
+   HIGHLIGHT / NOTE
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+
+function showPopupAt(rect) {
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + 'px';
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width / 2 - 150) + 'px';
+  hlPopup.classList.add('show');
+}
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (hlPopup.classList.contains('show')) {
+    hlPopup.classList.remove('show');
+    savedRange = null;
+    currentMark = null;
+  }
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
+  if (e.target.tagName === 'MARK' && e.target.classList.contains('evidence-mark')) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 0);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+  const em = e.target.tagName === 'MARK' && !e.target.classList.contains('evidence-mark')
+    ? e.target : (e.target.closest ? e.target.closest('mark.hl-user') : null);
+  const en = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (en) {
+    document.getElementById('note-text').value = en.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = en;
+    return;
+  }
+  if (em) {
+    savedRange = null;
+    currentMark = em;
+    showPopupAt(em.getBoundingClientRect());
+    return;
+  }
+});
+
+document.getElementById('hl-highlight').addEventListener('click', () => {
+  if (currentMark) { hlPopup.classList.remove('show'); return; }
+  if (!savedRange) { toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+  } catch (err) {}
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  toast('Highlighted');
+});
+
+document.getElementById('hl-dehighlight').addEventListener('click', () => {
+  if (currentMark) {
+    const p = currentMark.parentNode;
+    while (currentMark.firstChild) p.insertBefore(currentMark.firstChild, currentMark);
+    p.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove('show');
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange) {
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll) {
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try {
+          if (savedRange.intersectsNode(m)) {
+            const p = m.parentNode;
+            while (m.firstChild) p.insertBefore(m.firstChild, m);
+            p.removeChild(m);
+          }
+        } catch (err) {}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove('show');
+    savedRange = null;
+    toast('Highlight removed');
+  } else {
+    hlPopup.classList.remove('show');
+  }
+});
+
+document.getElementById('hl-note').addEventListener('click', () => {
+  if (!savedRange) { toast('Select text first'); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  hlPopup.classList.remove('show');
+  window.getSelection().removeAllRanges();
+});
+
+document.getElementById('note-cancel').addEventListener('click', () => {
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', () => {
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget) {
+    if (nt) {
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      const p = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) p.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      p.removeChild(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    return;
+  }
+  if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+  } catch (err) {}
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Remove all highlights and notes?')) return;
+  document.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+    const p = el.parentNode;
+    while (el.firstChild) p.insertBefore(el.firstChild, el);
+    p.removeChild(el);
+  });
+  clearEvidenceMarks();
+  toast('Highlights cleared');
+});
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  let score = 0, answered = 0;
+  document.body.classList.add('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.match-row, .headings-tr').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('#headings-matrix td').forEach(td => td.classList.remove('selected-correct', 'selected-wrong'));
+
+  const rows = [];
+  ALL_QUESTIONS.forEach(n => {
+    const rowEl = document.querySelector(`[data-q="${n}"]`) ||
+      (n >= 24 && n <= 26 ? document.querySelector(`input[name="q${n}"]`)?.closest('p') : null);
+    if (!rowEl) return;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+
+    const evData = EVIDENCE[n];
+
+    if (n >= 14 && n <= 19) {
+      rowEl.classList.add(ok ? 'correct' : 'wrong');
+      const checked = rowEl.querySelector(`input[name="q${n}"]:checked`);
+      if (checked) {
+        const td = checked.closest('td');
+        if (td) td.classList.add(ok ? 'selected-correct' : 'selected-wrong');
+      }
+    } else if (n >= 24 && n <= 26) {
+      const input = document.querySelector(`input[name="q${n}"]`);
+      if (input) input.classList.add(ok ? 'correct' : 'wrong');
+      const evLine = document.querySelector(`.evidence-line[data-q="${n}"]`);
+      if (evLine && evData) {
+        evLine.innerHTML = `${ok ? '✓' : '✗ ' + (ua.trim() || '(no answer)') + ' — Correct: ' + (ANSWER_KEY[n] || []).join(' / ')} &nbsp;|&nbsp; <span class="lbl">📖 Evidence</span> <em>"${evData.sentence}"</em>`;
+      }
+    } else {
+      rowEl.classList.add(ok ? 'correct' : 'wrong');
+      const fb = rowEl.querySelector('.feedback');
+      if (fb) {
+        fb.textContent = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${(ANSWER_KEY[n] || []).join(' / ')}`;
+        fb.classList.add(ok ? 'ok' : 'no');
+      }
+      const evLine = rowEl.querySelector('.evidence-line');
+      if (evLine && evData) {
+        evLine.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${evData.sentence}"</em>`;
+      }
+    }
+
+    if (evData && evData.text) highlightEvidenceInPassage(evData.text, n);
+
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+    rows.push({
+      n, ua: ua.trim() || '—',
+      key: (ANSWER_KEY[n] || []).join(' / '),
+      ok,
+      evidence: evData ? evData.sentence.replace(/<\/?hl>/g, '') : ''
+    });
+  });
+
+  // Headings feedback
+  const hfContainer = document.getElementById('headings-feedback');
+  hfContainer.innerHTML = '';
+  SECTIONS.forEach(sec => {
+    const n = sec.q;
+    const ua = getUserAnswer(n);
+    const ok = isCorrect(n, ua);
+    const evData = EVIDENCE[n];
+    const div = document.createElement('div');
+    div.className = 'hf-item ' + (ok ? 'ok' : 'no');
+    const status = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${(ANSWER_KEY[n] || []).join(' / ')}`;
+    let html = `<span class="hf-status">Q${n} (${sec.name})</span> ${status}`;
+    if (evData) {
+      const evText = evData.sentence.replace(/<\/?hl>/g, '');
+      html += `<span class="hf-ev">📖 Evidence: <em>"${evText}"</em></span>`;
+    }
+    div.innerHTML = html;
+    hfContainer.appendChild(div);
+  });
+
+  document.getElementById('resultScore').textContent = `${score} / ${TOTAL_QUESTIONS}`;
+  document.getElementById('resultSub').textContent =
+    `Score: ${score}/${TOTAL_QUESTIONS} · Answered: ${answered}/${TOTAL_QUESTIONS}`;
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.n}</td><td class="${r.ok ? 'correct' : 'wrong'}">${r.ua}</td><td>${r.key}</td><td class="evidence-cell">${r.evidence ? '“' + r.evidence + '”' : '—'}</td>`;
+    tr.title = 'Click to jump to evidence in passage';
+    tr.addEventListener('click', () => {
+      const mark = document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
+      if (mark) {
+        mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        mark.classList.remove('flash');
+        void mark.offsetWidth;
+        mark.classList.add('flash');
+      } else {
+        toast('No passage highlight for Q' + r.n);
+      }
+    });
+    tbody.appendChild(tr);
+  });
+  const chip = document.getElementById('bandChip');
+  chip.textContent = `${score}/${TOTAL_QUESTIONS}`;
+  chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
+
+/* ============================================================
+   REVIEW
+   ============================================================ */
+document.getElementById('reviewBtn').addEventListener('click', () => {
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = '';
+  ALL_QUESTIONS.forEach(n => {
+    const ua = getUserAnswer(n);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(b =>
+  b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(o =>
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    hlPopup.classList.remove('show');
+    notePopup.classList.remove('show');
+  }
+});
+
+/* ============================================================
+   RESET / MENU
+   ============================================================ */
+document.getElementById('resetLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Clear all answers and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.match-row, .headings-tr').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  document.querySelectorAll('.letter-opt').forEach(l => l.classList.remove('checked'));
+  document.querySelectorAll('#headings-matrix td').forEach(td => td.classList.remove('selected-correct', 'selected-wrong'));
+  document.getElementById('headings-feedback').innerHTML = '';
+  const chip = document.getElementById('bandChip');
+  chip.textContent = '--'; chip.classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  currentQuestion = 14; updateCurrent(); updateNav();
+  secondsLeft = 20 * 60;
+  startTimer();
+  toast('Test reset. Good luck!');
+});
+
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => {
+  e.stopPropagation(); menuPop.classList.toggle('show');
+});
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+/* ============================================================
+   FULLSCREEN / FOCUS
+   ============================================================ */
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+function updateFullscreenUI() {
+  const a = !!document.fullscreenElement;
+  document.body.classList.toggle('fullscreen-active', a);
+  fullscreenBtn.textContent = a ? '⛶ Exit' : '⛶ Fullscreen';
+}
+fullscreenBtn.addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch (err) { toast('Fullscreen not supported'); }
+});
+document.addEventListener('fullscreenchange', updateFullscreenUI);
+
+document.getElementById('focusBtn').addEventListener('click', () => document.body.classList.add('focus-mode'));
+document.getElementById('exitFocusBtn').addEventListener('click', () => document.body.classList.remove('focus-mode'));
+
+/* ============================================================
+   INIT
+   ============================================================ */
+refreshPaletteAnswered();
+updateCurrent();
+updateNav();
+updateFullscreenUI();
+renderTimer();
+startTimer();
+</script>
+
+    </body>
+</html>

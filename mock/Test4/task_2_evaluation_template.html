@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Writing Evaluation – Task 2</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;600;700&display=swap');
+
+        @page { size: A4; margin: 0; }
+        * { box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #e8eef7 0%, #f4f6fb 100%);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #1c2430;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 18mm 18mm 15mm;
+            margin: 12mm auto;
+            background: #fff;
+            box-shadow: 0 6px 28px rgba(20, 40, 80, .16);
+            border-radius: 8px;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #f59e0b);
+        }
+        .page:last-child { page-break-after: auto; break-after: auto; }
+
+        /* ---------- HEADINGS ---------- */
+        h1 { font-size: 19pt; margin: 0 0 8mm; line-height: 1.25; color: #1e3a8a; letter-spacing: -.3px; }
+        h2 { font-size: 13pt; margin: 10mm 0 5mm; padding: 2.4mm 4mm; border-left: 5px solid #2563eb; background: linear-gradient(90deg, #eff6ff, transparent 92%); color: #1e3a8a; border-radius: 0 6px 6px 0; line-height: 1.3; }
+        h2:first-child { margin-top: 0; }
+        h3 { font-size: 11.5pt; margin: 6mm 0 2.5mm; color: #1d4ed8; line-height: 1.35; }
+        h3:first-of-type { margin-top: 2mm; }
+
+        /* ---------- TEXT ---------- */
+        p { margin: 0 0 4mm; text-align: justify; line-height: 1.65; }
+        ul, ol { margin: 2.5mm 0 4mm 7mm; padding: 0; }
+        li { margin-bottom: 2mm; line-height: 1.55; }
+        li:last-child { margin-bottom: 0; }
+        li::marker { color: #2563eb; font-weight: bold; }
+        em { font-style: italic; color: #334155; }
+        strong { color: #0f172a; }
+
+        /* ---------- TABLES ---------- */
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 3mm 0 5mm; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(20,40,80,.10); font-size: 9.8pt; }
+        th, td { border: 1px solid #dbe3ee; padding: 2.4mm 3mm; vertical-align: top; line-height: 1.55; }
+        th { background: linear-gradient(180deg, #eef4ff, #dfe9fb); color: #1e3a8a; font-weight: 700; text-align: left; }
+        tbody tr:nth-child(even) td { background: #f8fafc; }
+        tbody tr:hover td { background: #f1f5ff; }
+
+        .summary th { text-align: center; background: #1e293b; color: #fff; border-color: #334155; }
+        .summary td { text-align: center; font-weight: 700; font-size: 12pt; color: #1e3a8a; padding: 2.8mm 2mm; }
+        .summary .band-cell { color: #b91c1c !important; font-size: 14pt; }
+        
+        .tight th, .tight td { padding: 2mm 2.4mm; }
+        .small { font-size: 9pt; }
+        .tiny th, .tiny td { padding: 1.8mm 2.2mm; font-size: 8.6pt; }
+
+        /* ---------- NEW MARKING GUIDE TABLE (PAGE 1) ---------- */
+        .marking-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3mm 0 5mm;
+            border: 1px solid #cbd5e1;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 10pt;
+        }
+        .marking-table td {
+            border: 1px solid #cbd5e1;
+            padding: 4mm;
+            vertical-align: middle;
+            background: #fff !important;
+        }
+        .marking-table td:first-child {
+            width: 35%;
+            text-align: center;
+            background: #f8fafc !important;
+        }
+        .marking-example-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .handwritten-red {
+            color: #dc2626;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 16pt;
+            position: absolute;
+            top: -26px;
+            left: -5px;
+            white-space: nowrap;
+        }
+        .circled-word {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 2px 10px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .red-number-badge {
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+        }
+        .underlined-word {
+            border-bottom: 2px solid #dc2626;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            font-size: 11pt;
+        }
+        .wavy-word {
+            text-decoration: underline wavy #dc2626;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .green-tick-word {
+            font-weight: bold;
+            color: #1c2430;
+            border-bottom: 2px solid #16a34a;
+            display: inline-block;
+            padding-bottom: 2px;
+            position: relative;
+            font-size: 11pt;
+        }
+        .green-tick-symbol {
+            color: #16a34a;
+            font-size: 18pt;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* ---------- EXACT SCRIPT MARKINGS ---------- */
+        .script-layout {
+            display: flex;
+            width: 100%;
+        }
+        .script-text-col {
+            flex: 1.4;
+            padding-right: 5mm;
+        }
+        .script-comment-col {
+            flex: 0.6;
+            padding-left: 5mm;
+            border-left: 1px solid #fca5a5;
+        }
+        .script-text {
+            line-height: 2.2;
+            font-size: 10.5pt;
+            color: #1c2430;
+        }
+        .comment-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 13pt;
+            line-height: 1.4;
+            margin-bottom: 2mm;
+        }
+        .comment-text p { margin-bottom: 3mm; }
+        .comment-tick {
+            color: #16a34a;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 9pt;
+            display: block;
+            margin-top: 4mm;
+        }
+        
+        .red-underline {
+            text-decoration: underline;
+            text-decoration-color: #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-wavy {
+            text-decoration: underline wavy #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-underline {
+            text-decoration: underline;
+            text-decoration-color: #16a34a;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-tick {
+            color: #16a34a;
+            font-weight: bold;
+            font-size: 11pt;
+            margin-left: 2px;
+        }
+        .red-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #dc2626;
+            color: white;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-left: 2px;
+            vertical-align: super;
+            line-height: 1;
+        }
+        .red-caret {
+            color: #dc2626;
+            font-size: 14pt;
+            font-weight: bold;
+            vertical-align: sub;
+            margin-left: 2px;
+        }
+        .arrow-red {
+            color: #dc2626;
+            font-weight: bold;
+            margin: 0 4px;
+        }
+        .correction-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+        }
+        .floating-text {
+            position: relative;
+            white-space: nowrap;
+        }
+        .floating-text .above {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .circle-drawn {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 1px 8px;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* ---------- CALLOUTS / BOXES ---------- */
+        .comment-box {
+            background: #fff;
+            border: 2px solid #dc2626;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 6mm 0 5.5mm;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+        .comment-box h4 { color: #dc2626; margin: 0 0 3mm; font-size: 10pt; text-transform: uppercase; font-family: 'Inter', sans-serif;}
+        .comment-box .handwritten-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1.4;
+        }
+        
+        .good-box {
+            background: #f0fdf4;
+            border: 1.5px solid #22c55e;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 3.5mm 0 5.5mm;
+            font-size: 9.8pt;
+        }
+        .good-box h4 { color: #166534; margin: 0 0 2mm; font-size: 10pt; text-transform: uppercase; }
+
+        .band-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 4px 4px 0 0;
+            margin-top: 4mm;
+        }
+        .band-header h3 { margin: 0; color: white; font-size: 11pt; }
+        .band-badge {
+            background: #b91c1c;
+            color: white;
+            padding: 0.5mm 3mm;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+        .band-body {
+            border: 1px solid #cbd5e1;
+            border-top: none;
+            padding: 3mm;
+            margin-bottom: 4mm;
+        }
+
+        /* ---------- MISC ---------- */
+        .practice-list li { list-style-type: none; margin-bottom: 6mm; position: relative; }
+        .practice-list .num { font-weight: bold; font-size: 12pt; margin-right: 2mm; color: #1e3a8a; }
+        .practice-line { border-bottom: 1px solid #cbd5e1; height: 8mm; margin-top: 2mm; }
+        
+        .page-number {
+            margin-top: auto;
+            align-self: flex-end;
+            font-size: 8.6pt;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 1.2mm 3.5mm;
+            border-radius: 999px;
+            letter-spacing: .3px;
+            flex-shrink: 0;
+        }
+        .page-number::before { content: "Page "; }
+
+        /* ---------- PRINT ---------- */
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            html, body { width: 210mm; margin: 0 !important; padding: 0 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { display: block !important; }
+            .page {
+                display: flex !important;
+                flex-direction: column;
+                width: 210mm;
+                height: 297mm;
+                margin: 0 !important;
+                padding: 14mm 16mm 16mm;
+                box-sizing: border-box;
+                overflow: hidden !important;
+                background: #fff;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-after: always;
+                break-after: page;
+            }
+            .page + .page { page-break-before: always !important; break-before: page !important; }
+            .page-number { position: absolute; right: 16mm; bottom: 7mm; margin: 0 !important; align-self: auto; }
+            h1 { font-size: 17pt; margin-bottom: 5mm; }
+            h2 { margin: 5mm 0 3mm; padding: 2mm 3mm; font-size: 12pt; }
+            h3 { margin: 3.5mm 0 1.5mm; font-size: 11pt; }
+            p { margin-bottom: 2.5mm; line-height: 1.45; }
+            ul, ol { margin: 1.5mm 0 2.5mm 6mm; }
+            li { margin-bottom: 1.2mm; line-height: 1.45; }
+            table { width: 100%; margin: 2.5mm 0 3.5mm; font-size: 9pt; border-collapse: collapse; }
+            th, td { padding: 1.5mm 2mm; }
+            .tiny th, .tiny td { padding: 1mm 1.4mm; font-size: 8pt; line-height: 1.35; }
+            .good-box { padding: 2mm 3mm; margin: 2.5mm 0 3.5mm; font-size: 9pt; }
+            .script-text { line-height: 1.8; font-size: 9.5pt; }
+            h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+            tr, .good-box, .comment-box, .band-header, .band-body, .script-layout { page-break-inside: avoid; break-inside: avoid; }
+            .marking-table { border: 1px solid #cbd5e1; }
+            .marking-table td { padding: 3mm; }
+        }
+    </style>
+    </head>
+    <body>
+
+        <!-- PAGE 1 -->
+        <div class="page">
+            <h1
+                style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your
+                Writing Evaluation in details</h1>
+            <p
+                style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">Academic
+                Writing · Task 2 (discuss both views + opinion) · Marked against
+                the official IELTS Writing Band Descriptors (May 2023)</p>
+
+            <table class="tight" style="font-size: 9.5pt;">
+                <tr>
+                    <th style="background: #e2e8f0; width: 15%;">Candidate</th>
+                    <td style="width: 35%;"><strong>Esha</strong></td>
+                    <th style="background: #e2e8f0; width: 15%;">Test</th>
+                    <td style="width: 35%;">Recent IELTS Exam Questions 1
+                        –<br>Writing Test 2<br>Practice · Part 2 (Task 2
+                        only)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Started</th>
+                    <td>19 Oct 2026, 19:39:18 (Bangladesh time)</td>
+                    <th style="background: #e2e8f0;">Submitted</th>
+                    <td>19 Oct 2026, 20:29 (Bangladesh time)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Time on writing</th>
+                    <td>50 min</td>
+                    <th style="background: #e2e8f0;">Date marked</th>
+                    <td>20 October 2026</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Examiner</th>
+                    <td>Imran Hossain</td>
+                    <th style="background: #e2e8f0;">Signature</th>
+                    <td></td>
+                </tr>
+            </table>
+
+            <h2>Result summary</h2>
+            <table class="summary tight" style="margin-bottom: 2mm;">
+                <tr>
+                    <th style="text-align: left;"></th>
+                    <th>Task Response</th>
+                    <th>Coherence &amp; Cohesion</th>
+                    <th>Lexical Resource</th>
+                    <th>Grammar</th>
+                    <th>Task band</th>
+                    <th>Words</th>
+                </tr>
+                <tr>
+                    <td
+                        style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Task
+                        2</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td class="band-cell">6.5</td>
+                    <td>268 ✓</td>
+                </tr>
+            </table>
+            <p
+                style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Task
+                band = (6 + 7 + 6 + 7) ÷ 4 = 6.5. This was a Part 2 practice
+                (Task 2 only), so no overall Writing band is calculated.</p>
+
+            <div class="good-box">
+                <h4>✓ WHAT ESHA DOES WELL</h4>
+                <ul
+                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>A clear four-paragraph structure, with a topic sentence
+                        in every body paragraph.</li>
+                    <li>A position stated in the introduction and repeated in
+                        the conclusion.</li>
+                    <li>Good topic vocabulary, especially in Body 2 (<em>take
+                            advantage of opportunities, maintain discipline,
+                            increases productivity</em>), and mostly accurate
+                        grammar.</li>
+                </ul>
+            </div>
+
+            <div class="comment-box" style="border-color: #dc2626;">
+                <h4>THE ONE CHANGE THAT WOULD REACH BAND 7</h4>
+                <p
+                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Defend
+                    your opinion. Body 2 argues so well for quick decisions that
+                    it weakens your view. End it with a "However..." sentence
+                    explaining why listening still matters more, and support
+                    each body paragraph with one <strong>specific</strong>
+                    example.</p>
+            </div>
+
+            <h2>How to read the marking</h2>
+            <table class="marking-table">
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">cannot</span>
+                            <span class="circled-word">can not<span
+                                    class="red-number-badge">1</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Circled:</strong> a single-word error, with the
+                        correction written above.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">firm</span>
+                            <span class="underlined-word">strong<span
+                                    class="red-number-badge">2</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Underlined:</strong> a grammar or word-choice
+                        error, with the correction above or after the
+                        arrow.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="wavy-word">totally impossible<span
+                                    class="red-number-badge">3</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Wavy underline:</strong> an unclear reference,
+                        an over-generalisation, or a point that needs
+                        developing.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span
+                                style="font-weight:bold; font-size:11pt; color:#1c2430;">members</span>
+                            <span
+                                style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span
+                                class="red-number-badge"
+                                style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
+                        </div>
+                    </td>
+                    <td><strong>Caret ^:</strong> something is missing (here, a
+                        sentence linking back to the writer's view).</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="green-tick-word">maintain
+                                discipline</span><span
+                                class="green-tick-symbol">✓</span>
+                        </div>
+                    </td>
+                    <td><strong>Green tick:</strong> good language or a strong
+                        idea, credited by the examiner.</td>
+                </tr>
+            </table>
+
+            <div class="page-number">1</div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">WRITING
+                TASK 2 · THE QUESTION</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 5mm; margin-bottom: 8mm; background: #f8fafc;">
+                <p style="font-size: 10pt;"><strong>You should spend about 40
+                        minutes on this task.</strong></p>
+                <p style="font-size: 10pt;">Some people believe that the most
+                    important quality of a good leader is the ability to listen
+                    to others. Others argue that it is more important for a
+                    leader to make quick and firm decisions.</p>
+                <p style="font-size: 10pt;"><strong>Discuss both these views and
+                        give your own opinion.</strong></p>
+                <p style="font-size: 10pt;">Give reasons for your answer and
+                    include any relevant examples from your own knowledge or
+                    experience.</p>
+                <p
+                    style="font-size: 10pt; font-style: italic; margin-bottom: 0;">Write
+                    at least 250 words.</p>
+            </div>
+
+            <h2>Error codes used in the marking</h2>
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>Code</th><th>Meaning</th><th>Crit.</th><th>Code</th><th>Meaning</th><th>Crit.</th></tr>
+                <tr><td><strong>WW</strong></td><td>Wrong word /
+                        collocation</td><td>LR</td><td><strong>Frag</strong></td><td>Comma
+                        splice</td><td>GRA</td></tr>
+                <tr><td><strong>Sp</strong></td><td>Spelling / word
+                        formation</td><td>LR</td><td><strong>Ref</strong></td><td>Unclear
+                        reference / repetition</td><td>CC</td></tr>
+                <tr><td><strong>Gr</strong></td><td>Grammar / sentence
+                        structure</td><td>GRA</td><td><strong>Dev</strong></td><td>Position
+                        or support not developed</td><td>TR</td></tr>
+                <tr><td><strong>SVA</strong></td><td>Subject-verb
+                        agreement</td><td>GRA</td><td><strong>Ov</strong></td><td>Over-generalisation</td><td>TR</td></tr>
+            </table>
+
+            <div class="page-number">2</div>
+        </div>
+
+        <!-- PAGE 3 (MARKED SCRIPT 1 - INTRO & BODY 1) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">MARKED
+                SCRIPT</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Word count: <strong>268</strong> (minimum 250) ✓ · Errors
+                marked: <strong>23</strong> · Good points credited:
+                <strong>11</strong> · By criterion: TR 4 · CC 3 · LR 9 · GRA 7
+            </div>
+
+            <div class="script-layout"
+                style="border-bottom: 1px solid #fca5a5; padding-bottom: 6mm; margin-bottom: 6mm;">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶1
+                        · INTRODUCTION</h3>
+                    <p class="script-text">
+                        <span class="red-underline">Many individuals argue
+                            that</span> <span class="green-tick">✓</span> the
+                        most
+                        <span class="floating-text">
+                            <span class="above">important</span>
+                            <span class="red-underline">necessary</span>
+                        </span><span class="red-circle">1</span> quality of a
+                        good leader is the ability to listen to others, <span
+                            class="red-underline">while others contend
+                            that</span> <span class="green-tick">✓</span> it is
+                        more important for a leader to make
+                        <span class="floating-text">
+                            <span class="above">quick</span>
+                            <span class="red-underline">instant</span>
+                        </span><span class="red-circle">2</span> and firm
+                        decisions. In my opinion, a leader should have the skill
+                        to listen to <span class="red-wavy">others</span><span
+                            class="red-circle">3</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">listening is the MORE
+                            important quality, because...</span>
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Clear paraphrase ✓ and a position ✓. But the thesis
+                            only says leaders should listen; it should say
+                            listening is MORE important than quick decisions,
+                            and give a short reason why.</p>
+                    </div>
+                    <div class="comment-tick">✓ 2 good points</div>
+                </div>
+            </div>
+
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶2
+                        · BODY 1: LISTENING</h3>
+                    <p class="script-text">
+                        <span class="red-underline">On the one hand, there are
+                            several reasons why</span> <span
+                            class="green-tick">✓</span> a leader needs to listen
+                        to others. A significant reason is that it <span
+                            class="red-underline">allows cooperation and
+                            emotional growth</span><span
+                            class="red-circle">4</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">encourages cooperation and
+                            builds trust</span>. For example, <span
+                            class="red-wavy">initially</span>,<span
+                            class="red-circle">5</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">For instance, a
+                            manager...</span> when a leader listens to <span
+                            class="red-underline">others' opinions</span> <span
+                            class="green-tick">✓</span> and problems carefully,
+                        people are more likely to share
+                        <span class="floating-text">
+                            <span class="above">their concerns</span>
+                            <span class="red-wavy">all things</span>
+                        </span><span class="red-circle">6</span> with
+                        <span class="floating-text">
+                            <span class="above">him or her</span>
+                            <span class="red-wavy">a leader</span>
+                        </span><span class="red-circle">7</span>. <span
+                            class="red-underline">These things
+                            create</span><span class="red-circle">8</span> <span
+                            class="red-wavy">trustworthiness</span><span
+                            class="red-circle">8</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">This builds trust,</span>
+                        <span class="floating-text">
+                            <span class="above">: people feel</span>
+                            <span class="red-underline">people feel</span>
+                        </span><span class="red-circle">9</span> more secure and
+                        <span class="floating-text">
+                            <span class="above">receive</span>
+                            <span class="red-underline">gives them</span>
+                        </span><span class="red-circle">10</span> emotional
+                        support. As a result, the leader <span
+                            class="red-underline">solves the problem
+                            effectively</span><span class="red-circle">11</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">can solve problems more
+                            effectively</span> as well as <span
+                            class="red-underline">provides them useful
+                            advices</span><span class="red-circle">12</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">provide them with useful
+                            advice</span>. If a leader
+                        <span class="floating-text">
+                            <span class="above">cannot</span>
+                            <span class="circle-drawn">can not</span>
+                        </span><span class="red-circle">13</span> <span
+                            class="red-underline">concentrate on people's
+                            expectations</span><span
+                            class="red-circle">14</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">pay attention to people's
+                            needs</span>, then it is <span
+                            class="red-wavy">totally impossible</span><span
+                            class="red-circle">15</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">very difficult</span> to
+                        build a balanced society and relationships.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Topic sentence ✓ and a logical chain of ideas ✓, but
+                            there is no specific example ("For example"
+                            introduces a general statement). There is one comma
+                            splice, and word choice is imprecise (<em>all
+                                things, trustworthiness, advices</em>).</p>
+                    </div>
+                    <div class="comment-tick">✓ 2 good points</div>
+                </div>
+            </div>
+
+            <div class="page-number">3</div>
+        </div>
+
+        <!-- PAGE 4 (MARKED SCRIPT 2 - BODY 2 & CONCLUSION) -->
+        <div class="page">
+            <div class="script-layout"
+                style="border-bottom: 1px solid #fca5a5; padding-bottom: 6mm; margin-bottom: 6mm;">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶3
+                        · BODY 2: QUICK DECISIONS</h3>
+                    <p class="script-text">
+                        On the other hand, <span class="red-underline">the
+                            skills of making</span><span
+                            class="red-circle">16</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the ability to make</span>
+                        quick and
+                        <span class="floating-text">
+                            <span class="above">firm</span>
+                            <span class="red-underline">strong</span>
+                        </span><span class="red-circle">17</span> decisions are
+                        also beneficial for a leader. The primary reason is that
+                        <span class="floating-text">
+                            <span class="above">they show</span>
+                            <span class="red-wavy">it shows</span>
+                        </span><span class="red-circle">18</span> confidence and
+                        <span class="red-underline">working
+                            capability</span><span class="red-circle">19</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">competence</span>. For
+                        instance, a leader needs to <span
+                            class="red-underline">solve different kinds of
+                            challenges</span><span class="red-circle">20</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">deal with different
+                            challenges</span> and <span
+                            class="green-underline">establish fair rules</span>
+                        <span class="green-tick">✓</span>. If they are able to
+                        make decisions instantly, it <span
+                            class="green-underline">saves time and increases
+                            productivity</span> <span
+                            class="green-tick">✓</span>. What's more, quick and
+                        firm decisions allow a leader to <span
+                            class="green-underline">take advantage of
+                            opportunities before their competitors</span> <span
+                            class="green-tick">✓</span>. <span
+                            class="green-underline">A decisive</span> <span
+                            class="green-tick">✓</span> leader can <span
+                            class="green-underline">maintain discipline</span>
+                        <span class="green-tick">✓</span> and prevent
+                        unnecessary arguments among team members <span
+                            class="red-caret">^</span><span
+                            class="red-circle">21</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">. However, ...</span>
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Well-developed paragraph ✓ with strong vocabulary ✓,
+                            but it argues so well for quick decisions that it
+                            weakens YOUR position. It needs a final sentence
+                            linking back to your view.</p>
+                    </div>
+                    <div class="comment-tick">✓ 5 good points</div>
+                </div>
+            </div>
+
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶4
+                        · CONCLUSION</h3>
+                    <p class="script-text">
+                        <span class="red-underline">In conclusion, although both
+                            sides present valid arguments, I contend that</span>
+                        <span class="green-tick">✓</span> <span
+                            class="red-underline">being a good leader must
+                            have</span><span class="red-circle">22</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">a good leader must
+                            have</span> the ability to listen to others because
+                        it <span class="green-underline">fosters
+                            collaboration</span> <span
+                            class="green-tick">✓</span> and <span
+                            class="red-underline">emotional support</span><span
+                            class="red-circle">23</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">provides emotional
+                            support</span>.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Position restated ✓ with a reason ✓, but it still
+                            doesn't explain why listening outweighs
+                            decisiveness. There is one grammar error in the
+                            subject.</p>
+                    </div>
+                    <div class="comment-tick">✓ 2 good points</div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="margin-top: 10mm;">
+                <h4>EXAMINER'S COMMENT</h4>
+                <p class="handwritten-text" style="margin-bottom: 0;">A clear,
+                    well-organised essay with a consistent position and good
+                    topic vocabulary (<em>fosters collaboration, maintain
+                        discipline, take advantage of opportunities</em>). To
+                    reach Band 7, you need to defend your opinion: your second
+                    body paragraph presents quick decisions very positively but
+                    never explains why listening is still more important. Add a
+                    "However..." sentence that links back to your view, and
+                    replace general statements with one specific example in each
+                    body paragraph. Watch word choice (<em>advice</em>, not
+                    "advices"; <em>build trust</em>, not
+                    "create trustworthiness") and the comma splice in Body
+                    1.</p>
+            </div>
+
+            <div class="page-number">4</div>
+        </div>
+
+        <!-- PAGE 5 (YOUR ANSWER, CORRECTED) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">YOUR
+                ANSWER, CORRECTED</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 4mm; font-size: 9.5pt; margin-bottom: 4mm;">
+                <p>Your ideas, your structure and your sentences, with the
+                    errors fixed. Three things were added: a clearer thesis, a
+                    specific example in Body 1, and a "However..." sentence at
+                    the end of Body 2. With these changes, this essay would
+                    score about <strong>Band 7</strong>.</p>
+                <p
+                    style="color: #047857; font-weight: bold; margin-bottom: 4mm;">Green
+                    text = what was changed or added. Everything else is your
+                    own writing.</p>
+
+                <div
+                    style="border: 1px solid #e2e8f0; padding: 5mm; background: #f8fafc; border-radius: 4px;">
+                    <p>Many individuals argue that the most <span
+                            class="green">important</span> quality of a good
+                        leader is the ability to listen to others, while others
+                        contend that it is more important for a leader to make
+                        <span class="green">quick</span> and firm decisions. In
+                        my opinion, <span class="green">listening is the more
+                            important quality, because good decisions depend on
+                            understanding people.</span></p>
+
+                    <p>On the one hand, there are several reasons why a leader
+                        needs to listen to others. A significant reason is that
+                        it <span class="green">encourages cooperation and builds
+                            trust.</span> For <span
+                            class="green">instance</span>, when a manager
+                        listens to <span class="green">employees'</span>
+                        opinions and problems carefully, <span
+                            class="green">staff</span> are more likely to share
+                        <span class="green">their concerns</span> with <span
+                            class="green">him or her</span>. <span
+                            class="green">This builds trust: people feel</span>
+                        more secure and <span class="green">receive</span>
+                        emotional support. As a result, the leader <span
+                            class="green">can solve problems more effectively
+                            and provide them with useful advice.</span> If a
+                        leader <span class="green">cannot pay attention</span>
+                        to people's needs, then it is <span class="green">very
+                            difficult</span> to build a balanced society and
+                        <span class="green">strong</span> relationships.</p>
+
+                    <p>On the other hand, <span class="green">the ability to
+                            make</span> quick and <span
+                            class="green">firm</span> decisions is also
+                        beneficial for a leader. The primary reason is that
+                        <span class="green">they show</span> confidence and
+                        <span class="green">competence</span>. For instance, a
+                        leader needs to <span class="green">deal with</span>
+                        different kinds of challenges and establish fair rules.
+                        If they are able to make decisions instantly, it saves
+                        time and increases productivity. What's more, quick and
+                        firm decisions allow a leader to take advantage of
+                        opportunities before their competitors. A decisive
+                        leader can maintain discipline and prevent unnecessary
+                        arguments among team members. <span
+                            class="green">However, a quick decision made without
+                            listening to others can easily be the wrong one, so
+                            decisiveness is most valuable when it is based on
+                            what the leader has heard.</span></p>
+
+                    <p style="margin-bottom: 0;">In conclusion, although both
+                        sides present valid arguments, I contend that <span
+                            class="green">a good leader</span> must have the
+                        ability to listen to others because it fosters
+                        collaboration, <span class="green">provides</span>
+                        emotional support <span class="green">and makes their
+                            decisions wiser.</span></p>
+                </div>
+            </div>
+            <div class="page-number">5</div>
+        </div>
+
+        <!-- PAGE 6 -->
+        <div class="page">
+            <h2>Targets for the next Task 2</h2>
+            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
+                <li>Thesis = your answer to the <strong>comparison</strong> + a
+                    short reason.</li>
+                <li>One specific example per body paragraph: who, what, what
+                    happened.</li>
+                <li>When you describe the other view, finish with a "However..."
+                    sentence that returns to your position.</li>
+                <li>Check uncountable nouns (<em>advice, information,
+                        evidence</em>) and avoid absolute words (<em>totally
+                        impossible, always, never</em>).</li>
+            </ol>
+
+            <h2>WHY THIS BAND SCORE</h2>
+            <p style="margin-bottom: 3mm;">Each criterion is matched to the
+                official Task 2 descriptor. Numbers in red circles refer to the
+                marked errors.</p>
+
+            <div class="band-header">
+                <h3>Task Response</h3>
+                <span class="band-badge">Band 6</span>
+            </div>
+            <div class="band-body">
+                <h4 style="color: #047857; margin-top: 0; font-size: 10pt;">WHY
+                    BAND 6: THE DESCRIPTOR FITS</h4>
+                <ul style="font-size: 9.5pt;">
+                    <li>"The main parts of the prompt are addressed... An appropriate format is used."
+                        Both views are discussed in separate paragraphs, and an
+                        opinion is given in the introduction and the
+                        conclusion.</li>
+                    <li>"A position is presented that is directly relevant to the prompt, although the conclusions drawn may be unclear, unjustified or repetitive."
+                        The thesis says leaders
+                        "should have the skill to listen" but never says this is
+                        MORE important than decisiveness <span
+                            class="red-circle"
+                            style="position: static;">3</span>. Body 2 then
+                        argues strongly for quick decisions with no rebuttal
+                        <span class="red-circle"
+                            style="position: static;">21</span>, so the
+                        conclusion is not justified by the body.</li>
+                    <li>"Main ideas are relevant, but some may be insufficiently developed... while some supporting arguments and evidence may be less relevant or inadequate."
+                        There is no specific example:
+                        "For example, initially..." introduces a general
+                        statement <span class="red-circle"
+                            style="position: static;">5</span>. There is also a
+                        logical leap
+                        ("As a result, the leader solves the problem") <span
+                            class="red-circle"
+                            style="position: static;">11</span> and an absolute
+                        claim ("totally impossible") <span class="red-circle"
+                            style="position: static;">15</span>.</li>
+                </ul>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #dc2626; font-size: 10pt;">↑ WHY NOT BAND
+                        7?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 7 needs
+                            "A clear and developed position is presented." Here
+                            the position is clear, but it is not developed: the
+                            essay never explains why listening matters more than
+                            making quick decisions.</li>
+                        <li>Band 7 needs
+                            "Main ideas are extended and supported". Here both
+                            body paragraphs rely on general statements rather
+                            than a concrete example.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #047857; font-size: 10pt;">↓ WHY NOT BAND
+                        5?</h4>
+                    <ul style="font-size: 9.5pt;">
+                        <li>Band 5 has
+                            "The main parts of the prompt are incompletely addressed"
+                            and a position whose
+                            "development is not always clear". Here every part
+                            of the question is answered, and both views are
+                            explained with relevant reasons.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-number">6</div>
+        </div>
+
+        <!-- PAGE 7 -->
+        <div class="page">
+            <div class="band-header" style="margin-top: 0;">
+                <h3>Coherence &amp; Cohesion</h3>
+                <span class="band-badge">Band 7</span>
+            </div>
+            <div class="band-body">
+                <h4 style="color: #047857; margin-top: 0; font-size: 10pt;">WHY
+                    BAND 7: THE DESCRIPTOR FITS</h4>
+                <ul style="font-size: 9.5pt;">
+                    <li>"Information and ideas are logically organised, and there is a clear progression throughout the response."
+                        The essay follows introduction → view 1 → view 2 →
+                        conclusion, and each body paragraph opens with a clear
+                        topic sentence.</li>
+                    <li>"A range of cohesive devices including reference and substitution is used flexibly but with some inaccuracies or some over/under use."
+                        Good devices include <em>On the one hand, A significant
+                            reason, As a result, The primary reason, What's
+                            more</em>. Inaccuracies: "For example, initially"
+                        <span class="red-circle"
+                            style="position: static;">5</span>, the vague
+                        "These things" <span class="red-circle"
+                            style="position: static;">8</span>, and "it"
+                        referring to a plural <span class="red-circle"
+                            style="position: static;">18</span>.</li>
+                    <li>"Paragraphing is generally used effectively to support overall coherence."</li>
+                </ul>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #dc2626; font-size: 10pt;">↑ WHY NOT BAND
+                        8?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 8 needs "cohesion is well managed" with only
+                            "occasional lapses". Here the reference problems and
+                            the comma splice <span class="red-circle"
+                                style="position: static;">9</span> occur in the
+                            same paragraph, and the signposting is somewhat
+                            formulaic.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #047857; font-size: 10pt;">↓ WHY NOT BAND
+                        6?</h4>
+                    <ul style="font-size: 9.5pt;">
+                        <li>Band 6 has cohesion that
+                            "may be faulty or mechanical". Here linking is
+                            mostly accurate, and reference works well in Body 2
+                            (<em>A decisive leader..., their
+                                competitors</em>).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="band-header">
+                <h3>Lexical Resource</h3>
+                <span class="band-badge">Band 6</span>
+            </div>
+            <div class="band-body">
+                <h4 style="color: #047857; margin-top: 0; font-size: 10pt;">WHY
+                    BAND 6: THE DESCRIPTOR FITS</h4>
+                <ul style="font-size: 9.5pt;">
+                    <li>"The resource is generally adequate and appropriate for the task."
+                        There is good topic vocabulary: <em>establish fair
+                            rules, increases productivity, take advantage of
+                            opportunities before their competitors, decisive,
+                            maintain discipline, fosters
+                            collaboration</em>.</li>
+                    <li>"The meaning is generally clear in spite of... a lack of precision in word choice."
+                        Imprecise choices in the key argument:
+                        "allows... emotional growth", "all things",
+                        "create trustworthiness", "working capability",
+                        "people's expectations" <span class="red-circle"
+                            style="position: static;">4</span> <span
+                            class="red-circle"
+                            style="position: static;">6</span> <span
+                            class="red-circle"
+                            style="position: static;">8</span> <span
+                            class="red-circle"
+                            style="position: static;">19</span> <span
+                            class="red-circle"
+                            style="position: static;">14</span>.</li>
+                    <li>"There are some errors in spelling and/or word formation, but these do not impede communication."
+                        "advices" (uncountable), "can not" <span
+                            class="red-circle"
+                            style="position: static;">12</span> <span
+                            class="red-circle"
+                            style="position: static;">13</span>.</li>
+                </ul>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #dc2626; font-size: 10pt;">↑ WHY NOT BAND
+                        7?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 7 needs "awareness of style and collocation"
+                            with only occasional inappropriacies. Body 2 reaches
+                            this level, but in Body 1, the paragraph that
+                            carries her opinion, nearly every key phrase is
+                            imprecise.</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #047857; font-size: 10pt;">↓ WHY NOT BAND
+                        5?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 5 has vocabulary that is
+                            "limited but minimally adequate". Here the range is
+                            clearly wider, with several less common items used
+                            accurately.</li>
+                    </ul>
+                </div>
+                <div
+                    style="background: #fef3c7; border-left: 3px solid #f59e0b; padding: 2mm; margin-top: 3mm; font-size: 9pt; color: #92400e;">
+                    Borderline 6/7: Body 2's vocabulary is at Band 7 level.
+                    Making Body 1 as precise as Body 2 would raise LR to 7.
+                </div>
+            </div>
+
+            <div class="page-number">7</div>
+        </div>
+
+        <!-- PAGE 8 -->
+        <div class="page">
+            <div class="band-header" style="margin-top: 0;">
+                <h3>Grammatical Range &amp; Accuracy</h3>
+                <span class="band-badge">Band 7</span>
+            </div>
+            <div class="band-body">
+                <h4 style="color: #047857; margin-top: 0; font-size: 10pt;">WHY
+                    BAND 7: THE DESCRIPTOR FITS</h4>
+                <ul style="font-size: 9.5pt;">
+                    <li>"A variety of complex structures is used with some flexibility and accuracy."
+                        The essay uses <em>when-, if-, although-</em> and
+                        <em>because</em>-clauses, a <em>that</em>-clause after
+                        "contend", and "allow + object + to".</li>
+                    <li>"Grammar and punctuation are generally well controlled, and error-free sentences are frequent."
+                        10 of 15 sentences are grammatically error-free.</li>
+                    <li>"A few errors in grammar may persist, but these do not impede communication."
+                        There is a comma splice and an agreement error <span
+                            class="red-circle"
+                            style="position: static;">9</span> <span
+                            class="red-circle"
+                            style="position: static;">10</span>,
+                        "provides them useful advices" <span class="red-circle"
+                            style="position: static;">12</span>, and a faulty
+                        subject in the conclusion <span class="red-circle"
+                            style="position: static;">22</span>.</li>
+                </ul>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #dc2626; font-size: 10pt;">↑ WHY NOT BAND
+                        8?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 8 needs
+                            "The majority of sentences are error-free" with only
+                            "occasional, non-systematic errors". Here a third of
+                            the sentences contain an error, and some error types
+                            repeat (verb patterns, reference).</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 4mm;">
+                    <h4 style="color: #047857; font-size: 10pt;">↓ WHY NOT BAND
+                        6?</h4>
+                    <ul style="font-size: 9.5pt; margin-bottom: 2mm;">
+                        <li>Band 6 has complex structures that are
+                            "not marked by the same level of accuracy as in simple structures".
+                            Here most complex sentences are accurate.</li>
+                    </ul>
+                </div>
+                <div
+                    style="background: #fef3c7; border-left: 3px solid #f59e0b; padding: 2mm; margin-top: 3mm; font-size: 9pt; color: #92400e;">
+                    Task 2 band = (6 + 7 + 6 + 7) ÷ 4 = 6.5.
+                </div>
+            </div>
+
+            <h2>STRUCTURE CHECK</h2>
+            <table class="tight">
+                <tr><th>Requirement of a 'discuss both views + opinion'
+                        essay</th><th>Met?</th><th>Comment</th></tr>
+                <tr><td>Introduction paraphrases BOTH views</td><td><span
+                            class="green-tick">✓</span></td><td>Accurate, apart
+                        from "instant" (#2)</td></tr>
+                <tr><td>Thesis: which quality is MORE important, and
+                        why</td><td><span
+                            style="color:#d97706; font-weight:bold;">½</span></td><td>Says
+                        leaders should listen, but not that listening is more
+                        important (#3)</td></tr>
+                <tr><td>Body 1: view 1, explained + specific
+                        example</td><td><span
+                            style="color:#d97706; font-weight:bold;">½</span></td><td>Clear
+                        reasons; the "example" is a general statement
+                        (#5)</td></tr>
+                <tr><td>Body 2: view 2, explained + example</td><td><span
+                            class="green-tick">✓</span></td><td>Well explained,
+                        with strong vocabulary</td></tr>
+                <tr><td>Own position defended against the other
+                        view</td><td><span
+                            style="color:#dc2626; font-weight:bold;">✗</span></td><td>Body
+                        2 has no rebuttal (#21)</td></tr>
+                <tr><td>Conclusion restates the position with a
+                        reason</td><td><span
+                            class="green-tick">✓</span></td><td>"...because it fosters collaboration"</td></tr>
+                <tr><td>Length: at least 250 words</td><td><span
+                            class="green-tick">✓</span></td><td>268
+                        words</td></tr>
+            </table>
+
+            <h2>Argument map: what the essay actually says</h2>
+            <table class="tight">
+                <tr><th>Paragraph</th><th>Main point</th><th>Support
+                        given</th><th>Problem</th></tr>
+                <tr><td>Intro</td><td>Both views; leaders should
+                        listen</td><td>—</td><td>Doesn't say listening is MORE
+                        important, or why</td></tr>
+                <tr><td>Body 1</td><td>Listening builds cooperation and
+                        trust</td><td>People share problems → trust → better
+                        solutions</td><td>No specific example; vague words; one
+                        over-generalisation</td></tr>
+                <tr><td>Body 2</td><td>Quick decisions show confidence and save
+                        time</td><td>Productivity, opportunities,
+                        discipline</td><td>Strong, but never linked back to her
+                        opinion</td></tr>
+                <tr><td>Conclusion</td><td>Listening is
+                        essential</td><td>"fosters collaboration and emotional support"</td><td>Repeats
+                        Body 1; doesn't weigh the two views</td></tr>
+            </table>
+
+            <h2>The "concession + rebuttal" pattern for Body 2</h2>
+            <table class="tight">
+                <tr><td style="width: 20%; font-weight: bold;">1.
+                        Concede</td><td><em>Admittedly, quick and firm decisions
+                            have clear advantages...</em></td></tr>
+                <tr><td style="font-weight: bold;">2. Explain +
+                        example</td><td>Her existing Body 2 (saves time, seizes
+                        opportunities, maintains discipline)</td></tr>
+                <tr><td style="font-weight: bold;">3. Rebut</td><td><em>However,
+                            a quick decision made without listening can easily
+                            be the wrong one, so...</em></td></tr>
+            </table>
+
+            <div class="page-number">8</div>
+        </div>
+
+        <!-- PAGE 9 -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">MODEL
+                ANSWER (BAND 7.5–8)</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 4mm; font-size: 9.5pt; margin-bottom: 4mm; background: #f0fdf4;">
+                <p>Some people believe that a good leader's most important
+                    quality is the ability to listen, while others feel that
+                    making quick, firm decisions matters more. In my view,
+                    although decisiveness is vital in emergencies, listening is
+                    the more fundamental quality because it makes good decisions
+                    possible.</p>
+                <p>Those who prioritise listening argue that leaders cannot
+                    solve problems they do not understand. By consulting
+                    citizens, employees or experts, a leader gains a clearer
+                    picture of people's real needs and is less likely to
+                    introduce policies that fail. Listening also builds trust:
+                    people are far more willing to follow a leader who has taken
+                    their concerns seriously. For example, a mayor who holds
+                    public meetings before redesigning a city's transport system
+                    is likely to face less opposition than one who imposes
+                    changes without warning.</p>
+                <p>On the other hand, there are situations where hesitation can
+                    be costly. During the COVID-19 pandemic, governments that
+                    imposed lockdowns and travel restrictions early were often
+                    more successful in limiting the spread of the virus than
+                    those that delayed. In such crises, endless consultation can
+                    waste precious time, and a leader must be willing to act
+                    firmly even when the information is incomplete.</p>
+                <p>However, I believe that quick decisions are only valuable
+                    when they are informed ones. A leader who acts rapidly but
+                    ignores expert advice may make serious mistakes, as a poorly
+                    planned emergency measure can cause as much harm as the
+                    problem itself. The best leaders, therefore, listen
+                    continuously so that, when a crisis arrives, they are ready
+                    to decide quickly and wisely.</p>
+                <p style="margin-bottom: 0;">In conclusion, both qualities are
+                    important, but listening is the foundation of effective
+                    leadership, while decisiveness is most essential in
+                    emergencies.</p>
+                <p
+                    style="font-style: italic; color: #475569; margin-bottom: 0; margin-top: 2mm;">About
+                    290 words</p>
+            </div>
+
+            <h2>What changes from Band 6.5 to Band 7.5+</h2>
+            <table class="tight">
+                <tr><th>Esha's essay</th><th>Model answer</th></tr>
+                <tr><td>"A leader should have the skill to listen to others."</td><td>"...listening is the more fundamental quality because it makes good decisions possible."</td></tr>
+                <tr><td>"For example, initially, when a leader listens..."
+                        (general)</td><td>"a mayor who holds public meetings before redesigning a city's transport system..."
+                        (specific)</td></tr>
+                <tr><td>Body 2 supports quick decisions with no
+                        rebuttal</td><td>A separate paragraph explains why quick
+                        decisions are only valuable when informed</td></tr>
+                <tr><td>"create trustworthiness",
+                        "useful advices"</td><td>"builds trust",
+                        "taken their concerns seriously"</td></tr>
+            </table>
+
+            <h2
+                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
+                LOG (FULL LIST)</h2>
+            <p style="font-size: 9.5pt;">Every numbered mark from the script,
+                with the correction and the reason.</p>
+            <table class="tiny">
+                <tr><th>#</th><th>Student
+                        wrote</th><th>Correction</th><th>Why</th></tr>
+                <tr><td>1</td><td>necessary</td><td>important</td><td><strong>WW</strong>
+                        "Most necessary" is unnatural:
+                        "most important / most essential".</td></tr>
+                <tr><td>2</td><td>instant</td><td>quick</td><td><strong>WW</strong>
+                        "Instant" exaggerates; the question says
+                        "quick".</td></tr>
+                <tr><td>3</td><td>a leader should have the skill to listen to
+                        others</td><td>listening is the MORE important quality,
+                        because...</td><td><strong>Dev</strong> A position is
+                        given, but it doesn't answer the comparison: say which
+                        quality is MORE important, and why.</td></tr>
+                <tr><td>4</td><td>allows cooperation and emotional
+                        growth</td><td>encourages cooperation and builds
+                        trust</td><td><strong>WW</strong> Imprecise:
+                        "allows... emotional growth" doesn't say what listening
+                        actually does.</td></tr>
+                <tr><td>5</td><td>For example, initially,</td><td>For instance,
+                        a manager...</td><td><strong>Dev</strong> "For example"
+                        should introduce a specific case (a manager, a teacher,
+                        a mayor); "initially" adds nothing.</td></tr>
+                <tr><td>6</td><td>all things</td><td>their
+                        concerns</td><td><strong>WW</strong> Vague: say what
+                        people share.</td></tr>
+                <tr><td>7</td><td>a leader</td><td>him or
+                        her</td><td><strong>Ref</strong> Repetition of
+                        "a leader": use a pronoun or "their leader".</td></tr>
+                <tr><td>8</td><td>These things create
+                        trustworthiness</td><td>This builds
+                        trust</td><td><strong>Ref</strong> "These things" is
+                        vague, and "create trustworthiness" is the wrong
+                        collocation: build trust.</td></tr>
+                <tr><td>9</td><td>, people feel</td><td>: people
+                        feel</td><td><strong>Frag</strong> Comma splice: two
+                        full clauses joined only by a comma.</td></tr>
+                <tr><td>10</td><td>gives
+                        them</td><td>receive</td><td><strong>SVA</strong>
+                        Agreement: "people... receive", "gives" has no clear
+                        subject.</td></tr>
+                <tr><td>11</td><td>solves the problem effectively</td><td>can
+                        solve problems more
+                        effectively</td><td><strong>Gr</strong> Logical leap;
+                        make it general:
+                        "can solve problems more effectively".</td></tr>
+                <tr><td>12</td><td>provides them useful advices</td><td>provide
+                        them with useful advice</td><td><strong>Gr</strong>
+                        "Advice" is uncountable, and the verb pattern is
+                        "provide someone WITH something".</td></tr>
+                <tr><td>13</td><td>can
+                        not</td><td>cannot</td><td><strong>Sp</strong> Written
+                        as one word.</td></tr>
+                <tr><td>14</td><td>concentrate on people's
+                        expectations</td><td>pay attention to people's
+                        needs</td><td><strong>WW</strong> Imprecise
+                        collocation.</td></tr>
+                <tr><td>15</td><td>totally impossible</td><td>very
+                        difficult</td><td><strong>Ov</strong>
+                        Over-generalisation: avoid absolute claims in academic
+                        writing.</td></tr>
+                <tr><td>16</td><td>the skills of making</td><td>the ability to
+                        make</td><td><strong>Gr</strong>
+                        "The ability to make..." is more natural (and then the
+                        verb is singular: "is").</td></tr>
+                <tr><td>17</td><td>strong</td><td>firm</td><td><strong>WW</strong>
+                        Collocation: firm decisions, as in the
+                        question.</td></tr>
+                <tr><td>18</td><td>it shows</td><td>they
+                        show</td><td><strong>Ref</strong> "It" refers back to
+                        "skills", which is plural.</td></tr>
+            </table>
+
+            <div class="page-number">9</div>
+        </div>
+
+        <!-- PAGE 10 -->
+        <div class="page">
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>#</th><th>Student
+                        wrote</th><th>Correction</th><th>Why</th></tr>
+                <tr><td>19</td><td>working
+                        capability</td><td>competence</td><td><strong>WW</strong>
+                        Unnatural phrase.</td></tr>
+                <tr><td>20</td><td>solve different kinds of
+                        challenges</td><td>deal with different
+                        challenges</td><td><strong>WW</strong> Collocation:
+                        solve problems, but deal with (or face)
+                        challenges.</td></tr>
+                <tr><td>21</td><td>(missing)</td><td>. However,
+                        ...</td><td><strong>Dev</strong> No rebuttal: this
+                        paragraph never links back to your opinion. Add a
+                        "However..." sentence explaining why listening still
+                        matters more.</td></tr>
+                <tr><td>22</td><td>being a good leader must have</td><td>a good
+                        leader must have</td><td><strong>Gr</strong> Faulty
+                        subject: "being a good leader" cannot "have"
+                        anything.</td></tr>
+                <tr><td>23</td><td>emotional support</td><td>provides emotional
+                        support</td><td><strong>Gr</strong>
+                        "Fosters... emotional support" doesn't fit; add a verb:
+                        "provides emotional support".</td></tr>
+            </table>
+
+            <h2>Error profile</h2>
+            <table class="tight profile">
+                <tr><th>Code</th><th>Meaning</th><th>Criterion</th><th>Count</th></tr>
+                <tr><td><strong>WW</strong></td><td>Wrong word /
+                        collocation</td><td>LR</td><td>8</td></tr>
+                <tr><td><strong>Sp</strong></td><td>Spelling / word
+                        formation</td><td>LR</td><td>1</td></tr>
+                <tr><td><strong>Gr</strong></td><td>Grammar / sentence
+                        structure</td><td>GRA</td><td>5</td></tr>
+                <tr><td><strong>SVA</strong></td><td>Subject-verb
+                        agreement</td><td>GRA</td><td>1</td></tr>
+                <tr><td><strong>Frag</strong></td><td>Comma
+                        splice</td><td>GRA</td><td>1</td></tr>
+                <tr><td><strong>Ref</strong></td><td>Unclear reference /
+                        repetition</td><td>CC</td><td>3</td></tr>
+                <tr><td><strong>Dev</strong></td><td>Position or support not
+                        developed</td><td>TR</td><td>3</td></tr>
+                <tr><td><strong>Ov</strong></td><td>Over-generalisation</td><td>TR</td><td>1</td></tr>
+                <tr><td colspan="3" style="text-align: right;"><strong>Total
+                            marked
+                            errors</strong></td><td><strong>23</strong></td></tr>
+            </table>
+
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 8mm;">PRACTICE
+                · FIX IT YOURSELF</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 4mm; font-size: 10pt;">
+                <p>Each sentence is taken from your essay. Rewrite it correctly
+                    <strong>before</strong> looking at the answer key.</p>
+                <ol class="practice-list">
+                    <li><span class="num">1</span> A significant reason is that
+                        it allows cooperation and emotional growth.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: WW</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">2</span> These things create
+                        trustworthiness, people feel more secure and gives them
+                        emotional support.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Ref · WW · Frag · SVA</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">3</span> As a result, the leader
+                        solves the problem effectively as well as provides them
+                        useful advices.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Gr</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">4</span> If a leader can not
+                        concentrate on people's expectations, then it is totally
+                        impossible to build a balanced society.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Sp · WW · Ov</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">5</span> The primary reason is that it
+                        shows confidence and working capability.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Ref · WW</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">6</span> I contend that being a good
+                        leader must have the ability to listen to others.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Gr</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">7</span> Write ONE sentence to end
+                        Body 2 that links back to your opinion.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Dev</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+                </ol>
+            </div>
+
+            <div class="page-number">10</div>
+        </div>
+
+        <!-- PAGE 11 -->
+        <div class="page">
+            <h2>Answer key</h2>
+            <div class="good-box"
+                style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
+                <ol style="margin-left: 5mm; font-size: 10pt; color: #1c2430;">
+                    <li>A significant reason is that it encourages cooperation
+                        and builds trust.</li>
+                    <li>This builds trust: people feel more secure and receive
+                        emotional support.</li>
+                    <li>As a result, the leader can solve problems more
+                        effectively and provide them with useful advice.</li>
+                    <li>If a leader cannot pay attention to people's needs, it
+                        is very difficult to build a balanced society.</li>
+                    <li>The primary reason is that it shows confidence and
+                        competence.</li>
+                    <li>I contend that a good leader must have the ability to
+                        listen to others.</li>
+                    <li>However, a quick decision made without listening to
+                        others can easily be the wrong one, so listening remains
+                        the more important quality.</li>
+                </ol>
+            </div>
+            <div class="page-number">11</div>
+        </div>
+
+    </body>
+</html>

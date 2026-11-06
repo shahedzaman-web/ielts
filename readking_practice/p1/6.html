@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Australia's Airborne Dentists — IELTS Reading Practice</title>
+        <style>
+:root{
+  --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
+  --good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;
+  --header-h:56px;--bottom-h:236px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
+button{font-family:inherit;cursor:pointer;border:none}
+/* HEADER */
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-right{display:flex;align-items:center;gap:10px}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}
+.band-chip.show{opacity:1;background:var(--good)}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+.timer-chip.warning{background:#b45309}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.icon-btn:hover{background:#f1f5f9}
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+/* SPLIT */
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pane{overflow-y:auto;padding:24px 30px}
+.passages{flex:0 0 50%;background:#fcfdff}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}
+.resizer:hover{background:#cbd5e1}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.passage p{margin:0 0 14px}
+.passage em{color:var(--muted)}
+/* QUESTIONS */
+.q-section{display:block}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
+.q-group:last-child{border-bottom:none;margin-bottom:0}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}
+.q-instr p{margin:0 0 3px}
+.q-instr p:last-child{margin:0}
+.q-instr strong{color:var(--text)}
+/* NOTES */
+ul.notes{list-style:none;padding:0;margin:0}
+ul.notes li{padding:8px 0;border-bottom:1px dashed #eef2f7;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:14.5px}
+ul.notes li:last-child{border-bottom:none}
+ul.notes li .num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+ul.notes li.notes-sub{display:block;padding:14px 0 4px;border-bottom:none;font-size:12.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+ul.notes li.notes-sub:first-child{padding-top:0}
+.notes-row.correct .num{background:var(--good-soft);color:var(--good)}
+.notes-row.wrong .num{background:var(--bad-soft);color:var(--bad)}
+input.gap{display:inline-block;width:150px;height:28px;margin:2px 4px;padding:2px 8px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font:inherit;font-size:14px;vertical-align:middle}
+input.gap:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
+input.gap.correct{border-color:var(--good);background:var(--good-soft)}
+input.gap.wrong{border-color:var(--bad);background:var(--bad-soft)}
+/* TFNG */
+.tfng-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
+.tfng-row:last-child{border-bottom:none}
+.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+.tfng-statement{flex:1;min-width:200px}
+.tfng-options{display:flex;gap:14px;flex-basis:100%;padding:4px 0 0}
+.tfng-opt{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:.12s}
+.tfng-opt:hover{background:#f8fafc;border-color:#cbd5e1}
+.tfng-opt input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+.tfng-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.tfng-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.tfng-row.correct .tfng-statement{background:rgba(220,252,231,.35)}
+.tfng-row.wrong .tfng-statement{background:rgba(254,226,226,.35)}
+/* FEEDBACK */
+.feedback{font-size:12px;margin-top:4px;display:none;font-weight:600;flex-basis:100%}
+.graded .feedback{display:block}
+.feedback.no{color:var(--bad)}
+.feedback.ok{color:var(--good)}
+/* EVIDENCE */
+.evidence-line{
+  display:none;font-size:12px;margin-top:5px;color:#475569;
+  background:#f8fafc;border-left:3px solid var(--accent);
+  padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45;
+  flex-basis:100%;
+}
+.graded .evidence-line{display:block}
+.evidence-line .lbl{display:inline-block;margin-right:4px;font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.evidence-line em{color:var(--text);font-style:italic}
+mark.evidence-mark{background:#dcfce7;outline:2px solid #16a34a;border-radius:3px;padding:1px 3px;cursor:pointer;transition:background .15s;position:relative}
+mark.evidence-mark:hover{background:#bbf7d0}
+mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
+mark.evidence-mark.flash{animation:evflash 1.4s ease}
+@keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+/* HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
+/* BOTTOM */
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
+.bottom-inner{max-width:1600px;margin:0 auto}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.9}
+.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}
+.palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}
+.palette-section{display:flex;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}
+.palette-label{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}
+.palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}
+.palette-item:hover{background:#e2e8f0}
+.palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+.palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22)}
+.palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}
+.nav-buttons{display:flex;gap:6px;flex:0 0 auto}
+.nav-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav-buttons button:hover:not(:disabled){background:#f1f5f9}
+.nav-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.test-buttons{display:flex;gap:10px;align-items:center}
+.review-btn{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600}
+.review-btn:hover{background:#f1f5f9}
+.submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
+.submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.overlay-head h3{margin:0;font-size:18px}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.close-x:hover{color:var(--text)}
+.overlay-body{padding:18px 22px;overflow-y:auto}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px}
+table.result-tbl td.correct{color:var(--good);font-weight:700}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700}
+table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:italic}
+table.result-tbl tbody tr{cursor:pointer;transition:background .12s}
+table.result-tbl tbody tr:hover{background:#f8fafc}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+/* FOCUS / FULLSCREEN */
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}
+body.focus-mode{padding-bottom:0}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}
+body.focus-mode .exit-focus{display:block}
+/* FULLSCREEN FIX */
+body.fullscreen-active{overflow:hidden}
+body.fullscreen-active .main-split{
+  height:calc(100vh - var(--header-h) - var(--bottom-h));
+  min-height:0;
+  max-width:none;
+  margin:0;
+  border-radius:0;
+  border:none;
+}
+/* TOAST */
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+</style>
+    </head>
+    <body>
+
+        <header class="app-header">
+            <h1>Australia's Airborne Dentists — IELTS Reading</h1>
+            <div class="header-right">
+                <button class="icon-btn" id="fullscreenBtn">⛶
+                    Fullscreen</button>
+                <button class="icon-btn" id="focusBtn">🎯 Focus</button>
+                <div class="band-chip" id="bandChip">--</div>
+                <div class="timer-chip" id="timerChip">⏱ <strong
+                        id="timer">20:00</strong></div>
+                <div class="menu-wrap">
+                    <button class="icon-btn" id="menuBtn">☰</button>
+                    <div class="menu-pop" id="menuPop">
+                        <a href="#" id="exportLink">📄 Export as PDF</a>
+                        <a href="#" id="clearHighlightsLink">🧹 Clear All
+                            Highlights</a>
+                        <a href="#" id="resetLink">↺ Reset Test</a>
+                        <a href="#" id="gotoTop">↑ Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+        <div id="hl-popup">
+            <button id="hl-highlight">🖍 Highlight</button>
+            <button id="hl-dehighlight">🧽 Clear</button>
+            <button id="hl-note">📝 Note</button>
+        </div>
+
+        <div id="note-popup">
+            <div class="np-card">
+                <h4>Add a note</h4>
+                <textarea id="note-text"
+                    placeholder="Write your note about this text..."></textarea>
+                <div class="np-actions">
+                    <button type="button" class="np-cancel"
+                        id="note-cancel">Cancel</button>
+                    <button type="button" class="np-save" id="note-save">Save
+                        Note</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-split" id="mainSplit">
+            <!-- PASSAGE -->
+            <div class="pane passages" id="passagesPane">
+                <div class="passage">
+                    <span class="part-label">Reading Passage 1</span>
+                    <h2>Australia's Airborne Dentists</h2>
+                    <p><em>You should spend about 20 minutes on Questions 1–13,
+                            which are based on the reading passage
+                            below.</em></p>
+                    <p>Australians living or traveling in rural and remote
+                        areas can face particular difficulties when they need
+                        medical care. Hundreds of kilometres from major cities
+                        and many hours by road from the closest hospital or
+                        clinic, some rural Australians do not have easy access
+                        to doctors, nurses and dentists.</p>
+                    <p>Organisations such as the Royal Flying Doctor Service
+                        (RFDS) have been established to bring health services to
+                        outback Australian communities. The RFDS provides free
+                        medical care to people who live, work or travel in
+                        remote and regional parts of Australia. This non-profit
+                        organisation is the oldest and largest airborne health
+                        service of its kind in the world, and since 1928 it has
+                        used small aircraft to provide health services to some
+                        of Australia's most far-away communities.</p>
+                    <p>In recent years, the RFDS has also started to fly dentists
+                        to regional Australia. As well as offering mobile dental
+                        clinics, the RFDS offers a range of preventative and
+                        educational services. Looking after the teeth of people
+                        in remote areas presents special challenges. These
+                        include providing care to disparate communities with no
+                        established dental facilities, and dealing with higher
+                        incidences of other diseases which are linked to, or
+                        caused by poor dental health.</p>
+                    <p>People in remote areas have very infrequent visits by
+                        health staff. RFDS dentists might only visit a community
+                        once every few months, or sometimes once per year.
+                        Because of infrequent dentist visits, patients in these
+                        areas often need to put up with their dental problems
+                        before they can get treatment; consequently, people in
+                        remote areas are more likely to have tooth decay (the
+                        blackening and deterioration of teeth) and develop gum
+                        and other mouth diseases.</p>
+                    <p>In some locations that the RFDS visits, there are no
+                        suitable dental facilities, so dentists have to bring
+                        everything with them. This includes drills, dentists'
+                        chairs, portable X-ray machines, and computers for
+                        keeping track of patients' treatments. Equipment can
+                        weigh up to 100 kilograms, and since the small planes
+                        that transport dentists have limited space, dentists
+                        cannot always bring everything that they need.</p>
+                    <p>While dentists in town or city centres can specialise in
+                        certain types of treatment, RFDS dentists need to be
+                        'all-rounders'. They need to be able to do all kinds of
+                        dental procedures, as they don't have the ability to
+                        refer patients to more specialised dentists. Even with
+                        their broad experience, there are some services that are
+                        particularly challenging for RFDS dentists. For example,
+                        dentures (for artificial teeth) can be very difficult to
+                        provide, as they need to be the right shape and size for
+                        the patient, and this requires many visits over a long
+                        period of time. As a result, it is not practical to make
+                        dentures available.</p>
+                    <p>Some chronic illnesses are more common in remote
+                        communities than in the rest of Australia. These
+                        illnesses can in turn lead to a lowered resistance to
+                        infection, including gum and other oral infections. As a
+                        result, people in outback Australian communities are
+                        more likely to experience oral health problems than city
+                        folk, and this poses extra challenges for both the
+                        dentists and the doctors of the RFDS.</p>
+                    <p>Because there aren't a lot of dental services in remote
+                        areas, people living in these areas also receive less
+                        education about good dental hygiene than their city
+                        counterparts do. Australians in very remote communities
+                        might not be aware of things that people in cities take
+                        for granted, such as the importance of daily tooth
+                        brushing. Also, basic dental hygiene items such as
+                        toothpaste and toothbrushes can be more expensive in
+                        outback areas. Many people are on low incomes, meaning
+                        they have extra difficulty affording these products. If
+                        this is the case, the RFDS supplies these.</p>
+                    <p>As well as treating patients, RFDS dentists try to focus
+                        on preventative oral health and educate their patients
+                        on good oral hygiene, such as tooth brushing and
+                        flossing. The RFDS also provides mouthguards for young
+                        sports players. Playing contact sports, such as rugby
+                        league or Australian rules football, can damage young
+                        people's teeth, so mouthguards provide protection which
+                        prevents accidental injuries.</p>
+                    <p>Adding fluoride to water supplies has been proven to
+                        reduce the incidence of tooth decay in many parts of the
+                        world. City dwellers in Australia use water supplies
+                        that have been fluoridated, and their rates of tooth
+                        decay are lower because of this. In remote areas, it is
+                        not practical to fluoridate drinking water supplies, and
+                        so people living in these areas are more subject to
+                        tooth decay. As a result, it is particularly important
+                        that people living in areas without fluoridated water
+                        pay special attention to regular brushing of their teeth
+                        with fluoridated toothpaste.</p>
+                    <p>Despite many challenges, the RFDS continues to offer
+                        much-needed dental and medical support. Its presence in
+                        isolated communities greatly improves the quality of
+                        dental health, and supports important oral hygiene and
+                        health initiatives.</p>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <!-- QUESTIONS -->
+            <div class="pane questions" id="questionsPane">
+                <form id="quiz" onsubmit="return false;">
+                    <section class="q-section">
+                        <div class="q-group">
+                            <h3>Questions 1–7</h3>
+                            <div class="q-instr">
+                                <p>Do the following statements agree with the
+                                    information given in Reading Passage 1?</p>
+                                <p>In boxes 1–7 on your answer sheet, write:</p>
+                                <p><strong>TRUE</strong> if the statement agrees
+                                    with the information<br>
+                                    <strong>FALSE</strong> if the statement
+                                    contradicts the information<br>
+                                    <strong>NOT GIVEN</strong> if there is no
+                                    information on this</p>
+                            </div>
+                            <div id="tfng-container"></div>
+                        </div>
+
+                        <div class="q-group">
+                            <h3>Questions 8–13</h3>
+                            <div class="q-instr">
+                                <p>Complete the notes below.</p>
+                                <p>Choose <strong>ONE WORD ONLY</strong> from
+                                    the passage for each answer.</p>
+                                <p>Write your answers in boxes 8–13 on your
+                                    answer sheet.</p>
+                            </div>
+                            <ul class="notes">
+                                <li class="notes-sub">Challenges faced by RFDS
+                                    dentists</li>
+                                <li class="notes-row" data-q="8"><span
+                                        class="num">8</span><span>need to bring
+                                        equipment including <input class="gap"
+                                            type="text" name="q8" data-q="8"
+                                            aria-label="Q8"> for
+                                        records</span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+                                <li class="notes-row" data-q="9"><span
+                                        class="num">9</span><span>aircraft used
+                                        to carry equipment have restricted
+                                        <input class="gap" type="text"
+                                            name="q9" data-q="9"
+                                            aria-label="Q9"></span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+                                <li class="notes-row" data-q="10"><span
+                                        class="num">10</span><span>problems
+                                        offering some services, e.g., fitting
+                                        <input class="gap" type="text"
+                                            name="q10" data-q="10"
+                                            aria-label="Q10"></span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+
+                                <li class="notes-sub">Products supplied by
+                                    RFDS dentists</li>
+                                <li class="notes-row" data-q="11"><span
+                                        class="num">11</span><span>If necessary,
+                                        RFDS provides <input class="gap"
+                                            type="text" name="q11" data-q="11"
+                                            aria-label="Q11"> and</span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+                                <li class="notes-row" data-q="12"><span
+                                        class="num">12</span><span><input
+                                            class="gap" type="text" name="q12"
+                                            data-q="12" aria-label="Q12"> for
+                                        regular use</span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+                                <li class="notes-row" data-q="13"><span
+                                        class="num">13</span><span><input
+                                            class="gap" type="text" name="q13"
+                                            data-q="13" aria-label="Q13"> to
+                                        protect teeth of sports
+                                        players</span><div
+                                        class="feedback"></div><div
+                                        class="evidence-line"></div></li>
+                            </ul>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+
+        <!-- BOTTOM PANEL -->
+        <div class="bottom-panel">
+            <div class="bottom-inner">
+                <div class="part-tabs">
+                    <button class="part-tab active">
+                        <span class="tab-part-name">Passage 1</span>
+                        <span class="tab-qcount">Questions 1–13 · Australia's
+                            Airborne Dentists</span>
+                    </button>
+                </div>
+                <div class="palette" id="palette"></div>
+                <div class="bottom-controls">
+                    <div class="nav-buttons">
+                        <button id="prevBtn">←</button>
+                        <button id="nextBtn">→</button>
+                    </div>
+                    <div class="test-buttons">
+                        <button class="review-btn" id="reviewBtn">📋
+                            Review</button>
+                        <button class="submit-btn" id="submitBtn">Submit
+                            ✈</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT OVERLAY -->
+        <div class="overlay" id="resultOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Your Results</h3><button
+                        class="close-x"
+                        data-close="resultOverlay">×</button></div>
+                <div class="overlay-body">
+                    <div class="score-summary">
+                        <div class="big" id="resultScore">0 / 13</div>
+                        <div class="sub" id="resultSub">Score: —</div>
+                    </div>
+                    <div class="legend-row"><span>🟩 Correct</span><span>🟥
+                            Incorrect</span><span>⬜ No answer</span><span>👉
+                            Click a row to jump to evidence</span></div>
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your
+                                    Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
+                        <tbody id="resultBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREVIEW OVERLAY -->
+        <div class="overlay" id="previewOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Review Your Answers</h3><button
+                        class="close-x"
+                        data-close="previewOverlay">×</button></div>
+                <div class="overlay-body">
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const ANSWER_KEY = {
+  1: ["NOT GIVEN"],
+  2: ["FALSE"],
+  3: ["NOT GIVEN"],
+  4: ["TRUE"],
+  5: ["FALSE"],
+  6: ["NOT GIVEN"],
+  7: ["TRUE"],
+  8: ["computers"],
+  9: ["space"],
+  10: ["dentures"],
+  11: ["toothpaste"],
+  12: ["toothbrushes"],
+  13: ["mouthguards"]
+};
+
+const EVIDENCE = {
+  1: {
+    text: null,
+    sentence: "<em>Not mentioned in the passage</em> — the RFDS is described as a non-profit organisation providing free medical care, but the passage never says whether its doctors work as volunteers."
+  },
+  2: {
+    text: "once every few months, or sometimes once per year",
+    sentence: "RFDS dentists might only visit a community <hl>once every few months, or sometimes once per year</hl>."
+  },
+  3: {
+    text: null,
+    sentence: "<em>Not mentioned in the passage</em> — there is no reference anywhere to dental nurses accompanying RFDS dentists on their journeys."
+  },
+  4: {
+    text: "RFDS dentists need to be 'all-rounders'",
+    sentence: "While dentists in town or city centres can specialise in certain types of treatment, <hl>RFDS dentists need to be 'all-rounders'</hl>. They need to be able to do all kinds of dental procedures."
+  },
+  5: {
+    text: "receive less education about good dental hygiene than their city counterparts",
+    sentence: "Because there aren't a lot of dental services in remote areas, people living in these areas also <hl>receive less education about good dental hygiene than their city counterparts</hl> do."
+  },
+  6: {
+    text: null,
+    sentence: "<em>Not mentioned in the passage</em> — the passage refers to education about tooth brushing and flossing, but it says nothing about good eating habits."
+  },
+  7: {
+    text: "their rates of tooth decay are lower because of this",
+    sentence: "City dwellers in Australia use water supplies that have been fluoridated, and <hl>their rates of tooth decay are lower because of this</hl>."
+  },
+  8: {
+    text: "computers for keeping track of patients' treatments",
+    sentence: "This includes drills, dentists' chairs, portable X-ray machines, and <hl>computers for keeping track of patients' treatments</hl>."
+  },
+  9: {
+    text: "have limited space",
+    sentence: "…since the small planes that transport dentists <hl>have limited space</hl>, dentists cannot always bring everything that they need."
+  },
+  10: {
+    text: "dentures (for artificial teeth) can be very difficult to provide",
+    sentence: "For example, <hl>dentures (for artificial teeth) can be very difficult to provide</hl>, as they need to be the right shape and size for the patient."
+  },
+  11: {
+    text: "toothpaste",
+    sentence: "Also, basic dental hygiene items such as <hl>toothpaste</hl> and toothbrushes can be more expensive in outback areas… If this is the case, the RFDS supplies these."
+  },
+  12: {
+    text: "toothbrushes",
+    sentence: "Also, basic dental hygiene items such as toothpaste and <hl>toothbrushes</hl> can be more expensive in outback areas… If this is the case, the RFDS supplies these."
+  },
+  13: {
+    text: "provides mouthguards for young sports players",
+    sentence: "The RFDS also <hl>provides mouthguards for young sports players</hl>."
+  }
+};
+
+const TFNG_QUESTIONS = [
+  { q: 1, statement: "Many of the RFDS doctors work as volunteers." },
+  { q: 2, statement: "RFDS dentists make trips to outback communities each month." },
+  { q: 3, statement: "RFDS dentists are accompanied on their journeys to remote areas by a dental nurse." },
+  { q: 4, statement: "RFDS dentists must provide a wide range of dental services." },
+  { q: 5, statement: "Rural dental patients are more informed about oral hygiene than urban patients." },
+  { q: 6, statement: "RFDS dentists educate patients about good eating habits." },
+  { q: 7, statement: "Urban Australians generally have better teeth because their water is treated." }
+];
+
+const ALL_QUESTIONS = Array.from({ length: 13 }, (_, i) => i + 1); // 1..13
+const TOTAL_QUESTIONS = 13;
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function normalize(s) {
+  return (s || "").toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g, "").replace(/\s+/g, " ");
+}
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+/* ============================================================
+   RENDER TFNG
+   ============================================================ */
+(function renderTFNG() {
+  const container = document.getElementById('tfng-container');
+  TFNG_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'tfng-row';
+    row.dataset.q = item.q;
+    let html = `<span class="q-num-badge">${item.q}</span>`;
+    html += `<span class="tfng-statement">${item.statement}</span>`;
+    html += `<div class="tfng-options">`;
+    ['TRUE', 'FALSE', 'NOT GIVEN'].forEach(v => {
+      html += `<label class="tfng-opt">
+        <input type="radio" name="q${item.q}" value="${v}" aria-label="Q${item.q} ${v}">
+        <span>${v}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+})();
+
+/* ============================================================
+   EVIDENCE HIGHLIGHTING IN PASSAGE
+   ============================================================ */
+function highlightEvidenceInPassage(text, qNum) {
+  if (!text) return;
+  const passagesEl = document.getElementById('passagesPane');
+  if (!passagesEl) return;
+  if (passagesEl.querySelector(`mark.evidence-mark[data-q="${qNum}"]`)) return;
+
+  const walker = document.createTreeWalker(
+    passagesEl,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        if (node.parentElement && node.parentElement.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && node.parentElement.closest('mark.evidence-mark')) return NodeFilter.FILTER_REJECT;
+        return node.textContent.indexOf(text) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    }
+  );
+
+  let targetNode = null;
+  let idx = -1;
+  while ((targetNode = walker.nextNode())) {
+    idx = targetNode.textContent.indexOf(text);
+    if (idx !== -1) break;
+  }
+  if (!targetNode || idx === -1) return;
+
+  try {
+    const range = document.createRange();
+    range.setStart(targetNode, idx);
+    range.setEnd(targetNode, idx + text.length);
+    const mark = document.createElement('mark');
+    mark.className = 'evidence-mark';
+    mark.dataset.q = qNum;
+    mark.title = 'Evidence for Q' + qNum + ' — click to jump';
+    mark.addEventListener('click', () => goToQuestion(qNum));
+    range.surroundContents(mark);
+  } catch (e) {
+    console.warn('Could not highlight evidence Q' + qNum, e);
+  }
+}
+
+function clearEvidenceMarks() {
+  document.querySelectorAll('mark.evidence-mark').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m);
+  });
+}
+
+/* ============================================================
+   PALETTE
+   ============================================================ */
+const palette = document.getElementById('palette');
+const paletteSection = document.createElement('div');
+paletteSection.className = 'palette-section';
+const paletteLabel = document.createElement('strong');
+paletteLabel.className = 'palette-label';
+paletteLabel.textContent = 'Questions:';
+paletteSection.appendChild(paletteLabel);
+ALL_QUESTIONS.forEach(n => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'palette-item';
+  b.dataset.q = n;
+  b.textContent = n;
+  b.addEventListener('click', () => goToQuestion(n));
+  paletteSection.appendChild(b);
+});
+palette.appendChild(paletteSection);
+
+/* ============================================================
+   ANSWER ACCESS
+   ============================================================ */
+function getUserAnswer(n) {
+  const radio = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if (radio) return radio.value;
+  const input = document.querySelector(`input[type=text][name="q${n}"]`);
+  if (input) return input.value;
+  return "";
+}
+function isCorrect(n, ua) {
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function refreshPaletteAnswered() {
+  document.querySelectorAll('.palette-item').forEach(b => {
+    const n = parseInt(b.dataset.q, 10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle('answered', ua.trim() !== '');
+  });
+}
+document.addEventListener('input', refreshPaletteAnswered);
+document.addEventListener('change', refreshPaletteAnswered);
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+let currentQuestion = 1;
+function goToQuestion(n) {
+  n = parseInt(n, 10);
+  if (!ALL_QUESTIONS.includes(n)) return;
+  currentQuestion = n;
+  const qEl = document.querySelector(`[data-q="${n}"]`);
+  if (qEl) {
+    qEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    qEl.style.transition = 'background .2s';
+    qEl.style.background = '#fffbeb';
+    setTimeout(() => { qEl.style.background = ''; }, 1200);
+  }
+  const input = document.querySelector(`input[name="q${n}"]`);
+  if (input && !input.disabled) input.focus({ preventScroll: true });
+  updateCurrent();
+  updateNav();
+}
+function updateCurrent() {
+  document.querySelectorAll('.palette-item').forEach(b =>
+    b.classList.toggle('current', parseInt(b.dataset.q, 10) === currentQuestion));
+}
+function updateNav() {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= ALL_QUESTIONS.length - 1);
+}
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(ALL_QUESTIONS[idx - 1]);
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx < ALL_QUESTIONS.length - 1) goToQuestion(ALL_QUESTIONS[idx + 1]);
+});
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+(function () {
+  const r = document.getElementById('resizer');
+  const p = document.getElementById('passagesPane');
+  const q = document.getElementById('questionsPane');
+  let d = false;
+  r.addEventListener('mousedown', e => {
+    e.preventDefault(); d = true;
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  });
+  document.addEventListener('mousemove', e => {
+    if (!d) return;
+    const rect = document.getElementById('mainSplit').getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    p.style.flex = `0 0 ${pct}%`;
+    q.style.flex = '1 1 auto';
+  });
+  document.addEventListener('mouseup', () => {
+    d = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+})();
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+let secondsLeft = 20 * 60;
+let timerInterval;
+const timerEl = document.getElementById('timer');
+const timerChip = document.getElementById('timerChip');
+function renderTimer() {
+  const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+  const s = String(secondsLeft % 60).padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+  timerChip.classList.remove('warning', 'danger');
+  if (secondsLeft <= 60) timerChip.classList.add('danger');
+  else if (secondsLeft <= 300) timerChip.classList.add('warning');
+}
+function startTimer() {
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(() => {
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      timerChip.classList.add('danger');
+      timerEl.textContent = '00:00';
+      toast('⏰ Time is up!');
+      return;
+    }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast('1 minute remaining!');
+    if (secondsLeft === 300) toast('5 minutes remaining.');
+  }, 1000);
+}
+
+/* ============================================================
+   HIGHLIGHT / NOTE
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+
+function showPopupAt(rect) {
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + 'px';
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width / 2 - 150) + 'px';
+  hlPopup.classList.add('show');
+}
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (hlPopup.classList.contains('show')) {
+    hlPopup.classList.remove('show');
+    savedRange = null;
+    currentMark = null;
+  }
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
+  if (e.target.tagName === 'MARK' && e.target.classList.contains('evidence-mark')) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 0);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+  const em = e.target.tagName === 'MARK' && !e.target.classList.contains('evidence-mark')
+    ? e.target : (e.target.closest ? e.target.closest('mark.hl-user') : null);
+  const en = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (en) {
+    document.getElementById('note-text').value = en.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = en;
+    return;
+  }
+  if (em) {
+    savedRange = null;
+    currentMark = em;
+    showPopupAt(em.getBoundingClientRect());
+    return;
+  }
+});
+
+document.getElementById('hl-highlight').addEventListener('click', () => {
+  if (currentMark) { hlPopup.classList.remove('show'); return; }
+  if (!savedRange) { toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+  } catch (err) {}
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  toast('Highlighted');
+});
+
+document.getElementById('hl-dehighlight').addEventListener('click', () => {
+  if (currentMark) {
+    const p = currentMark.parentNode;
+    while (currentMark.firstChild) p.insertBefore(currentMark.firstChild, currentMark);
+    p.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove('show');
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange) {
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll) {
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try {
+          if (savedRange.intersectsNode(m)) {
+            const p = m.parentNode;
+            while (m.firstChild) p.insertBefore(m.firstChild, m);
+            p.removeChild(m);
+          }
+        } catch (err) {}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove('show');
+    savedRange = null;
+    toast('Highlight removed');
+  } else {
+    hlPopup.classList.remove('show');
+  }
+});
+
+document.getElementById('hl-note').addEventListener('click', () => {
+  if (!savedRange) { toast('Select text first'); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  hlPopup.classList.remove('show');
+  window.getSelection().removeAllRanges();
+});
+
+document.getElementById('note-cancel').addEventListener('click', () => {
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', () => {
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget) {
+    if (nt) {
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      const p = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) p.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      p.removeChild(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    return;
+  }
+  if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+  } catch (err) {}
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Remove all highlights and notes?')) return;
+  document.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+    const p = el.parentNode;
+    while (el.firstChild) p.insertBefore(el.firstChild, el);
+    p.removeChild(el);
+  });
+  clearEvidenceMarks();
+  toast('Highlights cleared');
+});
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  let score = 0, answered = 0;
+  document.body.classList.add('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.tfng-row, .notes-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
+
+  const rows = [];
+  ALL_QUESTIONS.forEach(n => {
+    const rowEl = document.querySelector(`[data-q="${n}"]`);
+    if (!rowEl) return;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+
+    rowEl.classList.add(ok ? 'correct' : 'wrong');
+    const input = document.querySelector(`.gap[name="q${n}"]`);
+    if (input) input.classList.add(ok ? 'correct' : 'wrong');
+    const fb = rowEl.querySelector('.feedback');
+    if (fb) {
+      fb.textContent = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${(ANSWER_KEY[n] || []).join(' / ')}`;
+      fb.classList.add(ok ? 'ok' : 'no');
+    }
+
+    const evData = EVIDENCE[n];
+    const evLine = rowEl.querySelector('.evidence-line');
+    if (evLine && evData) {
+      evLine.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${evData.sentence}"</em>`;
+    }
+    if (evData && evData.text) highlightEvidenceInPassage(evData.text, n);
+
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+    rows.push({
+      n, ua: ua.trim() || '—',
+      key: (ANSWER_KEY[n] || []).join(' / '),
+      ok,
+      evidence: evData ? evData.sentence.replace(/<\/?hl>/g, '') : ''
+    });
+  });
+
+  document.getElementById('resultScore').textContent = `${score} / ${TOTAL_QUESTIONS}`;
+  document.getElementById('resultSub').textContent =
+    `Score: ${score}/${TOTAL_QUESTIONS} · Answered: ${answered}/${TOTAL_QUESTIONS}`;
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.n}</td><td class="${r.ok ? 'correct' : 'wrong'}">${r.ua}</td><td>${r.key}</td><td class="evidence-cell">${r.evidence ? '“' + r.evidence + '”' : '—'}</td>`;
+    tr.title = 'Click to jump to evidence in passage';
+    tr.addEventListener('click', () => {
+      const mark = document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
+      if (mark) {
+        mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        mark.classList.remove('flash');
+        void mark.offsetWidth;
+        mark.classList.add('flash');
+      } else {
+        const ng = (r.n <= 7 && ANSWER_KEY[r.n][0] === 'NOT GIVEN');
+        toast('No passage highlight for Q' + r.n + (ng ? ' (NOT GIVEN)' : ''));
+      }
+    });
+    tbody.appendChild(tr);
+  });
+  const chip = document.getElementById('bandChip');
+  chip.textContent = `${score}/${TOTAL_QUESTIONS}`;
+  chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
+
+/* ============================================================
+   REVIEW
+   ============================================================ */
+document.getElementById('reviewBtn').addEventListener('click', () => {
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = '';
+  ALL_QUESTIONS.forEach(n => {
+    const ua = getUserAnswer(n);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(b =>
+  b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(o =>
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    hlPopup.classList.remove('show');
+    notePopup.classList.remove('show');
+  }
+});
+
+/* ============================================================
+   RESET / MENU
+   ============================================================ */
+document.getElementById('resetLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Clear all answers and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.tfng-row, .notes-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  const chip = document.getElementById('bandChip');
+  chip.textContent = '--'; chip.classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  currentQuestion = 1; updateCurrent(); updateNav();
+  secondsLeft = 20 * 60;
+  startTimer();
+  toast('Test reset. Good luck!');
+});
+
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => {
+  e.stopPropagation(); menuPop.classList.toggle('show');
+});
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+/* ============================================================
+   FULLSCREEN / FOCUS
+   ============================================================ */
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+function updateFullscreenUI() {
+  const a = !!document.fullscreenElement;
+  document.body.classList.toggle('fullscreen-active', a);
+  fullscreenBtn.textContent = a ? '⛶ Exit' : '⛶ Fullscreen';
+}
+fullscreenBtn.addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch (err) { toast('Fullscreen not supported'); }
+});
+document.addEventListener('fullscreenchange', updateFullscreenUI);
+
+document.getElementById('focusBtn').addEventListener('click', () => document.body.classList.add('focus-mode'));
+document.getElementById('exitFocusBtn').addEventListener('click', () => document.body.classList.remove('focus-mode'));
+
+/* ============================================================
+   INIT
+   ============================================================ */
+refreshPaletteAnswered();
+updateCurrent();
+updateNav();
+updateFullscreenUI();
+renderTimer();
+startTimer();
+</script>
+
+    </body>
+</html>

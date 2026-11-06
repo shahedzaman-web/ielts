@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FutureEd Reading Set 4 — Interactive Test</title>
+        <style>
+  :root{
+    --reading-color:#327846;
+    --reading-light:#e9f5ec;
+    --primary:#1f4d2e;
+    --green:#1f9d55;
+    --green-bg:#e6f7ee;
+    --green-border:#b7e4c7;
+    --red:#d93838;
+    --red-bg:#fdecec;
+    --red-border:#f5b5b5;
+    --amber:#b8860b;
+    --amber-bg:#fff8e1;
+    --amber-border:#f0d38a;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --border:#d8dee6;
+    --text:#1f2a37;
+    --muted:#6b7280;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    display:flex; flex-direction:column;
+  }
+
+  /* ========== TOP BAR ========== */
+  .topbar{
+    flex:0 0 auto;
+    background:linear-gradient(135deg,#1f4d2e 0%,#327846 100%);
+    color:#fff;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+    z-index:50;
+  }
+  .topbar-inner{
+    max-width:1400px; margin:0 auto; padding:10px 18px;
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:16px; font-weight:700; flex:1 1 auto; min-width:180px;
+  }
+  .brand .dot{
+    width:10px; height:10px; border-radius:50%; background:#fff;
+    box-shadow:0 0 0 4px rgba(255,255,255,.25);
+  }
+  .mode-pill{
+    background:#fff; color:var(--reading-color);
+    font-size:10px; font-weight:800; letter-spacing:.5px;
+    padding:2px 8px; border-radius:999px; text-transform:uppercase;
+  }
+  .timer{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.15);
+    padding:6px 14px; border-radius:10px;
+    font-variant-numeric:tabular-nums;
+  }
+  .timer .lbl{font-size:11px; font-weight:700; letter-spacing:.4px; opacity:.85}
+  .timer .val{font-size:18px; font-weight:800; letter-spacing:.5px}
+  .timer.warning .val{color:#ffd76a}
+  .timer.danger  .val{color:#ff8a8a}
+  .top-actions{display:flex; gap:8px; flex-wrap:wrap}
+  .btn{
+    border:none; border-radius:8px; cursor:pointer;
+    font-weight:700; font-size:13px; padding:8px 14px;
+    transition:.15s; font-family:inherit;
+  }
+  .btn-light{background:#fff; color:var(--reading-color)}
+  .btn-light:hover{background:#e9f5ec}
+  .btn-outline{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.6)}
+  .btn-outline:hover{background:rgba(255,255,255,.15)}
+  .btn-primary{
+    background:linear-gradient(135deg,#1f4d2e,#327846);
+    color:#fff; padding:10px 22px; font-size:14px; border-radius:10px;
+    box-shadow:0 4px 14px rgba(50,120,70,.35);
+  }
+  .btn-primary:hover{filter:brightness(1.1)}
+  .btn-primary:disabled{opacity:.55; cursor:not-allowed; filter:grayscale(.3)}
+  .btn-ghost{
+    background:#fff; color:var(--primary);
+    border:1.5px solid var(--border); padding:9px 18px; font-size:13.5px;
+  }
+  .btn-ghost:hover{background:#f0f4f8}
+
+  /* ========== TABS ========== */
+  .tabs{
+    flex:0 0 auto;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex; gap:0;
+    padding:0 18px;
+    max-width:1400px; margin:0 auto; width:100%;
+    overflow-x:auto;
+  }
+  .tab{
+    background:none; border:none; cursor:pointer;
+    padding:12px 18px; font-size:14px; font-weight:700;
+    color:var(--muted); font-family:inherit;
+    border-bottom:3px solid transparent;
+    transition:.15s; white-space:nowrap;
+  }
+  .tab:hover{color:var(--primary)}
+  .tab.active{color:var(--reading-color); border-bottom-color:var(--reading-color)}
+
+  /* ========== MAIN ========== */
+  main{
+    flex:1 1 auto; min-height:0;
+    max-width:1400px; margin:0 auto;
+    width:100%; padding:14px 18px;
+    display:flex; flex-direction:column;
+  }
+
+  /* Score banner */
+  .score-banner{
+    flex:0 0 auto;
+    display:none;
+    background:linear-gradient(135deg,#1f9d55,#28b46a);
+    color:#fff; border-radius:14px;
+    padding:16px 22px; margin-bottom:14px;
+    align-items:center; justify-content:space-between;
+    gap:14px; flex-wrap:wrap;
+    box-shadow:0 6px 20px rgba(31,157,85,.25);
+  }
+  .score-banner.show{display:flex}
+  .score-banner .big-score{font-size:36px; font-weight:900; line-height:1}
+  .score-banner .big-score small{font-size:16px; font-weight:700; opacity:.85}
+  .score-banner .msg{font-size:14px; font-weight:700; margin-top:2px}
+  .score-banner .band{
+    background:rgba(255,255,255,.18);
+    border:1.5px solid rgba(255,255,255,.45);
+    padding:8px 16px; border-radius:10px; text-align:center;
+  }
+  .score-banner .band .val{font-size:24px; font-weight:900; line-height:1.1}
+  .score-banner .band .cap{font-size:10px; letter-spacing:.6px; text-transform:uppercase; opacity:.9}
+
+  /* Part panels */
+  .part-panel{
+    display:none;
+    flex:1 1 auto; min-height:0;
+  }
+  .part-panel.active{display:flex; flex-direction:column}
+
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    flex:1 1 auto; min-height:0;
+  }
+  .pane{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow-y:auto;
+    padding:22px 26px;
+    min-height:0;
+    box-shadow:0 1px 3px rgba(16,24,40,.04);
+  }
+  .pane::-webkit-scrollbar{width:10px}
+  .pane::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:5px}
+  .pane::-webkit-scrollbar-track{background:#f1f5f9}
+
+  /* Passage */
+  .passage h1,.passage h2,.passage h3,.passage h4{
+    color:var(--primary); font-family:inherit; letter-spacing:.2px;
+  }
+  .passage h4{
+    font-size:13px; text-transform:uppercase; letter-spacing:1px;
+    color:var(--reading-color); margin:0 0 14px;
+    padding-bottom:8px; border-bottom:2px solid var(--reading-light);
+  }
+  .passage .title{
+    text-align:center; font-size:22px; font-weight:800;
+    color:var(--primary); margin:8px 0 4px; line-height:1.3;
+  }
+  .passage .subtitle{
+    text-align:center; font-size:13px; color:var(--muted);
+    margin:0 0 20px; font-style:italic;
+  }
+  .passage p{margin:0 0 12px; font-size:14.5px; text-align:justify; line-height:1.7}
+  .passage p .plabel{
+    display:inline-block; width:22px; font-weight:800; color:var(--reading-color);
+  }
+
+  /* Highlight marks */
+  mark.user-highlight{
+    background:linear-gradient(180deg,transparent 45%,#ffe066 45%,#ffe066 92%,transparent 92%);
+    padding:0 1px;
+    border-radius:2px;
+    color:inherit;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  mark.user-highlight:hover{
+    background:linear-gradient(180deg,transparent 45%,#ffd43b 45%,#ffd43b 92%,transparent 92%);
+  }
+
+  /* Questions */
+  .qgroup{margin-bottom:26px}
+  .qgroup:last-child{margin-bottom:0}
+  .qgroup h3{
+    margin:0 0 6px 0; font-size:14px; color:var(--reading-color);
+    font-weight:800; letter-spacing:.3px; text-transform:uppercase;
+    padding-bottom:6px; border-bottom:1px dashed var(--border);
+  }
+  .qgroup .instruction{
+    color:var(--muted); font-size:13px; margin:10px 0 14px; font-style:italic;
+  }
+  .qgroup .instruction b{color:var(--primary)}
+
+  /* Inputs */
+  .qtext, .qselect{
+    font-family:inherit; font-size:14px;
+    border:1.5px solid var(--border); border-radius:8px;
+    padding:7px 11px; background:#fff; color:var(--text);
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .qtext:focus, .qselect:focus{
+    outline:none; border-color:var(--reading-color);
+    box-shadow:0 0 0 3px rgba(50,120,70,.16);
+  }
+  .qtext{min-width:180px}
+  .qselect{min-width:120px; cursor:pointer; appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23294563' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 10px center; padding-right:30px;
+  }
+  .qtext::placeholder{color:#aab4c0; font-weight:600}
+
+  .inline-q{display:inline-flex; align-items:center; gap:7px; vertical-align:middle; margin:3px 0; flex-wrap:wrap}
+  .qrow{display:flex; align-items:center; gap:10px; padding:8px 0; flex-wrap:wrap}
+  .qrow .label{flex:1 1 300px; font-size:14.5px}
+  .qrow .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%;
+    background:var(--reading-light); color:var(--reading-color);
+    font-weight:800; font-size:12px; margin-right:8px; flex:0 0 auto;
+  }
+
+  /* Result badges */
+  .result-badge{
+    display:none; font-size:11.5px; font-weight:800;
+    padding:2px 9px; border-radius:999px; white-space:nowrap;
+    line-height:1.6;
+  }
+  .inline-q.correct .result-badge,
+  .qrow.correct .result-badge{display:inline-block; background:var(--green-bg); color:var(--green); border:1px solid var(--green-border)}
+  .inline-q.wrong .result-badge,
+  .qrow.wrong .result-badge{display:inline-block; background:var(--red-bg); color:var(--red); border:1px solid var(--red-border)}
+  .inline-q.unanswered .result-badge,
+  .qrow.unanswered .result-badge{display:inline-block; background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-border)}
+
+  .inline-q.correct .qtext,
+  .inline-q.correct .qselect,
+  .qrow.correct .qtext{border-color:var(--green); background:var(--green-bg)}
+  .inline-q.wrong .qtext,
+  .inline-q.wrong .qselect,
+  .qrow.wrong .qtext{border-color:var(--red); background:var(--red-bg)}
+  .inline-q.unanswered .qtext,
+  .inline-q.unanswered .qselect,
+  .qrow.unanswered .qtext{border-color:var(--amber); background:var(--amber-bg)}
+
+  input:disabled, select:disabled{opacity:1 !important; -webkit-text-fill-color:var(--text)}
+
+  /* Options box */
+  .options-box{
+    background:#f8fafc; border:1px solid var(--border);
+    border-radius:10px; padding:14px 18px; margin:14px 0;
+    font-size:13.5px;
+  }
+  .options-box .opt-line{padding:4px 0; display:flex; gap:10px}
+  .options-box .opt-line b{color:var(--reading-color); flex:0 0 22px}
+  .options-box .word-list{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:6px 18px;
+  }
+  .options-box .word-list span{padding:2px 0; font-size:13.5px}
+
+  /* Summary table */
+  .summary-table{
+    width:100%; border-collapse:collapse; margin:14px 0;
+    font-size:13.5px;
+  }
+  .summary-table th{
+    background:var(--reading-color); color:#fff;
+    padding:10px 8px; text-align:center; font-weight:700;
+    font-size:13px; border:1px solid var(--reading-color);
+  }
+  .summary-table td{
+    border:1px solid var(--border); padding:12px 10px;
+    vertical-align:top; text-align:center;
+  }
+  .summary-table td .inline-q{justify-content:center}
+  .summary-table .heading-row td{
+    background:#f0f5f2; text-align:center; font-weight:800;
+    color:var(--primary); font-size:15px;
+  }
+  .summary-table .qtext{min-width:130px; font-size:13px}
+
+  /* Diagram */
+  .diagram-wrap{
+    border:2px dashed var(--border); border-radius:10px;
+    background:#fafbfd; padding:14px; margin:14px 0; text-align:center;
+  }
+  .diagram-wrap img{max-width:100%; height:auto; border-radius:6px}
+  .diagram-wrap .fallback{color:var(--muted); font-size:13px; padding:20px}
+  .diagram-wrap .fallback .ico{font-size:32px; display:block; margin-bottom:8px}
+
+  /* Submit bar */
+  .submit-bar{
+    flex:0 0 auto;
+    margin-top:12px;
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:12px 18px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    box-shadow:0 -2px 12px rgba(16,24,40,.04);
+  }
+  .progress{font-size:13px; color:var(--muted); font-weight:600}
+  .progress b{color:var(--primary); font-weight:800}
+  .progress-bar{
+    flex:1 1 160px; height:8px; background:#e8edf3;
+    border-radius:99px; overflow:hidden; min-width:120px;
+  }
+  .progress-bar i{
+    display:block; height:100%; width:0%;
+    background:linear-gradient(90deg,#327846,#1f9d55);
+    transition:width .25s;
+  }
+
+  /* Answer key panel */
+  .answer-key-panel{
+    display:none;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:22px; margin-top:14px;
+  }
+  .answer-key-panel.show{display:block}
+  .answer-key-panel h2{
+    margin:0 0 16px 0; font-size:17px; color:var(--primary);
+    display:flex; align-items:center; gap:8px;
+  }
+  .key-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:8px;
+  }
+  .key-item{
+    background:#f8fafc; border:1px solid var(--border);
+    border-radius:8px; padding:7px 11px; font-size:12.5px;
+    display:flex; justify-content:space-between; align-items:center; gap:8px;
+  }
+  .key-item .n{font-weight:800; color:var(--primary); flex:0 0 auto}
+  .key-item .a{font-weight:700; color:var(--green); text-align:right; word-break:break-word; font-size:12px}
+
+  footer{
+    text-align:center; color:var(--muted); font-size:12px;
+    padding:6px 16px 10px;
+  }
+
+  /* ========== HIGHLIGHT TOOLBAR ========== */
+  .hl-toolbar{
+    position:fixed;
+    transform:translate(-50%,-100%);
+    display:flex; gap:4px;
+    background:#1f2937;
+    padding:6px;
+    border-radius:10px;
+    box-shadow:0 6px 22px rgba(0,0,0,.35);
+    z-index:9999;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .12s, transform .12s;
+  }
+  .hl-toolbar.show{opacity:1; pointer-events:auto}
+  .hl-toolbar::after{
+    content:'';
+    position:absolute;
+    bottom:-6px;
+    left:50%;
+    transform:translateX(-50%);
+    width:0; height:0;
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:6px solid #1f2937;
+  }
+  .hl-btn{
+    background:transparent;
+    color:#fff;
+    border:none;
+    padding:7px 13px;
+    border-radius:6px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:12.5px;
+    font-weight:700;
+    white-space:nowrap;
+    transition:background .12s;
+    display:flex; align-items:center; gap:6px;
+  }
+  .hl-btn:hover{background:rgba(255,255,255,.15)}
+  .hl-btn.hl-remove{color:#fca5a5}
+  .hl-btn.hl-remove:hover{background:rgba(220,38,38,.3)}
+
+  /* Toast */
+  .hl-toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:#1f2937;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    box-shadow:0 6px 22px rgba(0,0,0,.35);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s, transform .2s;
+    z-index:10000;
+  }
+  .hl-toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width:980px){
+    body{display:block; height:auto}
+    main{display:block; padding:12px}
+    .part-panel{display:none}
+    .part-panel.active{display:block}
+    .split{display:block}
+    .pane{max-height:none; height:auto; margin-bottom:14px}
+    .submit-bar{margin-top:14px}
+  }
+  @media (max-width:600px){
+    .topbar-inner{padding:10px 12px}
+    .brand{font-size:14px; min-width:0; flex:1 1 100%}
+    .timer{padding:4px 10px}
+    .timer .val{font-size:15px}
+    .pane{padding:16px}
+    .passage p{font-size:14px}
+    .qtext{min-width:130px}
+    .options-box{font-size:12.5px; padding:12px}
+    .summary-table{font-size:12px}
+    .summary-table th, .summary-table td{padding:8px 6px}
+    .key-grid{grid-template-columns:1fr}
+  }
+
+  @media print{
+    .topbar,.tabs,.submit-bar,.hl-toolbar,.hl-toast{display:none !important}
+    body{display:block}
+    main{display:block; height:auto}
+    .part-panel{display:block !important}
+    .split{display:block}
+    .pane{max-height:none; height:auto; box-shadow:none}
+    .answer-key-panel{display:block !important}
+  }
+</style>
+    </head>
+    <body>
+
+        <!-- ================= TOP BAR ================= -->
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="brand">
+                    <span class="dot"></span>
+                    <span>FutureEd Reading Set 4</span>
+                    <span class="mode-pill">Test Mode</span>
+                </div>
+
+                <div class="timer" id="timerWrap">
+                    <span class="lbl">⏱</span>
+                    <span class="val" id="timerVal">60:00</span>
+                </div>
+
+                <div class="top-actions">
+                    <button class="btn btn-light" id="clearHlBtn">Clear
+                        Highlights</button>
+                    <button class="btn btn-light" id="toggleKeyBtn">Show Answer
+                        Key</button>
+                    <button class="btn btn-outline" onclick="window.print()">🖨
+                        Print</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= TABS ================= -->
+        <nav class="tabs">
+            <button class="tab active" data-part="1">Part 1 · Questions
+                1–13</button>
+            <button class="tab" data-part="2">Part 2 · Questions 14–26</button>
+            <button class="tab" data-part="3">Part 3 · Questions 27–40</button>
+        </nav>
+
+        <!-- ================= MAIN ================= -->
+        <main>
+
+            <!-- Score banner -->
+            <div class="score-banner" id="scoreBanner">
+                <div>
+                    <div class="big-score"><span id="scoreVal">0</span><small> /
+                            40</small></div>
+                    <div class="msg" id="scoreMsg">Well done!</div>
+                </div>
+                <div class="band">
+                    <div class="val" id="bandVal">–</div>
+                    <div class="cap">Estimated Band</div>
+                </div>
+            </div>
+
+            <!-- ================= PART 1 ================= -->
+            <section class="part-panel active" data-panel="1">
+                <div class="split">
+
+                    <!-- Passage 1 -->
+                    <div class="pane passage" data-passage-id="passage-1">
+                        <h4>Reading Passage 1</h4>
+                        <p
+                            style="font-size:13px;color:var(--muted);margin-bottom:14px;text-align:left;">
+                            You should spend about 20 minutes on Questions 1–13,
+                            which are based on Reading Passage 1.
+                        </p>
+                        <div class="title">Groucho Marx</div>
+                        <div class="title" style="font-size:14px;">&amp;</div>
+                        <div class="title">Arthur Sheekman</div>
+
+                        <p>In a show-business career that spanned over seventy
+                            years, Groucho Marx successfully conquered every
+                            entertainment medium, becoming a star of the
+                            vaudeville stage, Broadway, motion pictures, radio,
+                            and television. But, as the author of seven books, a
+                            play, two film screenplays, and over one hundred
+                            magazine articles and essays, Groucho quietly
+                            conquered another medium, one in which he was as
+                            proud to work as any of the others. His writing is
+                            often overlooked in studies of his career, perhaps
+                            due to the quantity and variety of his other
+                            work.</p>
+
+                        <p>Throughout his literary career, Groucho was dogged by
+                            the incorrect and unfair assumption by many critics
+                            and even by his biographer that he used a
+                            ghostwriter. Most Hollywood celebrities who wrote
+                            books had professional writers do the actual work.
+                            The fact that Groucho publicly stated on many
+                            occasions that he abhorred ghostwriters is clouded
+                            by his relationship with Arthur Sheekman. Friends
+                            for many years, Groucho and Sheekman had an unusual
+                            literary relationship. They worked in collaboration
+                            and each offered the other editorial help. For a
+                            brief time in the early 1940s, Groucho fronted for
+                            Sheekman, who was having trouble selling his work.
+                            By thus lending his name to another writer's work,
+                            Groucho subjected all of his literary endeavors to
+                            suspicion from critics who simply refused to believe
+                            that an entertainer could write.</p>
+
+                        <p>That some of Sheekman's magazine pieces got into
+                            print under Groucho's byline becomes apparent from
+                            reading the unedited correspondence between the two
+                            of them. The letters indicate that Groucho's essays
+                            from this period fall into three categories: first,
+                            pieces written by Groucho with no input from
+                            Sheekman at all. In a July 1, 1940, letter to
+                            Sheekman, Groucho asked, 'Did you see that little
+                            piece written for Reader's Digest?' On March 17,
+                            1941, he wrote, 'My drool is coming out in next
+                            week's issue of This Week, so cancel your
+                            subscription now.' Clearly, Sheekman could not have
+                            had anything to do with a piece that he was told to
+                            look for.</p>
+
+                        <p>The second and probably largest category of Groucho's
+                            essays of this period consists of those written by
+                            Groucho and sent to Sheekman for editorial
+                            assistance. On July 20, 1940, Groucho wrote: 'I'm
+                            enclosing a copy of the piece I wrote. Probably
+                            another page or so is needed to complete it, but our
+                            starting date [for filming Go West] came and I just
+                            haven't had time to finish it. Let me know what you
+                            think of it and be honest, because any other kind of
+                            opinion would be of no value to me. I won't attempt
+                            to influence you by telling you the reactions I've
+                            already had, so for the love of God, tell me the
+                            truth.' Shortly thereafter, on October 10, Groucho
+                            wrote: 'I received your suggestions on my piece —
+                            I'm glad you liked it, if you did — you're probably
+                            right about the beginning. I'll do it over again.'
+                            By the time Groucho wrote to Sheekman on July 25,
+                            1942, it appears that some sort of financial
+                            arrangement had been made regarding Sheekman's
+                            suggestions. On that date, Groucho also wrote: 'I'm
+                            writing an unfunny piece on insomnia and I'll send
+                            it in a week or so, I hope, for you to read — I'd
+                            like your opinion, proofread, correcting all the
+                            glaring illiteracies and, otherwise, do a fine
+                            polishing job.'</p>
+
+                        <p>The remainder of Groucho's essays from this period
+                            comprises the third category, Sheekman compositions
+                            with varying degrees of input from Groucho. The
+                            level of Groucho's contributions to the articles in
+                            the third category ranges from actually suggesting
+                            the topic and drawing up an outline to simply
+                            rewriting a few paragraphs to inject his own style
+                            into the piece. On July 10, 1940, Groucho wrote: 'I
+                            think you ought to try another political piece for
+                            This Week or some other campaign thing magazine.
+                            This will be an extremely hot topic for the next few
+                            months, and I think you should take advantage of it.
+                            If you'll write to me, I'll try to jot down a few
+                            items that you could complain about.' Presumably,
+                            the chain of events would continue with Sheekman
+                            sending an essay to Groucho for his approval and
+                            whatever rewrites were needed. On May 29, 1940,
+                            Groucho wrote,
+                            'Received your piece and looked it over.' In these
+                            letters to Sheekman, Groucho always referred to a
+                            piece as either 'my piece' or 'your piece'. The
+                            letter continued, 'I thought the piece was good...
+                            and I'll send it to him and see if he can sell it...
+                            I'll just rewrite a couple of paragraphs in your
+                            piece, not that I can improve them, but perhaps
+                            they'll sound a little more like me.' Groucho was
+                            concerned enough about this arrangement to take the
+                            care to at least make the piece somewhat his
+                            own.</p>
+
+                        <p>Groucho really had no need for this entire
+                            enterprise. He gave the money to Sheekman and had no
+                            trouble getting his own work published. The
+                            principal reason for his submitting Sheekman's work
+                            to magazines as his own was that it made Sheekman's
+                            material easily marketable based on Groucho's
+                            celebrity. Sheekman couldn't have been altogether
+                            happy with the arrangement, but the reality was that
+                            he was periodically unemployed, and the use of
+                            Groucho's name brought in occasional paychecks. So,
+                            it is not quite fair to call Sheekman Groucho's
+                            ghostwriter. A more apt description of their
+                            literary relationship at this time is that Groucho
+                            occasionally fronted for Sheekman and offered him
+                            the services of his literary agent, while each
+                            offered the other editorial advice. The reasons for
+                            some of their collaborative efforts not being
+                            credited as such remain unexplained, but Groucho was
+                            never shy about crediting his collaborators, and in
+                            every other case, he did so.</p>
+                    </div>
+
+                    <!-- Questions 1-13 -->
+                    <div class="pane questions">
+
+                        <!-- Q1-4 -->
+                        <div class="qgroup">
+                            <h3>Questions 1–4</h3>
+                            <p class="instruction">Do the following statements
+                                reflect the claims of the writer of Reading
+                                Passage 1?<br>
+                                In boxes 1–4, write <b>YES</b> (agrees with the
+                                claims), <b>NO</b> (contradicts the claims), or
+                                <b>NOT GIVEN</b> (impossible to say what the
+                                writer thinks).</p>
+
+                            <div class="qrow" data-qwrap="1">
+                                <span class="label"><span
+                                        class="num">1</span>Groucho's work as a
+                                    writer was sometimes better than his work in
+                                    other media.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="1">
+                                        <option value>–</option>
+                                        <option>Yes</option><option>No</option><option>Not
+                                            Given</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="2">
+                                <span class="label"><span
+                                        class="num">2</span>Groucho's
+                                    relationship with Sheekman cast doubt on his
+                                    own abilities as a writer.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="2">
+                                        <option value>–</option>
+                                        <option>Yes</option><option>No</option><option>Not
+                                            Given</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="3">
+                                <span class="label"><span
+                                        class="num">3</span>Money was
+                                    occasionally a source of disagreement
+                                    between Groucho and Sheekman.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="3">
+                                        <option value>–</option>
+                                        <option>Yes</option><option>No</option><option>Not
+                                            Given</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="4">
+                                <span class="label"><span
+                                        class="num">4</span>Groucho occasionally
+                                    regretted his involvement with
+                                    Sheekman.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="4">
+                                        <option value>–</option>
+                                        <option>Yes</option><option>No</option><option>Not
+                                            Given</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Q5-8 -->
+                        <div class="qgroup">
+                            <h3>Questions 5–8</h3>
+                            <p class="instruction">Complete the notes below.
+                                Choose <b>NO MORE THAN THREE WORDS</b> from the
+                                passage for each answer.</p>
+
+                            <table class="summary-table">
+                                <tr class="heading-row"><td
+                                        colspan="3">Groucho's essays in the
+                                        early 1940s</td></tr>
+                                <tr>
+                                    <th>Category 1</th>
+                                    <th>Category 2</th>
+                                    <th>Category 3</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sheekman had
+                                        <span class="inline-q" data-qwrap="5">
+                                            <input class="qtext" data-q="5"
+                                                type="text" placeholder="5"
+                                                autocomplete="off">
+                                            <span class="result-badge"></span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Sheekman provided
+                                        <span class="inline-q" data-qwrap="6">
+                                            <input class="qtext" data-q="6"
+                                                type="text" placeholder="6"
+                                                autocomplete="off">
+                                            <span class="result-badge"></span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div style="margin-bottom:8px;">mostly
+                                            <span class="inline-q"
+                                                data-qwrap="7">
+                                                <input class="qtext" data-q="7"
+                                                    type="text" placeholder="7"
+                                                    autocomplete="off">
+                                                <span
+                                                    class="result-badge"></span>
+                                            </span>
+                                        </div>
+                                        <div>Groucho added
+                                            <span class="inline-q"
+                                                data-qwrap="8">
+                                                <input class="qtext" data-q="8"
+                                                    type="text" placeholder="8"
+                                                    autocomplete="off">
+                                                <span
+                                                    class="result-badge"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Q9-13 -->
+                        <div class="qgroup">
+                            <h3>Questions 9–13</h3>
+                            <p class="instruction">Look at the following
+                                statements and the list of dates (A–G) of
+                                letters sent by Groucho to Sheekman. Match each
+                                statement with the letter it relates to.</p>
+
+                            <div class="options-box">
+                                <div
+                                    style="font-weight:800;color:var(--primary);margin-bottom:8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;">List
+                                    of Letters Sent by Groucho to Sheekman</div>
+                                <div class="opt-line"><b>A.</b> July 1,
+                                    1940</div>
+                                <div class="opt-line"><b>B.</b> March 17,
+                                    1941</div>
+                                <div class="opt-line"><b>C.</b> July 20,
+                                    1940</div>
+                                <div class="opt-line"><b>D.</b> October 10,
+                                    1940</div>
+                                <div class="opt-line"><b>E.</b> July 25,
+                                    1942</div>
+                                <div class="opt-line"><b>F.</b> July 10,
+                                    1940</div>
+                                <div class="opt-line"><b>G.</b> May 29,
+                                    1940</div>
+                            </div>
+
+                            <div class="qrow" data-qwrap="9">
+                                <span class="label"><span
+                                        class="num">9</span>Groucho referred to
+                                    his own inadequacy with regard to the use of
+                                    language.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="9">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="10">
+                                <span class="label"><span
+                                        class="num">10</span>Groucho explained
+                                    his reason for amending an essay.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="10">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="11">
+                                <span class="label"><span
+                                        class="num">11</span>Groucho agreed that
+                                    part of an essay needed revising.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="11">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="12">
+                                <span class="label"><span
+                                        class="num">12</span>Groucho drew
+                                    Sheekman's attention to an essay soon to be
+                                    published.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="12">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="13">
+                                <span class="label"><span
+                                        class="num">13</span>Groucho suggested
+                                    that an essay should adopt a negative point
+                                    of view.</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="13">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PART 2 ================= -->
+            <section class="part-panel" data-panel="2">
+                <div class="split">
+
+                    <!-- Passage 2 -->
+                    <div class="pane passage" data-passage-id="passage-2">
+                        <h4>Reading Passage 2</h4>
+                        <p
+                            style="font-size:13px;color:var(--muted);margin-bottom:14px;text-align:left;">
+                            You should spend about 20 minutes on Questions
+                            14–26, which are based on Reading Passage 2.
+                        </p>
+                        <div class="title">An earth-shaking discovery</div>
+                        <p class="subtitle">The discovery of sea floor spreading
+                            is earth-shaking, yet those responsible are
+                            forgotten, says Anna Grayson</p>
+
+                        <p>In 1963, a paper appeared in the journal
+                            <em>Nature</em> that radically changed the way we
+                            view this planet and its resources. The authors,
+                            Fred Vine and Drummond Matthews, did for the Earth
+                            sciences what Crick and Watson did for biology and
+                            Einstein did for physics, and new areas of
+                            scientific development are still emerging as a
+                            result.</p>
+
+                        <p>Yet both men are largely forgotten and unrecognised.
+                            What Vine and Matthews did was to provide proof that
+                            continents really do drift across the surface of the
+                            globe. This understanding profoundly affects the way
+                            we use the planet today; it directs the way we
+                            prospect for resources such as oil and minerals. It
+                            has enabled us to predict most volcanic eruptions
+                            and to understand patterns of earthquakes.
+                            Incredibly, perhaps, an understanding of the mobile
+                            dynamic nature of the Earth is helping in
+                            understanding long-term global climate change.
+                            Despite the significance of their work, neither man
+                            received great honour or fame.</p>
+
+                        <p>The idea of continental drift was first proposed in a
+                            serious way by the German meteorologist Alfred
+                            Wegener in 1915. People had noticed the neat
+                            jigsaw-like fit between South America and Africa,
+                            but Wegener found actual fossil evidence that the
+                            two continents were once joined. No one took him
+                            seriously; in fact, he was ridiculed by most of the
+                            geological community. This was partly because, not
+                            being a geologist, he was perceived as an outsider.
+                            But the main reason for the hostility, according to
+                            Vine, was that Wegener was unable to come up with an
+                            explanation as to how whole continents could
+                            possibly move even an inch, let alone dance to the
+                            music of time around the globe.</p>
+
+                        <p>In the 1920s, the Scottish geologist Arthur Holmes
+                            hypothesised that convection currents within the
+                            Earth could become sufficiently vigorous to drag the
+                            two halves of the original continent apart! In the
+                            late 1950s, an American, Harry Hess, came up with
+                            the hypothesis that new seafloor is constantly being
+                            generated at the mid-ocean ridges by hot material
+                            rising in a convection current. But neither man
+                            could find evidence to prove it. It was no more than
+                            just a hunch that it had to be right, and a hunch is
+                            not enough for science.</p>
+
+                        <p>Vine had been fascinated by the apparent fit of the
+                            continents since the age of 14, and as a graduate
+                            student at Cambridge, was assigned a project
+                            analysing one of the new magnetic surveys of the
+                            ocean floor. He found what he describes as parallel
+                            zebra stripes of normal and reversed magnetism
+                            around the mid-ocean ridge. Most significantly,
+                            these stripes were symmetrical on either side of the
+                            ridge crests. There had to be a reason for this. The
+                            young Vine and his supervisor, Matthews, proposed
+                            that the magnetic stripes were caused by new ocean
+                            floor being formed as molten rock rose at the
+                            mid-ocean ridges and spread on both sides of the
+                            ridge.</p>
+
+                        <p>As the molten rock solidified, it became weakly
+                            magnetised parallel to the Earth's magnetic field.
+                            It was just becoming recognised in the early 1960s
+                            that the Earth's magnetic field flips every so
+                            often, so magnetic north becomes a magnetic south
+                            pole and vice versa. These flips in the magnetic
+                            field were being recorded in the new seafloor. It
+                            was like a giant tape recording of the ocean floor's
+                            history. As new seafloor was made, it pushed the
+                            last lot aside, widening the ocean and, in turn,
+                            pushing the continents on either side further apart.
+                            In other words, they had discovered the mechanism
+                            driving drifting continents that was missing from
+                            Wegener's work. The science of the Earth was never
+                            the same again.</p>
+
+                        <p>By the end of the 1960s, confirmation of global
+                            seafloor spreading led to plate tectonics — the view
+                            of the outside of the Earth comprising just a few
+                            rigid plates which are shunted about by growing
+                            seafloor. There was a realisation that mountains are
+                            formed when two plates collide, and that most
+                            volcanoes and earthquakes occur on the edges of
+                            these plates. All this was accepted as fact by all
+                            but a few diehard dinosaurs in the geological world.
+                            It is now in the impact of shifting continents on
+                            the global environment that Vine feels the most
+                            exciting and significant research lies:
+                            'The distribution of continents and the opening and closing of ocean gates between continents has had a profound effect on climates and has caused flips from Icehouse Earth to Greenhouse Earth.'</p>
+
+                        <p>The recognition that the Earth's hydrosphere,
+                            atmosphere and biosphere are all intimately linked
+                            with the drifting continents and the goings-on deep
+                            within the Earth has spawned the term
+                            'Earth Systems Science'. It is a great oak tree of
+                            science that has grown from the acorn of truth
+                            supplied by Vine and Matthews. The holistic approach
+                            of earth systems science is very much welcomed by
+                            Vine: 'I'm rather pleased that this has come
+                            together.' He feels that the future for
+                            understanding the planet lies in an integrated
+                            approach to the sciences, rather than the isolated
+                            stance the geologists took throughout the 20th
+                            century:
+                            'There was an incredible polarisation of science, and I was caught between the boundaries. It was anathema to me that the whole of environmental science should be integrated.'</p>
+                    </div>
+
+                    <!-- Questions 14-26 -->
+                    <div class="pane questions">
+
+                        <!-- Q14-17 -->
+                        <div class="qgroup">
+                            <h3>Questions 14–17</h3>
+                            <p class="instruction">Complete each sentence with
+                                the correct ending <b>A–G</b> from the box
+                                below.</p>
+
+                            <div class="options-box">
+                                <div class="opt-line"><b>A.</b> matters that had
+                                    not received much attention for some
+                                    time.</div>
+                                <div class="opt-line"><b>B.</b> something which
+                                    could not possibly be true.</div>
+                                <div class="opt-line"><b>C.</b> something
+                                    misunderstood at first but later seen as a
+                                    breakthrough.</div>
+                                <div class="opt-line"><b>D.</b> matters beyond
+                                    simply the movement of continents.</div>
+                                <div class="opt-line"><b>E.</b> something that
+                                    had already been observed.</div>
+                                <div class="opt-line"><b>F.</b> something
+                                    arrived at by intuition that could not be
+                                    demonstrated.</div>
+                                <div class="opt-line"><b>G.</b> matters
+                                    requiring different research
+                                    techniques</div>
+                            </div>
+
+                            <div class="qrow" data-qwrap="14">
+                                <span class="label"><span
+                                        class="num">14</span>The work done by
+                                    Vine and Matthews has had implications
+                                    concerning</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="14">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="15">
+                                <span class="label"><span
+                                        class="num">15</span>Wegener attempted
+                                    to provide an explanation of</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="15">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="16">
+                                <span class="label"><span
+                                        class="num">16</span>Wegener's
+                                    conclusions were greeted as</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="16">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="17">
+                                <span class="label"><span
+                                        class="num">17</span>The theories
+                                    presented by both Holmes and Hess
+                                    concerned</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="17">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Q18-22 -->
+                        <div class="qgroup">
+                            <h3>Questions 18–22</h3>
+                            <p class="instruction">Label the diagram below.
+                                Choose <b>NO MORE THAN THREE WORDS</b> from the
+                                passage for each answer.</p>
+
+                            <div class="diagram-wrap">
+                                <img
+                                    src="https://client-server-dashboard.s3.ap-south-1.amazonaws.com/M0qL1JrG6JPwOSBfhef0tWQ1dnJ3/Screenshot%202026-03-29%20122231-1774769161932.png"
+                                    alt="Diagram of seafloor spreading"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <div class="fallback" style="display:none;">
+                                    <span class="ico">🗺️</span>
+                                    Diagram could not be loaded. The diagram
+                                    shows a mid-ocean ridge with two symmetrical
+                                    magnetic stripes, molten rock rising, the
+                                    Earth's magnetic field, and the ocean floor
+                                    moving apart.
+                                </div>
+                            </div>
+
+                            <div class="qrow" data-qwrap="18">
+                                <span class="label"><span
+                                        class="num">18</span>Label A</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="18" type="text"
+                                        placeholder="18" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="19">
+                                <span class="label"><span
+                                        class="num">19</span>Label B</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="19" type="text"
+                                        placeholder="19" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="20">
+                                <span class="label"><span
+                                        class="num">20</span>Label C</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="20" type="text"
+                                        placeholder="20" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="21">
+                                <span class="label"><span
+                                        class="num">21</span>Label D</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="21" type="text"
+                                        placeholder="21" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="22">
+                                <span class="label"><span
+                                        class="num">22</span>Label E</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="22" type="text"
+                                        placeholder="22" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Q23-26 -->
+                        <div class="qgroup">
+                            <h3>Questions 23–26</h3>
+                            <p class="instruction">Answer the questions below
+                                using <b>NO MORE THAN THREE WORDS</b> for each
+                                answer.</p>
+
+                            <div class="qrow" data-qwrap="23">
+                                <span class="label"><span
+                                        class="num">23</span>What is the name of
+                                    the theory concerning the structure of the
+                                    Earth that developed from the demonstration
+                                    of sea floor spreading?</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="23" type="text"
+                                        placeholder="23" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="24">
+                                <span class="label"><span
+                                        class="num">24</span>According to Vine,
+                                    what has the movement of continents had a
+                                    big influence on?</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="24" type="text"
+                                        placeholder="24" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="25">
+                                <span class="label"><span
+                                        class="num">25</span>What branch of
+                                    science has emerged as a result of the work
+                                    done by Vine and Matthews?</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="25" type="text"
+                                        placeholder="25" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="26">
+                                <span class="label"><span
+                                        class="num">26</span>Which word does
+                                    Vine use to describe the way in which he
+                                    believes study of the Earth should be
+                                    conducted?</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="26" type="text"
+                                        placeholder="26" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PART 3 ================= -->
+            <section class="part-panel" data-panel="3">
+                <div class="split">
+
+                    <!-- Passage 3 -->
+                    <div class="pane passage" data-passage-id="passage-3">
+                        <h4>Reading Passage 3</h4>
+                        <p
+                            style="font-size:13px;color:var(--muted);margin-bottom:14px;text-align:left;">
+                            You should spend about 20 minutes on Questions
+                            27–40, which are based on Reading Passage 3.
+                        </p>
+                        <div class="title">Think happy</div>
+                        <p class="subtitle">It's no joke, even the Royal Society
+                            is now taking the search for the source of happiness
+                            very seriously</p>
+
+                        <p><span class="plabel">A.</span> What would Sir Isaac
+                            Newton have made of it? There he was, painted in
+                            oils, gazing down at one of the strangest meetings
+                            that the Royal Society, Britain's most august
+                            scientific body, has ever held. If Newton had
+                            flashed a huge grin, it would have been completely
+                            appropriate, for beneath him last week a two-day
+                            conference was unfolding on a booming new field of
+                            science: investigating what makes people happy.
+                            Distinguished professors strode up to the podium,
+                            including one eminent neurologist armed with videos
+                            of women giggling at comedy films; another was a
+                            social scientist brandishing statistics on national
+                            cheerfulness. Hundreds of other researchers sat
+                            scribbling notes on how to produce more smiles.</p>
+
+                        <p><span class="plabel">B.</span> The decision by the
+                            Royal Society to pick 'the science of wellbeing'
+                            from hundreds of applications for conferences on
+                            other topics is no laughing matter. It means that
+                            the investigation of what makes people happy is
+                            being taken very seriously indeed.
+                            'Many philosophies and religions have studied this subject, but scientifically it has been ignored,'
+                            said Dr Nick Baylis, a Cambridge University
+                            psychologist and one of the conference organisers.
+                            'For the Royal Society to give us its countenance is vital because that states that what we are doing deserves to be acknowledged and investigated by the best scientific minds.'</p>
+
+                        <p><span class="plabel">C.</span> At first sight, the
+                            mission of Baylis and the growing number of other
+                            scientists working on happiness research appears
+                            fanciful. They want to deploy scientifically
+                            rigorous methods to determine why some people are
+                            lastingly happy while others tend to misery. Then
+                            they envisage spreading the secret of happiness
+                            across the globe and, in short, increasing the sum
+                            of human happiness.
+                            'If someone is happy, they are more popular and also healthier, they live longer and are more productive at work. So, it is very much worth having,'
+                            he says.</p>
+
+                        <p><span class="plabel">D.</span> Baylis, the only
+                            'positive psychology' lecturer in Britain, knows
+                            that the aims of happiness research might sound
+                            woolly, so he is at pains to distance himself from
+                            the brigades of non-academic self-help gurus. He
+                            refers to 'life satisfaction' and 'wellbeing' and
+                            emphasises that his work, and that of others at the
+                            conference, is grounded in solid research. So, what
+                            have the scientists discovered? Has a theory of
+                            happiness been defined yet?</p>
+
+                        <p><span class="plabel">E.</span> According to Professor
+                            Martin Seligman, probably the world's leading figure
+                            in this field, happiness could be but a train ride
+                            and a couple of questionnaires away. It was
+                            Seligman, a psychologist from Pennsylvania
+                            University, who kick-started the happiness science
+                            movement with a speech he made as President of the
+                            American Psychological Association (APA). Why, asked
+                            Seligman, shocking delegates at an APA conference,
+                            does science only investigate suffering? Why not
+                            look into what steps increase happiness, even for
+                            those who are not depressed, rather than simply seek
+                            to assuage pain? For a less well-known scientist,
+                            the speech could have spelt the end of a career, but
+                            instead, Seligman landed funding of almost £18m to
+                            follow his hunch. He has been in regular contact
+                            with hundreds of other researchers and practicing
+                            psychologists around the world, all the while
+                            conducting polls and devising strategies for
+                            increasing happiness.</p>
+
+                        <p><span class="plabel">F.</span> His findings have led
+                            him to believe that there are three main types of
+                            happiness. First, there is 'the pleasant life' — the
+                            kind of happiness we usually gain from sensual
+                            pleasures such as eating and drinking or watching a
+                            good film. Seligman blames Hollywood and the
+                            advertising industry for encouraging the rest of us,
+                            wrongly as he sees it, to believe that lasting
+                            happiness is to be found that way. Secondly, there
+                            is 'the good life', which comes from enjoying
+                            something we are good or talented at. The key to
+                            this, Seligman believes, lies in identifying our
+                            strengths and then taking part in an activity that
+                            uses them. Third, there is 'meaningful life'. The
+                            most lasting happiness, Seligman says, comes from
+                            finding something you believe in and then putting
+                            your strengths at its service. People who are good
+                            at communicating with others might thus find
+                            long-lasting happiness through becoming involved in
+                            politics or voluntary work, while a rock star
+                            wanting to save the world might find it in
+                            organising a charity concert.</p>
+
+                        <p><span class="plabel">G.</span> Achieving
+                            'the good life' and 'the meaningful life' is the
+                            secret of lasting happiness, Seligman says. For
+                            anybody unsure of how to proceed, he has an
+                            intriguing idea. To embark on the road to happiness,
+                            he suggests that you need a pen, some paper and,
+                            depending on your location, a railway ticket. First,
+                            identify a person to whom you feel a deep debt of
+                            gratitude but have never thanked properly. Next,
+                            write a 300-word essay outlining how important the
+                            help was and how much you appreciate it. Then tell
+                            them you need to visit, without saying what for,
+                            turn up at their house and read them the essay. The
+                            result: tears, hugs and deeper, longer-lasting
+                            happiness, apparently, than would come from any
+                            amount of champagne.</p>
+
+                        <p><span class="plabel">H.</span> Sceptics may insist
+                            that science will always remain a clumsy way of
+                            investigating and propagating happiness and say that
+                            such things are better handled by artists, writers
+                            and musicians if they can be handled at all. And not
+                            everybody at the conference was positive about the
+                            emerging science. Lewis Wolpert, professor of
+                            biology as applied to medicine at University College
+                            London, who has written a bestseller about his
+                            battle with depression, said: 'If you were happy,
+                            I'd be very suspicious. I think you wouldn't do
+                            anything, you'd just sort of sit there in a treacle
+                            of happiness. There's a whole world out there, and
+                            unless you have a bit of discomfort, you'll never
+                            actually do anything.'</p>
+                    </div>
+
+                    <!-- Questions 27-40 -->
+                    <div class="pane questions">
+
+                        <!-- Q27-30 -->
+                        <div class="qgroup">
+                            <h3>Questions 27–30</h3>
+                            <p class="instruction">Complete the sentences below
+                                with words taken from Reading Passage 3. Use
+                                <b>NO MORE THAN THREE WORDS</b> for each
+                                answer.</p>
+
+                            <div class="qrow" data-qwrap="27">
+                                <span class="label"><span
+                                        class="num">27</span>At the conference,
+                                    research into happiness was referred to as
+                                    the</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="27" type="text"
+                                        placeholder="27" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="28">
+                                <span class="label"><span
+                                        class="num">28</span>Baylis and others
+                                    intend to use</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="28" type="text"
+                                        placeholder="28" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                                to find out what makes people happy or unhappy.
+                            </div>
+                            <div class="qrow" data-qwrap="29">
+                                <span class="label"><span
+                                        class="num">29</span>Baylis gives
+                                    classes on the subject of</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="29" type="text"
+                                        placeholder="29" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="30">
+                                <span class="label"><span
+                                        class="num">30</span>Baylis says he
+                                    should not be categorised among the</span>
+                                <span class="inline-q">
+                                    <input class="qtext" data-q="30" type="text"
+                                        placeholder="30" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                                who do not have academic credentials.
+                            </div>
+                        </div>
+
+                        <!-- Q31-36 -->
+                        <div class="qgroup">
+                            <h3>Questions 31–36</h3>
+                            <p class="instruction">Complete the summary below
+                                using words from the box. Write your answers in
+                                boxes 31–36.</p>
+
+                            <div class="options-box">
+                                <div
+                                    style="font-weight:800;color:var(--primary);margin-bottom:8px;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;">Word
+                                    Box</div>
+                                <div class="word-list">
+                                    <span>confidence</span><span>entertainment</span><span>incentive</span>
+                                    <span>leadership</span><span>thrill</span><span>perseverance</span>
+                                    <span>illusion</span><span>effort</span><span>ability</span>
+                                    <span>theory</span><span>celebration</span><span>participation</span>
+                                    <span>ego</span><span>permanence</span><span>leadership</span>
+                                    <span>encouragement</span><span>exaggeration</span><span>concept</span>
+                                    <span>conviction</span><span>support</span>
+                                </div>
+                            </div>
+
+                            <div
+                                style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0;font-size:14px;line-height:1.9;">
+                                <div
+                                    style="text-align:center;font-weight:800;color:var(--primary);font-size:15px;margin-bottom:12px;">Seligman's
+                                    categories of happiness</div>
+
+                                Seligman's first type of happiness involves the
+                                enjoyment of pleasures such as
+                                <span class="inline-q" data-qwrap="31">
+                                    <input class="qtext" data-q="31" type="text"
+                                        placeholder="31" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>.
+                                He believes that people should not be under the
+                                <span class="inline-q" data-qwrap="32">
+                                    <input class="qtext" data-q="32" type="text"
+                                        placeholder="32" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                                that such things lead to happiness that is not
+                                just temporary. His second type is related to
+                                <span class="inline-q" data-qwrap="33">
+                                    <input class="qtext" data-q="33" type="text"
+                                        placeholder="33" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>.
+                                Identification of this should lead to
+                                <span class="inline-q" data-qwrap="34">
+                                    <input class="qtext" data-q="34" type="text"
+                                        placeholder="34" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                                and the result is 'the good life'. His third
+                                type involves having a strong
+                                <span class="inline-q" data-qwrap="35">
+                                    <input class="qtext" data-q="35" type="text"
+                                        placeholder="35" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>
+                                and doing something about it for the benefit of
+                                others. This, according to Seligman, leads to
+                                happiness that has some
+                                <span class="inline-q" data-qwrap="36">
+                                    <input class="qtext" data-q="36" type="text"
+                                        placeholder="36" autocomplete="off">
+                                    <span class="result-badge"></span>
+                                </span>.
+                            </div>
+                        </div>
+
+                        <!-- Q37-40 -->
+                        <div class="qgroup">
+                            <h3>Questions 37–40</h3>
+                            <p class="instruction">Reading Passage 3 has eight
+                                paragraphs labelled <b>A–H</b>. Which paragraph
+                                contains the following information?</p>
+
+                            <div class="qrow" data-qwrap="37">
+                                <span class="label"><span class="num">37</span>a
+                                    view that complete happiness may not be a
+                                    desirable goal</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="37">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option><option>H</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="38">
+                                <span class="label"><span class="num">38</span>a
+                                    reference to the potential wider outcomes of
+                                    conducting research into happiness</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="38">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option><option>H</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="39">
+                                <span class="label"><span
+                                        class="num">39</span>an implication of
+                                    the fact that the conference was held at
+                                    all</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="39">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option><option>H</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                            <div class="qrow" data-qwrap="40">
+                                <span class="label"><span class="num">40</span>a
+                                    statement concerning the possible outcome of
+                                    expressing a certain view in public</span>
+                                <span class="inline-q">
+                                    <select class="qselect" data-q="40">
+                                        <option value>–</option>
+                                        <option>A</option><option>B</option><option>C</option><option>D</option>
+                                        <option>E</option><option>F</option><option>G</option><option>H</option>
+                                    </select>
+                                    <span class="result-badge"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit bar -->
+            <div class="submit-bar">
+                <div class="progress">Answered: <b id="answeredCount">0</b> /
+                    40</div>
+                <div class="progress-bar"><i id="progressFill"></i></div>
+                <button class="btn btn-primary" id="submitBtn">Submit
+                    Test</button>
+                <button class="btn btn-ghost" id="resetBtn">Reset</button>
+            </div>
+
+            <!-- Answer key panel -->
+            <div class="answer-key-panel" id="answerKeyPanel">
+                <h2>📋 Complete Answer Key</h2>
+                <div class="key-grid" id="keyGrid"></div>
+            </div>
+
+        </main>
+
+        <footer>
+            FutureEd Reading Set 4 · Interactive test — answers verified against
+            the official key.
+        </footer>
+
+        <!-- ================= HIGHLIGHT TOOLBAR ================= -->
+        <div class="hl-toolbar" id="hlToolbar">
+            <button class="hl-btn" id="hlHighlight">🖍 Highlight</button>
+            <button class="hl-btn hl-remove" id="hlRemoveFromSel">✕
+                Remove</button>
+        </div>
+        <div class="hl-toast" id="hlToast"></div>
+
+        <script>
+/* =========================================================
+   ANSWER KEY
+   ========================================================= */
+const KEY = {
+  1:  {type:'select', accept:['not given'], display:'Not Given'},
+  2:  {type:'select', accept:['yes'],       display:'Yes'},
+  3:  {type:'select', accept:['no'],        display:'No'},
+  4:  {type:'select', accept:['not given'], display:'Not Given'},
+  5:  {type:'text',   accept:['no input'],  display:'NO INPUT'},
+  6:  {type:'text',   accept:['editorial assistance'], display:'EDITORIAL ASSISTANCE'},
+  7:  {type:'text',   accept:['sheekman compositions','compositions of sheekman'], display:'SHEEKMAN COMPOSITIONS'},
+  8:  {type:'text',   accept:['own style','his own style'], display:'OWN STYLE / HIS OWN STYLE'},
+  9:  {type:'select', accept:['e'], display:'E'},
+  10: {type:'select', accept:['g'], display:'G'},
+  11: {type:'select', accept:['d'], display:'D'},
+  12: {type:'select', accept:['b'], display:'B'},
+  13: {type:'select', accept:['f'], display:'F'},
+  14: {type:'select', accept:['d'], display:'D'},
+  15: {type:'select', accept:['e'], display:'E'},
+  16: {type:'select', accept:['b'], display:'B'},
+  17: {type:'select', accept:['f'], display:'F'},
+  18: {type:'text',   accept:['mid-ocean ridge','mid ocean ridge','ridge crests','ridge crest'], display:'MID-OCEAN RIDGE / RIDGE CRESTS'},
+  19: {type:'text',   accept:['molten rock rose'], display:'MOLTEN ROCK ROSE'},
+  20: {type:'text',   accept:['magnetic field',"earth's magnetic field",'earths magnetic field'], display:'MAGNETIC FIELD'},
+  21: {type:'text',   accept:['parallel stripes','parallel zebra stripes','symmetrical stripes','symmetrical zebra stripes','magnetic stripes','magnetic zebra stripes'], display:'PARALLEL / MAGNETIC / SYMMETRICAL STRIPES'},
+  22: {type:'text',   accept:['pushed aside','apart','further apart'], display:'PUSHED ASIDE / APART / FURTHER APART'},
+  23: {type:'text',   accept:['plate tectonics'], display:'PLATE TECTONICS'},
+  24: {type:'text',   accept:['climate','climates','climate change','climates change'], display:'CLIMATE (CHANGE)'},
+  25: {type:'text',   accept:['earth systems science','earth system science'], display:'EARTH SYSTEMS SCIENCE'},
+  26: {type:'text',   accept:['integrated'], display:'INTEGRATED'},
+  27: {type:'text',   accept:['science of wellbeing','science of well-being'], display:'SCIENCE OF WELLBEING'},
+  28: {type:'text',   accept:['scientifically rigorous methods'], display:'SCIENTIFICALLY RIGOROUS METHODS'},
+  29: {type:'text',   accept:['positive psychology'], display:'POSITIVE PSYCHOLOGY'},
+  30: {type:'text',   accept:['self-help gurus','self help gurus'], display:'SELF-HELP GURUS'},
+  31: {type:'text',   accept:['entertainment'], display:'ENTERTAINMENT'},
+  32: {type:'text',   accept:['illusion'], display:'ILLUSION'},
+  33: {type:'text',   accept:['ability'], display:'ABILITY'},
+  34: {type:'text',   accept:['participation'], display:'PARTICIPATION'},
+  35: {type:'text',   accept:['conviction'], display:'CONVICTION'},
+  36: {type:'text',   accept:['permanence'], display:'PERMANENCE'},
+  37: {type:'select', accept:['h'], display:'H'},
+  38: {type:'select', accept:['c'], display:'C'},
+  39: {type:'select', accept:['b'], display:'B'},
+  40: {type:'select', accept:['e'], display:'E'}
+};
+const TOTAL = 40;
+
+function norm(s){
+  return String(s || '')
+    .toLowerCase()
+    .replace(/[\u2018\u2019']/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function isCorrect(q, ans){
+  const k = KEY[q];
+  if(!k) return false;
+  if(k.type === 'select') return k.accept.some(a => a.toLowerCase() === ans.trim().toLowerCase());
+  const n = norm(ans);
+  if(!n) return false;
+  return k.accept.some(a => norm(a) === n);
+}
+function getAnswer(q){
+  const el = document.querySelector(`[data-q="${q}"]`);
+  return el ? el.value.trim() : '';
+}
+
+/* ---------- Progress ---------- */
+const answeredEl = document.getElementById('answeredCount');
+const progressFill = document.getElementById('progressFill');
+function updateProgress(){
+  let n = 0;
+  for(let q = 1; q <= TOTAL; q++){ if(getAnswer(q)) n++; }
+  answeredEl.textContent = n;
+  progressFill.style.width = (n / TOTAL * 100) + '%';
+}
+
+/* ---------- Submit / reset ---------- */
+let submitted = false;
+function submitTest(){
+  if(submitted) return;
+  let score = 0;
+  for(let q = 1; q <= TOTAL; q++){
+    const wrap = document.querySelector(`[data-qwrap="${q}"]`);
+    if(!wrap) continue;
+    const ans = getAnswer(q);
+    const badge = wrap.querySelector('.result-badge');
+    wrap.classList.remove('correct','wrong','unanswered');
+    if(!ans){
+      wrap.classList.add('unanswered');
+      if(badge) badge.textContent = '—';
+    } else if(isCorrect(q, ans)){
+      score++;
+      wrap.classList.add('correct');
+      if(badge) badge.textContent = '✓';
+    } else {
+      wrap.classList.add('wrong');
+      if(badge) badge.textContent = '✗ ' + KEY[q].display;
+    }
+  }
+  document.querySelectorAll('.qtext, .qselect').forEach(el => el.disabled = true);
+
+  const banner = document.getElementById('scoreBanner');
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('scoreMsg').textContent = scoreMessage(score);
+  document.getElementById('bandVal').textContent = estimateBand(score);
+  banner.classList.add('show');
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  stopTimer();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '✓ Submitted';
+  btn.disabled = true;
+  submitted = true;
+}
+function scoreMessage(s){
+  if(s >= 39) return 'Outstanding! 🏆';
+  if(s >= 35) return 'Excellent work! 🌟';
+  if(s >= 30) return 'Good job! 👍';
+  if(s >= 23) return 'Not bad — keep practising! 💪';
+  if(s >= 16) return 'Keep going — review the answers. 📚';
+  return "Don't worry — practice makes perfect. 🔁";
+}
+function estimateBand(s){
+  if(s >= 39) return '9.0'; if(s >= 37) return '8.5'; if(s >= 35) return '8.0';
+  if(s >= 33) return '7.5'; if(s >= 30) return '7.0'; if(s >= 27) return '6.5';
+  if(s >= 23) return '6.0'; if(s >= 19) return '5.5'; if(s >= 15) return '5.0';
+  if(s >= 13) return '4.5'; if(s >= 10) return '4.0'; if(s >= 8)  return '3.5';
+  if(s >= 6)  return '3.0'; if(s >= 4)  return '2.5'; if(s >= 3)  return '2.0';
+  if(s >= 2)  return '1.5'; if(s >= 1)  return '1.0'; return '0.0';
+}
+function resetTest(){
+  document.querySelectorAll('[data-qwrap]').forEach(el => el.classList.remove('correct','wrong','unanswered'));
+  document.querySelectorAll('.result-badge').forEach(b => b.textContent = '');
+  document.querySelectorAll('.qtext, .qselect').forEach(el => { el.value = ''; el.disabled = false; });
+  document.getElementById('scoreBanner').classList.remove('show');
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submit Test';
+  btn.disabled = false;
+  submitted = false;
+  resetTimer();
+  updateProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ---------- Answer key panel ---------- */
+function buildKeyPanel(){
+  const grid = document.getElementById('keyGrid');
+  for(let q = 1; q <= TOTAL; q++){
+    const div = document.createElement('div');
+    div.className = 'key-item';
+    div.innerHTML = `<span class="n">Q${q}</span><span class="a">${KEY[q].display}</span>`;
+    grid.appendChild(div);
+  }
+}
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const part = tab.dataset.part;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.part-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.part-panel[data-panel="${part}"]`).classList.add('active');
+    hideToolbar();
+  });
+});
+
+/* ---------- Timer ---------- */
+const TOTAL_TIME = 60 * 60;
+let timeLeft = TOTAL_TIME, timerInterval = null;
+const timerWrap = document.getElementById('timerWrap');
+const timerVal = document.getElementById('timerVal');
+function formatTime(sec){
+  return String(Math.floor(sec/60)).padStart(2,'0') + ':' + String(sec%60).padStart(2,'0');
+}
+function tick(){
+  if(timeLeft <= 0){ stopTimer(); timerVal.textContent = '00:00'; if(!submitted) submitTest(); return; }
+  timeLeft--;
+  timerVal.textContent = formatTime(timeLeft);
+  timerWrap.classList.remove('warning','danger');
+  if(timeLeft <= 60) timerWrap.classList.add('danger');
+  else if(timeLeft <= 300) timerWrap.classList.add('warning');
+}
+function startTimer(){ stopTimer(); timeLeft = TOTAL_TIME; timerVal.textContent = formatTime(timeLeft); timerWrap.classList.remove('warning','danger'); timerInterval = setInterval(tick, 1000); }
+function stopTimer(){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } }
+function resetTimer(){ startTimer(); }
+
+/* =========================================================
+   HIGHLIGHT FEATURE
+   ========================================================= */
+const hlToolbar = document.getElementById('hlToolbar');
+const hlHighlightBtn = document.getElementById('hlHighlight');
+const hlRemoveBtn = document.getElementById('hlRemoveFromSel');
+const hlToast = document.getElementById('hlToast');
+let savedRange = null;
+let toastTimeout = null;
+
+function showToast(msg){
+  hlToast.textContent = msg;
+  hlToast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => hlToast.classList.remove('show'), 1700);
+}
+
+function hideToolbar(){
+  hlToolbar.classList.remove('show');
+  savedRange = null;
+}
+
+function showToolbarForRange(range){
+  const rect = range.getBoundingClientRect();
+  if(!rect || (rect.width === 0 && rect.height === 0)){ hideToolbar(); return; }
+  const x = rect.left + rect.width / 2;
+  const y = rect.top - 10;
+  hlToolbar.style.left = Math.max(70, Math.min(x, window.innerWidth - 70)) + 'px';
+  hlToolbar.style.top = Math.max(60, y) + 'px';
+  hlToolbar.classList.add('show');
+}
+
+function findPassagePane(node){
+  if(!node) return null;
+  if(node.nodeType === Node.TEXT_NODE) node = node.parentNode;
+  if(!node || !node.closest) return null;
+  const pane = node.closest('.pane.passage');
+  if(!pane) return null;
+  if(!pane.offsetParent) return null; // not visible
+  return pane;
+}
+
+function selectionIsInsideHighlight(range){
+  let node = range.commonAncestorContainer;
+  if(node.nodeType === Node.TEXT_NODE) node = node.parentNode;
+  return !!(node && node.closest && node.closest('mark.user-highlight'));
+}
+
+function checkSelectionForToolbar(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || sel.rangeCount === 0){ hideToolbar(); return; }
+  const range = sel.getRangeAt(0);
+  const pane = findPassagePane(range.commonAncestorContainer);
+  if(!pane){ hideToolbar(); return; }
+  savedRange = range.cloneRange();
+
+  const insideHighlight = selectionIsInsideHighlight(range);
+  hlHighlightBtn.style.display = insideHighlight ? 'none' : 'flex';
+  hlRemoveBtn.style.display = insideHighlight ? 'flex' : 'none';
+  showToolbarForRange(range);
+}
+
+/* --- Apply highlight --- */
+function applyHighlight(range){
+  if(!range || range.collapsed) return;
+  const pane = findPassagePane(range.commonAncestorContainer);
+  if(!pane) return;
+
+  // Don't highlight if selection starts inside a highlight
+  if(selectionIsInsideHighlight(range)){
+    showToast('Already highlighted');
+    return;
+  }
+
+  try{
+    const mark = document.createElement('mark');
+    mark.className = 'user-highlight';
+    try{
+      range.surroundContents(mark);
+    }catch(err){
+      // Fallback for cross-element selections
+      const frag = range.extractContents();
+      mark.appendChild(frag);
+      range.insertNode(mark);
+    }
+    window.getSelection().removeAllRanges();
+    saveHighlights();
+    showToast('Highlighted ✓');
+  }catch(err){
+    console.warn('Highlight failed:', err);
+    showToast('Could not highlight selection');
+  }
+}
+
+/* --- Remove highlights intersecting the current range --- */
+function removeHighlightsInRange(range){
+  if(!range) return 0;
+  const marks = [];
+  document.querySelectorAll('mark.user-highlight').forEach(mark => {
+    try{ if(range.intersectsNode(mark)) marks.push(mark); }catch(e){}
+  });
+  marks.forEach(mark => {
+    const parent = mark.parentNode;
+    while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+  });
+  document.querySelectorAll('.pane.passage').forEach(p => p.normalize());
+  if(marks.length) saveHighlights();
+  return marks.length;
+}
+
+/* --- Save / restore highlights in localStorage --- */
+function saveHighlights(){
+  document.querySelectorAll('.pane.passage').forEach((pane, idx) => {
+    try{
+      localStorage.setItem('futureed-read-hl-' + idx, pane.innerHTML);
+    }catch(e){ /* quota exceeded etc. */ }
+  });
+}
+function loadHighlights(){
+  document.querySelectorAll('.pane.passage').forEach((pane, idx) => {
+    const saved = localStorage.getItem('futureed-read-hl-' + idx);
+    if(saved){
+      try{ pane.innerHTML = saved; }catch(e){}
+    }
+  });
+}
+function clearAllHighlights(){
+  let count = 0;
+  document.querySelectorAll('mark.user-highlight').forEach(mark => {
+    const parent = mark.parentNode;
+    while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+    parent.removeChild(mark);
+    count++;
+  });
+  document.querySelectorAll('.pane.passage').forEach(p => p.normalize());
+  // Remove storage keys
+  document.querySelectorAll('.pane.passage').forEach((pane, idx) => {
+    localStorage.removeItem('futureed-read-hl-' + idx);
+  });
+  if(count) showToast('Cleared ' + count + ' highlight' + (count > 1 ? 's' : ''));
+  else showToast('No highlights to clear');
+}
+
+/* --- Events --- */
+document.addEventListener('mouseup', (e) => {
+  if(e.target.closest('.hl-toolbar')) return;
+  setTimeout(checkSelectionForToolbar, 10);
+});
+
+document.addEventListener('mousedown', (e) => {
+  if(e.target.closest('.hl-toolbar')) return;
+  // Hide toolbar when clicking outside existing selection
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if(!sel || sel.isCollapsed) hideToolbar();
+  }, 80);
+});
+
+/* Prevent toolbar mousedown from clearing selection */
+hlToolbar.addEventListener('mousedown', (e) => e.preventDefault());
+
+hlHighlightBtn.addEventListener('click', () => {
+  if(savedRange) applyHighlight(savedRange);
+  hideToolbar();
+});
+
+hlRemoveBtn.addEventListener('click', () => {
+  if(savedRange){
+    const n = removeHighlightsInRange(savedRange);
+    showToast(n ? 'Highlight removed ✓' : 'No highlight here');
+  }
+  window.getSelection().removeAllRanges();
+  hideToolbar();
+});
+
+/* Click a highlight to remove it (when nothing else selected) */
+document.addEventListener('click', (e) => {
+  const mark = e.target.closest('mark.user-highlight');
+  if(!mark) return;
+  const sel = window.getSelection();
+  if(sel && !sel.isCollapsed) return; // user is selecting, don't remove
+  const parent = mark.parentNode;
+  while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+  parent.removeChild(mark);
+  parent.normalize();
+  saveHighlights();
+  showToast('Highlight removed');
+});
+
+/* Hide toolbar on scroll */
+window.addEventListener('scroll', () => { if(hlToolbar.classList.contains('show')) hideToolbar(); }, {passive:true});
+document.querySelectorAll('.pane').forEach(pane => {
+  pane.addEventListener('scroll', () => { if(hlToolbar.classList.contains('show')) hideToolbar(); }, {passive:true});
+});
+
+/* Clear all button */
+document.getElementById('clearHlBtn').addEventListener('click', () => {
+  clearAllHighlights();
+});
+
+/* ---------- Main bindings ---------- */
+document.getElementById('submitBtn').addEventListener('click', submitTest);
+document.getElementById('resetBtn').addEventListener('click', resetTest);
+document.getElementById('toggleKeyBtn').addEventListener('click', (e) => {
+  const panel = document.getElementById('answerKeyPanel');
+  panel.classList.toggle('show');
+  e.currentTarget.textContent = panel.classList.contains('show') ? 'Hide Answer Key' : 'Show Answer Key';
+  if(panel.classList.contains('show')) panel.scrollIntoView({behavior:'smooth', block:'start'});
+});
+document.addEventListener('input', updateProgress);
+document.addEventListener('change', updateProgress);
+
+/* ---------- Init ---------- */
+buildKeyPanel();
+updateProgress();
+startTimer();
+loadHighlights();
+</script>
+
+    </body>
+</html>

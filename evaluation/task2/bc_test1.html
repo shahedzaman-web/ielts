@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Writing Evaluation – Task 2 (Space Exploration) · v2</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kalam:wght@400&family=Inter:wght@400;600;700&display=swap');
+
+        @page { size: A4; margin: 0; }
+        * { box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #e8eef7 0%, #f4f6fb 100%);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #1c2430;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 12mm;
+            margin: 12mm auto;
+            background: #fff;
+            box-shadow: 0 6px 28px rgba(20, 40, 80, .16);
+            border-radius: 8px;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #f59e0b);
+        }
+        .page:last-child { page-break-after: auto; break-after: auto; }
+
+        /* ---------- HEADINGS ---------- */
+        h1 { font-size: 19pt; margin: 0 0 8mm; line-height: 1.25; color: #1e3a8a; letter-spacing: -.3px; }
+        h2 { font-size: 13pt; margin: 10mm 0 5mm; padding: 2.4mm 4mm; border-left: 5px solid #2563eb; background: linear-gradient(90deg, #eff6ff, transparent 92%); color: #1e3a8a; border-radius: 0 6px 6px 0; line-height: 1.3; }
+        h2:first-child { margin-top: 0; }
+        h3 { font-size: 11.5pt; margin: 6mm 0 2.5mm; color: #1d4ed8; line-height: 1.35; }
+        h3:first-of-type { margin-top: 2mm; }
+
+        /* ---------- TEXT ---------- */
+        p { margin: 0 0 4mm; text-align: justify; line-height: 1.65; }
+        ul, ol { margin: 2.5mm 0 4mm 7mm; padding: 0; }
+        li { margin-bottom: 2mm; line-height: 1.55; }
+        li:last-child { margin-bottom: 0; }
+        li::marker { color: #2563eb; font-weight: bold; }
+        em { font-style: italic; color: #334155; }
+        strong { color: #0f172a; }
+
+        /* ---------- TABLES ---------- */
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 3mm 0 5mm; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(20,40,80,.10); font-size: 9.8pt; }
+        th, td { border: 1px solid #dbe3ee; padding: 2.4mm 3mm; vertical-align: top; line-height: 1.55; }
+        th { background: linear-gradient(180deg, #eef4ff, #dfe9fb); color: #1e3a8a; font-weight: 700; text-align: left; }
+        tbody tr:nth-child(even) td { background: #f8fafc; }
+        tbody tr:hover td { background: #f1f5ff; }
+
+        .summary th { text-align: center; background: #1e293b; color: #fff; border-color: #334155; }
+        .summary td { text-align: center; font-weight: 700; font-size: 12pt; color: #1e3a8a; padding: 2.8mm 2mm; }
+        .summary .band-cell { color: #b91c1c !important; font-size: 14pt; }
+
+        .tight th, .tight td { padding: 2mm 2.4mm; }
+        .small { font-size: 9pt; }
+        .tiny th, .tiny td { padding: 1.8mm 2.2mm; font-size: 8.6pt; }
+
+        /* ---------- MARKING GUIDE TABLE (PAGE 2) ---------- */
+        .marking-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3mm 0 5mm;
+            border: 1px solid #cbd5e1;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 10pt;
+        }
+        .marking-table td {
+            border: 1px solid #cbd5e1;
+            padding: 4mm;
+            vertical-align: middle;
+            background: #fff !important;
+        }
+        .marking-table td:first-child {
+            width: 35%;
+            text-align: center;
+            background: #f8fafc !important;
+        }
+        .marking-example-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .handwritten-red {
+            color: #dc2626;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 16pt;
+            position: absolute;
+            top: -26px;
+            left: -5px;
+            white-space: nowrap;
+        }
+        .circled-word {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 2px 10px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .red-number-badge {
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+        }
+        .underlined-word {
+            border-bottom: 2px solid #dc2626;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            font-size: 11pt;
+        }
+        .wavy-word {
+            text-decoration: underline wavy #dc2626;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .green-tick-word {
+            font-weight: bold;
+            color: #1c2430;
+            border-bottom: 2px solid #16a34a;
+            display: inline-block;
+            padding-bottom: 2px;
+            position: relative;
+            font-size: 11pt;
+        }
+        .green-tick-symbol {
+            color: #16a34a;
+            font-size: 18pt;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* ---------- SCRIPT MARKINGS ---------- */
+        .script-layout {
+            display: flex;
+            width: 100%;
+        }
+        .script-text-col {
+            flex: 1.4;
+            padding-right: 5mm;
+        }
+        .script-comment-col {
+            flex: 0.6;
+            padding-left: 5mm;
+            border-left: 1px solid #fca5a5;
+        }
+
+        .script-text {
+            line-height: 2.5;
+            font-size: 11.5pt;
+            font-family: 'Kalam', 'Caveat', 'Comic Sans MS', cursive;
+            color: #1c2430;
+        }
+
+        .comment-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1.4;
+            margin-bottom: 2mm;
+        }
+        .comment-text p { margin-bottom: 3mm; }
+        .comment-tick {
+            color: #16a34a;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 9pt;
+            display: block;
+            margin-top: 4mm;
+        }
+
+        .red-underline {
+            text-decoration: underline;
+            text-decoration-color: #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-wavy {
+            text-decoration: underline wavy #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-underline {
+            text-decoration: underline;
+            text-decoration-color: #16a34a;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #dc2626;
+            color: white;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-left: 2px;
+            vertical-align: super;
+            line-height: 1;
+        }
+        .arrow-red {
+            color: #dc2626;
+            font-weight: bold;
+            margin: 0 4px;
+        }
+        .correction-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+        }
+
+        /* ---------- CALLOUTS / BOXES ---------- */
+        .comment-box {
+            background: #fff;
+            border: 2px solid #dc2626;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 6mm 0 5.5mm;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+        .comment-box h4 { color: #dc2626; margin: 0 0 3mm; font-size: 10pt; text-transform: uppercase; font-family: 'Inter', sans-serif;}
+        .comment-box .handwritten-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+            line-height: 1.4;
+        }
+
+        .good-box {
+            background: #f0fdf4;
+            border: 1.5px solid #22c55e;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 3.5mm 0 5.5mm;
+            font-size: 9.8pt;
+        }
+        .good-box h4 { color: #166534; margin: 0 0 2mm; font-size: 10pt; text-transform: uppercase; }
+
+        /* ---------- BAND SCORE UI ---------- */
+        .main-band-header {
+            background: #b91c1c;
+            color: white;
+            padding: 4mm;
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+            letter-spacing: 0.5px;
+        }
+
+        .band-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            margin-bottom: 6mm;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(20,40,80,.05);
+        }
+
+        .band-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            color: white;
+            padding: 3mm 4mm;
+        }
+        .band-card-header h3 { margin: 0; color: white; font-size: 12pt; font-weight: 600; }
+        .band-badge {
+            background: #b91c1c;
+            color: white;
+            padding: 1mm 4mm;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+
+        .band-card-body {
+            padding: 4mm;
+            background: #fff;
+        }
+        .band-card-body h4 {
+            color: #1e293b;
+            font-size: 10.5pt;
+            margin: 0 0 3mm 0;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .band-card-body ul {
+            margin-left: 5mm;
+            font-size: 10pt;
+            margin-bottom: 5mm;
+        }
+
+        .why-not-higher {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-higher h5 { color: #991b1b; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-higher p { margin: 0; font-size: 9.5pt; color: #7f1d1d; }
+
+        .why-not-lower {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-lower h5 { color: #166534; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-lower p { margin: 0; font-size: 9.5pt; color: #14532d; }
+
+        .calc-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 2mm 4mm;
+            font-size: 10pt;
+            color: #92400e;
+            font-weight: 600;
+            margin-top: 3mm;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* ---------- CORRECTED ANSWER UI ---------- */
+        .corrected-header {
+            background: #b91c1c;
+            color: white;
+            padding: 3mm 4mm;
+            font-size: 11pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+        }
+        .corrected-box {
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 5mm;
+            background: #fff;
+            font-size: 10pt;
+            line-height: 1.7;
+        }
+        .green-highlight {
+            background-color: #d1fae5;
+            color: #047857;
+            font-weight: 600;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* ---------- SIGNATURE ---------- */
+        .signature-font {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 18pt;
+            color: #1e3a8a;
+            transform: rotate(-5deg);
+            display: inline-block;
+        }
+
+        /* ---------- MISC ---------- */
+        .practice-list li { list-style-type: none; margin-bottom: 6mm; position: relative; }
+        .practice-list .num { font-weight: bold; font-size: 12pt; margin-right: 2mm; color: #1e3a8a; }
+        .practice-line { border-bottom: 1px solid #cbd5e1; height: 8mm; margin-top: 2mm; }
+
+        .page-number {
+            margin-top: auto;
+            align-self: flex-end;
+            font-size: 8.6pt;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 1.2mm 3.5mm;
+            border-radius: 999px;
+            letter-spacing: .3px;
+            flex-shrink: 0;
+        }
+        .page-number::before { content: "Page "; }
+
+        /* ---------- PRINT ---------- */
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            html, body { width: 210mm; margin: 0 !important; padding: 0 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { display: block !important; }
+            .page {
+                display: flex !important;
+                flex-direction: column;
+                width: 210mm;
+                height: 297mm;
+                margin: 0 !important;
+                padding: 14mm 16mm 16mm;
+                box-sizing: border-box;
+                overflow: hidden !important;
+                background: #fff;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-after: always;
+                break-after: page;
+            }
+            .page + .page { page-break-before: always !important; break-before: page !important; }
+            .page-number { position: absolute; right: 16mm; bottom: 7mm; margin: 0 !important; align-self: auto; }
+            h1 { font-size: 17pt; margin-bottom: 5mm; }
+            h2 { margin: 5mm 0 3mm; padding: 2mm 3mm; font-size: 12pt; }
+            h3 { margin: 3.5mm 0 1.5mm; font-size: 11pt; }
+            p { margin-bottom: 2.5mm; line-height: 1.45; }
+            ul, ol { margin: 1.5mm 0 2.5mm 6mm; }
+            li { margin-bottom: 1.2mm; line-height: 1.45; }
+            table { width: 100%; margin: 2.5mm 0 3.5mm; font-size: 9pt; border-collapse: collapse; }
+            th, td { padding: 1.5mm 2mm; }
+            .tiny th, .tiny td { padding: 1mm 1.4mm; font-size: 8pt; line-height: 1.35; }
+            .good-box { padding: 2mm 3mm; margin: 2.5mm 0 3.5mm; font-size: 9pt; }
+            .script-text { line-height: 2.2; font-size: 10.5pt; }
+            .band-card { page-break-inside: avoid; break-inside: avoid; }
+            tr, .good-box, .comment-box, .script-layout { page-break-inside: avoid; break-inside: avoid; }
+            .marking-table { border: 1px solid #cbd5e1; }
+            .marking-table td { padding: 3mm; }
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- PAGE 1 -->
+        <div class="page">
+            <h1
+                style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your
+                Writing Evaluation in details</h1>
+            <p
+                style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">Academic
+                Writing · Task 2 (Agree/Disagree) · Marked against the official
+                IELTS Writing Band Descriptors (May 2023)</p>
+
+            <table class="tight" style="font-size: 9.5pt;">
+                <tr>
+                    <th style="background: #e2e8f0; width: 15%;">Candidate</th>
+                    <td style="width: 35%;"><strong>Naim</strong></td>
+                    <th style="background: #e2e8f0; width: 15%;">Test</th>
+                    <td style="width: 35%;">British Council IELTS Test
+                        5<br>Practice · Part 2 (Task 2 only)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Started</th>
+                    <td>05 Nov 2026, 10:00:00 (Bangladesh time)</td>
+                    <th style="background: #e2e8f0;">Submitted</th>
+                    <td>05 Nov 2026, 10:40:00 (Bangladesh time)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Time on writing</th>
+                    <td>40 min</td>
+                    <th style="background: #e2e8f0;">Date marked</th>
+                    <td>05 November 2026</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Examiner</th>
+                    <td>Gemini</td>
+                    <th style="background: #e2e8f0;">Signature</th>
+                    <td><span class="signature-font">Gemini AI</span></td>
+                </tr>
+            </table>
+
+            <h2>Result summary</h2>
+            <table class="summary tight" style="margin-bottom: 2mm;">
+                <tr>
+                    <th style="text-align: left;"></th>
+                    <th>Task Response</th>
+                    <th>Coherence &amp; Cohesion</th>
+                    <th>Lexical Resource</th>
+                    <th>Grammar</th>
+                    <th>Task band</th>
+                    <th>Words</th>
+                </tr>
+                <tr>
+                    <td
+                        style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Task
+                        2</td>
+                    <td>5.0</td>
+                    <td>5.5</td>
+                    <td>5.0</td>
+                    <td>5.0</td>
+                    <td class="band-cell">5.0</td>
+                    <td>293 ✓</td>
+                </tr>
+            </table>
+            <p
+                style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Task
+                band = (5.0 + 5.5 + 5.0 + 5.0) ÷ 4 = 5.125, reported as 5.0.
+                This was a Part 2 practice (Task 2 only), so no overall Writing
+                band is calculated. <span
+                    style="color: #047857; font-weight: bold;">Word count
+                    requirement met.</span></p>
+
+            <div class="good-box">
+                <h4>✓ WHAT Naim DOES WELL</h4>
+                <ul
+                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>A clear four-paragraph structure: introduction, two
+                        body paragraphs and a conclusion.</li>
+                    <li>Relevant ideas that actually answer the question —
+                        education, the cost of medicine, and space
+                        technology.</li>
+                    <li>You <strong>attempt a concession</strong> (“Although it
+                        is true that…”). This is exactly what Band 7 needs — it
+                        only needs to be signalled in your introduction.</li>
+                    <li>Good topic vocabulary: <em>underprivileged,
+                            precautions, symptoms, artificial satellites,
+                            technological improvements</em>.</li>
+                    <li>You have met the 250-word minimum (293 words).</li>
+                </ul>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb;">
+                <h4 style="color: #2563eb;">THE ONE CHANGE THAT WOULD REACH BAND
+                    6.0+</h4>
+                <p
+                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Make
+                    your <strong>position consistent</strong>. In the
+                    introduction you call space exploration “a complete waste”
+                    and say you “agree”. But in ¶3 and in the conclusion you say
+                    governments <em>should</em> invest in satellites and space
+                    stations. The examiner reads this as a contradiction, not as
+                    a balanced argument, and it pulls down both Task Response
+                    and Coherence. Decide once: either fully agree (and argue
+                    that space money is wasteful) or partly agree — and write
+                    “I <em>partly</em> agree…” in the introduction. Fix this,
+                    finish the broken “Although” sentence, and the essay is
+                    comfortably Band 6.0.</p>
+            </div>
+
+            <div class="page-number">1</div>
+        </div>
+
+        <!-- PAGE 2 (MARKING GUIDE) -->
+        <div class="page">
+            <h2>How to read the marking</h2>
+            <table class="marking-table">
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">cannot</span>
+                            <span class="circled-word">can not<span
+                                    class="red-number-badge">1</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Circled:</strong> a single-word error, with the
+                        correction written above.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">in</span>
+                            <span class="underlined-word">on<span
+                                    class="red-number-badge">2</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Underlined:</strong> a grammar or word-choice
+                        error, with the correction above or after the
+                        arrow.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="wavy-word">totally impossible<span
+                                    class="red-number-badge">3</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Wavy underline:</strong> an unclear reference,
+                        an over-generalisation, an inconsistent position, or a
+                        point that needs developing.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span
+                                style="font-weight:bold; font-size:11pt; color:#1c2430;">members</span>
+                            <span
+                                style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span
+                                class="red-number-badge"
+                                style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
+                        </div>
+                    </td>
+                    <td><strong>Caret ^:</strong> something is missing (here, a
+                        sentence linking back to the writer's view).</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="green-tick-word">maintain
+                                discipline</span><span
+                                class="green-tick-symbol">✓</span>
+                        </div>
+                    </td>
+                    <td><strong>Green tick:</strong> good language or a strong
+                        idea, credited by the examiner.</td>
+                </tr>
+            </table>
+
+            <div class="page-number">2</div>
+        </div>
+
+        <!-- PAGE 3 (QUESTION) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">WRITING
+                TASK 2 · THE QUESTION</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 5mm; margin-bottom: 8mm; background: #f8fafc;">
+                <p style="font-size: 10pt;"><strong>You should spend about 40
+                        minutes on this task.</strong></p>
+                <p style="font-size: 10pt;">Money spent on space exploration is
+                    a complete waste. Governments could better spend this money
+                    on other things to benefit the nation.</p>
+                <p style="font-size: 10pt;"><strong>To what extent do you agree
+                        or disagree?</strong></p>
+                <p style="font-size: 10pt;">Give reasons for your answer and
+                    include any relevant examples from your own knowledge or
+                    experience.</p>
+                <p
+                    style="font-size: 10pt; font-style: italic; margin-bottom: 0;">Write
+                    at least 250 words.</p>
+            </div>
+
+            <h2>Error codes used in the marking</h2>
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>Code</th><th>Meaning</th><th>Crit.</th><th>Code</th><th>Meaning</th><th>Crit.</th></tr>
+                <tr><td><strong>WW</strong></td><td>Wrong word /
+                        collocation</td><td>LR</td><td><strong>Frag</strong></td><td>Incomplete
+                        sentence / fragment</td><td>GRA</td></tr>
+                <tr><td><strong>Sp</strong></td><td>Spelling / word
+                        formation</td><td>LR</td><td><strong>Ref</strong></td><td>Unclear
+                        reference / repetition</td><td>CC</td></tr>
+                <tr><td><strong>Gr</strong></td><td>Grammar / sentence
+                        structure</td><td>GRA</td><td><strong>Dev</strong></td><td>Position
+                        or support not developed</td><td>TR</td></tr>
+                <tr><td><strong>SVA</strong></td><td>Subject-verb
+                        agreement</td><td>GRA</td><td><strong>Ov</strong></td><td>Over-generalisation</td><td>TR</td></tr>
+                <tr><td><strong>Art</strong></td><td>Article
+                        (a / an / the)</td><td>GRA</td><td><strong>P</strong></td><td>Punctuation</td><td>GRA</td></tr>
+            </table>
+
+            <div class="page-number">3</div>
+        </div>
+
+        <!-- PAGE 4 (MARKED SCRIPT 1) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">MARKED
+                SCRIPT</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Word count: <strong>293</strong> (minimum 250) ✓ · Errors
+                marked: <strong>26</strong> · Good points credited:
+                <strong>4</strong>
+            </div>
+
+            <div class="script-layout"
+                style="border-bottom: 1px solid #fca5a5;  margin-bottom:3mm;">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶1
+                        · INTRODUCTION</h3>
+                    <p class="script-text">
+                        It is often argued that money spent on space exploration
+                        is a complete waste and governments should <span
+                            class="red-underline">spend this
+                            expenditure</span><span class="red-circle">1</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">spend this money</span> on
+                        other things <span
+                            class="red-underline">for instance health,
+                            education, poverty</span><span
+                            class="red-circle">2</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">for instance, health,
+                            education and poverty</span> to benefit the nation.
+                        <span class="red-wavy">I agree with this
+                            statement</span> because some underdeveloped
+                        countries <span class="red-underline">from</span><span
+                            class="red-circle">3</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">on</span> different
+                        continents are struggling to manage <span
+                            class="red-underline">basic health, education
+                            care</span><span class="red-circle">4</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">basic healthcare and
+                            education</span>.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Clear opening, but the <strong>position is
+                                inconsistent</strong>: you say “complete waste”
+                            and “I agree”, yet ¶3 and the conclusion say
+                            governments <em>should</em> fund satellites. Decide
+                            your extent of agreement here and stick to it.</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Clear
+                        thesis)</div>
+                </div>
+            </div>
+
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶2
+                        · BODY 1 (EDUCATION &amp; MEDICINE)</h3>
+                    <p class="script-text">
+                        It's very important for <span
+                            class="red-underline">the governments</span><span
+                            class="red-circle">5</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">governments</span> to ensure
+                        standard education <span
+                            class="red-underline">freely</span><span
+                            class="red-circle">6</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">free of charge</span> or
+                        <span class="red-underline">within</span><span
+                            class="red-circle">7</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">at</span> a minimal cost
+                        because it is <span class="red-underline">considered to
+                            be as basic human needs</span><span
+                            class="red-circle">8</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">considered a basic human
+                            need</span>. If people don't get <span
+                            class="red-underline">qualityful</span><span
+                            class="red-circle">9</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">quality</span> education, it
+                        will be very difficult for them to become literate.
+                        Therefore, they will not have enough knowledge about
+                        scientific development especially in <span
+                            class="red-underline">medical sector</span><span
+                            class="red-circle">10</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the medical sector</span> to
+                        learn about the symptoms of new diseases, <span
+                            class="red-underline">medication</span><span
+                            class="red-circle">11</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">medicines</span>, and
+                        precautions and that's why governments should definitely
+                        invest more <span class="red-underline">on</span><span
+                            class="red-circle">12</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">in</span> education. People
+                        living in poorer countries have very limited money to
+                        spend on medication, so <span
+                            class="red-underline">govements</span><span
+                            class="red-circle">13</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">governments</span> should
+                        also <span class="red-underline">give more focus to
+                            reduce</span><span class="red-circle">14</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">focus more on
+                            reducing</span> the price of medicine to make it
+                        <span class="red-underline">convinient</span><span
+                            class="red-circle">15</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">convenient</span> for the
+                        underprivileged people and it <span
+                            class="red-underline">would be not be the good
+                            idea</span><span class="red-circle">16</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">would not be a good
+                            idea</span> for their governments to spend money on
+                        <span class="red-underline">space
+                            discoveries</span><span class="red-circle">17</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">space exploration</span>.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Relevant ideas, but the paragraph is one long
+                            “and…and…” chain. The logic “no education → cannot
+                            become literate” is circular; explain instead what
+                            education actually <em>gives</em> people.</p>
+                    </div>
+                    <div class="comment-tick">✓ 2 good points (Education
+                        argument &amp; medicine price argument)</div>
+                </div>
+            </div>
+
+            <div class="page-number">4</div>
+        </div>
+
+        <!-- PAGE 5 (MARKED SCRIPT 2) -->
+        <div class="page">
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶3
+                        · BODY 2 (TECHNOLOGY &amp; SATELLITES)</h3>
+                    <p class="script-text">
+                        <span class="red-wavy">Although it is true that
+                            technological improvements are rapidly going on and
+                            people are more dependent on using technology in
+                            their everyday life sectors.</span><span
+                            class="red-circle">18</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">Although…, people
+                            use…</span> People are using <span
+                            class="red-underline">internet</span><span
+                            class="red-circle">19</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the internet</span> daily
+                        for various purposes and therefore, it is also important
+                        for the governments to <span class="red-underline">invest
+                            money on artificial satellite and space
+                            station</span><span class="red-circle">20</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">invest money in artificial
+                            satellites and space stations</span>. It would be
+                        better for the governments to calculate their budget
+                        very carefully to <span
+                            class="red-underline">priotise</span><span
+                            class="red-circle">21</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">prioritise</span> health,
+                        education and also space exploration.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p><strong>“Although…” is not a sentence.</strong> The
+                            clause must be joined to a main clause. Also “everyday
+                            life sectors” → “everyday lives”. And note: this
+                            paragraph argues <em>for</em> space spending, which
+                            contradicts your introduction.</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Concession
+                        attempt)</div>
+                </div>
+            </div>
+
+            <div class="script-layout" style="margin-top: 6mm;">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶4
+                        · CONCLUSION</h3>
+                    <p class="script-text">
+                        In conclusion, the governments should definitely <span
+                            class="red-underline">give more focus on</span><span
+                            class="red-circle">22</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">focus more on</span>
+                        ensuring basic human needs like <span
+                            class="red-underline">qualityful</span><span
+                            class="red-circle">23</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">quality</span> education and
+                        healthcare <span
+                            class="red-underline">facility</span><span
+                            class="red-circle">24</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">facilities</span>; however,
+                        they should also invest <span class="red-underline">certain
+                            amount of money for</span><span
+                            class="red-circle">25</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">a certain amount of money
+                            in</span> space exploration to develop satellites
+                        <span class="red-underline">, space rockets</span><span
+                            class="red-circle">26</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">and space rockets</span> to
+                        benefit the people.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>The conclusion finally reveals a “partly agree”
+                            position — but the introduction promised full
+                            agreement. The examiner should never be
+                            surprised at the end.</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Conclusion)</div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="margin-top: 8mm;">
+                <h4>EXAMINER'S COMMENT</h4>
+                <p class="handwritten-text" style="margin-bottom: 0;">Your ideas
+                    are relevant and your paragraphing is clear — but the essay
+                    argues against itself. The introduction says space spending
+                    is a complete waste; the third paragraph says it is
+                    important. Fix that first, then the broken “Although”
+                    sentence, then spelling (qualityful, convinient,
+                    govements, priotise). These three things alone would take
+                    this script to Band 6.0.</p>
+            </div>
+
+            <div class="page-number">5</div>
+        </div>
+
+        <!-- PAGE 6 (YOUR ANSWER, CORRECTED) -->
+        <div class="page">
+            <div class="corrected-header">YOUR ANSWER, CORRECTED</div>
+            <div style="margin-bottom: 4mm;">
+                <p>Your ideas, your structure and your sentences, with the
+                    errors fixed. Three things were changed: grammar and
+                    sentence structure (including the broken “Although”
+                    sentence), spelling and word formation, and
+                    <strong>one word in the introduction</strong> so that your
+                    position matches the rest of the essay. With these changes,
+                    this essay would score about <strong>Band 6.0</strong>.</p>
+                <p style="color: #047857; font-weight: bold;">Green text = what
+                    was changed or added. Everything else is based on your own
+                    writing.</p>
+            </div>
+
+            <div class="corrected-box">
+                <p>It is often argued that money spent on space exploration is a
+                    complete waste and <span class="green-highlight">that</span>
+                    governments should spend this money on other things, <span
+                        class="green-highlight">for instance, health, education
+                        and poverty,</span> to benefit the nation. I <span
+                        class="green-highlight">partly</span> agree with this
+                    statement because some underdeveloped countries <span
+                        class="green-highlight">on</span> different continents
+                    are struggling to <span class="green-highlight">provide
+                        basic healthcare and education</span>.</p>
+
+                <p>It is very important for <span
+                        class="green-highlight">governments</span> to ensure
+                    standard education <span class="green-highlight">free of
+                        charge</span> or <span class="green-highlight">at</span>
+                    a minimal cost because it is considered <span
+                        class="green-highlight">a basic human need</span>. If
+                    people don't get <span class="green-highlight">quality</span>
+                    education, it will be very difficult for them to become
+                    literate. Therefore, they will not have enough knowledge
+                    about scientific development, especially in <span
+                        class="green-highlight">the</span> medical sector, to
+                    learn about the symptoms of new diseases, <span
+                        class="green-highlight">medicines</span> and
+                    precautions, and that is why governments should definitely
+                    invest more <span class="green-highlight">in</span>
+                    education. People living in poorer countries have very
+                    limited money to spend on medication, so <span
+                        class="green-highlight">governments</span> should also
+                    <span class="green-highlight">focus more on
+                        reducing</span> the price of medicine to make it <span
+                        class="green-highlight">convenient</span> for
+                    underprivileged people, and it <span
+                        class="green-highlight">would not be a good idea</span>
+                    for their governments to spend money on <span
+                        class="green-highlight">space exploration</span>.</p>
+
+                <p><span class="green-highlight">Although it is true that
+                        technological improvements are rapidly taking place and
+                        people are more dependent on using technology in their
+                        everyday lives, people use the internet daily for
+                        various purposes, and therefore</span> it is also
+                    important for governments to <span
+                        class="green-highlight">invest money in artificial
+                        satellites and space stations</span>. It would be better
+                    for governments to calculate their <span
+                        class="green-highlight">budgets</span> very carefully to
+                    <span class="green-highlight">prioritise</span> health,
+                    education and also space exploration.</p>
+
+                <p>In conclusion, governments should definitely <span
+                        class="green-highlight">focus more on</span> ensuring
+                    basic human needs like <span
+                        class="green-highlight">quality</span> education and
+                    healthcare <span class="green-highlight">facilities</span>;
+                    however, they should also invest <span
+                        class="green-highlight">a</span> certain amount of money
+                    <span class="green-highlight">in</span> space exploration to
+                    develop satellites <span class="green-highlight">and</span>
+                    space rockets to benefit the people.</p>
+            </div>
+            <div class="page-number">6</div>
+        </div>
+
+        <!-- PAGE 7 (WHY THIS BAND SCORE - PART 1) -->
+        <div class="page">
+            <div class="main-band-header">WHY THIS BAND SCORE</div>
+            <p style="margin-bottom: 6mm; font-size: 10pt;">Each criterion is
+                matched to the official Task 2 descriptor. Numbers in red
+                circles refer to the marked errors.</p>
+
+            <!-- TASK RESPONSE -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Task Response</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"The response generally addresses the task."</em>
+                            You discuss space spending and offer alternative
+                            priorities (education, healthcare, medicine
+                            prices).</li>
+                        <li><em>"The writer expresses a position, but development
+                                is not always clear."</em> This is the key
+                            issue. ¶1 says space exploration is “a complete
+                            waste” and that you agree. ¶3 says governments
+                            <em>should</em> invest in satellites and space
+                            stations. The conclusion then adopts a “however”
+                            position that was never announced.</li>
+                        <li><em>"Some main ideas are put forward, but they are
+                                limited and are not sufficiently
+                                developed."</em> The education argument is
+                            circular (“no education → not literate”), and the
+                            concession in ¶3 is collapsed into a single broken
+                            sentence.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires
+                            <em>"a position that is directly relevant to the prompt"</em>
+                            and <em>"main ideas relevant, but some may be
+                                insufficiently developed"</em>. An internally
+                            contradictory position is a Band 5 feature, not a
+                            Band 6 one — no matter how good the individual ideas
+                            are.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 4?</h5>
+                        <p>Band 4 typically
+                            <em>"does not adequately address the task"</em> or
+                            presents <em>"an unclear position"</em> with
+                            irrelevant material. Your ideas are all relevant and
+                            your conclusion does relate to the question, so the
+                            response is clearly stronger than Band 4.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COHERENCE & COHESION -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Coherence &amp; Cohesion</h3>
+                    <span class="band-badge">Band 5.5</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5.5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Information is organised logically."</em> Four
+                            clear paragraphs with a recognisable introduction,
+                            body and conclusion.</li>
+                        <li><em>"Cohesive devices are used effectively."</em>
+                            <em>Therefore, Although, however, In conclusion, for
+                                instance</em> are all appropriate.</li>
+                        <li><em>"Sentences are long and joined with and."</em>
+                            The first body paragraph is one 8-line sentence held
+                            together by four “and”s, which blurs the logic.</li>
+                        <li>The broken “Although” sentence (18) breaks the flow
+                            between ¶2 and ¶3.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires cohesion to be
+                            <em>"used effectively"</em> with clear progression.
+                            The position shift between ¶2 and ¶3 means the reader
+                            cannot follow a single argument, and the sentence
+                            fragment interrupts progression.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 5?</h5>
+                        <p>Band 5 is characterised by
+                            <em>"a lack of overall progression"</em>. Your
+                            paragraph order makes sense and your linkers work, so
+                            this is comfortably a high 5.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-number">7</div>
+        </div>
+
+        <!-- PAGE 8 (WHY THIS BAND SCORE - PART 2) -->
+        <div class="page">
+            <!-- LEXICAL RESOURCE -->
+            <div class="band-card" style="margin-top: 0;">
+                <div class="band-card-header">
+                    <h3>Lexical Resource</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"A limited range of vocabulary."</em> There are
+                            some genuinely good items:
+                            <em>underprivileged, precautions, symptoms,
+                                artificial satellites, technological
+                                improvements, minimal cost, literate</em>.</li>
+                        <li><em>"Noticeable errors in spelling and/or word
+                                formation that may cause some difficulty for the
+                                reader."</em> <em>qualityful</em> (×2 — not an
+                            English word), <em>convinient, govements,
+                                priotise</em>.</li>
+                        <li>Collocation errors: <em>spend this expenditure,
+                                education care, everyday life sectors, give more
+                                focus to reduce, invest money on</em>.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 5.5–6?</h5>
+                        <p>Band 6 allows
+                            <em>"some errors in spelling and/or word formation, but these do not impede communication"</em>.
+                            Two uses of a non-existent word (<em>qualityful</em>)
+                            plus three misspellings of core topic words
+                            (<em>government, convenient, prioritise</em>) are too
+                            frequent for Band 6.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAMMATICAL RANGE & ACCURACY -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Grammatical Range &amp; Accuracy</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"A limited range of complex structures."</em>
+                            You attempt a concessive clause, a passive (<em>is
+                                considered</em>), conditionals and relative
+                            clauses.</li>
+                        <li><em>"Some errors in grammar and punctuation are
+                                frequent and may cause some difficulty."</em>
+                            The sentence fragment (18), <em>would be not be</em>
+                            (16), <em>considered to be as</em> (8), repeated
+                            article errors (5, 10, 19, 25) and plural errors
+                            (11, 24).</li>
+                        <li>Punctuation: missing commas around “for instance”
+                            (2), no “and” before the final list item (26).</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires errors that
+                            <em>"do not impede communication"</em>. The
+                            “Although…” fragment genuinely impedes
+                            understanding — the reader expects a main clause that
+                            never arrives.</p>
+                    </div>
+
+                    <div class="calc-box">
+                        Task 2 band = (5.0 + 5.5 + 5.0 + 5.0) ÷ 4 = 5.125,
+                        reported as <strong>5.0</strong>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-number">8</div>
+        </div>
+
+        <!-- PAGE 9 (ERROR LOG) -->
+        <div class="page">
+            <h2
+                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
+                LOG (FULL LIST)</h2>
+            <p style="margin-bottom: 4mm;">Every numbered mark from the script,
+                with the correction, the reason, and the relevant grammar
+                rule.</p>
+
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Grammar
+                        Rule / Explanation</th></tr>
+                <tr><td>1</td><td>spend this expenditure</td><td>spend this
+                        money</td><td>Collocation</td><td>You “spend money”.
+                        “Expenditure” already means the money spent, so the
+                        phrase is redundant.</td></tr>
+                <tr><td>2</td><td>for instance health, education,
+                        poverty</td><td>for instance, health, education and
+                        poverty</td><td>Punctuation</td><td>Use commas around
+                        “for instance” and “and” before the final list
+                        item.</td></tr>
+                <tr><td>3</td><td>countries from different continents</td><td>countries
+                        on different continents</td><td>Preposition</td><td>Countries
+                        are located “on” a continent.</td></tr>
+                <tr><td>4</td><td>basic health, education care</td><td>basic
+                        healthcare and education</td><td>Collocation</td><td>“Education
+                        care” is not a collocation; “healthcare” is one
+                        word.</td></tr>
+                <tr><td>5</td><td>the governments</td><td>governments</td><td>Article</td><td>No
+                        article for governments in general.</td></tr>
+                <tr><td>6</td><td>ensure standard education freely</td><td>ensure
+                        standard education free of charge</td><td>Word
+                        form</td><td>“Freely” means without restriction; you mean
+                        “at no cost”.</td></tr>
+                <tr><td>7</td><td>within a minimal cost</td><td>at minimal
+                        cost</td><td>Preposition</td><td>Fixed phrase: “at
+                        minimal cost / at a minimal cost”.</td></tr>
+                <tr><td>8</td><td>considered to be as basic human
+                        needs</td><td>considered a basic human need</td><td>Grammar</td><td>“Consider
+                        + noun” (no “to be as”); “it” is singular, so
+                        “need”.</td></tr>
+                <tr><td>9</td><td>qualityful</td><td>quality</td><td>Word
+                        formation</td><td>“Qualityful” is not an English word;
+                        “quality” works as an adjective.</td></tr>
+                <tr><td>10</td><td>in medical sector</td><td>in the medical
+                        sector</td><td>Article</td><td>Singular countable nouns
+                        need a determiner.</td></tr>
+                <tr><td>11</td><td>medication</td><td>medicines</td><td>Word
+                        choice</td><td>The countable plural fits the list of
+                        things people must learn about.</td></tr>
+                <tr><td>12</td><td>invest more on education</td><td>invest more
+                        in education</td><td>Preposition</td><td>Collocation:
+                        “invest in”.</td></tr>
+                <tr><td>13</td><td>govements</td><td>governments</td><td>Spelling</td><td>Missing
+                        “n”.</td></tr>
+                <tr><td>14</td><td>give more focus to reduce</td><td>focus more
+                        on reducing</td><td>Word form</td><td>The verb pattern is
+                        “focus on + -ing”.</td></tr>
+                <tr><td>15</td><td>convinient</td><td>convenient</td><td>Spelling</td><td>Correct
+                        spelling: convenient.</td></tr>
+                <tr><td>16</td><td>would be not be the good idea</td><td>would
+                        not be a good idea</td><td>Grammar</td><td>Only one
+                        “be”; use the indefinite article “a”.</td></tr>
+                <tr><td>17</td><td>space discoveries</td><td>space
+                        exploration</td><td>Word choice</td><td>Keep the
+                        prompt's term for consistency.</td></tr>
+                <tr><td>18</td><td>Although it is true that … everyday life
+                        sectors.</td><td>Although it is true that … everyday
+                        lives, people use …</td><td>Sentence structure
+                        (Frag)</td><td>An “Although” clause must be attached to a
+                        main clause. Also “everyday lives”, not “life
+                        sectors”.</td></tr>
+                <tr><td>19</td><td>using internet</td><td>using the
+                        internet</td><td>Article</td><td>“The internet” is a
+                        fixed expression.</td></tr>
+                <tr><td>20</td><td>invest money on artificial satellite and
+                        space station</td><td>invest money in artificial
+                        satellites and space stations</td><td>Prep +
+                        Plural</td><td>“Invest in”; general reference needs
+                        plurals.</td></tr>
+                <tr><td>21</td><td>priotise</td><td>prioritise</td><td>Spelling</td><td>Missing
+                        “ri”.</td></tr>
+                <tr><td>22</td><td>give more focus on</td><td>focus more
+                        on</td><td>Word form</td><td>“Give focus” is unnatural;
+                        use “focus on”.</td></tr>
+                <tr><td>23</td><td>qualityful</td><td>quality</td><td>Word
+                        formation</td><td>Not an English word (second
+                        occurrence).</td></tr>
+                <tr><td>24</td><td>healthcare facility</td><td>healthcare
+                        facilities</td><td>Plural</td><td>General reference
+                        needs the plural.</td></tr>
+                <tr><td>25</td><td>invest certain amount of money for</td><td>invest
+                        a certain amount of money in</td><td>Article +
+                        Preposition</td><td>“A certain amount”; “invest
+                        in”.</td></tr>
+                <tr><td>26</td><td>satellites, space rockets</td><td>satellites
+                        and space rockets</td><td>Punctuation</td><td>Use “and”
+                        between the final two items in a list.</td></tr>
+            </table>
+
+            <div class="page-number">9</div>
+        </div>
+
+        <!-- PAGE 10 (MODEL ANSWER) -->
+        <div class="page">
+            <h2>Model answer (Band 7+ style)</h2>
+            <div class="box"
+                style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #065f46; padding: 4mm; font-size: 9.5pt; margin-bottom: 4mm;">
+                <p>It is sometimes argued that the enormous sums of money devoted
+                    to space exploration are wasted, and that governments should
+                    redirect this funding towards more pressing domestic
+                    priorities. While I largely agree that essential public
+                    services must come first, I believe the claim that space
+                    exploration is a “complete waste” is too strong.</p>
+                <p>On the one hand, there is a compelling case for prioritising
+                    basic human needs. In many countries, both developed and
+                    developing, significant sections of the population still
+                    lack access to quality education, affordable healthcare and
+                    adequate housing. A government that continues to fund
+                    multi-billion-dollar space programmes while its citizens
+                    struggle to pay for medicine is, in my view, misallocating
+                    public resources. Investment in schools, hospitals and
+                    poverty alleviation produces immediate and measurable
+                    benefits for the nation, whereas the returns from space
+                    exploration are speculative and often accrue over decades.
+                    For instance, the United States spends over $22 billion a
+                    year on space exploration while homelessness and medical
+                    debt remain serious problems, which suggests that spending
+                    priorities deserve careful re-examination.</p>
+                <p>On the other hand, it would be an overstatement to describe
+                    space expenditure as a complete waste. Space technology
+                    underpins satellite communications, weather forecasting,
+                    navigation systems and many medical technologies that people
+                    rely on daily. Without continued investment in satellites and
+                    space stations, these services would deteriorate. A balanced
+                    approach is therefore preferable: governments should protect
+                    core spending on health and education while maintaining a
+                    modest, carefully budgeted space programme.</p>
+                <p>In conclusion, while I agree that essential public services
+                    should be the first priority, calling space exploration a
+                    total waste is too extreme. The most sensible approach is to
+                    rebalance budgets so that urgent human needs are met without
+                    abandoning the scientific and practical benefits of space
+                    research.</p>
+            </div>
+
+            <h2>Targets for the next Task 2</h2>
+            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
+                <li><strong>One position, stated once:</strong> decide your
+                    extent of agreement in the introduction (“I partly agree…”)
+                    and make sure every paragraph is consistent with it.</li>
+                <li><strong>Complete sentences:</strong> never end a sentence
+                    after an “Although / While / Because” clause — it must be
+                    joined to a main clause.</li>
+                <li><strong>Spelling and word formation:</strong> quality (not
+                    <em>qualityful</em>), convenient, government, prioritise,
+                    facilities.</li>
+                <li><strong>Collocation:</strong> invest <em>in</em>, spend
+                    money <em>on</em>, focus <em>on</em> + -ing, provide
+                    education <em>free of charge</em>.</li>
+                <li><strong>Split long sentences:</strong> do not join four
+                    ideas with three “and”s — use full stops and linkers
+                    instead.</li>
+            </ol>
+
+            <div class="page-number">10</div>
+        </div>
+
+        <!-- PAGE 11 (PRACTICE) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PRACTICE
+                · FIX IT YOURSELF</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 4mm; font-size: 10pt; margin-bottom: 8mm;">
+                <p>Each sentence is taken from your essay. Rewrite it correctly
+                    <strong>before</strong> looking at the answer key.</p>
+                <ol class="practice-list">
+                    <li><span class="num">1</span> …governments should spend
+                        this expenditure on other things for instance health,
+                        education, poverty to benefit the nation.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Collocation · Punctuation</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">2</span> It's very important for the
+                        governments to ensure standard education freely or
+                        within a minimal cost because it is considered to be as
+                        basic human needs.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Article · Word form · Preposition ·
+                            Grammar</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">3</span> Although it is true that
+                        technological improvements are rapidly going on and
+                        people are more dependent on using technology in their
+                        everyday life sectors.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Fragment · Word choice</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">4</span> People are using internet
+                        daily for various purposes and therefore, it is also
+                        important for the governments to invest money on
+                        artificial satellite and space station.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Article · Preposition · Plural</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">5</span> It would be better for the
+                        governments to calculate their budget very carefully to
+                        priotise health, education and also space
+                        exploration.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Article · Spelling · Plural</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+                </ol>
+            </div>
+
+            <h2>Answer key</h2>
+            <div class="good-box"
+                style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
+                <ol style="margin-left: 5mm; font-size: 10pt; color: #1c2430;">
+                    <li>…governments should spend <strong>this money</strong> on
+                        other things<strong>,</strong> for instance<strong>,</strong>
+                        health, education <strong>and</strong> poverty<strong>,</strong>
+                        to benefit the nation.</li>
+                    <li>It is very important for <strong>governments</strong> to
+                        ensure standard education <strong>free of charge</strong>
+                        or <strong>at</strong> a minimal cost because it is
+                        considered <strong>a basic human need</strong>.</li>
+                    <li>Although it is true that technological improvements are
+                        rapidly taking place and people are more dependent on
+                        using technology in their <strong>everyday lives,
+                            people use the internet daily for various
+                            purposes, and therefore</strong> it is also
+                        important for governments to invest in space
+                        technology.</li>
+                    <li>People are using <strong>the internet</strong> daily for
+                        various purposes and therefore, it is also important for
+                        <strong>governments</strong> to invest money
+                        <strong>in artificial satellites and space
+                            stations</strong>.</li>
+                    <li>It would be better for <strong>governments</strong> to
+                        calculate their <strong>budgets</strong> very carefully
+                        to <strong>prioritise</strong> health, education and
+                        also space exploration.</li>
+                </ol>
+            </div>
+            <div class="page-number">11</div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Reading Practice Test — Bees / Sleep Paralysis / Antikythera</title>
+<style>
+:root{
+  --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
+  --good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;
+  --header-h:56px;--bottom-h:236px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
+button{font-family:inherit;cursor:pointer;border:none}
+/* HEADER */
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-right{display:flex;align-items:center;gap:10px}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}
+.band-chip.show{opacity:1;background:var(--good)}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+.timer-chip.warning{background:#b45309}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.icon-btn:hover{background:#f1f5f9}
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+/* SPLIT */
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pane{overflow-y:auto;padding:24px 30px}
+.passages{flex:0 0 50%;background:#fcfdff}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}
+.resizer:hover{background:#cbd5e1}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b}
+.passage{display:none}
+.passage.active{display:block}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.passage p{margin:0 0 14px}
+.passage em{color:var(--muted)}
+.passage strong{font-weight:700}
+/* QUESTIONS */
+.q-section{display:none}
+.q-section.active{display:block}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
+.q-group:last-child{border-bottom:none;margin-bottom:0}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}
+.q-instr p{margin:0 0 3px}
+.q-instr p:last-child{margin:0}
+.q-instr strong{color:var(--text)}
+/* NOTES */
+ul.notes{list-style:none;padding:0;margin:0}
+ul.notes li{padding:8px 0;border-bottom:1px dashed #eef2f7;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:14.5px}
+ul.notes li:last-child{border-bottom:none}
+ul.notes li .num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+ul.notes li .group-num{background:#e0f2fe;color:#0369a1;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:700}
+/* INPUTS */
+input[type=text]{border:1px solid #94a3b8;border-radius:6px;padding:5px 9px;font-size:14px;font-family:inherit;min-width:140px;max-width:100%;background:#fff}
+input[type=text]:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
+select{border:1px solid #94a3b8;border-radius:6px;padding:5px 8px;font-size:14px;font-family:inherit;background:#fff;cursor:pointer;min-width:100px}
+select:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
+/* MCQ OPTIONS */
+.options{display:flex;flex-wrap:wrap;gap:4px 14px}
+.options.stack{display:block;margin-top:6px}
+.options label{display:inline-flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:.12s}
+.options.stack label{display:flex;margin-bottom:4px;background:#fcfdff;border-color:#eef2f7}
+.options label:hover{background:#f8fafc;border-color:#cbd5e1}
+.options label.picked{background:#e0f2fe;border-color:#93c5fd}
+input[type=radio],input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+.opt-letter{font-weight:700;color:var(--accent);flex:0 0 auto}
+/* MATCHING TABLE */
+table.matching{width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:6px}
+table.matching thead th{background:#f8fafc;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:9px 6px;border-bottom:2px solid var(--line)}
+table.matching thead th.stmt{text-align:left}
+table.matching tbody td{padding:9px 8px;border-bottom:1px solid #eef2f7;vertical-align:middle;text-align:center}
+table.matching tbody td.stmt{text-align:left;padding:10px 12px}
+table.matching tbody td.nm{width:44px;font-weight:700;color:#334155;background:#fcfdff}
+table.matching tbody td.opt{width:40px;padding:6px 4px}
+table.matching tbody tr:hover{background:#f8fafc}
+table.matching tbody tr:last-child td{border-bottom:none}
+table.matching tbody tr.correct td.nm{background:var(--good-soft);color:var(--good)}
+table.matching tbody tr.wrong td.nm{background:var(--bad-soft);color:var(--bad)}
+table.matching tbody tr.correct td.stmt{background:rgba(220,252,231,.35)}
+table.matching tbody tr.wrong td.stmt{background:rgba(254,226,226,.35)}
+/* Options box */
+.optbox{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:#f8fafc;margin-bottom:12px;font-size:13.5px}
+.optbox b{display:block;margin-bottom:6px;color:var(--accent)}
+.optbox .optgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+.optbox .optgrid strong{color:var(--accent);margin-right:4px}
+/* FEEDBACK */
+.feedback{font-size:12px;margin-top:4px;display:none;font-weight:600}
+.graded .feedback{display:block}
+.feedback.no{color:var(--bad)}
+.feedback.ok{color:var(--good)}
+.q.correct input[type=text],.q.correct select{border-color:var(--good);background:var(--good-soft)}
+.q.wrong input[type=text],.q.wrong select{border-color:var(--bad);background:var(--bad-soft)}
+/* HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
+/* BOTTOM PANEL */
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
+.bottom-inner{max-width:1600px;margin:0 auto}
+.part-tabs{display:flex;gap:8px;margin-bottom:8px}
+.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;flex-direction:row;align-items:center;gap:10px;transition:.15s;opacity:.85}
+.part-tab:hover{opacity:1;background:#f1f5f9}
+.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}
+.palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}
+.palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}
+.palette-section.active{display:flex}
+.palette-label{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}
+.palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}
+.palette-item:hover{background:#e2e8f0}
+.palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+.palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22)}
+.palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}
+.nav-buttons{display:flex;gap:6px;flex:0 0 auto}
+.nav-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav-buttons button:hover:not(:disabled){background:#f1f5f9}
+.nav-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.test-buttons{display:flex;gap:10px;align-items:center}
+.review-btn{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600}
+.review-btn:hover{background:#f1f5f9}
+.submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
+.submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.overlay-head h3{margin:0;font-size:18px}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.close-x:hover{color:var(--text)}
+.overlay-body{padding:18px 22px;overflow-y:auto}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px}
+table.result-tbl td.correct{color:var(--good);font-weight:700}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+/* FOCUS / FULLSCREEN */
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}
+body.focus-mode{padding-bottom:0}
+body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0}
+.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}
+body.focus-mode .exit-focus{display:block}
+body.fullscreen-active .app-header,body.fullscreen-active .bottom-panel{display:none}
+body.fullscreen-active{padding-bottom:0}
+body.fullscreen-active .main-split{height:100vh;max-width:none;margin:0;border-radius:0;border:none}
+/* TOAST */
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+/* SUMMARY BOX */
+.summary-box{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:#fdfefe;font-size:14.5px;line-height:2.2}
+.summary-box .qnum{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;margin:0 2px;background:#f1f5f9;color:#334155;border-radius:5px;font-size:12px;font-weight:700;vertical-align:middle}
+.summary-box input[type=text]{display:inline-block;width:130px;height:28px;margin:2px 4px;padding:2px 8px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <h1>IELTS Reading — Bees · Sleep Paralysis · Antikythera</h1>
+  <div class="header-right">
+    <button class="icon-btn" id="fullscreenBtn">⛶ Fullscreen</button>
+    <button class="icon-btn" id="focusBtn">🎯 Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip" id="timerChip">⏱ <strong id="timer">60:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear All Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+<div id="hl-popup">
+  <button id="hl-highlight">🖍 Highlight</button>
+  <button id="hl-dehighlight">🧽 Clear</button>
+  <button id="hl-note">📝 Note</button>
+</div>
+
+<div id="note-popup">
+  <div class="np-card">
+    <h4>Add a note</h4>
+    <textarea id="note-text" placeholder="Write your note about this text..."></textarea>
+    <div class="np-actions">
+      <button type="button" class="np-cancel" id="note-cancel">Cancel</button>
+      <button type="button" class="np-save" id="note-save">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-split" id="mainSplit">
+  <!-- ================== PASSAGES ================== -->
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PART 1 -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Reading Passage 1</span>
+      <h2>TO BEE OR NOT TO BEE?</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–13.</em></p>
+      <p><strong>A</strong> The European honey bee is one of the most common bee species worldwide. Not only does it produce honey, it is also one of nature's most prolific pollinators. It is the single most important for agriculture due to its role in the growth of as much as a third of crops, although other bee species – around 250 in the UK and over 4000 in the US – also play their part in this process. Over recent years, however, reports of declining bee populations have increased, leaving concern surrounding the future of this incredibly important insect and its continuing role in providing the food we eat.</p>
+      <p><strong>B</strong> The European honey bee is thought to have originated in Africa or Asia, from where it spread throughout the Middle East and Europe and, with human assistance, is today present in every continent excluding Antarctica. Able to adapt to geographical surroundings and seasonal changes, the honey bee, unlike other species, benefits from perennial colonies that reproduce through the process of 'swarming'. During this process, up to half a colony's members will separate with the existing queen, leaving a successor behind to continue her work. Scout bees then search out a suitable location and the separated cluster relocates, forming a new colony.</p>
+      <p><strong>C</strong> Domestication of the species dates back as far as Ancient Egypt, evidenced in its depiction in tomb paintings. Today it remains one of the only insect species to be farmed, and is primarily chosen due to its honey-making virtues, its usefulness in pollination, and resistance to cold weather and disease. However, beekeepers sounded the alarm for the first time in 2006 reporting declining populations and abandoned hives, resulting in the terming of the syndrome known as Colony Collapse Disorder (CCD). The New York based National Resource Defense Council (NRDC) estimate that nearly one third of North America's bees have simply vanished since then, sending numbers plummeting to a fifty-year low. Additionally, the Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services (IPBES), established under the UN in 2012, states that bees and butterflies are 'declining in abundance' across mainly Northwest Europe and North America, though other regions of the world are not escaping unscathed, and warns of the importance of protecting these species to ensure stable fruit and vegetable production, especially faced with a future in which we will have to feed ever-growing populations.</p>
+      <p><strong>D</strong> The consequences of a severely depleted honey bee population would be far-reaching. Considering our main staple crops such as rice, wheat and maize are wind-pollinated, and therefore not reliant on insects, we need not go hungry. However, we would lose essential nutrients from fruits, vegetables, nuts and oils were they to become no longer available or scarcer, potentially resulting in poor health for many. The IPBES cite 'more than three-quarters of the leading types of food crops' require animal pollination to some degree for both yield and quality. Economically speaking, global agricultural production reliant on bees and other insects is estimated at hundreds of billions of dollars a year. Lower yields through a dramatic reduction in pollinators would lead to higher prices for consumers and a serious dent in the profitability of the agriculture sector globally. To avoid this eventuality, research has been completed and more is underway to discover the cause of the phenomenon and possible solutions.</p>
+      <p><strong>E</strong> Yet that might be easier said than done, as the scientific consensus is that there is no one specific cause for CCD and the disappearance of bees. Many researchers believe a combination of factors is to blame. Global warming is causing changes in seasonal blooming, meaning bees may be missing important events in the agricultural calendar as, by the time they come out of hibernation, they arrive too late to pollinate crops. Pesticides are another probable cause. In 2016, an 18-year-long UK study concluded that some specific pesticides could be linked to 'large-scale population extinctions' of wild bees. Their use has been restricted or banned by the EU and parts of the US in response to this. Other suggested factors include a loss of habitat brought about by development of rural land, immunodeficiency in bees causing mass die-offs, GM crops, the use of antibiotics by beekeepers, and migratory beekeeping (the practice of moving hives around a country to aid pollination of crops), to mention just a few.</p>
+      <p><strong>F</strong> However, other voices in the field claim there is no bee crisis. Although they admit that CCD did challenge species in 2006, it is claimed that this is a centuries-old, periodic phenomenon from which bees recover. Some species, including the European honey bee, appear to be doing so and numbers are on the rise. These experts tell us we are worrying about the wrong bees. Those which are in danger of dying out are lesser known, wild species which, despite pollinating naturally, are not the domesticated honeybees we depend so greatly upon for our sustenance. While the extent of the bee decline is still under debate, for many it has served as a means of highlighting the delicate balance that exists in our ecosystem and the need for a greater understanding of agricultural sustainability.</p>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Reading Passage 2</span>
+      <h2>SLEEP PARALYSIS</h2>
+      <p><em>You should spend about 20 minutes on Questions 14–26.</em></p>
+      <p>Most nights, people experience dreams, partly due to a phase of the sleep cycle known as REM (Rapid Eye Movement) sleep, during which the brain is highly active and dreams are particularly vivid and complex. Throughout this state, our bodies are still except for the muscles needed to move the eyes and to breathe, perhaps in order to stop dreamers from acting out and being put in harm's way. This almost complete paralysis is called atonia and is caused by motor neurons, small nerve endings located in the spinal cord. Although this is entirely normal during sleep, atonia can occur while a person is awake. This phenomenon is called sleep paralysis.</p>
+      <p>An infrequent but perfectly safe condition, during sleep paralysis the mind is awake but, due to atonia, the body is paralysed for up to several minutes. This can result in an inability to move or speak, a feeling of pressure on the chest, difficulty breathing and an inexplicable fear or feeling of dread. In some, the inability to move their eyes can occur, whereas others find that these are the only part of the body they can move. Many also experience hallucinations during sleep paralysis, varying from believing a malevolent presence to be in the room, to more complex hallucinations including hearing, smelling or feeling things that are not there. In more extreme cases, people have reported forced or wilful out-of-body experiences. Understandably, these effects can be very frightening for the individual, even though there is no danger.</p>
+      <p>Documented interest in sleep paralysis goes back as far as Ancient Greece, but has not always been thought of as a medical issue. Paulus Aegenita, a Byzantine Greek physician, wrote about a disorder called 'ephialtes' in his medical encyclopaedia Medical Compendium in Seven Books. According to Paulus, the sufferer of ephialtes experiences the sensation of being suffocated and unable to move as a demon presses down on them. The being may speak while attempting to suffocate them, then flees when they strive to grab it. Aegenita believed such an affliction was a forerunner of another disease and that the demon behind it would return every night after its initial visit to torment the sleeper. This perception of sleep paralysis is mirrored across many cultures. British folklore talks of the Old Hag, an entity who sits on people's chests while they sleep and causes them to have nightmares. When the sleeper awakes, the Old Hag disappears, leaving the person unable to speak or move temporarily. The Old Hag also appears in other European cultures, commonly known as 'mara' and causing similar effects on its victims.</p>
+      <p>Beyond these broad similarities, further details differ from culture to culture. In Japan, evil spirits – known as 'kanashibari' – tie up victims with iron ropes, whereas the Inuits attribute the phenomena to a shaman placing a curse upon the victim. Despite these differences, it is clear that most pre-Enlightenment cultures believed that rather than a natural occurrence in the human body, sleep paralysis was attributed to an exterior threat, someone or something that wished to harm them. 18th-Century artist Henry Fuseli is well known for oil painting 'The Nightmare', depicting a woman with a demonic creature sitting on her chest and a possessed horse skulking near the bed. This painting is commonly perceived as depicting sleep paralysis, as the incubus puts pressure on the chest, causing the shortness of breath typical of the condition. Furthermore, the woman is painted as lying on her back, a position which even in modern medicine is considered to lead to or exacerbate sleep paralysis. It is believed that Fuseli was inspired by Germanic tales of hags and mara in his creation of this artwork.</p>
+      <p>Given that people in the past attributed sleep paralysis to supernatural causes, it is unsurprising that they also believed it was a precursor to illness or could even lead to death. Even when a rational, medical explanation for the condition exists, some people still believe it is more than just an anomaly in sleeping patterns. Some theories attribute sleep paralysis to 'shadow people' – entities with a human form found in the shadows watching over victims while they sleep. Those who have 'met' these gloomy figures, often hallucinate about long shadows and strange shapes. The widely documented nature of these hallucinations mean many consider them proof of the shadow people's existence. Alternatively, many conspiracy theorists believe sleep paralysis is due to alien activity, as the majority of those claiming to be victims of alien abduction describe the encounter as being similar to sleep paralysis: inexplicable anxiety, hearing buzzing or humming sounds and sensing a potentially harmful presence.</p>
+      <p>It appears some aspect of the human psyche has always been attracted to bizarre and supernatural explanations for an affliction that, although potentially alarming, is entirely benign. Although the mechanics are now understood by modern medicine, the root causes of sleep paralysis still remain vague and unconfirmed. It has been linked to narcolepsy, its likelihood increasing through irregular sleeping patterns or insomnia. Nonetheless, a definitive cause has yet to be determined and this strange phenomenon is likely to continue to attract supernatural speculation until we discover what exactly provokes it.</p>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Reading Passage 3</span>
+      <h2>The Antikythera Mechanism</h2>
+      <p><em>You should spend about 20 minutes on Questions 27–40.</em></p>
+      <p>One spring day in 1900, a party of Greek sponge divers took shelter from a storm near the island of Antikythera, which lies about 50 kilometres northwest of the western tip of Crete. After the storm, one of the group, Elias Stadiatis, decided to dive in search of giant clams to eat for their dinner. On a shelf about 43 metres below the surface of the water, he chanced upon the wreck of an ancient ship. Fragments of statues, looking like body parts, covered this ledge. The diver returned to the surface, bearing an arm made of bronze as proof of what he had discovered. He reported his find to the authorities and, in the autumn, he and his companions returned to dive on the Antikythera wreck on behalf of the Greek government. They spent the next ten months bringing up pieces of marble and bronze statues, amphorae, lamps and coins, all of which were sent to the National Museum in Athens for cleaning and restoration.</p>
+      <p>Among the artefacts retrieved from the shipwreck was a rather unprepossessing lump of bronze inside what seemed to be a wooden casing. This object was covered in barnacles and badly corroded by seawater, and didn't attract much attention at first. It wasn't until May 1902 that the leading Greek archaeologist Valerios Stais noticed that the wooden covering had dried out and split open, and the fused lump of metal inside it had separated into several pieces. The largest of these fragments was a dial about 14 cm in diameter, with some inscriptions on it. Some other fragments also appeared to be parts of dials with perfectly formed triangular teeth, like gear wheels. The evidence seemed to point to this being part of a kind of mechanical clock, but the researchers ultimately rejected this possibility as the wreck had been dated to the first century BCE, and it was known that precise gears like these had not existed until fourteen centuries after that.</p>
+      <p>Little progress on identifying either the purpose or origins of the mechanism was made until the late 1950s, when the device attracted the attention of a British-born polymath, Derek de Solla Price, who was working at Princeton University in the United States. Price realised that the inscriptions on the large dial indicated days, months and zodiac signs and theorised that the device used gears to trace the paths of the sun, moon and other planets in relation to the earth and to indicate their position at any given moment by means of pointers that had since been lost. Although his interpretation was basically sound, further research was hampered by the fact that only a few of the gears appear on the surface of the fused metal fragments of the mechanism.</p>
+      <p>In 1971, the National Museum in Athens gave permission for Price, working with a Greek radiographer, to X-ray the fragments of the Antikythera mechanism. These two-dimensional images revealed many of the hidden gears and allowed Price to develop schematic drawings of how the mechanism must have worked. What he discovered confounded all previous theories of technology in the Hellenistic era and indicated that the ancient Greeks' mechanical know-how and knowledge of astronomy came close to that of modern times. However, despite positive scholarly reviews of Price's work, his idea that the Antikythera mechanism is an ancient analogue computer, published in his 1974 book "Gears from the Greeks", fell on deaf ears where mainstream historians were concerned. This may have been due, at least in part, to the contemporaneous popularity of books by the Swiss writer Erich von Daniken, who postulated that ancient aliens had brought advanced technology to earth; Price's work may have inadvertently become associated with fringe theories and UFO-hunters as a result.</p>
+      <p>Whatever the reason, little more official research was conducted on the mechanism until the 2005 launch of the Antikythera Mechanism Research Project, an international, multi-disciplinary study that operates under the supervision of the Hellenic Ministry of Culture. The project examined the fragments of the Antikythera mechanism using state-of-the-art imaging equipment. One machine, nicknamed BladeRunner, was originally designed to detect cracks in aircraft turbine blades by means of three dimensional X-ray technology. This project is ongoing and new findings are being constantly made and revealed. Enough has already been discovered to vindicate Price.</p>
+      <p>This modern research places the construction of the mechanism towards the end of the second century BCE and confirms that its bronze dials and gears would have been housed in a wooden box roughly the size of a modern shoebox. Like the clocks our grandparents' generation kept on the mantelpiece, the mechanism had a circular dial at the front with rotating hands. Rather than showing hours and minutes, however, these hands indicated the exact whereabouts of the sun and the moon in the sky at any given time, as well as of Mercury, Venus, Mars, Jupiter and Saturn, the five planets that are visible to the naked human eye. In addition, the mechanism also allowed for the fact that the orbit of some planets around the sun appears to go backwards, or "retrograde", at certain times during the celestial cycle.</p>
+      <p>It has also been discovered that there were two dials on the back of the mechanism, one of which was a calendar and the other which showed when solar and lunar eclipses would take place. A number of breathtaking models of the mechanism have been produced, including one made out of Lego blocks. These reveal the outstanding mechanical skills and astronomical knowledge of whoever built the Antikythera mechanism two thousand years or more before we developed the technological skills to start unlocking its secrets.</p>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <!-- ================== QUESTIONS ================== -->
+  <div class="pane questions" id="questionsPane">
+    <form id="quiz" onsubmit="return false;">
+
+      <!-- PART 1 QUESTIONS -->
+      <section class="q-section active" data-part="1">
+
+        <div class="q-group">
+          <h3>Questions 1–5</h3>
+          <div class="q-instr">
+            <p>The text has six paragraphs, <strong>A–F</strong>. Which paragraph contains the following information?</p>
+          </div>
+          <div id="q1-5-container"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 6–9</h3>
+          <div class="q-instr">
+            <p>Complete the notes. Write <strong>ONE WORD AND/OR A NUMBER</strong> from the passage for each answer.</p>
+          </div>
+          <ul class="notes">
+            <li style="font-weight:700;color:var(--accent);border-bottom:none;padding-top:4px">Colony Collapse Disorder</li>
+            <li><span class="num">6</span><span>name arrived at due to reported issues in <input type="text" name="q6" data-q="6" aria-label="Q6">.</span></li>
+            <li><span class="num">&nbsp;</span><span>bee numbers have fallen to their lowest in decades.</span></li>
+            <li><span class="num">7</span><span>in addition to bees, <input type="text" name="q7" data-q="7" aria-label="Q7"> have also dramatically reduced in number in the US and parts of Europe.</span></li>
+            <li><span class="num">&nbsp;</span><span>these species needed for crops due to a continual increase in human populations.</span></li>
+            <li style="font-weight:700;color:var(--accent);border-bottom:none;padding-top:12px">Reasons for Vanishing Bees</li>
+            <li><span class="num">8</span><span>climatic changes bring forward flowering of plants to when bees are still in <input type="text" name="q8" data-q="8" aria-label="Q8">.</span></li>
+            <li><span class="num">9</span><span>research shows mass <input type="text" name="q9" data-q="9" aria-label="Q9"> of non-domesticated bees could be due to pesticides.</span></li>
+            <li><span class="num">&nbsp;</span><span>genetically modified crops and the relocation of hives could be to blame.</span></li>
+          </ul>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 10–13</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TRUE</strong> if the statement agrees with the information given in the text, choose <strong>FALSE</strong> if the statement contradicts the information, or choose <strong>NOT GIVEN</strong> if there is no information on this.</p>
+          </div>
+          <div id="q10-13-container"></div>
+        </div>
+
+      </section>
+
+      <!-- PART 2 QUESTIONS -->
+      <section class="q-section" data-part="2">
+
+        <div class="q-group">
+          <h3>Questions 14–15</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
+            <p>Which TWO statements are true of normal REM sleep?</p>
+          </div>
+          <div id="q14-15-container"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 16–17</h3>
+          <div class="q-instr">
+            <p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
+            <p>Which TWO things can happen to people during an attack of sleep paralysis?</p>
+          </div>
+          <div id="q16-17-container"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 18–23</h3>
+          <div class="q-instr">
+            <p>Choose the correct figure(s) for each statement.</p>
+            <p><em>NB</em> You may use any letter more than once.</p>
+          </div>
+          <div class="optbox">
+            <b>List of Figures</b>
+            <div class="optgrid">
+              <div><strong>A</strong> Conspiracy theorists</div>
+              <div><strong>B</strong> Henry Fuseli</div>
+              <div><strong>C</strong> The Old Hag</div>
+              <div><strong>D</strong> Paulus Aegenita</div>
+              <div><strong>E</strong> Shadow People</div>
+            </div>
+          </div>
+          <div id="q18-23-container"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 24–26</h3>
+          <div class="q-instr">
+            <p>Complete the sentences below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+          </div>
+          <ul class="notes">
+            <li><span class="num">24</span><span>The near-total stillness of sleep is produced by motor <input type="text" name="q24" data-q="24" aria-label="Q24"> that are found in the spinal cord.</span></li>
+            <li><span class="num">25</span><span>A big number of people also suffer <input type="text" name="q25" data-q="25" aria-label="Q25">, from sensing an evil presence to hearing or smelling things.</span></li>
+            <li><span class="num">26</span><span>Fuseli's painting shows the woman lying on her <input type="text" name="q26" data-q="26" aria-label="Q26">, a position still thought to worsen the condition.</span></li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- PART 3 QUESTIONS -->
+      <section class="q-section" data-part="3">
+
+        <div class="q-group">
+          <h3>Questions 27–32</h3>
+          <div class="q-instr">
+            <p>Complete the summary. Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+          </div>
+          <div class="summary-box">
+            <p style="text-align:center;margin-bottom:10px"><strong>The Discovery of the Antikythera Mechanism</strong></p>
+            <p>The Antikythera mechanism was discovered by a diver who was looking for <span class="qnum">27</span><input type="text" name="q27" data-q="27" aria-label="Q27">. Instead, he found the remains of an ancient ship, from which he took proof to show his fellow divers.</p>
+            <p>Having been commissioned to recover the relics, the same divers spent <span class="qnum">28</span><input type="text" name="q28" data-q="28" aria-label="Q28"> retrieving items such as sculptures made of marble and <span class="qnum">29</span><input type="text" name="q29" data-q="29" aria-label="Q29"> for the National Museum. Another item they found was a <span class="qnum">30</span><input type="text" name="q30" data-q="30" aria-label="Q30"> which contained a piece of metal.</p>
+            <p>This was ignored until over a year later when a renowned archaeologist noticed that the inside was composed of several pieces, one of which had <span class="qnum">31</span><input type="text" name="q31" data-q="31" aria-label="Q31"> on it, and others appeared to be apparatus of some sort, leading the investigators to think at first that the artefact might have been a <span class="qnum">32</span><input type="text" name="q32" data-q="32" aria-label="Q32">, although the historical origin of it suggested this was impossible.</p>
+          </div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 33–37</h3>
+          <div class="q-instr">
+            <p>Choose the correct answer from the list <strong>A–H</strong> for each statement.</p>
+          </div>
+          <div class="optbox">
+            <b>Endings</b>
+            <div class="optgrid" style="grid-template-columns:1fr">
+              <div><strong>A</strong> ... to calculate how the calendar operated.</div>
+              <div><strong>B</strong> ... to identify problems in aeronautical components.</div>
+              <div><strong>C</strong> ... to discover historical artefacts.</div>
+              <div><strong>D</strong> ... to link the ancient device to theories about extra terrestrials.</div>
+              <div><strong>E</strong> ... to use gears to calculate astronomical movements.</div>
+              <div><strong>F</strong> ... to discover that there was more to the mechanism than first thought.</div>
+              <div><strong>G</strong> ... to create a visual representation of the inside of the mechanism.</div>
+              <div><strong>H</strong> ... to retrieve the outstanding relics.</div>
+            </div>
+          </div>
+          <div id="q33-37-container"></div>
+        </div>
+
+        <div class="q-group">
+          <h3>Questions 38–40</h3>
+          <div class="q-instr">
+            <p>Choose the correct answer, <strong>A, B, C</strong> or <strong>D</strong>.</p>
+          </div>
+          <div id="q38-40-container"></div>
+        </div>
+
+      </section>
+
+    </form>
+  </div>
+</div>
+
+<!-- BOTTOM PANEL -->
+<div class="bottom-panel">
+  <div class="bottom-inner">
+    <div class="part-tabs">
+      <button class="part-tab active" data-part="1"><span class="tab-part-name">Part 1</span><span class="tab-qcount">Questions 1–13 · TO BEE OR NOT TO BEE?</span></button>
+      <button class="part-tab" data-part="2"><span class="tab-part-name">Part 2</span><span class="tab-qcount">Questions 14–26 · SLEEP PARALYSIS</span></button>
+      <button class="part-tab" data-part="3"><span class="tab-part-name">Part 3</span><span class="tab-qcount">Questions 27–40 · The Antikythera Mechanism</span></button>
+    </div>
+    <div class="palette" id="palette"></div>
+    <div class="bottom-controls">
+      <div class="nav-buttons">
+        <button id="prevBtn" disabled>←</button>
+        <button id="nextBtn">→</button>
+      </div>
+      <div class="test-buttons">
+        <button class="review-btn" id="reviewBtn">📋 Review</button>
+        <button class="submit-btn" id="submitBtn">Submit ✈</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="overlay" id="resultOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head"><h3>Your Results</h3><button class="close-x" data-close="resultOverlay">×</button></div>
+    <div class="overlay-body">
+      <div class="score-summary">
+        <div class="big" id="resultScore">0 / 40</div>
+        <div class="sub" id="resultSub">Band estimate: —</div>
+      </div>
+      <div class="legend-row"><span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span></div>
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th><th>Correct Answer</th></tr></thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIEW OVERLAY -->
+<div class="overlay" id="previewOverlay">
+  <div class="overlay-card">
+    <div class="overlay-head"><h3>Review Your Answers</h3><button class="close-x" data-close="previewOverlay">×</button></div>
+    <div class="overlay-body">
+      <table class="result-tbl">
+        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+        <tbody id="previewBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const PARAGRAPHS = ['A','B','C','D','E','F'];
+const FIGURES   = ['A','B','C','D','E'];
+const ENDINGS   = ['A','B','C','D','E','F','G','H'];
+
+const ANSWER_KEY = {
+  1:['D'], 2:['F'], 3:['B'], 4:['C'], 5:['E'],
+  6:['2006'], 7:['butterflies'], 8:['hibernation'], 9:['extinctions'],
+  10:['TRUE'], 11:['TRUE'], 12:['TRUE'], 13:['TRUE'],
+  18:['A'], 19:['D'], 20:['C'], 21:['E'], 22:['B'], 23:['C'],
+  24:['neurons'], 25:['hallucinations'], 26:['back'],
+  27:['giant clams'], 28:['ten months'], 29:['bronze'],
+  30:['wooden casing','casing','wooden case','wooden box'],
+  31:['inscriptions'], 32:['mechanical clock'],
+  33:['C'], 34:['H'], 35:['F'], 36:['E'], 37:['B'],
+  38:['C'], 39:['B'], 40:['A']
+};
+
+const CHECKBOX_GROUPS = {
+  '14-15': { qs:[14,15], correct:['C','E'] },
+  '16-17': { qs:[16,17], correct:['B','C'] }
+};
+
+const Q_STATEMENTS = {
+  1:'Food crops that do not depend on insect pollination',
+  2:'A claim that the decline is part of a recurring pattern',
+  3:'An explanation of how a new bee colony is formed',
+  4:'The first signs of a major decline in honey bee populations',
+  5:'Different causes of why the honey bee population is declining',
+  10:'A significant fall in the number of animals able to transfer pollen to crops would be costly for both industry and individuals.',
+  11:'Research into alternative methods of pollination has already turned up some potential causes of bees disappearing.',
+  12:'Moving bees to different locations may be one of the causes of CCD.',
+  13:'The future of the European honey bee is more certain than other types of bee.',
+  18:'Can draw parallels between a personal experience and the symptoms of sleep paralysis.',
+  19:'Believed sleep paralysis to be a sign of underlying health problems.',
+  20:'Can be referred to by an alternative name depending on which country you are in.',
+  21:'Is/are believed by many to exist due to the extensive recording of visions.',
+  22:'Received inspiration from folklore.',
+  23:'Is/are thought to cause bad dreams.'
+};
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function normalize(s){
+  return (s||'').toString().trim().toLowerCase()
+    .replace(/[.,;:!?'"()]/g,'')
+    .replace(/\s+/g,' ');
+}
+function estimateBand(scaled){
+  if(scaled>=39) return '9.0'; if(scaled>=37) return '8.5';
+  if(scaled>=35) return '8.0'; if(scaled>=33) return '7.5';
+  if(scaled>=30) return '7.0'; if(scaled>=27) return '6.5';
+  if(scaled>=23) return '6.0'; if(scaled>=19) return '5.5';
+  if(scaled>=15) return '5.0'; if(scaled>=13) return '4.5';
+  if(scaled>=10) return '4.0'; if(scaled>=8)  return '3.5';
+  if(scaled>=6)  return '3.0'; if(scaled>=4)  return '2.5';
+  return '2.0 or below';
+}
+
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 2200);
+}
+
+/* ============================================================
+   RENDER QUESTION TEMPLATES
+   ============================================================ */
+
+/* Q1-5: Paragraph matching — rendered as a TABLE */
+function renderParagraphMatch(containerId, questions){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+
+  const table = document.createElement('table');
+  table.className = 'matching';
+
+  let head = `<thead><tr><th>#</th><th class="stmt">Statement</th>`;
+  PARAGRAPHS.forEach(p => head += `<th>${p}</th>`);
+  head += `</tr></thead>`;
+
+  let body = `<tbody>`;
+  questions.forEach(q => {
+    body += `<tr data-q="${q}">`;
+    body += `<td class="nm">${q}</td>`;
+    body += `<td class="stmt">${Q_STATEMENTS[q]}</td>`;
+    PARAGRAPHS.forEach(p => {
+      body += `<td class="opt"><input type="radio" name="q${q}" value="${p}" aria-label="Q${q} ${p}"></td>`;
+    });
+    body += `</tr>`;
+  });
+  body += `</tbody>`;
+
+  table.innerHTML = head + body;
+  el.appendChild(table);
+}
+
+/* TFNG */
+function renderTFNG(containerId, questions){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  questions.forEach(q => {
+    const row = document.createElement('div');
+    row.className = 'q'; row.dataset.q = q;
+    row.style.cssText = 'padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px';
+    let html = `<span style="display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto">${q}</span>`;
+    html += `<span style="flex:1;min-width:200px">${Q_STATEMENTS[q]}</span>`;
+    html += `<div class="options" style="flex-basis:100%">`;
+    ['TRUE','FALSE','NOT GIVEN'].forEach(v => {
+      html += `<label class="opt"><input type="radio" name="q${q}" value="${v}"><span>${v}</span></label>`;
+    });
+    html += `</div><div class="feedback"></div>`;
+    row.innerHTML = html;
+    el.appendChild(row);
+  });
+}
+
+/* Checkbox group (choose TWO) */
+function renderCheckboxGroup(containerId, groupKey, options){
+  const el = document.getElementById(containerId);
+  const grp = CHECKBOX_GROUPS[groupKey];
+  el.innerHTML = '';
+  const wrapper = document.createElement('div');
+  wrapper.className = 'q'; wrapper.dataset.q = grp.qs[0];
+  wrapper.style.cssText = 'padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;flex-wrap:wrap;font-size:14.5px';
+  let html = `<span class="group-num">Q${grp.qs[0]}–${grp.qs[grp.qs.length-1]}</span>`;
+  html += `<div style="width:100%;margin-top:6px">`;
+  options.forEach(o => {
+    html += `<label class="opt" style="display:flex;margin-bottom:4px;background:#fcfdff;border:1px solid #eef2f7;padding:8px 10px;border-radius:6px;cursor:pointer;align-items:center;gap:8px;font-size:14px">
+      <input type="checkbox" data-group="${groupKey}" value="${o.v}">
+      <span class="opt-letter">${o.v}</span><span>${o.label}</span></label>`;
+  });
+  html += `</div><div class="feedback"></div>`;
+  wrapper.innerHTML = html;
+  el.appendChild(wrapper);
+}
+
+/* Q18-23: Matching figures with radios in table */
+function renderFigureMatch(containerId, questions){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  const table = document.createElement('table');
+  table.className = 'matching';
+  let head = `<thead><tr><th>#</th><th class="stmt">Statement</th>`;
+  FIGURES.forEach(f => head += `<th>${f}</th>`);
+  head += `</tr></thead>`;
+  let body = `<tbody>`;
+  questions.forEach(q => {
+    body += `<tr data-q="${q}"><td class="nm">${q}</td><td class="stmt">${Q_STATEMENTS[q]}</td>`;
+    FIGURES.forEach(f => {
+      body += `<td class="opt"><input type="radio" name="q${q}" value="${f}" aria-label="Q${q} ${f}"></td>`;
+    });
+    body += `</tr>`;
+  });
+  body += `</tbody>`;
+  table.innerHTML = head + body;
+  el.appendChild(table);
+}
+
+/* Q33-37: Matching endings with radios in table */
+function renderEndingMatch(containerId, questions){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  const table = document.createElement('table');
+  table.className = 'matching';
+  let head = `<thead><tr><th>#</th><th class="stmt">Statement</th>`;
+  ENDINGS.forEach(f => head += `<th>${f}</th>`);
+  head += `</tr></thead>`;
+  let body = `<tbody>`;
+  const stmts = {
+    33:'Elias Stadiatis had not intended ...',
+    34:'The group of divers were asked ...',
+    35:'Valerios Stais was the first ...',
+    36:'Derek de Solla Price first managed ...',
+    37:'The Antikythera Mechanism Research Project used technology that was originally created …'
+  };
+  questions.forEach(q => {
+    body += `<tr data-q="${q}"><td class="nm">${q}</td><td class="stmt">${stmts[q]}</td>`;
+    ENDINGS.forEach(f => {
+      body += `<td class="opt"><input type="radio" name="q${q}" value="${f}" aria-label="Q${q} ${f}"></td>`;
+    });
+    body += `</tr>`;
+  });
+  body += `</tbody>`;
+  table.innerHTML = head + body;
+  el.appendChild(table);
+}
+
+/* MCQ A-D */
+const MCQ_STEMS = {
+  38:'How is the mechanism similar to more contemporary clock designs?',
+  39:'What was the Antikythera Mechanism able to show?',
+  40:'What do our current models of the mechanism show?'
+};
+const MCQ_OPTIONS = {
+  38:[
+    {v:'A',label:'It has a small, box shape.'},
+    {v:'B',label:'The casing is made of wood.'},
+    {v:'C',label:'It has hands which turn around in a circle.'},
+    {v:'D',label:'It indicates how many minutes and hours have passed.'}
+  ],
+  39:[
+    {v:'A',label:'The current time of day'},
+    {v:'B',label:'The position of some of the planets'},
+    {v:'C',label:'The direction the planets are spinning in'},
+    {v:'D',label:'The distance between the sun and the moon'}
+  ],
+  40:[
+    {v:'A',label:'The mechanism is so advanced in design, we couldn’t understand it until modern times.'},
+    {v:'B',label:'The creators of the Antikythera mechanism knew far more about astronomy than we do.'},
+    {v:'C',label:'We have only recently possessed the technology that belonged to the ancient Greeks.'},
+    {v:'D',label:'There are still things we don’t understand about the Antikythera mechanism.'}
+  ]
+};
+
+function renderMCQ(containerId, questions){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  questions.forEach(q => {
+    const row = document.createElement('div');
+    row.className = 'q'; row.dataset.q = q;
+    row.style.cssText = 'padding:12px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px';
+    let html = `<span style="display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto">${q}</span>`;
+    html += `<span style="flex:1;min-width:200px">${MCQ_STEMS[q]}</span>`;
+    html += `<div class="options stack" style="flex-basis:100%">`;
+    MCQ_OPTIONS[q].forEach(o => {
+      html += `<label class="opt"><input type="radio" name="q${q}" value="${o.v}"><span class="opt-letter">${o.v}</span><span>${o.label}</span></label>`;
+    });
+    html += `</div><div class="feedback"></div>`;
+    row.innerHTML = html;
+    el.appendChild(row);
+  });
+}
+
+/* ============================================================
+   BOOT RENDER
+   ============================================================ */
+renderParagraphMatch('q1-5-container', [1,2,3,4,5]);
+renderTFNG('q10-13-container', [10,11,12,13]);
+renderCheckboxGroup('q14-15-container', '14-15', [
+  {v:'A',label:'Our eyes are sometimes open.'},
+  {v:'B',label:'We only dream if we are completely free from harm.'},
+  {v:'C',label:'All but the most essential muscles stop working.'},
+  {v:'D',label:'Our bodies attempt to act out our dreams.'},
+  {v:'E',label:'Our dreams are especially vivid.'}
+]);
+renderCheckboxGroup('q16-17-container', '16-17', [
+  {v:'A',label:'Their minds suddenly go to sleep.'},
+  {v:'B',label:'They sense something pushing on their body.'},
+  {v:'C',label:'They often feel afraid for no reason.'},
+  {v:'D',label:'They experience physical pain.'},
+  {v:'E',label:'Their bodies develop a strange smell.'}
+]);
+renderFigureMatch('q18-23-container', [18,19,20,21,22,23]);
+renderEndingMatch('q33-37-container', [33,34,35,36,37]);
+renderMCQ('q38-40-container', [38,39,40]);
+
+/* ============================================================
+   STATE
+   ============================================================ */
+function getUserAnswer(n){
+  const r = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if (r) return r.value;
+  const t = document.querySelector(`input[type=text][name="q${n}"]`);
+  if (t) return t.value;
+  return '';
+}
+function getUserAnswerDisplay(n){
+  for (const key in CHECKBOX_GROUPS){
+    if (CHECKBOX_GROUPS[key].qs.includes(n)){
+      const checked = [...document.querySelectorAll(`input[type=checkbox][data-group="${key}"]:checked`)].map(c=>c.value);
+      return checked.join(', ') || '';
+    }
+  }
+  return getUserAnswer(n);
+}
+function isCorrect(n, ua){
+  for (const key in CHECKBOX_GROUPS){
+    if (CHECKBOX_GROUPS[key].qs.includes(n)){
+      const grp = CHECKBOX_GROUPS[key];
+      const checked = [...document.querySelectorAll(`input[type=checkbox][data-group="${key}"]:checked`)].map(c=>c.value).sort();
+      const correct = [...grp.correct].sort();
+      return checked.length === correct.length && checked.every((v,i)=>v===correct[i]);
+    }
+  }
+  const keys = ANSWER_KEY[n] || [];
+  const v = normalize(ua);
+  if (!v) return false;
+  return keys.some(k => normalize(k) === v);
+}
+function correctLabel(n){
+  for (const k in CHECKBOX_GROUPS){
+    if (CHECKBOX_GROUPS[k].qs.includes(n)) return CHECKBOX_GROUPS[k].correct.join(', ');
+  }
+  return (ANSWER_KEY[n] || []).join(' / ');
+}
+
+/* Track answer changes */
+document.addEventListener('input', refreshPaletteAnswered);
+document.addEventListener('change', refreshPaletteAnswered);
+
+/* ============================================================
+   PALETTE
+   ============================================================ */
+const PART_QUESTIONS = {
+  1: Array.from({length:13},(_,i)=>i+1),
+  2: Array.from({length:13},(_,i)=>i+14),
+  3: Array.from({length:14},(_,i)=>i+27)
+};
+
+const palette = document.getElementById('palette');
+Object.keys(PART_QUESTIONS).forEach(p => {
+  const sec = document.createElement('div');
+  sec.className = 'palette-section';
+  sec.dataset.part = p;
+  const label = document.createElement('strong');
+  label.className = 'palette-label';
+  label.textContent = `Part ${p}:`;
+  sec.appendChild(label);
+  PART_QUESTIONS[p].forEach(n => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'palette-item';
+    b.dataset.q = n;
+    b.textContent = n;
+    b.addEventListener('click', () => goToQuestion(n));
+    sec.appendChild(b);
+  });
+  palette.appendChild(sec);
+});
+
+function refreshPaletteAnswered(){
+  document.querySelectorAll('.palette-item').forEach(b => {
+    const n = parseInt(b.dataset.q, 10);
+    const ua = getUserAnswerDisplay(n);
+    b.classList.toggle('answered', ua.trim() !== '');
+  });
+}
+
+/* ============================================================
+   PART SWITCHING + NAV
+   ============================================================ */
+let currentPart = 1;
+let currentQuestion = 1;
+
+function switchPart(p){
+  currentPart = parseInt(p, 10);
+  document.querySelectorAll('.part-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.part === String(p)));
+  document.querySelectorAll('.passage').forEach(el =>
+    el.classList.toggle('active', el.dataset.part === String(p)));
+  document.querySelectorAll('.q-section').forEach(el =>
+    el.classList.toggle('active', el.dataset.part === String(p)));
+  document.querySelectorAll('.palette-section').forEach(el =>
+    el.classList.toggle('active', el.dataset.part === String(p)));
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+  currentQuestion = PART_QUESTIONS[p][0];
+  updateCurrent();
+  updateNav();
+}
+
+document.querySelectorAll('.part-tab').forEach(tab =>
+  tab.addEventListener('click', () => switchPart(tab.dataset.part)));
+
+function goToQuestion(n){
+  n = parseInt(n, 10);
+  if (!n || n < 1 || n > 40) return;
+  let p = 1;
+  for (const k in PART_QUESTIONS) if (PART_QUESTIONS[k].includes(n)) { p = parseInt(k, 10); break; }
+  if (p !== currentPart) switchPart(p);
+  currentQuestion = n;
+  const qEl = document.querySelector(`[data-q="${n}"]`);
+  if (qEl){
+    qEl.scrollIntoView({behavior:'smooth', block:'center'});
+    qEl.style.transition = 'background .2s';
+    qEl.style.background = '#fffbeb';
+    setTimeout(()=>{ qEl.style.background = ''; }, 1200);
+  }
+  const input = document.querySelector(`input[name="q${n}"], input[type=radio][name="q${n}"]`);
+  if (input && !input.disabled) input.focus({preventScroll:true});
+  updateCurrent(); updateNav();
+}
+function updateCurrent(){
+  document.querySelectorAll('.palette-item').forEach(b =>
+    b.classList.toggle('current', parseInt(b.dataset.q, 10) === currentQuestion));
+}
+function updateNav(){
+  const list = PART_QUESTIONS[currentPart];
+  const idx = list.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= list.length - 1);
+}
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  const list = PART_QUESTIONS[currentPart];
+  const idx = list.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(list[idx-1]);
+});
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  const list = PART_QUESTIONS[currentPart];
+  const idx = list.indexOf(currentQuestion);
+  if (idx < list.length - 1) goToQuestion(list[idx+1]);
+});
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+(function(){
+  const r = document.getElementById('resizer');
+  const p = document.getElementById('passagesPane');
+  const q = document.getElementById('questionsPane');
+  let d = false;
+  r.addEventListener('mousedown', e => { e.preventDefault(); d = true; document.body.style.cursor='col-resize'; document.body.style.userSelect='none'; });
+  document.addEventListener('mousemove', e => {
+    if (!d) return;
+    const rect = document.getElementById('mainSplit').getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    p.style.flex = `0 0 ${pct}%`;
+    q.style.flex = '1 1 auto';
+  });
+  document.addEventListener('mouseup', () => {
+    d = false; document.body.style.cursor=''; document.body.style.userSelect='';
+  });
+})();
+
+/* ============================================================
+   TIMER (countdown from 60 min)
+   ============================================================ */
+let secondsLeft = 60 * 60;
+let timerInterval;
+const timerEl = document.getElementById('timer');
+const timerChip = document.getElementById('timerChip');
+function renderTimer(){
+  const m = String(Math.floor(secondsLeft/60)).padStart(2,'0');
+  const s = String(secondsLeft%60).padStart(2,'0');
+  timerEl.textContent = `${m}:${s}`;
+  timerChip.classList.remove('warning','danger');
+  if (secondsLeft <= 60) timerChip.classList.add('danger');
+  else if (secondsLeft <= 300) timerChip.classList.add('warning');
+}
+function startTimer(){
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(()=>{
+    if (secondsLeft <= 0){
+      clearInterval(timerInterval);
+      timerChip.classList.add('danger');
+      timerEl.textContent = '00:00';
+      toast('⏰ Time is up!');
+      return;
+    }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast('1 minute remaining!');
+    if (secondsLeft === 300) toast('5 minutes remaining.');
+  }, 1000);
+}
+
+/* ============================================================
+   HIGHLIGHT / NOTE
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+
+function showPopupAt(rect){
+  hlPopup.style.top = (window.scrollY + rect.top - 50) + 'px';
+  hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width/2 - 150) + 'px';
+  hlPopup.classList.add('show');
+}
+
+document.addEventListener('mouseup', (e)=>{
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  setTimeout(()=>{
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed){
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))){
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 0);
+});
+
+document.addEventListener('click', (e)=>{
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+  const em = e.target.tagName === 'MARK' ? e.target :
+    (e.target.closest ? e.target.closest('mark.hl-user') : null);
+  const en = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (en){
+    document.getElementById('note-text').value = en.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = en;
+    return;
+  }
+  if (em){
+    savedRange = null;
+    currentMark = em;
+    showPopupAt(em.getBoundingClientRect());
+    return;
+  }
+});
+
+document.getElementById('hl-highlight').addEventListener('click', ()=>{
+  if (currentMark){ hlPopup.classList.remove('show'); return; }
+  if (!savedRange){ toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+  } catch(err){}
+  window.getSelection().removeAllRanges();
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  toast('Highlighted');
+});
+
+document.getElementById('hl-dehighlight').addEventListener('click', ()=>{
+  if (currentMark){
+    const p = currentMark.parentNode;
+    while (currentMark.firstChild) p.insertBefore(currentMark.firstChild, currentMark);
+    p.removeChild(currentMark);
+    currentMark = null;
+    hlPopup.classList.remove('show');
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange){
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll){
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try {
+          if (savedRange.intersectsNode(m)){
+            const p = m.parentNode;
+            while (m.firstChild) p.insertBefore(m.firstChild, m);
+            p.removeChild(m);
+          }
+        } catch(err){}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    hlPopup.classList.remove('show');
+    savedRange = null;
+    toast('Highlight removed');
+  } else {
+    hlPopup.classList.remove('show');
+  }
+});
+
+document.getElementById('hl-note').addEventListener('click', ()=>{
+  if (!savedRange){ toast('Select text first'); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  hlPopup.classList.remove('show');
+});
+
+document.getElementById('note-cancel').addEventListener('click', ()=>{
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', ()=>{
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget){
+    if (nt){
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      const p = noteSaveTarget.parentNode;
+      while (noteSaveTarget.firstChild) p.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
+      p.removeChild(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    return;
+  }
+  if (!nt || !pendingNoteRange){ notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+  } catch(err){}
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+document.getElementById('clearHighlightsLink').addEventListener('click', (e)=>{
+  e.preventDefault();
+  if (!confirm('Remove all highlights and notes?')) return;
+  document.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+    const p = el.parentNode;
+    while (el.firstChild) p.insertBefore(el.firstChild, el);
+    p.removeChild(el);
+  });
+  toast('Highlights cleared');
+});
+
+/* ============================================================
+   SUBMIT / REVIEW / RESET
+   ============================================================ */
+document.getElementById('submitBtn').addEventListener('click', ()=>{
+  let score = 0, answered = 0;
+  document.body.classList.add('graded');
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no','ok'); });
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct','wrong'));
+
+  const rows = [];
+  const handledGroups = new Set();
+
+  for (let n = 1; n <= 40; n++){
+    const qEl = document.querySelector(`[data-q="${n}"]`);
+    if (!qEl) continue;
+
+    // Checkbox group
+    let grouped = false;
+    for (const k in CHECKBOX_GROUPS){
+      if (CHECKBOX_GROUPS[k].qs.includes(n)){
+        if (handledGroups.has(k)) { grouped = true; continue; }
+        handledGroups.add(k);
+        const grp = CHECKBOX_GROUPS[k];
+        const checked = [...document.querySelectorAll(`input[type=checkbox][data-group="${k}"]:checked`)].map(c=>c.value).sort();
+        const correct = [...grp.correct].sort();
+        const ok = checked.length === correct.length && checked.every((v,i)=>v===correct[i]);
+        const grpQEl = document.querySelector(`[data-q="${grp.qs[0]}"]`);
+        const fb = grpQEl.querySelector('.feedback');
+        if (fb) {
+          fb.textContent = ok ? '✓ Correct' : `✗ Correct: ${grp.correct.join(', ')}`;
+          fb.classList.add(ok ? 'ok' : 'no');
+        }
+        if (ok) score++;
+        grp.qs.forEach(qq => {
+          if (checked.length > 0) answered++;
+          const pal = document.querySelector(`.palette-item[data-q="${qq}"]`);
+          if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+        });
+        rows.push({n: grp.qs[0]+'–'+grp.qs[grp.qs.length-1], ua: checked.join(', ') || '—', key: grp.correct.join(', '), ok});
+        grouped = true;
+        break;
+      }
+    }
+    if (grouped) continue;
+
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    qEl.classList.add(ok ? 'correct' : 'wrong');
+    const fb = qEl.querySelector('.feedback');
+    if (fb) {
+      fb.textContent = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${correctLabel(n)}`;
+      fb.classList.add(ok ? 'ok' : 'no');
+    }
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+    rows.push({n, ua: ua.trim() || '—', key: correctLabel(n), ok});
+  }
+
+  const scaled = Math.round((score/40)*40);
+  document.getElementById('resultScore').textContent = `${score} / 40`;
+  document.getElementById('resultSub').textContent =
+    `Band estimate: ${estimateBand(scaled)} · Answered: ${answered} / 40`;
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.n}</td><td class="${r.ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td>`;
+    tbody.appendChild(tr);
+  });
+  const chip = document.getElementById('bandChip');
+  chip.textContent = 'Band ' + estimateBand(scaled);
+  chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
+
+document.getElementById('reviewBtn').addEventListener('click', ()=>{
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = '';
+  for (let n = 1; n <= 40; n++){
+    const ua = getUserAnswerDisplay(n);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(b =>
+  b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(o =>
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    hlPopup.classList.remove('show');
+    notePopup.classList.remove('show');
+  }
+});
+
+document.getElementById('resetLink').addEventListener('click', (e)=>{
+  e.preventDefault();
+  if (!confirm('Clear all answers and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no','ok'); });
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct','wrong','answered'));
+  const chip = document.getElementById('bandChip');
+  chip.textContent = '--'; chip.classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  switchPart(1);
+  secondsLeft = 60 * 60;
+  startTimer();
+  toast('Test reset. Good luck!');
+});
+
+/* ============================================================
+   MENU / FOCUS / FULLSCREEN
+   ============================================================ */
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => { e.stopPropagation(); menuPop.classList.toggle('show'); });
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+function updateFullscreenUI(){
+  const a = !!document.fullscreenElement;
+  document.body.classList.toggle('fullscreen-active', a);
+  fullscreenBtn.textContent = a ? '⛶ Exit' : '⛶ Fullscreen';
+}
+fullscreenBtn.addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch(err){ toast('Fullscreen not supported'); }
+});
+document.addEventListener('fullscreenchange', updateFullscreenUI);
+
+document.getElementById('focusBtn').addEventListener('click', () => document.body.classList.add('focus-mode'));
+document.getElementById('exitFocusBtn').addEventListener('click', () => document.body.classList.remove('focus-mode'));
+
+/* ============================================================
+   INIT
+   ============================================================ */
+switchPart(1);
+refreshPaletteAnswered();
+updateNav();
+updateFullscreenUI();
+renderTimer();
+startTimer();
+</script>
+
+</body>
+</html>

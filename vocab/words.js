@@ -1279,7 +1279,7 @@ subsequently|adv|পরবর্তীকালে|Afterwards, Later|time
 subside|v|কমে যাওয়া / প্রশমিত হওয়া|Diminish, Slacken, Wane|env
 subsidence|n|ভূমি ধসে বসে যাওয়া / অবনমন|Sinking, Collapse|geo
 subsistence|n|জীবনধারণ / ন্যূনতম জীবিকা|Existence, Livelihood, Profession|biz
-subtle|adj|সূক্ষ্ম|Delicate, Fine, Exquisite, Skillful|desc
+subtle|adj|সূক্ষ্ম, নিগূঢ়, চতুর|Delicate, Fine, Exquisite, Skillful|desc
 subtlety|n|সূক্ষ্মতা / সূক্ষ্ম পার্থক্য|Delicacy, Nuance|desc
 subtly|adv|সূক্ষ্মভাবে / পরোক্ষভাবে|Finely, Delicately, Nicely|desc
 subtraction|n|বিয়োগ|Deduction|acad
@@ -1563,7 +1563,12 @@ disputed|adj|বিতর্কিত|Disputed, Controversial|conf
 elusive|adj|বেশির ভাগ সময় প্রত্যাহার করা, কম শারীরিক সক্রিয়তাপূর্ণ|Inactive, Seated, hard to find, difficult to catch |health
 municipal|n| পৌর, পৌরসভা সম্পর্কিত, অথবা স্থানীয় প্রশাসনিক|City, Municipal, Municipal Corporation|env
 rectify|verb|সঠিক করা|Rectify, Correct|desc
-
+depot|n| a storage facility, warehouse, or station where goods, vehicles, military supplies, or passengers are kept, serviced, or dispatched|biz
+druids |n| প্রাচীন কেল্টিক পুরোহিত, ধর্মীয় নেতা, অথবা প্রকৃতিপূজক|Druid, Druids|soc
+ditche|n| খাদ, 
+depriving|v|প্রত্যাহার করা,বঞ্চিত|Deprive, Deny|char
+grain |n|শস্য|grain, crop, corn, fruit, crop plants, albumen|env
+dietary|adj|খাদ্য সম্পর্কিত, খাদ্যতালিকাগত|Dietary, Nutritional|food
 `
 
 
@@ -1593,3 +1598,14 @@ export const TOPICS = {
    every: { name: 'Everyday & General', icon: '🌐', color: '#94a3b8' }
 };
 
+
+
+// must known vocabulary
+// rainforest
+// radical
+// possessions
+//dilemma
+//subtle
+//Promoting
+//disputed
+//self-esteem.

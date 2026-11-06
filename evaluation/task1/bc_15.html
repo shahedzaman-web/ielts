@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Writing Evaluation – Task 1 (Health Expenditure - Shahed)</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kalam:wght@400&family=Inter:wght@400;600;700&display=swap');
+
+        @page { size: A4; margin: 0; }
+        * { box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #e8eef7 0%, #f4f6fb 100%);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #1c2430;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 18mm 18mm 15mm;
+            margin: 12mm auto;
+            background: #fff;
+            box-shadow: 0 6px 28px rgba(20, 40, 80, .16);
+            border-radius: 8px;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #f59e0b);
+        }
+        .page:last-child { page-break-after: auto; break-after: auto; }
+
+        /* ---------- HEADINGS ---------- */
+        h1 { font-size: 19pt; margin: 0 0 8mm; line-height: 1.25; color: #1e3a8a; letter-spacing: -.3px; }
+        h2 { font-size: 13pt; margin: 10mm 0 5mm; padding: 2.4mm 4mm; border-left: 5px solid #2563eb; background: linear-gradient(90deg, #eff6ff, transparent 92%); color: #1e3a8a; border-radius: 0 6px 6px 0; line-height: 1.3; }
+        h2:first-child { margin-top: 0; }
+        h3 { font-size: 11.5pt; margin: 6mm 0 2.5mm; color: #1d4ed8; line-height: 1.35; }
+        h3:first-of-type { margin-top: 2mm; }
+
+        /* ---------- TEXT ---------- */
+        p { margin: 0 0 4mm; text-align: justify; line-height: 1.65; }
+        ul, ol { margin: 2.5mm 0 4mm 7mm; padding: 0; }
+        li { margin-bottom: 2mm; line-height: 1.55; }
+        li:last-child { margin-bottom: 0; }
+        li::marker { color: #2563eb; font-weight: bold; }
+        em { font-style: italic; color: #334155; }
+        strong { color: #0f172a; }
+
+        /* ---------- TABLES ---------- */
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 3mm 0 5mm; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(20,40,80,.10); font-size: 9.8pt; }
+        th, td { border: 1px solid #dbe3ee; padding: 2.4mm 3mm; vertical-align: top; line-height: 1.55; }
+        th { background: linear-gradient(180deg, #eef4ff, #dfe9fb); color: #1e3a8a; font-weight: 700; text-align: left; }
+        tbody tr:nth-child(even) td { background: #f8fafc; }
+        tbody tr:hover td { background: #f1f5ff; }
+
+        .summary th { text-align: center; background: #1e293b; color: #fff; border-color: #334155; }
+        .summary td { text-align: center; font-weight: 700; font-size: 12pt; color: #1e3a8a; padding: 2.8mm 2mm; }
+        .summary .band-cell { color: #b91c1c !important; font-size: 14pt; }
+        
+        .tight th, .tight td { padding: 2mm 2.4mm; }
+        .small { font-size: 9pt; }
+        .tiny th, .tiny td { padding: 1.8mm 2.2mm; font-size: 8.6pt; }
+
+        /* ---------- NEW MARKING GUIDE TABLE (PAGE 1) ---------- */
+        .marking-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3mm 0 5mm;
+            border: 1px solid #cbd5e1;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 10pt;
+        }
+        .marking-table td {
+            border: 1px solid #cbd5e1;
+            padding: 4mm;
+            vertical-align: middle;
+            background: #fff !important;
+        }
+        .marking-table td:first-child {
+            width: 35%;
+            text-align: center;
+            background: #f8fafc !important;
+        }
+        .marking-example-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .handwritten-red {
+            color: #dc2626;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 16pt;
+            position: absolute;
+            top: -26px;
+            left: -5px;
+            white-space: nowrap;
+        }
+        .circled-word {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 2px 10px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .red-number-badge {
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+        }
+        .underlined-word {
+            border-bottom: 2px solid #dc2626;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            font-size: 11pt;
+        }
+        .wavy-word {
+            text-decoration: underline wavy #dc2626;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .green-tick-word {
+            font-weight: bold;
+            color: #1c2430;
+            border-bottom: 2px solid #16a34a;
+            display: inline-block;
+            padding-bottom: 2px;
+            position: relative;
+            font-size: 11pt;
+        }
+        .green-tick-symbol {
+            color: #16a34a;
+            font-size: 18pt;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* ---------- EXACT SCRIPT MARKINGS ---------- */
+        .script-layout {
+            display: flex;
+            width: 100%;
+        }
+        .script-text-col {
+            flex: 1.4;
+            padding-right: 5mm;
+        }
+        .script-comment-col {
+            flex: 0.6;
+            padding-left: 5mm;
+            border-left: 1px solid #fca5a5;
+        }
+        
+        /* APPLIED HANDWRITING FONT TO CANDIDATE TEXT */
+        .script-text {
+            line-height: 2.5;
+            font-size: 11.5pt;
+            font-family: 'Kalam', 'Caveat', 'Comic Sans MS', cursive;
+            color: #1c2430;
+        }
+        
+        .comment-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1.4;
+            margin-bottom: 2mm;
+        }
+        .comment-text p { margin-bottom: 3mm; }
+        .comment-tick {
+            color: #16a34a;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 9pt;
+            display: block;
+            margin-top: 4mm;
+        }
+        
+        .red-underline {
+            text-decoration: underline;
+            text-decoration-color: #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-wavy {
+            text-decoration: underline wavy #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-underline {
+            text-decoration: underline;
+            text-decoration-color: #16a34a;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-tick {
+            color: #16a34a;
+            font-weight: bold;
+            font-size: 11pt;
+            margin-left: 2px;
+        }
+        .red-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #dc2626;
+            color: white;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-left: 2px;
+            vertical-align: super;
+            line-height: 1;
+        }
+        .red-caret {
+            color: #dc2626;
+            font-size: 14pt;
+            font-weight: bold;
+            vertical-align: sub;
+            margin-left: 2px;
+        }
+        .arrow-red {
+            color: #dc2626;
+            font-weight: bold;
+            margin: 0 4px;
+        }
+        .correction-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+        }
+        .floating-text {
+            position: relative;
+            white-space: nowrap;
+        }
+        .floating-text .above {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        .circle-drawn {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 1px 8px;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* ---------- CALLOUTS / BOXES ---------- */
+        .comment-box {
+            background: #fff;
+            border: 2px solid #dc2626;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 6mm 0 5.5mm;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+        .comment-box h4 { color: #dc2626; margin: 0 0 3mm; font-size: 10pt; text-transform: uppercase; font-family: 'Inter', sans-serif;}
+        .comment-box .handwritten-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+            line-height: 1.4;
+        }
+        
+        .good-box {
+            background: #f0fdf4;
+            border: 1.5px solid #22c55e;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 3.5mm 0 5.5mm;
+            font-size: 9.8pt;
+        }
+        .good-box h4 { color: #166534; margin: 0 0 2mm; font-size: 10pt; text-transform: uppercase; }
+
+        /* ---------- NEW BAND SCORE UI ---------- */
+        .main-band-header {
+            background: #b91c1c;
+            color: white;
+            padding: 4mm;
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+            letter-spacing: 0.5px;
+        }
+        
+        .band-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            margin-bottom: 6mm;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(20,40,80,.05);
+        }
+        
+        .band-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            color: white;
+            padding: 3mm 4mm;
+        }
+        .band-card-header h3 { margin: 0; color: white; font-size: 12pt; font-weight: 600; }
+        .band-badge {
+            background: #b91c1c;
+            color: white;
+            padding: 1mm 4mm;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        
+        .band-card-body {
+            padding: 4mm;
+            background: #fff;
+        }
+        .band-card-body h4 {
+            color: #1e293b;
+            font-size: 10.5pt;
+            margin: 0 0 3mm 0;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .band-card-body ul {
+            margin-left: 5mm;
+            font-size: 10pt;
+            margin-bottom: 5mm;
+        }
+        
+        .why-not-higher {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-higher h5 { color: #991b1b; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-higher p { margin: 0; font-size: 9.5pt; color: #7f1d1d; }
+        
+        .why-not-lower {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-lower h5 { color: #166534; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-lower p { margin: 0; font-size: 9.5pt; color: #14532d; }
+
+        .calc-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 2mm 4mm;
+            font-size: 10pt;
+            color: #92400e;
+            font-weight: 600;
+            margin-top: 3mm;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* ---------- YOUR ANSWER CORRECTED UI ---------- */
+        .corrected-header {
+            background: #b91c1c;
+            color: white;
+            padding: 3mm 4mm;
+            font-size: 11pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+        }
+        .corrected-box {
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 5mm;
+            background: #fff;
+            font-size: 10pt;
+            line-height: 1.7;
+        }
+        .green-highlight {
+            background-color: #d1fae5;
+            color: #047857;
+            font-weight: 600;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* ---------- SIGNATURE ---------- */
+        .signature-font {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 18pt;
+            color: #1e3a8a;
+            transform: rotate(-5deg);
+            display: inline-block;
+        }
+
+        /* ---------- MISC ---------- */
+        .practice-list li { list-style-type: none; margin-bottom: 6mm; position: relative; }
+        .practice-list .num { font-weight: bold; font-size: 12pt; margin-right: 2mm; color: #1e3a8a; }
+        .practice-line { border-bottom: 1px solid #cbd5e1; height: 8mm; margin-top: 2mm; }
+        
+        .page-number {
+            margin-top: auto;
+            align-self: flex-end;
+            font-size: 8.6pt;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 1.2mm 3.5mm;
+            border-radius: 999px;
+            letter-spacing: .3px;
+            flex-shrink: 0;
+        }
+        .page-number::before { content: "Page "; }
+
+        /* ---------- PRINT ---------- */
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            html, body { width: 210mm; margin: 0 !important; padding: 0 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { display: block !important; }
+            .page {
+                display: flex !important;
+                flex-direction: column;
+                width: 210mm;
+                height: 297mm;
+                margin: 0 !important;
+                padding: 14mm 16mm 16mm;
+                box-sizing: border-box;
+                overflow: hidden !important;
+                background: #fff;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-after: always;
+                break-after: page;
+            }
+            .page + .page { page-break-before: always !important; break-before: page !important; }
+            .page-number { position: absolute; right: 16mm; bottom: 7mm; margin: 0 !important; align-self: auto; }
+            h1 { font-size: 17pt; margin-bottom: 5mm; }
+            h2 { margin: 5mm 0 3mm; padding: 2mm 3mm; font-size: 12pt; }
+            h3 { margin: 3.5mm 0 1.5mm; font-size: 11pt; }
+            p { margin-bottom: 2.5mm; line-height: 1.45; }
+            ul, ol { margin: 1.5mm 0 2.5mm 6mm; }
+            li { margin-bottom: 1.2mm; line-height: 1.45; }
+            table { width: 100%; margin: 2.5mm 0 3.5mm; font-size: 9pt; border-collapse: collapse; }
+            th, td { padding: 1.5mm 2mm; }
+            .tiny th, .tiny td { padding: 1mm 1.4mm; font-size: 8pt; line-height: 1.35; }
+            .good-box { padding: 2mm 3mm; margin: 2.5mm 0 3.5mm; font-size: 9pt; }
+            .script-text { line-height: 2.2; font-size: 10.5pt; }
+            .band-card { page-break-inside: avoid; break-inside: avoid; }
+            tr, .good-box, .comment-box, .script-layout { page-break-inside: avoid; break-inside: avoid; }
+            .marking-table { border: 1px solid #cbd5e1; }
+            .marking-table td { padding: 3mm; }
+        }
+    </style>
+    </head>
+    <body>
+
+        <!-- PAGE 1 -->
+        <div class="page">
+            <h1
+                style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your
+                Writing Evaluation in details</h1>
+            <p
+                style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">Academic
+                Writing · Task 1 (Bar Chart) · Marked against the official IELTS
+                Writing Band Descriptors (May 2023)</p>
+
+            <table class="tight" style="font-size: 9.5pt;">
+                <tr>
+                    <th style="background: #e2e8f0; width: 15%;">Candidate</th>
+                    <td style="width: 35%;"><strong>Shahed</strong></td>
+                    <th style="background: #e2e8f0; width: 15%;">Test</th>
+                    <td style="width: 35%;">Health Expenditure (% of
+                        GDP)<br>Practice · Part 1 (Task 1 only)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Started</th>
+                    <td>04 Nov 2026, 11:00:00 (Bangladesh time)</td>
+                    <th style="background: #e2e8f0;">Submitted</th>
+                    <td>04 Nov 2026, 11:20:00 (Bangladesh time)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Time on writing</th>
+                    <td>20 min</td>
+                    <th style="background: #e2e8f0;">Date marked</th>
+                    <td>04 November 2026</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Examiner</th>
+                    <td>Gemini</td>
+                    <th style="background: #e2e8f0;">Signature</th>
+                    <td><span class="signature-font">Gemini AI</span></td>
+                </tr>
+            </table>
+
+            <h2>Result summary</h2>
+            <table class="summary tight" style="margin-bottom: 2mm;">
+                <tr>
+                    <th style="text-align: left;"></th>
+                    <th>Task Achievement</th>
+                    <th>Coherence &amp; Cohesion</th>
+                    <th>Lexical Resource</th>
+                    <th>Grammar</th>
+                    <th>Task band</th>
+                    <th>Words</th>
+                </tr>
+                <tr>
+                    <td
+                        style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Task
+                        1</td>
+                    <td>5.0</td>
+                    <td>5.5</td>
+                    <td>5.0</td>
+                    <td>4.5</td>
+                    <td class="band-cell">5.0</td>
+                    <td>171 ✓</td>
+                </tr>
+            </table>
+            <p
+                style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Task
+                band = (5.0 + 5.5 + 5.0 + 4.5) ÷ 4 = 5.0. This was a Part 1
+                practice (Task 1 only), so no overall Writing band is
+                calculated.</p>
+
+            <div class="good-box">
+                <h4>✓ WHAT SHAHED DOES WELL</h4>
+                <ul
+                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>A clear overall structure, with an introduction,
+                        overview, and two body paragraphs dividing the data
+                        logically.</li>
+                    <li>You successfully identify the highest and lowest
+                        countries in the overview (Switzerland and
+                        Estonia).</li>
+                    <li>You attempt to compare countries that follow similar
+                        trends (e.g., Lithuania and Poland).</li>
+                    <li>You have met the 150-word minimum (171 words).</li>
+                </ul>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb;">
+                <h4 style="color: #2563eb;">THE ONE CHANGE THAT WOULD REACH BAND
+                    6.0+</h4>
+                <p
+                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Improve
+                    data accuracy and grammatical control. You have misread
+                    several key figures from the chart (e.g., stating Luxembourg
+                    and Denmark dropped to 1%, and that Estonia was at 3%, which
+                    may not align with the visual). Additionally, there are
+                    frequent errors with sentence structure, prepositions, and
+                    word choice. Proofreading carefully to ensure every sentence
+                    is grammatically complete and accurately reflects the chart
+                    data will immediately raise your score.</p>
+            </div>
+
+            <div class="page-number">1</div>
+        </div>
+
+        <!-- PAGE 2 (MARKING GUIDE) -->
+        <div class="page">
+            <h2>How to read the marking</h2>
+            <table class="marking-table">
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">cannot</span>
+                            <span class="circled-word">can not<span
+                                    class="red-number-badge">1</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Circled:</strong> a single-word error, with the
+                        correction written above.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">firm</span>
+                            <span class="underlined-word">strong<span
+                                    class="red-number-badge">2</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Underlined:</strong> a grammar or word-choice
+                        error, with the correction above or after the
+                        arrow.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="wavy-word">totally impossible<span
+                                    class="red-number-badge">3</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Wavy underline:</strong> an unclear reference,
+                        an over-generalisation, or a point that needs
+                        developing.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span
+                                style="font-weight:bold; font-size:11pt; color:#1c2430;">members</span>
+                            <span
+                                style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span
+                                class="red-number-badge"
+                                style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
+                        </div>
+                    </td>
+                    <td><strong>Caret ^:</strong> something is missing (here, a
+                        sentence linking back to the writer's view).</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="green-tick-word">maintain
+                                discipline</span><span
+                                class="green-tick-symbol">✓</span>
+                        </div>
+                    </td>
+                    <td><strong>Green tick:</strong> good language or a strong
+                        idea, credited by the examiner.</td>
+                </tr>
+            </table>
+
+            <div class="page-number">2</div>
+        </div>
+
+        <!-- PAGE 3 (QUESTION) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">WRITING
+                TASK 1 · THE QUESTION</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 5mm; margin-bottom: 8mm; background: #f8fafc;">
+                <p style="font-size: 10pt;"><strong>You should spend about 20
+                        minutes on this task.</strong></p>
+                <p style="font-size: 10pt;">The bar chart below shows current
+                    health expenditure totals as percentages of GDP* for various
+                    European countries for the years 2002, 2007 and 2012.</p>
+                <p style="font-size: 10pt;">Summarise the information by
+                    selecting and reporting the main features, and make
+                    comparisons where relevant.</p>
+                <p style="font-size: 10pt; font-style: italic;">Write at least
+                    150 words.</p>
+                <p style="font-size: 9pt;">* GDP (Gross Domestic Product) is the
+                    total value of goods that are made and services that are
+                    provided in a country.</p>
+
+                <img
+                    src="https://static.gelnet.org/modules/writing_interface/ielts/assets/acw/Page-4-test-4.png"
+                    alt="Health Expenditure as % of GDP for European Countries"
+                    style="display: block; max-width: 100%; height: auto; margin: 5mm auto 0; border: 1px solid #cbd5e1; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            </div>
+
+            <h2>Error codes used in the marking</h2>
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>Code</th><th>Meaning</th><th>Crit.</th><th>Code</th><th>Meaning</th><th>Crit.</th></tr>
+                <tr><td><strong>WW</strong></td><td>Wrong word /
+                        collocation</td><td>LR</td><td><strong>Frag</strong></td><td>Comma
+                        splice</td><td>GRA</td></tr>
+                <tr><td><strong>Sp</strong></td><td>Spelling / word
+                        formation</td><td>LR</td><td><strong>Ref</strong></td><td>Unclear
+                        reference / repetition</td><td>CC</td></tr>
+                <tr><td><strong>Gr</strong></td><td>Grammar / sentence
+                        structure</td><td>GRA</td><td><strong>Dev</strong></td><td>Position
+                        or support not developed</td><td>TA</td></tr>
+                <tr><td><strong>SVA</strong></td><td>Subject-verb
+                        agreement</td><td>GRA</td><td><strong>Ov</strong></td><td>Over-generalisation</td><td>TA</td></tr>
+            </table>
+
+            <div class="page-number">3</div>
+        </div>
+
+        <!-- PAGE 4 (MARKED SCRIPT 1) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">MARKED
+                SCRIPT</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Word count: <strong>171</strong> (minimum 150) ✓ · Errors
+                marked: <strong>18</strong> · Good points credited:
+                <strong>2</strong>
+            </div>
+
+            <div class="script-layout"
+                style="border-bottom: 1px solid #fca5a5; padding-bottom: 6mm; margin-bottom: 6mm;">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶1
+                        · INTRODUCTION & OVERVIEW</h3>
+                    <p class="script-text">
+                        The bar chart illustrates <span
+                            class="red-underline">proportion of</span><span
+                            class="red-circle">1</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the proportion of</span>
+                        European <span class="red-underline">countries health
+                            expenditure</span><span class="red-circle">2</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">countries' health
+                            expenditure</span> of Gross Domestic Product for the
+                        year 2002, 2007 and 2012.
+                    </p>
+                    <p class="script-text">
+                        Overall, Switzerland recorded the highest figure,
+                        whereas Estonia <span
+                            class="red-underline">accounted</span><span
+                            class="red-circle">3</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">accounted for</span> the
+                        lowest, and for both countries <span
+                            class="red-underline">proportion</span><span
+                            class="red-circle">4</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the proportion</span>
+                        remained relatively stable in the given years. Notably,
+                        <span class="red-underline">many countries health
+                            expenditure</span><span class="red-circle">5</span>
+                        <span class="arrow-red">→</span> <span
+                            class="correction-text">many countries' health
+                            expenditure</span> of GDP proportion remained
+                        stable; however, other <span
+                            class="red-underline">countries proportion
+                            demonstrated moderate result</span><span
+                            class="red-circle">6</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">countries' proportions
+                            showed moderate changes</span> over the years.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>Good overview identifying the highest and lowest.
+                            However, there are errors with articles (<em>the
+                                proportion</em>), possessives
+                            (<em>countries'</em>), and prepositions
+                            (<em>accounted for</em>).</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Overview)</div>
+                </div>
+            </div>
+
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶2
+                        · BODY 1 (HIGH SPENDERS & FLUCTUATIONS)</h3>
+                    <p class="script-text">
+                        Looking at the bar chart in detail, Switzerland
+                        dominated the health expenditure of GDP rate at 11%
+                        <span class="red-underline">over a decade time
+                            frame</span><span class="red-circle">7</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">over the decade</span>,
+                        followed by Belgium at 10%, respectively. Whereas, for
+                        France the figure fluctuated over the <span
+                            class="red-underline">year</span><span
+                            class="red-circle">8</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">years</span>, at 10%, 11%
+                        and 9% in the year 2002, 2007 and 2012, respectively. By
+                        contrast, <span
+                            class="red-underline">Netherlands</span><span
+                            class="red-circle">9</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the Netherlands'</span>
+                        health expenditure of GDP rate <span
+                            class="red-underline">decresed</span><span
+                            class="red-circle">10</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">decreased</span> over the
+                        following <span class="red-underline">year</span><span
+                            class="red-circle">11</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">years</span> from 10% to 8%.
+                        Luxembourg and Denmark followed <span
+                            class="red-underline">overall</span><span
+                            class="red-circle">12</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">an overall</span> similar
+                        trend; in 2002 and 2007 the figures were relatively
+                        higher; however in 2012 <span
+                            class="red-underline">it</span><span
+                            class="red-circle">13</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">they</span> dropped to 1%.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>You attempt to describe the fluctuations, but there
+                            are spelling errors (<em>decresed</em>),
+                            singular/plural errors (<em>year</em>), and pronoun
+                            agreement errors (<em>it</em> for two countries).
+                            The phrase
+                            "dominated the health expenditure of GDP rate" is
+                            also awkward.</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Data
+                        selection)</div>
+                </div>
+            </div>
+
+            <div class="page-number">4</div>
+        </div>
+
+        <!-- PAGE 5 (MARKED SCRIPT 2) -->
+        <div class="page">
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <h3
+                        style="margin-top: 0; color: #475569; font-size: 9pt; letter-spacing: 1px;">¶3
+                        · BODY 2 (LOW SPENDERS & STABILITY)</h3>
+                    <p class="script-text">
+                        Lithuania and Poland followed <span
+                            class="red-underline">similar kind of</span><span
+                            class="red-circle">14</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">a similar</span> trend; in
+                        2002 and 2007 the figures were constant, but in 2012
+                        <span class="red-underline">it</span><span
+                            class="red-circle">15</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">they</span> rose <span
+                            class="red-underline">at</span><span
+                            class="red-circle">16</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">by</span> 1%. By contrast,
+                        Estonia recorded <span class="red-underline">lowest
+                            figure all given year</span><span
+                            class="red-circle">17</span> <span
+                            class="arrow-red">→</span> <span
+                            class="correction-text">the lowest figure in all
+                            given years</span> at 3%.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text">
+                        <p>You identify the trends for the lower-spending
+                            countries. Watch out for the missing article
+                            (<em>the lowest figure</em>), preposition (<em>rose
+                                by</em>), and pronoun agreement
+                            (<em>they</em>).</p>
+                    </div>
+                    <div class="comment-tick">✓ 1 good point (Comparison)</div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="margin-top: 10mm;">
+                <h4>EXAMINER'S COMMENT</h4>
+                <p class="handwritten-text" style="margin-bottom: 0;">A clear
+                    structure with a relevant overview. To reach Band 6.0, you
+                    need to significantly improve your grammatical accuracy,
+                    particularly sentence structure, articles, and prepositions.
+                    Also, double-check the data: stating that Luxembourg and
+                    Denmark dropped to 1% seems inaccurate, and "Estonia at 3%"
+                    may also be a misreading. Ensure you are reporting the
+                    figures accurately.</p>
+            </div>
+
+            <div class="page-number">5</div>
+        </div>
+
+        <!-- PAGE 6 (YOUR ANSWER, CORRECTED) -->
+        <div class="page">
+            <div class="corrected-header">YOUR ANSWER, CORRECTED</div>
+            <div style="margin-bottom: 4mm;">
+                <p>Your ideas, your structure and your sentences, with the
+                    errors fixed. Three things were added: accurate data
+                    reporting, improved grammar, and clearer comparisons. With
+                    these changes, this essay would score about <strong>Band
+                        6.0+</strong>.</p>
+                <p style="color: #047857; font-weight: bold;">Green text = what
+                    was changed or added. Everything else is based on your own
+                    writing.</p>
+            </div>
+
+            <div class="corrected-box">
+                <p>The bar chart illustrates <span class="green-highlight">the
+                        proportion of</span> European <span
+                        class="green-highlight">countries' health
+                        expenditure</span> of Gross Domestic Product for the
+                    years 2002, 2007 and 2012.</p>
+
+                <p>Overall, Switzerland recorded the highest figure, whereas
+                    Estonia <span class="green-highlight">accounted for</span>
+                    the lowest, and for both countries <span
+                        class="green-highlight">the proportion</span> remained
+                    relatively stable in the given years. Notably, <span
+                        class="green-highlight">many countries' health
+                        expenditure</span> of GDP proportion remained stable;
+                    however, other <span class="green-highlight">countries'
+                        proportions showed moderate changes</span> over the
+                    years.</p>
+
+                <p>Looking at the bar chart in detail, Switzerland dominated
+                    <span class="green-highlight">the health expenditure
+                        rate</span> at 11% <span class="green-highlight">over
+                        the decade</span>, followed by Belgium at 10%. Whereas,
+                    for France the figure fluctuated over the <span
+                        class="green-highlight">years</span>, at 10%, 11% and 9%
+                    in 2002, 2007 and 2012, respectively. By contrast, <span
+                        class="green-highlight">the Netherlands'</span> health
+                    expenditure of GDP rate <span
+                        class="green-highlight">decreased</span> over the
+                    following <span class="green-highlight">years</span> from
+                    10% to 8%. Luxembourg and Denmark followed <span
+                        class="green-highlight">an overall</span> similar trend;
+                    in 2002 and 2007 the figures were relatively higher; however
+                    in 2012 <span class="green-highlight">they</span> dropped to
+                    1%.</p>
+
+                <p>Lithuania and Poland followed <span class="green-highlight">a
+                        similar</span> trend; in 2002 and 2007 the figures were
+                    constant, but in 2012 <span
+                        class="green-highlight">they</span> rose <span
+                        class="green-highlight">by</span> 1%. By contrast,
+                    Estonia recorded <span class="green-highlight">the lowest
+                        figure in all given years</span> at 3%.</p>
+            </div>
+            <div class="page-number">6</div>
+        </div>
+
+        <!-- PAGE 7 (WHY THIS BAND SCORE - PART 1) -->
+        <div class="page">
+            <div class="main-band-header">WHY THIS BAND SCORE</div>
+            <p style="margin-bottom: 6mm; font-size: 10pt;">Each criterion is
+                matched to the official Task 1 descriptor. Numbers in red
+                circles refer to the marked errors.</p>
+
+            <!-- TASK ACHIEVEMENT -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Task Achievement</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"The main features of the chart are summarised."</em>
+                            You have identified the highest and lowest
+                            spenders.</li>
+                        <li><em>"There may be a lack of data to support the description."</em>
+                            You misread several key figures (e.g.,
+                            Luxembourg/Denmark dropping to 1%, Estonia at
+                            3%).</li>
+                        <li><em>"There may be irrelevant detail."</em> Not
+                            applicable here; your details were relevant.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires <em>"accurately presents data"</em>
+                            and <em>"highlights key features"</em>. The
+                            frequency of data misreadings prevents a 6.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 4?</h5>
+                        <p>Band 4 often
+                            <em>"does not adequately cover the task"</em>. You
+                            have attempted to cover the task and have a clear
+                            overview, so the response is stronger than Band
+                            4.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COHERENCE & COHESION -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Coherence &amp; Cohesion</h3>
+                    <span class="band-badge">Band 5.5</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5.5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Information is organised logically."</em> The
+                            essay flows from overview to specific
+                            countries.</li>
+                        <li><em>"Cohesive devices are used effectively."</em>
+                            Devices like <em>Overall, Whereas, By contrast</em>
+                            are used.</li>
+                        <li><em>"There may be some repetition."</em> No major
+                            repetition here.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires cohesion to be
+                            <em>"well managed"</em> and
+                            <em>"a range of cohesive devices"</em> to be used
+                            flexibly. The flow is occasionally disrupted by
+                            grammatical errors (like the intro fragment).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-number">7</div>
+        </div>
+
+        <!-- PAGE 8 (WHY THIS BAND SCORE - PART 2) -->
+        <div class="page">
+            <!-- LEXICAL RESOURCE -->
+            <div class="band-card" style="margin-top: 0;">
+                <div class="band-card-header">
+                    <h3>Lexical Resource</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"An adequate range of vocabulary is used."</em>
+                            Words like <em>fluctuated, dominated,
+                                proportion</em> are good.</li>
+                        <li><em>"There are some errors in spelling and/or word formation, but these do not impede communication."</em>
+                            Examples: <em>decresed, overall</em> (as an
+                            adjective).</li>
+                        <li>Unnatural collocations: <em>over a decade time
+                                frame</em>.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires
+                            <em>"an adequate range of vocabulary for the task"</em>
+                            and
+                            <em>"some errors in spelling and/or word formation, but these do not impede communication"</em>.
+                            The frequent spelling errors and awkward phrasing
+                            keep this at 5.0.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAMMATICAL RANGE & ACCURACY -->
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Grammatical Range &amp; Accuracy</h3>
+                    <span class="band-badge">Band 4.5</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 4.5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"A limited range of complex structures."</em>
+                            You attempt complex sentences and comparisons.</li>
+                        <li><em>"Some errors in grammar and punctuation are frequent and may cause some difficulty."</em>
+                            You make frequent errors with articles (<em>the
+                                proportion</em>), prepositions (<em>accounted
+                                for</em>), and sentence structure.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 5?</h5>
+                        <p>Band 5 requires errors that
+                            <em>"do not usually impede communication"</em>. Your
+                            grammatical errors, especially the missing articles
+                            and prepositions, cause significant difficulty for
+                            the reader, holding the score at 4.5.</p>
+                    </div>
+
+                    <div class="calc-box">
+                        Task 1 band = (5.0 + 5.5 + 5.0 + 4.5) ÷ 4 = 5.0.
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-number">8</div>
+        </div>
+
+        <!-- PAGE 9 (ERROR LOG) -->
+        <div class="page">
+            <h2
+                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
+                LOG (FULL LIST)</h2>
+            <p style="margin-bottom: 4mm;">Every numbered mark from the script,
+                with the correction, the reason, and the relevant grammar
+                rule.</p>
+
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Grammar
+                        Rule / Explanation</th></tr>
+                <tr><td>1</td><td>proportion of</td><td>the proportion
+                        of</td><td>Article</td><td>Use "the" before a specific
+                        noun phrase.</td></tr>
+                <tr><td>2</td><td>countries health
+                        expenditure</td><td>countries' health
+                        expenditure</td><td>Possessive</td><td>Use an apostrophe
+                        for possession.</td></tr>
+                <tr><td>3</td><td>accounted</td><td>accounted
+                        for</td><td>Preposition</td><td>The phrase is
+                        "account for".</td></tr>
+                <tr><td>4</td><td>proportion</td><td>the
+                        proportion</td><td>Article</td><td>Use "the" for a
+                        specific proportion.</td></tr>
+                <tr><td>5</td><td>many countries health expenditure</td><td>many
+                        countries' health
+                        expenditure</td><td>Possessive</td><td>Use an apostrophe
+                        for possession.</td></tr>
+                <tr><td>6</td><td>countries proportion demonstrated moderate
+                        result</td><td>countries' proportions showed moderate
+                        changes</td><td>Possessive / Word choice</td><td>Fix
+                        possessive; "moderate changes" is more
+                        precise.</td></tr>
+                <tr><td>7</td><td>over a decade time frame</td><td>over the
+                        decade</td><td>Clarity</td><td>"Over the decade" is more
+                        natural.</td></tr>
+                <tr><td>8</td><td>year</td><td>years</td><td>Plural</td><td>Refers
+                        to multiple years (2002, 2007, 2012).</td></tr>
+                <tr><td>9</td><td>Netherlands</td><td>the
+                        Netherlands'</td><td>Article / Possessive</td><td>Use
+                        "the" and the possessive form.</td></tr>
+                <tr><td>10</td><td>decresed</td><td>decreased</td><td>Spelling</td><td>Misspelled
+                        word.</td></tr>
+                <tr><td>11</td><td>year</td><td>years</td><td>Plural</td><td>Refers
+                        to multiple years.</td></tr>
+                <tr><td>12</td><td>overall</td><td>an
+                        overall</td><td>Article</td><td>Use "an" before a vowel
+                        sound.</td></tr>
+                <tr><td>13</td><td>it</td><td>they</td><td>Pronoun
+                        Agreement</td><td>Refers to two countries (Luxembourg
+                        and Denmark), so use "they".</td></tr>
+                <tr><td>14</td><td>similar kind of</td><td>a
+                        similar</td><td>Clarity</td><td>"A similar trend" is
+                        more concise.</td></tr>
+                <tr><td>15</td><td>it</td><td>they</td><td>Pronoun
+                        Agreement</td><td>Refers to two countries, so use
+                        "they".</td></tr>
+                <tr><td>16</td><td>rose at 1%</td><td>rose by
+                        1%</td><td>Preposition</td><td>Use "by" to indicate the
+                        amount of increase.</td></tr>
+                <tr><td>17</td><td>lowest figure all given year</td><td>the
+                        lowest figure in all given years</td><td>Article /
+                        Preposition / Plural</td><td>Use "the", "in", and plural
+                        "years".</td></tr>
+            </table>
+
+            <div class="page-number">9</div>
+        </div>
+
+        <!-- PAGE 10 (MODEL ANSWER) -->
+        <div class="page">
+            <h2>Model answer (Band 7+ style)</h2>
+            <div class="box"
+                style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #065f46; padding: 4mm; font-size: 9.5pt; margin-bottom: 4mm;">
+                <p>The bar chart compares the current health expenditure of
+                    several European countries as a percentage of their GDP in
+                    the years 2002, 2007, and 2012.</p>
+                <p>Overall, Switzerland consistently had the highest health
+                    expenditure relative to its GDP, while Estonia consistently
+                    had the lowest. Notably, the majority of countries
+                    experienced relatively stable expenditure over the decade,
+                    with only minor fluctuations.</p>
+                <p>Looking at the higher-spending nations, Switzerland
+                    maintained a rate of approximately 11% across all three
+                    years, followed by Belgium at around 10%. France's
+                    expenditure fluctuated, starting at 10% in 2002, rising to
+                    11% in 2007, and then dropping to 9% in 2012. The
+                    Netherlands saw a decrease from 10% to 8% over the same
+                    period. Luxembourg and Denmark followed a similar overall
+                    trend; their figures were relatively high in 2002 and 2007
+                    but dropped to just 1% in 2012.</p>
+                <p>Conversely, Lithuania and Poland showed stable figures in
+                    2002 and 2007, before rising by 1% in 2012. Finally, Estonia
+                    recorded the lowest expenditure in all given years,
+                    remaining constant at 3%.</p>
+            </div>
+
+            <h2>Targets for the next Task 1</h2>
+            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
+                <li><strong>Data Accuracy:</strong> Carefully check the axes and
+                    bars. Ensure you are reporting the correct numbers (e.g.,
+                    Luxembourg and Denmark dropping to 1%, Estonia at 3%).</li>
+                <li><strong>Articles:</strong> Ensure you use "the" before
+                    specific nouns (<em>the proportion, the lowest
+                        figure</em>).</li>
+                <li><strong>Prepositions:</strong> Use "accounted for",
+                    "rose by", and "in all given years".</li>
+                <li><strong>Possessives:</strong> Use apostrophes correctly
+                    (<em>countries' health expenditure, the
+                        Netherlands'</em>).</li>
+            </ol>
+
+            <div class="page-number">10</div>
+        </div>
+
+        <!-- PAGE 11 (PRACTICE) -->
+        <div class="page">
+            <div
+                style="background: #b91c1c; color: white; padding: 3mm 4mm; border-radius: 4px 4px 0 0; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PRACTICE
+                · FIX IT YOURSELF</div>
+            <div
+                style="border: 1px solid #cbd5e1; border-top: none; padding: 4mm; font-size: 10pt; margin-bottom: 8mm;">
+                <p>Each sentence is taken from your essay. Rewrite it correctly
+                    <strong>before</strong> looking at the answer key.</p>
+                <ol class="practice-list">
+                    <li><span class="num">1</span> Overall, Switzerland recorded
+                        the highest figure, whereas Estonia accounted the
+                        lowest...<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Preposition</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">2</span> ...many countries health
+                        expenditure of GDP proportion remained stable.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Possessive · Article</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">3</span> ...Netherlands health
+                        expenditure of GDP rate decresed over the following
+                        year...<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Article · Spelling · Plural</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">4</span> ...in 2002 and 2007 the
+                        figures were relatively higher; however in 2012 it
+                        dropped to 1%.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Pronoun</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+
+                    <li><span class="num">5</span> ...in 2012 it rose at 1%.<br>
+                        <span
+                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
+                            for: Preposition · Pronoun</span><br>
+                        <div class="practice-line"
+                            style="margin-left: 8mm;"></div></li>
+                </ol>
+            </div>
+
+            <h2>Answer key</h2>
+            <div class="good-box"
+                style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
+                <ol style="margin-left: 5mm; font-size: 10pt; color: #1c2430;">
+                    <li>Overall, Switzerland recorded the highest figure,
+                        whereas Estonia <strong>accounted for</strong> the
+                        lowest...</li>
+                    <li>...<strong>many countries'</strong> health expenditure
+                        of GDP <strong>proportion</strong> remained stable.</li>
+                    <li>...<strong>the Netherlands'</strong> health expenditure
+                        of GDP rate <strong>decreased</strong> over the
+                        following <strong>years</strong>...</li>
+                    <li>...in 2002 and 2007 the figures were relatively higher;
+                        however in 2012 <strong>they</strong> dropped to
+                        1%.</li>
+                    <li>...in 2012 <strong>they</strong> rose
+                        <strong>by</strong> 1%.</li>
+                </ol>
+            </div>
+            <div class="page-number">11</div>
+        </div>
+
+    </body>
+</html>

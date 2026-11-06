@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Speaking Evaluation – Test 1 (Naim)</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kalam:wght@400&family=Inter:wght@400;600;700&display=swap');
+
+        @page { size: A4; margin: 0; }
+        * { box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #e8eef7 0%, #f4f6fb 100%);
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: #1c2430;
+        }
+        .page {
+            display: flex;
+            flex-direction: column;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 18mm 18mm 15mm;
+            margin: 12mm auto;
+            background: #fff;
+            box-shadow: 0 6px 28px rgba(20, 40, 80, .16);
+            border-radius: 8px;
+            position: relative;
+            page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            page-break-after: always;
+            break-after: page;
+        }
+        .page::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #f59e0b);
+        }
+        .page:last-child { page-break-after: auto; break-after: auto; }
+
+        h1 { font-size: 19pt; margin: 0 0 8mm; line-height: 1.25; color: #1e3a8a; letter-spacing: -.3px; }
+        h2 { font-size: 13pt; margin: 10mm 0 5mm; padding: 2.4mm 4mm; border-left: 5px solid #2563eb; background: linear-gradient(90deg, #eff6ff, transparent 92%); color: #1e3a8a; border-radius: 0 6px 6px 0; line-height: 1.3; }
+        h2:first-child { margin-top: 0; }
+        h3 { font-size: 11.5pt; margin: 6mm 0 2.5mm; color: #1d4ed8; line-height: 1.35; }
+        h3:first-of-type { margin-top: 2mm; }
+
+        p { margin: 0 0 4mm; text-align: justify; line-height: 1.65; }
+        ul, ol { margin: 2.5mm 0 4mm 7mm; padding: 0; }
+        li { margin-bottom: 2mm; line-height: 1.55; }
+        li:last-child { margin-bottom: 0; }
+        li::marker { color: #2563eb; font-weight: bold; }
+        em { font-style: italic; color: #334155; }
+        strong { color: #0f172a; }
+
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 3mm 0 5mm; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(20,40,80,.10); font-size: 9.8pt; }
+        th, td { border: 1px solid #dbe3ee; padding: 2.4mm 3mm; vertical-align: top; line-height: 1.55; }
+        th { background: linear-gradient(180deg, #eef4ff, #dfe9fb); color: #1e3a8a; font-weight: 700; text-align: left; }
+        tbody tr:nth-child(even) td { background: #f8fafc; }
+        tbody tr:hover td { background: #f1f5ff; }
+
+        .summary th { text-align: center; background: #1e293b; color: #fff; border-color: #334155; }
+        .summary td { text-align: center; font-weight: 700; font-size: 12pt; color: #1e3a8a; padding: 2.8mm 2mm; }
+        .summary .band-cell { color: #b91c1c !important; font-size: 14pt; }
+
+        .tight th, .tight td { padding: 2mm 2.4mm; }
+        .tiny th, .tiny td { padding: 1.8mm 2.2mm; font-size: 8.6pt; }
+
+        /* MARKING GUIDE */
+        .marking-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 3mm 0 5mm;
+            border: 1px solid #cbd5e1;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 10pt;
+        }
+        .marking-table td {
+            border: 1px solid #cbd5e1;
+            padding: 4mm;
+            vertical-align: middle;
+            background: #fff !important;
+        }
+        .marking-table td:first-child {
+            width: 35%;
+            text-align: center;
+            background: #f8fafc !important;
+        }
+        .marking-example-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .handwritten-red {
+            color: #dc2626;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 16pt;
+            position: absolute;
+            top: -26px;
+            left: -5px;
+            white-space: nowrap;
+        }
+        .circled-word {
+            border: 1.5px solid #dc2626;
+            border-radius: 50%;
+            padding: 2px 10px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .red-number-badge {
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+        }
+        .underlined-word {
+            border-bottom: 2px solid #dc2626;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+            font-size: 11pt;
+        }
+        .wavy-word {
+            text-decoration: underline wavy #dc2626;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            color: #1c2430;
+            position: relative;
+            display: inline-block;
+            font-size: 11pt;
+        }
+        .green-tick-word {
+            font-weight: bold;
+            color: #1c2430;
+            border-bottom: 2px solid #16a34a;
+            display: inline-block;
+            padding-bottom: 2px;
+            position: relative;
+            font-size: 11pt;
+        }
+        .green-tick-symbol {
+            color: #16a34a;
+            font-size: 18pt;
+            font-weight: bold;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* SCRIPT LAYOUT */
+        .script-layout { display: flex; width: 100%; }
+        .script-text-col { flex: 1.4; padding-right: 5mm; }
+        .script-comment-col { flex: 0.6; padding-left: 5mm; border-left: 1px solid #fca5a5; }
+        .script-text {
+            line-height: 2.5;
+            font-size: 11.5pt;
+            font-family: 'Kalam', 'Caveat', 'Comic Sans MS', cursive;
+            color: #1c2430;
+        }
+        .comment-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1.4;
+            margin-bottom: 2mm;
+        }
+        .comment-text p { margin-bottom: 3mm; }
+        .comment-tick {
+            color: #16a34a;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 9pt;
+            display: block;
+            margin-top: 4mm;
+        }
+        .red-underline {
+            text-decoration: underline;
+            text-decoration-color: #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-wavy {
+            text-decoration: underline wavy #dc2626;
+            text-decoration-thickness: 1.5px;
+        }
+        .green-underline {
+            text-decoration: underline;
+            text-decoration-color: #16a34a;
+            text-decoration-thickness: 1.5px;
+        }
+        .red-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #dc2626;
+            color: white;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-left: 2px;
+            vertical-align: super;
+            line-height: 1;
+        }
+        .correction-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+        }
+        .floating-text { position: relative; white-space: nowrap; }
+        .floating-text .above {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 14pt;
+            line-height: 1;
+            margin-bottom: 2px;
+            white-space: nowrap;
+        }
+        .arrow-red { color: #dc2626; font-weight: bold; margin: 0 4px; }
+
+        /* PRONUNCIATION MARKS */
+        .pron-mark {
+            text-decoration: underline wavy #7c3aed;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 4px;
+            position: relative;
+            display: inline-block;
+        }
+        .pron-above {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #7c3aed;
+            font-size: 13pt;
+            line-height: 1;
+            margin-bottom: 2px;
+            white-space: nowrap;
+        }
+        .purple-badge {
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-left: 2px;
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        /* FLUENCY MARKS */
+        .fluency-mark {
+            background: #fef3c7;
+            border-bottom: 2px dotted #f59e0b;
+            padding: 0 1px;
+        }
+        .filler {
+            background: #fef9c3;
+            color: #854d0e;
+            font-style: italic;
+            padding: 0 1px;
+        }
+
+        /* BOXES */
+        .comment-box {
+            background: #fff;
+            border: 2px solid #dc2626;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 6mm 0 5.5mm;
+            font-size: 9.5pt;
+            line-height: 1.6;
+        }
+        .comment-box h4 { color: #dc2626; margin: 0 0 3mm; font-size: 10pt; text-transform: uppercase; font-family: 'Inter', sans-serif;}
+        .comment-box .handwritten-text {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            color: #dc2626;
+            font-size: 15pt;
+            line-height: 1.4;
+        }
+        .good-box {
+            background: #f0fdf4;
+            border: 1.5px solid #22c55e;
+            border-radius: 6px;
+            padding: 4mm 5mm;
+            margin: 3.5mm 0 5.5mm;
+            font-size: 9.8pt;
+        }
+        .good-box h4 { color: #166534; margin: 0 0 2mm; font-size: 10pt; text-transform: uppercase; }
+
+        /* BAND SCORE UI */
+        .main-band-header {
+            background: #b91c1c;
+            color: white;
+            padding: 4mm;
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+            letter-spacing: 0.5px;
+        }
+        .band-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            margin-bottom: 6mm;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(20,40,80,.05);
+        }
+        .band-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            color: white;
+            padding: 3mm 4mm;
+        }
+        .band-card-header h3 { margin: 0; color: white; font-size: 12pt; font-weight: 600; }
+        .band-badge {
+            background: #b91c1c;
+            color: white;
+            padding: 1mm 4mm;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        .band-card-body { padding: 4mm; background: #fff; }
+        .band-card-body h4 {
+            color: #1e293b;
+            font-size: 10.5pt;
+            margin: 0 0 3mm 0;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .band-card-body ul {
+            margin-left: 5mm;
+            font-size: 10pt;
+            margin-bottom: 5mm;
+        }
+        .why-not-higher {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-higher h5 { color: #991b1b; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-higher p { margin: 0; font-size: 9.5pt; color: #7f1d1d; }
+        .why-not-lower {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 3mm 4mm;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 3mm;
+        }
+        .why-not-lower h5 { color: #166534; margin: 0 0 2mm 0; font-size: 10.5pt; }
+        .why-not-lower p { margin: 0; font-size: 9.5pt; color: #14532d; }
+        .calc-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 2mm 4mm;
+            font-size: 10pt;
+            color: #92400e;
+            font-weight: 600;
+            margin-top: 3mm;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* SIGNATURE */
+        .signature-font {
+            font-family: 'Caveat', 'Comic Sans MS', cursive;
+            font-size: 18pt;
+            color: #1e3a8a;
+            transform: rotate(-5deg);
+            display: inline-block;
+        }
+
+        .practice-list li { list-style-type: none; margin-bottom: 6mm; position: relative; }
+        .practice-list .num { font-weight: bold; font-size: 12pt; margin-right: 2mm; color: #1e3a8a; }
+        .practice-line { border-bottom: 1px solid #cbd5e1; height: 8mm; margin-top: 2mm; }
+
+        .page-number {
+            margin-top: auto;
+            align-self: flex-end;
+            font-size: 8.6pt;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 1.2mm 3.5mm;
+            border-radius: 999px;
+            letter-spacing: .3px;
+            flex-shrink: 0;
+        }
+        .page-number::before { content: "Page "; }
+
+        /* PRINT */
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            html, body { width: 210mm; margin: 0 !important; padding: 0 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { display: block !important; }
+            .page {
+                display: flex !important;
+                flex-direction: column;
+                width: 210mm;
+                height: 297mm;
+                margin: 0 !important;
+                padding: 14mm 16mm 16mm;
+                box-sizing: border-box;
+                overflow: hidden !important;
+                background: #fff;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-after: always;
+                break-after: page;
+            }
+            .page + .page { page-break-before: always !important; break-before: page !important; }
+            .page-number { position: absolute; right: 16mm; bottom: 7mm; margin: 0 !important; align-self: auto; }
+            h1 { font-size: 17pt; margin-bottom: 5mm; }
+            h2 { margin: 5mm 0 3mm; padding: 2mm 3mm; font-size: 12pt; }
+            h3 { margin: 3.5mm 0 1.5mm; font-size: 11pt; }
+            p { margin-bottom: 2.5mm; line-height: 1.45; }
+            ul, ol { margin: 1.5mm 0 2.5mm 6mm; }
+            li { margin-bottom: 1.2mm; line-height: 1.45; }
+            table { width: 100%; margin: 2.5mm 0 3.5mm; font-size: 9pt; border-collapse: collapse; }
+            th, td { padding: 1.5mm 2mm; }
+            .tiny th, .tiny td { padding: 1mm 1.4mm; font-size: 8pt; line-height: 1.35; }
+            .good-box { padding: 2mm 3mm; margin: 2.5mm 0 3.5mm; font-size: 9pt; }
+            .script-text { line-height: 2.2; font-size: 10.5pt; }
+            .band-card { page-break-inside: avoid; break-inside: avoid; }
+            tr, .good-box, .comment-box, .script-layout { page-break-inside: avoid; break-inside: avoid; }
+            .marking-table { border: 1px solid #cbd5e1; }
+            .marking-table td { padding: 3mm; }
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- PAGE 1: RESULTS SUMMARY -->
+        <div class="page">
+            <h1 style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your Speaking Evaluation in Detail</h1>
+            <p style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">IELTS Speaking · Full Mock Test · Marked against the official IELTS Speaking Band Descriptors (May 2023)</p>
+
+            <table class="tight" style="font-size: 9.5pt;">
+                <tr>
+                    <th style="background: #e2e8f0; width: 15%;">Candidate</th>
+                    <td style="width: 35%;"><strong>Naim</strong></td>
+                    <th style="background: #e2e8f0; width: 15%;">Test</th>
+                    <td style="width: 35%;">The Official Cambridge Guide to IELTS<br>Test 1 · Full Speaking Mock (Parts 1–3)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Started</th>
+                    <td>01 Nov 2026, 20:00:00 (Bangladesh time)</td>
+                    <th style="background: #e2e8f0;">Submitted</th>
+                    <td>01 Nov 2026, 20:18:00 (Bangladesh time)</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Duration</th>
+                    <td>18 min (Parts 1–3)</td>
+                    <th style="background: #e2e8f0;">Date marked</th>
+                    <td>01 November 2026</td>
+                </tr>
+                <tr>
+                    <th style="background: #e2e8f0;">Examiner</th>
+                    <td>Gemini</td>
+                    <th style="background: #e2e8f0;">Signature</th>
+                    <td><span class="signature-font">Gemini AI</span></td>
+                </tr>
+            </table>
+
+            <h2>Result summary</h2>
+            <table class="summary tight" style="margin-bottom: 2mm;">
+                <tr>
+                    <th style="text-align: left;"></th>
+                    <th>Fluency &amp; Coherence</th>
+                    <th>Lexical Resource</th>
+                    <th>Grammatical Range &amp; Accuracy</th>
+                    <th>Pronunciation</th>
+                    <th>Speaking band</th>
+                    <th>Part 2 length</th>
+                </tr>
+                <tr>
+                    <td style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Speaking</td>
+                    <td>5.0</td>
+                    <td>5.0</td>
+                    <td>4.5</td>
+                    <td>5.5</td>
+                    <td class="band-cell">5.0</td>
+                    <td>~1 min 45 s ✓</td>
+                </tr>
+            </table>
+            <p style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Speaking band = (5.0 + 5.0 + 4.5 + 5.5) ÷ 4 = 5.0. All three parts were completed. Part 2 length was within the 1–2 minute requirement. <span style="color: #b91c1c; font-weight: bold;">Frequent fillers and grammatical errors affect clarity.</span></p>
+
+            <div class="good-box">
+                <h4>✓ WHAT NAIM DOES WELL</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Speaks at length and is not afraid to attempt complex answers.</li>
+                    <li>Provides personal examples (secondary school, old buildings, unusual hospital, news story).</li>
+                    <li>Shows good general knowledge and attempts to discuss abstract topics (newspapers, technology).</li>
+                    <li>Pronunciation is generally intelligible; some words are clear and well-stressed.</li>
+                </ul>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb;">
+                <h4 style="color: #2563eb;">THE ONE CHANGE THAT WOULD REACH BAND 6.0+</h4>
+                <p style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Improve grammatical accuracy and reduce hesitation. Many sentences contain basic errors in subject-verb agreement, tense, articles, and prepositions (e.g. “most of my close friend are”, “I was starting”, “those buildings are become visiting place”). These errors, combined with frequent fillers (<em>uh, uh, uh</em>) and repetitions, make your speech harder to follow. Focus on mastering simple sentence structures and using silent pauses instead of fillers. With clearer grammar and smoother delivery, your score will rise quickly.</p>
+            </div>
+
+            <div class="page-number">1</div>
+        </div>
+
+        <!-- PAGE 2: HOW TO READ THE MARKING -->
+        <div class="page">
+            <h2>How to read the marking</h2>
+            <table class="marking-table">
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red" style="color:#7c3aed;">/bred/</span>
+                            <span class="circled-word">breed<span class="red-number-badge">1</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Circled (purple above):</strong> a pronunciation error, with the phonetic correction written above.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="handwritten-red">met</span>
+                            <span class="underlined-word">made<span class="red-number-badge">2</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Underlined:</strong> a grammar or word-choice error, with the correction above or after the arrow.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="wavy-word">Christian mind<span class="red-number-badge">3</span></span>
+                        </div>
+                    </td>
+                    <td><strong>Wavy underline:</strong> a Fluency &amp; Coherence issue — an unclear, rambling, or incoherent moment.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span style="font-weight:bold; font-size:11pt; color:#1c2430;">be</span>
+                            <span style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span class="red-number-badge" style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
+                        </div>
+                    </td>
+                    <td><strong>Caret ^:</strong> something is missing (a word, article, or linking phrase).</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span class="green-tick-word">competitive attitude</span><span class="green-tick-symbol">✓</span>
+                        </div>
+                    </td>
+                    <td><strong>Green tick:</strong> good language or a strong idea, credited by the examiner.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marking-example-wrapper">
+                            <span style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt;">uh</span>
+                            <span style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt; margin-left:4px;">like</span>
+                        </div>
+                    </td>
+                    <td><strong>Yellow highlight:</strong> a filler / hesitation marker that reduces Fluency &amp; Coherence.</td>
+                </tr>
+            </table>
+
+            <h2>Speaking criteria covered</h2>
+            <ul style="font-size: 10pt;">
+                <li><strong>Fluency &amp; Coherence (FC):</strong> how smoothly you speak, how well ideas connect, and how much you hesitate.</li>
+                <li><strong>Lexical Resource (LR):</strong> the range and accuracy of your vocabulary.</li>
+                <li><strong>Grammatical Range &amp; Accuracy (GRA):</strong> the variety and correctness of your sentence structures.</li>
+                <li><strong>Pronunciation (P):</strong> how clear and intelligible your speech is, including individual sounds, stress, and intonation.</li>
+            </ul>
+
+            <div class="page-number">2</div>
+        </div>
+
+        <!-- PAGE 3: PART 1 MARKED SCRIPT Q1-Q3 -->
+        <div class="page">
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 1 · SCHOOL DAYS · MARKED SCRIPT (Q1–Q3)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>5 min 10 s</strong> · Errors marked: <strong>14</strong> · Good points credited: <strong>3</strong> · Fillers: <strong>22</strong>
+            </div>
+
+            <h3>Q1. Tell me something about your secondary school.</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        <span class="filler">Uh</span>, okay. I <span class="floating-text"><span class="above">studied</span><span class="red-underline">was starting</span></span><span class="red-circle">1</span> from class 6 to 10 in my secondary school, which is <span class="floating-text"><span class="above">called</span><span class="red-underline">in called</span></span><span class="red-circle">2</span> High School. And most of my close <span class="floating-text"><span class="above">friends</span><span class="red-underline">friend</span></span><span class="red-circle">3</span> are from that high school, and <span class="filler">uh</span>, it was around 10 <span class="floating-text"><span class="above">kilometers away</span><span class="red-underline">kilometer far</span></span><span class="red-circle">4</span> from my house, and every day I <span class="floating-text"><span class="above">had</span><span class="red-underline">have, I had</span></span><span class="red-circle">5</span> to go, <span class="filler">uh</span>, that school in the morning. I was really <span class="floating-text"><span class="above">enjoying</span><span class="red-underline">enjoying</span></span><span class="red-circle">6</span> going to high school and there are a lot of <span class="floating-text"><span class="above">memories</span><span class="red-underline">memory</span></span><span class="red-circle">7</span> when I was in my secondary school. I was <span class="filler">uh, uh</span>, studying science in that school. And <span class="filler">uh</span>, Every day we <span class="floating-text"><span class="above">tried</span><span class="red-underline">are</span></span><span class="red-circle">8</span> <span class="filler">uh</span>, trying to play <span class="filler">uh</span>, some sports <span class="filler">uh</span>, when we <span class="filler">uh</span>, got enough time. So that was <span class="floating-text"><span class="above">a</span><span class="red-underline">an</span></span><span class="red-circle">9</span> memorable experience for me to spend around 5 years in my secondary school.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Good personal detail. Errors: <em>was starting</em> → started/studied; <em>in called</em> → called; <em>friend</em> → friends; <em>10 kilometer far</em> → 10 kilometers away; <em>have, I had</em> → had; <em>enjoying</em> (tense) → enjoyed; <em>memory</em> → memories; <em>are</em> → tried/would; <em>an</em> → a. Frequent fillers.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear description of school)</div>
+                </div>
+            </div>
+
+            <h3>Q2. Which subject did you find most difficult at school? [Why?]</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think when I was in my high school, <span class="filler">Uh</span>, especially, <span class="filler">uh</span>, higher <span class="floating-text"><span class="above">math</span><span class="red-underline">met</span></span><span class="red-circle">10</span> and physics, <span class="filler">uh</span>, seemed to me very difficult, <span class="filler">uh</span>, because I was not interested to, <span class="filler">uh</span>, <span class="floating-text"><span class="above">learn</span><span class="red-underline">learn</span></span><span class="red-circle">11</span> about the physics theory and <span class="filler">uh</span>, their practical uses. But, <span class="filler">uh</span>, there was a very famous teacher in my <span class="filler">uh</span>, secondary school, and he was really good to <span class="filler">uh, uh</span>, to <span class="filler">uh</span>, <span class="floating-text"><span class="above">teach</span><span class="red-underline">study</span></span><span class="red-circle">12</span> those difficult topics in a good way, and after <span class="filler">uh, uh</span>, after <span class="filler">uh</span>, spending some time, learning from him, I found that <span class="filler">uh</span>, those difficult topics are <span class="floating-text"><span class="above">becoming</span><span class="red-underline">becoming</span></span><span class="red-circle">13</span> easier to me, but I think those 2 seem very difficult when I was in my school.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>met</em> → math; <em>interested to learn</em> → interested in learning; <em>good to study</em> → good at teaching; <em>are becoming</em> (tense) → became. Repetition and fillers.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear explanation of difficulty)</div>
+                </div>
+            </div>
+
+            <h3>Q3. Do you ever need that subject now? [Why? / Why not?]</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think <span class="filler">uh, uh</span>, yes, I still need some <span class="filler">uh, uh</span>, topics from those subjects, but <span class="filler">uh</span>, as <span class="filler">uh</span>, in my bachelor, my major was biology and chemistry. So physics and higher math didn't seem very important to me, but yeah, when I was in my university. <span class="filler">Uh</span>, I had to study <span class="filler">uh</span>, 2 to 3 courses <span class="filler">uh</span>, related to those subjects. But these, those subjects, <span class="filler">uh</span>, they didn't seem very important, <span class="filler">uh</span>, now.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>2 to 3 courses</em> → two or three courses (minor). Answer is relevant but repetitive and hesitant.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Direct answer)</div>
+                </div>
+            </div>
+
+            <div class="page-number">3</div>
+        </div>
+
+        <!-- PAGE 4: PART 1 MARKED SCRIPT Q4-Q6 -->
+        <div class="page">
+            <h3>Q4. What did you enjoy about being a school student?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        When I was a school student, I really <span class="floating-text"><span class="above">enjoyed</span><span class="red-underline">enjoy</span></span><span class="red-circle">14</span> spending <span class="filler">uh</span>, my precious time with my friends, <span class="filler">uh</span>, enjoying <span class="filler">uh</span>, <span class="floating-text"><span class="above">studying</span><span class="red-underline">study</span></span><span class="red-circle">15</span> together, and <span class="filler">uh, uh</span>, maybe once or twice in a month. We had to participate in a quiz competition. <span class="filler">Uh</span>, we had to do some teamwork, and I really enjoyed <span class="filler">uh</span>, spending time in that at that moment. So yeah, those are the moments I really enjoyed when I was a school student.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>enjoy</em> → enjoyed; <em>study</em> → studying. Some repetition (“in that at that moment”).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear personal reflection)</div>
+                </div>
+            </div>
+
+            <h3>Q5. Are there any famous buildings in your home town? [What are they?]</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        Yes, there are some famous old buildings in my hometown, and <span class="filler">uh</span>, One is very close <span class="floating-text"><span class="above">to</span><span class="red-underline">from</span></span><span class="red-circle">16</span> my home, and another is very far. And those buildings are very old. I, <span class="filler">um</span>, I <span class="floating-text"><span class="above">learned</span><span class="red-underline">knew</span></span><span class="red-circle">17</span> from my grandfather, he told me that those 2 buildings, <span class="filler">uh</span>, are about 100 years old. And people of my hometown, some people, from my hometown, tend to visit those places, and those 2 buildings <span class="floating-text"><span class="above">have become</span><span class="red-underline">are become</span></span><span class="red-circle">18</span> visiting <span class="floating-text"><span class="above">places</span><span class="red-underline">place</span></span><span class="red-circle">19</span>. So in the, Evening, or in a weekend, some of my <span class="floating-text"><span class="above">friends</span><span class="red-underline">friend</span></span><span class="red-circle">20</span>, <span class="filler">uh</span>, are visiting those <span class="filler">uh</span>, buildings, whenever we got time. And I think <span class="wavy-word">Hoi and I watch younger</span><span class="red-circle">21</span>.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>close from</em> → close to; <em>knew</em> → learned; <em>are become</em> → have become; <em>visiting place</em> → visiting places; <em>friend</em> → friends. Unclear phrase: <em>“Hoi and I watch younger”</em>.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear description of old buildings)</div>
+                </div>
+            </div>
+
+            <h3>Q6. In what type of building do most people in your home town live?</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        In my hometown, most of the people have separate <span class="floating-text"><span class="above">houses</span><span class="red-underline">house</span></span><span class="red-circle">22</span>. Because, <span class="filler">uh</span>, in the countryside, in in our country, in the countryside, <span class="filler">uh</span>, people have, <span class="filler">uh</span>, a huge space, <span class="filler">uh</span>, to build their separate <span class="floating-text"><span class="above">houses</span><span class="red-underline">house</span></span><span class="red-circle">23</span>. And I think Around 95% or more than 95% houses in my hometown are separate <span class="floating-text"><span class="above">houses</span><span class="red-underline">house</span></span><span class="red-circle">24</span>. <span class="filler">Uh</span>, some of them have a garden, courtyard and other separate spaces to play <span class="filler">uh</span>, with their <span class="floating-text"><span class="above">children</span><span class="red-underline">child</span></span><span class="red-circle">25</span>. But yeah, most of the houses in my hometown are separate houses, but there are some new buildings, those have apartment <span class="floating-text"><span class="above">houses</span><span class="red-underline">houses</span></span><span class="red-circle">26</span>, but most of the houses in my hometown are separate houses.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>house</em> → houses (plural); <em>child</em> → children; <em>apartment houses</em> → apartments. Repetition of “houses”.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear main idea)</div>
+                </div>
+            </div>
+
+            <div class="page-number">4</div>
+        </div>
+
+        <!-- PAGE 5: PART 1 MARKED SCRIPT Q7-Q8 -->
+        <div class="page">
+            <h3>Q7. Should buildings be attractive to look at? [Why? / Why not?]</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think, yes, <span class="filler">uh, uh</span>, building should be <span class="filler">uh</span>, attractive <span class="filler">uh</span>, to look at because <span class="filler">uh</span>, when a person <span class="floating-text"><span class="above">visits</span><span class="red-underline">visit</span></span><span class="red-circle">27</span> another person's house, If the house <span class="floating-text"><span class="above">looks</span><span class="red-underline">look</span></span><span class="red-circle">28</span> very attractive. <span class="filler">Uh</span>, it, it, <span class="filler">uh</span>, can create a good impression <span class="filler">uh</span>, before visiting that house. So I think it depends on the <span class="filler">uh</span>, person, <span class="filler">uh</span>, <span class="floating-text"><span class="above">preference</span><span class="red-underline">Preference</span></span><span class="red-circle">29</span>. Some people are very <span class="floating-text"><span class="above">focused on decorating</span><span class="red-underline">focused to decorate</span></span><span class="red-circle">30</span> their house in a good way to look attractive. So yeah, most most of the people, <span class="filler">uh</span>, try always try to, <span class="filler">uh</span>, decorate their house in a good way to <span class="floating-text"><span class="above">look attractive</span><span class="red-underline">look at practice</span></span><span class="red-circle">31</span>. So, yeah, building should be <span class="floating-text"><span class="above">attractive</span><span class="red-underline">looked at productive</span></span><span class="red-circle">32</span> because it can create a good impression of an unknown person to an unknown person.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>visit</em> → visits; <em>look</em> → looks; <em>Preference</em> (capitalisation) → preference; <em>focused to decorate</em> → focused on decorating; <em>look at practice</em> → look attractive; <em>looked at productive</em> → attractive. Unclear ending.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear opinion)</div>
+                </div>
+            </div>
+
+            <h3>Q8. What is the most unusual building you have ever seen? [Why?]</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think I was visiting an eye hospital when I was in my university. And <span class="filler">uh</span>, that project <span class="filler">uh</span>, cost around maybe 200 crore BDD taka. And most of the <span class="floating-text"><span class="above">buildings</span><span class="red-underline">bailings</span></span><span class="red-circle">33</span> of that hospital. Are not usable. So when I was visiting that, <span class="filler">uh</span>, hospital, the whole spaces that <span class="filler">uh, uh</span>, included in that hospital, I was visiting with some of my university friends. And we, <span class="filler">uh</span>, we, <span class="filler">uh</span>, learned that, <span class="filler">uh</span>, the, <span class="filler">uh</span> Responsible person of that project was not very, <span class="filler">uh</span>, Honest, and he was not building that, <span class="filler">uh</span>, hospital in a good way to for, <span class="filler">uh</span>, For usable to the public. So some of the buildings of that hospital are not usable, and government restricted to use those buildings. So I think it was the most unusual building that I have ever seen. And only one building up that hospital is usable and that building is still using <span class="filler">uh</span>, today. So I think that was the most, <span class="filler">uh</span>, unusual building and <span class="filler">uh</span>, most unusable building I have ever seen in my life.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Good personal example. Errors: <em>bailings</em> → buildings (pronunciation/spelling); <em>Responsible</em> capitalisation; <em>to for usable</em> → for use; <em>still using</em> → still in use. Some repetition and fillers.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear unusual building description)</div>
+                </div>
+            </div>
+
+            <div class="page-number">5</div>
+        </div>
+
+        <!-- PAGE 6: PART 2 MARKED SCRIPT -->
+        <div class="page">
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 2 · INTERESTING NEWS STORY · MARKED SCRIPT</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>~1 min 45 s</strong> · Errors marked: <strong>12</strong> · Good points credited: <strong>2</strong> · Fillers: <strong>20</strong>
+            </div>
+
+            <h3>Question card</h3>
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:3mm 4mm; margin-bottom:4mm; font-size:9.5pt;">
+                <strong>Describe an interesting story that you heard or read about in the news.</strong><br>
+                You should say: when you heard or read about the story · what the story was about · why the story was in the news · and explain why you thought the story was interesting.
+            </div>
+
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        Okay. Today, I would like to talk about an interesting <span class="floating-text"><span class="above">story</span><span class="red-underline">history</span></span><span class="red-circle">34</span> that I heard, <span class="filler">uh, uh</span>, in the news, <span class="filler">uh</span>, that <span class="filler">uh</span>, <span class="wavy-word">share</span><span class="red-circle">35</span>, that was, <span class="filler">uh</span>, that was <span class="wavy-word">sharing</span><span class="red-circle">36</span> from my one of my close <span class="floating-text"><span class="above">friends</span><span class="red-underline">friend</span></span><span class="red-circle">37</span>. Was about earning money by creating an account. My friend, <span class="filler">uh</span>, was telling me at the time that, <span class="filler">uh</span>, there is a website and where I can, <span class="filler">uh</span>, create an account by, <span class="filler">uh</span>, by, <span class="filler">uh, uh</span>, by... <span class="wavy-word">doesn't answer. Taka, taka, the account. Investing him.</span><span class="red-circle">38</span> So he was telling me that if you are in, if you are investing, <span class="filler">uh, uh</span>, around 50,000 taka, you will get a VIP account and you will get access to earn about <span class="wavy-word">500 takateli</span><span class="red-circle">39</span>. So that was interesting when I was, <span class="filler">uh, uh</span>, when I was learning about that, <span class="filler">uh</span>, when I was learning about that news from him, and he was telling me that, <span class="filler">uh</span>, DC is a very good website, and here you can <span class="filler">uh</span>, invest some amount of money, <span class="filler">uh</span>, they, they, they offered several types of account, <span class="filler">uh</span>, like, <span class="filler">uh</span>, if you are, If you are <span class="floating-text"><span class="above">interested</span><span class="red-underline">interesting</span></span><span class="red-circle">40</span>, if you are interested to spend around 5000 taka, you will get VIP account and by investing 50,000 taka, you can earn about 15 15,000 taka in a month. So I was interested when I learned from him about that news. But I, okay.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Good topic choice. Errors: <em>history</em> → story; <em>share/sharing</em> → shared; <em>friend</em> → friends; very unclear phrase: <em>“doesn't answer. Taka, taka, the account. Investing him.”</em>; <em>500 takateli</em> → 500 taka daily?; <em>interesting</em> → interested. Repetition and fillers.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear main idea: money-making website)</div>
+                    <div class="comment-tick">✓ 1 good point (Personal source: friend)</div>
+                </div>
+            </div>
+
+            <div class="page-number">6</div>
+        </div>
+
+        <!-- PAGE 7: PART 3 MARKED SCRIPT Q1-Q2 -->
+        <div class="page">
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 3 · READING NEWSPAPERS · MARKED SCRIPT (Q1–Q2)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>6 min 40 s</strong> · Errors marked: <strong>24</strong> · Good points credited: <strong>4</strong> · Fillers: <strong>36</strong>
+            </div>
+
+            <h3>Q1. When do people like to read the newspaper?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think in my country, most of the people <span class="filler">uh</span> like to read <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">41</span> daily. <span class="filler">Uh</span>, some people, <span class="filler">uh</span>, start their day by <span class="filler">uh, uh</span>, reading a newspaper, <span class="filler">uh</span>, and taking tea or coffee. But some people, they are very busy in their <span class="floating-text"><span class="above">lives</span><span class="red-underline">life</span></span><span class="red-circle">42</span>. They prefer to read <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">43</span> when, <span class="filler">um, uh</span>, an industrial disaster or something alarming is happening in the country. But most people in my country, they start their day by reading <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">44</span>.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>newspaper</em> → newspapers (plural); <em>life</em> → lives. Answer is relevant but doesn't directly state personal frequency.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Describes reading habits in country)</div>
+                </div>
+            </div>
+
+            <h3>Q2. How important is it for people to have a choice of newspaper?</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think it's very important for people to, <span class="filler">uh</span>, have some choices of <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">45</span>, <span class="filler">uh</span>, like some, <span class="filler">uh, uh</span>, newspaper <span class="floating-text"><span class="above">industries</span><span class="red-underline">industry</span></span><span class="red-circle">46</span> are focused on, <span class="filler">uh</span>, more focused on <span class="filler">uh</span>, simple topics. So if a person is having some choices, like if a person is reading a <span class="wavy-word">protomalo</span><span class="red-circle">47</span> in a day, and if he is interested to read another newspaper from another industry, he will get a good idea about some topic. So I think it's very important for everyone to have some choices about <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">48</span>. Like, if a person is interested to learn about international news, <span class="filler">uh</span>, he definitely <span class="floating-text"><span class="above">has</span><span class="red-underline">have</span></span><span class="red-circle">49</span> to <span class="filler">uh</span>, have some choices of <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">50</span>. Like he can follow economist. <span class="filler">Uh</span>, other <span class="filler">uh</span>, newspaper.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>newspaper</em> → newspapers; <em>industry</em> → industries; <em>protomalo</em> → Prothom Alo (pronunciation/spelling); <em>have</em> → has. Some repetition.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear reasoning about choices)</div>
+                </div>
+            </div>
+
+            <div class="page-number">7</div>
+        </div>
+
+        <!-- PAGE 8: PART 3 MARKED SCRIPT Q3-Q4 -->
+        <div class="page">
+            <h3>Q3. What does a 'good' newspaper contain?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think <span class="filler">uh</span>, a good newspaper should contain <span class="filler">uh</span>, the <span class="filler">uh</span>, daily <span class="floating-text"><span class="above">updates</span><span class="red-underline">update</span></span><span class="red-circle">51</span> of their country. It could be included, <span class="filler">uh</span>, update about environment, <span class="filler">uh</span>, how will they face <span class="filler">uh</span>, in a day or within <span class="filler">uh</span>, within 3 days? Like, <span class="filler">uh</span>, if a country will face an <span class="floating-text"><span class="above">answer</span><span class="red-underline">answer</span></span><span class="red-circle">52</span> of this, this person should contain those <span class="filler">uh</span>, topics <span class="filler">uh</span>, to <span class="filler">uh, uh</span>, to secure <span class="filler">uh</span>, the people. They have to know that they will face a natural <span class="floating-text"><span class="above">disaster</span><span class="red-underline">list</span></span><span class="red-circle">53</span> of within 3 days. And I think good newspaper should definitely include other news, like if a person is achieving a gold medal in Olympics or in other categories, the newspaper should definitely include those topics. So I think a good newspaper should definitely contain several topics that are very important for a person to read, and they should definitely focus on their users' choices.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>update</em> → updates; <em>answer</em> → disaster? unclear; <em>natural list</em> → natural disaster. Some unclear phrasing.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Good range of suggested content)</div>
+                </div>
+            </div>
+
+            <h3>Q4. Why do some people choose to read the news on the Internet rather than in a newspaper?</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think nowadays, most people are more focused on using technology, and most of the people in my country are using <span class="floating-text"><span class="above">smartphones</span><span class="red-underline">smartphone</span></span><span class="red-circle">54</span>, and some people have laptops, personal <span class="floating-text"><span class="above">computers</span><span class="red-underline">computer</span></span><span class="red-circle">55</span>. So, <span class="filler">uh</span>, they are <span class="filler">uh</span>, most of them are very busy in their <span class="floating-text"><span class="above">personal lives</span><span class="red-underline">personal life</span></span><span class="red-circle">56</span>. So instead of reading, <span class="filler">uh</span>, and <span class="filler">uh</span>, printed <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">57</span>, most of them prefer to read news on the internet because it's very convenient for them to <span class="filler">uh</span>, access any kind of newspaper, <span class="filler">uh</span>, when they are stuck in <span class="filler">uh</span>, traffic <span class="floating-text"><span class="above">congestion</span><span class="red-underline">conservation</span></span><span class="red-circle">58</span>. And they don't have to spend money to read <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">59</span>, although there are some types of <span class="floating-text"><span class="above">conditions</span><span class="red-underline">condition</span></span><span class="red-circle">60</span>, like they have to buy a subscription for reading some renowned <span class="floating-text"><span class="above">newspaper portals</span><span class="red-underline">newspaper portal</span></span><span class="red-circle">61</span>, but most of the time it's free. So that's why some people, <span class="filler">uh, uh</span>, prefer the most of the people prefer to read <span class="floating-text"><span class="above">newspapers online</span><span class="red-underline">newspaper on online</span></span><span class="red-circle">62</span> because it's very convenient for them to access <span class="filler">uh</span>, reading <span class="floating-text"><span class="above">paper</span><span class="red-underline">paper</span></span><span class="red-circle">63</span>. Whenever they want to read the newspaper.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Good reasons (convenience, free access). Errors: <em>smartphone</em> → smartphones; <em>computer</em> → computers; <em>personal life</em> → lives; <em>newspaper</em> → newspapers; <em>conservation</em> → congestion; <em>condition</em> → conditions; <em>portal</em> → portals; <em>newspaper on online</em> → newspapers online; <em>reading paper</em> → reading the news. Repetition.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear reasons: convenience, free)</div>
+                </div>
+            </div>
+
+            <div class="page-number">8</div>
+        </div>
+
+        <!-- PAGE 9: PART 3 MARKED SCRIPT Q5-Q6 -->
+        <div class="page">
+            <h3>Q5. How is Internet news different from the news you read in the newspaper?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think, <span class="filler">uh</span>, nowadays, most of the newspaper, <span class="filler">uh</span>, readers, <span class="filler">uh</span>, are more focusing on reading <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">64</span> <span class="filler">uh</span>, from online. And most of the people in my country, they spend a good amount of time only using social media. So, <span class="filler">uh</span>, nowadays, newspaper, <span class="filler">uh, uh</span>, <span class="floating-text"><span class="above">companies</span><span class="red-underline">company</span></span><span class="red-circle">65</span>, <span class="filler">um</span>, are more focusing on, <span class="filler">uh</span>, using social media to spread their news, <span class="wavy-word">bullet in</span><span class="red-circle">66</span>, like, <span class="filler">uh</span>, most of the news <span class="floating-text"><span class="above">industries</span><span class="red-underline">in brustries</span></span><span class="red-circle">67</span> have, <span class="filler">uh</span>, social media <span class="floating-text"><span class="above">accounts</span><span class="red-underline">account</span></span><span class="red-circle">68</span>, and they, <span class="filler">uh</span>, every day they share, <span class="filler">uh</span>, the news, <span class="filler">uh, uh</span>, by creating short <span class="floating-text"><span class="above">reels</span><span class="red-underline">rails</span></span><span class="red-circle">69</span> or, <span class="filler">uh</span>, <span class="floating-text"><span class="above">whole videos</span><span class="red-underline">whole video</span></span><span class="red-circle">70</span>. So I think, <span class="filler">uh</span>, It was not like <span class="wavy-word">a ticket</span><span class="red-circle">71</span> before. In that time, most of the newspaper was based on paper newspaper, printed newspaper. So I think nowadays it's <span class="floating-text"><span class="above">has</span><span class="red-underline">has</span></span><span class="red-circle">72</span> changed a lot because most of the people prefer to read <span class="floating-text"><span class="above">newspapers online</span><span class="red-underline">newspaper from online</span></span><span class="red-circle">73</span>. So yeah, these are the major differences. <span class="filler">uh</span>, that I found <span class="filler">uh</span>, in nowadays newspaper.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Errors: <em>newspaper</em> → newspapers; <em>company</em> → companies; <em>bullet in</em> → bulletins?; <em>in brustries</em> → industries; <em>account</em> → accounts; <em>rails</em> → reels; <em>whole video</em> → full videos; <em>a ticket</em> → like that; <em>it's has</em> → it has; <em>newspaper from online</em> → newspapers online. Some unclear phrasing.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Identifies shift to online and social media)</div>
+                </div>
+            </div>
+
+            <h3>Q6. Will Internet news ever replace newspapers? [Why? / Why not?]</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think, <span class="filler">uh</span>, internet news would be more popular in the future because <span class="filler">uh</span>, technological advancement <span class="filler">uh</span>, helps people to get <span class="filler">uh</span>, easy access. Those who are interested to <span class="floating-text"><span class="above">follow</span><span class="red-underline">learn</span></span><span class="red-circle">74</span> news, but there is still some people, they don't prefer to use social media. <span class="filler">Uh</span>, for learning <span class="filler">uh</span>, daily <span class="floating-text"><span class="above">updates</span><span class="red-underline">update</span></span><span class="red-circle">75</span>. So I think it will not replace <span class="filler">uh</span>, printed <span class="floating-text"><span class="above">newspapers</span><span class="red-underline">newspaper</span></span><span class="red-circle">76</span>, but yeah, it's it's <span class="filler">uh</span>, definitely <span class="floating-text"><span class="above">get</span><span class="red-underline">get</span></span><span class="red-circle">77</span> more popularity in the future as <span class="filler">uh</span>, technological advancement is <span class="filler">uh</span>, <span class="floating-text"><span class="above">advancing</span><span class="red-underline">developing</span></span><span class="red-circle">78</span> day by day. So people will be more interested to <span class="filler">uh, uh</span>, learn internet news from online, but I think I don't think that it will <span class="filler">uh</span>, ever replace a printed newspaper.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Clear opinion. Errors: <em>learn</em> → follow; <em>update</em> → updates; <em>newspaper</em> → newspapers; <em>get</em> → will get; <em>developing</em> → advancing. Some repetition.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear stance with reasons)</div>
+                </div>
+            </div>
+
+            <div class="page-number">9</div>
+        </div>
+
+        <!-- PAGE 10: BAND ANALYSIS - FLUENCY & COHERENCE -->
+        <div class="page">
+            <div class="main-band-header">WHY THIS BAND SCORE</div>
+            <p style="margin-bottom: 6mm; font-size: 10pt;">Each criterion is matched to the official Speaking descriptor. Numbers in coloured badges refer to the marked errors.</p>
+
+            <div class="band-card">
+                <div class="band-card-header">
+                    <h3>Fluency &amp; Coherence</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5.0: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going"</em> — You often repeat words (<em>uh, uh, uh</em>), self-correct (<em>I have, I had</em>), and use slow speech with many fillers.</li>
+                        <li><em>"May produce long pauses and hesitations"</em> — Very frequent fillers (<em>uh, uh, uh</em>) and hesitations throughout all parts.</li>
+                        <li><em>"Uses simple connectives but not always appropriately"</em> — You use <em>and, but, so, because</em>, but sometimes the connections are unclear or repetitive.</li>
+                        <li><em>"Some coherence is maintained but there may be some loss of coherence"</em> — Several phrases are unclear (“doesn't answer. Taka, taka, the account. Investing him.”, “Hoi and I watch younger”, “bullet in”, “in brustries”), which causes loss of coherence.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 5.5?</h5>
+                        <p>Band 5.5 requires <em>“usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going”</em> and <em>“may produce long pauses and hesitations.”</em> Your fillers are extremely frequent, and several answers contain long unclear sections.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 4?</h5>
+                        <p>Band 4 describes <em>“cannot respond without noticeable pauses and may speak slowly, with frequent repetition and self-correction”</em> and <em>“links basic sentences but with repetitious use of simple connectives.”</em> You are at the upper end of Band 5 because you do speak at length and attempt complex answers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb; margin-top: 0;">
+                <h4 style="color: #2563eb;">HOW TO IMPROVE FLUENCY</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Replace <em>uh</em> with short silent pauses. Silence is better than fillers.</li>
+                    <li>Plan your answer for 2–3 seconds before speaking. Think of one main idea and one example.</li>
+                    <li>Practise speaking for 1 minute on a familiar topic without stopping. Record yourself and count fillers.</li>
+                    <li>Learn and use a wider range of linking phrases: <em>What’s more, On top of that, The thing is, In fact, As far as I’m concerned, To be honest.</em></li>
+                </ul>
+            </div>
+
+            <div class="page-number">10</div>
+        </div>
+
+        <!-- PAGE 11: BAND ANALYSIS - LEXICAL RESOURCE -->
+        <div class="page">
+            <div class="band-card" style="margin-top: 0;">
+                <div class="band-card-header">
+                    <h3>Lexical Resource</h3>
+                    <span class="band-badge">Band 5.0</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5.0: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Uses vocabulary resource sufficient to talk about familiar topics but with limited flexibility"</em> — You can discuss school, buildings, and newspapers, but with limited variation.</li>
+                        <li><em>"Attempts less common vocabulary but with some inaccuracy"</em> — You tried <em>secondary school, practical uses, historical background, attractive, preference, subscription, technological advancement</em>, but many were inaccurate or unclear (<em>in called, 10 kilometer far, are become, look at practice, protomalo, takateli, brustries, conservation</em>).</li>
+                        <li><em>"Errors in word choice may cause difficulty for the listener"</em> — Several phrases are unintelligible or confusing.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 5.5?</h5>
+                        <p>Band 5.5 requires <em>“uses vocabulary resource sufficient to talk about familiar and unfamiliar topics but with limited flexibility”</em> and <em>“attempts less common vocabulary but with some inaccuracy.”</em> Your errors are frequent and often affect clarity.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 4?</h5>
+                        <p>Band 4 describes <em>“uses vocabulary resource sufficient only to talk about familiar topics”</em> and <em>“errors in word choice may cause difficulty for the listener.”</em> You exceed this because you attempt a range of topics and some vocabulary is adequate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb;">
+                <h4 style="color: #2563eb;">HOW TO IMPROVE VOCABULARY</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Learn topic-specific collocations: <em>secondary school, difficult subjects, historical background, attractive appearance, personal preference, online subscription, technological advancement.</em></li>
+                    <li>When unsure of a word, paraphrase with a simpler word rather than using an unclear one.</li>
+                    <li>Record 5 new words per topic and use them in speaking practice.</li>
+                    <li>Focus on pronunciation of key vocabulary: <em>buildings, kilometer, memories, attractive, preference, congestion, industries, bulletins.</em></li>
+                </ul>
+            </div>
+
+            <div class="page-number">11</div>
+        </div>
+
+        <!-- PAGE 12: BAND ANALYSIS - GRAMMATICAL RANGE & ACCURACY -->
+        <div class="page">
+            <div class="band-card" style="margin-top: 0;">
+                <div class="band-card-header">
+                    <h3>Grammatical Range &amp; Accuracy</h3>
+                    <span class="band-badge">Band 4.5</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 4.5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Produces basic sentence forms with reasonable accuracy"</em> — Some simple sentences are correct (<em>“I think my hometown is a good place to be”</em>).</li>
+                        <li><em>"Uses some complex structures but these usually contain errors"</em> — You attempt relative clauses (<em>“which is called High School”</em>) and conditionals (<em>“if you are investing”</em>), but errors are frequent.</li>
+                        <li><em>"Makes frequent errors which may cause some difficulty for the listener"</em> — Errors include subject-verb agreement (<em>“most of my close friend are”</em>), tense (<em>“I was starting”</em>), plural forms (<em>“house”</em> → houses), articles (<em>“an memorable”</em>), and prepositions (<em>“close from”</em>).</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 5.0?</h5>
+                        <p>Band 5.0 requires <em>“produces basic sentence forms with reasonable accuracy”</em> and <em>“uses some complex structures but these usually contain errors.”</em> Your error rate is very high, and several sentences contain multiple basic errors in a row.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 4.0?</h5>
+                        <p>Band 4.0 describes <em>“produces basic sentence forms and some correct simple sentences but subordinate structures are rare”</em> and <em>“errors are frequent and may lead to misunderstanding.”</em> You attempt more complex forms, and most errors are understandable in context, so you are at the upper end of 4.5.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb;">
+                <h4 style="color: #2563eb;">HOW TO IMPROVE GRAMMAR</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Master subject-verb agreement (<em>friends are, people are, he doesn’t</em>).</li>
+                    <li>Use the correct past tense forms (<em>I started, I studied, I enjoyed</em>).</li>
+                    <li>Practise plural forms (<em>houses, memories, newspapers, buildings</em>).</li>
+                    <li>Practise articles (<em>a / an / the</em>) and prepositions (<em>close to, interested in, good at</em>).</li>
+                    <li>Record yourself and transcribe 1 minute of speech — identify and correct errors.</li>
+                </ul>
+            </div>
+
+            <div class="page-number">12</div>
+        </div>
+
+        <!-- PAGE 13: BAND ANALYSIS - PRONUNCIATION -->
+        <div class="page">
+            <div class="band-card" style="margin-top: 0;">
+                <div class="band-card-header">
+                    <h3>Pronunciation</h3>
+                    <span class="band-badge">Band 5.5</span>
+                </div>
+                <div class="band-card-body">
+                    <h4>WHY BAND 5.5: THE DESCRIPTOR FITS</h4>
+                    <ul>
+                        <li><em>"Shows some effective use of features but this is not sustained"</em> — Some words are clear, but many are not.</li>
+                        <li><em>"Can generally be understood, though mispronunciation of individual words or sounds reduces clarity at times"</em> — Many words are mispronounced or unclear: <em>met</em> (math), <em>protomalo</em> (Prothom Alo), <em>takateli</em> (taka daily?), <em>conservation</em> (congestion), <em>brustries</em> (industries), <em>rails</em> (reels), <em>bullet in</em> (bulletins), <em>haka</em> (Dhaka?), <em>Hoi and I watch younger</em>, <em>doesn't answer. Taka, taka, the account. Investing him.</em></li>
+                        <li><em>"Some effective use of intonation and stress"</em> — You use some stress, but it is not consistent.</li>
+                    </ul>
+
+                    <div class="why-not-higher">
+                        <h5>↑ WHY NOT BAND 6?</h5>
+                        <p>Band 6 requires <em>“mispronunciation of individual words or sounds reduces clarity at times”</em> but generally <em>“can be understood throughout.”</em> Your mispronunciations are frequent and often affect whole phrases, making understanding difficult.</p>
+                    </div>
+
+                    <div class="why-not-lower">
+                        <h5>↓ WHY NOT BAND 5?</h5>
+                        <p>Band 5 describes <em>“mispronunciations are frequent and cause some difficulty for the listener.”</em> You are at the upper end of Band 5 because some parts are clear and you attempt a range of pronunciation features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-box" style="border-color: #7c3aed;">
+                <h4 style="color: #7c3aed;">HOW TO IMPROVE PRONUNCIATION</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Practise minimal pairs: <em>buildings/bailing, kilometer/kilometer, memories/memory, attractive/productive, congestion/conservation.</em></li>
+                    <li>Record yourself and compare with a native speaker (BBC Learning English, YouGlish).</li>
+                    <li>Focus on word stress: <em>sec-ON-dary, at-TRAC-tive, pre-FER-ence, con-GES-tion, in-DUS-tries.</em></li>
+                    <li>Slow down slightly when using less familiar words. Break long words into syllables.</li>
+                </ul>
+            </div>
+
+            <div class="page-number">13</div>
+        </div>
+
+        <!-- PAGE 14: ERROR LOG PART 1 (Entries 1-35) -->
+        <div class="page">
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR LOG (FULL LIST) — PART 1</h2>
+            <p style="margin-bottom: 4mm;">Every numbered mark from Parts 1–3, with the correction, the reason, and the relevant speaking rule. (Entries 1–35)</p>
+
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule / Explanation</th></tr>
+                <tr><td>1</td><td>was starting</td><td>started / studied</td><td>Tense</td><td>Past simple for a completed period.</td></tr>
+                <tr><td>2</td><td>in called</td><td>called</td><td>Word choice</td><td>No “in” needed before “called”.</td></tr>
+                <tr><td>3</td><td>friend</td><td>friends</td><td>Plural</td><td>Most of my close friends.</td></tr>
+                <tr><td>4</td><td>10 kilometer far</td><td>10 kilometers away</td><td>Word choice</td><td>Distance: “kilometers away”.</td></tr>
+                <tr><td>5</td><td>have, I had</td><td>had</td><td>Self-correction</td><td>Use past simple “had”.</td></tr>
+                <tr><td>6</td><td>enjoying</td><td>enjoyed</td><td>Tense</td><td>Past simple for past habit.</td></tr>
+                <tr><td>7</td><td>memory</td><td>memories</td><td>Plural</td><td>“A lot of memories”.</td></tr>
+                <tr><td>8</td><td>are</td><td>tried / would</td><td>Tense</td><td>Past habitual action.</td></tr>
+                <tr><td>9</td><td>an</td><td>a</td><td>Article</td><td>“A memorable experience”.</td></tr>
+                <tr><td>10</td><td>met</td><td>math</td><td>Pronunciation</td><td>/mæθ/ not /met/.</td></tr>
+                <tr><td>11</td><td>interested to learn</td><td>interested in learning</td><td>Preposition</td><td>Interested in + gerund.</td></tr>
+                <tr><td>12</td><td>good to study</td><td>good at teaching</td><td>Word choice</td><td>A teacher is good at teaching.</td></tr>
+                <tr><td>13</td><td>are becoming</td><td>became</td><td>Tense</td><td>Past simple for past change.</td></tr>
+                <tr><td>14</td><td>enjoy</td><td>enjoyed</td><td>Tense</td><td>Past simple.</td></tr>
+                <tr><td>15</td><td>study</td><td>studying</td><td>Verb form</td><td>Enjoy + gerund.</td></tr>
+                <tr><td>16</td><td>close from</td><td>close to</td><td>Preposition</td><td>Close to my home.</td></tr>
+                <tr><td>17</td><td>knew</td><td>learned</td><td>Word choice</td><td>Learned from my grandfather.</td></tr>
+                <tr><td>18</td><td>are become</td><td>have become</td><td>Tense</td><td>Present perfect for recent change.</td></tr>
+                <tr><td>19</td><td>visiting place</td><td>visiting places</td><td>Plural</td><td>Two buildings → plural.</td></tr>
+                <tr><td>20</td><td>friend</td><td>friends</td><td>Plural</td><td>Some of my friends.</td></tr>
+                <tr><td>21</td><td>Hoi and I watch younger</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible phrase.</td></tr>
+                <tr><td>22</td><td>house</td><td>houses</td><td>Plural</td><td>Most people have separate houses.</td></tr>
+                <tr><td>23</td><td>house</td><td>houses</td><td>Plural</td><td>Build their separate houses.</td></tr>
+                <tr><td>24</td><td>house</td><td>houses</td><td>Plural</td><td>95% houses are separate houses.</td></tr>
+                <tr><td>25</td><td>child</td><td>children</td><td>Plural</td><td>Play with their children.</td></tr>
+                <tr><td>26</td><td>apartment houses</td><td>apartments</td><td>Word choice</td><td>Standard term is apartments.</td></tr>
+                <tr><td>27</td><td>visit</td><td>visits</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>28</td><td>look</td><td>looks</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>29</td><td>Preference</td><td>preference</td><td>Capitalisation</td><td>No capital needed mid-sentence.</td></tr>
+                <tr><td>30</td><td>focused to decorate</td><td>focused on decorating</td><td>Preposition</td><td>Focused on + gerund.</td></tr>
+                <tr><td>31</td><td>look at practice</td><td>look attractive</td><td>Word choice</td><td>Unclear phrase; meant attractive.</td></tr>
+                <tr><td>32</td><td>looked at productive</td><td>attractive</td><td>Word choice</td><td>Unclear; meant attractive.</td></tr>
+                <tr><td>33</td><td>bailings</td><td>buildings</td><td>Pronunciation</td><td>/ˈbɪldɪŋz/ not /ˈbeɪlɪŋz/.</td></tr>
+                <tr><td>34</td><td>history</td><td>story</td><td>Word choice</td><td>“News story”, not “news history”.</td></tr>
+                <tr><td>35</td><td>share</td><td>shared</td><td>Tense</td><td>Past participle: was shared.</td></tr>
+            </table>
+
+            <div class="page-number">14</div>
+        </div>
+
+        <!-- PAGE 15: ERROR LOG PART 2 & 3 (Entries 36-78) -->
+        <div class="page">
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR LOG (FULL LIST) — CONTINUED</h2>
+            <p style="margin-bottom: 4mm;">Continued from the previous page. (Entries 36–78)</p>
+
+            <table class="tiny" style="margin-top: 0;">
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule / Explanation</th></tr>
+                <tr><td>36</td><td>sharing</td><td>shared</td><td>Verb form</td><td>Was shared by my friend.</td></tr>
+                <tr><td>37</td><td>friend</td><td>friends</td><td>Plural</td><td>“One of my close friends”.</td></tr>
+                <tr><td>38</td><td>doesn't answer. Taka, taka, the account. Investing him.</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible phrase.</td></tr>
+                <tr><td>39</td><td>500 takateli</td><td>500 taka daily</td><td>Word choice</td><td>Unclear; likely “taka daily”.</td></tr>
+                <tr><td>40</td><td>interesting</td><td>interested</td><td>Word form</td><td>Interested (adjective for people).</td></tr>
+                <tr><td>41</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Read newspapers daily.</td></tr>
+                <tr><td>42</td><td>life</td><td>lives</td><td>Plural</td><td>Busy in their lives.</td></tr>
+                <tr><td>43</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Read newspapers.</td></tr>
+                <tr><td>44</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Reading newspapers.</td></tr>
+                <tr><td>45</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Choices of newspapers.</td></tr>
+                <tr><td>46</td><td>industry</td><td>industries</td><td>Plural</td><td>Newspaper industries.</td></tr>
+                <tr><td>47</td><td>protomalo</td><td>Prothom Alo</td><td>Pronunciation</td><td>Name of a Bengali newspaper.</td></tr>
+                <tr><td>48</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Choices about newspapers.</td></tr>
+                <tr><td>49</td><td>have</td><td>has</td><td>SVA</td><td>He has to.</td></tr>
+                <tr><td>50</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Choices of newspapers.</td></tr>
+                <tr><td>51</td><td>update</td><td>updates</td><td>Plural</td><td>Daily updates.</td></tr>
+                <tr><td>52</td><td>answer</td><td>disaster?</td><td>Word choice</td><td>Unclear; likely “natural disaster”.</td></tr>
+                <tr><td>53</td><td>natural list</td><td>natural disaster</td><td>Word choice</td><td>Unclear; meant natural disaster.</td></tr>
+                <tr><td>54</td><td>smartphone</td><td>smartphones</td><td>Plural</td><td>Most people are using smartphones.</td></tr>
+                <tr><td>55</td><td>computer</td><td>computers</td><td>Plural</td><td>Personal computers.</td></tr>
+                <tr><td>56</td><td>personal life</td><td>personal lives</td><td>Plural</td><td>Busy in their personal lives.</td></tr>
+                <tr><td>57</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Printed newspapers.</td></tr>
+                <tr><td>58</td><td>conservation</td><td>congestion</td><td>Pronunciation</td><td>/kənˈdʒes.tʃən/ not /ˌkɒn.səˈveɪ.ʃən/.</td></tr>
+                <tr><td>59</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Read newspapers.</td></tr>
+                <tr><td>60</td><td>condition</td><td>conditions</td><td>Plural</td><td>Types of conditions.</td></tr>
+                <tr><td>61</td><td>newspaper portal</td><td>newspaper portals</td><td>Plural</td><td>Some renowned portals.</td></tr>
+                <tr><td>62</td><td>newspaper on online</td><td>newspapers online</td><td>Word choice</td><td>Standard: newspapers online.</td></tr>
+                <tr><td>63</td><td>reading paper</td><td>reading the news</td><td>Word choice</td><td>Unclear; meant news.</td></tr>
+                <tr><td>64</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Reading newspapers.</td></tr>
+                <tr><td>65</td><td>company</td><td>companies</td><td>Plural</td><td>Newspaper companies.</td></tr>
+                <tr><td>66</td><td>bullet in</td><td>bulletins</td><td>Word choice</td><td>News bulletins.</td></tr>
+                <tr><td>67</td><td>in brustries</td><td>industries</td><td>Pronunciation</td><td>/ˈɪn.də.striz/.</td></tr>
+                <tr><td>68</td><td>account</td><td>accounts</td><td>Plural</td><td>Social media accounts.</td></tr>
+                <tr><td>69</td><td>rails</td><td>reels</td><td>Pronunciation</td><td>/riːlz/ not /reɪlz/.</td></tr>
+                <tr><td>70</td><td>whole video</td><td>full videos</td><td>Word choice</td><td>Full videos.</td></tr>
+                <tr><td>71</td><td>a ticket</td><td>like that</td><td>Word choice</td><td>Unclear; meant “like that”.</td></tr>
+                <tr><td>72</td><td>it's has</td><td>it has</td><td>Grammar</td><td>Contraction “it’s” = it is; use “it has”.</td></tr>
+                <tr><td>73</td><td>newspaper from online</td><td>newspapers online</td><td>Word choice</td><td>Standard: newspapers online.</td></tr>
+                <tr><td>74</td><td>learn</td><td>follow</td><td>Word choice</td><td>Follow news.</td></tr>
+                <tr><td>75</td><td>update</td><td>updates</td><td>Plural</td><td>Daily updates.</td></tr>
+                <tr><td>76</td><td>newspaper</td><td>newspapers</td><td>Plural</td><td>Printed newspapers.</td></tr>
+                <tr><td>77</td><td>get</td><td>will get</td><td>Tense</td><td>Future: will get.</td></tr>
+                <tr><td>78</td><td>developing</td><td>advancing</td><td>Word choice</td><td>Technological advancement is advancing.</td></tr>
+            </table>
+
+            <div class="page-number">15</div>
+        </div>
+
+        <!-- PAGE 16: TARGETS & PRACTICE -->
+        <div class="page">
+            <h2>Targets for the next speaking test</h2>
+            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
+                <li><strong>Reduce fillers:</strong> Replace <em>uh / uh / uh</em> with natural silent pauses. Aim for fewer than 5 fillers per minute.</li>
+                <li><strong>Improve grammatical accuracy:</strong> Focus on subject-verb agreement, past tense, plural forms, articles, and prepositions. Practise sentences aloud.</li>
+                <li><strong>Use clearer vocabulary:</strong> If you are unsure of a word, use a simpler word you know well. Avoid long, unclear phrases.</li>
+                <li><strong>Improve pronunciation:</strong> Focus on words like <em>buildings, kilometer, attractive, preference, congestion, industries, bulletins, reels.</em></li>
+                <li><strong>Structure Part 2 answers:</strong> Use a clear 4-step structure (what → where → who → why interesting).</li>
+                <li><strong>Slow down slightly</strong> when using less familiar words to improve clarity.</li>
+            </ol>
+
+            <h2>Practice · Fix it yourself</h2>
+            <div style="border: 1px solid #cbd5e1; padding: 4mm; font-size: 10pt; margin-bottom: 6mm;">
+                <p>Each sentence is taken from your speaking. Rewrite it correctly <strong>before</strong> looking at the answer key.</p>
+                <ol class="practice-list">
+                    <li><span class="num">1</span> “I was starting from class 6 to 10 in my secondary school.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Tense</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">2</span> “Most of my close friend are from that high school.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Plural</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">3</span> “It was around 10 kilometer far from my house.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Word choice · Plural</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">4</span> “Those 2 buildings are become visiting place.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Tense · Plural</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">5</span> “Most of the people have separate house.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Plural</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">6</span> “He definitely have to have some choices of newspaper.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: SVA · Plural</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                </ol>
+            </div>
+
+            <h2>Answer key</h2>
+            <div class="good-box" style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
+                <ol style="margin-left: 5mm; font-size: 10pt; color: #1c2430;">
+                    <li>I <strong>studied from class 6 to 10</strong> in my secondary school.</li>
+                    <li>Most of my close <strong>friends are</strong> from that high school.</li>
+                    <li>It was around 10 <strong>kilometers away</strong> from my house.</li>
+                    <li>Those 2 buildings <strong>have become visiting places</strong>.</li>
+                    <li>Most of the people have separate <strong>houses</strong>.</li>
+                    <li>He definitely <strong>has to have</strong> some choices of <strong>newspapers</strong>.</li>
+                </ol>
+            </div>
+
+            <div class="page-number">16</div>
+        </div>
+
+        <!-- PAGE 17: SAMPLE ANSWERS PART 1 Q1-Q6 -->
+        <div class="page">
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 1 (Q1–Q6)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
+
+            <h3>Q1. Tell me something about your secondary school.</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I went to a secondary school called High School, which was about 10 kilometres from my home. I studied there from class 6 to 10. Most of my close friends are from that school, and I have many fond memories of my time there. I studied science, and we often played sports whenever we had free time.
+            </p>
+
+            <h3>Q2. Which subject did you find most difficult at school? [Why?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I found higher math and physics quite difficult. I wasn’t very interested in learning the theory or its practical applications. However, I had a very good teacher who explained those difficult topics well, and after spending time learning from him, they became easier for me.
+            </p>
+
+            <h3>Q3. Do you ever need that subject now? [Why? / Why not?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Not really. My major at university was biology and chemistry, so physics and higher math didn’t seem very important to me. I had to study two or three related courses, but they didn’t seem very relevant to my current studies.
+            </p>
+
+            <h3>Q4. What did you enjoy about being a school student?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                What I enjoyed most was spending time with my friends. We used to study together and take part in quiz competitions once or twice a month. I really enjoyed the teamwork and the moments we shared. Those are some of my best memories from school.
+            </p>
+
+            <h3>Q5. Are there any famous buildings in your home town? [What are they?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Yes, there are two famous old buildings in my hometown. One is very close to my home and the other is further away. My grandfather told me they are about 100 years old. They have become popular visiting places, and people often go there at weekends to spend time with their families.
+            </p>
+
+            <h3>Q6. In what type of building do most people in your home town live?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Most people in my hometown live in separate houses. Because it’s a rural area, there is plenty of space to build. Around 95% of the houses are separate, and many have gardens or courtyards where children can play. There are a few new apartment buildings, but they are not very common.
+            </p>
+
+            <div class="page-number">17</div>
+        </div>
+
+        <!-- PAGE 18: SAMPLE ANSWERS PART 1 Q7-Q8 + PART 2 -->
+        <div class="page">
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 1 (Q7–Q8) &amp; PART 2</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
+
+            <h3>Q7. Should buildings be attractive to look at? [Why? / Why not?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Yes, I think buildings should be attractive. When someone visits a house, a pleasant appearance creates a good first impression. Of course, it depends on personal preference, but many people try to decorate their homes nicely. An attractive building can make visitors feel welcome and comfortable.
+            </p>
+
+            <h3>Q8. What is the most unusual building you have ever seen? [Why?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                The most unusual building I’ve seen was an eye hospital I visited during my university years. The project cost around 200 crore taka, but most of the buildings were unusable. The person responsible for the project was not honest, and the construction was poor. Only one building was usable. It was unusual because such a large amount of money was wasted, and the building could not serve the public as intended.
+            </p>
+
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWER – PART 2</h2>
+
+            <h3>Describe an interesting story that you heard or read about in the news.</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I’d like to talk about an interesting news story I heard from a close friend recently. It was about a website that promised people they could earn money by creating an account and investing. My friend told me that if you invested around 50,000 taka, you would get a VIP account and could earn about 500 taka a day. He also mentioned that you could invest smaller amounts, like 5,000 taka, and still earn a decent monthly income. I found it interesting because it sounded like an easy way to make money, but I was also a bit suspicious. I decided not to invest because it seemed too good to be true. It was an interesting story, but I think it’s important to be careful with such offers.
+            </p>
+
+            <div class="page-number">18</div>
+        </div>
+
+        <!-- PAGE 19: SAMPLE ANSWERS PART 3 Q1-Q6 -->
+        <div class="page">
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 3 (Q1–Q6)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
+
+            <h3>Q1. When do people like to read the newspaper?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Many people like to read the newspaper in the morning, often with breakfast or a cup of tea. Some busy people only read it when something important happens, like a disaster or major news event. But generally, reading the paper is a daily habit for many.
+            </p>
+
+            <h3>Q2. How important is it for people to have a choice of newspaper?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                It’s very important. Different newspapers focus on different topics and have different perspectives. Having choices allows people to get a balanced view and find the content that interests them most. For example, some may prefer local news while others want international coverage.
+            </p>
+
+            <h3>Q3. What does a 'good' newspaper contain?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                A good newspaper should contain daily updates on important national and international events. It should also include weather forecasts, environmental news, and warnings about natural disasters. In addition, it should cover achievements in sports and culture, and ideally reflect the interests of its readers.
+            </p>
+
+            <h3>Q4. Why do some people choose to read the news on the Internet rather than in a newspaper?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Many people prefer online news because it’s convenient and accessible. Most people have smartphones, so they can read news whenever they want, even while commuting. Online news is often free, although some sites require a subscription. It’s also updated constantly, so readers can get the latest information quickly.
+            </p>
+
+            <h3>Q5. How is Internet news different from the news you read in the newspaper?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Internet news is often more immediate and interactive. It can include videos, links, and social media updates. Newspapers, on the other hand, are more static and provide a summary of the day’s events. Online news also allows readers to comment and share stories, which traditional newspapers cannot do.
+            </p>
+
+            <h3>Q6. Will Internet news ever replace newspapers? [Why? / Why not?]</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I think internet news will become even more popular in the future, thanks to technological advancements. However, I don’t think it will completely replace printed newspapers. Some people still prefer the experience of reading a physical paper, and printed newspapers are often seen as more reliable. So, while online news will grow, printed newspapers will probably continue to exist.
+            </p>
+
+            <div class="page-number">19</div>
+        </div>
+
+    </body>
+</html>
