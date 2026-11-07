@@ -4,6 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>IELTS Speaking Part 3 Vocabulary · Cambridge 11–21</title>
+
+<!-- Apply saved theme before paint (prevents flash) -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('ielts-p3-theme');
+      var dark = saved ? saved === 'dark' : true;
+      if (dark) document.documentElement.classList.add('dark');
+    } catch (e) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -76,6 +90,18 @@
     cursor: pointer; transition: all .18s ease; white-space: nowrap;
   }
   .reset-btn:hover { background: #fef2f2; }
+
+  /* Theme toggle */
+  .theme-btn {
+    padding: .45rem .9rem; border-radius: 999px; font-size: .78rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .theme-btn:hover { border-color: #5eead4; color: #0f766e; }
+  .theme-btn svg { width: 13px; height: 13px; }
+  html:not(.dark) .icon-sun { display: none; }
+  html.dark .icon-moon { display: none; }
 
   /* ---------- VOCAB TABLES ---------- */
   .topic-block {
@@ -157,13 +183,6 @@
     background: linear-gradient(135deg, #14b8a6, #0ea5e9);
     flex-shrink: 0;
   }
-  .repeat-note {
-    font-size: .72rem; font-weight: 600; color: #94a3b8;
-    background: #f8fafc; border: 1px dashed #e2e8f0;
-    border-radius: .6rem; padding: .5rem .85rem;
-    margin: .4rem 0 .8rem;
-    display: inline-block;
-  }
 
   /* ---------- POWER WORDS ---------- */
   .power-card {
@@ -225,6 +244,130 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
   ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  /* =========================================================
+     DARK THEME
+     ========================================================= */
+  html.dark { color-scheme: dark; }
+
+  html.dark body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(13,148,136,.16), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.14), transparent 60%),
+      #070b16;
+    color: #cbd5e1;
+  }
+
+  html.dark .filter-shell {
+    background: rgba(8,12,23,.88);
+    border-bottom-color: #1b2540;
+    box-shadow: 0 4px 22px -12px rgba(0,0,0,.85);
+  }
+  html.dark .book-select {
+    background: #0f1629;
+    border-color: #24304d;
+    color: #e2e8f0;
+  }
+  html.dark .book-select:focus {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(13,148,136,.22);
+  }
+  html.dark .search-input {
+    background: #0f1629;
+    border-color: #24304d;
+    color: #e2e8f0;
+  }
+  html.dark .search-input::placeholder { color: #64748b; }
+  html.dark .search-input:focus {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(13,148,136,.22);
+  }
+  html.dark .reset-btn {
+    background: #1a0f10;
+    border-color: #7f1d1d;
+    color: #fca5a5;
+  }
+  html.dark .reset-btn:hover { background: #251518; }
+
+  html.dark .theme-btn {
+    background: #0f1629;
+    border-color: #24304d;
+    color: #5eead4;
+  }
+  html.dark .theme-btn:hover { border-color: #14b8a6; color: #99f6e4; }
+
+  html.dark .topic-block {
+    background: #0e1526;
+    border-color: #1b2540;
+    box-shadow: 0 2px 10px rgba(0,0,0,.45);
+  }
+  html.dark .topic-block:hover {
+    border-color: #134e4a;
+    box-shadow: 0 14px 34px -20px rgba(0,0,0,.9), 0 4px 12px -8px rgba(13,148,136,.25);
+  }
+  html.dark .topic-header {
+    background: linear-gradient(135deg, #0a1a1f, #0a1626);
+    border-bottom-color: #1b2540;
+  }
+  html.dark .topic-header .t-name { color: #f1f5f9; }
+  html.dark .topic-header .t-count {
+    background: #134e4a;
+    color: #99f6e4;
+  }
+  html.dark .vocab-row { border-bottom-color: #1b2540; }
+  html.dark .vocab-row:hover { background: #0f1728; }
+  html.dark .vocab-term { color: #f1f5f9; }
+  html.dark .vocab-meaning { color: #94a3b8; }
+  html.dark .vocab-row:hover .vocab-term { color: #5eead4; }
+
+  html.dark .book-heading .line {
+    background: linear-gradient(90deg, #1b2540, transparent);
+  }
+  html.dark .test-heading { color: #f1f5f9; }
+
+  html.dark .power-card {
+    background: linear-gradient(135deg, #0a1a26, #0e1526);
+    border-color: #1b3a4a;
+  }
+  html.dark .power-card:hover {
+    border-color: #0e7490;
+    box-shadow: 0 14px 30px -20px rgba(14,165,233,.4);
+  }
+  html.dark .power-card .pw { color: #67e8f9; }
+  html.dark .power-card .pm { color: #94a3b8; }
+  html.dark .power-card .pt {
+    background: #0c2a3a;
+    color: #5eead4;
+  }
+
+  html.dark .tip-item {
+    background: #0a1a1f;
+    border-color: #134e4a;
+    color: #cbd5e1;
+  }
+
+  html.dark .section-title { color: #f1f5f9; }
+
+  html.dark .footer-note {
+    background: #0c1322;
+    border-color: #1b2540;
+    color: #94a3b8;
+  }
+
+  html.dark .no-results { color: #64748b; }
+
+  html.dark ::-webkit-scrollbar-thumb { background: #334155; border-color: #070b16; }
+  html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+  /* Tailwind utility overrides used in static markup */
+  html.dark .text-slate-800 { color: #e2e8f0 !important; }
+  html.dark .text-slate-700 { color: #cbd5e1 !important; }
+  html.dark .text-slate-600 { color: #b6c2d4 !important; }
+  html.dark .text-slate-500 { color: #94a3b8 !important; }
+  html.dark .text-slate-400 { color: #7c8ba1 !important; }
+  html.dark .text-teal-600 { color: #5eead4 !important; }
+  html.dark .bg-white { background-color: #0e1526 !important; }
+  html.dark .border-slate-200 { border-color: #1b2540 !important; }
 
   @media (prefers-reduced-motion: reduce) {
     .aurora { animation: none; }
@@ -292,6 +435,17 @@
         </svg>
         <input type="text" id="searchInput" class="search-input" placeholder="Search terms, meanings or topics…" />
       </div>
+
+      <button id="themeBtn" class="theme-btn" type="button" title="Toggle dark mode" aria-pressed="true">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" />
+        </svg>
+        <span id="themeLabel">Light</span>
+      </button>
 
       <button id="resetBtn" class="reset-btn">Reset</button>
     </div>
@@ -1391,7 +1545,7 @@ POWER_WORDS.forEach(([word, meaning, topics]) => {
 });
 
 /* =========================================================================
-   EVENTS
+   FILTER EVENTS
    ========================================================================= */
 bookSel.addEventListener('change', () => {
   state.book = bookSel.value;
@@ -1411,6 +1565,28 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   document.getElementById('searchInput').value = '';
   render();
 });
+
+/* =========================================================================
+   THEME TOGGLE
+   ========================================================================= */
+const themeBtn = document.getElementById('themeBtn');
+const themeLabel = document.getElementById('themeLabel');
+
+function syncThemeUI() {
+  const dark = document.documentElement.classList.contains('dark');
+  themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  themeBtn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  themeLabel.textContent = dark ? 'Light' : 'Dark';
+}
+
+themeBtn.addEventListener('click', () => {
+  const dark = !document.documentElement.classList.contains('dark');
+  document.documentElement.classList.toggle('dark', dark);
+  try { localStorage.setItem('ielts-p3-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  syncThemeUI();
+});
+
+syncThemeUI();
 
 /* =========================================================================
    INIT

@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IELTS Idioms &amp; Natural Language · Study Guide</title>
+
+    <!-- Apply saved theme before paint (prevents flash) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('ielts-theme');
+          var dark = saved ? saved === 'dark' : true;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +66,7 @@
   .stat-box .number { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.1; }
   .stat-box .label { font-size: .63rem; color: #c4b5fd; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
 
-  /* ---------- FILTER BAR ---------- */
+  /* ---------- STICKY TOOLBAR ---------- */
   .filter-shell {
     position: sticky; top: 0; z-index: 40;
     background: rgba(248,250,252,.9);
@@ -60,23 +74,6 @@
     border-bottom: 1px solid #e2e8f0;
     box-shadow: 0 4px 20px -12px rgba(15,23,42,.18);
   }
-  .chip {
-    padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 700;
-    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
-    cursor: pointer; transition: all .16s ease; white-space: nowrap;
-  }
-  .chip:hover { border-color: #c4b5fd; color: #7c3aed; }
-  .chip.active {
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    color: #fff; border-color: transparent;
-    box-shadow: 0 6px 18px -8px rgba(124,58,237,.7);
-  }
-  .search-input {
-    padding: .5rem .95rem .5rem 2.2rem; border-radius: 999px; font-size: .82rem;
-    border: 1px solid #e2e8f0; background: #fff; outline: none; width: 100%;
-    transition: all .18s ease;
-  }
-  .search-input:focus { border-color: #c4b5fd; box-shadow: 0 0 0 3px rgba(139,92,246,.14); }
   .mode-btn {
     padding: .45rem .85rem; border-radius: 999px; font-size: .72rem; font-weight: 800;
     border: 1px solid #fcd34d; background: #fffbeb; color: #92400e;
@@ -89,6 +86,18 @@
     color: #fff; border-color: transparent;
     box-shadow: 0 6px 18px -8px rgba(217,119,6,.7);
   }
+
+  /* Theme toggle */
+  .theme-btn {
+    padding: .45rem .85rem; border-radius: 999px; font-size: .72rem; font-weight: 800;
+    border: 1px solid #e2e8f0; background: #fff; color: #475569;
+    cursor: pointer; transition: all .18s ease; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .theme-btn:hover { border-color: #c4b5fd; color: #7c3aed; }
+  .theme-btn svg { width: 13px; height: 13px; }
+  html:not(.dark) .icon-sun { display: none; }
+  html.dark .icon-moon { display: none; }
 
   /* ---------- IDIOM CARDS ---------- */
   .idiom-card {
@@ -109,6 +118,12 @@
     border-color: #e9d5ff;
   }
   .idiom-card:hover::after { opacity: 1; }
+
+  @keyframes cardflash {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); }
+    40%      { box-shadow: 0 0 0 5px rgba(124,58,237,.32); }
+  }
+  .idiom-card.flash { animation: cardflash 1.1s ease 2; border-color: #a78bfa; }
 
   .num-badge {
     width: 2rem; height: 2rem; border-radius: .6rem;
@@ -134,10 +149,90 @@
     text-transform: uppercase; color: #7c3aed; display: block; margin-bottom: .25rem;
   }
 
+  /* ---------- COLLOCATIONS ---------- */
+  .colloc-block {
+    border-radius: .55rem;
+    background: #f8fafc;
+    border: 1px dashed #d7e0ec;
+    padding: .6rem .75rem;
+    margin-bottom: .7rem;
+  }
+  .colloc-block .lbl {
+    font-size: .56rem; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; color: #0891b2;
+    display: block; margin-bottom: .4rem;
+  }
+  .colloc-pill {
+    display: inline-block;
+    font-size: .68rem; font-weight: 600;
+    padding: .16rem .5rem;
+    border-radius: .4rem;
+    background: #fff;
+    border: 1px solid #dbe3ee;
+    color: #475569;
+    line-height: 1.35;
+  }
+
   /* Quiz mode: blur examples until hovered/clicked */
   .quiz-mode .example-box { filter: blur(5px); cursor: pointer; transition: filter .25s ease; user-select: none; }
   .quiz-mode .example-box:hover,
   .quiz-mode .example-box.revealed { filter: blur(0); user-select: auto; }
+
+  /* ---------- Q&A CARDS ---------- */
+  .qa-card {
+    background: #fff; border-radius: 1rem; border: 1px solid #eef2f6;
+    padding: 1.15rem 1.25rem;
+    display: flex; flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .qa-card:hover { border-color: #e9d5ff; box-shadow: 0 12px 30px -22px rgba(76,29,149,.4); }
+  .qa-card.open { border-color: #ddd6fe; }
+
+  .qa-part {
+    font-size: .58rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; padding: .18rem .5rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ede9fe, #dbeafe);
+    color: #5b21b6;
+  }
+  .qa-q {
+    font-weight: 700; color: #0f172a; font-size: .9rem; line-height: 1.5; margin: 0;
+  }
+  .qa-q .qmark { color: #a78bfa; font-weight: 800; margin-right: .15rem; }
+
+  .qa-toggle {
+    margin-top: .75rem; align-self: flex-start;
+    font-size: .68rem; font-weight: 800; letter-spacing: .02em;
+    padding: .35rem .8rem; border-radius: 999px;
+    border: 1px solid #ddd6fe; background: #f5f3ff; color: #6d28d9;
+    cursor: pointer; transition: all .16s ease;
+    display: inline-flex; align-items: center; gap: .35rem;
+  }
+  .qa-toggle:hover { background: #ede9fe; border-color: #c4b5fd; }
+  .qa-toggle svg { width: .7rem; height: .7rem; transition: transform .22s ease; }
+  .qa-card.open .qa-toggle svg { transform: rotate(180deg); }
+
+  .qa-answer { display: none; margin-top: .8rem; padding-top: .8rem; border-top: 1px dashed #e2e8f0; }
+  .qa-card.open .qa-answer { display: block; animation: fadein .26s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+
+  .qa-text { font-size: .83rem; line-height: 1.68; color: #334155; margin: 0; }
+  .hl {
+    color: #6d28d9; font-weight: 700;
+    background: rgba(139,92,246,.10);
+    padding: 0 .12em; border-radius: .2em;
+  }
+  .qa-idioms { margin-top: .8rem; display: flex; flex-wrap: wrap; gap: .3rem; }
+  .qa-idiom {
+    font-size: .62rem; font-weight: 700;
+    padding: .16rem .55rem; border-radius: 999px;
+    background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1;
+    cursor: pointer; transition: all .15s ease;
+    font-family: inherit;
+  }
+  .qa-idiom:hover { background: #e0f2fe; border-color: #7dd3fc; }
+  .qa-idiom::after { content: ' ↗'; font-size: .55rem; opacity: .65; }
 
   /* ---------- SECTIONS ---------- */
   .section-card {
@@ -220,8 +315,6 @@
     border: 1px solid #e2e8f0; margin-top: 3rem;
   }
 
-  .no-results { text-align: center; padding: 4rem 1rem; color: #94a3b8; }
-
   .rule-box {
     border-radius: .9rem; padding: 1rem 1.25rem;
     border: 1px solid #fde68a;
@@ -234,9 +327,168 @@
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 3px solid #f8fafc; }
   ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+  /* =========================================================
+     DARK THEME
+     ========================================================= */
+  html.dark { color-scheme: dark; }
+
+  html.dark body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.20), transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.16), transparent 60%),
+      #070b16;
+    color: #cbd5e1;
+  }
+
+  html.dark .filter-shell {
+    background: rgba(8,12,23,.88);
+    border-bottom-color: #1b2540;
+    box-shadow: 0 4px 22px -12px rgba(0,0,0,.85);
+  }
+  html.dark .mode-btn {
+    background: #1a1508; border-color: #7c5a12; color: #fcd34d;
+  }
+  html.dark .mode-btn:hover { background: #251d0a; }
+  html.dark .mode-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff; border-color: transparent;
+    box-shadow: 0 6px 18px -8px rgba(217,119,6,.85);
+  }
+  html.dark .theme-btn {
+    background: #121a2e; border-color: #24304d; color: #c4b5fd;
+  }
+  html.dark .theme-btn:hover { border-color: #7c3aed; color: #ede9fe; }
+
+  html.dark .idiom-card {
+    background: #0e1526;
+    border-color: #1b2540;
+    box-shadow: 0 2px 10px rgba(0,0,0,.45);
+  }
+  html.dark .idiom-card:hover {
+    border-color: #4c1d95;
+    box-shadow: 0 18px 40px -22px rgba(0,0,0,.9), 0 6px 18px -12px rgba(124,58,237,.45);
+  }
+  html.dark .num-badge {
+    background: linear-gradient(135deg, #2e1065, #172554);
+    color: #c4b5fd;
+  }
+  html.dark .tag { background: #172033; color: #94a3b8; }
+  html.dark .example-box {
+    background: linear-gradient(135deg, #160f2b, #0b1a2b);
+    border-left-color: #7c3aed;
+    color: #cbd5e1;
+  }
+  html.dark .example-box .lbl { color: #a78bfa; }
+  html.dark .colloc-block {
+    background: #0b1222;
+    border-color: #243050;
+  }
+  html.dark .colloc-block .lbl { color: #22d3ee; }
+  html.dark .colloc-pill {
+    background: #111a2d;
+    border-color: #243050;
+    color: #a5b4fc;
+  }
+
+  /* Q&A dark */
+  html.dark .qa-card {
+    background: #0e1526; border-color: #1b2540;
+    box-shadow: 0 2px 10px rgba(0,0,0,.45);
+  }
+  html.dark .qa-card:hover { border-color: #4c1d95; box-shadow: 0 14px 34px -22px rgba(0,0,0,.95); }
+  html.dark .qa-card.open { border-color: #4c1d95; }
+  html.dark .qa-part { background: linear-gradient(135deg, #2e1065, #172554); color: #c4b5fd; }
+  html.dark .qa-q { color: #f1f5f9; }
+  html.dark .qa-q .qmark { color: #7c3aed; }
+  html.dark .qa-toggle { border-color: #3b2a6b; background: #161029; color: #c4b5fd; }
+  html.dark .qa-toggle:hover { background: #1f1638; border-color: #6d28d9; }
+  html.dark .qa-answer { border-top-color: #1b2540; }
+  html.dark .qa-text { color: #cbd5e1; }
+  html.dark .hl { color: #c4b5fd; background: rgba(139,92,246,.20); }
+  html.dark .qa-idiom { background: #0b1a2b; border-color: #164e63; color: #67e8f9; }
+  html.dark .qa-idiom:hover { background: #0f2438; border-color: #0891b2; }
+
+  html.dark .section-card {
+    background: #0c1322;
+    border-color: #1b2540;
+    box-shadow: 0 2px 12px rgba(0,0,0,.45);
+  }
+  html.dark .topic-row {
+    background: #0f1728; border-color: #1b2540;
+  }
+  html.dark .topic-row:hover { background: #141e33; border-color: #4c1d95; }
+  html.dark .topic-row .topic-name { color: #c4b5fd; }
+
+  html.dark .pitfall-card {
+    background: linear-gradient(135deg, #220f15, #0f1524);
+    border-color: #4c1d24;
+  }
+  html.dark .pitfall-num { background: #3f1219; color: #fca5a5; }
+
+  html.dark .step-card {
+    background: linear-gradient(135deg, #141032, #0f1524);
+    border-color: #2a2a5e;
+  }
+
+  html.dark .check-item { background: #0f1728; border-color: #1b2540; }
+  html.dark .check-item:hover { background: #141e33; border-color: #4c1d95; }
+  html.dark .check-item.checked { background: #0b2018; border-color: #166534; }
+  html.dark .check-box { border-color: #334155; }
+
+  html.dark .progress-track { background: #1b2540; }
+
+  html.dark .footer-note {
+    background: #0c1322; border-color: #1b2540; color: #94a3b8;
+  }
+
+  html.dark .rule-box {
+    background: linear-gradient(135deg, #1e1908, #0f1524);
+    border-color: #5c4a10;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb { background: #334155; border-color: #070b16; }
+  html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+  /* --- Tailwind utility overrides used in static markup --- */
+  html.dark .text-slate-900 { color: #f1f5f9 !important; }
+  html.dark .text-slate-800 { color: #e2e8f0 !important; }
+  html.dark .text-slate-700 { color: #cbd5e1 !important; }
+  html.dark .text-slate-600 { color: #b6c2d4 !important; }
+  html.dark .text-slate-500 { color: #94a3b8 !important; }
+  html.dark .text-slate-400 { color: #7c8ba1 !important; }
+
+  html.dark .bg-white { background-color: #0e1526 !important; }
+  html.dark .bg-slate-50 { background-color: #0f1728 !important; }
+  html.dark .bg-slate-50\/50 { background-color: rgba(15,23,40,.5) !important; }
+  html.dark .border-slate-200 { border-color: #1b2540 !important; }
+  html.dark .border-slate-100 { border-color: #1b2540 !important; }
+
+  html.dark .bg-indigo-50\/60 { background-color: rgba(49,46,129,.38) !important; }
+  html.dark .border-indigo-100 { border-color: #312e81 !important; }
+  html.dark .text-indigo-800 { color: #a5b4fc !important; }
+
+  html.dark .bg-amber-50\/60 { background-color: rgba(120,53,15,.30) !important; }
+  html.dark .border-amber-100 { border-color: #78350f !important; }
+  html.dark .text-amber-800 { color: #fcd34d !important; }
+
+  html.dark .bg-emerald-50\/60 { background-color: rgba(6,78,59,.32) !important; }
+  html.dark .border-emerald-100 { border-color: #065f46 !important; }
+  html.dark .text-emerald-800 { color: #6ee7b7 !important; }
+
+  html.dark .bg-rose-50\/70 { background-color: rgba(76,5,25,.38) !important; }
+  html.dark .border-rose-200 { border-color: #7f1d1d !important; }
+  html.dark .text-rose-800 { color: #fca5a5 !important; }
+
+  html.dark .border-purple-200 { border-color: #4c1d95 !important; }
+  html.dark .text-purple-800 { color: #c4b5fd !important; }
+  html.dark .takeaway-box {
+    background-image: linear-gradient(to bottom right, rgba(76,29,149,.35), rgba(30,27,75,.35)) !important;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .aurora { animation: none; }
-    .idiom-card, .chip, .example-box { transition: none; }
+    .idiom-card, .example-box, .qa-card { transition: none; }
+    .idiom-card.flash { animation: none; }
   }
   @media (max-width: 640px) {
     .stat-box { padding: .6rem .85rem; min-width: 76px; }
@@ -266,7 +518,7 @@
             <p
               class="text-lg md:text-xl text-purple-100/80 mt-4 max-w-2xl leading-relaxed">
               35 high-value expressions — organised by topic, with natural
-              examples,
+              examples, collocations, model answers to real speaking questions,
               accuracy notes, and a practice routine for spontaneous use.
             </p>
 
@@ -288,10 +540,14 @@
           <div class="md:w-1/3 flex flex-wrap justify-center gap-3">
             <div class="stat-box"><div class="number">35</div><div
                 class="label">Idioms</div></div>
+            <div class="stat-box"><div class="number">105</div><div
+                class="label">Collocations</div></div>
+            <div class="stat-box"><div class="number">70</div><div
+                class="label">Examples</div></div>
+            <div class="stat-box"><div class="number">22</div><div
+                class="label">Q &amp; A</div></div>
             <div class="stat-box"><div class="number">10</div><div
                 class="label">Topics</div></div>
-            <div class="stat-box"><div class="number">6</div><div
-                class="label">Steps</div></div>
             <div class="stat-box"><div class="number">7</div><div
                 class="label">Checks</div></div>
           </div>
@@ -299,52 +555,40 @@
       </div>
     </section>
 
-    <!-- ================= FILTER BAR ================= -->
+    <!-- ================= STICKY TOOLBAR ================= -->
     <div class="filter-shell" id="bank">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-        <div class="flex flex-col gap-3">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button id="quizBtn" class="mode-btn"
+            title="Hide examples and test yourself">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" /><circle
+                cx="12" cy="12" r="3" />
+            </svg>
+            Quiz mode
+          </button>
 
-          <div class="flex flex-wrap items-center gap-2.5">
-            <button class="chip active" data-cat="all">All Topics</button>
-            <div id="catChips"
-              class="flex flex-wrap items-center gap-1.5"></div>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2.5">
-            <div class="relative flex-1 min-w-[200px]">
-              <svg
-                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-              </svg>
-              <input type="text" id="searchInput" class="search-input"
-                placeholder="Search idioms, meanings or examples…" />
-            </div>
-
-            <button id="quizBtn" class="mode-btn"
-              title="Hide examples and test yourself">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-                fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round"
-                viewBox="0 0 24 24">
-                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" /><circle
-                  cx="12" cy="12" r="3" />
-              </svg>
-              Quiz mode
-            </button>
-
-            <button id="resetBtn" class="chip"
-              style="border-color:#fecaca;color:#b91c1c;">Reset</button>
-          </div>
-
-          <div class="text-xs text-slate-500 font-medium">
-            Showing <span id="resultCount"
-              class="font-extrabold text-purple-600">0</span> idioms
-            <span id="activeSummary" class="text-slate-400"></span>
-          </div>
-
+          <button id="themeBtn" class="theme-btn" title="Toggle dark mode"
+            aria-pressed="true">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg"
+              fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg"
+              fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round"
+              viewBox="0 0 24 24">
+              <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" />
+            </svg>
+            <span id="themeLabel">Light</span>
+          </button>
         </div>
       </div>
     </div>
@@ -352,6 +596,38 @@
     <!-- ================= RESULTS ================= -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-8">
       <div id="results"></div>
+
+      <!-- ============ PRACTICE QUESTIONS & MODEL ANSWERS ============ -->
+      <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
+        id="questions" />
+
+      <section class="section-card p-6 md:p-9">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🗨️</span>
+            <h2 class="text-2xl font-extrabold text-slate-900 m-0">Practice
+              Questions &amp; Model Answers</h2>
+          </div>
+          <button id="toggleAllQa" class="qa-toggle" style="margin-top:0;"
+            type="button">
+            <span id="toggleAllLabel">Show all answers</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+              stroke="currentColor" stroke-width="3" stroke-linecap="round"
+              stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+          Twenty-two exam-style questions, each answered naturally with idioms
+          from the bank above. Answer the question out loud <em>first</em>, then
+          reveal the model answer and compare. Highlighted phrases are the
+          idioms; click a tag to jump to its card.
+        </p>
+
+        <div id="qaGrid" class="grid lg:grid-cols-2 gap-4"></div>
+      </section>
 
       <!-- ============ SECTION 3 · CHOOSING THE RIGHT IDIOM ============ -->
       <hr class="border-0 border-t-2 border-dashed border-slate-200 my-14"
@@ -363,11 +639,27 @@
           <h2 class="text-2xl font-extrabold text-slate-900 m-0">Choosing the
             Right Idiom</h2>
         </div>
-        <p class="text-slate-500 text-sm mb-7 max-w-3xl">
+        <p class="text-slate-500 text-sm mb-6 max-w-3xl">
           Don't memorise idioms as isolated vocabulary. Group them by
           communicative purpose
           and by the situations you're likely to describe in the exam.
         </p>
+
+        <div class="rule-box mb-7">
+          <span class="text-xl shrink-0">🧩</span>
+          <div>
+            <p class="font-extrabold text-amber-800 text-sm m-0 mb-1">Why
+              collocations matter</p>
+            <p class="text-sm text-slate-700 m-0 leading-relaxed">
+              An idiom is only half the job — examiners notice whether the words
+              <em>around</em> it sound natural. Learning chunks such as
+              <em>get the hang of <strong>it</strong></em>,
+              <em>a soft spot <strong>for</strong></em> or
+              <em>lend <strong>somebody</strong> a hand</em> makes the
+              expression easier to recall and much harder to get wrong.
+            </p>
+          </div>
+        </div>
 
         <div id="topicTable"
           class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
@@ -543,7 +835,7 @@
         <div id="checklistGrid" class="grid md:grid-cols-2 gap-3"></div>
 
         <div
-          class="mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
+          class="takeaway-box mt-7 rounded-xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 px-5 py-4 flex gap-3">
           <span class="text-xl shrink-0">💡</span>
           <p class="text-sm text-slate-700 m-0">
             <strong class="text-purple-800">Final takeaway:</strong> idioms
@@ -557,8 +849,8 @@
       <div class="footer-note">
         <p class="font-bold text-slate-800">🗣️ IELTS Speaking · Idioms &amp;
           Natural Language</p>
-        <p class="text-sm mt-1">35 expressions · 10 topic groups · accuracy
-          notes · practice routine</p>
+        <p class="text-sm mt-1">35 expressions · 105 collocations · 70 examples
+          · 22 practice questions · 10 topic groups</p>
         <p class="text-xs text-slate-400 mt-2">Built for personal study · HTML
           &amp; Tailwind CSS</p>
       </div>
@@ -566,7 +858,7 @@
 
     <script>
 /* =========================================================================
-   DATA
+   DATA — IDIOMS
    ========================================================================= */
 
 const CATEGORIES = [
@@ -584,144 +876,381 @@ const CATEGORIES = [
 
 const IDIOMS = [
   { n:1, idiom:"Once in a blue moon", meaning:"Very rarely.",
+    collocations:["happen once in a blue moon","only once in a blue moon","see sb once in a blue moon"],
     example:"I eat fast food once in a blue moon because I usually cook at home.",
+    example2:"My cousin lives abroad, so we only meet once in a blue moon.",
     cats:["Weather & routine"] },
 
   { n:2, idiom:"A piece of cake", meaning:"Very easy to do.",
+    collocations:["be a piece of cake","make sth a piece of cake","the exam was a piece of cake"],
     example:"The registration process was a piece of cake once I had all the documents ready.",
+    example2:"For someone who drives every day, the parking test is a piece of cake.",
     cats:["Education & learning"] },
 
   { n:3, idiom:"Break the ice", meaning:"Make people feel more relaxed and comfortable.",
+    collocations:["break the ice with sb","an ice-breaker activity","help break the ice"],
     example:"We played a quick game to break the ice before the workshop started.",
+    example2:"A few simple questions from the teacher helped break the ice on the first day.",
     cats:["People & relationships"] },
 
   { n:4, idiom:"Get the hang of it", meaning:"Learn how to do something through practice.",
+    collocations:["get the hang of sth","finally get the hang of it","slowly get the hang of doing sth"],
     example:"It took me a few days to get the hang of the new software.",
+    example2:"After a couple of lessons, I started to get the hang of driving a manual car.",
     cats:["Education & learning"] },
 
   { n:5, idiom:"Give it a shot", meaning:"Try something.",
+    collocations:["give sth a shot","give it a shot","worth giving it a shot"],
     example:"I have never tried hiking alone, but I would love to give it a shot.",
+    example2:"The recipe looked difficult, but I decided to give it a shot anyway.",
     cats:["Travel & places","Preferences & opinions"] },
 
   { n:6, idiom:"Go the extra mile", meaning:"Make more effort than is expected.",
+    collocations:["go the extra mile for sb","go the extra mile to do sth","always go the extra mile"],
     example:"My teacher went the extra mile to explain the difficult topic to me.",
+    example2:"The staff went the extra mile to find us a room when our flight was cancelled.",
     cats:["Education & learning","Work & colleagues"] },
 
   { n:7, idiom:"On the same page", meaning:"Have the same understanding, expectation or opinion.",
+    collocations:["be on the same page","make sure we are on the same page","get everyone on the same page"],
     example:"Before starting the project, we made sure everyone was on the same page.",
+    example2:"We had a short meeting to make sure we were on the same page about the deadline.",
     cats:["Work & colleagues"] },
 
   { n:8, idiom:"Under the weather", meaning:"Feeling slightly unwell.",
+    collocations:["feel a bit under the weather","be under the weather","look under the weather"],
     example:"I was feeling a bit under the weather, so I stayed home and rested.",
+    example2:"She looked a little under the weather, so we told her to take the day off.",
     cats:["Health & lifestyle"] },
 
   { n:9, idiom:"In the long run", meaning:"Over a long period of time; eventually.",
+    collocations:["pay off in the long run","cheaper in the long run","in the long run, it is better to..."],
     example:"Learning English every day will help me in the long run.",
+    example2:"Cycling to work is cheaper in the long run than taking a taxi every day.",
     cats:["Health & lifestyle","Education & learning"] },
 
   { n:10, idiom:"Out of the blue", meaning:"Unexpectedly or without warning.",
+    collocations:["happen out of the blue","call sb out of the blue","come out of the blue"],
     example:"Out of the blue, an old friend called me after several years.",
+    example2:"The job offer came completely out of the blue.",
     cats:["Weather & routine"] },
 
   { n:11, idiom:"A breath of fresh air", meaning:"Something pleasantly new, refreshing or different.",
+    collocations:["be a breath of fresh air","feel like a breath of fresh air","bring a breath of fresh air to sth"],
     example:"A weekend in the countryside was a breath of fresh air after a busy month in the city.",
+    example2:"Her positive attitude was a breath of fresh air in a rather tense office.",
     cats:["Travel & places"] },
 
   { n:12, idiom:"Hit the nail on the head", meaning:"Describe or identify something exactly.",
+    collocations:["hit the nail on the head","really hit the nail on the head","hit the nail on the head with sth"],
     example:"You hit the nail on the head when you said that my main weakness is time management.",
+    example2:"The reviewer hit the nail on the head when she said the film was too long.",
     cats:["Preferences & opinions","People & relationships"] },
 
   { n:13, idiom:"Cost an arm and a leg", meaning:"Be extremely expensive.",
+    collocations:["cost an arm and a leg","pay an arm and a leg for sth","it costs an arm and a leg"],
     example:"The new laptop cost an arm and a leg, so I waited for a discount.",
+    example2:"Tickets for the final cost an arm and a leg, so we watched the match at home.",
     cats:["Money & shopping"] },
 
   { n:14, idiom:"Worth every penny", meaning:"Fully worth the money spent.",
+    collocations:["be worth every penny","worth every penny of it","the ticket was worth every penny"],
     example:"The course was worth every penny because the instructor gave detailed feedback.",
+    example2:"The headphones were expensive, but they were worth every penny.",
     cats:["Money & shopping"] },
 
   { n:15, idiom:"Have a soft spot for", meaning:"Have a particular fondness for something or someone.",
+    collocations:["have a soft spot for sb/sth","a real soft spot for sth","always had a soft spot for sth"],
     example:"I have a soft spot for old books because I love the smell and feel of them.",
+    example2:"My grandmother has a soft spot for stray cats and feeds them every morning.",
     cats:["People & relationships","Preferences & opinions"] },
 
   { n:16, idiom:"Not my cup of tea", meaning:"Not something I particularly like.",
+    collocations:["not really my cup of tea","just not my cup of tea","that kind of music is not my cup of tea"],
     example:"Horror films are not really my cup of tea, although I enjoy thrillers.",
+    example2:"Camping is not really my cup of tea, but I enjoyed the company.",
     cats:["Preferences & opinions"] },
 
   { n:17, idiom:"Kill time", meaning:"Spend time while waiting or with nothing urgent to do.",
+    collocations:["kill time while waiting","kill a bit of time","something to kill time"],
     example:"I usually read news articles to kill time while I am waiting for a bus.",
+    example2:"We arrived early, so we killed time in a small café near the station.",
     cats:["Weather & routine","Travel & places"] },
 
   { n:18, idiom:"Lend a hand", meaning:"Help someone.",
+    collocations:["lend sb a hand","lend a hand with sth","lend a hand to sb"],
     example:"My brother always lends me a hand when I have too much work to do.",
+    example2:"Could you lend me a hand with these boxes?",
     cats:["Work & colleagues","People & relationships"] },
 
   { n:19, idiom:"Keep an eye on", meaning:"Watch or look after something temporarily.",
+    collocations:["keep an eye on sth","keep a close eye on sb","ask sb to keep an eye on sth"],
     example:"Could you keep an eye on my bag while I buy some water?",
+    example2:"The teacher kept a close eye on the new students during the first week.",
     cats:["People & relationships"] },
 
   { n:20, idiom:"Make a difference", meaning:"Have a meaningful effect or impact.",
+    collocations:["make a big difference","make a real difference to sb/sth","make a difference in sth"],
     example:"Even small changes in our daily habits can make a big difference.",
+    example2:"Volunteering at the local library made a real difference to my confidence.",
     cats:["Health & lifestyle","Work & colleagues"] },
 
   { n:21, idiom:"Bite the bullet", meaning:"Face a difficult or unpleasant situation bravely and endure it.",
+    collocations:["bite the bullet and do sth","decide to bite the bullet","bite the bullet on sth"],
     example:"I did not enjoy the extra practice, but I decided to bite the bullet and finish it.",
+    example2:"I finally bit the bullet and told my manager I needed more training.",
     cats:["Mistakes & setbacks","Education & learning"] },
 
   { n:22, idiom:"Kill two birds with one stone", meaning:"Achieve two objectives with one action.",
+    collocations:["kill two birds with one stone by doing sth","manage to kill two birds with one stone","you kill two birds with one stone"],
     example:"I killed two birds with one stone by walking to the market and getting my daily exercise at the same time.",
+    example2:"By cycling to the office, she kills two birds with one stone: she saves money and gets fit.",
     cats:["Work & colleagues","Plans & uncertainty"] },
 
   { n:23, idiom:"Let the cat out of the bag", meaning:"Reveal a secret, often accidentally.",
+    collocations:["let the cat out of the bag about sth","accidentally let the cat out of the bag","someone let the cat out of the bag"],
     example:"I accidentally let the cat out of the bag about the surprise party.",
+    example2:"He let the cat out of the bag about the trip a week before the announcement.",
     cats:["People & relationships"] },
 
   { n:24, idiom:"Don't put all your eggs in one basket", meaning:"Do not risk everything on a single option or plan.",
+    collocations:["put all your eggs in one basket","advise sb not to put all their eggs in one basket","never put all your eggs in one basket"],
     example:"I applied to several universities because I did not want to put all my eggs in one basket.",
+    example2:"My father told me not to put all my eggs in one basket when I applied for jobs.",
     cats:["Plans & uncertainty","Money & shopping"] },
 
   { n:25, idiom:"Burn the midnight oil", meaning:"Stay up late to work or study.",
+    collocations:["burn the midnight oil to do sth","have to burn the midnight oil","burning the midnight oil over sth"],
     example:"I had to burn the midnight oil for a few nights before my final exam.",
+    example2:"She burned the midnight oil for a week to finish her dissertation.",
     cats:["Education & learning","Work & colleagues"] },
 
   { n:26, idiom:"Burn the candle at both ends", meaning:"Overwork yourself by doing too much for too long.",
+    collocations:["be burning the candle at both ends","you cannot keep burning the candle at both ends","burn the candle at both ends for weeks"],
     example:"I was burning the candle at both ends by working full-time and studying every night.",
+    example2:"You cannot keep burning the candle at both ends without getting ill.",
     cats:["Health & lifestyle","Work & colleagues"] },
 
   { n:27, idiom:"At the drop of a hat", meaning:"Immediately and without hesitation.",
+    collocations:["do sth at the drop of a hat","would do sth at the drop of a hat","ready at the drop of a hat"],
     example:"I would travel to a beautiful new place at the drop of a hat if I had enough time.",
+    example2:"If a friend needs help, she is there at the drop of a hat.",
     cats:["Travel & places","Plans & uncertainty"] },
 
   { n:28, idiom:"Cry over spilt milk", meaning:"Regret something that has already happened and cannot be changed.",
+    collocations:["no point crying over spilt milk","there is no use crying over spilt milk","stop crying over spilt milk"],
     example:"I made a mistake in the interview, but there is no point crying over spilt milk.",
+    example2:"We missed the train, but there was no point crying over spilt milk.",
     cats:["Mistakes & setbacks"] },
 
   { n:29, idiom:"You can't judge a book by its cover", meaning:"Do not judge something or someone by appearance alone.",
+    collocations:["you cannot judge a book by its cover","never judge a book by its cover","it is like judging a book by its cover"],
     example:"He looked very serious at first, but you cannot judge a book by its cover because he is actually very friendly.",
+    example2:"The café looks tiny from outside, but you cannot judge a book by its cover — it is lovely inside.",
     cats:["People & relationships"] },
 
   { n:30, idiom:"Don't count your chickens before they hatch", meaning:"Do not assume success before an outcome is secure.",
+    collocations:["don't count your chickens","count your chickens before they hatch","not counting my chickens yet"],
     example:"I think the interview went well, but I will not count my chickens before I receive the official offer.",
+    example2:"We might win the contract, but let us not count our chickens before they hatch.",
     cats:["Plans & uncertainty"] },
 
   { n:31, idiom:"Raining cats and dogs", meaning:"Raining very heavily.",
+    collocations:["it was raining cats and dogs","it is raining cats and dogs outside","start raining cats and dogs"],
     example:"It was raining cats and dogs, so we cancelled our outdoor plans.",
+    example2:"We were about to leave when it started raining cats and dogs.",
     cats:["Weather & routine"] },
 
   { n:32, idiom:"Throw in the towel", meaning:"Surrender, quit, or admit defeat.",
+    collocations:["throw in the towel","refuse to throw in the towel","almost threw in the towel"],
     example:"The course was difficult, but I refused to throw in the towel.",
+    example2:"After three failed attempts, he almost threw in the towel.",
     cats:["Mistakes & setbacks","Work & colleagues"] },
 
   { n:33, idiom:"Cross that bridge when you come to it", meaning:"Deal with a problem when it actually happens rather than worrying in advance.",
+    collocations:["cross that bridge when we come to it","we will cross that bridge when we get to it","decide to cross that bridge later"],
     example:"I am not sure what the final problem will be, so I will cross that bridge when I come to it.",
+    example2:"We do not know the exam results yet, so we will cross that bridge when we come to it.",
     cats:["Plans & uncertainty","Mistakes & setbacks"] },
 
   { n:34, idiom:"Rome wasn't built in a day", meaning:"Important achievements take time, patience and persistent effort.",
+    collocations:["Rome was not built in a day","remember that Rome was not built in a day","it takes time — Rome was not built in a day"],
     example:"Improving my speaking skills will take time; Rome was not built in a day.",
+    example2:"Do not be too hard on yourself — Rome was not built in a day.",
     cats:["Education & learning","Plans & uncertainty"] },
 
   { n:35, idiom:"When in Rome, do as the Romans do", meaning:"Adapt to local customs and behaviour when in a different place.",
+    collocations:["when in Rome, do as the Romans do","they say when in Rome...","just follow the local rules — when in Rome"],
     example:"When I travel abroad, I try to respect local customs because when in Rome, do as the Romans do.",
+    example2:"I am not used to eating so late, but when in Rome, do as the Romans do.",
     cats:["Travel & places"] }
+];
+
+/* =========================================================================
+   DATA — PRACTICE QUESTIONS & MODEL ANSWERS
+   Use *asterisks* around an idiom to highlight it in the answer.
+   ========================================================================= */
+
+const QA = [
+  /* ---------------- PART 1 ---------------- */
+  {
+    part: "Part 1",
+    topic: "Daily routine",
+    q: "Are you a morning person or an evening person?",
+    a: "Definitely a morning person. I get most of my serious work done before ten, and I really don't enjoy *burning the midnight oil* — if I stay up late, I feel completely *under the weather* the next day and nothing gets done.",
+    idioms: [25, 8]
+  },
+  {
+    part: "Part 1",
+    topic: "Food & eating out",
+    q: "How often do you eat out?",
+    a: "Honestly, *once in a blue moon* — maybe every couple of months. I usually cook at home because it's cheaper and I know exactly what's in my food. Eating out feels like a treat, so I save it for birthdays or when friends visit.",
+    idioms: [1]
+  },
+  {
+    part: "Part 1",
+    topic: "Learning",
+    q: "Is it easy for you to learn new skills?",
+    a: "It depends on the skill. Anything practical, like a new app or a bit of software, is *a piece of cake* — I just play around with it for an hour. But things that need real coordination, like swimming or driving, take me a while before I *get the hang of it*.",
+    idioms: [2, 4]
+  },
+  {
+    part: "Part 1",
+    topic: "Weather",
+    q: "What's the weather usually like where you live?",
+    a: "Pretty changeable, actually. During the rainy season it can be *raining cats and dogs* one minute and completely sunny the next, so I always carry an umbrella. The rest of the year it's fairly mild.",
+    idioms: [31]
+  },
+  {
+    part: "Part 1",
+    topic: "Films & entertainment",
+    q: "Do you enjoy watching horror films?",
+    a: "Not at all — horror films are *not my cup of tea*. I don't enjoy being scared, even when I know it's fake. I'd much rather watch a comedy or a travel documentary.",
+    idioms: [16]
+  },
+  {
+    part: "Part 1",
+    topic: "Health",
+    q: "What do you do to stay healthy?",
+    a: "Nothing dramatic. I walk to work instead of taking the bus, and I try to cook rather than order food. Small habits like that really *make a difference*. And *in the long run*, they're far easier to keep up than a strict diet that you abandon after a fortnight.",
+    idioms: [20, 9]
+  },
+  {
+    part: "Part 1",
+    topic: "Meeting people",
+    q: "How do you feel about meeting new people?",
+    a: "A bit awkward at first, to be honest. I'm not great at small talk, so I usually rely on a simple question or a light joke to *break the ice*. Once that's done, I'm fine.",
+    idioms: [3]
+  },
+  {
+    part: "Part 1",
+    topic: "Travel & planning",
+    q: "Do you like to plan your trips in detail?",
+    a: "I plan the basics — the flight and the first night — and then leave the rest open. If a friend suggests a detour, I'll say yes *at the drop of a hat*, because the unplanned parts are usually the best. I don't like *killing time* in airports, though, so I do check the schedule carefully.",
+    idioms: [27, 17]
+  },
+
+  /* ---------------- PART 2 ---------------- */
+  {
+    part: "Part 2",
+    topic: "A difficult task",
+    q: "Describe a difficult task you completed. You should say what it was, why it was difficult, how you completed it, and how you felt about it.",
+    a: "I'd like to talk about my final-year dissertation. For the first few weeks I was completely lost — the research methods were new to me and I honestly almost *threw in the towel*. But I reminded myself that *Rome wasn't built in a day*, so I split the work into small weekly targets. I also *bit the bullet* and asked my supervisor for help instead of struggling quietly, and that changed everything. I finished on time, and I was genuinely proud of it.",
+    idioms: [32, 34, 21]
+  },
+  {
+    part: "Part 2",
+    topic: "Helping someone",
+    q: "Describe a time you helped someone.",
+    a: "Last winter my neighbour was moving flat and she was completely overwhelmed. I offered to *lend her a hand* with the boxes and *kept an eye on* her two children while the movers were working. It only took an afternoon, but she kept saying how much easier it had made everything. For me it was a small thing, but it clearly meant a lot to her.",
+    idioms: [18, 19]
+  },
+  {
+    part: "Part 2",
+    topic: "An unexpected event",
+    q: "Describe something unexpected that happened to you.",
+    a: "A few years ago an old classmate called me *out of the blue* — we hadn't spoken since school. She was visiting my city and asked if I wanted to meet. Later I found out that a mutual friend had *let the cat out of the bag* about me moving back, which is why she got in touch. It was a lovely surprise, and we've stayed in contact ever since.",
+    idioms: [10, 23]
+  },
+  {
+    part: "Part 2",
+    topic: "An expensive purchase",
+    q: "Describe something expensive you bought.",
+    a: "I saved up for a good pair of noise-cancelling headphones, and they *cost me an arm and a leg* — easily a month's worth of spending money. But I use them every single day for studying and travelling, so honestly they were *worth every penny*. I'd buy them again without hesitating.",
+    idioms: [13, 14]
+  },
+  {
+    part: "Part 2",
+    topic: "A place you visited",
+    q: "Describe a place you visited that you enjoyed.",
+    a: "I spent a weekend in a small mountain village last spring, and it was *a breath of fresh air* after months of city noise. What I liked most was how people slowed down. I was worried about doing things 'the wrong way', but a local told me to just follow the customs — *when in Rome, do as the Romans do*. By the second day I was having breakfast in the same tiny café as everyone else.",
+    idioms: [11, 35]
+  },
+  {
+    part: "Part 2",
+    topic: "A person you admire",
+    q: "Describe a person you admire.",
+    a: "I'd talk about my aunt. She has a real *soft spot for* animals and has rescued maybe a dozen stray cats over the years. What I admire most is that she never makes a fuss about it. When my mum once described her as 'quietly generous', I thought that *hit the nail on the head* — that's exactly her.",
+    idioms: [15, 12]
+  },
+  {
+    part: "Part 2",
+    topic: "A new activity",
+    q: "Describe a new activity you tried for the first time.",
+    a: "I'd never done any kind of indoor climbing, and a friend finally convinced me to *give it a shot*. I was nervous for the first ten minutes, but once I got going I absolutely loved it. I still go once a fortnight, and I've even started inviting other people who've never tried it.",
+    idioms: [5]
+  },
+
+  /* ---------------- PART 3 ---------------- */
+  {
+    part: "Part 3",
+    topic: "Money & risk",
+    q: "Should young people take financial risks?",
+    a: "Some risk is healthy, but recklessness isn't. If someone pours all their savings into one business or one investment, they're *putting all their eggs in one basket*, and a single bad year could wipe them out. A better approach is to spread the risk and keep an emergency fund.",
+    idioms: [24]
+  },
+  {
+    part: "Part 3",
+    topic: "Teamwork",
+    q: "What makes a team work well together?",
+    a: "Communication, mainly. Before anyone starts working, everyone needs to be *on the same page* about the goal, the deadline and who is responsible for what. It also helps enormously when people are willing to *go the extra mile* for each other instead of sticking strictly to their own tasks.",
+    idioms: [7, 6]
+  },
+  {
+    part: "Part 3",
+    topic: "First impressions",
+    q: "Do first impressions matter?",
+    a: "They matter, but they're often misleading. Someone can look serious or even unfriendly and turn out to be the warmest person in the room — *you can't judge a book by its cover*. In my experience, first impressions are a useful starting point, but you need a few real conversations before you know someone.",
+    idioms: [29]
+  },
+  {
+    part: "Part 3",
+    topic: "Uncertainty",
+    q: "How do people deal with uncertainty?",
+    a: "Mostly by preparing what they can and then accepting the rest. If you're waiting for exam results or a job offer, there's no point *counting your chickens before they hatch* — you might end up disappointed. The healthiest approach is to have a plan B ready and then *cross that bridge when you come to it*.",
+    idioms: [30, 33]
+  },
+  {
+    part: "Part 3",
+    topic: "Failure",
+    q: "How do people react to failure?",
+    a: "It varies a lot. Some people dwell on it for weeks, but *crying over spilt milk* doesn't change anything. The people I admire treat a mistake as information — they work out what went wrong, fix it and move on.",
+    idioms: [28]
+  },
+  {
+    part: "Part 3",
+    topic: "Work & hours",
+    q: "Is it a good idea to work extremely long hours?",
+    a: "In the short term it might help you hit a deadline, but *burning the candle at both ends* for months is a recipe for burnout. I've seen people work late every single night and then fall ill exactly when they needed to be sharpest.",
+    idioms: [26]
+  },
+  {
+    part: "Part 3",
+    topic: "Saving time",
+    q: "Do people in your country try to save time?",
+    a: "Very much so. People often combine errands so that they *kill two birds with one stone* — for example, walking to the market instead of driving, which saves money and gives them some exercise at the same time.",
+    idioms: [22]
+  }
 ];
 
 const GRAMMAR_ROWS = [
@@ -744,20 +1273,20 @@ const PITFALLS = [
 
 const STEPS = [
   ["Learn the meaning","Read the idiom and explain it in your own words without looking."],
+  ["Learn the collocations","Notice the words that always travel with it — the article, the preposition, the object."],
+  ["Study the model answer","Read the Q&A pairs above and notice how the idiom sits inside a real answer."],
   ["Build a personal example","Create one sentence connected to your own life, studies, work, family, travel or daily routine."],
-  ["Change the grammar","Practise the same idiom in present, past or future forms where appropriate."],
   ["Use it in a 40-second answer","Pick an IELTS Speaking question and answer naturally. Do not force the idiom."],
-  ["Record and review","Listen for pronunciation, hesitation, unnatural pauses, wrong articles, tense errors and poor topic fit."],
-  ["Retain only useful idioms","Keep expressions that you can actually imagine using in conversation."]
+  ["Record and review","Listen for pronunciation, hesitation, unnatural pauses, wrong articles, tense errors and poor topic fit."]
 ];
 
 const CHECKLIST = [
   "I know the meaning of the idiom, not just the translation.",
   "I know at least one real situation in which I could use it.",
+  "I know its usual collocations (article, preposition, object).",
   "I can use it with the correct article, tense and preposition.",
   "I can speak the sentence without pausing to \"search\" for the idiom.",
   "I can replace it with a normal expression if it does not fit the question.",
-  "I am not using the same idiom repeatedly throughout the test.",
   "I keep the answer focused on the question rather than on showing vocabulary."
 ];
 
@@ -767,79 +1296,47 @@ const CHECKLIST = [
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
-function escAttr(s){
-  return esc(s).replace(/"/g,'&quot;');
+/* Escape first, then turn *...* into highlighted spans */
+function renderAnswer(text){
+  return esc(text).replace(/\*(.+?)\*/g, '<strong class="hl">$1</strong>');
 }
-
-/* =========================================================================
-   STATE
-   ========================================================================= */
-const state = { cat: 'all', q: '', quiz: false };
-
-/* =========================================================================
-   POPULATE CATEGORY CHIPS
-   ========================================================================= */
-const catChipsWrap = document.getElementById('catChips');
-CATEGORIES.forEach(cat => {
-  const count = IDIOMS.filter(i => i.cats.includes(cat)).length;
-  const b = document.createElement('button');
-  b.className = 'chip';
-  b.dataset.cat = cat;
-  b.textContent = cat + ' (' + count + ')';
-  catChipsWrap.appendChild(b);
-});
+function idiomById(n){
+  return IDIOMS.find(i => i.n === n) || null;
+}
 
 /* =========================================================================
    RENDER IDIOM GRID
    ========================================================================= */
 const resultsEl = document.getElementById('results');
-const countEl = document.getElementById('resultCount');
-const summaryEl = document.getElementById('activeSummary');
 
 function render() {
-  const q = state.q.trim().toLowerCase();
-
-  const filtered = IDIOMS.filter(item => {
-    if (state.cat !== 'all' && !item.cats.includes(state.cat)) return false;
-    if (q) {
-      const hay = (item.idiom + ' ' + item.meaning + ' ' + item.example + ' ' + item.cats.join(' ')).toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-
-  countEl.textContent = filtered.length;
-
-  const bits = [];
-  if (state.cat !== 'all') bits.push('“' + state.cat + '”');
-  if (q) bits.push('search: “' + state.q.trim() + '”');
-  summaryEl.textContent = bits.length ? ' · ' + bits.join(' · ') : '';
-
-  if (!filtered.length) {
-    resultsEl.innerHTML =
-      '<div class="no-results">' +
-        '<div class="text-5xl mb-3">🔍</div>' +
-        '<p class="font-bold text-slate-600">No idioms match your filters.</p>' +
-        '<p class="text-sm mt-1">Try resetting or broadening your search.</p>' +
-      '</div>';
-    return;
-  }
-
   resultsEl.innerHTML =
     '<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">' +
-      filtered.map(cardHTML).join('') +
+      IDIOMS.map(cardHTML).join('') +
     '</div>';
 
-  // attach quiz reveal handlers
   resultsEl.querySelectorAll('.example-box').forEach(box => {
     box.addEventListener('click', () => box.classList.toggle('revealed'));
   });
 }
 
 function cardHTML(item) {
+  const collocs = (item.collocations || []).map(c =>
+    '<span class="colloc-pill">' + esc(c) + '</span>'
+  ).join('');
+
+  const examples = [item.example, item.example2]
+    .filter(Boolean)
+    .map((ex, i) =>
+      '<div class="example-box mb-2">' +
+        '<span class="lbl">Example ' + (i + 1) + '</span>' +
+        esc(ex) +
+      '</div>'
+    ).join('');
+
   return '' +
-  '<article class="idiom-card p-5">' +
-    '<div class="flex items-start gap-3 mb-3">' +
+  '<article class="idiom-card p-5" id="card-' + item.n + '">' +
+    '<div class="flex items-start gap-3 mb-2">' +
       '<div class="num-badge">' + item.n + '</div>' +
       '<div class="flex-1 min-w-0">' +
         '<h3 class="text-[0.98rem] font-extrabold text-slate-900 leading-snug m-0">' +
@@ -852,19 +1349,106 @@ function cardHTML(item) {
       esc(item.meaning) +
     '</p>' +
 
-    '<div class="example-box mb-3">' +
-      '<span class="lbl">Example</span>' +
-      esc(item.example) +
+    '<div class="colloc-block">' +
+      '<span class="lbl">Collocations</span>' +
+      '<div class="flex flex-wrap gap-1.5">' + collocs + '</div>' +
     '</div>' +
 
-    '<div class="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-slate-100">' +
+    examples +
+
+    '<div class="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-slate-100">' +
       item.cats.map(c => '<span class="tag">' + esc(c) + '</span>').join('') +
     '</div>' +
   '</article>';
 }
 
 /* =========================================================================
-   TOPIC TABLE (Section 3)
+   RENDER Q & A
+   ========================================================================= */
+const qaGrid = document.getElementById('qaGrid');
+const CHEVRON =
+  '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" ' +
+  'stroke-width="3" stroke-linecap="round" stroke-linejoin="round" ' +
+  'viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>';
+
+QA.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'qa-card';
+
+  const idiomTags = item.idioms.map(id => {
+    const found = idiomById(id);
+    if (!found) return '';
+    return '<button class="qa-idiom" type="button" data-id="' + id + '">' +
+             esc(found.idiom) +
+           '</button>';
+  }).join('');
+
+  card.innerHTML =
+    '<div class="flex items-center gap-2 mb-2 flex-wrap">' +
+      '<span class="qa-part">' + esc(item.part) + '</span>' +
+      '<span class="tag">' + esc(item.topic) + '</span>' +
+    '</div>' +
+
+    '<p class="qa-q"><span class="qmark">Q.</span>' + esc(item.q) + '</p>' +
+
+    '<button class="qa-toggle" type="button">' +
+      '<span class="qa-toggle-label">Show model answer</span>' + CHEVRON +
+    '</button>' +
+
+    '<div class="qa-answer">' +
+      '<p class="qa-text">' + renderAnswer(item.a) + '</p>' +
+      '<div class="qa-idioms">' + idiomTags + '</div>' +
+    '</div>';
+
+  qaGrid.appendChild(card);
+});
+
+/* Per-card toggle */
+function setCardOpen(card, open) {
+  card.classList.toggle('open', open);
+  const label = card.querySelector('.qa-toggle-label');
+  if (label) label.textContent = open ? 'Hide model answer' : 'Show model answer';
+}
+
+qaGrid.addEventListener('click', e => {
+  const toggle = e.target.closest('.qa-toggle');
+  if (toggle) {
+    const card = toggle.closest('.qa-card');
+    setCardOpen(card, !card.classList.contains('open'));
+    return;
+  }
+
+  const chip = e.target.closest('.qa-idiom');
+  if (chip) {
+    flashCard(Number(chip.dataset.id));
+  }
+});
+
+/* Show all / hide all */
+let allQaOpen = false;
+const toggleAllBtn = document.getElementById('toggleAllQa');
+const toggleAllLabel = document.getElementById('toggleAllLabel');
+
+toggleAllBtn.addEventListener('click', () => {
+  allQaOpen = !allQaOpen;
+  qaGrid.querySelectorAll('.qa-card').forEach(c => setCardOpen(c, allQaOpen));
+  toggleAllLabel.textContent = allQaOpen ? 'Hide all answers' : 'Show all answers';
+});
+
+/* Scroll to an idiom card + flash highlight */
+function flashCard(n) {
+  const el = document.getElementById('card-' + n);
+  if (!el) return;
+
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.remove('flash');
+  void el.offsetWidth; /* restart animation */
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 2600);
+}
+
+/* =========================================================================
+   TOPIC TABLE (display only)
    ========================================================================= */
 const topicTable = document.getElementById('topicTable');
 CATEGORIES.forEach(cat => {
@@ -876,26 +1460,10 @@ CATEGORIES.forEach(cat => {
   row.innerHTML =
     '<span class="topic-name">' + esc(cat) + '</span>' +
     '<div class="flex flex-wrap gap-1.5">' +
-      list.map(name =>
-        '<button class="chip" data-goto="' + escAttr(name) + '">' + esc(name) + '</button>'
-      ).join('') +
+      list.map(name => '<span class="tag">' + esc(name) + '</span>').join('') +
     '</div>';
 
   topicTable.appendChild(row);
-});
-
-// Clicking a chip in the topic table filters + scrolls to the grid
-topicTable.addEventListener('click', e => {
-  const btn = e.target.closest('.chip');
-  if (!btn) return;
-  const name = btn.dataset.goto;
-  state.q = name;
-  state.cat = 'all';
-  document.getElementById('searchInput').value = name;
-  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-cat="all"]').classList.add('active');
-  render();
-  document.getElementById('bank').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 /* =========================================================================
@@ -979,51 +1547,40 @@ function updateChecklistProgress() {
 }
 
 /* =========================================================================
-   FILTER EVENTS
+   QUIZ MODE
    ========================================================================= */
-document.querySelectorAll('#catChips .chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    state.cat = chip.dataset.cat;
-    render();
-  });
-});
-
-// "All Topics" button (first button in the filter bar)
-document.querySelector('[data-cat="all"]').addEventListener('click', () => {
-  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-cat="all"]').classList.add('active');
-  state.cat = 'all';
-  render();
-});
-
-let debounce;
-document.getElementById('searchInput').addEventListener('input', e => {
-  clearTimeout(debounce);
-  debounce = setTimeout(() => { state.q = e.target.value; render(); }, 160);
-});
-
-document.getElementById('resetBtn').addEventListener('click', () => {
-  state.cat = 'all';
-  state.q = '';
-  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('active'));
-  document.querySelector('[data-cat="all"]').classList.add('active');
-  document.getElementById('searchInput').value = '';
-  render();
-});
-
-/* Quiz mode */
+let quizOn = false;
 document.getElementById('quizBtn').addEventListener('click', function () {
-  state.quiz = !state.quiz;
-  this.classList.toggle('active', state.quiz);
-  resultsEl.classList.toggle('quiz-mode', state.quiz);
+  quizOn = !quizOn;
+  this.classList.toggle('active', quizOn);
+  resultsEl.classList.toggle('quiz-mode', quizOn);
 
-  // reset reveals when leaving quiz mode
-  if (!state.quiz) {
+  if (!quizOn) {
     resultsEl.querySelectorAll('.example-box').forEach(b => b.classList.remove('revealed'));
   }
 });
+
+/* =========================================================================
+   THEME TOGGLE
+   ========================================================================= */
+const themeBtn = document.getElementById('themeBtn');
+const themeLabel = document.getElementById('themeLabel');
+
+function syncThemeUI() {
+  const dark = document.documentElement.classList.contains('dark');
+  themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  themeBtn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  themeLabel.textContent = dark ? 'Light' : 'Dark';
+}
+
+themeBtn.addEventListener('click', () => {
+  const dark = !document.documentElement.classList.contains('dark');
+  document.documentElement.classList.toggle('dark', dark);
+  try { localStorage.setItem('ielts-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  syncThemeUI();
+});
+
+syncThemeUI();
 
 /* =========================================================================
    INIT

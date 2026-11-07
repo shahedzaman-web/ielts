@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Reading Practice — Diabetes / Arctic / Coffee</title>
+<style>
+:root{--bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;--accent:#0f766e;--accent-soft:#ccfbf1;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;--header-h:56px;--bottom-h:232px}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}button{font-family:inherit;cursor:pointer;border:0}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px #0f172a0d}.app-header .logo{font-size:22px;text-decoration:none;line-height:1}.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0}.save-chip{background:#f0fdfa;color:var(--accent);font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #99f6e4;opacity:0;transition:opacity .3s}.save-chip.show{opacity:1}.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}.band-chip.show{opacity:1;background:#16a34a}.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}.timer-chip.warn{background:#b45309}.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.65}}.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600}.icon-btn:hover{background:#f1f5f9}.menu-wrap{position:relative}.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px #0f172a1f;min-width:210px;overflow:hidden;z-index:100}.menu-pop.show{display:block}.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}.menu-pop a:last-child{border-bottom:0}.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.pane{overflow-y:auto;padding:24px 30px;scroll-behavior:smooth}.passages{flex:0 0 50%;background:#fcfdff}.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}.resizer:hover{background:#cbd5e1}.resizer:after{content:"⇔";font-size:10px;color:#64748b}.passage{display:none}.passage.active{display:block}.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}.passage p{margin:0 0 14px}.passage em{color:var(--muted)}.p-label{font-weight:800;color:var(--accent);margin-right:6px}
+.q-section{display:none}.q-section.active{display:block}.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}.q-group:last-child{border-bottom:0;margin-bottom:0}.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}.q-instr p{margin:0 0 3px}.q-instr p:last-child{margin:0}.q-instr strong{color:var(--text)}
+.q{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f7;border-radius:6px}.q:last-child{border-bottom:0}.q.highlight{background:#fffbeb}.q-num{flex:0 0 26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.q-body{flex:1;min-width:0}.q-body p{margin:0 0 7px}
+.gap-input{border:1px solid var(--line);border-bottom:2px solid var(--accent);border-radius:6px;padding:5px 10px;font-size:14px;font-family:inherit;min-width:150px;max-width:100%;background:#fff;transition:border-color .15s,background .15s}.gap-input:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}
+/* Question number appears only immediately before its answer gap. */
+.gap-qnum{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;background:#e2e8f0;color:#475569;border-radius:10px;font-size:11px;font-weight:700;margin:0 3px 0 0;padding:0 5px;vertical-align:middle;line-height:1}
+select.q-select{background:#fff;border:1px solid var(--line);border-bottom:2px solid var(--accent);border-radius:6px;padding:4px 8px;font-size:13.5px;font-family:inherit;min-width:110px;max-width:100%;cursor:pointer;transition:border-color .15s,background .15s}select.q-select:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}
+.option-row{display:flex;align-items:flex-start;gap:8px;margin:3px 0;padding:5px 7px;border-radius:6px;line-height:1.45;cursor:pointer}.option-row:hover{background:#f8fafc}.option-row>span{flex:1;min-width:0}.option-row input[type=radio],.option-row input[type=checkbox]{flex:0 0 16px;width:16px;height:16px;margin:3px 0 0;cursor:pointer;accent-color:var(--accent)}.option-row:has(input:checked){background:var(--accent-soft)}
+.notes-list{font-size:14.5px}.notes-list p{margin:0 0 6px}.notes-list ul{margin:0 0 14px;padding-left:22px}.notes-list li{padding:6px 0;border-bottom:1px dashed #eef2f7;line-height:1.7}.notes-list li:last-child{border-bottom:none}
+.summary-box{font-size:14.5px;line-height:1.9;background:#fcfdff;border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:12px}.summary-box p{margin:0}
+.options-ref-box{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:12px 18px;margin-bottom:14px}.options-ref-box h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}.options-ref-box ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:3px 16px;font-size:13px}.options-ref-box li{padding:1px 0}.options-ref-box .opt-letter{font-weight:700;color:var(--accent);margin-right:4px;display:inline-block;min-width:16px}
+.heading-bank{background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin-bottom:14px}.heading-bank h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:700}.heading-bank-instruction{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.5}.heading-cards{display:flex;flex-wrap:wrap;gap:8px}.heading-card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:12.5px;cursor:grab;user-select:none;-webkit-user-select:none;transition:.12s;line-height:1.4}.heading-card:hover{border-color:var(--accent);background:#f0fdfa}.heading-card.dragging{opacity:.4;cursor:grabbing}.heading-card.used{opacity:.3;pointer-events:none;text-decoration:line-through}.heading-card.selected{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px #0f766e38}.heading-card .h-roman{font-weight:700;color:var(--accent);margin-right:4px}
+.heading-drop-zone{display:flex;align-items:center;gap:8px;min-height:34px;padding:5px 12px;border:1.5px dashed #cbd5e1;border-radius:6px;background:#f8fafc;margin:8px 0;font-size:13px;transition:.12s}.heading-drop-zone.drag-over{border-color:var(--accent);background:var(--accent-soft);border-style:solid}.heading-drop-zone.filled{border-style:solid;background:#fff;border-color:var(--accent)}.heading-drop-zone.correct{border-color:var(--good);background:var(--good-soft)}.heading-drop-zone.wrong{border-color:var(--bad);background:var(--bad-soft)}.heading-drop-zone .drop-q-num{font-weight:700;color:var(--accent);font-size:12px;min-width:24px}.heading-drop-zone .drop-placeholder{color:var(--muted);font-style:italic;font-size:12.5px}.heading-drop-zone .drop-value{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;font-weight:600;color:var(--text)}.heading-drop-zone .drop-value-label{flex:1}.heading-drop-zone .drop-remove{background:#fee2e2;color:var(--bad);border:none;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:700;cursor:pointer;line-height:1.4}.heading-drop-zone .drop-remove:hover{background:#fecaca}
+.inline-feedback{display:none;margin-top:8px;padding:10px 14px;background:#f8fafc;border-radius:8px;font-size:13px;line-height:1.6}.inline-feedback .inline-fb{padding:3px 0}.inline-feedback .inline-fb.ok{color:var(--good)}.inline-feedback .inline-fb.no{color:var(--bad)}.inline-feedback .inline-fb em{font-style:normal;font-weight:700}
+.q.correct .q-num{background:var(--good-soft);color:var(--good)}.q.wrong .q-num{background:var(--bad-soft);color:var(--bad)}.q.correct .gap-input,.q.correct .q-select{border-color:var(--good);background:var(--good-soft)}.q.wrong .gap-input,.q.wrong .q-select{border-color:var(--bad);background:var(--bad-soft)}.gap-input.correct,.q-select.correct{border-color:var(--good);background:var(--good-soft)}.gap-input.wrong,.q-select.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.q .feedback,.notes-list li .feedback{font-size:12px;margin-top:5px;display:none;font-weight:600}.q.correct .feedback,.q.wrong .feedback,.notes-list li.correct .feedback,.notes-list li.wrong .feedback{display:block}.q.correct .feedback,.notes-list li.correct .feedback{color:var(--good)}.q.wrong .feedback,.notes-list li.wrong .feedback{color:var(--bad)}
+.q .evidence-line,.notes-list li .evidence-line{display:none;font-size:12px;margin-top:5px;color:#475569;background:#f8fafc;border-left:3px solid var(--accent);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45}.q.correct .evidence-line,.q.wrong .evidence-line,.notes-list li.correct .evidence-line,.notes-list li.wrong .evidence-line{display:block}.evidence-line .lbl{display:inline-block;margin-right:4px;font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.04em}.evidence-line em{color:var(--text);font-style:italic}
+.notes-list li.correct{background:rgba(220,252,231,.2)}.notes-list li.wrong{background:rgba(254,226,226,.2)}
+mark.evidence-mark{background:#dcfce7;outline:2px solid #16a34a;border-radius:3px;padding:1px 3px;cursor:pointer;transition:background .15s;position:relative}mark.evidence-mark:hover{background:#bbf7d0}mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}mark.evidence-mark.flash{animation:evflash 1.4s ease}@keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px #0f172a0f;padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}.bottom-inner{max-width:1600px;margin:0 auto}.part-tabs{display:flex;gap:8px;margin-bottom:8px}.part-tab{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:7px 12px;text-align:left;display:flex;align-items:center;gap:10px;transition:.15s;opacity:.85}.part-tab:hover{opacity:1;background:#f1f5f9}.part-tab.active{opacity:1;background:#fff;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.tab-part-name{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}.tab-qcount{font-size:11px;color:var(--muted);white-space:nowrap;flex:1;overflow:hidden;text-overflow:ellipsis}.skim-btn{font-size:10px;font-weight:700;color:#0369a1;background:#e0f2fe;border-radius:999px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}.skim-btn:hover{background:#bae6fd}.skim-btn.on{background:var(--accent);color:#fff}
+.ielts-reading-question-palette{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;margin-bottom:8px;padding-top:8px;border-top:1px solid #f1f5f9;min-height:36px}.ielts-reading-palette-section{display:none;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}.ielts-reading-palette-section.active{display:flex}.ielts-reading-palette-section-part{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}.ielts-reading-palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}.ielts-reading-palette-item:hover{background:#e2e8f0}.ielts-reading-palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}.ielts-reading-palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px #0f766e38}.ielts-reading-palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}.ielts-reading-palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.ielts-reading-bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}.ielts-reading-question-control-buttons{display:flex;gap:6px;flex:0 0 auto}.ielts-reading-question-control-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.12s}.ielts-reading-question-control-buttons button:hover:not(:disabled){background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-question-control-buttons button:disabled{opacity:.35;cursor:not-allowed}.ielts-reading-test-control-buttons{display:flex;gap:10px;align-items:center;flex:0 0 auto}.ielts-reading-review-button{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;transition:.12s}.ielts-reading-review-button:hover{background:#f1f5f9;border-color:#cbd5e1}.ielts-reading-submit-button{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.12s}.ielts-reading-submit-button:hover{background:#0d5c56;box-shadow:0 4px 12px #0f766e40}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:#0f172a8c;align-items:center;justify-content:center;padding:24px}.overlay.show{display:flex}.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:820px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px #0f172a4d;overflow:hidden}.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.overlay-head h3{margin:0;font-size:18px}.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}.close-x:hover{color:var(--text)}.overlay-body{padding:18px 22px;overflow-y:auto;min-width:0}.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;font-size:13px}table.result-tbl th,table.result-tbl td{box-sizing:border-box;padding:8px 10px;border:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.4;overflow-wrap:anywhere}table.result-tbl thead th{background:#f8fafc;font-weight:700;font-size:12px}#resultOverlay table.result-tbl th:first-child,#resultOverlay table.result-tbl td:first-child{width:7%;text-align:center}#resultOverlay table.result-tbl th:nth-child(2),#resultOverlay table.result-tbl td:nth-child(2){width:16%}#resultOverlay table.result-tbl th:nth-child(3),#resultOverlay table.result-tbl td:nth-child(3){width:14%}#resultOverlay table.result-tbl th:nth-child(4),#resultOverlay table.result-tbl td:nth-child(4){width:63%}table.result-tbl td.correct{color:var(--good);font-weight:700}table.result-tbl td.wrong{color:var(--bad);font-weight:700}table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:italic}table.result-tbl tbody tr{cursor:pointer;transition:background .12s}table.result-tbl tbody tr:hover{background:#f8fafc}.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.explanation-box{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:12px 16px;margin-top:14px}.explanation-box h4{margin:0 0 8px;font-size:14px;color:var(--accent)}.explanation-box p{margin:0 0 8px;font-size:13px;line-height:1.6}.explanation-box p:last-child{margin:0}.explanation-box .ev{font-style:italic;color:#475569;background:#fff;padding:6px 10px;border-radius:6px;border-left:3px solid var(--accent);font-size:12.5px;margin-top:4px}
+body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}body.focus-mode{padding-bottom:0}body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:0;max-width:none;margin:0}.exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}body.focus-mode .exit-focus{display:block}
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}.toast.show{opacity:1}
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}#hl-popup{position:fixed;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px #0f172a40}#hl-popup.show{display:flex;gap:3px}#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}#hl-popup button:hover{background:#1e293b}#note-popup{position:fixed;inset:0;z-index:500;background:#0f172a80;display:none;align-items:center;justify-content:center;padding:20px}#note-popup.show{display:flex}#note-popup .np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px;box-shadow:0 24px 60px #0f172a4d}#note-popup h4{margin:0 0 10px;font-size:16px}#note-popup textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}#note-popup .np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}#note-popup .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}#note-popup .np-cancel{background:#f1f5f9;color:#334155}#note-popup .np-save{background:#0f766e;color:#fff}
+@media(max-width:900px){:root{--bottom-h:210px}.main-split{margin:0;height:calc(100vh - var(--header-h) - var(--bottom-h));min-height:400px;border-radius:0}.pane{padding:18px 16px}.passages{flex-basis:48%}.part-tab{padding:6px;gap:5px}.skim-btn{padding:3px 5px}.bottom-panel{padding:8px 10px}}@media(max-width:560px){.app-header{padding:0 8px;gap:8px}.app-header h1{font-size:12px}.header-right{gap:5px}.icon-btn{padding:5px 7px;font-size:11px}.save-chip{display:none}.main-split{display:block;overflow:auto;height:calc(100vh - var(--header-h) - var(--bottom-h))}.pane{height:50%;border-left:0;padding:16px}.passages{width:100%;border-bottom:2px solid var(--line)}.questions{width:100%}.resizer{display:none}.tab-qcount{display:none}table.result-tbl th,table.result-tbl td{padding:7px 6px;font-size:12px}}
+@media print{.app-header,.bottom-panel,.resizer,.exit-focus,.toast,#hl-popup,#note-popup,.save-chip{display:none!important}body{padding:0;background:#fff}.main-split{display:block;height:auto;max-width:none;margin:0;border:0;overflow:visible}.pane{overflow:visible;padding:10px}.passages,.questions{width:100%;height:auto;border:0}.passage,.q-section{display:block!important}.overlay{display:none!important}}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <a class="logo" href="./index.html">📚</a>
+  <h1>IELTS Reading Practice — Diabetes / Arctic / Coffee</h1>
+  <div class="header-right">
+    <div class="save-chip" id="saveChip">💾 Saved</div>
+    <button class="icon-btn" id="focusBtn">⛶ Focus</button>
+    <div class="band-chip" id="bandChip">--</div>
+    <div class="timer-chip" id="timerChip">⏱ <strong id="timer">60:00</strong></div>
+    <div class="menu-wrap">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="menu-pop" id="menuPop">
+        <a href="#" id="exportLink">📄 Export as PDF</a>
+        <a href="#" id="clearHighlightsLink">🧹 Clear Highlights</a>
+        <a href="#" id="resetLink">↺ Reset Test &amp; Saved Data</a>
+        <a href="#" id="gotoTop">↑ Back to Top</a>
+      </div>
+    </div>
+  </div>
+</header>
+<button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+<div class="main-split" id="mainSplit">
+  <div class="pane passages" id="passagesPane">
+
+    <!-- PASSAGE 1: DIABETES -->
+    <div class="passage active" data-part="1">
+      <span class="part-label">Part 1</span>
+      <h2>Diabetes</h2>
+      <p><em>You should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 1 below.</em></p>
+      <p>Here are some facts that you probably didn't know about diabetes. It is the world's fastest-growing disease. In 2013, China had the highest number of diabetes sufferers (over 98 million), with India in second place and the United States in third position. It is Australia's sixth leading cause of death. Over 1 million Australians have it, though 50 per cent of those are as yet unaware of the fact. So much for the statistics; what exactly is diabetes?</p>
+      <p>Diabetes is the name given to different conditions in which there is too much glucose in the blood. Here's what happens: the body needs glucose as its main source of fuel or energy and, through digestion, extracts it from foods that contain carbohydrate. These include starchy vegetables (like potatoes or corn) and cereal foods (like bread, pasta and rice) as well as fruit and milk. Glucose is carried around the body in the blood to all the cells. In order for glucose to be converted into energy inside cells, insulin must also be present in the blood. Insulin is a hormone made by the pancreas, a gland sitting just below the stomach. It acts like a "key" to open cell walls and allow glucose to enter the cells. If insulin is not present, glucose cannot enter cells and remains inside the blood, a state known as "hyperglycaemia" (high blood sugar). Insulin is also important when people consume more glucose than the body can use immediately. When this occurs, insulin enables the body to convert the extra glucose into a different substance that can be stored, in the liver or muscle tissues, for use later. In diabetes, the pancreas either cannot make insulin or produces it in insufficient quantities. Because of this, glucose builds up in the blood, causing hyperglycaemia, which in turn produces unpleasant symptoms and can, in the long term, result in severe health problems.</p>
+      <p>People refer to the disease as diabetes, but there are actually two distinctive types of the disease. Type 1 diabetes is a condition characterised by high blood glucose levels caused by a total lack of insulin. It occurs when the body's immune system attacks the insulin-producing beta cells in the pancreas and destroys them. The pancreas then produces little or no insulin. This form develops most often in young people but can appear in adults. Type 2 diabetes is the most common form of diabetes. In this version, either the body does not produce enough insulin or cells ignore the signals given by the insulin that would normally "unlock the door" and allow glucose into the cells for transformation into energy.</p>
+      <p>The diagnosis of diabetes often depends on what type the patient is suffering from. In type 1 diabetes, symptoms are usually sudden and sometimes even life-threatening - severe imbalances in blood sugar levels can lead to comas - and therefore it is mostly diagnosed quite quickly. In type 2 diabetes, many people have no symptoms at all, while other signs can go unnoticed, being seen as part of "getting older". Therefore, by the time symptoms are noticed, the blood glucose level for many people can be very high. Common symptoms include being more thirsty than usual, passing more urine, feeling lethargic or always feeling hungry. Other sufferers complain of bad breath, blurred vision, unexplained weight change, mood swings, headaches, light-headedness and leg cramps.</p>
+      <p>At present there is no cure for diabetes, but there is a huge amount of research being done to find a cure and on ways of providing superior management techniques and products until a cure is found. Whether it is type 1 or type 2 diabetes, the aim of any diabetes treatment is to get a patient's blood glucose levels as close to the non-diabetic range as often as possible. For people with type 1 diabetes, this will mean regular insulin injections as well as leading a healthy lifestyle. For people with type 2 diabetes, healthy eating and regular physical activity may be all that are required at first; sometimes tablets and / or insulin may be needed later on. As blood glucose levels need to be kept as close to the non-diabetic range as possible, frequent self-testing is a good idea. This helps prevent the short-term effects of very low or very high blood glucose levels as well as the possible long-term problems. If someone is dependent on insulin, it has to be injected into the body. Insulin cannot be taken as a pill. The insulin would be broken down during digestion just like the protein in food.</p>
+      <p>Diabetes can cause serious complications for patients. Short-term problems are similar to the symptoms, but long-term high blood sugar levels can lead to heart attacks, strokes, kidney failure, amputations and blindness. Patients whose blood pressure and cholesterol levels are outside the recommended ranges face even higher risks of heart attacks and strokes; in fact two out of three people with diabetes eventually die of these complications. Adults aged 18 - 44 who get type 2 diabetes are 14 times more likely to suffer a heart attack, and are up to 30 times more likely to have a stroke than their peers without diabetes. Young women account for almost all the increase in heart attack risk, while young men are twice as likely to suffer a stroke as young women. This means that huge numbers of people are going to get heart disease, heart attacks and strokes years, sometimes even decades, before they should.</p>
+    </div>
+
+    <!-- PASSAGE 2: ARCTIC -->
+    <div class="passage" data-part="2">
+      <span class="part-label">Part 2</span>
+      <h2>Contaminating the Arctic</h2>
+      <p><em>You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2 below.</em></p>
+      <p>Our perception of the Arctic region is that its distance from industrial centres keeps it pristine and clear from the impact of pollution. However, through a process known as "transboundary pollution", the Arctic is the recipient of contaminants whose sources are thousands of miles away. Large quantities of pollutants pour into our atmosphere, as well as our lakes, rivers, and oceans on a daily basis. In the last 20 years, scientists have detected an increasing variety of toxic contaminants in the north, including pesticides from agriculture, chemicals and heavy metals from industry, and even radioactive fall-out from Chernobyl. These are substances that have invaded ecosystems virtually worldwide, but they are especially worrisome in the Arctic.</p>
+      <p>Originally, Arctic contamination was blamed largely on chemical leaks, and these leaks were thought to be "small and localised". The consensus now is that pollutants from around the world are being carried north by rivers, ocean currents, and atmospheric circulation. Due to extreme conditions in the Arctic, including reduced sunlight, extensive ice cover and cold temperatures, contaminants break down much more slowly than in warmer climates. Contaminants can also become highly concentrated due to their significantly lengthened life span in the Arctic.</p>
+      <p>Problems of spring run-off into coastal waters during the growth period of marine life are of critical concern. Spring algae bloom easily, absorbing the concentrated contaminants released by spring melting. These algae are in turn eaten by zooplankton and a wide variety of marine life. The accumulation of these contaminants increases with each step of the food chain or web, and can potentially affect any one of us who eats marine animals near the top of the food chain. Pollutants respect no borders; transboundary pollution is the movement of contaminants across political borders, whether by air, rivers, or ocean currents. The eight circumpolar nations, led by the Finnish Initiative of 1989, established the Arctic Environmental Protection Strategy (AEPS) in which participants agreed to develop an Arctic Monitoring and Assessment Programme (AMAP). AMAP has established an international scientific network to monitor the current condition of the Arctic with respect to specific contaminants. This monitoring programme is extremely important because it will give a scientific basis for understanding the scope of the problem.</p>
+      <p>In the 1950s, pilots travelling on weather reconnaissance flights in the Canadian high Arctic reported seeing bands of haze in the springtime in the Arctic region. It was during this time that the term "Arctic haze" was first used, referring to this smog of unknown origin. But it was not until 1972 that Dr Glenn Shaw of the Geophysical Institute at the University of Alaska first put forth ideas concerning the nature and long-range origin of Arctic haze. The idea that the source was long range was very difficult for many to accept. Each winter, cold, dense air settles over the Arctic. In the darkness, the Arctic seems to become more and more polluted by a build-up of mid-latitude emissions from fossil fuel combustion, smelting and other industrial processes. By late winter, the Arctic is covered by a layer of this haze the size of the continent of Africa. When the spring light arrives in the Arctic, there is a smog-like haze, which at times resembles the pollution that hangs over cities such as Los Angeles. This polluted air is a well-known and well-characterised feature of the late winter Arctic environment. In the North American Arctic, episodes of brown or black snow had been blamed on continental storm tracks that deliver gaseous and particulate-associated contaminants from Asian deserts and agricultural areas. It is now known that the contaminants originate largely in Europe and Asia.</p>
+      <p>Arctic haze has been studied most extensively in Point Barrow, Alaska, across the Canadian Arctic and in Svalbard (Norway). Evidence from ice cores drilled from the ice sheet of Greenland indicates that these haze particles were not always present in the Arctic, but began to appear only in the last century. The Arctic haze particles appear to be similar to smog particles observed in industrial areas farther south, consisting mostly of sulfates mixed with particles of carbon. It is believed that the particles are formed when gaseous sulfur dioxide produced by burning sulfur-bearing coal is irradiated by sunlight and oxidised to sulfate, a process catalysed by trace elements in the air. These sulfate particles or droplets of sulfuric acid quickly capture the carbon particles, which are also floating in the air. Pure sulfate particles or droplets are colourless, so it is believed that the darkness of the haze is caused by the mixed-in carbon particles.</p>
+      <p>The impact of the haze on Arctic ecosystems, as well as the global environment, has not been adequately researched. The pollutants have only been studied in their aerosol form over the Arctic. However, little is known about what eventually happens to them. It is known that they are removed somehow. There is a strong possibility that the contaminants end up in the ocean, most likely in the North Atlantic, the Norwegian Sea and possibly the Bering Sea - all three very important fisheries.</p>
+      <p>Currently, the major issue among researchers is to understand the impact of Arctic haze on global climate change. The contaminants absorb sunlight and, in turn, heat up the atmosphere. The global impact of this is currently unknown, but the implications are quite powerful.</p>
+    </div>
+
+    <!-- PASSAGE 3: COFFEE with heading drop zones -->
+    <div class="passage" data-part="3">
+      <span class="part-label">Part 3</span>
+      <h2>The Story of Coffee</h2>
+      <p><em>You should spend about 20 minutes on Questions 27–40, which are based on Reading Passage 3 below.</em></p>
+      <p><span class="p-label">A</span> Coffee was first discovered in Eastern Africa in an area we know today as Ethiopia. There are several different legends concerning its origins; one of the most popular refers to a goat herder by the name of Kaldi, who observed his goats acting unusually friskily after eating berries from a bush. Curious about this phenomenon, Kaldi tried the berries himself and found that they gave him renewed energy.</p>
+
+      <div class="heading-drop-zone" data-q="27" data-letter="B"><span class="drop-q-num">27</span><span class="drop-placeholder">Drop heading for paragraph B here</span></div>
+      <p><span class="p-label">B</span> The news of this energy-laden fruit quickly moved throughout the region. Coffee berries were transported from Ethiopia to the Arabian Peninsula, and were first cultivated in what today is the country of Yemen. Coffee remained a secret in Arabia before spreading to Turkey and then to the European continent by means of Venetian trade merchants.</p>
+
+      <div class="heading-drop-zone" data-q="28" data-letter="C"><span class="drop-q-num">28</span><span class="drop-placeholder">Drop heading for paragraph C here</span></div>
+      <p><span class="p-label">C</span> Coffee was first eaten as a food but later people in Arabia made a drink by boiling the beans, creating a drink known as "qahwa", a word which, literally translated, means "that which prevents sleep". It was much later, in Turkey, that the notion of roasting the beans before boiling them came about, possibly more by accident than by design. The roasted beans were first crushed, and then boiled in water, creating a crude version of the beverage we enjoy today. The first coffee houses were opened in Europe in the seventeenth century, and in 1675 the Viennese established the habit of refining the brew by filtering out the grounds, sweetening it and adding a dash of milk.</p>
+
+      <div class="heading-drop-zone" data-q="29" data-letter="D"><span class="drop-q-num">29</span><span class="drop-placeholder">Drop heading for paragraph D here</span></div>
+      <p><span class="p-label">D</span> If you were to explore the planet for coffee, you would find about 60 species of coffee plants growing wild in Africa, Malaysia and other regions. But only about ten of them are actually cultivated. Of these ten, two species are responsible for almost all the coffee produced in the world: <em>Coffea Arabica</em> and <em>Coffea Canephora</em> (usually known as "Robusta"). Because of ecological differences existing among the various coffee-producing countries, both types have undergone several mutations and now exist in many subspecies.</p>
+
+      <div class="heading-drop-zone" data-q="30" data-letter="E"><span class="drop-q-num">30</span><span class="drop-placeholder">Drop heading for paragraph E here</span></div>
+      <p><span class="p-label">E</span> Although wild coffee plants can reach 10 - 12 metres, the plantation varieties grow to a height of around 4 metres only. This makes harvesting easier and cultivation more economical. The flowers are white and sweet-scented like Spanish jasmine. These later give way to dark red berries. At first sight, the fruit is like a big cherry both in size and in colour. The berry is coated in a thin, red film (epicarp) that contains a white, sugary mucilaginous flesh (mesocarp). Inside this pulp are the seeds, in the form of two beans coupled at their flat surface. The beans are in turn coated with a kind of resistant, golden-yellow parchment (endocarp). When this is peeled off, the real bean appears with another very thin silvery film surrounding it. The bean is bluish green, verging on bronze, in colour and is at the most 11 millimetres long and 8 millimetres wide.</p>
+
+      <div class="heading-drop-zone" data-q="31" data-letter="F"><span class="drop-q-num">31</span><span class="drop-placeholder">Drop heading for paragraph F here</span></div>
+      <p><span class="p-label">F</span> Coffee plants require special conditions in order to yield a satisfactory crop. The climate needs to be hot-wet or hot-temperate, with frequent rains and temperatures varying from 15 - 25 degrees centigrade, conditions which are usually found between the Tropics of Cancer and Capricorn. The soil should be deep, hard, permeable and well irrigated, with well-drained subsoil. The perfect altitude for a coffee plantation is between 600 and 1,200 metres, though some varieties thrive as high as 2,000 - 2,200 metres above sea level. Cultivation aimed at protecting the plants at every stage of growth is needed. Sowing should be in sheltered nurseries from which, after about 6 months, the seedlings should be moved to plantations in the rainy season where they are usually alternated with other plants to shield them from wind and excessive sunlight. Only when the plant is 5 years old can it be counted upon to give a regular yield. This is between 400 grams and two kilos of arabica beans for each plant, and 600 grams and two kilos for robusta beans.</p>
+
+      <div class="heading-drop-zone" data-q="32" data-letter="G"><span class="drop-q-num">32</span><span class="drop-placeholder">Drop heading for paragraph G here</span></div>
+      <p><span class="p-label">G</span> Harvesting time depends on the geographic situation, and it can therefore vary greatly according to the particular environment. During harvesting, the ripe beans are first picked from the branches. Pickers can selectively pick 250 - 300 pounds of coffee cherries a day. At the end of the day, the pickers bring their heavy burlap bags to pulping mills where the coffee cherries can be pulped (or wet milled). The pulped beans then rest, covered in pure rainwater to ferment overnight. The next day the wet beans are hand-distributed on the drying floor to be sun dried. This drying process takes from 1 - 2 weeks depending on the number of sunny days. To make sure they dry evenly, the beans have to be raked many times during this drying time. Two weeks later the sun-dried beans, now called parchment, are scooped up, bagged and taken to be milled. Huge milling machines then remove the parchment and silver skin, a process that renders the green beans suitable for roasting. These are then roasted according to the customers' specifications and, after cooling, are packaged and dispatched to customers.</p>
+    </div>
+  </div>
+
+  <div class="resizer" id="resizer"></div>
+
+  <div class="pane questions" id="questionsPane"><form id="quiz" onsubmit="return false">
+
+    <!-- PART 1 -->
+    <section class="q-section active" data-part="1">
+      <div class="q-group"><h3>Questions 1–7</h3>
+        <div class="q-instr"><p>Choose <strong>TRUE</strong> if the statement agrees with the information, <strong>FALSE</strong> if it contradicts, or <strong>NOT GIVEN</strong> if there is no information.</p></div>
+        <div class="q" data-q="1"><div class="q-num">1</div><div class="q-body"><p>Consuming glucose is bad for the body.</p><div class="option-row"><input type="radio" name="q1" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q1" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q1" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="2"><div class="q-num">2</div><div class="q-body"><p>Everyone who suffers from diabetes is unable to produce insulin.</p><div class="option-row"><input type="radio" name="q2" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q2" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q2" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="3"><div class="q-num">3</div><div class="q-body"><p>Type 1 diabetes is caused by the body's own immune system.</p><div class="option-row"><input type="radio" name="q3" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q3" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q3" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="4"><div class="q-num">4</div><div class="q-body"><p>The symptoms of type 2 diabetes can be difficult to distinguish from the signs of ageing.</p><div class="option-row"><input type="radio" name="q4" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q4" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q4" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="5"><div class="q-num">5</div><div class="q-body"><p>Sufferers who need insulin should have multiple daily injections.</p><div class="option-row"><input type="radio" name="q5" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q5" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q5" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="6"><div class="q-num">6</div><div class="q-body"><p>Frequent medical check-ups can drastically reduce the chances of suffering from problems related to diabetes.</p><div class="option-row"><input type="radio" name="q6" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q6" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q6" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="7"><div class="q-num">7</div><div class="q-body"><p>For many diabetes sufferers, higher than advised blood pressure and cholesterol levels can be fatal.</p><div class="option-row"><input type="radio" name="q7" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q7" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q7" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+      </div>
+
+      <div class="q-group"><h3>Questions 8–11</h3>
+        <div class="q-instr"><p>Complete the sentences below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p></div>
+        <div class="notes-list">
+          <ul>
+            <li>Half of the Australians who have diabetes remain <span class="gap-qnum">8</span><input type="text" class="gap-input" name="q8" data-q="8" aria-label="Q8" autocomplete="off"> of it.<div class="feedback"></div><div class="evidence-line"></div></li>
+            <li>Extra glucose can be stored for later use in muscle tissue or the <span class="gap-qnum">9</span><input type="text" class="gap-input" name="q9" data-q="9" aria-label="Q9" autocomplete="off">.<div class="feedback"></div><div class="evidence-line"></div></li>
+            <li>Type 1 diabetes usually appears when sufferers are still <span class="gap-qnum">10</span><input type="text" class="gap-input" name="q10" data-q="10" aria-label="Q10" autocomplete="off">.<div class="feedback"></div><div class="evidence-line"></div></li>
+            <li>Mild cases of type 2 diabetes may at first be managed through <span class="gap-qnum">11</span><input type="text" class="gap-input" name="q11" data-q="11" aria-label="Q11" autocomplete="off"> diet and exercise.<div class="feedback"></div><div class="evidence-line"></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group"><h3>Questions 12–13</h3>
+        <div class="q-instr"><p>Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p></div>
+        <div class="q" data-q="12"><div class="q-num">12–13</div><div class="q-body">
+          <p>Which <strong>TWO</strong> of the following symptoms are mentioned as being associated with diabetes?</p>
+          <label class="option-row"><input type="checkbox" name="q12_13" value="A"><span>A. Hot flushes</span></label>
+          <label class="option-row"><input type="checkbox" name="q12_13" value="B"><span>B. Feeling dehydrated</span></label>
+          <label class="option-row"><input type="checkbox" name="q12_13" value="C"><span>C. Nausea</span></label>
+          <label class="option-row"><input type="checkbox" name="q12_13" value="D"><span>D. Feeling faint</span></label>
+          <label class="option-row"><input type="checkbox" name="q12_13" value="E"><span>E. Bleeding gums</span></label>
+          <div class="feedback" id="fb-12-13"></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- PART 2 -->
+    <section class="q-section" data-part="2">
+      <div class="q-group"><h3>Questions 14–20</h3>
+        <div class="q-instr"><p>Choose <strong>TRUE</strong> if the statement agrees with the information, <strong>FALSE</strong> if it contradicts, or <strong>NOT GIVEN</strong> if there is no information.</p></div>
+        <div class="q" data-q="14"><div class="q-num">14</div><div class="q-body"><p>Industry in the Arctic has increased over the last 19 years.</p><div class="option-row"><input type="radio" name="q14" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q14" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q14" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="15"><div class="q-num">15</div><div class="q-body"><p>Arctic conditions mean that the decomposition of pollutants is much accelerated.</p><div class="option-row"><input type="radio" name="q15" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q15" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q15" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="16"><div class="q-num">16</div><div class="q-body"><p>Pollution absorbed by Arctic algae may affect humans.</p><div class="option-row"><input type="radio" name="q16" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q16" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q16" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="17"><div class="q-num">17</div><div class="q-body"><p>The AEPS has set up scientific stations in the Arctic to track pollution.</p><div class="option-row"><input type="radio" name="q17" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q17" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q17" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="18"><div class="q-num">18</div><div class="q-body"><p>Arctic pollution can sometimes resemble US urban pollution.</p><div class="option-row"><input type="radio" name="q18" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q18" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q18" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="19"><div class="q-num">19</div><div class="q-body"><p>Sunlight plays a part in the formation of the haze's sulfate particles.</p><div class="option-row"><input type="radio" name="q19" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q19" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q19" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="20"><div class="q-num">20</div><div class="q-body"><p>Research has shown that airborne Arctic pollutants remain in the air forever.</p><div class="option-row"><input type="radio" name="q20" value="TRUE"><span>TRUE</span></div><div class="option-row"><input type="radio" name="q20" value="FALSE"><span>FALSE</span></div><div class="option-row"><input type="radio" name="q20" value="NOT GIVEN"><span>NOT GIVEN</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+      </div>
+
+      <div class="q-group"><h3>Questions 21–26</h3>
+        <div class="q-instr"><p>Complete the summary with the words from the list. Write the correct letter <strong>A–L</strong> for each answer.</p></div>
+        <div class="options-ref-box">
+          <h4>List of Options</h4>
+          <ul>
+            <li><span class="opt-letter">A</span>ice cores</li>
+            <li><span class="opt-letter">B</span>certain</li>
+            <li><span class="opt-letter">C</span>darkness</li>
+            <li><span class="opt-letter">D</span>density</li>
+            <li><span class="opt-letter">E</span>theories</li>
+            <li><span class="opt-letter">F</span>sea</li>
+            <li><span class="opt-letter">G</span>accepted</li>
+            <li><span class="opt-letter">H</span>air</li>
+            <li><span class="opt-letter">I</span>terrible</li>
+            <li><span class="opt-letter">J</span>originating</li>
+            <li><span class="opt-letter">K</span>dissipating</li>
+            <li><span class="opt-letter">L</span>unknown</li>
+          </ul>
+        </div>
+        <div class="summary-box">
+          <p>Theories that the origins of spring Arctic haze, first seen over the ice cap in the 1950s, came from far away were at first not <select class="q-select" name="q21" data-q="21" aria-label="Q21"></select>. This haze is a smog formed in the dark, Arctic winter by pollution delivered to the Arctic by storms <select class="q-select" name="q22" data-q="22" aria-label="Q22"></select> in Europe and Asia. It is known to be a recent phenomenon as proof from <select class="q-select" name="q23" data-q="23" aria-label="Q23"></select> shows it only starting to occur in the twentieth century. The smog consists of sulfates and carbon, the latter creating the <select class="q-select" name="q24" data-q="24" aria-label="Q24"></select> of the haze. Due to lack of research, the final destination of the pollution is unknown, but it probably ends up in the <select class="q-select" name="q25" data-q="25" aria-label="Q25"></select> and therefore gets into the food chain. Scientists are presently more worried about the <select class="q-select" name="q26" data-q="26" aria-label="Q26"></select> effect it has on climate change.</p>
+        </div>
+        <div class="inline-feedback" id="fb-21-26"></div>
+      </div>
+    </section>
+
+    <!-- PART 3 -->
+    <section class="q-section" data-part="3">
+      <div class="q-group"><h3>Questions 27–32</h3>
+        <div class="q-instr">
+          <p>Reading Passage 3 has seven paragraphs, <strong>A–G</strong>.</p>
+          <p>Choose the correct heading for paragraphs <strong>B–G</strong> from the list of headings below.</p>
+          <p>Drag a heading into the matching drop zone in the passage on the left. On touch devices, tap a heading, then tap the drop zone.</p>
+        </div>
+        <div class="heading-bank">
+          <h4>List of Headings</h4>
+          <p class="heading-bank-instruction">Drag each heading card into the matching paragraph drop zone in the passage.</p>
+          <div class="heading-cards" id="headingCards">
+            <div class="heading-card" draggable="true" data-value="i"><span class="h-roman">i.</span>Growing Coffee</div>
+            <div class="heading-card" draggable="true" data-value="ii"><span class="h-roman">ii.</span>Problems with Manufacture</div>
+            <div class="heading-card" draggable="true" data-value="iii"><span class="h-roman">iii.</span>Processing the Bean</div>
+            <div class="heading-card" draggable="true" data-value="iv"><span class="h-roman">iv.</span>First Contact</div>
+            <div class="heading-card" draggable="true" data-value="v"><span class="h-roman">v.</span>Arabian Coffee</div>
+            <div class="heading-card" draggable="true" data-value="vi"><span class="h-roman">vi.</span>Coffee Varieties</div>
+            <div class="heading-card" draggable="true" data-value="vii"><span class="h-roman">vii.</span>Modern Coffee</div>
+            <div class="heading-card" draggable="true" data-value="viii"><span class="h-roman">viii.</span>The Spread of Coffee</div>
+            <div class="heading-card" draggable="true" data-value="ix"><span class="h-roman">ix.</span>Consuming Coffee</div>
+            <div class="heading-card" draggable="true" data-value="x"><span class="h-roman">x.</span>Climates for Coffee</div>
+            <div class="heading-card" draggable="true" data-value="xi"><span class="h-roman">xi.</span>What the Coffee Plant Looks Like</div>
+          </div>
+        </div>
+        <div class="inline-feedback" id="fb-27-32"></div>
+      </div>
+
+      <div class="q-group"><h3>Questions 33–36</h3>
+        <div class="q-instr"><p>Complete the summary below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p></div>
+        <p style="font-weight:700;margin:6px 0 10px">The coffee plant and its fruit</p>
+        <div class="summary-box">
+          <p>Plantation coffee bushes are kept to around four metres tall, which makes harvesting cheaper and easier. Their white flowers smell similar to <span class="gap-qnum">33</span><input type="text" class="gap-input" name="q33" data-q="33" aria-label="Q33" autocomplete="off">, and later give way to dark berries about the same size and shade as a <span class="gap-qnum">34</span><input type="text" class="gap-input" name="q34" data-q="34" aria-label="Q34" autocomplete="off">. Beneath the fruit's thin outer film, or <span class="gap-qnum">35</span><input type="text" class="gap-input" name="q35" data-q="35" aria-label="Q35" autocomplete="off">, lies a sugary white flesh containing the two seeds. These are protected by a tough, golden-yellow layer called the <span class="gap-qnum">36</span><input type="text" class="gap-input" name="q36" data-q="36" aria-label="Q36" autocomplete="off">, plus a very thin silvery film around each bean.</p>
+        </div>
+        <div class="inline-feedback" id="fb-33-36"></div>
+      </div>
+
+      <div class="q-group"><h3>Questions 37–40</h3>
+        <div class="q-instr"><p>Choose the correct answer, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</p></div>
+        <div class="q" data-q="37"><div class="q-num">37</div><div class="q-body"><p>According to the writer, the practice of roasting coffee beans</p><div class="option-row"><input type="radio" name="q37" value="A"><span>A. began in Ethiopia.</span></div><div class="option-row"><input type="radio" name="q37" value="B"><span>B. may have started accidentally.</span></div><div class="option-row"><input type="radio" name="q37" value="C"><span>C. was introduced by Venetian merchants.</span></div><div class="option-row"><input type="radio" name="q37" value="D"><span>D. was invented by the Viennese in 1675.</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="38"><div class="q-num">38</div><div class="q-body"><p>What do <em>Coffea Arabica</em> and <em>Coffea Canephora</em> have in common?</p><div class="option-row"><input type="radio" name="q38" value="A"><span>A. They grow wild in Malaysia.</span></div><div class="option-row"><input type="radio" name="q38" value="B"><span>B. They cannot be cultivated.</span></div><div class="option-row"><input type="radio" name="q38" value="C"><span>C. They have remained unchanged across regions.</span></div><div class="option-row"><input type="radio" name="q38" value="D"><span>D. They produce almost all the world's coffee.</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="39"><div class="q-num">39</div><div class="q-body"><p>A coffee plant can be relied on for a regular harvest</p><div class="option-row"><input type="radio" name="q39" value="A"><span>A. from its fifth year.</span></div><div class="option-row"><input type="radio" name="q39" value="B"><span>B. six months after sowing.</span></div><div class="option-row"><input type="radio" name="q39" value="C"><span>C. only below 1,200 metres.</span></div><div class="option-row"><input type="radio" name="q39" value="D"><span>D. when grown in full sunlight.</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+        <div class="q" data-q="40"><div class="q-num">40</div><div class="q-body"><p>What happens to the beans immediately after they are pulped?</p><div class="option-row"><input type="radio" name="q40" value="A"><span>A. They are dried in the sun.</span></div><div class="option-row"><input type="radio" name="q40" value="B"><span>B. They are raked.</span></div><div class="option-row"><input type="radio" name="q40" value="C"><span>C. They are left in water overnight.</span></div><div class="option-row"><input type="radio" name="q40" value="D"><span>D. They are taken to be milled.</span></div><div class="feedback"></div><div class="evidence-line"></div></div></div>
+      </div>
+    </section>
+  </form></div>
+</div>
+
+<div class="bottom-panel"><div class="bottom-inner">
+  <div class="part-tabs">
+    <button class="part-tab active" data-part="1"><span class="tab-part-name">Part 1: Diabetes</span><span class="tab-qcount">Questions 1–13</span><span class="skim-btn" data-part="1">Skim (1x)</span></button>
+    <button class="part-tab" data-part="2"><span class="tab-part-name">Part 2: Arctic</span><span class="tab-qcount">Questions 14–26</span><span class="skim-btn" data-part="2">Skim (1x)</span></button>
+    <button class="part-tab" data-part="3"><span class="tab-part-name">Part 3: Coffee</span><span class="tab-qcount">Questions 27–40</span><span class="skim-btn" data-part="3">Skim (1x)</span></button>
+  </div>
+  <div class="ielts-reading-question-palette" id="palette"></div>
+  <div class="ielts-reading-bottom-controls">
+    <div class="ielts-reading-question-control-buttons"><button id="prevBtn">←</button><button id="nextBtn">→</button></div>
+    <div class="ielts-reading-test-control-buttons"><button class="ielts-reading-review-button" id="reviewBtn">📋 Review</button><button class="ielts-reading-submit-button" id="submitBtn">Submit ✈</button></div>
+  </div>
+</div></div>
+
+<div class="overlay" id="resultOverlay"><div class="overlay-card"><div class="overlay-head"><h3>Your Results</h3><button class="close-x" data-close="resultOverlay">×</button></div><div class="overlay-body"><div class="score-summary"><div class="big" id="resultScore">0 / 40</div><div class="sub" id="resultSub">Band estimate: —</div></div><div class="legend-row"><span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span><span>👉 Click a row to jump to evidence</span></div><table class="result-tbl"><thead><tr><th>#</th><th>Your Answer</th><th>Correct</th><th>Explanation &amp; Evidence</th></tr></thead><tbody id="resultBody"></tbody></table><div id="detailedExplanations"></div></div></div></div>
+<div class="overlay" id="previewOverlay"><div class="overlay-card"><div class="overlay-head"><h3>Review Your Answers</h3><button class="close-x" data-close="previewOverlay">×</button></div><div class="overlay-body"><table class="result-tbl"><thead><tr><th style="width:12%">#</th><th>Your Answer</th></tr></thead><tbody id="previewBody"></tbody></table></div></div></div>
+<div id="hl-popup"><button id="hl-highlight">🖍 Highlight</button><button id="hl-dehighlight">🧽 Clear</button><button id="hl-note">📝 Note</button></div>
+<div id="note-popup"><div class="np-card"><h4>Add a note</h4><textarea id="note-text" placeholder="Write your note about this text..."></textarea><div class="np-actions"><button type="button" class="np-cancel" id="note-cancel">Cancel</button><button type="button" class="np-save" id="note-save">Save Note</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const ANSWER_KEY={
+  1:['FALSE'],2:['FALSE'],3:['TRUE'],4:['TRUE'],5:['NOT GIVEN'],6:['NOT GIVEN'],7:['TRUE'],
+  8:['unaware'],9:['liver'],10:['young'],11:['healthy'],
+  12:['B'],13:['D'],
+  14:['NOT GIVEN'],15:['FALSE'],16:['TRUE'],17:['TRUE'],18:['TRUE'],19:['TRUE'],20:['FALSE'],
+  21:['G'],22:['J'],23:['A'],24:['C'],25:['F'],26:['L'],
+  27:['viii'],28:['v'],29:['vi'],30:['xi'],31:['x'],32:['iii'],
+  33:['jasmine'],34:['cherry'],35:['epicarp'],36:['endocarp'],
+  37:['B'],38:['D'],39:['A'],40:['C']
+};
+
+const EXPLAINS = {
+  1:{exp:'Paragraph 2 says glucose is the body\'s "main source of fuel or energy" — it is not bad for the body.',ev:'the body needs glucose as its main source of fuel or energy'},
+  2:{exp:'Type 2 diabetes occurs when "either the body does not produce enough insulin or cells ignore the signals given by the insulin."',ev:'either the body does not produce enough insulin or cells ignore the signals'},
+  3:{exp:'Paragraph 3: "It occurs when the body\'s immune system attacks the insulin-producing beta cells in the pancreas and destroys them."',ev:"It occurs when the body's immune system attacks the insulin-producing beta cells"},
+  4:{exp:'Paragraph 4: "many people have no symptoms at all, while other signs can go unnoticed, being seen as part of \'getting older\'."',ev:"being seen as part of 'getting older'"},
+  5:{exp:'The passage says "regular insulin injections" but does not specify multiple daily injections. NOT GIVEN.',ev:null},
+  6:{exp:'The passage mentions "frequent self-testing" helps prevent problems, not medical check-ups. NOT GIVEN.',ev:null},
+  7:{exp:'Paragraph 6: "in fact two out of three people with diabetes eventually die of these complications."',ev:'in fact two out of three people with diabetes eventually die of these complications'},
+  8:{exp:'Paragraph 1: "Over 1 million Australians have it, though 50 per cent of those are as yet unaware of the fact."',ev:'50 per cent of those are as yet unaware of the fact'},
+  9:{exp:'Paragraph 2: "the body to convert the extra glucose into a different substance that can be stored, in the liver or muscle tissues, for use later."',ev:'in the liver or muscle tissues'},
+  10:{exp:'Paragraph 3: "This form develops most often in young people but can appear in adults."',ev:'This form develops most often in young people'},
+  11:{exp:'Paragraph 5: "For people with type 2 diabetes, healthy eating and regular physical activity may be all that are required at first."',ev:'healthy eating and regular physical activity may be all that are required at first'},
+  12:{exp:'Common symptoms include "being more thirsty than usual" (dehydrated — B) and "light-headedness" (feeling faint — D).',ev:'being more thirsty than usual'},
+  13:{exp:'The two correct symptoms are B (Feeling dehydrated) and D (Feeling faint).',ev:'light-headedness'},
+  14:{exp:'The passage says contaminants have increased, not that Arctic industry has increased. NOT GIVEN.',ev:null},
+  15:{exp:'Paragraph 2: "contaminants break down much more slowly than in warmer climates." FALSE.',ev:'contaminants break down much more slowly than in warmer climates'},
+  16:{exp:'Paragraph 3: "The accumulation of these contaminants... can potentially affect any one of us who eats marine animals."',ev:'can potentially affect any one of us who eats marine animals'},
+  17:{exp:'Paragraph 3: AMAP "has established an international scientific network to monitor the current condition of the Arctic."',ev:'AMAP has established an international scientific network to monitor the current condition of the Arctic'},
+  18:{exp:'Paragraph 4: "at times resembles the pollution that hangs over cities such as Los Angeles."',ev:'at times resembles the pollution that hangs over cities such as Los Angeles'},
+  19:{exp:'Paragraph 5: "gaseous sulfur dioxide produced by burning sulfur-bearing coal is irradiated by sunlight and oxidised to sulfate."',ev:'irradiated by sunlight and oxidised to sulfate'},
+  20:{exp:'Paragraph 6: "little is known about what eventually happens to them. It is known that they are removed somehow."',ev:'It is known that they are removed somehow'},
+  21:{exp:'Paragraph 4: "very difficult for many to accept." Answer: G (accepted).',ev:'very difficult for many to accept'},
+  22:{exp:'Paragraph 4: contaminants "originate largely in Europe and Asia." Answer: J (originating).',ev:'originate largely in Europe and Asia'},
+  23:{exp:'Paragraph 5: "Evidence from ice cores drilled from the ice sheet of Greenland." Answer: A (ice cores).',ev:'Evidence from ice cores drilled from the ice sheet of Greenland'},
+  24:{exp:'Paragraph 5: "the darkness of the haze is caused by the mixed-in carbon particles." Answer: C (darkness).',ev:'the darkness of the haze is caused by the mixed-in carbon particles'},
+  25:{exp:'Paragraph 6: "There is a strong possibility that the contaminants end up in the ocean." Answer: F (sea).',ev:'the contaminants end up in the ocean'},
+  26:{exp:'Paragraph 7: "The global impact of this is currently unknown." Answer: L (unknown).',ev:'The global impact of this is currently unknown'},
+  27:{exp:'Paragraph B describes coffee spreading from Ethiopia to Arabia, then Turkey and Europe. Answer: viii.',ev:'Coffee berries were transported from Ethiopia to the Arabian Peninsula'},
+  28:{exp:'Paragraph C focuses on the Arabian drink "qahwa" and the development of coffee as a beverage. Answer: v.',ev:'people in Arabia made a drink by boiling the beans, creating a drink known as "qahwa"'},
+  29:{exp:'Paragraph D discusses 60 species of coffee plants and the two main species grown. Answer: vi.',ev:'two species are responsible for almost all the coffee produced in the world'},
+  30:{exp:'Paragraph E describes the appearance of the coffee plant, its flowers, berries and beans. Answer: xi.',ev:'The flowers are white and sweet-scented like Spanish jasmine'},
+  31:{exp:'Paragraph F describes the climate, altitude, soil and growing conditions needed. Answer: x.',ev:'The climate needs to be hot-wet or hot-temperate'},
+  32:{exp:'Paragraph G describes harvesting, pulping, drying and milling. Answer: iii.',ev:'Huge milling machines then remove the parchment and silver skin'},
+  33:{exp:'Paragraph E: "The flowers are white and sweet-scented like Spanish jasmine." Answer: jasmine.',ev:'sweet-scented like Spanish jasmine'},
+  34:{exp:'Paragraph E: "the fruit is like a big cherry both in size and in colour." Answer: cherry.',ev:'the fruit is like a big cherry both in size and in colour'},
+  35:{exp:'Paragraph E: "The berry is coated in a thin, red film (epicarp)." Answer: epicarp.',ev:'The berry is coated in a thin, red film (epicarp)'},
+  36:{exp:'Paragraph E: "The beans are in turn coated with a kind of resistant, golden-yellow parchment (endocarp)." Answer: endocarp.',ev:'resistant, golden-yellow parchment (endocarp)'},
+  37:{exp:'Paragraph C: "the notion of roasting the beans before boiling them came about, possibly more by accident than by design." Answer: B.',ev:'possibly more by accident than by design'},
+  38:{exp:'Paragraph D: "two species are responsible for almost all the coffee produced in the world: Coffea Arabica and Coffea Canephora." Answer: D.',ev:'two species are responsible for almost all the coffee produced in the world'},
+  39:{exp:'Paragraph F: "Only when the plant is 5 years old can it be counted upon to give a regular yield." Answer: A.',ev:'Only when the plant is 5 years old can it be counted upon to give a regular yield'},
+  40:{exp:'Paragraph G: "The pulped beans then rest, covered in pure rainwater to ferment overnight." Answer: C.',ev:'The pulped beans then rest, covered in pure rainwater to ferment overnight'}
+};
+
+/* All gap-fill questions (correct answer always hidden after submit) */
+const GAP_QUESTIONS = new Set([8,9,10,11,21,22,23,24,25,26,33,34,35,36]);
+/* Short-answer fields remain visible after submission for review. */
+
+const PART_QUESTIONS = {
+  1: Array.from({length:13},(_,i)=>i+1),
+  2: Array.from({length:13},(_,i)=>i+14),
+  3: Array.from({length:14},(_,i)=>i+27)
+};
+const TOTAL_QUESTIONS = 40;
+const TEST_DURATION_SECONDS = 60*60;
+const STORAGE_KEY = 'ielts_irp_answers_v3';
+
+function normalize(s){return (s||'').toString().trim().toLowerCase().replace(/[.,;:!?'"()]/g,'').replace(/\s+/g,' ');}
+let toastTimer;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200);}
+let saveTimer;
+function flashSaved(){const chip=document.getElementById('saveChip');if(!chip)return;chip.classList.add('show');clearTimeout(saveTimer);saveTimer=setTimeout(()=>chip.classList.remove('show'),1500);}
+
+function getPartOfQuestion(n){if(n>=1&&n<=13)return 1;if(n>=14&&n<=26)return 2;return 3;}
+
+/* Populate select options */
+function populateSelectOptions(){
+  const summaryOpts=[['A','ice cores'],['B','certain'],['C','darkness'],['D','density'],['E','theories'],['F','sea'],['G','accepted'],['H','air'],['I','terrible'],['J','originating'],['K','dissipating'],['L','unknown']];
+  for(let n=21;n<=26;n++){
+    const sel=document.querySelector(`select[name="q${n}"]`);
+    if(!sel)continue;
+    sel.innerHTML='<option value="">—</option>';
+    summaryOpts.forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=`${k}. ${v}`;sel.appendChild(o)});
+  }
+}
+
+function getHeadingAnswer(n){
+  const zone=document.querySelector(`.heading-drop-zone[data-q="${n}"]`);
+  if(!zone)return '';
+  return zone.dataset.assigned || '';
+}
+
+function getUserAnswer(n){
+  if(n>=27 && n<=32) return getHeadingAnswer(n);
+  if(n===12 || n===13){
+    const checks=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value).sort();
+    return n===12 ? (checks[0]||'') : (checks[1]||'');
+  }
+  const r=document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if(r)return r.value;
+  const t=document.querySelector(`input[type=text][name="q${n}"]`);
+  if(t)return t.value;
+  const s=document.querySelector(`select[name="q${n}"]`);
+  if(s)return s.value;
+  return '';
+}
+function isCorrect(n,ua){
+  if(n===12||n===13){
+    const checks=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value);
+    const correct=['B','D'];
+    const correctCount=checks.filter(v=>correct.includes(v)).length;
+    const wrongCount=checks.filter(v=>!correct.includes(v)).length;
+    if(wrongCount>0)return false;
+    if(n===12)return correctCount>=1;
+    return correctCount>=2;
+  }
+  const keys=ANSWER_KEY[n]||[];
+  const v=normalize(ua);
+  return !!v && keys.some(k=>normalize(k)===v);
+}
+function estimateBand(score){
+  if(score>=39)return '9.0'; if(score>=37)return '8.5'; if(score>=35)return '8.0';
+  if(score>=33)return '7.5'; if(score>=30)return '7.0'; if(score>=27)return '6.5';
+  if(score>=23)return '6.0'; if(score>=19)return '5.5'; if(score>=15)return '5.0';
+  if(score>=13)return '4.5'; if(score>=10)return '4.0'; if(score>=8)return '3.5';
+  if(score>=6)return '3.0'; if(score>=4)return '2.5'; return '2.0 or below';
+}
+
+/* Drag & drop heading matching */
+(function initHeadingDnD(){
+  const cards = document.querySelectorAll('.heading-card');
+  const zones = document.querySelectorAll('.heading-drop-zone');
+  let selectedCard = null;
+
+  function getCardText(value){
+    const card = document.querySelector(`.heading-card[data-value="${value}"]`);
+    if(!card) return value;
+    return card.textContent.trim();
+  }
+
+  function refreshCardAvailability(){
+    const used = new Set();
+    zones.forEach(z=>{ if(z.dataset.assigned) used.add(z.dataset.assigned); });
+    cards.forEach(c=>{
+      if(used.has(c.dataset.value)) c.classList.add('used');
+      else c.classList.remove('used');
+    });
+  }
+
+  function renderZone(zone){
+    const q = zone.dataset.q;
+    const letter = zone.dataset.letter;
+    const val = zone.dataset.assigned || '';
+    if(val){
+      zone.classList.add('filled');
+      const fullText = getCardText(val);
+      zone.innerHTML = `<span class="drop-q-num">${q}</span>
+        <span class="drop-value">
+          <span class="drop-value-label">${fullText}</span>
+          <button type="button" class="drop-remove" data-remove-q="${q}">×</button>
+        </span>`;
+    } else {
+      zone.classList.remove('filled');
+      zone.innerHTML = `<span class="drop-q-num">${q}</span>
+        <span class="drop-placeholder">Drop heading for paragraph ${letter} here</span>`;
+    }
+  }
+
+  function assign(zone, value){
+    if(!value) return;
+    zones.forEach(z=>{ if(z.dataset.assigned===value && z!==zone){ delete z.dataset.assigned; renderZone(z); } });
+    zone.dataset.assigned = value;
+    renderZone(zone);
+    refreshCardAvailability();
+    refreshPaletteAnswered();
+    saveState();
+    flashSaved();
+  }
+
+  function removeFromZone(zone){
+    delete zone.dataset.assigned;
+    renderZone(zone);
+    refreshCardAvailability();
+    refreshPaletteAnswered();
+    saveState();
+    flashSaved();
+  }
+
+  cards.forEach(card=>{
+    card.addEventListener('dragstart', e=>{
+      if(card.classList.contains('used')){e.preventDefault();return;}
+      try{e.dataTransfer.setData('text/plain', card.dataset.value)}catch(err){}
+      e.dataTransfer.effectAllowed='move';
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', ()=>{
+      card.classList.remove('dragging');
+      zones.forEach(z=>z.classList.remove('drag-over'));
+    });
+    card.addEventListener('click', ()=>{
+      if(card.classList.contains('used')){toast('This heading has already been used');return;}
+      const was = card.classList.contains('selected');
+      cards.forEach(c=>c.classList.remove('selected'));
+      if(!was){
+        card.classList.add('selected');
+        selectedCard = card;
+        toast('Heading selected — now tap a drop zone in the passage');
+      } else {
+        selectedCard = null;
+      }
+    });
+  });
+
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover', e=>{e.preventDefault();zone.classList.add('drag-over')});
+    zone.addEventListener('dragleave', ()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e=>{
+      e.preventDefault();zone.classList.remove('drag-over');
+      const val = e.dataTransfer.getData('text/plain');
+      if(val) assign(zone, val);
+    });
+    zone.addEventListener('click', e=>{
+      const btn = e.target.closest('[data-remove-q]');
+      if(btn){e.stopPropagation();removeFromZone(zone);return;}
+      if(selectedCard){
+        assign(zone, selectedCard.dataset.value);
+        selectedCard.classList.remove('selected');
+        selectedCard = null;
+      }
+    });
+  });
+
+  refreshCardAvailability();
+})();
+
+function renderPalette(){
+  const palette=document.getElementById('palette');
+  palette.innerHTML='';
+  Object.keys(PART_QUESTIONS).forEach(part=>{
+    const section=document.createElement('div');
+    section.className='ielts-reading-palette-section';
+    section.dataset.part=part;
+    const label=document.createElement('strong');
+    label.className='ielts-reading-palette-section-part';
+    label.textContent=`Part ${part}:`;
+    section.appendChild(label);
+    PART_QUESTIONS[part].forEach(n=>{
+      const btn=document.createElement('button');
+      btn.type='button';btn.className='ielts-reading-palette-item';btn.dataset.q=n;btn.textContent=n;
+      btn.addEventListener('click',()=>goToQuestion(n));
+      section.appendChild(btn);
+    });
+    palette.appendChild(section);
+  });
+}
+
+let currentPart=1,currentQuestion=1;
+function switchPart(part){
+  currentPart=parseInt(part,10);
+  document.querySelectorAll('.part-tab').forEach(t=>t.classList.toggle('active',t.dataset.part===String(part)));
+  document.querySelectorAll('.passage').forEach(p=>p.classList.toggle('active',p.dataset.part===String(part)));
+  document.querySelectorAll('.q-section').forEach(s=>s.classList.toggle('active',s.dataset.part===String(part)));
+  document.querySelectorAll('.ielts-reading-palette-section').forEach(p=>p.classList.toggle('active',p.dataset.part===String(part)));
+  document.getElementById('passagesPane').scrollTop=0;
+  document.getElementById('questionsPane').scrollTop=0;
+  currentQuestion=PART_QUESTIONS[part][0];
+  updatePaletteCurrent();updateNavButtons();
+}
+document.querySelectorAll('.part-tab').forEach(tab=>tab.addEventListener('click',e=>{
+  if(e.target.closest('.skim-btn'))return;
+  switchPart(tab.dataset.part);
+}));
+
+let skimInterval=null,skimPart=null;
+document.querySelectorAll('.skim-btn').forEach(btn=>btn.addEventListener('click',e=>{
+  e.stopPropagation();
+  const part=btn.dataset.part;
+  if(skimInterval&&skimPart===part){clearInterval(skimInterval);skimInterval=null;skimPart=null;btn.classList.remove('on');btn.textContent='Skim (1x)';toast('Skimming stopped.');return;}
+  if(skimInterval){clearInterval(skimInterval);document.querySelectorAll('.skim-btn').forEach(b=>{b.classList.remove('on');b.textContent='Skim (1x)'})}
+  if(String(currentPart)!==String(part))switchPart(part);
+  const pane=document.getElementById('passagesPane');
+  pane.scrollTop=0;skimPart=part;btn.classList.add('on');btn.textContent='Stop';
+  skimInterval=setInterval(()=>{
+    pane.scrollTop+=1.2;
+    if(pane.scrollTop+pane.clientHeight>=pane.scrollHeight-2){
+      clearInterval(skimInterval);skimInterval=null;skimPart=null;
+      btn.classList.remove('on');btn.textContent='Skim (1x)';toast('Skimming complete.');
+    }
+  },28);
+  toast('Skimming started — read quickly.');
+}));
+
+function goToQuestion(n){
+  n=parseInt(n,10);
+  if(!n||n<1||n>TOTAL_QUESTIONS)return;
+  const part=getPartOfQuestion(n);
+  if(part!==currentPart)switchPart(part);
+  currentQuestion=n;
+  let target;
+  if(n===12||n===13)target=document.querySelector('.q[data-q="12"]');
+  else if(n>=27&&n<=32)target=document.querySelector(`.heading-drop-zone[data-q="${n}"]`);
+  else target=document.querySelector(`.q[data-q="${n}"]`);
+  if(!target){const inp=document.querySelector(`input[type=text][name="q${n}"], select[name="q${n}"]`);if(inp)target=inp.closest('li')||inp;}
+  if(target){
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    target.classList.add('highlight');
+    setTimeout(()=>target.classList.remove('highlight'),1600);
+  }
+  const input=document.querySelector(`input[name="q${n}"]`);
+  if(input&&!input.disabled&&input.type!=='hidden')input.focus({preventScroll:true});
+  updatePaletteCurrent();updateNavButtons();
+}
+function updatePaletteCurrent(){document.querySelectorAll('.ielts-reading-palette-item').forEach(b=>b.classList.toggle('current',parseInt(b.dataset.q,10)===currentQuestion))}
+function updateNavButtons(){
+  const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled=idx<=0&&currentPart===1;
+  document.getElementById('nextBtn').disabled=idx>=all.length-1&&currentPart===3;
+}
+document.getElementById('prevBtn').addEventListener('click',()=>{
+  const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);
+  if(idx>0)goToQuestion(all[idx-1]);
+  else if(currentPart>1){const prev=PART_QUESTIONS[currentPart-1];goToQuestion(prev[prev.length-1])}
+});
+document.getElementById('nextBtn').addEventListener('click',()=>{
+  const all=PART_QUESTIONS[currentPart],idx=all.indexOf(currentQuestion);
+  if(idx<all.length-1)goToQuestion(all[idx+1]);
+  else if(currentPart<3)goToQuestion(PART_QUESTIONS[currentPart+1][0])
+});
+document.querySelectorAll('.q').forEach(q=>{
+  q.addEventListener('focusin',()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()});
+  q.addEventListener('click',()=>{currentQuestion=parseInt(q.dataset.q,10);updatePaletteCurrent();updateNavButtons()});
+});
+function refreshPaletteAnswered(){
+  document.querySelectorAll('.ielts-reading-palette-item').forEach(b=>{
+    const n=parseInt(b.dataset.q,10);
+    let answered=false;
+    if(n===12||n===13)answered=document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked').length>0;
+    else answered=getUserAnswer(n).trim()!=='';
+    b.classList.toggle('answered',answered);
+  });
+}
+
+function collectState(){
+  const state={};
+  for(let n=1;n<=40;n++){
+    if(n===12||n===13)continue;
+    if(n>=27&&n<=32){state['q'+n]=getHeadingAnswer(n);continue;}
+    const r=document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+    if(r){state['q'+n]=r.value;continue;}
+    const t=document.querySelector(`input[type=text][name="q${n}"]`);
+    if(t){state['q'+n]=t.value;continue;}
+    const s=document.querySelector(`select[name="q${n}"]`);
+    if(s){state['q'+n]=s.value;continue;}
+  }
+  state.q12_13=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value);
+  state.__seconds=seconds;
+  return state;
+}
+function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(collectState()));flashSaved();}catch(e){}}
+function restoreState(){
+  let raw;try{raw=localStorage.getItem(STORAGE_KEY);}catch(e){return;}
+  if(!raw)return;
+  let state;try{state=JSON.parse(raw);}catch(e){return;}
+  Object.keys(state).forEach(key=>{
+    if(key==='__seconds'){if(typeof state[key]==='number'&&state[key]>0)seconds=state[key];return;}
+    if(key==='q12_13'){const vals=state[key];if(Array.isArray(vals)){vals.forEach(v=>{const cb=document.querySelector(`input[type=checkbox][name="q12_13"][value="${v}"]`);if(cb)cb.checked=true;});}return;}
+    const n=key.slice(1);
+    const v=state[key];
+    if(!v)return;
+    if(parseInt(n,10)>=27&&parseInt(n,10)<=32){
+      const zone=document.querySelector(`.heading-drop-zone[data-q="${n}"]`);
+      if(zone){
+        zone.dataset.assigned=v;
+        const card=document.querySelector(`.heading-card[data-value="${v}"]`);
+        const text=card?card.textContent.trim():v;
+        const q=zone.dataset.q,letter=zone.dataset.letter;
+        zone.classList.add('filled');
+        zone.innerHTML=`<span class="drop-q-num">${q}</span><span class="drop-value"><span class="drop-value-label">${text}</span><button type="button" class="drop-remove" data-remove-q="${q}">×</button></span>`;
+      }
+      return;
+    }
+    const safe=v.replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+    const r=document.querySelector(`input[type=radio][name="q${n}"][value="${safe}"]`);
+    if(r){r.checked=true;return;}
+    const t=document.querySelector(`input[type=text][name="q${n}"]`);
+    if(t){t.value=v;return;}
+    const s=document.querySelector(`select[name="q${n}"]`);
+    if(s){s.value=v;return;}
+  });
+  setTimeout(()=>{
+    const zones=document.querySelectorAll('.heading-drop-zone');
+    const cards=document.querySelectorAll('.heading-card');
+    const used=new Set();
+    zones.forEach(z=>{if(z.dataset.assigned)used.add(z.dataset.assigned)});
+    cards.forEach(c=>{if(used.has(c.dataset.value))c.classList.add('used');else c.classList.remove('used')});
+    zones.forEach(zone=>{
+      if(zone.dataset.assigned){
+        zone.querySelectorAll('[data-remove-q]').forEach(btn=>{
+          btn.onclick=(e)=>{e.stopPropagation();delete zone.dataset.assigned;const q=zone.dataset.q,letter=zone.dataset.letter;zone.classList.remove('filled');zone.innerHTML=`<span class="drop-q-num">${q}</span><span class="drop-placeholder">Drop heading for paragraph ${letter} here</span>`;const used=new Set();zones.forEach(z=>{if(z.dataset.assigned)used.add(z.dataset.assigned)});cards.forEach(c=>{if(used.has(c.dataset.value))c.classList.add('used');else c.classList.remove('used')});refreshPaletteAnswered();saveState();flashSaved();};
+        });
+      }
+    });
+    refreshPaletteAnswered();
+  },50);
+}
+document.getElementById('quiz').addEventListener('input',()=>{refreshPaletteAnswered();saveState();});
+document.getElementById('quiz').addEventListener('change',()=>{refreshPaletteAnswered();saveState();});
+window.addEventListener('beforeunload',saveState);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)saveState();});
+
+let seconds=TEST_DURATION_SECONDS;
+let timerInterval=null;
+const timerEl=document.getElementById('timer');
+const timerChip=document.getElementById('timerChip');
+function renderTimer(){const m=String(Math.floor(seconds/60)).padStart(2,'0');const s=String(seconds%60).padStart(2,'0');timerEl.textContent=`${m}:${s}`;timerChip.classList.toggle('warn',seconds<=600&&seconds>300);timerChip.classList.toggle('danger',seconds<=300);}
+function startTimer(){clearInterval(timerInterval);renderTimer();timerInterval=setInterval(()=>{if(seconds>0){seconds--;renderTimer();}else{clearInterval(timerInterval);toast('Time is up!');}},1000);}
+
+(function(){const resizer=document.getElementById('resizer');const left=document.getElementById('passagesPane');const right=document.getElementById('questionsPane');let dragging=false;
+resizer.addEventListener('mousedown',e=>{e.preventDefault();dragging=true;document.body.style.cursor='col-resize';document.body.style.userSelect='none'});
+document.addEventListener('mousemove',e=>{if(!dragging)return;const rect=document.getElementById('mainSplit').getBoundingClientRect();let pct=(e.clientX-rect.left)/rect.width*100;pct=Math.max(25,Math.min(75,pct));left.style.flex=`0 0 ${pct}%`;right.style.flex='1 1 auto'});
+document.addEventListener('mouseup',()=>{if(!dragging)return;dragging=false;document.body.style.cursor='';document.body.style.userSelect=''})})();
+
+function highlightEvidence(text,qNum){
+  if(!text)return;
+  const root=document.getElementById('passagesPane');
+  if(!root)return;
+  if(root.querySelector(`mark.evidence-mark[data-q="${qNum}"]`))return;
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:(node)=>{
+    if(node.parentElement&&node.parentElement.tagName==='MARK')return NodeFilter.FILTER_REJECT;
+    if(node.parentElement&&node.parentElement.closest('mark.evidence-mark'))return NodeFilter.FILTER_REJECT;
+    return node.textContent.indexOf(text)!==-1?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;
+  }});
+  let targetNode=null,idx=-1;
+  while((targetNode=walker.nextNode())){idx=targetNode.textContent.indexOf(text);if(idx!==-1)break}
+  if(!targetNode||idx===-1)return;
+  try{
+    const range=document.createRange();
+    range.setStart(targetNode,idx);range.setEnd(targetNode,idx+text.length);
+    const mark=document.createElement('mark');
+    mark.className='evidence-mark';mark.dataset.q=qNum;mark.title='Evidence for Q'+qNum;
+    mark.addEventListener('click',()=>goToQuestion(qNum));
+    range.surroundContents(mark);
+  }catch(e){console.warn('Could not highlight Q'+qNum,e)}
+}
+function clearEvidenceMarks(){document.querySelectorAll('mark.evidence-mark').forEach(m=>{const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m)})}
+
+function renderInlineFeedback(ns,containerId,hideAnswer){
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  container.innerHTML=ns.map(n=>{
+    const ua=getUserAnswer(n);
+    const ok=isCorrect(n,ua);
+    return `<div class="inline-fb ${ok?'ok':'no'}"><strong>Q${n}</strong>: ${ok?'✓ Correct':hideAnswer?'✗ Incorrect':`✗ ${ua||'(no answer)'}`}</div>`;
+  }).join('');
+  container.style.display='block';
+}
+
+document.getElementById('submitBtn').addEventListener('click',()=>{
+  let score=0,answered=0;
+  clearEvidenceMarks();
+  document.querySelectorAll('.q').forEach(q=>{q.classList.remove('correct','wrong');const fb=q.querySelector('.feedback');if(fb&&fb.id!=='fb-12-13')fb.textContent='';const ev=q.querySelector('.evidence-line');if(ev)ev.innerHTML='';});
+  document.querySelectorAll('.notes-list li').forEach(li=>{li.classList.remove('correct','wrong');const fb=li.querySelector('.feedback');if(fb)fb.textContent='';const ev=li.querySelector('.evidence-line');if(ev)ev.innerHTML='';});
+  document.querySelectorAll('.gap-input, .q-select').forEach(el=>el.classList.remove('correct','wrong'));
+  document.querySelectorAll('.heading-drop-zone').forEach(z=>z.classList.remove('correct','wrong'));
+  document.querySelectorAll('.ielts-reading-palette-item').forEach(b=>b.classList.remove('correct','wrong'));
+  document.querySelectorAll('.inline-feedback').forEach(el=>{el.style.display='none';el.innerHTML='';});
+
+  const rows=[];
+  for(let n=1;n<=TOTAL_QUESTIONS;n++){
+    let ok,ua,key;
+    if(n===12||n===13){
+      const checks=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value).sort();
+      const correct=['B','D'];
+      const correctCount=checks.filter(v=>correct.includes(v)).length;
+      const wrongCount=checks.filter(v=>!correct.includes(v)).length;
+      if(wrongCount>0){ok=false;}else if(n===12){ok=correctCount>=1;}else{ok=correctCount>=2;}
+      ua=checks.length>0?checks.join(', '):'—';
+      key='B and D';
+      if(n===12&&checks.length>=1)answered++;
+      if(n===13&&checks.length>=2)answered++;
+    }else{
+      ua=getUserAnswer(n);
+      if(ua.trim())answered++;
+      ok=isCorrect(n,ua);
+      key=(ANSWER_KEY[n]||[])[0]||'?';
+    }
+    if(ok)score++;
+
+    let target=document.querySelector(`.q[data-q="${n}"]`);
+    if(!target){
+      if(n>=27&&n<=32)target=document.querySelector(`.heading-drop-zone[data-q="${n}"]`);
+      else{const inp=document.querySelector(`input[type=text][name="q${n}"], select[name="q${n}"]`);if(inp)target=inp.closest('li')||inp;}
+    }
+
+    if(target){
+      if(n>=27&&n<=32){target.classList.add(ok?'correct':'wrong');}
+      else{
+        target.classList.add(ok?'correct':'wrong');
+        const gapInp=document.querySelector(`input[name="q${n}"]`);
+        if(gapInp&&gapInp.classList.contains('gap-input'))gapInp.classList.add(ok?'correct':'wrong');
+        const sel=document.querySelector(`select[name="q${n}"]`);
+        if(sel&&sel.classList.contains('q-select'))sel.classList.add(ok?'correct':'wrong');
+      }
+      if(n!==12&&n!==13&&!(n>=27&&n<=32)){
+        const fb=target.querySelector('.feedback');
+        if(fb){
+          if(GAP_QUESTIONS.has(n)){
+            /* Q21–26: correct answer hidden, show what user typed */
+            fb.textContent=ok?'✓ Correct':`✗ Incorrect — your answer: ${ua.trim()||'(no answer)'}`;
+          } else {
+            fb.textContent=ok?'✓ Correct':`✗ ${ua.trim()||'(no answer)'} — Correct: ${key}`;
+          }
+          fb.classList.add(ok?'ok':'no');
+        }
+        const ev=target.querySelector('.evidence-line');
+        if(ev){
+          const d=EXPLAINS[n]||{};
+          if(d.ev)ev.innerHTML=`<span class="lbl">📖 Evidence</span> <em>"${d.ev}"</em>`;
+          else ev.innerHTML=`<span class="lbl">📖 Evidence</span> <em>Not stated in the passage</em>`;
+        }
+      }
+    }
+
+    if(n===12){
+      const fbEl=document.getElementById('fb-12-13');
+      if(fbEl){
+        const checks=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value).sort();
+        const correct=['B','D'];
+        const correctCount=checks.filter(v=>correct.includes(v)).length;
+        const wrongCount=checks.filter(v=>!correct.includes(v)).length;
+        const bothCorrect=(wrongCount===0&&correctCount===2);
+        fbEl.textContent=bothCorrect?'✓ Correct (B and D)':`✗ Selected: ${checks.join(', ')||'(none)'} — Correct: B and D`;
+        fbEl.classList.toggle('ok',bothCorrect);
+        fbEl.classList.toggle('no',!bothCorrect);
+        fbEl.style.display='block';
+      }
+    }
+
+    const d=EXPLAINS[n]||{};
+    if(d.ev)highlightEvidence(d.ev,n);
+
+    const pal=document.querySelector(`.ielts-reading-palette-item[data-q="${n}"]`);
+    if(pal)pal.classList.add(ok?'correct':'wrong');
+
+    rows.push({n,ua:ua.trim()||'—',key,ok,exp:d.exp||'',ev:d.ev||''});
+  }
+
+  renderInlineFeedback([21,22,23,24,25,26],'fb-21-26',false);
+  renderInlineFeedback([27,28,29,30,31,32],'fb-27-32',false);
+  renderInlineFeedback([33,34,35,36],'fb-33-36',true);
+
+  document.getElementById('resultScore').textContent=`${score} / ${TOTAL_QUESTIONS}`;
+  document.getElementById('resultSub').textContent=`Band estimate: ${estimateBand(score)} · Answered: ${answered}/${TOTAL_QUESTIONS}`;
+
+  const tbody=document.getElementById('resultBody');
+  tbody.innerHTML='';
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.n}</td><td class="${r.ok?'correct':'wrong'}">${r.ua}</td><td>${r.key}</td><td class="evidence-cell">${r.ev?r.ev.substring(0,110)+(r.ev.length>110?'…':''):'—'}</td>`;
+    tr.title='Click to jump to evidence';
+    tr.addEventListener('click',()=>{
+      const mark=document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
+      if(mark){
+        const part=getPartOfQuestion(r.n);
+        if(part!==currentPart)switchPart(part);
+        setTimeout(()=>{
+          mark.scrollIntoView({behavior:'smooth',block:'center'});
+          mark.classList.remove('flash');void mark.offsetWidth;mark.classList.add('flash');
+        },100);
+      } else toast('No passage highlight for Q'+r.n+(r.ev?'':' (NOT GIVEN)'));
+    });
+    tbody.appendChild(tr);
+  });
+
+  const de=document.getElementById('detailedExplanations');
+  de.innerHTML='';
+  rows.forEach(r=>{
+    const box=document.createElement('div');
+    box.className='explanation-box';
+    box.innerHTML=`<h4>Q${r.n} — ${r.key} ${r.ok?'✅':'❌'}</h4><p>${r.exp}</p>${r.ev?`<div class="ev">📖 Passage: "${r.ev}"</div>`:''}`;
+    de.appendChild(box);
+  });
+
+  const chip=document.getElementById('bandChip');
+  chip.textContent=estimateBand(score);chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if(timerInterval){clearInterval(timerInterval);timerInterval=null;}
+
+  /* Persist submitted answers so the typed gap-fill responses remain visible after submission and reload. */
+  saveState();
+});
+
+document.getElementById('reviewBtn').addEventListener('click',()=>{
+  const tbody=document.getElementById('previewBody');
+  tbody.innerHTML='';
+  for(let n=1;n<=TOTAL_QUESTIONS;n++){
+    const tr=document.createElement('tr');
+    const a=document.createElement('td'),b=document.createElement('td');
+    a.textContent=n;
+    let val=getUserAnswer(n);
+    if(n===12||n===13){const checks=[...document.querySelectorAll('input[type=checkbox][name="q12_13"]:checked')].map(c=>c.value).sort();val=checks.length>0?checks.join(', '):'';}
+    b.textContent=val.trim()||'—';
+    tr.append(a,b);
+    tbody.appendChild(tr);
+  }
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click',()=>document.getElementById(btn.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('show')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));document.getElementById('hl-popup').classList.remove('show');document.getElementById('note-popup').classList.remove('show')}});
+
+const menuPop=document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click',e=>{e.stopPropagation();menuPop.classList.toggle('show')});
+document.addEventListener('click',()=>menuPop.classList.remove('show'));
+menuPop.addEventListener('click',e=>e.stopPropagation());
+document.getElementById('exportLink').addEventListener('click',e=>{e.preventDefault();window.print()});
+document.getElementById('resetLink').addEventListener('click',e=>{e.preventDefault();doReset()});
+document.getElementById('gotoTop').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});document.getElementById('passagesPane').scrollTop=0;document.getElementById('questionsPane').scrollTop=0});
+
+function doReset(){
+  if(!confirm('Clear all answers and saved data, and reset the test?'))return;
+  document.getElementById('quiz').reset();
+  try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+  document.querySelectorAll('.q').forEach(q=>{q.classList.remove('correct','wrong');const fb=q.querySelector('.feedback');if(fb&&fb.id!=='fb-12-13')fb.textContent='';const ev=q.querySelector('.evidence-line');if(ev)ev.innerHTML='';});
+  document.querySelectorAll('.notes-list li').forEach(li=>{li.classList.remove('correct','wrong');const fb=li.querySelector('.feedback');if(fb)fb.textContent='';const ev=li.querySelector('.evidence-line');if(ev)ev.innerHTML='';});
+  document.querySelectorAll('.gap-input, .q-select').forEach(el=>el.classList.remove('correct','wrong'));
+  document.querySelectorAll('.ielts-reading-palette-item').forEach(b=>b.classList.remove('correct','wrong','answered'));
+  document.querySelectorAll('.inline-feedback').forEach(el=>{el.style.display='none';el.innerHTML='';});
+  const fb1213=document.getElementById('fb-12-13');
+  if(fb1213){fb1213.textContent='';fb1213.classList.remove('ok','no');fb1213.style.display='none';}
+  document.querySelectorAll('.heading-drop-zone').forEach(zone=>{
+    delete zone.dataset.assigned;
+    const q=zone.dataset.q,letter=zone.dataset.letter;
+    zone.classList.remove('filled','correct','wrong');
+    zone.innerHTML=`<span class="drop-q-num">${q}</span><span class="drop-placeholder">Drop heading for paragraph ${letter} here</span>`;
+  });
+  document.querySelectorAll('.heading-card').forEach(c=>c.classList.remove('used','selected','dragging'));
+  clearEvidenceMarks();
+  const chip=document.getElementById('bandChip');chip.textContent='--';chip.classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  seconds=TEST_DURATION_SECONDS;startTimer();
+  switchPart(1);
+  refreshPaletteAnswered();
+  toast('Test and saved data cleared. Good luck!');
+}
+document.getElementById('focusBtn').addEventListener('click',()=>document.body.classList.add('focus-mode'));
+document.getElementById('exitFocusBtn').addEventListener('click',()=>document.body.classList.remove('focus-mode'));
+
+const hlPopup=document.getElementById('hl-popup');
+const notePopup=document.getElementById('note-popup');
+const passagesEl=document.getElementById('passagesPane');
+const questionsEl=document.getElementById('questionsPane');
+let savedRange=null,pendingNoteRange=null,currentMark=null,noteSaveTarget=null;
+function showPopupAt(rect){hlPopup.style.top=Math.max(8,rect.top-48)+'px';hlPopup.style.left=Math.max(8,rect.left+rect.width/2-120)+'px';hlPopup.classList.add('show')}
+function isEditableTarget(el){return el&&(el.closest('input')||el.closest('select')||el.closest('button')||el.closest('label'))}
+document.addEventListener('mouseup',e=>{
+  if(e.target.closest('#hl-popup')||e.target.closest('#note-popup')||isEditableTarget(e.target))return;
+  setTimeout(()=>{
+    const sel=window.getSelection();
+    if(sel&&sel.rangeCount&&!sel.isCollapsed){
+      const range=sel.getRangeAt(0),c=range.commonAncestorContainer,el=c.nodeType===1?c:c.parentElement;
+      if(el&&(passagesEl.contains(el)||questionsEl.contains(el))){savedRange=range.cloneRange();currentMark=null;showPopupAt(range.getBoundingClientRect());}
+    }
+  },0);
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('#hl-popup')||e.target.closest('#note-popup'))return;
+  if(!e.target.closest('.passages')&&!e.target.closest('.questions'))return;
+  const em=e.target.closest('mark.hl-user'),en=e.target.closest('.hl-note');
+  if(en){document.getElementById('note-text').value=en.dataset.note||'';pendingNoteRange=null;notePopup.classList.add('show');noteSaveTarget=en;return;}
+  if(em){savedRange=null;currentMark=em;showPopupAt(em.getBoundingClientRect())}
+});
+document.getElementById('hl-highlight').addEventListener('click',()=>{
+  if(currentMark){hlPopup.classList.remove('show');return;}
+  if(!savedRange){toast('Select text to highlight');return;}
+  try{const m=document.createElement('mark');m.className='hl-user';m.appendChild(savedRange.extractContents());savedRange.insertNode(m)}catch(e){}
+  window.getSelection().removeAllRanges();hlPopup.classList.remove('show');savedRange=null;toast('Text highlighted');
+});
+document.getElementById('hl-dehighlight').addEventListener('click',()=>{
+  if(currentMark){const p=currentMark.parentNode;while(currentMark.firstChild)p.insertBefore(currentMark.firstChild,currentMark);p.removeChild(currentMark);currentMark=null;hlPopup.classList.remove('show');toast('Highlight removed');return;}
+  if(savedRange){const c=savedRange.commonAncestorContainer,root=c.nodeType===1?c:(c.parentElement||c.parentNode);if(root&&root.querySelectorAll){root.querySelectorAll('mark.hl-user').forEach(m=>{try{if(savedRange.intersectsNode(m)){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m)}}catch(e){}})}window.getSelection().removeAllRanges();hlPopup.classList.remove('show');savedRange=null;toast('Highlight removed');}else hlPopup.classList.remove('show');
+});
+document.getElementById('hl-note').addEventListener('click',()=>{
+  if(!savedRange){toast('Select text first');return;}
+  pendingNoteRange=savedRange.cloneRange();noteSaveTarget=null;document.getElementById('note-text').value='';notePopup.classList.add('show');hlPopup.classList.remove('show');
+});
+document.getElementById('note-cancel').addEventListener('click',()=>{notePopup.classList.remove('show');pendingNoteRange=null;noteSaveTarget=null});
+document.getElementById('note-save').addEventListener('click',()=>{
+  const nt=document.getElementById('note-text').value.trim();
+  if(noteSaveTarget){
+    if(nt){noteSaveTarget.dataset.note=nt;noteSaveTarget.title='Note: '+nt;toast('Note updated')}
+    else{const p=noteSaveTarget.parentNode;while(noteSaveTarget.firstChild)p.insertBefore(noteSaveTarget.firstChild,noteSaveTarget);p.removeChild(noteSaveTarget);toast('Note removed')}
+    noteSaveTarget=null;notePopup.classList.remove('show');document.getElementById('note-text').value='';return;
+  }
+  if(!nt||!pendingNoteRange){notePopup.classList.remove('show');pendingNoteRange=null;return;}
+  try{const sp=document.createElement('span');sp.className='hl-note';sp.title='Note: '+nt;sp.dataset.note=nt;sp.appendChild(pendingNoteRange.extractContents());pendingNoteRange.insertNode(sp);toast('Note saved')}catch(e){}
+  document.getElementById('note-text').value='';notePopup.classList.remove('show');pendingNoteRange=null;
+});
+document.getElementById('clearHighlightsLink').addEventListener('click',e=>{
+  e.preventDefault();
+  if(!confirm('Remove all highlights and notes?'))return;
+  document.querySelectorAll('mark.hl-user,.hl-note').forEach(el=>{const p=el.parentNode;while(el.firstChild)p.insertBefore(el.firstChild,el);p.removeChild(el)});
+  toast('Highlights cleared');
+});
+
+populateSelectOptions();
+renderPalette();
+seconds=TEST_DURATION_SECONDS;
+restoreState();
+renderTimer();
+startTimer();
+refreshPaletteAnswered();
+updateNavButtons();
+switchPart(1);
+updatePaletteCurrent();
+</script>
+</body>
+</html>
