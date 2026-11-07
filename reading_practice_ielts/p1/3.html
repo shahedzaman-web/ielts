@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>The Development of Plastics — IELTS Reading Practice</title>
-        <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Development of Plastics — IELTS Reading Practice</title>
+    <style>
 :root{
   --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
   --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
@@ -75,10 +75,46 @@ table.q-table td.notes-row.wrong{background:var(--bad-soft)}
 table.q-table .gap{width:100%;margin:2px 0;height:28px}
 table.q-table .feedback{font-size:11.5px;margin-top:5px}
 .tbl-note{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+/* MATCH ROW */
+.match-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
+.match-row:last-child{border-bottom:none}
+.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+.match-statement{flex:1;min-width:220px;font-weight:600}
+.match-options{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;padding:4px 0 0}
+.letter-opt{display:inline-flex;align-items:center;justify-content:center;width:34px;height:30px;font-size:13px;font-weight:700;cursor:pointer;border-radius:6px;border:1px solid #dfe5ee;background:#f8fafc;transition:.12s;color:#334155}
+.letter-opt:hover{background:#eef2f7;border-color:#cbd5e1}
+.letter-opt input{display:none}
+.letter-opt.checked{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.18)}
+.match-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.match-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.match-row.correct .match-statement{background:rgba(220,252,231,.35)}
+.match-row.wrong .match-statement{background:rgba(254,226,226,.35)}
+.match-row.correct .letter-opt.checked{background:var(--good);border-color:var(--good)}
+.match-row.wrong .letter-opt.checked{background:var(--bad);border-color:var(--bad)}
+/* MC ROW */
+.mc-row{padding:12px 0;border-bottom:1px dashed #eef2f7;font-size:14.5px}
+.mc-row:last-child{border-bottom:none}
+.mc-question{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.mc-statement{flex:1;font-weight:600}
+.mc-options{display:flex;flex-direction:column;gap:5px;padding-left:36px}
+.mc-opt{display:flex;align-items:flex-start;gap:8px;font-size:14px;cursor:pointer;padding:6px 10px;border-radius:6px;border:1px solid transparent;transition:.12s}
+.mc-opt:hover{background:#f8fafc;border-color:#cbd5e1}
+.mc-opt input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;margin-top:3px;flex:0 0 auto}
+.mc-opt .letter{font-weight:700;color:var(--accent);flex:0 0 auto;min-width:16px}
+.mc-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.mc-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.mc-row.correct .mc-statement{background:rgba(220,252,231,.45);padding:2px 6px;border-radius:4px}
+.mc-row.wrong .mc-statement{background:rgba(254,226,226,.45);padding:2px 6px;border-radius:4px}
+.mc-row.correct .mc-opt.checked{background:var(--good-soft);border-color:var(--good)}
+.mc-row.wrong .mc-opt.checked{background:var(--bad-soft);border-color:var(--bad)}
+/* CHARACTERISTICS BANK */
+.char-bank{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+.char-bank .cb-title{font-weight:700;font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.char-bank .cb-item{display:flex;gap:8px;align-items:baseline;padding:2px 0}
+.char-bank .cb-item .ltr{font-weight:700;color:var(--accent);min-width:18px}
 /* TFNG */
 .tfng-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
 .tfng-row:last-child{border-bottom:none}
-.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
 .tfng-statement{flex:1;min-width:200px}
 .tfng-options{display:flex;gap:14px;flex-basis:100%;padding:4px 0 0}
 .tfng-opt{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:.12s}
@@ -191,370 +227,493 @@ body.fullscreen-active .main-split{
 .toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
 .toast.show{opacity:1}
 </style>
-    </head>
-    <body>
+  </head>
+  <body>
 
-        <header class="app-header">
-            <h1>The Development of Plastics — IELTS Reading</h1>
-            <div class="header-right">
-                <button class="icon-btn" id="fullscreenBtn">⛶
-                    Fullscreen</button>
-                <button class="icon-btn" id="focusBtn">🎯 Focus</button>
-                <div class="band-chip" id="bandChip">--</div>
-                <div class="timer-chip" id="timerChip">⏱ <strong
-                        id="timer">20:00</strong></div>
-                <div class="menu-wrap">
-                    <button class="icon-btn" id="menuBtn">☰</button>
-                    <div class="menu-pop" id="menuPop">
-                        <a href="#" id="exportLink">📄 Export as PDF</a>
-                        <a href="#" id="clearHighlightsLink">🧹 Clear All
-                            Highlights</a>
-                        <a href="#" id="resetLink">↺ Reset Test</a>
-                        <a href="#" id="gotoTop">↑ Back to Top</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-
-        <div id="hl-popup">
-            <button id="hl-highlight">🖍 Highlight</button>
-            <button id="hl-dehighlight">🧽 Clear</button>
-            <button id="hl-note">📝 Note</button>
+    <header class="app-header">
+      <h1>The Development of Plastics — IELTS Reading</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="fullscreenBtn">⛶
+          Fullscreen</button>
+        <button class="icon-btn" id="focusBtn">🎯 Focus</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip" id="timerChip">⏱ <strong
+            id="timer">20:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear All
+              Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <div id="note-popup">
-            <div class="np-card">
-                <h4>Add a note</h4>
-                <textarea id="note-text"
-                    placeholder="Write your note about this text..."></textarea>
-                <div class="np-actions">
-                    <button type="button" class="np-cancel"
-                        id="note-cancel">Cancel</button>
-                    <button type="button" class="np-save" id="note-save">Save
-                        Note</button>
-                </div>
-            </div>
+    <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+    <div id="hl-popup">
+      <button id="hl-highlight">🖍 Highlight</button>
+      <button id="hl-dehighlight">🧽 Clear</button>
+      <button id="hl-note">📝 Note</button>
+    </div>
+
+    <div id="note-popup">
+      <div class="np-card">
+        <h4>Add a note</h4>
+        <textarea id="note-text"
+          placeholder="Write your note about this text..."></textarea>
+        <div class="np-actions">
+          <button type="button" class="np-cancel"
+            id="note-cancel">Cancel</button>
+          <button type="button" class="np-save" id="note-save">Save
+            Note</button>
         </div>
+      </div>
+    </div>
 
-        <div class="main-split" id="mainSplit">
-            <!-- PASSAGE -->
-            <div class="pane passages" id="passagesPane">
-                <div class="passage">
-                    <span class="part-label">Reading Passage 2</span>
-                    <h2>The Development of Plastics</h2>
-                    <p><em>You should spend about 20 minutes on Questions
-                            14–26, which are based on the reading passage
-                            below.</em></p>
-                    <p>When rubber was first commercially produced in Europe
-                        during the nineteenth century, it rapidly became a very
-                        important commodity, particularly in the fields of
-                        transportation and electricity. However, during the
-                        twentieth century a number of new synthetic materials,
-                        called plastics, superseded natural rubber in all but a
-                        few applications.</p>
-                    <p>Rubber is a polymer — a compound containing large
-                        molecules that are formed by the bonding of many
-                        smaller, simpler units, repeated over and over again.
-                        The same bonding principle — polymerisation — underlies
-                        the creation of a huge range of plastics by the
-                        chemical industry.</p>
-                    <p>The first plastic was developed as a result of a
-                        competition in the USA. In the 1860s, $10,000 was
-                        offered to anybody who could replace ivory — supplies of
-                        which were declining — with something equally good as a
-                        material for making billiard balls. The prize was won
-                        by John Wesley Hyatt with a material called celluloid.
-                        Celluloid was made by dissolving cellulose, a
-                        carbohydrate derived from plants, in a solution of
-                        camphor dissolved in ethanol. This new material rapidly
-                        found uses in the manufacture of products such as knife
-                        handles, detachable collars and cuffs, spectacle frames
-                        and photographic film. Without celluloid, the film
-                        industry could never have got off the ground at the end
-                        of the 19th century.</p>
-                    <p>Celluloid can be repeatedly softened and reshaped by
-                        heat, and is known as a thermoplastic. In 1907 Leo
-                        Baekeland, a Belgian chemist working in the USA,
-                        invented a different kind of plastic by causing phenol
-                        and formaldehyde to react together. Baekeland called the
-                        material Bakelite, and it was the first of the
-                        thermosets — plastics that can be cast and moulded
-                        while hot, but cannot be softened by heat and reshaped
-                        once they have set. Bakelite was a good insulator, and
-                        was resistant to water, acids and moderate heat. With
-                        these properties it was soon being used in the
-                        manufacture of switches, household items, such as knife
-                        handles, and electrical components for cars.</p>
-                    <p>Soon chemists began looking for other small molecules
-                        that could be strung together to make polymers. In the
-                        1930s, British chemists discovered that the gas ethylene
-                        would polymerise under heat and pressure to form a
-                        thermoplastic they called polythene. Polypropylene
-                        followed in the 1950s. Both were used to make bottles,
-                        pipes and plastic bags. A small change in the starting
-                        material — replacing a hydrogen atom in ethylene with a
-                        chlorine atom — produced PVC (polyvinyl chloride), a
-                        hard, fireproof plastic suitable for drains and gutters.
-                        And by adding certain chemicals, a soft form of PVC
-                        could be produced, suitable as a substitute for rubber
-                        in items such as waterproof clothing. A closely related
-                        plastic was Teflon, or PTFE (polytetrafluoroethylene).
-                        This had a very low coefficient of friction, making it
-                        ideal for bearings, rollers, and non-stick frying pans.
-                        Polystyrene, developed during the 1930s in Germany, was
-                        a clear, glass-like material, used in food containers,
-                        domestic appliances and toys. Expanded polystyrene — a
-                        white, rigid foam — was widely used in packaging and
-                        insulation. Polyurethanes, also developed in Germany,
-                        found uses as adhesives, coatings, and — in the form of
-                        rigid foams — as insulation materials. They are all
-                        produced from chemicals derived from crude oil, which
-                        contains exactly the same elements — carbon and
-                        hydrogen — as many plastics.</p>
-                    <p>The first of the man-made fibres, nylon, was also created
-                        in the 1930s. Its inventor was a chemist called Wallace
-                        Carothers, who worked for the Du Pont company in the
-                        USA. He found that under the right conditions, two
-                        chemicals — hexamethylenediamine and adipic acid — would
-                        form a polymer that could be pumped out through holes
-                        and then stretched to form long glossy threads that
-                        could be woven like silk. Its first use was to make
-                        parachutes for the US armed forces in World War II. In
-                        the post-war years nylon completely replaced silk in
-                        the manufacture of stockings. Subsequently many other
-                        synthetic fibres joined nylon, including Orlon, Acrilan
-                        and Terylene. Today most garments are made of a blend of
-                        natural fibres, such as cotton and wool, and man-made
-                        fibres that make fabrics easier to look after.</p>
-                    <p>The great strength of plastic is its indestructibility.
-                        However, this quality is also something of a drawback:
-                        beaches all over the world, even on the remotest
-                        islands, are littered with plastic bottles that nothing
-                        can destroy. Nor is it very easy to recycle plastics, as
-                        different types of plastic are often used in the same
-                        items and call for different treatments. Plastics can be
-                        made biodegradable by incorporating into their structure
-                        a material such as starch, which is attacked by bacteria
-                        and causes the plastic to fall apart. Other materials
-                        can be incorporated that gradually decay in sunlight —
-                        although bottles made of such materials have to be
-                        stored in the dark, to ensure that they do not
-                        disintegrate before they have been used.</p>
-                </div>
-            </div>
-
-            <div class="resizer" id="resizer"></div>
-
-            <!-- QUESTIONS -->
-            <div class="pane questions" id="questionsPane">
-                <form id="quiz" onsubmit="return false;">
-                    <section class="q-section">
-                        <div class="q-group">
-                            <h3>Questions 14–20</h3>
-                            <div class="q-instr">
-                                <p>Complete the table below.</p>
-                                <p>Choose <strong>NO MORE THAN THREE WORDS</strong>
-                                    from the passage for each answer.</p>
-                            </div>
-
-                            <table class="q-table">
-                                <colgroup>
-                                    <col style="width:17%">
-                                    <col style="width:11%">
-                                    <col style="width:12%">
-                                    <col style="width:27%">
-                                    <col style="width:33%">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>Name of plastic</th>
-                                        <th>Date of invention</th>
-                                        <th>Original region</th>
-                                        <th>Property</th>
-                                        <th>Common use</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Celluloid</td>
-                                        <td>1860s</td>
-                                        <td>US</td>
-                                        <td>thermoplastic</td>
-                                        <td class="notes-row" data-q="14">
-                                            <input class="gap" type="text"
-                                                name="q14" data-q="14"
-                                                aria-label="Q14">
-                                            <div class="feedback"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="notes-row" data-q="15">
-                                            <input class="gap" type="text"
-                                                name="q15" data-q="15"
-                                                aria-label="Q15">
-                                            <div class="feedback"></div>
-                                        </td>
-                                        <td>1907</td>
-                                        <td>US</td>
-                                        <td>can be cast and moulded but cannot
-                                            be softened by heat</td>
-                                        <td class="notes-row" data-q="16">
-                                            <input class="gap" type="text"
-                                                name="q16" data-q="16"
-                                                aria-label="Q16">
-                                            <span class="tbl-note">household
-                                                items and car parts</span>
-                                            <div class="feedback"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Polythene</td>
-                                        <td>1930s</td>
-                                        <td class="notes-row" data-q="17">
-                                            <input class="gap" type="text"
-                                                name="q17" data-q="17"
-                                                aria-label="Q17">
-                                            <div class="feedback"></div>
-                                        </td>
-                                        <td>—</td>
-                                        <td>bottles</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rigid PVC</td>
-                                        <td>—</td>
-                                        <td>—</td>
-                                        <td class="notes-row" data-q="18">
-                                            <input class="gap" type="text"
-                                                name="q18" data-q="18"
-                                                aria-label="Q18">
-                                            <div class="feedback"></div>
-                                        </td>
-                                        <td>drains and gutters</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Polystyrene</td>
-                                        <td>1930s</td>
-                                        <td>Germany</td>
-                                        <td class="notes-row" data-q="19">
-                                            <input class="gap" type="text"
-                                                name="q19" data-q="19"
-                                                aria-label="Q19">
-                                            <div class="feedback"></div>
-                                        </td>
-                                        <td>food containers</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Polyurethanes</td>
-                                        <td>—</td>
-                                        <td>Germany</td>
-                                        <td class="notes-row" data-q="20">
-                                            <input class="gap" type="text"
-                                                name="q20" data-q="20"
-                                                aria-label="Q20">
-                                            <span class="tbl-note">foams</span>
-                                            <div class="feedback"></div>
-                                        </td>
-                                        <td>adhesives, coatings and
-                                            insulation</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="q-group">
-                            <h3>Questions 21–26</h3>
-                            <div class="q-instr">
-                                <p>Do the following statements agree with the
-                                    information given in the reading
-                                    passage?</p>
-                                <p>Write</p>
-                                <p><strong>TRUE</strong> if the statement agrees
-                                    with the information<br>
-                                    <strong>FALSE</strong> if the statement
-                                    contradicts the information<br>
-                                    <strong>NOT GIVEN</strong> if there is no
-                                    information on this</p>
-                            </div>
-                            <div id="tfng-container"></div>
-                        </div>
-                    </section>
-                </form>
-            </div>
+    <div class="main-split" id="mainSplit">
+      <!-- PASSAGE -->
+      <div class="pane passages" id="passagesPane">
+        <div class="passage">
+          <span class="part-label">Reading Passage 2</span>
+          <h2>The Development of Plastics</h2>
+          <p><em>You should spend about 20 minutes on Questions 1–26,
+              which are based on the reading passage
+              below.</em></p>
+          <p>When rubber was first commercially produced in Europe
+            during the nineteenth century, it rapidly became a very
+            important commodity, particularly in the fields of
+            transportation and electricity. However, during the
+            twentieth century a number of new synthetic materials,
+            called plastics, superseded natural rubber in all but a
+            few applications.</p>
+          <p>Rubber is a polymer — a compound containing large
+            molecules that are formed by the bonding of many
+            smaller, simpler units, repeated over and over again.
+            The same bonding principle — polymerisation — underlies
+            the creation of a huge range of plastics by the
+            chemical industry.</p>
+          <p>The first plastic was developed as a result of a
+            competition in the USA. In the 1860s, $10,000 was
+            offered to anybody who could replace ivory — supplies of
+            which were declining — with something equally good as a
+            material for making billiard balls. The prize was won
+            by John Wesley Hyatt with a material called celluloid.
+            Celluloid was made by dissolving cellulose, a
+            carbohydrate derived from plants, in a solution of
+            camphor dissolved in ethanol. This new material rapidly
+            found uses in the manufacture of products such as knife
+            handles, detachable collars and cuffs, spectacle frames
+            and photographic film. Without celluloid, the film
+            industry could never have got off the ground at the end
+            of the 19th century.</p>
+          <p>Celluloid can be repeatedly softened and reshaped by
+            heat, and is known as a thermoplastic. In 1907 Leo
+            Baekeland, a Belgian chemist working in the USA,
+            invented a different kind of plastic by causing phenol
+            and formaldehyde to react together. Baekeland called the
+            material Bakelite, and it was the first of the
+            thermosets — plastics that can be cast and moulded
+            while hot, but cannot be softened by heat and reshaped
+            once they have set. Bakelite was a good insulator, and
+            was resistant to water, acids and moderate heat. With
+            these properties it was soon being used in the
+            manufacture of switches, household items, such as knife
+            handles, and electrical components for cars.</p>
+          <p>Soon chemists began looking for other small molecules
+            that could be strung together to make polymers. In the
+            1930s, British chemists discovered that the gas ethylene
+            would polymerise under heat and pressure to form a
+            thermoplastic they called polythene. Polypropylene
+            followed in the 1950s. Both were used to make bottles,
+            pipes and plastic bags. A small change in the starting
+            material — replacing a hydrogen atom in ethylene with a
+            chlorine atom — produced PVC (polyvinyl chloride), a
+            hard, fireproof plastic suitable for drains and gutters.
+            And by adding certain chemicals, a soft form of PVC
+            could be produced, suitable as a substitute for rubber
+            in items such as waterproof clothing. A closely related
+            plastic was Teflon, or PTFE (polytetrafluoroethylene).
+            This had a very low coefficient of friction, making it
+            ideal for bearings, rollers, and non-stick frying pans.
+            Polystyrene, developed during the 1930s in Germany, was
+            a clear, glass-like material, used in food containers,
+            domestic appliances and toys. Expanded polystyrene — a
+            white, rigid foam — was widely used in packaging and
+            insulation. Polyurethanes, also developed in Germany,
+            found uses as adhesives, coatings, and — in the form of
+            rigid foams — as insulation materials. They are all
+            produced from chemicals derived from crude oil, which
+            contains exactly the same elements — carbon and
+            hydrogen — as many plastics.</p>
+          <p>The first of the man-made fibres, nylon, was also created
+            in the 1930s. Its inventor was a chemist called Wallace
+            Carothers, who worked for the Du Pont company in the
+            USA. He found that under the right conditions, two
+            chemicals — hexamethylenediamine and adipic acid — would
+            form a polymer that could be pumped out through holes
+            and then stretched to form long glossy threads that
+            could be woven like silk. Its first use was to make
+            parachutes for the US armed forces in World War II. In
+            the post-war years nylon completely replaced silk in
+            the manufacture of stockings. Subsequently many other
+            synthetic fibres joined nylon, including Orlon, Acrilan
+            and Terylene. Today most garments are made of a blend of
+            natural fibres, such as cotton and wool, and man-made
+            fibres that make fabrics easier to look after.</p>
+          <p>The great strength of plastic is its indestructibility.
+            However, this quality is also something of a drawback:
+            beaches all over the world, even on the remotest
+            islands, are littered with plastic bottles that nothing
+            can destroy. Nor is it very easy to recycle plastics, as
+            different types of plastic are often used in the same
+            items and call for different treatments. Plastics can be
+            made biodegradable by incorporating into their structure
+            a material such as starch, which is attacked by bacteria
+            and causes the plastic to fall apart. Other materials
+            can be incorporated that gradually decay in sunlight —
+            although bottles made of such materials have to be
+            stored in the dark, to ensure that they do not
+            disintegrate before they have been used.</p>
         </div>
+      </div>
 
-        <!-- BOTTOM PANEL -->
-        <div class="bottom-panel">
-            <div class="bottom-inner">
-                <div class="part-tabs">
-                    <button class="part-tab active">
-                        <span class="tab-part-name">Passage 2</span>
-                        <span class="tab-qcount">Questions 14–26 · The
-                            Development of Plastics</span>
-                    </button>
-                </div>
-                <div class="palette" id="palette"></div>
-                <div class="bottom-controls">
-                    <div class="nav-buttons">
-                        <button id="prevBtn">←</button>
-                        <button id="nextBtn">→</button>
-                    </div>
-                    <div class="test-buttons">
-                        <button class="review-btn" id="reviewBtn">📋
-                            Review</button>
-                        <button class="submit-btn" id="submitBtn">Submit
-                            ✈</button>
-                    </div>
-                </div>
+      <div class="resizer" id="resizer"></div>
+
+      <!-- QUESTIONS -->
+      <div class="pane questions" id="questionsPane">
+        <form id="quiz" onsubmit="return false;">
+          <section class="q-section">
+            <!-- Q1-6 SENTENCE COMPLETION -->
+            <div class="q-group">
+              <h3>Questions 1–6</h3>
+              <div class="q-instr">
+                <p>Complete the sentences below.</p>
+                <p>Choose <strong>NO MORE THAN TWO WORDS</strong>
+                  from the passage for each answer.</p>
+                <p>Write your answers in boxes 1–6 on your
+                  answer sheet.</p>
+              </div>
+              <ul class="notes">
+                <li class="notes-row" data-q="1"><span
+                    class="num">1</span><span>Rubber became
+                    widely used in transport and <input
+                      class="gap" type="text" name="q1"
+                      data-q="1"
+                      aria-label="Q1">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="2"><span
+                    class="num">2</span><span>The bonding
+                    process of many plastics is also called
+                    <input class="gap" type="text"
+                      name="q2" data-q="2"
+                      aria-label="Q2">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="3"><span
+                    class="num">3</span><span>The first
+                    plastic, celluloid, was invented to
+                    replace <input class="gap" type="text"
+                      name="q3" data-q="3"
+                      aria-label="Q3">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="4"><span
+                    class="num">4</span><span>Photographic
+                    film was one of the early applications
+                    of <input class="gap" type="text"
+                      name="q4" data-q="4"
+                      aria-label="Q4">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="5"><span
+                    class="num">5</span><span>Bakelite
+                    cannot be reshaped once it has <input
+                      class="gap" type="text" name="q5"
+                      data-q="5"
+                      aria-label="Q5">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="6"><span
+                    class="num">6</span><span>The clear form
+                    of polystyrene resembles <input
+                      class="gap" type="text" name="q6"
+                      data-q="6"
+                      aria-label="Q6">.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+              </ul>
             </div>
-        </div>
 
-        <!-- RESULT OVERLAY -->
-        <div class="overlay" id="resultOverlay">
-            <div class="overlay-card">
-                <div class="overlay-head"><h3>Your Results</h3><button
-                        class="close-x"
-                        data-close="resultOverlay">×</button></div>
-                <div class="overlay-body">
-                    <div class="score-summary">
-                        <div class="big" id="resultScore">0 / 13</div>
-                        <div class="sub" id="resultSub">Score: —</div>
-                    </div>
-                    <div class="legend-row"><span>🟩 Correct</span><span>🟥
-                            Incorrect</span><span>⬜ No answer</span><span>👉
-                            Click a row to jump to evidence</span></div>
-                    <table class="result-tbl">
-                        <thead><tr><th>#</th><th>Your
-                                    Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
-                        <tbody id="resultBody"></tbody>
-                    </table>
-                </div>
+            <!-- Q7-10 MATCHING -->
+            <div class="q-group">
+              <h3>Questions 7–10</h3>
+              <div class="q-instr">
+                <p>Look at the following materials (Questions
+                  7–10) and the list of characteristics
+                  below.</p>
+                <p>Match each material with the correct
+                  characteristic, <strong>A–E</strong>.</p>
+                <p>Write the correct letter, <strong>A–E</strong>,
+                  in boxes 7–10 on your answer sheet.</p>
+              </div>
+
+              <div class="char-bank">
+                <div class="cb-title">List of characteristics</div>
+                <div class="cb-item"><span class="ltr">A</span>Used
+                  as an insulating foam</div>
+                <div class="cb-item"><span class="ltr">B</span>Ideal
+                  for slippery surfaces</div>
+                <div class="cb-item"><span class="ltr">C</span>Originally
+                  used in parachutes</div>
+                <div class="cb-item"><span class="ltr">D</span>Can
+                  substitute rubber in clothing</div>
+                <div class="cb-item"><span class="ltr">E</span>First
+                  synthetic plastic</div>
+              </div>
+
+              <div id="match-container"></div>
             </div>
-        </div>
 
-        <!-- PREVIEW OVERLAY -->
-        <div class="overlay" id="previewOverlay">
-            <div class="overlay-card">
-                <div class="overlay-head"><h3>Review Your Answers</h3><button
-                        class="close-x"
-                        data-close="previewOverlay">×</button></div>
-                <div class="overlay-body">
-                    <table class="result-tbl">
-                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-                        <tbody id="previewBody"></tbody>
-                    </table>
-                </div>
+            <!-- Q11-13 MCQ -->
+            <div class="q-group">
+              <h3>Questions 11–13</h3>
+              <div class="q-instr">
+                <p>Choose the correct letter, <strong>A, B, C or
+                    D</strong>.</p>
+                <p>Write the correct letter in boxes 11–13 on
+                  your answer sheet.</p>
+              </div>
+              <div id="mc-container"></div>
             </div>
+
+            <!-- Q14-20 TABLE COMPLETION -->
+            <div class="q-group">
+              <h3>Questions 14–20</h3>
+              <div class="q-instr">
+                <p>Complete the table below.</p>
+                <p>Choose <strong>NO MORE THAN THREE WORDS</strong>
+                  from the passage for each answer.</p>
+              </div>
+
+              <table class="q-table">
+                <colgroup>
+                  <col style="width:17%">
+                  <col style="width:11%">
+                  <col style="width:12%">
+                  <col style="width:27%">
+                  <col style="width:33%">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Name of plastic</th>
+                    <th>Date of invention</th>
+                    <th>Original region</th>
+                    <th>Property</th>
+                    <th>Common use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Celluloid</td>
+                    <td>1860s</td>
+                    <td>US</td>
+                    <td>thermoplastic</td>
+                    <td class="notes-row" data-q="14">
+                      <input class="gap" type="text"
+                        name="q14" data-q="14"
+                        aria-label="Q14">
+                      <div class="feedback"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="notes-row" data-q="15">
+                      <input class="gap" type="text"
+                        name="q15" data-q="15"
+                        aria-label="Q15">
+                      <div class="feedback"></div>
+                    </td>
+                    <td>1907</td>
+                    <td>US</td>
+                    <td>can be cast and moulded but cannot
+                      be softened by heat</td>
+                    <td class="notes-row" data-q="16">
+                      <input class="gap" type="text"
+                        name="q16" data-q="16"
+                        aria-label="Q16">
+                      <span class="tbl-note">household
+                        items and car parts</span>
+                      <div class="feedback"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Polythene</td>
+                    <td>1930s</td>
+                    <td class="notes-row" data-q="17">
+                      <input class="gap" type="text"
+                        name="q17" data-q="17"
+                        aria-label="Q17">
+                      <div class="feedback"></div>
+                    </td>
+                    <td>—</td>
+                    <td>bottles</td>
+                  </tr>
+                  <tr>
+                    <td>Rigid PVC</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="notes-row" data-q="18">
+                      <input class="gap" type="text"
+                        name="q18" data-q="18"
+                        aria-label="Q18">
+                      <div class="feedback"></div>
+                    </td>
+                    <td>drains and gutters</td>
+                  </tr>
+                  <tr>
+                    <td>Polystyrene</td>
+                    <td>1930s</td>
+                    <td>Germany</td>
+                    <td class="notes-row" data-q="19">
+                      <input class="gap" type="text"
+                        name="q19" data-q="19"
+                        aria-label="Q19">
+                      <div class="feedback"></div>
+                    </td>
+                    <td>food containers</td>
+                  </tr>
+                  <tr>
+                    <td>Polyurethanes</td>
+                    <td>—</td>
+                    <td>Germany</td>
+                    <td class="notes-row" data-q="20">
+                      <input class="gap" type="text"
+                        name="q20" data-q="20"
+                        aria-label="Q20">
+                      <span class="tbl-note">foams</span>
+                      <div class="feedback"></div>
+                    </td>
+                    <td>adhesives, coatings and
+                      insulation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Q21-26 TFNG -->
+            <div class="q-group">
+              <h3>Questions 21–26</h3>
+              <div class="q-instr">
+                <p>Do the following statements agree with the
+                  information given in the reading
+                  passage?</p>
+                <p>Write</p>
+                <p><strong>TRUE</strong> if the statement agrees
+                  with the information<br>
+                  <strong>FALSE</strong> if the statement
+                  contradicts the information<br>
+                  <strong>NOT GIVEN</strong> if there is no
+                  information on this</p>
+              </div>
+              <div id="tfng-container"></div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
+
+    <!-- BOTTOM PANEL -->
+    <div class="bottom-panel">
+      <div class="bottom-inner">
+        <div class="part-tabs">
+          <button class="part-tab active">
+            <span class="tab-part-name">Passage 2</span>
+            <span class="tab-qcount">Questions 1–26 · The
+              Development of Plastics</span>
+          </button>
         </div>
+        <div class="palette" id="palette"></div>
+        <div class="bottom-controls">
+          <div class="nav-buttons">
+            <button id="prevBtn">←</button>
+            <button id="nextBtn">→</button>
+          </div>
+          <div class="test-buttons">
+            <button class="review-btn" id="reviewBtn">📋
+              Review</button>
+            <button class="submit-btn" id="submitBtn">Submit
+              ✈</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <div class="toast" id="toast"></div>
+    <!-- RESULT OVERLAY -->
+    <div class="overlay" id="resultOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Your Results</h3><button
+            class="close-x"
+            data-close="resultOverlay">×</button></div>
+        <div class="overlay-body">
+          <div class="score-summary">
+            <div class="big" id="resultScore">0 / 26</div>
+            <div class="sub" id="resultSub">Score: —</div>
+          </div>
+          <div class="legend-row"><span>🟩 Correct</span><span>🟥
+              Incorrect</span><span>⬜ No answer</span><span>👉
+              Click a row to jump to evidence</span></div>
+          <table class="result-tbl">
+            <thead><tr><th>#</th><th>Your
+                  Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-        <script>
+    <!-- PREVIEW OVERLAY -->
+    <div class="overlay" id="previewOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Review Your Answers</h3><button
+            class="close-x"
+            data-close="previewOverlay">×</button></div>
+        <div class="overlay-body">
+          <table class="result-tbl">
+            <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+            <tbody id="previewBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
 /* ============================================================
    DATA
    ============================================================ */
 const ANSWER_KEY = {
+  /* Q1-6 sentence completion */
+  1: ["electricity"],
+  2: ["polymerization", "polymerisation"],
+  3: ["ivory"],
+  4: ["celluloid"],
+  5: ["set"],
+  6: ["glass"],
+  /* Q7-10 matching */
+  7: ["D"],
+  8: ["B"],
+  9: ["C"],
+  10: ["A"],
+  /* Q11-13 MCQ */
+  11: ["A"],
+  12: ["C"],
+  13: ["D"],
+  /* Q14-20 table completion */
   14: ["photographic film"],
   15: ["Bakelite", "bakelite"],
   16: ["switches"],
@@ -562,6 +721,7 @@ const ANSWER_KEY = {
   18: ["fireproof"],
   19: ["clear and glass-like", "clear glass-like", "clear, glass-like"],
   20: ["rigid"],
+  /* Q21-26 TFNG */
   21: ["FALSE"],
   22: ["NOT GIVEN"],
   23: ["FALSE"],
@@ -570,7 +730,110 @@ const ANSWER_KEY = {
   26: ["TRUE"]
 };
 
+const MATCH_QUESTIONS = [
+  { q: 7, name: "PVC (soft form)" },
+  { q: 8, name: "Teflon" },
+  { q: 9, name: "Nylon" },
+  { q: 10, name: "Polystyrene foam" }
+];
+
+const MC_QUESTIONS = [
+  {
+    q: 11,
+    statement: "Which of the following was NOT an original use of celluloid?",
+    options: [
+      { v: "A", label: "Film" },
+      { v: "B", label: "Clothing" },
+      { v: "C", label: "Knife handles" },
+      { v: "D", label: "Spectacle frames" }
+    ]
+  },
+  {
+    q: 12,
+    statement: "What property made Bakelite suitable for electrical uses?",
+    options: [
+      { v: "A", label: "Flexibility" },
+      { v: "B", label: "Transparency" },
+      { v: "C", label: "Heat resistance" },
+      { v: "D", label: "Colour variety" }
+    ]
+  },
+  {
+    q: 13,
+    statement: "What made nylon a good replacement for silk in stockings?",
+    options: [
+      { v: "A", label: "Lower cost" },
+      { v: "B", label: "Easier production" },
+      { v: "C", label: "War-time demand" },
+      { v: "D", label: "Similar thread quality" }
+    ]
+  }
+];
+
+const TFNG_QUESTIONS = [
+  { q: 21, statement: "The chemical structure of plastic is very different from that of rubber." },
+  { q: 22, statement: "John Wesley was a famous chemist." },
+  { q: 23, statement: "Celluloid and Bakelite react to heat in the same way." },
+  { q: 24, statement: "The mix of different varieties of plastic can make the recycling more difficult." },
+  { q: 25, statement: "Adding starch into plastic can make plastic more durable." },
+  { q: 26, statement: "Some plastic containers have to be preserved in special conditions." }
+];
+
+const LETTERS = ["A", "B", "C", "D", "E"];
+
 const EVIDENCE = {
+  1: {
+    text: "transportation and electricity",
+    sentence: "…it rapidly became a very important commodity, particularly in the fields of <hl>transportation and electricity</hl>."
+  },
+  2: {
+    text: "The same bonding principle — polymerisation",
+    sentence: "<hl>The same bonding principle — polymerisation</hl> — underlies the creation of a huge range of plastics by the chemical industry."
+  },
+  3: {
+    text: "replace ivory",
+    sentence: "…$10,000 was offered to anybody who could <hl>replace ivory</hl>…"
+  },
+  4: {
+    text: "This new material rapidly found uses",
+    sentence: "Celluloid was made… <hl>This new material rapidly found uses</hl> in the manufacture of products such as knife handles… and photographic film."
+  },
+  5: {
+    text: "once they have set",
+    sentence: "…plastics that can be cast and moulded while hot, but cannot be softened by heat and reshaped <hl>once they have set</hl>."
+  },
+  6: {
+    text: "a clear, glass-like material",
+    sentence: "Polystyrene… was <hl>a clear, glass-like material</hl>, used in food containers…"
+  },
+  7: {
+    text: "a substitute for rubber in items such as waterproof clothing",
+    sentence: "…a soft form of PVC could be produced, suitable as <hl>a substitute for rubber in items such as waterproof clothing</hl>. → D."
+  },
+  8: {
+    text: "very low coefficient of friction",
+    sentence: "This had a <hl>very low coefficient of friction</hl>, making it ideal for bearings, rollers, and non-stick frying pans. → B."
+  },
+  9: {
+    text: "parachutes for the US armed forces",
+    sentence: "Its first use was to make <hl>parachutes for the US armed forces</hl> in World War II. → C."
+  },
+  10: {
+    text: "widely used in packaging and insulation",
+    sentence: "Expanded polystyrene — a white, rigid foam — was <hl>widely used in packaging and insulation</hl>. → A."
+  },
+  11: {
+    text: "knife handles, detachable collars and cuffs, spectacle frames and photographic film",
+    sentence: "This new material rapidly found uses in the manufacture of products such as <hl>knife handles, detachable collars and cuffs, spectacle frames and photographic film</hl>. → (answer key: A.)"
+  },
+  12: {
+    text: "Bakelite was a good insulator, and was resistant to water, acids and moderate heat",
+    sentence: "<hl>Bakelite was a good insulator, and was resistant to water, acids and moderate heat</hl>. → C (heat resistance)."
+  },
+  13: {
+    text: "stretched to form long glossy threads that could be woven like silk",
+    sentence: "…a polymer that could be pumped out through holes and then <hl>stretched to form long glossy threads that could be woven like silk</hl>. → D."
+  },
   14: {
     text: "photographic film",
     sentence: "This new material rapidly found uses in the manufacture of products such as knife handles, detachable collars and cuffs, spectacle frames and <hl>photographic film</hl>."
@@ -625,17 +888,8 @@ const EVIDENCE = {
   }
 };
 
-const TFNG_QUESTIONS = [
-  { q: 21, statement: "The chemical structure of plastic is very different from that of rubber." },
-  { q: 22, statement: "John Wesley was a famous chemist." },
-  { q: 23, statement: "Celluloid and Bakelite react to heat in the same way." },
-  { q: 24, statement: "The mix of different varieties of plastic can make the recycling more difficult." },
-  { q: 25, statement: "Adding starch into plastic can make plastic more durable." },
-  { q: 26, statement: "Some plastic containers have to be preserved in special conditions." }
-];
-
-const ALL_QUESTIONS = Array.from({ length: 13 }, (_, i) => i + 14); // 14..26
-const TOTAL_QUESTIONS = 13;
+const ALL_QUESTIONS = Array.from({ length: 26 }, (_, i) => i + 1); // 1..26
+const TOTAL_QUESTIONS = 26;
 
 /* ============================================================
    HELPERS
@@ -654,7 +908,76 @@ function toast(msg) {
 }
 
 /* ============================================================
-   RENDER TFNG
+   RENDER MATCHING (Q7-10)
+   ============================================================ */
+(function renderMatch() {
+  const container = document.getElementById('match-container');
+  MATCH_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'match-row';
+    row.dataset.q = item.q;
+    let html = `<span class="q-num-badge">${item.q}</span>`;
+    html += `<span class="match-statement">${item.name}</span>`;
+    html += `<div class="match-options">`;
+    LETTERS.forEach(L => {
+      html += `<label class="letter-opt" data-letter="${L}">
+        <input type="radio" name="q${item.q}" value="${L}" aria-label="Q${item.q} ${L}">
+        <span>${L}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+  container.addEventListener('change', (e) => {
+    if (e.target.type === 'radio') {
+      const row = e.target.closest('.match-row');
+      row.querySelectorAll('.letter-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+  });
+})();
+
+/* ============================================================
+   RENDER MC (Q11-13)
+   ============================================================ */
+(function renderMC() {
+  const container = document.getElementById('mc-container');
+  MC_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'mc-row';
+    row.dataset.q = item.q;
+    let html = `<div class="mc-question">
+      <span class="q-num-badge">${item.q}</span>
+      <span class="mc-statement">${item.statement}</span>
+    </div>
+    <div class="mc-options">`;
+    item.options.forEach(o => {
+      html += `<label class="mc-opt">
+        <input type="radio" name="q${item.q}" value="${o.v}" aria-label="Q${item.q} ${o.v}">
+        <span class="letter">${o.v}.</span>
+        <span>${o.label}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+  container.addEventListener('change', (e) => {
+    if (e.target.type === 'radio') {
+      const row = e.target.closest('.mc-row');
+      row.querySelectorAll('.mc-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+  });
+})();
+
+/* ============================================================
+   RENDER TFNG (Q21-26)
    ============================================================ */
 (function renderTFNG() {
   const container = document.getElementById('tfng-container');
@@ -779,7 +1102,7 @@ document.addEventListener('change', refreshPaletteAnswered);
 /* ============================================================
    NAVIGATION
    ============================================================ */
-let currentQuestion = 14;
+let currentQuestion = 1;
 function goToQuestion(n) {
   n = parseInt(n, 10);
   if (!ALL_QUESTIONS.includes(n)) return;
@@ -787,12 +1110,25 @@ function goToQuestion(n) {
   const qEl = document.querySelector(`[data-q="${n}"]`);
   if (qEl) {
     qEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    qEl.style.transition = 'background .2s';
-    qEl.style.background = '#fffbeb';
-    setTimeout(() => { qEl.style.background = ''; }, 1200);
+    const targets = qEl.tagName === 'TR'
+      ? Array.from(qEl.querySelectorAll('td'))
+      : [qEl];
+    targets.forEach(t => {
+      t.style.transition = 'background .2s';
+      t.style.background = '#fffbeb';
+    });
+    setTimeout(() => {
+      targets.forEach(t => { t.style.background = ''; });
+    }, 1200);
   }
   const input = document.querySelector(`input[name="q${n}"]`);
-  if (input && !input.disabled) input.focus({ preventScroll: true });
+  if (input && !input.disabled) {
+    if (input.type === 'radio') {
+      const lbl = input.closest('.letter-opt') || input.closest('.mc-opt');
+      if (lbl && lbl.scrollIntoView) lbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    input.focus({ preventScroll: true });
+  }
   updateCurrent();
   updateNav();
 }
@@ -1057,9 +1393,10 @@ document.getElementById('submitBtn').addEventListener('click', () => {
   clearEvidenceMarks();
   document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
   document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
-  document.querySelectorAll('.tfng-row, .notes-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.match-row, .notes-row, .mc-row, .tfng-row').forEach(r => r.classList.remove('correct', 'wrong'));
   document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
   document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.mc-opt, .letter-opt').forEach(l => l.classList.remove('checked'));
 
   const rows = [];
   ALL_QUESTIONS.forEach(n => {
@@ -1077,6 +1414,19 @@ document.getElementById('submitBtn').addEventListener('click', () => {
     if (fb) {
       fb.textContent = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${(ANSWER_KEY[n] || []).join(' / ')}`;
       fb.classList.add(ok ? 'ok' : 'no');
+    }
+    if (n >= 7 && n <= 10) {
+      rowEl.querySelectorAll('.letter-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+    if (n >= 11 && n <= 13) {
+      const checked = rowEl.querySelector(`input[name="q${n}"]:checked`);
+      if (checked) {
+        const opt = checked.closest('.mc-opt');
+        if (opt) opt.classList.add('checked');
+      }
     }
 
     const evData = EVIDENCE[n];
@@ -1163,14 +1513,15 @@ document.getElementById('resetLink').addEventListener('click', (e) => {
   clearEvidenceMarks();
   document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
   document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
-  document.querySelectorAll('.tfng-row, .notes-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.match-row, .notes-row, .mc-row, .tfng-row').forEach(r => r.classList.remove('correct', 'wrong'));
   document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
   document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  document.querySelectorAll('.mc-opt, .letter-opt').forEach(l => l.classList.remove('checked'));
   const chip = document.getElementById('bandChip');
   chip.textContent = '--'; chip.classList.remove('show');
   document.getElementById('resultOverlay').classList.remove('show');
   document.getElementById('previewOverlay').classList.remove('show');
-  currentQuestion = 14; updateCurrent(); updateNav();
+  currentQuestion = 1; updateCurrent(); updateNav();
   secondsLeft = 20 * 60;
   startTimer();
   toast('Test reset. Good luck!');
@@ -1221,5 +1572,5 @@ renderTimer();
 startTimer();
 </script>
 
-    </body>
+  </body>
 </html>
