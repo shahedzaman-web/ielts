@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Australia's Airborne Dentists — IELTS Reading Practice</title>
-        <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The History of the Pencil — IELTS Reading Practice</title>
+    <style>
 :root{
   --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
   --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
@@ -14,7 +14,6 @@
 *{box-sizing:border-box}html,body{height:100%}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
 button{font-family:inherit;cursor:pointer;border:none}
-/* HEADER */
 .app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
 .app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .header-right{display:flex;align-items:center;gap:10px}
@@ -32,7 +31,6 @@ button{font-family:inherit;cursor:pointer;border:none}
 .menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
 .menu-pop a:last-child{border-bottom:none}
 .menu-pop a:hover{background:#f8fafc;color:var(--accent)}
-/* SPLIT */
 .main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
 .pane{overflow-y:auto;padding:24px 30px}
 .passages{flex:0 0 50%;background:#fcfdff}
@@ -41,10 +39,12 @@ button{font-family:inherit;cursor:pointer;border:none}
 .resizer:hover{background:#cbd5e1}
 .resizer::after{content:"⇔";font-size:10px;color:#64748b}
 .passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.passage h3{font-size:15px;margin:18px 0 8px;font-weight:700;color:var(--accent)}
+.passage ul{margin:0 0 14px;padding-left:20px}
+.passage li{margin:0 0 6px}
 .part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
 .passage p{margin:0 0 14px}
 .passage em{color:var(--muted)}
-/* QUESTIONS */
 .q-section{display:block}
 .q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
 .q-group:last-child{border-bottom:none;margin-bottom:0}
@@ -53,20 +53,18 @@ button{font-family:inherit;cursor:pointer;border:none}
 .q-instr p{margin:0 0 3px}
 .q-instr p:last-child{margin:0}
 .q-instr strong{color:var(--text)}
-/* NOTES */
 ul.notes{list-style:none;padding:0;margin:0}
 ul.notes li{padding:8px 0;border-bottom:1px dashed #eef2f7;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;font-size:14.5px}
 ul.notes li:last-child{border-bottom:none}
 ul.notes li .num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
-ul.notes li.notes-sub{display:block;padding:14px 0 4px;border-bottom:none;font-size:12.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
-ul.notes li.notes-sub:first-child{padding-top:0}
+ul.notes li.notes-heading{display:block;border-bottom:none;padding:14px 0 2px;font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+ul.notes li.notes-sub{display:block;border-bottom:none;padding:6px 0 2px 34px;font-size:13px;color:var(--muted);font-style:italic}
 .notes-row.correct .num{background:var(--good-soft);color:var(--good)}
 .notes-row.wrong .num{background:var(--bad-soft);color:var(--bad)}
 input.gap{display:inline-block;width:150px;height:28px;margin:2px 4px;padding:2px 8px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font:inherit;font-size:14px;vertical-align:middle}
 input.gap:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
 input.gap.correct{border-color:var(--good);background:var(--good-soft)}
 input.gap.wrong{border-color:var(--bad);background:var(--bad-soft)}
-/* TFNG */
 .tfng-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
 .tfng-row:last-child{border-bottom:none}
 .q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
@@ -79,12 +77,10 @@ input.gap.wrong{border-color:var(--bad);background:var(--bad-soft)}
 .tfng-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
 .tfng-row.correct .tfng-statement{background:rgba(220,252,231,.35)}
 .tfng-row.wrong .tfng-statement{background:rgba(254,226,226,.35)}
-/* FEEDBACK */
 .feedback{font-size:12px;margin-top:4px;display:none;font-weight:600;flex-basis:100%}
 .graded .feedback{display:block}
 .feedback.no{color:var(--bad)}
 .feedback.ok{color:var(--good)}
-/* EVIDENCE */
 .evidence-line{
   display:none;font-size:12px;margin-top:5px;color:#475569;
   background:#f8fafc;border-left:3px solid var(--accent);
@@ -99,7 +95,6 @@ mark.evidence-mark:hover{background:#bbf7d0}
 mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
 mark.evidence-mark.flash{animation:evflash 1.4s ease}
 @keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
-/* HIGHLIGHT */
 mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
 .hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
 #hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
@@ -115,7 +110,6 @@ mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
 .np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
 .np-cancel{background:#f1f5f9;color:#334155}
 .np-save{background:var(--accent);color:#fff}
-/* BOTTOM */
 .bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
 .bottom-inner{max-width:1600px;margin:0 auto}
 .part-tabs{display:flex;gap:8px;margin-bottom:8px}
@@ -141,7 +135,6 @@ mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
 .review-btn:hover{background:#f1f5f9}
 .submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
 .submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
-/* OVERLAY */
 .overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
 .overlay.show{display:flex}
 .overlay-card{background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
@@ -162,13 +155,11 @@ table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:ital
 table.result-tbl tbody tr{cursor:pointer;transition:background .12s}
 table.result-tbl tbody tr:hover{background:#f8fafc}
 .legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
-/* FOCUS / FULLSCREEN */
 body.focus-mode .app-header,body.focus-mode .bottom-panel{display:none}
 body.focus-mode{padding-bottom:0}
 body.focus-mode .main-split{height:calc(100vh - 32px);border-radius:0;border:none;max-width:none;margin:0}
 .exit-focus{display:none;position:fixed;top:14px;right:14px;z-index:300;background:var(--accent);color:#fff;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700}
 body.focus-mode .exit-focus{display:block}
-/* FULLSCREEN FIX */
 body.fullscreen-active{overflow:hidden}
 body.fullscreen-active .main-split{
   height:calc(100vh - var(--header-h) - var(--bottom-h));
@@ -178,412 +169,375 @@ body.fullscreen-active .main-split{
   border-radius:0;
   border:none;
 }
-/* TOAST */
 .toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
 .toast.show{opacity:1}
 </style>
-    </head>
-    <body>
+  </head>
+  <body>
 
-        <header class="app-header">
-            <h1>Australia's Airborne Dentists — IELTS Reading</h1>
-            <div class="header-right">
-                <button class="icon-btn" id="fullscreenBtn">⛶
-                    Fullscreen</button>
-                <button class="icon-btn" id="focusBtn">🎯 Focus</button>
-                <div class="band-chip" id="bandChip">--</div>
-                <div class="timer-chip" id="timerChip">⏱ <strong
-                        id="timer">20:00</strong></div>
-                <div class="menu-wrap">
-                    <button class="icon-btn" id="menuBtn">☰</button>
-                    <div class="menu-pop" id="menuPop">
-                        <a href="#" id="exportLink">📄 Export as PDF</a>
-                        <a href="#" id="clearHighlightsLink">🧹 Clear All
-                            Highlights</a>
-                        <a href="#" id="resetLink">↺ Reset Test</a>
-                        <a href="#" id="gotoTop">↑ Back to Top</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
-
-        <div id="hl-popup">
-            <button id="hl-highlight">🖍 Highlight</button>
-            <button id="hl-dehighlight">🧽 Clear</button>
-            <button id="hl-note">📝 Note</button>
+    <header class="app-header">
+      <h1>The History of the Pencil — IELTS Reading</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="fullscreenBtn">⛶
+          Fullscreen</button>
+        <button class="icon-btn" id="focusBtn">🎯 Focus</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip" id="timerChip">⏱ <strong
+            id="timer">20:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear All
+              Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <div id="note-popup">
-            <div class="np-card">
-                <h4>Add a note</h4>
-                <textarea id="note-text"
-                    placeholder="Write your note about this text..."></textarea>
-                <div class="np-actions">
-                    <button type="button" class="np-cancel"
-                        id="note-cancel">Cancel</button>
-                    <button type="button" class="np-save" id="note-save">Save
-                        Note</button>
-                </div>
-            </div>
+    <button class="exit-focus" id="exitFocusBtn">✕ Exit Focus</button>
+
+    <div id="hl-popup">
+      <button id="hl-highlight">🖍 Highlight</button>
+      <button id="hl-dehighlight">🧽 Clear</button>
+      <button id="hl-note">📝 Note</button>
+    </div>
+
+    <div id="note-popup">
+      <div class="np-card">
+        <h4>Add a note</h4>
+        <textarea id="note-text"
+          placeholder="Write your note about this text..."></textarea>
+        <div class="np-actions">
+          <button type="button" class="np-cancel"
+            id="note-cancel">Cancel</button>
+          <button type="button" class="np-save" id="note-save">Save
+            Note</button>
         </div>
+      </div>
+    </div>
 
-        <div class="main-split" id="mainSplit">
-            <!-- PASSAGE -->
-            <div class="pane passages" id="passagesPane">
-                <div class="passage">
-                    <span class="part-label">Reading Passage 1</span>
-                    <h2>Australia's Airborne Dentists</h2>
-                    <p><em>You should spend about 20 minutes on Questions 1–13,
-                            which are based on the reading passage
-                            below.</em></p>
-                    <p>Australians living or traveling in rural and remote
-                        areas can face particular difficulties when they need
-                        medical care. Hundreds of kilometres from major cities
-                        and many hours by road from the closest hospital or
-                        clinic, some rural Australians do not have easy access
-                        to doctors, nurses and dentists.</p>
-                    <p>Organisations such as the Royal Flying Doctor Service
-                        (RFDS) have been established to bring health services to
-                        outback Australian communities. The RFDS provides free
-                        medical care to people who live, work or travel in
-                        remote and regional parts of Australia. This non-profit
-                        organisation is the oldest and largest airborne health
-                        service of its kind in the world, and since 1928 it has
-                        used small aircraft to provide health services to some
-                        of Australia's most far-away communities.</p>
-                    <p>In recent years, the RFDS has also started to fly dentists
-                        to regional Australia. As well as offering mobile dental
-                        clinics, the RFDS offers a range of preventative and
-                        educational services. Looking after the teeth of people
-                        in remote areas presents special challenges. These
-                        include providing care to disparate communities with no
-                        established dental facilities, and dealing with higher
-                        incidences of other diseases which are linked to, or
-                        caused by poor dental health.</p>
-                    <p>People in remote areas have very infrequent visits by
-                        health staff. RFDS dentists might only visit a community
-                        once every few months, or sometimes once per year.
-                        Because of infrequent dentist visits, patients in these
-                        areas often need to put up with their dental problems
-                        before they can get treatment; consequently, people in
-                        remote areas are more likely to have tooth decay (the
-                        blackening and deterioration of teeth) and develop gum
-                        and other mouth diseases.</p>
-                    <p>In some locations that the RFDS visits, there are no
-                        suitable dental facilities, so dentists have to bring
-                        everything with them. This includes drills, dentists'
-                        chairs, portable X-ray machines, and computers for
-                        keeping track of patients' treatments. Equipment can
-                        weigh up to 100 kilograms, and since the small planes
-                        that transport dentists have limited space, dentists
-                        cannot always bring everything that they need.</p>
-                    <p>While dentists in town or city centres can specialise in
-                        certain types of treatment, RFDS dentists need to be
-                        'all-rounders'. They need to be able to do all kinds of
-                        dental procedures, as they don't have the ability to
-                        refer patients to more specialised dentists. Even with
-                        their broad experience, there are some services that are
-                        particularly challenging for RFDS dentists. For example,
-                        dentures (for artificial teeth) can be very difficult to
-                        provide, as they need to be the right shape and size for
-                        the patient, and this requires many visits over a long
-                        period of time. As a result, it is not practical to make
-                        dentures available.</p>
-                    <p>Some chronic illnesses are more common in remote
-                        communities than in the rest of Australia. These
-                        illnesses can in turn lead to a lowered resistance to
-                        infection, including gum and other oral infections. As a
-                        result, people in outback Australian communities are
-                        more likely to experience oral health problems than city
-                        folk, and this poses extra challenges for both the
-                        dentists and the doctors of the RFDS.</p>
-                    <p>Because there aren't a lot of dental services in remote
-                        areas, people living in these areas also receive less
-                        education about good dental hygiene than their city
-                        counterparts do. Australians in very remote communities
-                        might not be aware of things that people in cities take
-                        for granted, such as the importance of daily tooth
-                        brushing. Also, basic dental hygiene items such as
-                        toothpaste and toothbrushes can be more expensive in
-                        outback areas. Many people are on low incomes, meaning
-                        they have extra difficulty affording these products. If
-                        this is the case, the RFDS supplies these.</p>
-                    <p>As well as treating patients, RFDS dentists try to focus
-                        on preventative oral health and educate their patients
-                        on good oral hygiene, such as tooth brushing and
-                        flossing. The RFDS also provides mouthguards for young
-                        sports players. Playing contact sports, such as rugby
-                        league or Australian rules football, can damage young
-                        people's teeth, so mouthguards provide protection which
-                        prevents accidental injuries.</p>
-                    <p>Adding fluoride to water supplies has been proven to
-                        reduce the incidence of tooth decay in many parts of the
-                        world. City dwellers in Australia use water supplies
-                        that have been fluoridated, and their rates of tooth
-                        decay are lower because of this. In remote areas, it is
-                        not practical to fluoridate drinking water supplies, and
-                        so people living in these areas are more subject to
-                        tooth decay. As a result, it is particularly important
-                        that people living in areas without fluoridated water
-                        pay special attention to regular brushing of their teeth
-                        with fluoridated toothpaste.</p>
-                    <p>Despite many challenges, the RFDS continues to offer
-                        much-needed dental and medical support. Its presence in
-                        isolated communities greatly improves the quality of
-                        dental health, and supports important oral hygiene and
-                        health initiatives.</p>
-                </div>
-            </div>
-
-            <div class="resizer" id="resizer"></div>
-
-            <!-- QUESTIONS -->
-            <div class="pane questions" id="questionsPane">
-                <form id="quiz" onsubmit="return false;">
-                    <section class="q-section">
-                        <div class="q-group">
-                            <h3>Questions 1–7</h3>
-                            <div class="q-instr">
-                                <p>Do the following statements agree with the
-                                    information given in Reading Passage 1?</p>
-                                <p>In boxes 1–7 on your answer sheet, write:</p>
-                                <p><strong>TRUE</strong> if the statement agrees
-                                    with the information<br>
-                                    <strong>FALSE</strong> if the statement
-                                    contradicts the information<br>
-                                    <strong>NOT GIVEN</strong> if there is no
-                                    information on this</p>
-                            </div>
-                            <div id="tfng-container"></div>
-                        </div>
-
-                        <div class="q-group">
-                            <h3>Questions 8–13</h3>
-                            <div class="q-instr">
-                                <p>Complete the notes below.</p>
-                                <p>Choose <strong>ONE WORD ONLY</strong> from
-                                    the passage for each answer.</p>
-                                <p>Write your answers in boxes 8–13 on your
-                                    answer sheet.</p>
-                            </div>
-                            <ul class="notes">
-                                <li class="notes-sub">Challenges faced by RFDS
-                                    dentists</li>
-                                <li class="notes-row" data-q="8"><span
-                                        class="num">8</span><span>need to bring
-                                        equipment including <input class="gap"
-                                            type="text" name="q8" data-q="8"
-                                            aria-label="Q8"> for
-                                        records</span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-                                <li class="notes-row" data-q="9"><span
-                                        class="num">9</span><span>aircraft used
-                                        to carry equipment have restricted
-                                        <input class="gap" type="text"
-                                            name="q9" data-q="9"
-                                            aria-label="Q9"></span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-                                <li class="notes-row" data-q="10"><span
-                                        class="num">10</span><span>problems
-                                        offering some services, e.g., fitting
-                                        <input class="gap" type="text"
-                                            name="q10" data-q="10"
-                                            aria-label="Q10"></span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-
-                                <li class="notes-sub">Products supplied by
-                                    RFDS dentists</li>
-                                <li class="notes-row" data-q="11"><span
-                                        class="num">11</span><span>If necessary,
-                                        RFDS provides <input class="gap"
-                                            type="text" name="q11" data-q="11"
-                                            aria-label="Q11"> and</span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-                                <li class="notes-row" data-q="12"><span
-                                        class="num">12</span><span><input
-                                            class="gap" type="text" name="q12"
-                                            data-q="12" aria-label="Q12"> for
-                                        regular use</span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-                                <li class="notes-row" data-q="13"><span
-                                        class="num">13</span><span><input
-                                            class="gap" type="text" name="q13"
-                                            data-q="13" aria-label="Q13"> to
-                                        protect teeth of sports
-                                        players</span><div
-                                        class="feedback"></div><div
-                                        class="evidence-line"></div></li>
-                            </ul>
-                        </div>
-                    </section>
-                </form>
-            </div>
+    <div class="main-split" id="mainSplit">
+      <div class="pane passages" id="passagesPane">
+        <div class="passage">
+          <span class="part-label">Reading Passage 1</span>
+          <h2>The history of the pencil</h2>
+          <p><em>You should spend about 20 minutes on Questions 1–13,
+              which are based on the reading passage
+              below.</em></p>
+          <p>The history of the pencil starts with a violent
+            thunderstorm. When some particularly ferocious weather
+            struck the Lake District in North West England in the
+            sixteenth century, locals in the village of Borrowdale
+            discovered a large uprooted tree. Underneath the tree lay
+            an unknown black substance which, as we now know, was
+            slightly shiny and smooth to the touch. And it left a
+            black smear on the hands of all who touched it.</p>
+          <p>Initially, the local farmers used the newly discovered
+            material as a handy way to identify their sheep.
+            However, others quickly realised the potential for using
+            this intriguing substance to write on paper. When it was
+            untreated, the material was very soft, which meant that
+            it was messy to handle. To make it fit for use with
+            paper, people enclosed a thin core of the substance in
+            stiff sheep hides or rope. At this time chemistry was
+            still in its infancy. People searched for a word to
+            describe this increasingly useful substance and came up
+            with "plumbago," which, in Latin, means "acts or writes
+            like lead". Later the name was changed to graphite. But
+            because words have remarkable staying power, we still
+            call graphite the "lead" of a pencil even though it is
+            now known that there is no trace of real lead in
+            graphite.</p>
+          <p>Graphite has a very high melting point, at around 3,500
+            degrees Celsius. This made it invaluable to the British
+            army and navy as a secret ingredient in the manufacture
+            of cannon balls. The Royal Ordnance, or weaponry section
+            of the British armed forces, used graphite as a lining
+            inside the moulds for cannon balls, as a result of which
+            the British could turn them out faster and more cheaply
+            than their European rivals. In addition to its value to
+            the armed forces, the government quickly realised the
+            commercial potential of the graphite at Borrowdale and
+            assumed control of all the mines there during the
+            sixteenth century. Armed guards accompanied the precious
+            graphite all the way down to the metal foundries by the
+            naval shipyards in the south of England. The graphite was
+            so valuable that the locals, who called it wadd, started
+            to steal it. As a deterrent, an act of parliament in
+            1752 made this offence punishable by time in prison.</p>
+          <p>The Italians originally invented the wooden casing to
+            hold a thin rod of plumbago firmly in place for ease of
+            writing. Italian craftsmen hollowed out two small
+            sections of cedar wood, into one of which they laid the
+            lead. They then glued the other section over the top and
+            left the two halves to set. When dry, the whole
+            apparatus formed what today we know as a pencil. The
+            Germans took this technique and developed it further by
+            applying mass-production techniques to pencils. At the
+            same time Nicolas-Jacques Conte, a French officer in
+            Napoleon Bonaparte's army during the late 1700s,
+            developed a method of mixing powdered graphite and clay
+            together for firing in a kiln. Adding more clay to the
+            mixture helped make the pencil harder, sharper, and more
+            precise in its mark. More graphite helped make a pencil
+            mark that was softer, thicker and darker.</p>
+          <p>The varying quality of pencil leads eventually gave rise
+            to a system for categorizing the fineness of the pencil
+            mark. Pencil manufacturers all over the world still use
+            this so-called HB grading system today. The H stands for
+            the hardness of the pencil while the B stands for its
+            blackness. An HB pencil is a standard pencil and a
+            variety of letters and numbers are used to designate
+            different types of lead.</p>
+          <p>Significant seams of graphite exist in parts of China,
+            which now produces most of the world's pencils.
+            Interestingly, the Borrowdale mine in the Lake District
+            remains the only significant source of graphite in its
+            near-pure form in the world. Nowadays the highest grade
+            of graphite at Borrowdale is totally exhausted, although
+            other grades can still be found, and England's pencil
+            industry continues to thrive in the nearby town of
+            Keswick.</p>
+          <p>The pencil has turned out to be a remarkably resilient
+            and valuable tool whose use has survived well into our
+            high-tech times, as a well-known story shows. It is
+            sometimes said that the American space programme spent
+            millions of dollars to invent a pen capable of writing in
+            the zero gravity of space. The Russians, by contrast,
+            simply equipped their astronauts with good old-fashioned
+            pencils that never let them down. It should be pointed
+            out though, that the popular myth about Americans
+            overlooking the practical advantages of pencils in zero
+            gravity is merely fiction. In actual fact, both American
+            and Russian astronauts were equipped with pencils in
+            their respective country's first space flights. A private
+            company later developed pens for writing in zero gravity.
+            In fact, astronauts of every nation now use pens. But no
+            matter – pencils remain in use in every classroom, every
+            planning, building and drawing office, and in every art
+            studio in the world. And there is nothing to suggest that
+            we are likely to invent anything better than graphite to
+            use in our pencils.</p>
         </div>
+      </div>
 
-        <!-- BOTTOM PANEL -->
-        <div class="bottom-panel">
-            <div class="bottom-inner">
-                <div class="part-tabs">
-                    <button class="part-tab active">
-                        <span class="tab-part-name">Passage 1</span>
-                        <span class="tab-qcount">Questions 1–13 · Australia's
-                            Airborne Dentists</span>
-                    </button>
-                </div>
-                <div class="palette" id="palette"></div>
-                <div class="bottom-controls">
-                    <div class="nav-buttons">
-                        <button id="prevBtn">←</button>
-                        <button id="nextBtn">→</button>
-                    </div>
-                    <div class="test-buttons">
-                        <button class="review-btn" id="reviewBtn">📋
-                            Review</button>
-                        <button class="submit-btn" id="submitBtn">Submit
-                            ✈</button>
-                    </div>
-                </div>
+      <div class="resizer" id="resizer"></div>
+
+      <div class="pane questions" id="questionsPane">
+        <form id="quiz" onsubmit="return false;">
+          <section class="q-section">
+            <div class="q-group">
+              <h3>Questions 1–6</h3>
+              <div class="q-instr">
+                <p>Complete the notes below.</p>
+                <p>Choose <strong>ONE WORD ONLY</strong> from the
+                  passage for each answer.</p>
+                <p>Write your answers in boxes 1–6 on your answer
+                  sheet.</p>
+              </div>
+              <ul class="notes">
+                <li class="notes-heading">The early history of
+                  graphite in Britain</li>
+                <li class="notes-row" data-q="1"><span
+                    class="num">1</span><span>Graphite was
+                    first found below a <input class="gap"
+                      type="text" name="q1" data-q="1"
+                      aria-label="Q1"> blown down in a
+                    storm.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="2"><span
+                    class="num">2</span><span>The first use
+                    of graphite was to make marks on
+                    <input class="gap" type="text"
+                      name="q2" data-q="2"
+                      aria-label="Q2"></span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-sub">The characteristics of
+                  raw graphite:</li>
+                <li class="notes-row" data-q="3"><span
+                    class="num">3</span><span>dirty to use
+                    because it is so <input class="gap"
+                      type="text" name="q3" data-q="3"
+                      aria-label="Q3"></span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row" data-q="4"><span
+                    class="num">4</span><span>originally
+                    wrapped in <input class="gap"
+                      type="text" name="q4" data-q="4"
+                      aria-label="Q4"> or animal skin to
+                    make it useable as a
+                    pencil.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-sub">Graphite came to the
+                  notice of the government for military and
+                  commercial purposes.</li>
+                <li class="notes-row" data-q="5"><span
+                    class="num">5</span><span>The government
+                    completely took over the <input
+                      class="gap" type="text" name="q5"
+                      data-q="5" aria-label="Q5"> at
+                    Borrowdale.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row"><span
+                    style="padding-left:34px">They employed
+                    guards to protect the graphite on its
+                    journey south.</span></li>
+                <li class="notes-row" data-q="6"><span
+                    class="num">6</span><span>Local people
+                    began to <input class="gap"
+                      type="text" name="q6" data-q="6"
+                      aria-label="Q6"> graphite for the
+                    money involved.</span><div
+                    class="feedback"></div><div
+                    class="evidence-line"></div></li>
+                <li class="notes-row"><span
+                    style="padding-left:34px">The government
+                    passed a law to protect the graphite
+                    industry.</span></li>
+              </ul>
             </div>
-        </div>
 
-        <!-- RESULT OVERLAY -->
-        <div class="overlay" id="resultOverlay">
-            <div class="overlay-card">
-                <div class="overlay-head"><h3>Your Results</h3><button
-                        class="close-x"
-                        data-close="resultOverlay">×</button></div>
-                <div class="overlay-body">
-                    <div class="score-summary">
-                        <div class="big" id="resultScore">0 / 13</div>
-                        <div class="sub" id="resultSub">Score: —</div>
-                    </div>
-                    <div class="legend-row"><span>🟩 Correct</span><span>🟥
-                            Incorrect</span><span>⬜ No answer</span><span>👉
-                            Click a row to jump to evidence</span></div>
-                    <table class="result-tbl">
-                        <thead><tr><th>#</th><th>Your
-                                    Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
-                        <tbody id="resultBody"></tbody>
-                    </table>
-                </div>
+            <div class="q-group">
+              <h3>Questions 7–13</h3>
+              <div class="q-instr">
+                <p>Do the following statements agree with the
+                  information given in Reading Passage 1?</p>
+                <p>In boxes 7–13 on your answer sheet, write</p>
+                <p><strong>TRUE</strong> if the statement agrees
+                  with the information<br>
+                  <strong>FALSE</strong> if the statement
+                  contradicts the information<br>
+                  <strong>NOT GIVEN</strong> if there is no
+                  information on this</p>
+              </div>
+              <div id="tfng-container"></div>
             </div>
+          </section>
+        </form>
+      </div>
+    </div>
+
+    <div class="bottom-panel">
+      <div class="bottom-inner">
+        <div class="part-tabs">
+          <button class="part-tab active">
+            <span class="tab-part-name">Passage 1</span>
+            <span class="tab-qcount">Questions 1–13 · The History
+              of the Pencil</span>
+          </button>
         </div>
-
-        <!-- PREVIEW OVERLAY -->
-        <div class="overlay" id="previewOverlay">
-            <div class="overlay-card">
-                <div class="overlay-head"><h3>Review Your Answers</h3><button
-                        class="close-x"
-                        data-close="previewOverlay">×</button></div>
-                <div class="overlay-body">
-                    <table class="result-tbl">
-                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-                        <tbody id="previewBody"></tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="palette" id="palette"></div>
+        <div class="bottom-controls">
+          <div class="nav-buttons">
+            <button id="prevBtn">←</button>
+            <button id="nextBtn">→</button>
+          </div>
+          <div class="test-buttons">
+            <button class="review-btn" id="reviewBtn">📋
+              Review</button>
+            <button class="submit-btn" id="submitBtn">Submit
+              ✈</button>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="toast" id="toast"></div>
+    <div class="overlay" id="resultOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Your Results</h3><button
+            class="close-x"
+            data-close="resultOverlay">×</button></div>
+        <div class="overlay-body">
+          <div class="score-summary">
+            <div class="big" id="resultScore">0 / 13</div>
+            <div class="sub" id="resultSub">Score: —</div>
+          </div>
+          <div class="legend-row"><span>🟩 Correct</span><span>🟥
+              Incorrect</span><span>⬜ No answer</span><span>👉
+              Click a row to jump to evidence</span></div>
+          <table class="result-tbl">
+            <thead><tr><th>#</th><th>Your
+                  Answer</th><th>Correct</th><th>Evidence</th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-        <script>
-/* ============================================================
-   DATA
-   ============================================================ */
+    <div class="overlay" id="previewOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Review Your Answers</h3><button
+            class="close-x"
+            data-close="previewOverlay">×</button></div>
+        <div class="overlay-body">
+          <table class="result-tbl">
+            <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+            <tbody id="previewBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
 const ANSWER_KEY = {
-  1: ["NOT GIVEN"],
-  2: ["FALSE"],
-  3: ["NOT GIVEN"],
-  4: ["TRUE"],
-  5: ["FALSE"],
-  6: ["NOT GIVEN"],
-  7: ["TRUE"],
-  8: ["computers"],
-  9: ["space"],
-  10: ["dentures"],
-  11: ["toothpaste"],
-  12: ["toothbrushes"],
-  13: ["mouthguards"]
+  1: ["tree"], 2: ["sheep"], 3: ["soft"], 4: ["rope"],
+  5: ["mines", "mine"], 6: ["steal"],
+  7: ["TRUE"], 8: ["NOT GIVEN"], 9: ["FALSE"], 10: ["NOT GIVEN"],
+  11: ["FALSE"], 12: ["TRUE"], 13: ["FALSE"]
 };
 
 const EVIDENCE = {
-  1: {
-    text: null,
-    sentence: "<em>Not mentioned in the passage</em> — the RFDS is described as a non-profit organisation providing free medical care, but the passage never says whether its doctors work as volunteers."
-  },
-  2: {
-    text: "once every few months, or sometimes once per year",
-    sentence: "RFDS dentists might only visit a community <hl>once every few months, or sometimes once per year</hl>."
-  },
-  3: {
-    text: null,
-    sentence: "<em>Not mentioned in the passage</em> — there is no reference anywhere to dental nurses accompanying RFDS dentists on their journeys."
-  },
-  4: {
-    text: "RFDS dentists need to be 'all-rounders'",
-    sentence: "While dentists in town or city centres can specialise in certain types of treatment, <hl>RFDS dentists need to be 'all-rounders'</hl>. They need to be able to do all kinds of dental procedures."
-  },
-  5: {
-    text: "receive less education about good dental hygiene than their city counterparts",
-    sentence: "Because there aren't a lot of dental services in remote areas, people living in these areas also <hl>receive less education about good dental hygiene than their city counterparts</hl> do."
-  },
-  6: {
-    text: null,
-    sentence: "<em>Not mentioned in the passage</em> — the passage refers to education about tooth brushing and flossing, but it says nothing about good eating habits."
-  },
-  7: {
-    text: "their rates of tooth decay are lower because of this",
-    sentence: "City dwellers in Australia use water supplies that have been fluoridated, and <hl>their rates of tooth decay are lower because of this</hl>."
-  },
-  8: {
-    text: "computers for keeping track of patients' treatments",
-    sentence: "This includes drills, dentists' chairs, portable X-ray machines, and <hl>computers for keeping track of patients' treatments</hl>."
-  },
-  9: {
-    text: "have limited space",
-    sentence: "…since the small planes that transport dentists <hl>have limited space</hl>, dentists cannot always bring everything that they need."
-  },
-  10: {
-    text: "dentures (for artificial teeth) can be very difficult to provide",
-    sentence: "For example, <hl>dentures (for artificial teeth) can be very difficult to provide</hl>, as they need to be the right shape and size for the patient."
-  },
-  11: {
-    text: "toothpaste",
-    sentence: "Also, basic dental hygiene items such as <hl>toothpaste</hl> and toothbrushes can be more expensive in outback areas… If this is the case, the RFDS supplies these."
-  },
-  12: {
-    text: "toothbrushes",
-    sentence: "Also, basic dental hygiene items such as toothpaste and <hl>toothbrushes</hl> can be more expensive in outback areas… If this is the case, the RFDS supplies these."
-  },
-  13: {
-    text: "provides mouthguards for young sports players",
-    sentence: "The RFDS also <hl>provides mouthguards for young sports players</hl>."
-  }
+  1: { text: "discovered a large uprooted tree. Underneath the tree lay an unknown black substance",
+       sentence: "…locals in the village of Borrowdale <hl>discovered a large uprooted tree. Underneath the tree lay an unknown black substance</hl>…" },
+  2: { text: "used the newly discovered material as a handy way to identify their sheep",
+       sentence: "Initially, the local farmers <hl>used the newly discovered material as a handy way to identify their sheep</hl>." },
+  3: { text: "the material was very soft",
+       sentence: "When it was untreated, <hl>the material was very soft</hl>, which meant that it was messy to handle." },
+  4: { text: "enclosed a thin core of the substance in stiff sheep hides or rope",
+       sentence: "To make it fit for use with paper, people <hl>enclosed a thin core of the substance in stiff sheep hides or rope</hl>." },
+  5: { text: "assumed control of all the mines there",
+       sentence: "…the government quickly realised the commercial potential of the graphite at Borrowdale and <hl>assumed control of all the mines there</hl> during the sixteenth century." },
+  6: { text: "started to steal it",
+       sentence: "The graphite was so valuable that the locals, who called it wadd, <hl>started to steal it</hl>." },
+  7: { text: "The Italians originally invented the wooden casing",
+       sentence: "<hl>The Italians originally invented the wooden casing</hl> to hold a thin rod of plumbago firmly in place for ease of writing." },
+  8: { text: null,
+       sentence: "<em>Not mentioned in the passage</em> — the passage says German people developed mass-production techniques for pencils, but it never says which kinds of wood they used." },
+  9: { text: "Adding more clay to the mixture helped make the pencil harder, sharper",
+       sentence: "<hl>Adding more clay to the mixture helped make the pencil harder, sharper</hl>, and more precise in its mark. → FALSE (clay makes it harder, not darker)." },
+  10: { text: null,
+        sentence: "<em>Not mentioned in the passage</em> — the passage states that manufacturers all over the world still use the HB grading system, but it does not say how quickly it was adopted." },
+  11: { text: "England's pencil industry continues to thrive",
+        sentence: "…and <hl>England's pencil industry continues to thrive</hl> in the nearby town of Keswick." },
+  12: { text: "both American and Russian astronauts were equipped with pencils in their respective country's first space flights",
+        sentence: "In actual fact, <hl>both American and Russian astronauts were equipped with pencils in their respective country's first space flights</hl>." },
+  13: { text: "there is nothing to suggest that we are likely to invent anything better than graphite",
+        sentence: "And <hl>there is nothing to suggest that we are likely to invent anything better than graphite</hl> to use in our pencils." }
 };
 
 const TFNG_QUESTIONS = [
-  { q: 1, statement: "Many of the RFDS doctors work as volunteers." },
-  { q: 2, statement: "RFDS dentists make trips to outback communities each month." },
-  { q: 3, statement: "RFDS dentists are accompanied on their journeys to remote areas by a dental nurse." },
-  { q: 4, statement: "RFDS dentists must provide a wide range of dental services." },
-  { q: 5, statement: "Rural dental patients are more informed about oral hygiene than urban patients." },
-  { q: 6, statement: "RFDS dentists educate patients about good eating habits." },
-  { q: 7, statement: "Urban Australians generally have better teeth because their water is treated." }
+  { q: 7, statement: "The Italians were the first to make pencils out of wood." },
+  { q: 8, statement: "The Germans used different types of wood to produce pencils." },
+  { q: 9, statement: "More clay in a pencil makes it write more darkly." },
+  { q: 10, statement: "After the HB code was introduced, it very quickly became used by all manufacturers." },
+  { q: 11, statement: "English pencil factories have now all closed down." },
+  { q: 12, statement: "American astronauts used pencils on their early journeys into space." },
+  { q: 13, statement: "The use of graphite pencils is unlikely to continue into the future." }
 ];
 
-const ALL_QUESTIONS = Array.from({ length: 13 }, (_, i) => i + 1); // 1..13
+const ALL_QUESTIONS = Array.from({ length: 13 }, (_, i) => i + 1);
 const TOTAL_QUESTIONS = 13;
 
-/* ============================================================
-   HELPERS
-   ============================================================ */
 function normalize(s) {
   return (s || "").toString().trim().toLowerCase()
     .replace(/[.,;:!?'"()]/g, "").replace(/\s+/g, " ");
@@ -597,9 +551,6 @@ function toast(msg) {
   toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
 }
 
-/* ============================================================
-   RENDER TFNG
-   ============================================================ */
 (function renderTFNG() {
   const container = document.getElementById('tfng-container');
   TFNG_QUESTIONS.forEach(item => {
@@ -622,7 +573,7 @@ function toast(msg) {
 })();
 
 /* ============================================================
-   EVIDENCE HIGHLIGHTING IN PASSAGE
+   HIGHLIGHT — robust version that searches across split text nodes
    ============================================================ */
 function highlightEvidenceInPassage(text, qNum) {
   if (!text) return;
@@ -630,6 +581,7 @@ function highlightEvidenceInPassage(text, qNum) {
   if (!passagesEl) return;
   if (passagesEl.querySelector(`mark.evidence-mark[data-q="${qNum}"]`)) return;
 
+  // Build a flat text map of all eligible text nodes in the passage
   const walker = document.createTreeWalker(
     passagesEl,
     NodeFilter.SHOW_TEXT,
@@ -637,40 +589,62 @@ function highlightEvidenceInPassage(text, qNum) {
       acceptNode: (node) => {
         if (node.parentElement && node.parentElement.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
         if (node.parentElement && node.parentElement.closest('mark.evidence-mark')) return NodeFilter.FILTER_REJECT;
-        return node.textContent.indexOf(text) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        if (!node.textContent || node.textContent.trim() === '') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
       }
     }
   );
 
-  let targetNode = null;
-  let idx = -1;
-  while ((targetNode = walker.nextNode())) {
-    idx = targetNode.textContent.indexOf(text);
-    if (idx !== -1) break;
+  const nodes = [];
+  let combined = '';
+  let node = null;
+  while ((node = walker.nextNode())) {
+    nodes.push({ node, start: combined.length, length: node.textContent.length });
+    combined += node.textContent;
   }
-  if (!targetNode || idx === -1) return;
+
+  const idx = combined.indexOf(text);
+  if (idx === -1) return;
+  const endIdx = idx + text.length;
+
+  // Determine which nodes the range spans
+  const startEntry = nodes.find(e => idx >= e.start && idx < e.start + e.length);
+  const endEntry = nodes.find(e => endIdx > e.start && endIdx <= e.start + e.length);
+  if (!startEntry || !endEntry) return;
 
   try {
     const range = document.createRange();
-    range.setStart(targetNode, idx);
-    range.setEnd(targetNode, idx + text.length);
+    range.setStart(startEntry.node, idx - startEntry.start);
+    range.setEnd(endEntry.node, endIdx - endEntry.start);
+
+    // surroundContents fails if range spans multiple elements — so extract & wrap manually
     const mark = document.createElement('mark');
     mark.className = 'evidence-mark';
     mark.dataset.q = qNum;
     mark.title = 'Evidence for Q' + qNum + ' — click to jump';
     mark.addEventListener('click', () => goToQuestion(qNum));
-    range.surroundContents(mark);
+
+    const contents = range.extractContents();
+    mark.appendChild(contents);
+    range.insertNode(mark);
   } catch (e) {
     console.warn('Could not highlight evidence Q' + qNum, e);
   }
 }
 
+/* ============================================================
+   CLEAR — unwrap marks AND merge adjacent text nodes back
+   ============================================================ */
 function clearEvidenceMarks() {
   document.querySelectorAll('mark.evidence-mark').forEach(m => {
     const p = m.parentNode;
+    if (!p) return;
     while (m.firstChild) p.insertBefore(m.firstChild, m);
     p.removeChild(m);
   });
+  // Merge adjacent text nodes so future highlights can find full text
+  const passagesEl = document.getElementById('passagesPane');
+  if (passagesEl && passagesEl.normalize) passagesEl.normalize();
 }
 
 /* ============================================================
@@ -694,9 +668,6 @@ ALL_QUESTIONS.forEach(n => {
 });
 palette.appendChild(paletteSection);
 
-/* ============================================================
-   ANSWER ACCESS
-   ============================================================ */
 function getUserAnswer(n) {
   const radio = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
   if (radio) return radio.value;
@@ -720,13 +691,10 @@ function refreshPaletteAnswered() {
 document.addEventListener('input', refreshPaletteAnswered);
 document.addEventListener('change', refreshPaletteAnswered);
 
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
 let currentQuestion = 1;
 function goToQuestion(n) {
   n = parseInt(n, 10);
-  if (!ALL_QUESTIONS.includes(n)) return;
+  if (!n || n < 1 || n > TOTAL_QUESTIONS) return;
   currentQuestion = n;
   const qEl = document.querySelector(`[data-q="${n}"]`);
   if (qEl) {
@@ -758,19 +726,12 @@ document.getElementById('nextBtn').addEventListener('click', () => {
   if (idx < ALL_QUESTIONS.length - 1) goToQuestion(ALL_QUESTIONS[idx + 1]);
 });
 
-/* ============================================================
-   RESIZER
-   ============================================================ */
 (function () {
   const r = document.getElementById('resizer');
   const p = document.getElementById('passagesPane');
   const q = document.getElementById('questionsPane');
   let d = false;
-  r.addEventListener('mousedown', e => {
-    e.preventDefault(); d = true;
-    document.body.style.cursor = 'col-resize';
-    document.body.style.userSelect = 'none';
-  });
+  r.addEventListener('mousedown', e => { e.preventDefault(); d = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
   document.addEventListener('mousemove', e => {
     if (!d) return;
     const rect = document.getElementById('mainSplit').getBoundingClientRect();
@@ -779,16 +740,9 @@ document.getElementById('nextBtn').addEventListener('click', () => {
     p.style.flex = `0 0 ${pct}%`;
     q.style.flex = '1 1 auto';
   });
-  document.addEventListener('mouseup', () => {
-    d = false;
-    document.body.style.cursor = '';
-    document.body.style.userSelect = '';
-  });
+  document.addEventListener('mouseup', () => { d = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
 })();
 
-/* ============================================================
-   TIMER
-   ============================================================ */
 let secondsLeft = 20 * 60;
 let timerInterval;
 const timerEl = document.getElementById('timer');
@@ -819,9 +773,7 @@ function startTimer() {
   }, 1000);
 }
 
-/* ============================================================
-   HIGHLIGHT / NOTE
-   ============================================================ */
+/* HIGHLIGHT / NOTE */
 const hlPopup = document.getElementById('hl-popup');
 const notePopup = document.getElementById('note-popup');
 const passagesEl = document.getElementById('passagesPane');
@@ -833,16 +785,10 @@ function showPopupAt(rect) {
   hlPopup.style.left = Math.max(8, window.scrollX + rect.left + rect.width / 2 - 150) + 'px';
   hlPopup.classList.add('show');
 }
-
 document.addEventListener('mousedown', (e) => {
   if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
-  if (hlPopup.classList.contains('show')) {
-    hlPopup.classList.remove('show');
-    savedRange = null;
-    currentMark = null;
-  }
+  if (hlPopup.classList.contains('show')) { hlPopup.classList.remove('show'); savedRange = null; currentMark = null; }
 });
-
 document.addEventListener('mouseup', (e) => {
   if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
@@ -854,14 +800,12 @@ document.addEventListener('mouseup', (e) => {
       const c = range.commonAncestorContainer;
       const el = c.nodeType === 1 ? c : c.parentElement;
       if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
-        savedRange = range.cloneRange();
-        currentMark = null;
+        savedRange = range.cloneRange(); currentMark = null;
         showPopupAt(range.getBoundingClientRect());
       }
     }
   }, 0);
 });
-
 document.addEventListener('click', (e) => {
   if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
   if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
@@ -870,43 +814,26 @@ document.addEventListener('click', (e) => {
   const en = e.target.closest ? e.target.closest('.hl-note') : null;
   if (en) {
     document.getElementById('note-text').value = en.dataset.note || '';
-    pendingNoteRange = null;
-    notePopup.classList.add('show');
-    noteSaveTarget = en;
-    return;
+    pendingNoteRange = null; notePopup.classList.add('show'); noteSaveTarget = en; return;
   }
-  if (em) {
-    savedRange = null;
-    currentMark = em;
-    showPopupAt(em.getBoundingClientRect());
-    return;
-  }
+  if (em) { savedRange = null; currentMark = em; showPopupAt(em.getBoundingClientRect()); return; }
 });
-
 document.getElementById('hl-highlight').addEventListener('click', () => {
   if (currentMark) { hlPopup.classList.remove('show'); return; }
   if (!savedRange) { toast('Select text first'); return; }
   try {
-    const m = document.createElement('mark');
-    m.className = 'hl-user';
-    m.appendChild(savedRange.extractContents());
-    savedRange.insertNode(m);
+    const m = document.createElement('mark'); m.className = 'hl-user';
+    m.appendChild(savedRange.extractContents()); savedRange.insertNode(m);
   } catch (err) {}
-  window.getSelection().removeAllRanges();
-  hlPopup.classList.remove('show');
-  savedRange = null;
-  toast('Highlighted');
+  window.getSelection().removeAllRanges(); hlPopup.classList.remove('show');
+  savedRange = null; toast('Highlighted');
 });
-
 document.getElementById('hl-dehighlight').addEventListener('click', () => {
   if (currentMark) {
     const p = currentMark.parentNode;
     while (currentMark.firstChild) p.insertBefore(currentMark.firstChild, currentMark);
-    p.removeChild(currentMark);
-    currentMark = null;
-    hlPopup.classList.remove('show');
-    toast('Highlight removed');
-    return;
+    p.removeChild(currentMark); currentMark = null; hlPopup.classList.remove('show');
+    toast('Highlight removed'); return;
   }
   if (savedRange) {
     const c = savedRange.commonAncestorContainer;
@@ -922,64 +849,41 @@ document.getElementById('hl-dehighlight').addEventListener('click', () => {
         } catch (err) {}
       });
     }
-    window.getSelection().removeAllRanges();
-    hlPopup.classList.remove('show');
-    savedRange = null;
-    toast('Highlight removed');
-  } else {
-    hlPopup.classList.remove('show');
-  }
+    window.getSelection().removeAllRanges(); hlPopup.classList.remove('show');
+    savedRange = null; toast('Highlight removed');
+  } else { hlPopup.classList.remove('show'); }
 });
-
 document.getElementById('hl-note').addEventListener('click', () => {
   if (!savedRange) { toast('Select text first'); return; }
-  pendingNoteRange = savedRange.cloneRange();
-  noteSaveTarget = null;
-  document.getElementById('note-text').value = '';
-  notePopup.classList.add('show');
-  hlPopup.classList.remove('show');
-  window.getSelection().removeAllRanges();
+  pendingNoteRange = savedRange.cloneRange(); noteSaveTarget = null;
+  document.getElementById('note-text').value = ''; notePopup.classList.add('show');
+  hlPopup.classList.remove('show'); window.getSelection().removeAllRanges();
 });
-
 document.getElementById('note-cancel').addEventListener('click', () => {
-  notePopup.classList.remove('show');
-  pendingNoteRange = null;
-  noteSaveTarget = null;
+  notePopup.classList.remove('show'); pendingNoteRange = null; noteSaveTarget = null;
 });
-
 document.getElementById('note-save').addEventListener('click', () => {
   const nt = document.getElementById('note-text').value.trim();
   if (noteSaveTarget) {
-    if (nt) {
-      noteSaveTarget.dataset.note = nt;
-      noteSaveTarget.title = 'Note: ' + nt;
-      toast('Note updated');
-    } else {
+    if (nt) { noteSaveTarget.dataset.note = nt; noteSaveTarget.title = 'Note: ' + nt; toast('Note updated'); }
+    else {
       const p = noteSaveTarget.parentNode;
       while (noteSaveTarget.firstChild) p.insertBefore(noteSaveTarget.firstChild, noteSaveTarget);
-      p.removeChild(noteSaveTarget);
-      toast('Note removed');
+      p.removeChild(noteSaveTarget); toast('Note removed');
     }
-    noteSaveTarget = null;
-    notePopup.classList.remove('show');
-    document.getElementById('note-text').value = '';
-    return;
+    noteSaveTarget = null; notePopup.classList.remove('show');
+    document.getElementById('note-text').value = ''; return;
   }
   if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
   try {
-    const sp = document.createElement('span');
-    sp.className = 'hl-note';
-    sp.title = 'Note: ' + nt;
-    sp.dataset.note = nt;
-    sp.appendChild(pendingNoteRange.extractContents());
-    pendingNoteRange.insertNode(sp);
+    const sp = document.createElement('span'); sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt; sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents()); pendingNoteRange.insertNode(sp);
     toast('Note saved');
   } catch (err) {}
   document.getElementById('note-text').value = '';
-  notePopup.classList.remove('show');
-  pendingNoteRange = null;
+  notePopup.classList.remove('show'); pendingNoteRange = null;
 });
-
 document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
   e.preventDefault();
   if (!confirm('Remove all highlights and notes?')) return;
@@ -988,12 +892,11 @@ document.getElementById('clearHighlightsLink').addEventListener('click', (e) => 
     while (el.firstChild) p.insertBefore(el.firstChild, el);
     p.removeChild(el);
   });
-  clearEvidenceMarks();
-  toast('Highlights cleared');
+  clearEvidenceMarks(); toast('Highlights cleared');
 });
 
 /* ============================================================
-   SUBMIT
+   SUBMIT — highlights all evidence in the passage
    ============================================================ */
 document.getElementById('submitBtn').addEventListener('click', () => {
   let score = 0, answered = 0;
@@ -1006,9 +909,9 @@ document.getElementById('submitBtn').addEventListener('click', () => {
   document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
 
   const rows = [];
-  ALL_QUESTIONS.forEach(n => {
+  for (let n = 1; n <= TOTAL_QUESTIONS; n++) {
     const rowEl = document.querySelector(`[data-q="${n}"]`);
-    if (!rowEl) return;
+    if (!rowEl) continue;
     const ua = getUserAnswer(n);
     if (ua.trim() !== '') answered++;
     const ok = isCorrect(n, ua);
@@ -1028,17 +931,14 @@ document.getElementById('submitBtn').addEventListener('click', () => {
     if (evLine && evData) {
       evLine.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${evData.sentence}"</em>`;
     }
+    // Highlight the evidence in the passage
     if (evData && evData.text) highlightEvidenceInPassage(evData.text, n);
 
     const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
     if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
-    rows.push({
-      n, ua: ua.trim() || '—',
-      key: (ANSWER_KEY[n] || []).join(' / '),
-      ok,
-      evidence: evData ? evData.sentence.replace(/<\/?hl>/g, '') : ''
-    });
-  });
+    rows.push({ n, ua: ua.trim() || '—', key: (ANSWER_KEY[n] || []).join(' / '), ok,
+      evidence: evData ? evData.sentence.replace(/<\/?hl>/g, '') : '' });
+  }
 
   document.getElementById('resultScore').textContent = `${score} / ${TOTAL_QUESTIONS}`;
   document.getElementById('resultSub').textContent =
@@ -1053,12 +953,9 @@ document.getElementById('submitBtn').addEventListener('click', () => {
       const mark = document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
       if (mark) {
         mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        mark.classList.remove('flash');
-        void mark.offsetWidth;
-        mark.classList.add('flash');
+        mark.classList.remove('flash'); void mark.offsetWidth; mark.classList.add('flash');
       } else {
-        const ng = (r.n <= 7 && ANSWER_KEY[r.n][0] === 'NOT GIVEN');
-        toast('No passage highlight for Q' + r.n + (ng ? ' (NOT GIVEN)' : ''));
+        toast('No passage highlight for Q' + r.n + ((r.n === 8 || r.n === 10) ? ' (NOT GIVEN)' : ''));
       }
     });
     tbody.appendChild(tr);
@@ -1070,18 +967,16 @@ document.getElementById('submitBtn').addEventListener('click', () => {
   if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
 });
 
-/* ============================================================
-   REVIEW
-   ============================================================ */
+/* REVIEW */
 document.getElementById('reviewBtn').addEventListener('click', () => {
   const tbody = document.getElementById('previewBody');
   tbody.innerHTML = '';
-  ALL_QUESTIONS.forEach(n => {
+  for (let n = 1; n <= TOTAL_QUESTIONS; n++) {
     const ua = getUserAnswer(n);
     const tr = document.createElement('tr');
     tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
     tbody.appendChild(tr);
-  });
+  }
   document.getElementById('previewOverlay').classList.add('show');
 });
 
@@ -1092,14 +987,11 @@ document.querySelectorAll('.overlay').forEach(o =>
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
-    hlPopup.classList.remove('show');
-    notePopup.classList.remove('show');
+    hlPopup.classList.remove('show'); notePopup.classList.remove('show');
   }
 });
 
-/* ============================================================
-   RESET / MENU
-   ============================================================ */
+/* RESET / MENU */
 document.getElementById('resetLink').addEventListener('click', (e) => {
   e.preventDefault();
   if (!confirm('Clear all answers and reset the test?')) return;
@@ -1116,15 +1008,12 @@ document.getElementById('resetLink').addEventListener('click', (e) => {
   document.getElementById('resultOverlay').classList.remove('show');
   document.getElementById('previewOverlay').classList.remove('show');
   currentQuestion = 1; updateCurrent(); updateNav();
-  secondsLeft = 20 * 60;
-  startTimer();
+  secondsLeft = 20 * 60; startTimer();
   toast('Test reset. Good luck!');
 });
 
 const menuPop = document.getElementById('menuPop');
-document.getElementById('menuBtn').addEventListener('click', e => {
-  e.stopPropagation(); menuPop.classList.toggle('show');
-});
+document.getElementById('menuBtn').addEventListener('click', e => { e.stopPropagation(); menuPop.classList.toggle('show'); });
 document.addEventListener('click', () => menuPop.classList.remove('show'));
 menuPop.addEventListener('click', e => e.stopPropagation());
 document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
@@ -1135,9 +1024,7 @@ document.getElementById('gotoTop').addEventListener('click', e => {
   document.getElementById('questionsPane').scrollTop = 0;
 });
 
-/* ============================================================
-   FULLSCREEN / FOCUS
-   ============================================================ */
+/* FULLSCREEN / FOCUS */
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 function updateFullscreenUI() {
   const a = !!document.fullscreenElement;
@@ -1155,9 +1042,7 @@ document.addEventListener('fullscreenchange', updateFullscreenUI);
 document.getElementById('focusBtn').addEventListener('click', () => document.body.classList.add('focus-mode'));
 document.getElementById('exitFocusBtn').addEventListener('click', () => document.body.classList.remove('focus-mode'));
 
-/* ============================================================
-   INIT
-   ============================================================ */
+/* INIT — no auto-highlight on load; marks only appear after Submit */
 refreshPaletteAnswered();
 updateCurrent();
 updateNav();
@@ -1166,5 +1051,5 @@ renderTimer();
 startTimer();
 </script>
 
-    </body>
+  </body>
 </html>
