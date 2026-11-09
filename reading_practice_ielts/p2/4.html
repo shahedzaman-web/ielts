@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Libraries — IELTS Reading Practice</title>
-<style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Libraries — IELTS Reading Practice</title>
+    <style>
 :root{
   --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
   --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
@@ -26,6 +26,13 @@ button{font-family:inherit;cursor:pointer;border:none}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
 .icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
 .icon-btn:hover{background:#f1f5f9}
+/* MENU */
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
 /* SPLIT */
 .main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
 .pane{overflow-y:auto;padding:24px 30px}
@@ -99,6 +106,32 @@ mark.evidence-mark:hover{background:#bbf7d0}
 mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
 mark.evidence-mark.flash{animation:evflash 1.4s ease}
 @keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+/* USER HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+mark.hl-user.hl-green{background:#bbf7d0}
+mark.hl-user.hl-blue{background:#bfdbfe}
+mark.hl-user.hl-pink{background:#fbcfe8}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px;align-items:center}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#hl-popup .color-swatches{display:flex;gap:3px;padding:0 4px;border-left:1px solid #334155;margin-left:2px}
+#hl-popup .swatch{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;padding:0}
+#hl-popup .swatch:hover{border-color:#fff;transform:scale(1.1)}
+#hl-popup .swatch[data-color="yellow"]{background:#fef08a}
+#hl-popup .swatch[data-color="green"]{background:#bbf7d0}
+#hl-popup .swatch[data-color="blue"]{background:#bfdbfe}
+#hl-popup .swatch[data-color="pink"]{background:#fbcfe8}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
 /* BOTTOM */
 .bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
 .bottom-inner{max-width:1600px;margin:0 auto}
@@ -154,130 +187,220 @@ table.result-tbl tbody tr:hover{background:#f8fafc}
 .pane::-webkit-scrollbar,.overlay-body::-webkit-scrollbar{width:8px}
 .pane::-webkit-scrollbar-thumb,.overlay-body::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<header class="app-header">
-  <h1>Libraries — IELTS Reading Practice</h1>
-  <div class="header-right">
-    <button class="icon-btn" id="fullscreenBtn">⛶ Fullscreen</button>
-    <div class="band-chip" id="bandChip">--</div>
-    <div class="timer-chip" id="timerChip">⏱ <strong id="timer">20:00</strong></div>
-  </div>
-</header>
-
-<div class="main-split" id="mainSplit">
-  <!-- PASSAGE -->
-  <div class="pane passages" id="passagesPane">
-    <div class="passage">
-      <span class="part-label">Reading Passage 2</span>
-      <h2>Libraries</h2>
-      <p><em>You should spend about 20 minutes on Questions 1–13, which are based on Reading Passage 2 below.</em></p>
-
-      <p>Libraries have been in existence for thousands of years, but what is their role in today's world of mass media and the internet?</p>
-
-      <p>Libraries are collections of materials containing information, ideas, and works of imagination that are organized for public use and staffed by people trained to provide a service. They take many physical forms ranging from large purpose-built buildings to rooms in parent institutions and small temporary structures. They are a vital resource in an age in which people and communities desperately need to consider alternative points of view and information in order to challenge the mass media and make up their own minds.</p>
-
-      <p>Despite a popular misconception, libraries have never confined themselves to the collection of books. Traditionally, they have acquired a range of print-based materials, including newspapers, maps, pamphlets, illustrations, and many other items. Indeed, libraries pre-dated the invention of the book. For example, the original library in Alexandria, the capital of ancient Egypt, collected papyrus scrolls, and mediaeval monasteries collected manuscripts. It was therefore widely regarded as a logical step for libraries to collect every new medium that contained information as it emerged. All forms of sound and visual recording (for example, gramophone records, cassettes, videos, CDs, and DVDs) joined the collections in many libraries as they became available. Digital formats were also quickly added to collections and there are now countless libraries around the world which have fully integrated electronic resources such as e-books, audiobooks, online databases, and digitised archives.</p>
-
-      <p>However, the role of libraries has expanded beyond mere collection. Modern libraries also function as community hubs, offering public internet access, literacy programmes, and spaces for civic engagement. In many regions, libraries provide essential services such as assistance with job applications, legal guidance, and support for small businesses. Furthermore, librarians have adapted to the digital age by developing skills in data management, digital literacy training, and fact-checking – all of which help users navigate an increasingly complex information landscape.</p>
-
-      <p>Nevertheless, libraries face significant challenges. Budget cuts in many countries have reduced opening hours and staff numbers. Some critics argue that physical libraries are obsolete, given that so much information is now available online. Yet proponents maintain that libraries offer something the internet cannot: curated, trustworthy information and equitable access regardless of income or social status. In conclusion, while the format of materials has evolved, the core mission of libraries – to provide free and open access to knowledge – remains as relevant today as it was in ancient Alexandria.</p>
-    </div>
-  </div>
-
-  <div class="resizer" id="resizer"></div>
-
-  <!-- QUESTIONS -->
-  <div class="pane questions" id="questionsPane">
-    <form id="quiz" onsubmit="return false;">
-      <div class="q-group">
-        <h3>Questions 1–5</h3>
-        <div class="q-instr">
-          <p>Do the following statements agree with the information given in Reading Passage 2?</p>
-          <p>Write <strong>TRUE</strong>, <strong>FALSE</strong>, or <strong>NOT GIVEN</strong>.</p>
+    <header class="app-header">
+      <h1>Libraries — IELTS Reading Practice</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="fullscreenBtn">⛶ Fullscreen</button>
+        <div class="band-chip" id="bandChip">--</div>
+        <div class="timer-chip" id="timerChip">⏱ <strong
+            id="timer">20:00</strong></div>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="menuBtn">☰</button>
+          <div class="menu-pop" id="menuPop">
+            <a href="#" id="exportLink">📄 Export as PDF</a>
+            <a href="#" id="clearHighlightsLink">🧹 Clear All Highlights</a>
+            <a href="#" id="resetLink">↺ Reset Test</a>
+            <a href="#" id="gotoTop">↑ Back to Top</a>
+          </div>
         </div>
-        <div id="tfng-container"></div>
       </div>
+    </header>
 
-      <div class="q-group">
-        <h3>Questions 6–9</h3>
-        <div class="q-instr">
-          <p>Complete the sentences below.</p>
-          <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+    <!-- HIGHLIGHT POPUP -->
+    <div id="hl-popup">
+      <button id="hl-highlight">🖍 Highlight</button>
+      <div class="color-swatches">
+        <button class="swatch" data-color="yellow" title="Yellow"></button>
+        <button class="swatch" data-color="green" title="Green"></button>
+        <button class="swatch" data-color="blue" title="Blue"></button>
+        <button class="swatch" data-color="pink" title="Pink"></button>
+      </div>
+      <button id="hl-dehighlight">🧽 Clear</button>
+      <button id="hl-note">📝 Note</button>
+    </div>
+
+    <!-- NOTE POPUP -->
+    <div id="note-popup">
+      <div class="np-card">
+        <h4>Add a note</h4>
+        <textarea id="note-text"
+          placeholder="Write your note about this text..."></textarea>
+        <div class="np-actions">
+          <button type="button" class="np-cancel"
+            id="note-cancel">Cancel</button>
+          <button type="button" class="np-save" id="note-save">Save
+            Note</button>
         </div>
-        <div id="completion-container"></div>
       </div>
+    </div>
 
-      <div class="q-group">
-        <h3>Questions 10–13</h3>
-        <div class="q-instr">
-          <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, or <strong>D</strong>.</p>
+    <div class="main-split" id="mainSplit">
+      <!-- PASSAGE -->
+      <div class="pane passages" id="passagesPane">
+        <div class="passage">
+          <span class="part-label">Reading Passage 2</span>
+          <h2>Libraries</h2>
+          <p><em>You should spend about 20 minutes on Questions 1–13, which are
+              based on Reading Passage 2 below.</em></p>
+
+          <p>Libraries have been in existence for thousands of years, but what
+            is their role in today's world of mass media and the internet?</p>
+
+          <p>Libraries are collections of materials containing information,
+            ideas, and works of imagination that are organized for public use
+            and staffed by people trained to provide a service. They take many
+            physical forms ranging from large purpose-built buildings to rooms
+            in parent institutions and small temporary structures. They are a
+            vital resource in an age in which people and communities desperately
+            need to consider alternative points of view and information in order
+            to challenge the mass media and make up their own minds.</p>
+
+          <p>Despite a popular misconception, libraries have never confined
+            themselves to the collection of books. Traditionally, they have
+            acquired a range of print-based materials, including newspapers,
+            maps, pamphlets, illustrations, and many other items. Indeed,
+            libraries pre-dated the invention of the book. For example, the
+            original library in Alexandria, the capital of ancient Egypt,
+            collected papyrus scrolls, and mediaeval monasteries collected
+            manuscripts. It was therefore widely regarded as a logical step for
+            libraries to collect every new medium that contained information as
+            it emerged. All forms of sound and visual recording (for example,
+            gramophone records, cassettes, videos, CDs, and DVDs) joined the
+            collections in many libraries as they became available. Digital
+            formats were also quickly added to collections and there are now
+            countless libraries around the world which have fully integrated
+            electronic resources such as e-books, audiobooks, online databases,
+            and digitised archives.</p>
+
+          <p>However, the role of libraries has expanded beyond mere collection.
+            Modern libraries also function as community hubs, offering public
+            internet access, literacy programmes, and spaces for civic
+            engagement. In many regions, libraries provide essential services
+            such as assistance with job applications, legal guidance, and
+            support for small businesses. Furthermore, librarians have adapted
+            to the digital age by developing skills in data management, digital
+            literacy training, and fact-checking – all of which help users
+            navigate an increasingly complex information landscape.</p>
+
+          <p>Nevertheless, libraries face significant challenges. Budget cuts in
+            many countries have reduced opening hours and staff numbers. Some
+            critics argue that physical libraries are obsolete, given that so
+            much information is now available online. Yet proponents maintain
+            that libraries offer something the internet cannot: curated,
+            trustworthy information and equitable access regardless of income or
+            social status. In conclusion, while the format of materials has
+            evolved, the core mission of libraries – to provide free and open
+            access to knowledge – remains as relevant today as it was in ancient
+            Alexandria.</p>
         </div>
-        <div id="mcq-container"></div>
       </div>
-    </form>
-  </div>
-</div>
 
-<!-- BOTTOM PANEL -->
-<div class="bottom-panel">
-  <div class="bottom-inner">
-    <div class="palette" id="palette"></div>
-    <div class="bottom-controls">
-      <div class="nav-buttons">
-        <button id="prevBtn">←</button>
-        <button id="nextBtn">→</button>
-      </div>
-      <div class="test-buttons">
-        <button class="review-btn" id="reviewBtn">📋 Review</button>
-        <button class="submit-btn" id="submitBtn">Submit ✈</button>
+      <div class="resizer" id="resizer"></div>
+
+      <!-- QUESTIONS -->
+      <div class="pane questions" id="questionsPane">
+        <form id="quiz" onsubmit="return false;">
+          <div class="q-group">
+            <h3>Questions 1–5</h3>
+            <div class="q-instr">
+              <p>Do the following statements agree with the information given in
+                Reading Passage 2?</p>
+              <p>Write <strong>TRUE</strong>, <strong>FALSE</strong>, or
+                <strong>NOT GIVEN</strong>.</p>
+            </div>
+            <div id="tfng-container"></div>
+          </div>
+
+          <div class="q-group">
+            <h3>Questions 6–9</h3>
+            <div class="q-instr">
+              <p>Complete the sentences below.</p>
+              <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage
+                for each answer.</p>
+            </div>
+            <div id="completion-container"></div>
+          </div>
+
+          <div class="q-group">
+            <h3>Questions 10–13</h3>
+            <div class="q-instr">
+              <p>Choose the correct letter, <strong>A</strong>,
+                <strong>B</strong>, <strong>C</strong>, or
+                <strong>D</strong>.</p>
+            </div>
+            <div id="mcq-container"></div>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- RESULT OVERLAY -->
-<div class="overlay" id="resultOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head"><h3>Your Results</h3><button class="close-x" data-close="resultOverlay">×</button></div>
-    <div class="overlay-body">
-      <div class="score-summary">
-        <div class="big" id="resultScore">0 / 13</div>
-        <div class="sub" id="resultSub">Score: —</div>
+    <!-- BOTTOM PANEL -->
+    <div class="bottom-panel">
+      <div class="bottom-inner">
+        <div class="palette" id="palette"></div>
+        <div class="bottom-controls">
+          <div class="nav-buttons">
+            <button id="prevBtn">←</button>
+            <button id="nextBtn">→</button>
+          </div>
+          <div class="test-buttons">
+            <button class="review-btn" id="reviewBtn">📋 Review</button>
+            <button class="submit-btn" id="submitBtn">Submit ✈</button>
+          </div>
+        </div>
       </div>
-      <div class="legend-row">
-        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No answer</span><span>👉 Click a row to jump to evidence</span>
+    </div>
+
+    <!-- RESULT OVERLAY -->
+    <div class="overlay" id="resultOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Your Results</h3><button class="close-x"
+            data-close="resultOverlay">×</button></div>
+        <div class="overlay-body">
+          <div class="score-summary">
+            <div class="big" id="resultScore">0 / 13</div>
+            <div class="sub" id="resultSub">Score: —</div>
+          </div>
+          <div class="legend-row">
+            <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜ No
+              answer</span><span>👉 Click a row to jump to evidence</span>
+          </div>
+          <table class="result-tbl">
+            <thead><tr><th style="width:35px">#</th><th style="width:110px">Your
+                  Answer</th><th style="width:110px">Correct</th><th>Explanation
+                  &amp; Evidence</th></tr></thead>
+            <tbody id="resultBody"></tbody>
+          </table>
+          <div id="detailedExplanations"></div>
+        </div>
       </div>
-      <table class="result-tbl">
-        <thead><tr><th style="width:35px">#</th><th style="width:110px">Your Answer</th><th style="width:110px">Correct</th><th>Explanation &amp; Evidence</th></tr></thead>
-        <tbody id="resultBody"></tbody>
-      </table>
-      <div id="detailedExplanations"></div>
     </div>
-  </div>
-</div>
 
-<!-- PREVIEW OVERLAY -->
-<div class="overlay" id="previewOverlay">
-  <div class="overlay-card">
-    <div class="overlay-head"><h3>Review Your Answers</h3><button class="close-x" data-close="previewOverlay">×</button></div>
-    <div class="overlay-body">
-      <table class="result-tbl">
-        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
-        <tbody id="previewBody"></tbody>
-      </table>
+    <!-- PREVIEW OVERLAY -->
+    <div class="overlay" id="previewOverlay">
+      <div class="overlay-card">
+        <div class="overlay-head"><h3>Review Your Answers</h3><button
+            class="close-x" data-close="previewOverlay">×</button></div>
+        <div class="overlay-body">
+          <table class="result-tbl">
+            <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+            <tbody id="previewBody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="toast" id="toast"></div>
+    <div class="toast" id="toast"></div>
 
-<script>
+    <script>
 /* ============================================================
    DATA
    ============================================================ */
 const TOTAL = 13;
+const HIGHLIGHT_STORAGE_KEY = 'libraries_highlights_v1';
 
 const QDATA = {
   1: { type:'tfng', answer:'FALSE',
@@ -549,6 +672,295 @@ function startTimer(){
 }
 
 /* ============================================================
+   USER HIGHLIGHT + NOTE SYSTEM
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+let currentColor = 'yellow';
+
+function showPopupAt(rect){
+  const w = hlPopup.offsetWidth || 380;
+  let left = window.scrollX + rect.left + rect.width/2 - w/2;
+  left = Math.max(8, Math.min(left, window.scrollX + document.documentElement.clientWidth - w - 8));
+  let top = window.scrollY + rect.top - 54;
+  if (top < window.scrollY + 8) top = window.scrollY + rect.bottom + 8;
+  hlPopup.style.top = top + 'px';
+  hlPopup.style.left = left + 'px';
+  hlPopup.classList.add('show');
+  hlPopup.querySelectorAll('.swatch').forEach(s => {
+    s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+    s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+  });
+}
+
+function closePopup(){
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  currentMark = null;
+}
+
+// Detect text selection
+document.addEventListener('mouseup', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup') || e.target.closest('.bottom-panel') || e.target.closest('.app-header')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
+  if (e.target.tagName === 'MARK' && e.target.classList.contains('evidence-mark')) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && el.closest && el.closest('mark.hl-user')) return;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 10);
+});
+
+// Click on existing user highlight → show popup
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+
+  const noteEl = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (noteEl) {
+    document.getElementById('note-text').value = noteEl.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = noteEl;
+    return;
+  }
+
+  const userMark = e.target.closest ? e.target.closest('mark.hl-user') : null;
+  if (userMark) {
+    savedRange = null;
+    currentMark = userMark;
+    showPopupAt(userMark.getBoundingClientRect());
+    return;
+  }
+});
+
+// Dismiss popup on outside click
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (hlPopup.classList.contains('show')) closePopup();
+});
+
+// Color swatches
+hlPopup.querySelectorAll('.swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    currentColor = sw.dataset.color;
+    if (currentMark && currentMark.classList.contains('hl-user')) {
+      applyColorToMark(currentMark, currentColor);
+      saveHighlights();
+      toast('Color changed');
+      closePopup();
+    } else {
+      hlPopup.querySelectorAll('.swatch').forEach(s => {
+        s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+        s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+      });
+    }
+  });
+});
+
+function applyColorToMark(mark, color) {
+  mark.classList.remove('hl-green','hl-blue','hl-pink');
+  if (color === 'green') mark.classList.add('hl-green');
+  else if (color === 'blue') mark.classList.add('hl-blue');
+  else if (color === 'pink') mark.classList.add('hl-pink');
+}
+
+// Apply highlight
+document.getElementById('hl-highlight').addEventListener('click', () => {
+  if (currentMark) { closePopup(); return; }
+  if (!savedRange) { toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    applyColorToMark(m, currentColor);
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlighted');
+  } catch (err) {
+    console.warn(err);
+    toast('Could not highlight');
+  }
+});
+
+// Remove highlight
+document.getElementById('hl-dehighlight').addEventListener('click', () => {
+  if (currentMark) {
+    unwrapMark(currentMark);
+    currentMark = null;
+    closePopup();
+    saveHighlights();
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange) {
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll) {
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try { if (savedRange.intersectsNode(m)) unwrapMark(m); } catch (err) {}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlights removed');
+  } else {
+    closePopup();
+  }
+});
+
+function unwrapMark(mark) {
+  const p = mark.parentNode;
+  if (!p) return;
+  while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+  p.removeChild(mark);
+  if (p.normalize) p.normalize();
+}
+
+// Add note
+document.getElementById('hl-note').addEventListener('click', () => {
+  if (!savedRange) {
+    toast('Select text first');
+    return;
+  }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  closePopup();
+  window.getSelection().removeAllRanges();
+});
+
+document.getElementById('note-cancel').addEventListener('click', () => {
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', () => {
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget) {
+    if (nt) {
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      unwrapMark(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    saveHighlights();
+    return;
+  }
+  if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+    saveHighlights();
+  } catch (err) { console.warn(err); }
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+/* ============================================================
+   SAVE / RESTORE USER HIGHLIGHTS (localStorage)
+   ============================================================ */
+function saveHighlights() {
+  try {
+    const data = [];
+    passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+      const isNote = el.classList.contains('hl-note');
+      data.push({
+        type: isNote ? 'note' : 'highlight',
+        color: el.classList.contains('hl-green') ? 'green'
+             : el.classList.contains('hl-blue') ? 'blue'
+             : el.classList.contains('hl-pink') ? 'pink' : 'yellow',
+        text: el.textContent,
+        note: el.dataset.note || ''
+      });
+    });
+    localStorage.setItem(HIGHLIGHT_STORAGE_KEY, JSON.stringify(data));
+  } catch (e) { /* ignore */ }
+}
+
+function restoreHighlights() {
+  try {
+    const raw = localStorage.getItem(HIGHLIGHT_STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (!Array.isArray(data) || !data.length) return;
+    const walker = document.createTreeWalker(passagesEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (node.parentElement && node.parentElement.closest('mark.hl-user, .hl-note')) return NodeFilter.FILTER_REJECT;
+        return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    let combined = '';
+    let n;
+    while ((n = walker.nextNode())) {
+      nodes.push({node: n, start: combined.length, len: n.textContent.length});
+      combined += n.textContent;
+    }
+    const sorted = data
+      .map(d => ({...d, idx: combined.indexOf(d.text)}))
+      .filter(d => d.idx !== -1)
+      .sort((a,b) => b.idx - a.idx);
+
+    sorted.forEach(d => {
+      const start = d.idx;
+      const end = start + d.text.length;
+      const startEntry = nodes.find(e => start >= e.start && start < e.start + e.len);
+      const endEntry = nodes.find(e => end > e.start && end <= e.start + e.len);
+      if (!startEntry || !endEntry) return;
+      try {
+        const range = document.createRange();
+        range.setStart(startEntry.node, start - startEntry.start);
+        range.setEnd(endEntry.node, end - endEntry.start);
+        const el = document.createElement(d.type === 'note' ? 'span' : 'mark');
+        el.className = d.type === 'note' ? 'hl-note' : 'hl-user';
+        if (d.type === 'note') { el.dataset.note = d.note || ''; el.title = 'Note: ' + (d.note||''); }
+        else applyColorToMark(el, d.color || 'yellow');
+        el.appendChild(range.extractContents());
+        range.insertNode(el);
+      } catch (e) { /* skip */ }
+    });
+  } catch (e) { /* ignore */ }
+}
+
+// Clear all user highlights
+document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Remove all your highlights and notes?')) return;
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  toast('Highlights cleared');
+});
+
+/* ============================================================
    EVIDENCE HIGHLIGHTING
    ============================================================ */
 function highlightEvidence(text,qNum){
@@ -588,6 +1000,8 @@ function clearEvidenceMarks(){
     while(m.firstChild)p.insertBefore(m.firstChild,m);
     p.removeChild(m);
   });
+  const pp = document.getElementById('passagesPane');
+  if (pp && pp.normalize) pp.normalize();
 }
 
 /* ============================================================
@@ -687,17 +1101,63 @@ document.getElementById('reviewBtn').addEventListener('click',()=>{
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).classList.remove('show')));
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));}
+  if(e.key==='Escape'){
+    document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));
+    closePopup();
+    notePopup.classList.remove('show');
+  }
+});
+
+/* ============================================================
+   MENU / RESET / EXPORT
+   ============================================================ */
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  menuPop.classList.toggle('show');
+});
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+document.getElementById('resetLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Clear all answers, highlights and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  clearEvidenceMarks();
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.tfng-row, .notes-row, .mcq-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  document.getElementById('bandChip').textContent = '--';
+  document.getElementById('bandChip').classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  currentQuestion = 1; updateCurrent(); updateNav();
+  secondsLeft = 20*60;
+  startTimer();
+  toast('Test reset. Good luck!');
 });
 
 /* ============================================================
    FULLSCREEN
    ============================================================ */
-document.getElementById('fullscreenBtn').addEventListener('click',async()=>{
-  try{
-    if(!document.fullscreenElement)await document.documentElement.requestFullscreen();
+document.getElementById('fullscreenBtn').addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
     else await document.exitFullscreen();
-  }catch(err){toast('Fullscreen not supported');}
+  } catch (err) { toast('Fullscreen not supported'); }
 });
 
 /* ============================================================
@@ -708,6 +1168,7 @@ updateCurrent();
 updateNav();
 renderTimer();
 startTimer();
+setTimeout(() => { restoreHighlights(); }, 50);
 </script>
-</body>
+  </body>
 </html>
