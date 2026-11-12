@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Fluoridation Controversy — IELTS Reading Practice</title>
+        <style>
+:root{
+  --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
+  --good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;
+  --header-h:56px;--bottom-h:200px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
+button{font-family:inherit;cursor:pointer;border:none}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-right{display:flex;align-items:center;gap:10px}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}
+.band-chip.show{opacity:1;background:var(--good)}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+.timer-chip.warning{background:#b45309}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.icon-btn:hover{background:#f1f5f9}
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pane{overflow-y:auto;padding:24px 30px}
+.passages{flex:0 0 50%;background:#fcfdff}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}
+.resizer:hover{background:#cbd5e1}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.passage .subtitle{color:var(--muted);font-style:italic;margin:0 0 14px}
+.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.passage p{margin:0 0 14px}
+.passage em{color:var(--muted)}
+.q-section{display:block}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
+.q-group:last-child{border-bottom:none;margin-bottom:0}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}
+.q-instr p{margin:0 0 3px}
+.q-instr p:last-child{margin:0}
+.q-instr strong{color:var(--text)}
+/* MCQ */
+.mcq-row{padding:12px 0;border-bottom:1px dashed #eef2f7;font-size:14.5px}
+.mcq-row:last-child{border-bottom:none}
+.mcq-question{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.mcq-statement{flex:1;font-weight:600}
+.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+.mcq-options{display:flex;flex-direction:column;gap:5px;padding-left:36px}
+.mcq-opt{display:flex;align-items:flex-start;gap:8px;font-size:14px;cursor:pointer;padding:6px 10px;border-radius:6px;border:1px solid transparent;transition:.12s;line-height:1.45}
+.mcq-opt:hover{background:#f8fafc;border-color:#cbd5e1}
+.mcq-opt input{accent-color:var(--accent);width:15px;height:15px;margin-top:3px;cursor:pointer;flex:0 0 auto}
+.mcq-opt .opt-label{font-weight:700;color:var(--accent);flex:0 0 auto;min-width:18px}
+.mcq-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.mcq-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.mcq-row.correct .mcq-statement{background:rgba(220,252,231,.45);padding:2px 6px;border-radius:4px}
+.mcq-row.wrong .mcq-statement{background:rgba(254,226,226,.45);padding:2px 6px;border-radius:4px}
+.mcq-row.correct .mcq-opt.checked{background:var(--good-soft);border-color:var(--good)}
+.mcq-row.wrong .mcq-opt.checked{background:var(--bad-soft);border-color:var(--bad)}
+/* YNNG */
+.ynng-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
+.ynng-row:last-child{border-bottom:none}
+.ynng-statement{flex:1;min-width:200px}
+.ynng-options{display:flex;gap:14px;flex-basis:100%;padding:4px 0 0}
+.ynng-opt{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid transparent;transition:.12s}
+.ynng-opt:hover{background:#f8fafc;border-color:#cbd5e1}
+.ynng-opt input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+.ynng-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.ynng-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.ynng-row.correct .ynng-statement{background:rgba(220,252,231,.35)}
+.ynng-row.wrong .ynng-statement{background:rgba(254,226,226,.35)}
+/* MATCH ROW */
+.match-row{padding:10px 0;border-bottom:1px dashed #eef2f7;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:14.5px}
+.match-row:last-child{border-bottom:none}
+.match-statement{flex:1;min-width:220px}
+.match-options{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;padding:4px 0 0}
+.letter-opt{display:inline-flex;align-items:center;justify-content:center;width:34px;height:30px;font-size:13px;font-weight:700;cursor:pointer;border-radius:6px;border:1px solid #dfe5ee;background:#f8fafc;transition:.12s;color:#334155}
+.letter-opt:hover{background:#eef2f7;border-color:#cbd5e1}
+.letter-opt input{display:none}
+.letter-opt.checked{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.18)}
+.match-row.correct .q-num-badge{background:var(--good-soft);color:var(--good)}
+.match-row.wrong .q-num-badge{background:var(--bad-soft);color:var(--bad)}
+.match-row.correct .match-statement{background:rgba(220,252,231,.35)}
+.match-row.wrong .match-statement{background:rgba(254,226,226,.35)}
+.match-row.correct .letter-opt.checked{background:var(--good);border-color:var(--good)}
+.match-row.wrong .letter-opt.checked{background:var(--bad);border-color:var(--bad)}
+.endings-bank{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+.endings-bank .eb-title{font-weight:700;font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.endings-bank .eb-item{display:flex;gap:8px;align-items:baseline;padding:3px 0}
+.endings-bank .eb-item .ltr{font-weight:700;color:var(--accent);min-width:18px}
+.feedback{font-size:12px;margin-top:4px;display:none;font-weight:600;flex-basis:100%}
+.graded .feedback{display:block}
+.feedback.no{color:var(--bad)}
+.feedback.ok{color:var(--good)}
+.evidence-line{display:none;font-size:12px;margin-top:5px;color:#475569;background:#f8fafc;border-left:3px solid var(--accent);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45;flex-basis:100%}
+.graded .evidence-line{display:block}
+.evidence-line .lbl{display:inline-block;margin-right:4px;font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.evidence-line em{color:var(--text);font-style:italic}
+mark.evidence-mark{background:#dcfce7;outline:2px solid #16a34a;border-radius:3px;padding:1px 3px;cursor:pointer;transition:background .15s;position:relative}
+mark.evidence-mark:hover{background:#bbf7d0}
+mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
+mark.evidence-mark.flash{animation:evflash 1.4s ease}
+@keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+/* USER HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+mark.hl-user.hl-green{background:#bbf7d0}
+mark.hl-user.hl-blue{background:#bfdbfe}
+mark.hl-user.hl-pink{background:#fbcfe8}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px;align-items:center}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#hl-popup .color-swatches{display:flex;gap:3px;padding:0 4px;border-left:1px solid #334155;margin-left:2px}
+#hl-popup .swatch{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;padding:0}
+#hl-popup .swatch:hover{border-color:#fff;transform:scale(1.1)}
+#hl-popup .swatch[data-color="yellow"]{background:#fef08a}
+#hl-popup .swatch[data-color="green"]{background:#bbf7d0}
+#hl-popup .swatch[data-color="blue"]{background:#bfdbfe}
+#hl-popup .swatch[data-color="pink"]{background:#fbcfe8}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
+.bottom-inner{max-width:1600px;margin:0 auto}
+.palette{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-start;margin-bottom:8px;min-height:36px}
+.palette-section{display:flex;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}
+.palette-label{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}
+.palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}
+.palette-item:hover{background:#e2e8f0}
+.palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+.palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22)}
+.palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}
+.nav-buttons{display:flex;gap:6px;flex:0 0 auto}
+.nav-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav-buttons button:hover:not(:disabled){background:#f1f5f9}
+.nav-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.test-buttons{display:flex;gap:10px;align-items:center}
+.review-btn{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600}
+.review-btn:hover{background:#f1f5f9}
+.submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
+.submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:820px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.overlay-head h3{margin:0;font-size:18px}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.close-x:hover{color:var(--text)}
+.overlay-body{padding:18px 22px;overflow-y:auto}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px}
+table.result-tbl td.correct{color:var(--good);font-weight:700}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700}
+table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:italic}
+table.result-tbl tbody tr{cursor:pointer;transition:background .12s}
+table.result-tbl tbody tr:hover{background:#f8fafc}
+.explanation-box{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:12px 16px;margin-top:16px}
+.explanation-box h4{margin:0 0 8px;font-size:14px;color:var(--accent)}
+.explanation-box p{margin:0 0 8px;font-size:13px;line-height:1.6}
+.explanation-box p:last-child{margin:0}
+.explanation-box .ev{font-style:italic;color:#475569;background:#fff;padding:6px 10px;border-radius:6px;border-left:3px solid var(--accent);font-size:12.5px;margin-top:4px}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+.pane::-webkit-scrollbar,.overlay-body::-webkit-scrollbar{width:8px}
+.pane::-webkit-scrollbar-thumb,.overlay-body::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+</style>
+    </head>
+    <body>
+
+        <header class="app-header">
+            <h1>The Fluoridation Controversy — IELTS Reading Practice</h1>
+            <div class="header-right">
+                <button class="icon-btn" id="fullscreenBtn">⛶
+                    Fullscreen</button>
+                <div class="band-chip" id="bandChip">--</div>
+                <div class="timer-chip" id="timerChip">⏱ <strong
+                        id="timer">20:00</strong></div>
+                <div class="menu-wrap">
+                    <button class="icon-btn" id="menuBtn">☰</button>
+                    <div class="menu-pop" id="menuPop">
+                        <a href="#" id="exportLink">📄 Export as PDF</a>
+                        <a href="#" id="clearHighlightsLink">🧹 Clear All
+                            Highlights</a>
+                        <a href="#" id="resetLink">↺ Reset Test</a>
+                        <a href="#" id="gotoTop">↑ Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="hl-popup">
+            <button id="hl-highlight">🖍 Highlight</button>
+            <div class="color-swatches">
+                <button class="swatch" data-color="yellow"
+                    title="Yellow"></button>
+                <button class="swatch" data-color="green"
+                    title="Green"></button>
+                <button class="swatch" data-color="blue" title="Blue"></button>
+                <button class="swatch" data-color="pink" title="Pink"></button>
+            </div>
+            <button id="hl-dehighlight">🧽 Clear</button>
+            <button id="hl-note">📝 Note</button>
+        </div>
+
+        <div id="note-popup">
+            <div class="np-card">
+                <h4>Add a note</h4>
+                <textarea id="note-text"
+                    placeholder="Write your note about this text..."></textarea>
+                <div class="np-actions">
+                    <button type="button" class="np-cancel"
+                        id="note-cancel">Cancel</button>
+                    <button type="button" class="np-save" id="note-save">Save
+                        Note</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-split" id="mainSplit">
+            <div class="pane passages" id="passagesPane">
+                <div class="passage">
+                    <span class="part-label">Reading Passage 2</span>
+                    <h2>The Fluoridation Controversy</h2>
+                    <p><em>You should spend about 20 minutes on Questions 1–14,
+                            which are based on Reading Passage 2 below.</em></p>
+
+                    <p>The long-standing debate about whether to fluoridate our
+                        drinking water continues. Fluoridation is the addition
+                        of fluorine to public water supplies with the aim of
+                        reducing tooth decay. The fluorine, when mixed with
+                        water, becomes fluoride and the desired concentration of
+                        fluoride in public water is approximately one part per
+                        million, depending on the regional temperature and hence
+                        the amount of water people are likely to drink. Many
+                        studies, such as those by McClure in 1970 through to
+                        Burt in 1983, have shown that when children drink
+                        fluoridated water, their average rate of tooth decay
+                        seems greatly reduced. A typical figure claimed is 50
+                        percent reduction. This apparently enormous benefit for
+                        children's teeth is the major argument in favor of
+                        fluoridation.</p>
+
+                    <p>Three main grounds for opposition to fluoridation have
+                        been expressed. First, opponents claim the benefits are
+                        exaggerated or not established. Second, there are claims
+                        of health risks to parts of the population, for example,
+                        allergic reactions. It is also accepted that high levels
+                        of fluoride can cause discoloration of otherwise healthy
+                        teeth. Proponents do not consider this to be a problem
+                        in such small concentrations, whereas opponents disagree
+                        – especially because some people drink more water and
+                        obtain much more than the standard 1 milligram of
+                        fluoride per day. Third, fluoridation is thought to be
+                        an infringement on individual rights because it is
+                        compulsory medication of all members of a community.</p>
+
+                    <p>An understanding of the fluoridation issue has important
+                        implications. If, according to the experts, fluoridation
+                        is unquestionably a beneficial and non-hazardous
+                        measure, then the wisdom of allowing the public to vote
+                        on, and reject it must be questioned.</p>
+
+                    <p>Almost all studies that have been done have assumed that
+                        the scientific aspects of the controversy are
+                        unproblematic, and they have excluded science from
+                        sociological examination. The traditional view is that
+                        science is a special kind of knowledge, which is
+                        established through scientific methods and objectively
+                        applied by members of a scientific community. However,
+                        in recent years there has been a major challenge to this
+                        picture by a sociology of science that shows how
+                        scientific knowledge is socially negotiated, and
+                        inevitably linked to the values of the relevant parties,
+                        both scientists and nonscientists. These challengers do
+                        not see scientific knowledge as exempt from social
+                        inquiry.</p>
+
+                    <p>Kuhn (1970) argued that scientific knowledge does not
+                        always develop as an orderly process, but is
+                        characterized by periodic revolutions in which the
+                        methods of study and the assessment criteria change in a
+                        fragmented way. According to Kuhn, the shift from one
+                        scientific way of thinking to another is not made solely
+                        on the basis of clear rules of formal scientific
+                        practice, but can include social factors, though Kuhn
+                        has never developed a full analysis of what these might
+                        be. Collins (1975) took this concept further when he
+                        asserted that the outcome of experiments was not
+                        something whose meaning could be immediately
+                        comprehended, but rather something for interpretation,
+                        discussion between scientists, and reinterpretation in
+                        the light of other experiments.</p>
+
+                    <p>One interpretation of this analysis of science is that
+                        traditional distinctions between facts and theories, and
+                        between scientific knowledge and values, can no longer
+                        be justified. Because social processes are involved at
+                        all stages of the creation, evaluation, and establishing
+                        of scientific knowledge, social values may also be
+                        involved.</p>
+
+                    <p>In the same way as many scientists who study fluoridation
+                        have overlooked social values, sociologists have also
+                        downplayed an important part of the debate by ignoring
+                        the number of eminent scientists who have questioned
+                        aspects of fluoridation. An example is the study by
+                        Sutton in 1960, which analyzed the classic North
+                        American studies of the effect of fluoridation on tooth
+                        decay, and found that each showed significant
+                        methodological shortcomings. Sutton's detailed study
+                        throws doubt as to the extent of reductions in tooth
+                        decay from fluoridation. Yet Sutton's book is not cited
+                        in a single analysis of the fluoridation issue by any
+                        sociologist. In a situation of some scientific
+                        uncertainty, differences in values are highlighted. A
+                        supporter of fluoridation might argue:
+                        'The evidence for the benefits of fluoridation is quite substantial, while the evidence for harm is limited and dubious. I think the likely benefits outweigh the possible dangers; hence I support fluoridation because it is the cheapest and easiest way to make sure every child reaps the benefits.'
+                        An opponent might argue:
+                        'Though the evidence for the benefits of fluoridation is substantial, there is some doubt about it. Since fluoridation is not necessary for good teeth, we should forego the benefits if there is some slight chance of harm. Some scientists claim that a small percentage of the population could be harmed by fluoride. Therefore I oppose fluoridation of water supplies and favor the voluntary use of fluoride tablets by those who want to take them.'</p>
+
+                    <p>Both arguments consider the scientific evidence
+                        concerning fluoridation, but differ in their assessments
+                        of the social benefits and costs. This difference is not
+                        between rationality and irrationality but is a
+                        legitimate difference in values, for example, the
+                        positive value placed on good teeth, the negative value
+                        placed on possible health risks, and the social benefits
+                        or costs of compulsory or voluntary intake of
+                        fluorides.</p>
+
+                    <p>From the sociological point of view, opposition to
+                        fluoridation is not necessarily irrational. Rather,
+                        claims to rationality and to scientific authority are
+                        better seen as part of a strategy to promote
+                        fluoridation than as incontrovertible statements of
+                        fact. Second, social values are likely to be bound up in
+                        any decision about fluoridation, so this is not an issue
+                        on which declarations by scientific experts ought to be
+                        considered the final word.</p>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <div class="pane questions" id="questionsPane">
+                <form id="quiz" onsubmit="return false;">
+                    <!-- Q1-5 MCQ -->
+                    <div class="q-group">
+                        <h3>Questions 1–5</h3>
+                        <div class="q-instr">
+                            <p>Choose the correct letter, <strong>A, B, C or
+                                    D</strong>.</p>
+                            <p>Write the correct letter in boxes 1–5 on your
+                                answer sheet.</p>
+                        </div>
+                        <div id="mcq-container"></div>
+                    </div>
+
+                    <!-- Q6-9 YNNG -->
+                    <div class="q-group">
+                        <h3>Questions 6–9</h3>
+                        <div class="q-instr">
+                            <p>Do the following statements agree with the views
+                                of the writer in the Reading Passage?</p>
+                            <p>In boxes 6–9 on your answer sheet, write</p>
+                            <p><strong>YES</strong> if the statement agrees with
+                                the views of the writer<br>
+                                <strong>NO</strong> if the statement contradicts
+                                the views of the writer<br>
+                                <strong>NOT GIVEN</strong> if it is impossible
+                                to say what the writer thinks about this</p>
+                        </div>
+                        <div id="ynng-container"></div>
+                    </div>
+
+                    <!-- Q10-14 Matching endings -->
+                    <div class="q-group">
+                        <h3>Questions 10–14</h3>
+                        <div class="q-instr">
+                            <p>Complete each sentence with the correct ending,
+                                <strong>A–G</strong> below.</p>
+                            <p>Write the correct letter, <strong>A–G</strong>,
+                                in boxes 10–14 on your answer sheet.</p>
+                        </div>
+                        <div class="endings-bank">
+                            <div class="eb-title">List of Endings</div>
+                            <div class="eb-item"><span class="ltr">A</span> the
+                                results of scientific research are not always
+                                understood at first</div>
+                            <div class="eb-item"><span class="ltr">B</span>
+                                scientific knowledge is objective and unaffected
+                                by social values</div>
+                            <div class="eb-item"><span class="ltr">C</span>
+                                people should be able to choose whether they
+                                want fluoride</div>
+                            <div class="eb-item"><span class="ltr">D</span>
+                                there is insufficient proof to support a
+                                cautious approach</div>
+                            <div class="eb-item"><span class="ltr">E</span> the
+                                serious damage fluoride causes far outweighs any
+                                positive effects</div>
+                            <div class="eb-item"><span class="ltr">F</span>
+                                children are not the only ones who benefit from
+                                fluoridation</div>
+                            <div class="eb-item"><span class="ltr">G</span>
+                                scientific knowledge is affected by the beliefs
+                                of everyone concerned</div>
+                        </div>
+                        <div id="match-container"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bottom-panel">
+            <div class="bottom-inner">
+                <div class="palette" id="palette"></div>
+                <div class="bottom-controls">
+                    <div class="nav-buttons">
+                        <button id="prevBtn">←</button>
+                        <button id="nextBtn">→</button>
+                    </div>
+                    <div class="test-buttons">
+                        <button class="review-btn" id="reviewBtn">📋
+                            Review</button>
+                        <button class="submit-btn" id="submitBtn">Submit
+                            ✈</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="resultOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Your Results</h3><button
+                        class="close-x"
+                        data-close="resultOverlay">×</button></div>
+                <div class="overlay-body">
+                    <div class="score-summary">
+                        <div class="big" id="resultScore">0 / 14</div>
+                        <div class="sub" id="resultSub">Score: —</div>
+                    </div>
+                    <div class="legend-row">
+                        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜
+                            No answer</span><span>👉 Click a row to jump to
+                            evidence</span>
+                    </div>
+                    <table class="result-tbl">
+                        <thead><tr><th style="width:35px">#</th><th
+                                    style="width:110px">Your Answer</th><th
+                                    style="width:110px">Correct</th><th>Explanation
+                                    &amp; Evidence</th></tr></thead>
+                        <tbody id="resultBody"></tbody>
+                    </table>
+                    <div id="detailedExplanations"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="previewOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Review Your Answers</h3><button
+                        class="close-x"
+                        data-close="previewOverlay">×</button></div>
+                <div class="overlay-body">
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const TOTAL = 14;
+const HIGHLIGHT_STORAGE_KEY = 'fluoridation_highlights_v1';
+
+const QDATA = {
+  1: { type:'mcq', answer:'A',
+    explanation:'The passage says the desired concentration of fluoride depends on "the regional temperature and hence the amount of water people are likely to drink." Regional temperature = how hot the area is. So the answer is A.',
+    evidence:'depending on the regional temperature and hence the amount of water people are likely to drink' },
+
+  2: { type:'mcq', answer:'C',
+    explanation:'The third ground for opposition is that "fluoridation is thought to be an infringement on individual rights because it is compulsory medication of all members of a community." This matches option C (takes away personal freedom).',
+    evidence:'fluoridation is thought to be an infringement on individual rights because it is compulsory medication of all members of a community' },
+
+  3: { type:'mcq', answer:'D',
+    explanation:'Kuhn argued that the shift from one scientific way of thinking to another "is not made solely on the basis of clear rules of formal scientific practice, but can include social factors." The writer uses Kuhn to show science can be influenced by non-scientific (social) considerations.',
+    evidence:'the shift from one scientific way of thinking to another is not made solely on the basis of clear rules of formal scientific practice, but can include social factors' },
+
+  4: { type:'mcq', answer:'A',
+    explanation:'Sutton analysed classic North American studies and "found that each showed significant methodological shortcomings." This matches option A — there were failings in the way the studies were carried out.',
+    evidence:'found that each showed significant methodological shortcomings' },
+
+  5: { type:'mcq', answer:'B',
+    explanation:'In the last paragraph the writer says "this is not an issue on which declarations by scientific experts ought to be considered the final word." This matches option B — scientists should not decide fluoridation policy.',
+    evidence:'this is not an issue on which declarations by scientific experts ought to be considered the final word' },
+
+  6: { type:'ynng', answer:'NO',
+    explanation:'The writer argues the OPPOSITE: "traditional distinctions between facts and theories, and between scientific knowledge and values, can no longer be justified." So the statement that scientific knowledge should be kept separate from social values contradicts the writer\'s view.',
+    evidence:'traditional distinctions between facts and theories, and between scientific knowledge and values, can no longer be justified' },
+
+  7: { type:'ynng', answer:'YES',
+    explanation:'The writer states that "sociologists have also downplayed an important part of the debate by ignoring the number of eminent scientists who have questioned aspects of fluoridation." This agrees with the statement.',
+    evidence:'sociologists have also downplayed an important part of the debate by ignoring the number of eminent scientists who have questioned aspects of fluoridation' },
+
+  8: { type:'ynng', answer:'NOT GIVEN',
+    explanation:'The passage says Sutton\'s book is "not cited in a single analysis of the fluoridation issue by any sociologist" — but it does not mention scientists "outside of North America" specifically. That detail is not given.',
+    evidence:'' },
+
+  9: { type:'ynng', answer:'YES',
+    explanation:'The writer says "Both arguments consider the scientific evidence concerning fluoridation, but differ in their assessments of the social benefits and costs… this is a legitimate difference in values." This confirms there are valid arguments on both sides.',
+    evidence:'This difference is not between rationality and irrationality but is a legitimate difference in values' },
+
+  10: { type:'match', answer:'B',
+    explanation:'The traditional view of science is that "science is a special kind of knowledge, which is established through scientific methods and objectively applied by members of a scientific community." This aligns with ending B (scientific knowledge is objective and unaffected by social values).',
+    evidence:'The traditional view is that science is a special kind of knowledge, which is established through scientific methods and objectively applied' },
+
+  11: { type:'match', answer:'G',
+    explanation:'A sociological view of science shows "how scientific knowledge is socially negotiated, and inevitably linked to the values of the relevant parties, both scientists and nonscientists." This matches ending G.',
+    evidence:'scientific knowledge is socially negotiated, and inevitably linked to the values of the relevant parties' },
+
+  12: { type:'match', answer:'A',
+    explanation:'Collins asserted that "the outcome of experiments was not something whose meaning could be immediately comprehended, but rather something for interpretation, discussion between scientists, and reinterpretation." This matches ending A (results are not always understood at first).',
+    evidence:'the outcome of experiments was not something whose meaning could be immediately comprehended' },
+
+  13: { type:'match', answer:'D',
+    explanation:'The supporter argues "the evidence for harm is limited and dubious… the likely benefits outweigh the possible dangers." This aligns with ending D — there is insufficient proof to support a cautious approach.',
+    evidence:'the likely benefits outweigh the possible dangers' },
+
+  14: { type:'match', answer:'C',
+    explanation:'The opponent says they "oppose fluoridation of water supplies and favor the voluntary use of fluoride tablets by those who want to take them." This matches ending C — people should be able to choose whether they want fluoride.',
+    evidence:'favor the voluntary use of fluoride tablets by those who want to take them' }
+};
+
+const MCQ_QUESTIONS = [
+  { q:1, statement:'The optimum amount of fluorine in fluoridated water is calculated partly according to',
+    options:[
+      { label:'A', text:'how hot the area is.' },
+      { label:'B', text:'how warm the water is.' },
+      { label:'C', text:'how many dental problems there are in the community.' },
+      { label:'D', text:'how much fluorine the community chooses to have in its water.' }
+    ]},
+  { q:2, statement:'One reason given by the writer for opposing fluoridation is that',
+    options:[
+      { label:'A', text:'it may contribute to tooth decay.' },
+      { label:'B', text:'it will be unacceptably expensive for the public.' },
+      { label:'C', text:'obligatory fluoridation takes away personal freedom.' },
+      { label:'D', text:'excessive fluoride could be added to the water by mistake.' }
+    ]},
+  { q:3, statement:'The writer mentions Kuhn in order to',
+    options:[
+      { label:'A', text:'provide a contrast with the view of Collins.' },
+      { label:'B', text:'support the rational nature of scientific inquiry.' },
+      { label:'C', text:'demonstrate that Kuhn did not argue his case adequately.' },
+      { label:'D', text:'show that science can be influenced by non-scientific considerations.' }
+    ]},
+  { q:4, statement:'What did Sutton\'s research discover about earlier studies in North America?',
+    options:[
+      { label:'A', text:'There were failings in the way they were carried out.' },
+      { label:'B', text:'The scientists involved had achieved unique results.' },
+      { label:'C', text:'Proponents of fluoridation had not understood its long-term effects.' },
+      { label:'D', text:'Fluoridation had a greater effect on tooth decay than previously believed.' }
+    ]},
+  { q:5, statement:'In the last paragraph, what does the writer say about scientists?',
+    options:[
+      { label:'A', text:'They should reveal their true motivations.' },
+      { label:'B', text:'They should not decide the fluoridation policy.' },
+      { label:'C', text:'They are solely concerned with scientific truths.' },
+      { label:'D', text:'They cannot reach agreement on the fluoridation issue.' }
+    ]}
+];
+
+const YNNG_QUESTIONS = [
+  { q:6, statement:'Scientific knowledge should be kept separate from social values.' },
+  { q:7, statement:'Many sociologists have disregarded the doubts that some scientists have concerning fluoridation.' },
+  { q:8, statement:'Sutton\'s findings have been given insufficient attention by scientists outside of North America.' },
+  { q:9, statement:'There are valid arguments on both sides of the fluoridation debate.' }
+];
+
+const MATCH_QUESTIONS = [
+  { q:10, statement:'The traditional view of science is that' },
+  { q:11, statement:'A sociological view of science argues that' },
+  { q:12, statement:'Collins is of the opinion that' },
+  { q:13, statement:'The writer suggests that a supporter of fluoridation may conclude that' },
+  { q:14, statement:'The writer suggests that an opponent of fluoridation may conclude that' }
+];
+
+const LETTERS = ['A','B','C','D','E','F','G'];
+const ALL_QUESTIONS = Array.from({length:TOTAL},(_,i)=>i+1);
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function normalize(s){return (s||'').toString().trim().toLowerCase().replace(/[.,;:!?'"()\/]/g,' ').replace(/\s+/g,' ').trim();}
+let toastTimer;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200);}
+
+/* ============================================================
+   RENDER: MCQ
+   ============================================================ */
+(function renderMCQ(){
+  const container = document.getElementById('mcq-container');
+  MCQ_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'mcq-row';
+    row.dataset.q = item.q;
+    let html = `<div class="mcq-question">
+      <span class="q-num-badge">${item.q}</span>
+      <span class="mcq-statement">${item.statement}</span>
+    </div>
+    <div class="mcq-options">`;
+    item.options.forEach(o => {
+      html += `<label class="mcq-opt">
+        <input type="radio" name="q${item.q}" value="${o.label}" aria-label="Q${item.q} ${o.label}">
+        <span class="opt-label">${o.label}.</span>
+        <span>${o.text}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+  container.addEventListener('change', (e) => {
+    if (e.target.type === 'radio') {
+      const row = e.target.closest('.mcq-row');
+      row.querySelectorAll('.mcq-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+  });
+})();
+
+/* ============================================================
+   RENDER: YNNG
+   ============================================================ */
+(function renderYNNG(){
+  const container = document.getElementById('ynng-container');
+  YNNG_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'ynng-row';
+    row.dataset.q = item.q;
+    let html = `<span class="q-num-badge">${item.q}</span>`;
+    html += `<span class="ynng-statement">${item.statement}</span>`;
+    html += `<div class="ynng-options">`;
+    ['YES','NO','NOT GIVEN'].forEach(v => {
+      html += `<label class="ynng-opt">
+        <input type="radio" name="q${item.q}" value="${v}" aria-label="Q${item.q} ${v}">
+        <span>${v}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+})();
+
+/* ============================================================
+   RENDER: MATCH
+   ============================================================ */
+(function renderMatch(){
+  const container = document.getElementById('match-container');
+  MATCH_QUESTIONS.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'match-row';
+    row.dataset.q = item.q;
+    let html = `<span class="q-num-badge">${item.q}</span>`;
+    html += `<span class="match-statement">${item.statement}</span>`;
+    html += `<div class="match-options">`;
+    LETTERS.forEach(L => {
+      html += `<label class="letter-opt" data-letter="${L}">
+        <input type="radio" name="q${item.q}" value="${L}" aria-label="Q${item.q} ${L}">
+        <span>${L}</span>
+      </label>`;
+    });
+    html += `</div><div class="feedback"></div><div class="evidence-line"></div>`;
+    row.innerHTML = html;
+    container.appendChild(row);
+  });
+  container.addEventListener('change', (e) => {
+    if (e.target.type === 'radio') {
+      const row = e.target.closest('.match-row');
+      row.querySelectorAll('.letter-opt').forEach(l => {
+        const inp = l.querySelector('input');
+        l.classList.toggle('checked', inp.checked);
+      });
+    }
+  });
+})();
+
+/* ============================================================
+   PALETTE
+   ============================================================ */
+const palette = document.getElementById('palette');
+const ps = document.createElement('div');
+ps.className = 'palette-section';
+const pl = document.createElement('strong');
+pl.className = 'palette-label';
+pl.textContent = 'Questions:';
+ps.appendChild(pl);
+ALL_QUESTIONS.forEach(n => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'palette-item';
+  b.dataset.q = n;
+  b.textContent = n;
+  b.addEventListener('click', () => goToQuestion(n));
+  ps.appendChild(b);
+});
+palette.appendChild(ps);
+
+/* ============================================================
+   ANSWER ACCESS
+   ============================================================ */
+function getUserAnswer(n){
+  const radio = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if (radio) return radio.value;
+  const input = document.querySelector(`input[type=text][name="q${n}"]`);
+  if (input) return input.value;
+  return '';
+}
+function isCorrect(n,ua){
+  const key = QDATA[n] ? QDATA[n].answer : '';
+  return normalize(ua) === normalize(key);
+}
+function refreshPaletteAnswered(){
+  document.querySelectorAll('.palette-item').forEach(b => {
+    const n = parseInt(b.dataset.q, 10);
+    const ua = getUserAnswer(n);
+    b.classList.toggle('answered', ua.trim() !== '');
+  });
+}
+document.addEventListener('input', refreshPaletteAnswered);
+document.addEventListener('change', refreshPaletteAnswered);
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+let currentQuestion = 1;
+function goToQuestion(n){
+  n = parseInt(n, 10);
+  if (!ALL_QUESTIONS.includes(n)) return;
+  currentQuestion = n;
+  const el = document.querySelector(`[data-q="${n}"]`);
+  if (el) {
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.style.transition = 'background .2s';
+    el.style.background = '#fffbeb';
+    setTimeout(() => { el.style.background = ''; }, 1200);
+  }
+  const input = document.querySelector(`input[name="q${n}"]`);
+  if (input && !input.disabled) input.focus({preventScroll:true});
+  updateCurrent();
+  updateNav();
+}
+function updateCurrent(){
+  document.querySelectorAll('.palette-item').forEach(b =>
+    b.classList.toggle('current', parseInt(b.dataset.q, 10) === currentQuestion));
+}
+function updateNav(){
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= ALL_QUESTIONS.length - 1);
+}
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(ALL_QUESTIONS[idx - 1]);
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx < ALL_QUESTIONS.length - 1) goToQuestion(ALL_QUESTIONS[idx + 1]);
+});
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+(function(){
+  const r = document.getElementById('resizer');
+  const p = document.getElementById('passagesPane');
+  const q = document.getElementById('questionsPane');
+  let d = false;
+  r.addEventListener('mousedown', e => { e.preventDefault(); d = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
+  document.addEventListener('mousemove', e => {
+    if (!d) return;
+    const rect = document.getElementById('mainSplit').getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    p.style.flex = `0 0 ${pct}%`;
+    q.style.flex = '1 1 auto';
+  });
+  document.addEventListener('mouseup', () => { d = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
+})();
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+let secondsLeft = 20 * 60;
+let timerInterval;
+const timerEl = document.getElementById('timer');
+const timerChip = document.getElementById('timerChip');
+function renderTimer(){
+  const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+  const s = String(secondsLeft % 60).padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+  timerChip.classList.remove('warning', 'danger');
+  if (secondsLeft <= 60) timerChip.classList.add('danger');
+  else if (secondsLeft <= 300) timerChip.classList.add('warning');
+}
+function startTimer(){
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(() => {
+    if (secondsLeft <= 0) { clearInterval(timerInterval); timerChip.classList.add('danger'); timerEl.textContent = '00:00'; toast('⏰ Time is up!'); return; }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast('1 minute remaining!');
+    if (secondsLeft === 300) toast('5 minutes remaining.');
+  }, 1000);
+}
+
+/* ============================================================
+   USER HIGHLIGHT + NOTE SYSTEM
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+let currentColor = 'yellow';
+
+function showPopupAt(rect){
+  const w = hlPopup.offsetWidth || 380;
+  let left = window.scrollX + rect.left + rect.width/2 - w/2;
+  left = Math.max(8, Math.min(left, window.scrollX + document.documentElement.clientWidth - w - 8));
+  let top = window.scrollY + rect.top - 54;
+  if (top < window.scrollY + 8) top = window.scrollY + rect.bottom + 8;
+  hlPopup.style.top = top + 'px';
+  hlPopup.style.left = left + 'px';
+  hlPopup.classList.add('show');
+  hlPopup.querySelectorAll('.swatch').forEach(s => {
+    s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+    s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+  });
+}
+function closePopup(){
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  currentMark = null;
+}
+
+document.addEventListener('mouseup', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup') || e.target.closest('.bottom-panel') || e.target.closest('.app-header')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
+  if (e.target.tagName === 'MARK' && e.target.classList.contains('evidence-mark')) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && el.closest && el.closest('mark.hl-user')) return;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 10);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+  const noteEl = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (noteEl) {
+    document.getElementById('note-text').value = noteEl.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = noteEl;
+    return;
+  }
+  const userMark = e.target.closest ? e.target.closest('mark.hl-user') : null;
+  if (userMark) {
+    savedRange = null;
+    currentMark = userMark;
+    showPopupAt(userMark.getBoundingClientRect());
+    return;
+  }
+});
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (hlPopup.classList.contains('show')) closePopup();
+});
+
+hlPopup.querySelectorAll('.swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    currentColor = sw.dataset.color;
+    if (currentMark && currentMark.classList.contains('hl-user')) {
+      applyColorToMark(currentMark, currentColor);
+      saveHighlights();
+      toast('Color changed');
+      closePopup();
+    } else {
+      hlPopup.querySelectorAll('.swatch').forEach(s => {
+        s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+        s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+      });
+    }
+  });
+});
+
+function applyColorToMark(mark, color) {
+  mark.classList.remove('hl-green','hl-blue','hl-pink');
+  if (color === 'green') mark.classList.add('hl-green');
+  else if (color === 'blue') mark.classList.add('hl-blue');
+  else if (color === 'pink') mark.classList.add('hl-pink');
+}
+
+document.getElementById('hl-highlight').addEventListener('click', () => {
+  if (currentMark) { closePopup(); return; }
+  if (!savedRange) { toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    applyColorToMark(m, currentColor);
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlighted');
+  } catch (err) { console.warn(err); toast('Could not highlight'); }
+});
+
+document.getElementById('hl-dehighlight').addEventListener('click', () => {
+  if (currentMark) {
+    unwrapMark(currentMark);
+    currentMark = null;
+    closePopup();
+    saveHighlights();
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange) {
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll) {
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try { if (savedRange.intersectsNode(m)) unwrapMark(m); } catch (err) {}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlights removed');
+  } else { closePopup(); }
+});
+
+function unwrapMark(mark) {
+  const p = mark.parentNode;
+  if (!p) return;
+  while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+  p.removeChild(mark);
+  if (p.normalize) p.normalize();
+}
+
+document.getElementById('hl-note').addEventListener('click', () => {
+  if (!savedRange) { toast('Select text first'); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  closePopup();
+  window.getSelection().removeAllRanges();
+});
+
+document.getElementById('note-cancel').addEventListener('click', () => {
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', () => {
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget) {
+    if (nt) {
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      unwrapMark(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    saveHighlights();
+    return;
+  }
+  if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+    saveHighlights();
+  } catch (err) { console.warn(err); }
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+/* ============================================================
+   SAVE / RESTORE USER HIGHLIGHTS
+   ============================================================ */
+function saveHighlights() {
+  try {
+    const data = [];
+    passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+      const isNote = el.classList.contains('hl-note');
+      data.push({
+        type: isNote ? 'note' : 'highlight',
+        color: el.classList.contains('hl-green') ? 'green'
+             : el.classList.contains('hl-blue') ? 'blue'
+             : el.classList.contains('hl-pink') ? 'pink' : 'yellow',
+        text: el.textContent,
+        note: el.dataset.note || ''
+      });
+    });
+    localStorage.setItem(HIGHLIGHT_STORAGE_KEY, JSON.stringify(data));
+  } catch (e) {}
+}
+
+function restoreHighlights() {
+  try {
+    const raw = localStorage.getItem(HIGHLIGHT_STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (!Array.isArray(data) || !data.length) return;
+    const walker = document.createTreeWalker(passagesEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (node.parentElement && node.parentElement.closest('mark.hl-user, .hl-note')) return NodeFilter.FILTER_REJECT;
+        return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    let combined = '';
+    let n;
+    while ((n = walker.nextNode())) {
+      nodes.push({node: n, start: combined.length, len: n.textContent.length});
+      combined += n.textContent;
+    }
+    const sorted = data
+      .map(d => ({...d, idx: combined.indexOf(d.text)}))
+      .filter(d => d.idx !== -1)
+      .sort((a,b) => b.idx - a.idx);
+    sorted.forEach(d => {
+      const start = d.idx;
+      const end = start + d.text.length;
+      const startEntry = nodes.find(e => start >= e.start && start < e.start + e.len);
+      const endEntry = nodes.find(e => end > e.start && end <= e.start + e.len);
+      if (!startEntry || !endEntry) return;
+      try {
+        const range = document.createRange();
+        range.setStart(startEntry.node, start - startEntry.start);
+        range.setEnd(endEntry.node, end - endEntry.start);
+        const el = document.createElement(d.type === 'note' ? 'span' : 'mark');
+        el.className = d.type === 'note' ? 'hl-note' : 'hl-user';
+        if (d.type === 'note') { el.dataset.note = d.note || ''; el.title = 'Note: ' + (d.note||''); }
+        else applyColorToMark(el, d.color || 'yellow');
+        el.appendChild(range.extractContents());
+        range.insertNode(el);
+      } catch (e) {}
+    });
+  } catch (e) {}
+}
+
+document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Remove all your highlights and notes?')) return;
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  toast('Highlights cleared');
+});
+
+/* ============================================================
+   EVIDENCE HIGHLIGHTING
+   ============================================================ */
+function highlightEvidence(text, qNum){
+  if (!text) return;
+  const root = document.getElementById('passagesPane');
+  if (!root) return;
+  if (root.querySelector(`mark.evidence-mark[data-q="${qNum}"]`)) return;
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) => {
+      if (node.parentElement && node.parentElement.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
+      if (node.parentElement && node.parentElement.closest('mark.evidence-mark')) return NodeFilter.FILTER_REJECT;
+      return node.textContent.indexOf(text) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  let targetNode = null, idx = -1;
+  while ((targetNode = walker.nextNode())) {
+    idx = targetNode.textContent.indexOf(text);
+    if (idx !== -1) break;
+  }
+  if (!targetNode || idx === -1) return;
+  try {
+    const range = document.createRange();
+    range.setStart(targetNode, idx);
+    range.setEnd(targetNode, idx + text.length);
+    const mark = document.createElement('mark');
+    mark.className = 'evidence-mark';
+    mark.dataset.q = qNum;
+    mark.title = 'Evidence for Q' + qNum + ' — click to jump';
+    mark.addEventListener('click', () => goToQuestion(qNum));
+    range.surroundContents(mark);
+  } catch(e) { console.warn('Could not highlight Q' + qNum, e); }
+}
+function clearEvidenceMarks(){
+  document.querySelectorAll('mark.evidence-mark').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m);
+  });
+  const pp = document.getElementById('passagesPane');
+  if (pp && pp.normalize) pp.normalize();
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  let score = 0, answered = 0;
+  document.body.classList.add('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.mcq-row, .ynng-row, .match-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.mcq-opt, .letter-opt').forEach(l => l.classList.remove('checked'));
+
+  const rows = [];
+  ALL_QUESTIONS.forEach(n => {
+    const rowEl = document.querySelector(`[data-q="${n}"]`);
+    if (!rowEl) return;
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    const d = QDATA[n];
+
+    rowEl.classList.add(ok ? 'correct' : 'wrong');
+    const fb = rowEl.querySelector('.feedback');
+    if (fb) {
+      fb.textContent = ok ? '✓ Correct' : `✗ ${ua.trim() || '(no answer)'} — Correct: ${d.answer}`;
+      fb.classList.add(ok ? 'ok' : 'no');
+    }
+    const evLine = rowEl.querySelector('.evidence-line');
+    if (evLine && d) {
+      evLine.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${d.evidence || 'Not given in the passage'}"</em>`;
+    }
+    if (d && d.evidence) highlightEvidence(d.evidence, n);
+
+    const checked = rowEl.querySelector(`input[name="q${n}"]:checked`);
+    if (checked) {
+      if (n >= 1 && n <= 5) {
+        const opt = checked.closest('.mcq-opt');
+        if (opt) opt.classList.add('checked');
+      }
+      if (n >= 10 && n <= 14) {
+        const opt = checked.closest('.letter-opt');
+        if (opt) opt.classList.add('checked');
+      }
+    }
+
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+
+    rows.push({n, ua: ua.trim() || '—', key: d.answer, ok, explanation: d.explanation, evidence: d.evidence});
+  });
+
+  document.getElementById('resultScore').textContent = `${score} / ${TOTAL}`;
+  document.getElementById('resultSub').textContent = `Score: ${score}/${TOTAL} · Answered: ${answered}/${TOTAL}`;
+
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.n}</td><td class="${r.ok ? 'correct' : 'wrong'}">${r.ua}</td><td>${r.key}</td><td class="evidence-cell">${r.evidence ? r.evidence.substring(0, 100) + (r.evidence.length > 100 ? '…' : '') : '—'}</td>`;
+    tr.title = 'Click to jump to evidence in passage';
+    tr.addEventListener('click', () => {
+      const mark = document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
+      if (mark) { mark.scrollIntoView({behavior:'smooth', block:'center'}); mark.classList.remove('flash'); void mark.offsetWidth; mark.classList.add('flash'); }
+      else toast('No passage highlight for Q' + r.n + (r.n === 8 ? ' (NOT GIVEN)' : ''));
+    });
+    tbody.appendChild(tr);
+  });
+
+  const de = document.getElementById('detailedExplanations');
+  de.innerHTML = '';
+  rows.forEach(r => {
+    const box = document.createElement('div');
+    box.className = 'explanation-box';
+    box.innerHTML = `<h4>Q${r.n} — ${r.key} ${r.ok ? '✅' : '❌'}</h4>
+      <p>${r.explanation}</p>
+      ${r.evidence ? `<div class="ev">📖 Passage: "${r.evidence}"</div>` : ''}`;
+    de.appendChild(box);
+  });
+
+  const chip = document.getElementById('bandChip');
+  chip.textContent = `${score}/${TOTAL}`;
+  chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
+
+/* ============================================================
+   REVIEW
+   ============================================================ */
+document.getElementById('reviewBtn').addEventListener('click', () => {
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = '';
+  ALL_QUESTIONS.forEach(n => {
+    const ua = getUserAnswer(n);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    closePopup();
+    notePopup.classList.remove('show');
+  }
+});
+
+/* ============================================================
+   MENU / RESET / EXPORT
+   ============================================================ */
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => { e.stopPropagation(); menuPop.classList.toggle('show'); });
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+document.getElementById('resetLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Clear all answers, highlights and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  clearEvidenceMarks();
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.mcq-row, .ynng-row, .match-row').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  document.querySelectorAll('.mcq-opt, .letter-opt').forEach(l => l.classList.remove('checked'));
+  document.getElementById('bandChip').textContent = '--';
+  document.getElementById('bandChip').classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  currentQuestion = 1; updateCurrent(); updateNav();
+  secondsLeft = 20 * 60;
+  startTimer();
+  toast('Test reset. Good luck!');
+});
+
+/* ============================================================
+   FULLSCREEN
+   ============================================================ */
+document.getElementById('fullscreenBtn').addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch (err) { toast('Fullscreen not supported'); }
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+refreshPaletteAnswered();
+updateCurrent();
+updateNav();
+renderTimer();
+startTimer();
+setTimeout(() => { restoreHighlights(); }, 50);
+</script>
+    </body>
+</html>

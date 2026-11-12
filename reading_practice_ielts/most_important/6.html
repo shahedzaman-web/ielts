@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Playing with Science — IELTS Reading Practice</title>
+        <style>
+:root{
+  --bg:#eef1f6;--text:#1e293b;--muted:#64748b;--line:#dfe5ee;
+  --accent:#0f766e;--accent-hover:#0d5c56;--accent-soft:#ccfbf1;
+  --good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2;
+  --header-h:56px;--bottom-h:200px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;padding-bottom:var(--bottom-h)}
+button{font-family:inherit;cursor:pointer;border:none}
+.app-header{position:sticky;top:0;z-index:60;height:var(--header-h);background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.app-header h1{font-size:14px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-right{display:flex;align-items:center;gap:10px}
+.band-chip{background:#0f172a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;min-width:54px;text-align:center;opacity:.35}
+.band-chip.show{opacity:1;background:var(--good)}
+.timer-chip{background:#0f172a;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px}
+.timer-chip.warning{background:#b45309}
+.timer-chip.danger{background:#b91c1c;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.icon-btn{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.icon-btn:hover{background:#f1f5f9}
+.menu-wrap{position:relative}
+.menu-pop{display:none;position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(15,23,42,.12);min-width:230px;overflow:hidden;z-index:100}
+.menu-pop.show{display:block}
+.menu-pop a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid #f1f5f9}
+.menu-pop a:last-child{border-bottom:none}
+.menu-pop a:hover{background:#f8fafc;color:var(--accent)}
+.main-split{display:flex;max-width:1600px;margin:16px auto 0;height:calc(100vh - var(--header-h) - var(--bottom-h) - 32px);min-height:560px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pane{overflow-y:auto;padding:24px 30px}
+.passages{flex:0 0 50%;background:#fcfdff}
+.questions{flex:1 1 auto;background:#fff;border-left:1px solid var(--line)}
+.resizer{flex:0 0 7px;background:#e2e8f0;cursor:col-resize;display:flex;align-items:center;justify-content:center}
+.resizer:hover{background:#cbd5e1}
+.resizer::after{content:"⇔";font-size:10px;color:#64748b}
+.passage h2{font-size:24px;margin:0 0 6px;font-weight:700}
+.passage .subtitle{color:var(--muted);font-style:italic;margin:0 0 14px}
+.par-label{display:inline-block;font-weight:700;color:var(--accent);margin-right:6px;font-size:15px}
+.part-label{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.passage p{margin:0 0 14px}
+.passage em{color:var(--muted)}
+.q-section{display:block}
+.q-group{border-bottom:2px solid #f1f5f9;padding-bottom:18px;margin-bottom:18px}
+.q-group:last-child{border-bottom:none;margin-bottom:0}
+.q-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:0 0 8px;font-weight:700}
+.q-instr{font-size:13px;color:var(--muted);background:#f8fafc;border-left:3px solid var(--line);padding:9px 12px;border-radius:0 6px 6px 0;margin-bottom:14px}
+.q-instr p{margin:0 0 3px}
+.q-instr p:last-child{margin:0}
+.q-instr strong{color:var(--text)}
+/* MATRIX */
+.match-matrix{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;margin-bottom:4px}
+.match-matrix th,.match-matrix td{border:1px solid var(--line);padding:6px 4px;text-align:center;vertical-align:middle}
+.match-matrix thead th{background:#f8fafc;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:6px 2px}
+.match-matrix thead th:first-child{text-align:left;padding-left:8px}
+.match-matrix td.stmt-cell{text-align:left;font-size:12.5px;width:44%;padding-left:8px;line-height:1.35}
+.match-matrix td.stmt-cell .q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:11px;font-weight:700;margin-right:5px;vertical-align:middle}
+.match-matrix td.radio-cell{cursor:pointer;padding:4px 2px}
+.match-matrix td.radio-cell label{display:flex;align-items:center;justify-content:center;width:100%;height:100%;cursor:pointer;margin:0}
+.match-matrix input[type=radio]{width:16px;height:16px;cursor:pointer;accent-color:var(--accent);margin:0}
+.match-matrix tr.correct td{background:var(--good-soft)}
+.match-matrix tr.wrong td{background:var(--bad-soft)}
+.match-matrix tr.correct td.stmt-cell .q-num-badge{background:#bbf7d0;color:var(--good)}
+.match-matrix tr.wrong td.stmt-cell .q-num-badge{background:#fecaca;color:var(--bad)}
+.match-matrix td.selected-correct{outline:2px solid var(--good);outline-offset:-2px}
+.match-matrix td.selected-wrong{outline:2px solid var(--bad);outline-offset:-2px}
+.match-feedback{display:none;margin-top:10px;font-size:12.5px;flex-direction:column;gap:6px}
+.graded .match-feedback{display:flex}
+.hf-item{background:#f8fafc;border-left:3px solid var(--line);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45}
+.hf-item.ok{border-left-color:var(--good);background:rgba(220,252,231,.6)}
+.hf-item.no{border-left-color:var(--bad);background:rgba(254,226,226,.6)}
+.hf-item .hf-status{font-weight:700;margin-right:6px}
+.hf-item.ok .hf-status{color:var(--good)}
+.hf-item.no .hf-status{color:var(--bad)}
+.hf-item .hf-ev{display:block;margin-top:3px;color:#475569;font-size:11.5px}
+.hf-item .hf-ev em{font-style:italic;color:var(--text)}
+.q-num-badge{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:12px;font-weight:700;flex:0 0 auto}
+/* CHOOSE TWO */
+.choose-two{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.choose-two .ct-header{font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:600}
+.choose-two .ct-header .count{color:var(--accent);font-weight:700}
+.ct-opt{display:flex;align-items:flex-start;gap:10px;font-size:14px;cursor:pointer;padding:8px 10px;border-radius:6px;border:1px solid transparent;transition:.12s;margin:0 0 4px;line-height:1.45}
+.ct-opt:hover{background:#eef2f7;border-color:#cbd5e1}
+.ct-opt input{accent-color:var(--accent);width:17px;height:17px;cursor:pointer;margin-top:2px;flex:0 0 auto}
+.ct-opt .letter{font-weight:700;color:var(--accent);flex:0 0 auto;min-width:18px}
+.ct-opt.checked{background:#e0f2f1;border-color:var(--accent)}
+.ct-opt.correct{background:var(--good-soft);border-color:var(--good)}
+.ct-opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+/* NOTES */
+.notes-block{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:14px 18px;font-size:14.5px;line-height:2.1}
+.notes-block h4{margin:0 0 8px;font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.notes-block p{margin:0 0 10px}
+.notes-block p:last-child{margin:0}
+.notes-block .q-badge{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#f1f5f9;color:#334155;border-radius:50%;font-size:11px;font-weight:700;margin-right:3px;vertical-align:middle}
+input.gap{display:inline-block;width:160px;height:28px;margin:2px 4px;padding:2px 8px;border:1px solid #94a3b8;border-radius:6px;background:#fff;font:inherit;font-size:14px;vertical-align:middle;text-align:center}
+input.gap:focus{outline:2px solid #99f6e4;border-color:var(--accent)}
+input.gap.correct{border-color:var(--good);background:var(--good-soft)}
+input.gap.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.feedback{font-size:12px;margin-top:4px;display:none;font-weight:600;flex-basis:100%}
+.graded .feedback{display:block}
+.feedback.no{color:var(--bad)}
+.feedback.ok{color:var(--good)}
+.evidence-line{display:none;font-size:12px;margin-top:5px;color:#475569;background:#f8fafc;border-left:3px solid var(--accent);padding:6px 10px;border-radius:0 6px 6px 0;line-height:1.45;flex-basis:100%}
+.graded .evidence-line{display:block}
+.evidence-line .lbl{display:inline-block;margin-right:4px;font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.evidence-line em{color:var(--text);font-style:italic}
+mark.evidence-mark{background:#dcfce7;outline:2px solid #16a34a;border-radius:3px;padding:1px 3px;cursor:pointer;transition:background .15s;position:relative}
+mark.evidence-mark:hover{background:#bbf7d0}
+mark.evidence-mark::after{content:"Q" attr(data-q);background:#16a34a;color:#fff;font-size:9px;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:super;line-height:1}
+mark.evidence-mark.flash{animation:evflash 1.4s ease}
+@keyframes evflash{0%,100%{background:#dcfce7}40%{background:#fbbf24}}
+/* USER HIGHLIGHT */
+mark.hl-user{background:#fef08a;padding:1px 2px;border-radius:3px;color:inherit}
+mark.hl-user.hl-green{background:#bbf7d0}
+mark.hl-user.hl-blue{background:#bfdbfe}
+mark.hl-user.hl-pink{background:#fbcfe8}
+.hl-note{background:#fef9c3;border-bottom:1px dotted #ca8a04;cursor:help}
+#hl-popup{position:absolute;z-index:400;display:none;background:#0f172a;border-radius:8px;padding:5px;box-shadow:0 8px 24px rgba(15,23,42,.25)}
+#hl-popup.show{display:flex;gap:3px;align-items:center}
+#hl-popup button{background:transparent;color:#fff;border-radius:6px;padding:6px 9px;font-size:13px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+#hl-popup button:hover{background:#1e293b}
+#hl-popup .color-swatches{display:flex;gap:3px;padding:0 4px;border-left:1px solid #334155;margin-left:2px}
+#hl-popup .swatch{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;padding:0}
+#hl-popup .swatch:hover{border-color:#fff;transform:scale(1.1)}
+#hl-popup .swatch[data-color="yellow"]{background:#fef08a}
+#hl-popup .swatch[data-color="green"]{background:#bbf7d0}
+#hl-popup .swatch[data-color="blue"]{background:#bfdbfe}
+#hl-popup .swatch[data-color="pink"]{background:#fbcfe8}
+#note-popup{position:fixed;inset:0;z-index:500;background:rgba(15,23,42,.5);display:none;align-items:center;justify-content:center;padding:20px}
+#note-popup.show{display:flex}
+.np-card{background:#fff;border-radius:10px;width:100%;max-width:420px;padding:18px}
+.np-card h4{margin:0 0 10px;font-size:16px}
+.np-card textarea{width:100%;border:1px solid #dfe5ee;border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:90px;box-sizing:border-box}
+.np-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.np-actions button{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600}
+.np-cancel{background:#f1f5f9;color:#334155}
+.np-save{background:var(--accent);color:#fff}
+/* BOTTOM */
+.bottom-panel{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(15,23,42,.06);padding:10px 22px;overflow-y:auto;max-height:var(--bottom-h)}
+.bottom-inner{max-width:1600px;margin:0 auto}
+.palette{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-start;margin-bottom:8px;min-height:36px}
+.palette-section{display:flex;align-items:center;flex-wrap:wrap;gap:5px;padding:2px 0}
+.palette-label{font-size:13px;font-weight:700;color:var(--accent);margin-right:4px;white-space:nowrap}
+.palette-item{width:27px;height:27px;border-radius:5px;background:#f1f5f9;color:#475569;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid transparent;transition:all .12s;cursor:pointer;padding:0}
+.palette-item:hover{background:#e2e8f0}
+.palette-item.answered{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+.palette-item.current{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 0 2px rgba(15,118,110,.22)}
+.palette-item.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.palette-item.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.bottom-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #f1f5f9;padding-top:8px}
+.nav-buttons{display:flex;gap:6px;flex:0 0 auto}
+.nav-buttons button{width:40px;height:34px;border-radius:6px;background:#fff;border:1px solid var(--line);color:#334155;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav-buttons button:hover:not(:disabled){background:#f1f5f9}
+.nav-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.test-buttons{display:flex;gap:10px;align-items:center}
+.review-btn{background:#fff;border:1px solid var(--line);color:#334155;border-radius:6px;padding:8px 18px;font-size:13px;font-weight:600}
+.review-btn:hover{background:#f1f5f9}
+.submit-btn{background:var(--accent);color:#fff;border-radius:6px;padding:8px 24px;font-size:13px;font-weight:700}
+.submit-btn:hover{background:var(--accent-hover);box-shadow:0 4px 12px rgba(15,118,110,.25)}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.55);align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.overlay-card{background:#fff;border-radius:12px;width:100%;max-width:820px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(15,23,42,.3);overflow:hidden}
+.overlay-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.overlay-head h3{margin:0;font-size:18px}
+.close-x{background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.close-x:hover{color:var(--text)}
+.overlay-body{padding:18px 22px;overflow-y:auto}
+.score-summary{background:#0f172a;color:#fff;border-radius:8px;padding:16px;text-align:center;margin-bottom:16px}
+.score-summary .big{font-size:34px;font-weight:800;color:#fbbf24}
+.score-summary .sub{font-size:13px;opacity:.85;margin-top:4px}
+table.result-tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.result-tbl th,table.result-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.result-tbl th{background:#f8fafc;font-weight:700;font-size:12px}
+table.result-tbl td.correct{color:var(--good);font-weight:700}
+table.result-tbl td.wrong{color:var(--bad);font-weight:700}
+table.result-tbl td.evidence-cell{font-size:11.5px;color:#475569;font-style:italic}
+table.result-tbl tbody tr{cursor:pointer;transition:background .12s}
+table.result-tbl tbody tr:hover{background:#f8fafc}
+.explanation-box{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:12px 16px;margin-top:16px}
+.explanation-box h4{margin:0 0 8px;font-size:14px;color:var(--accent)}
+.explanation-box p{margin:0 0 8px;font-size:13px;line-height:1.6}
+.explanation-box p:last-child{margin:0}
+.explanation-box .ev{font-style:italic;color:#475569;background:#fff;padding:6px 10px;border-radius:6px;border-left:3px solid var(--accent);font-size:12.5px;margin-top:4px}
+.legend-row{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(var(--bottom-h) + 16px);transform:translateX(-50%);z-index:500;background:#0f172a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+.pane::-webkit-scrollbar,.overlay-body::-webkit-scrollbar{width:8px}
+.pane::-webkit-scrollbar-thumb,.overlay-body::-webkit-scrollbar-track{background:#cbd5e1;border-radius:4px}
+</style>
+    </head>
+    <body>
+
+        <header class="app-header">
+            <h1>Playing with Science — IELTS Reading Practice</h1>
+            <div class="header-right">
+                <button class="icon-btn" id="fullscreenBtn">⛶
+                    Fullscreen</button>
+                <div class="band-chip" id="bandChip">--</div>
+                <div class="timer-chip" id="timerChip">⏱ <strong
+                        id="timer">20:00</strong></div>
+                <div class="menu-wrap">
+                    <button class="icon-btn" id="menuBtn">☰</button>
+                    <div class="menu-pop" id="menuPop">
+                        <a href="#" id="exportLink">📄 Export as PDF</a>
+                        <a href="#" id="clearHighlightsLink">🧹 Clear All
+                            Highlights</a>
+                        <a href="#" id="resetLink">↺ Reset Test</a>
+                        <a href="#" id="gotoTop">↑ Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="hl-popup">
+            <button id="hl-highlight">🖍 Highlight</button>
+            <div class="color-swatches">
+                <button class="swatch" data-color="yellow"
+                    title="Yellow"></button>
+                <button class="swatch" data-color="green"
+                    title="Green"></button>
+                <button class="swatch" data-color="blue" title="Blue"></button>
+                <button class="swatch" data-color="pink" title="Pink"></button>
+            </div>
+            <button id="hl-dehighlight">🧽 Clear</button>
+            <button id="hl-note">📝 Note</button>
+        </div>
+
+        <div id="note-popup">
+            <div class="np-card">
+                <h4>Add a note</h4>
+                <textarea id="note-text"
+                    placeholder="Write your note about this text..."></textarea>
+                <div class="np-actions">
+                    <button type="button" class="np-cancel"
+                        id="note-cancel">Cancel</button>
+                    <button type="button" class="np-save" id="note-save">Save
+                        Note</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-split" id="mainSplit">
+            <div class="pane passages" id="passagesPane">
+                <div class="passage">
+                    <span class="part-label">Reading Passage 2</span>
+                    <h2>Playing with science</h2>
+                    <p class="subtitle">Is science always a serious matter? No,
+                        says Pierre Laszlo, who believes that scientists are
+                        often just like children at play.</p>
+                    <p><em>You should spend about 20 minutes on Questions 14–26,
+                            which are based on Reading Passage 2 below.</em></p>
+
+                    <p><span class="par-label">A</span>The connection between
+                        science and play is not often discussed, perhaps because
+                        scientists take it for granted, or because they are at
+                        times self-conscious about it and therefore try to hide
+                        it. In this context, play might describe a number of
+                        different activities. Play might involve the exploration
+                        of new ideas for everyday objects just for curiosity; it
+                        could also include word jokes, or the playing of jokes
+                        or tricks upon other scientists. The element of play in
+                        science is thus an elusive and difficult topic, but it
+                        is fundamental to the experience of scientists.</p>
+
+                    <p><span class="par-label">B</span>One example of this
+                        connection is the jigsaw puzzle. Such puzzles present
+                        their players with two-dimensional fragments, each with
+                        a characteristic shape, from which to reconstruct an
+                        overall picture. Question the solution of a scientific
+                        problem has many similarities to completing a jigsaw
+                        puzzle. The scientists inspect each piece of data for a
+                        possible fit with its neighbours and, bit by bit,
+                        construct a whole argument. People who are good at
+                        jigsaw puzzles are able to guess which piece will fit
+                        even before trying it. In the same way, the best
+                        scientists are those who make the best guesses.</p>
+
+                    <p><span class="par-label">C</span>But scientists do not
+                        play only at out-guessing each other, or at putting
+                        together pieces to complete a puzzle. They also regard
+                        their work as 'playing' with 'toys'. Joseph Lambert, a
+                        professor of chemistry at Northwestern University in the
+                        US, shed some light on this tendency. In a letter he
+                        wrote the following:</p>
+
+                    <p><em>When I grew up, every kid put in some serious sandbox
+                            time, and it often involved building... complex sand
+                            structures around which fantasies were composed...
+                            The organic chemistry labs at Yale, and chemical
+                            transformations took place... The colours were
+                            pleasant, and they were fun in the same way. We
+                            mixed things up. Physical process of working with
+                            our hands, as with sand, was satisfying... by the
+                            end of the year, I knew that I wanted to be an
+                            organic chemist, as I realised one could play in the
+                            sandbox for a living.</em></p>
+
+                    <p><span class="par-label">D</span>Another reason for
+                        scientists' playfulness is that they are often called
+                        upon to act as teachers. They must therefore be able to
+                        communicate with children and to understand their way of
+                        thinking. This can lead to a two-way process, with
+                        children asking questions that can prompt a scientist to
+                        see things in a new light. Indeed, some scientists have
+                        admitted that a child's innocent question had in fact
+                        triggered a new line of research.</p>
+
+                    <p><span class="par-label">E</span>Playful behaviour can
+                        also take the form of tricks or hoaxes. One such trick
+                        was played at the California Institute of Technology
+                        (Caltech) in the 1990s. A physicist there had been
+                        reading the private mail of his colleagues. To catch
+                        him, they created a fake document, supposedly an email
+                        between two other scientists, which described a
+                        remarkable new discovery. The document was a complete
+                        fabrication, but it was made to look like a printout of
+                        a real email. The physicist took the bait and started
+                        telling people about this amazing new finding. He was
+                        thus exposed as the person who had been reading the
+                        private correspondence.</p>
+
+                    <p><span class="par-label">F</span>Another story involves a
+                        famous observatory. The story goes that a prominent
+                        scientist was visiting the observatory and, after a
+                        meal, pocketed a plate as a souvenir. The plate was said
+                        to be a valuable historical artifact. Years later, the
+                        observatory received a letter from the scientist's
+                        family, who had found the plate among his belongings
+                        after his death and wanted to return it. The director of
+                        the observatory was delighted to have the artifact back.
+                        However, a careful examination of the plate revealed
+                        that it was not the original. It was, in fact, a replica
+                        that had been made by friends of the director as a joke.
+                        They had planted the fake plate to see if the story of
+                        the stolen plate would be believed, and it was.</p>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <div class="pane questions" id="questionsPane">
+                <form id="quiz" onsubmit="return false;">
+                    <!-- Q14-20 matrix -->
+                    <div class="q-group">
+                        <h3>Questions 14–20</h3>
+                        <div class="q-instr">
+                            <p>The text has six paragraphs,
+                                <strong>A–F</strong>.</p>
+                            <p>Which paragraph contains the following
+                                information?</p>
+                            <p>Write the correct letter, <strong>A–F</strong>,
+                                in boxes 14–20 on your answer sheet.</p>
+                        </div>
+                        <table class="match-matrix" id="match-matrix">
+                            <colgroup>
+                                <col style="width:44%">
+                                <col span="6">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Statement</th>
+                                    <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+                                </tr>
+                            </thead>
+                            <tbody id="match-body"></tbody>
+                        </table>
+                        <div id="match-feedback" class="match-feedback"></div>
+                    </div>
+
+                    <!-- Q21-22 choose TWO -->
+                    <div class="q-group">
+                        <h3>Questions 21–22</h3>
+                        <div class="q-instr">
+                            <p>Choose <strong>TWO</strong> correct answers.</p>
+                            <p>Which <strong>TWO</strong> of the following
+                                reasons are given as possible explanations of
+                                scientists' play behaviour?</p>
+                            <p>Write the correct letters in boxes 21 and 22 on
+                                your answer sheet.</p>
+                        </div>
+                        <div class="choose-two" id="choose-two-block">
+                            <div class="ct-header">Select exactly <span
+                                    class="count">TWO</span> options. You have
+                                selected <span class="count"
+                                    id="ct-count">0</span>/2.</div>
+                            <label class="ct-opt" data-v="A"><input
+                                    type="checkbox" name="q21_22"
+                                    value="A"><span
+                                    class="letter">A</span><span>Play may
+                                    provide relief from their
+                                    work.</span></label>
+                            <label class="ct-opt" data-v="B"><input
+                                    type="checkbox" name="q21_22"
+                                    value="B"><span
+                                    class="letter">B</span><span>Scientists
+                                    sometimes spend time as
+                                    teachers.</span></label>
+                            <label class="ct-opt" data-v="C"><input
+                                    type="checkbox" name="q21_22"
+                                    value="C"><span
+                                    class="letter">C</span><span>The age of
+                                    scientists predisposes them to
+                                    play.</span></label>
+                            <label class="ct-opt" data-v="D"><input
+                                    type="checkbox" name="q21_22"
+                                    value="D"><span
+                                    class="letter">D</span><span>Scientists get
+                                    ideas from children's
+                                    questions.</span></label>
+                            <label class="ct-opt" data-v="E"><input
+                                    type="checkbox" name="q21_22"
+                                    value="E"><span
+                                    class="letter">E</span><span>Scientists are
+                                    secretive about their work.</span></label>
+                        </div>
+                        <div class="evidence-line" data-q="21"></div>
+                        <div class="evidence-line" data-q="22"></div>
+                    </div>
+
+                    <!-- Q23-26 summary -->
+                    <div class="q-group">
+                        <h3>Questions 23–26</h3>
+                        <div class="q-instr">
+                            <p>Complete the summary below.</p>
+                            <p>Write <strong>NO MORE THAN THREE WORDS</strong>
+                                from the passage for each answer.</p>
+                            <p>Write your answers in boxes 23–26 on your answer
+                                sheet.</p>
+                        </div>
+                        <div class="notes-block">
+                            <h4>Scientists play tricks</h4>
+                            <p>The passage gives two examples of tricks arising
+                                from the playfulness of scientists. Researchers
+                                at Caltech found that a colleague had been
+                                reading their <span
+                                    class="q-badge">23</span><input class="gap"
+                                    type="text" name="q23" data-q="23"
+                                    aria-label="Q23"> and used a hoax involving
+                                a fake NMR spectrum to trap the offender.
+                                Another story concerns a plate within a famous
+                                <span class="q-badge">24</span><input
+                                    class="gap" type="text" name="q24"
+                                    data-q="24" aria-label="Q24">. It is said to
+                                have been left behind on a visit to
+                                California.</p>
+                            <p>The <span class="q-badge">25</span><input
+                                    class="gap" type="text" name="q25"
+                                    data-q="25" aria-label="Q25"> that the plate
+                                was made of later revealed that it was a fake, a
+                                hoax carried out by friends of the director of
+                                the <span class="q-badge">26</span><input
+                                    class="gap" type="text" name="q26"
+                                    data-q="26" aria-label="Q26">.</p>
+                        </div>
+                        <div class="evidence-line" data-q="23"></div>
+                        <div class="evidence-line" data-q="24"></div>
+                        <div class="evidence-line" data-q="25"></div>
+                        <div class="evidence-line" data-q="26"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bottom-panel">
+            <div class="bottom-inner">
+                <div class="palette" id="palette"></div>
+                <div class="bottom-controls">
+                    <div class="nav-buttons">
+                        <button id="prevBtn">←</button>
+                        <button id="nextBtn">→</button>
+                    </div>
+                    <div class="test-buttons">
+                        <button class="review-btn" id="reviewBtn">📋
+                            Review</button>
+                        <button class="submit-btn" id="submitBtn">Submit
+                            ✈</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="resultOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Your Results</h3><button
+                        class="close-x"
+                        data-close="resultOverlay">×</button></div>
+                <div class="overlay-body">
+                    <div class="score-summary">
+                        <div class="big" id="resultScore">0 / 13</div>
+                        <div class="sub" id="resultSub">Score: —</div>
+                    </div>
+                    <div class="legend-row">
+                        <span>🟩 Correct</span><span>🟥 Incorrect</span><span>⬜
+                            No answer</span><span>👉 Click a row to jump to
+                            evidence</span>
+                    </div>
+                    <table class="result-tbl">
+                        <thead><tr><th style="width:35px">#</th><th
+                                    style="width:110px">Your Answer</th><th
+                                    style="width:110px">Correct</th><th>Explanation
+                                    &amp; Evidence</th></tr></thead>
+                        <tbody id="resultBody"></tbody>
+                    </table>
+                    <div id="detailedExplanations"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="previewOverlay">
+            <div class="overlay-card">
+                <div class="overlay-head"><h3>Review Your Answers</h3><button
+                        class="close-x"
+                        data-close="previewOverlay">×</button></div>
+                <div class="overlay-body">
+                    <table class="result-tbl">
+                        <thead><tr><th>#</th><th>Your Answer</th></tr></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const TOTAL = 13;
+const HIGHLIGHT_STORAGE_KEY = 'playing_with_science_highlights_v1';
+
+const QDATA = {
+  14: { type:'match', answer:'B',
+    explanation:'Paragraph B compares the jigsaw puzzle to scientific research: "Question the solution of a scientific problem has many similarities to completing a jigsaw puzzle."',
+    evidence:'Question the solution of a scientific problem has many similarities to completing a jigsaw puzzle' },
+
+  15: { type:'match', answer:'E',
+    explanation:'Paragraph E describes a trick designed to identify someone: a colleague was reading private mail, so they "created a fake document... The physicist took the bait... He was thus exposed as the person who had been reading the private correspondence."',
+    evidence:'To catch him, they created a fake document' },
+
+  16: { type:'match', answer:'C',
+    explanation:'Paragraph C explains why Joseph Lambert decided on his career: "by the end of the year, I knew that I wanted to be an organic chemist, as I realised one could play in the sandbox for a living."',
+    evidence:'by the end of the year, I knew that I wanted to be an organic chemist, as I realised one could play in the sandbox for a living' },
+
+  17: { type:'match', answer:'A',
+    explanation:'Paragraph A gives the reason why scientists might not talk about their playfulness: "perhaps because scientists take it for granted, or because they are at times self-conscious about it and therefore try to hide it."',
+    evidence:'perhaps because scientists take it for granted, or because they are at times self-conscious about it and therefore try to hide it' },
+
+  18: { type:'match', answer:'F',
+    explanation:'Paragraph F describes a hoax involving a copied object: "a careful examination of the plate revealed that it was not the original. It was, in fact, a replica that had been made by friends of the director as a joke."',
+    evidence:'a careful examination of the plate revealed that it was not the original' },
+
+  19: { type:'match', answer:'A',
+    explanation:'Paragraph A states that playing is essential to being a scientist: "The element of play in science is thus an elusive and difficult topic, but it is fundamental to the experience of scientists."',
+    evidence:'but it is fundamental to the experience of scientists' },
+
+  20: { type:'match', answer:'D',
+    explanation:'Paragraph D gives an example of how a conversation with a child can influence a scientist: "some scientists have admitted that a child\'s innocent question had in fact triggered a new line of research."',
+    evidence:"a child's innocent question had in fact triggered a new line of research" },
+
+  21: { type:'choose', answer:'B',
+    explanation:'Paragraph D gives one reason: "Another reason for scientists\' playfulness is that they are often called upon to act as teachers." So B is correct.',
+    evidence:'they are often called upon to act as teachers' },
+
+  22: { type:'choose', answer:'D',
+    explanation:'Paragraph D gives another reason: "children asking questions that can prompt a scientist to see things in a new light. Indeed, some scientists have admitted that a child\'s innocent question had in fact triggered a new line of research." So D is correct.',
+    evidence:"a child's innocent question had in fact triggered a new line of research" },
+
+  23: { type:'completion', answer:'private mail',
+    explanation:'The passage states: "A physicist there had been reading the private mail of his colleagues." The blank is "private mail".',
+    evidence:'reading the private mail of his colleagues' },
+
+  24: { type:'completion', answer:'observatory',
+    explanation:'The passage states: "Another story involves a famous observatory." The blank is "observatory".',
+    evidence:'Another story involves a famous observatory' },
+
+  25: { type:'completion', answer:'examination',
+    explanation:'The passage states: "a careful examination of the plate revealed that it was not the original." The blank is "examination".',
+    evidence:'a careful examination of the plate revealed that it was not the original' },
+
+  26: { type:'completion', answer:'observatory',
+    explanation:'The passage states the plate was "a replica that had been made by friends of the director as a joke." The director is of the "observatory".',
+    evidence:'a replica that had been made by friends of the director as a joke' }
+};
+
+const MATCH_QUESTIONS = [
+  { q:14, statement:'a comparison between doing a jigsaw and doing research' },
+  { q:15, statement:'a description of a trick designed to identify someone' },
+  { q:16, statement:'the reason a scientist decided on his career' },
+  { q:17, statement:'a reference to why scientists might not talk about their playfulness' },
+  { q:18, statement:'an account of a hoax involving a copied object' },
+  { q:19, statement:'a statement that playing is an essential part of being a scientist' },
+  { q:20, statement:'an example of how a conversation with a child can influence a scientist' }
+];
+
+const PARAGRAPH_LETTERS = ['A','B','C','D','E','F'];
+const ALL_QUESTIONS = Array.from({length:13},(_,i)=>i+14); // 14..26
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function normalize(s){return (s||'').toString().trim().toLowerCase().replace(/[.,;:!?'"()]/g,'').replace(/\s+/g,' ');}
+let toastTimer;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200);}
+
+/* ============================================================
+   RENDER Q14-20 matrix
+   ============================================================ */
+(function renderMatchMatrix(){
+  const tbody = document.getElementById('match-body');
+  MATCH_QUESTIONS.forEach(item => {
+    const tr = document.createElement('tr');
+    tr.className = 'match-tr';
+    tr.dataset.q = item.q;
+    const tdStmt = document.createElement('td');
+    tdStmt.className = 'stmt-cell';
+    tdStmt.innerHTML = `<span class="q-num-badge">${item.q}</span>${item.statement}`;
+    tr.appendChild(tdStmt);
+    PARAGRAPH_LETTERS.forEach(L => {
+      const td = document.createElement('td');
+      td.className = 'radio-cell';
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `q${item.q}`;
+      input.value = L;
+      input.setAttribute('aria-label', `Q${item.q} ${L}`);
+      label.appendChild(input);
+      td.appendChild(label);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+})();
+
+/* ============================================================
+   Q21-22 checkbox limit (max 2)
+   ============================================================ */
+(function initChooseTwo(){
+  const checkboxes = document.querySelectorAll('input[name="q21_22"]');
+  const countEl = document.getElementById('ct-count');
+  function refresh(){
+    const checked = document.querySelectorAll('input[name="q21_22"]:checked');
+    countEl.textContent = checked.length;
+    checkboxes.forEach(cb => {
+      const lbl = cb.closest('.ct-opt');
+      if (lbl) lbl.classList.toggle('checked', cb.checked);
+    });
+  }
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll('input[name="q21_22"]:checked');
+      if (checked.length > 2) {
+        cb.checked = false;
+        toast('You can only select TWO answers');
+      }
+      refresh();
+    });
+  });
+})();
+
+/* ============================================================
+   PALETTE
+   ============================================================ */
+const palette = document.getElementById('palette');
+const ps = document.createElement('div');
+ps.className = 'palette-section';
+const pl = document.createElement('strong');
+pl.className = 'palette-label';
+pl.textContent = 'Questions:';
+ps.appendChild(pl);
+ALL_QUESTIONS.forEach(n => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'palette-item';
+  b.dataset.q = n;
+  b.textContent = n;
+  b.addEventListener('click', () => goToQuestion(n));
+  ps.appendChild(b);
+});
+palette.appendChild(ps);
+
+/* ============================================================
+   ANSWER ACCESS
+   ============================================================ */
+function getUserAnswer(n){
+  if (n === 21 || n === 22) {
+    const checked = Array.from(document.querySelectorAll('input[name="q21_22"]:checked')).map(c => c.value);
+    if (n === 21) return checked.includes('B') ? 'B' : (checked[0] || '');
+    if (n === 22) return checked.includes('D') ? 'D' : (checked[1] || checked[0] || '');
+    return '';
+  }
+  const radio = document.querySelector(`input[type=radio][name="q${n}"]:checked`);
+  if (radio) return radio.value;
+  const input = document.querySelector(`input[type=text][name="q${n}"]`);
+  if (input) return input.value;
+  return '';
+}
+function isCorrect(n,ua){
+  if (n === 21) {
+    return document.querySelectorAll('input[name="q21_22"]:checked') &&
+           Array.from(document.querySelectorAll('input[name="q21_22"]:checked')).some(c => c.value === 'B');
+  }
+  if (n === 22) {
+    return Array.from(document.querySelectorAll('input[name="q21_22"]:checked')).some(c => c.value === 'D');
+  }
+  const key = QDATA[n] ? QDATA[n].answer : '';
+  return normalize(ua) === normalize(key);
+}
+function refreshPaletteAnswered(){
+  document.querySelectorAll('.palette-item').forEach(b => {
+    const n = parseInt(b.dataset.q, 10);
+    let answered = false;
+    if (n === 21 || n === 22) {
+      const checked = document.querySelectorAll('input[name="q21_22"]:checked');
+      // mark both 21 and 22 as answered if any choice is made
+      answered = checked.length > 0;
+    } else {
+      const ua = getUserAnswer(n);
+      answered = ua.trim() !== '';
+    }
+    b.classList.toggle('answered', answered);
+  });
+}
+document.addEventListener('input', refreshPaletteAnswered);
+document.addEventListener('change', refreshPaletteAnswered);
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+let currentQuestion = 14;
+function goToQuestion(n){
+  n = parseInt(n, 10);
+  if (!ALL_QUESTIONS.includes(n)) return;
+  currentQuestion = n;
+  const el = document.querySelector(`[data-q="${n}"]`);
+  if (el) {
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.style.transition = 'background .2s';
+    el.style.background = '#fffbeb';
+    setTimeout(() => { el.style.background = ''; }, 1200);
+  }
+  const input = document.querySelector(`input[name="q${n}"]`);
+  if (input && !input.disabled) input.focus({preventScroll:true});
+  updateCurrent();
+  updateNav();
+}
+function updateCurrent(){
+  document.querySelectorAll('.palette-item').forEach(b =>
+    b.classList.toggle('current', parseInt(b.dataset.q, 10) === currentQuestion));
+}
+function updateNav(){
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  document.getElementById('prevBtn').disabled = (idx <= 0);
+  document.getElementById('nextBtn').disabled = (idx >= ALL_QUESTIONS.length - 1);
+}
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx > 0) goToQuestion(ALL_QUESTIONS[idx - 1]);
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const idx = ALL_QUESTIONS.indexOf(currentQuestion);
+  if (idx < ALL_QUESTIONS.length - 1) goToQuestion(ALL_QUESTIONS[idx + 1]);
+});
+
+/* ============================================================
+   RESIZER
+   ============================================================ */
+(function(){
+  const r = document.getElementById('resizer');
+  const p = document.getElementById('passagesPane');
+  const q = document.getElementById('questionsPane');
+  let d = false;
+  r.addEventListener('mousedown', e => { e.preventDefault(); d = true; document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; });
+  document.addEventListener('mousemove', e => {
+    if (!d) return;
+    const rect = document.getElementById('mainSplit').getBoundingClientRect();
+    let pct = ((e.clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(25, Math.min(75, pct));
+    p.style.flex = `0 0 ${pct}%`;
+    q.style.flex = '1 1 auto';
+  });
+  document.addEventListener('mouseup', () => { d = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
+})();
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+let secondsLeft = 20 * 60;
+let timerInterval;
+const timerEl = document.getElementById('timer');
+const timerChip = document.getElementById('timerChip');
+function renderTimer(){
+  const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+  const s = String(secondsLeft % 60).padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+  timerChip.classList.remove('warning', 'danger');
+  if (secondsLeft <= 60) timerChip.classList.add('danger');
+  else if (secondsLeft <= 300) timerChip.classList.add('warning');
+}
+function startTimer(){
+  clearInterval(timerInterval);
+  renderTimer();
+  timerInterval = setInterval(() => {
+    if (secondsLeft <= 0) { clearInterval(timerInterval); timerChip.classList.add('danger'); timerEl.textContent = '00:00'; toast('⏰ Time is up!'); return; }
+    secondsLeft--;
+    renderTimer();
+    if (secondsLeft === 60) toast('1 minute remaining!');
+    if (secondsLeft === 300) toast('5 minutes remaining.');
+  }, 1000);
+}
+
+/* ============================================================
+   USER HIGHLIGHT + NOTE SYSTEM
+   ============================================================ */
+const hlPopup = document.getElementById('hl-popup');
+const notePopup = document.getElementById('note-popup');
+const passagesEl = document.getElementById('passagesPane');
+const questionsEl = document.getElementById('questionsPane');
+let savedRange = null, currentMark = null, noteSaveTarget = null, pendingNoteRange = null;
+let currentColor = 'yellow';
+
+function showPopupAt(rect){
+  const w = hlPopup.offsetWidth || 380;
+  let left = window.scrollX + rect.left + rect.width/2 - w/2;
+  left = Math.max(8, Math.min(left, window.scrollX + document.documentElement.clientWidth - w - 8));
+  let top = window.scrollY + rect.top - 54;
+  if (top < window.scrollY + 8) top = window.scrollY + rect.bottom + 8;
+  hlPopup.style.top = top + 'px';
+  hlPopup.style.left = left + 'px';
+  hlPopup.classList.add('show');
+  hlPopup.querySelectorAll('.swatch').forEach(s => {
+    s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+    s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+  });
+}
+function closePopup(){
+  hlPopup.classList.remove('show');
+  savedRange = null;
+  currentMark = null;
+}
+
+document.addEventListener('mouseup', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup') || e.target.closest('.bottom-panel') || e.target.closest('.app-header')) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'LABEL') return;
+  if (e.target.tagName === 'MARK' && e.target.classList.contains('evidence-mark')) return;
+  setTimeout(() => {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount && !sel.isCollapsed) {
+      const range = sel.getRangeAt(0);
+      const c = range.commonAncestorContainer;
+      const el = c.nodeType === 1 ? c : c.parentElement;
+      if (el && el.closest && el.closest('mark.hl-user')) return;
+      if (el && (passagesEl.contains(el) || questionsEl.contains(el))) {
+        savedRange = range.cloneRange();
+        currentMark = null;
+        showPopupAt(range.getBoundingClientRect());
+      }
+    }
+  }, 10);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (!e.target.closest('.passages') && !e.target.closest('.questions')) return;
+  const noteEl = e.target.closest ? e.target.closest('.hl-note') : null;
+  if (noteEl) {
+    document.getElementById('note-text').value = noteEl.dataset.note || '';
+    pendingNoteRange = null;
+    notePopup.classList.add('show');
+    noteSaveTarget = noteEl;
+    return;
+  }
+  const userMark = e.target.closest ? e.target.closest('mark.hl-user') : null;
+  if (userMark) {
+    savedRange = null;
+    currentMark = userMark;
+    showPopupAt(userMark.getBoundingClientRect());
+    return;
+  }
+});
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest('#hl-popup') || e.target.closest('#note-popup')) return;
+  if (hlPopup.classList.contains('show')) closePopup();
+});
+
+hlPopup.querySelectorAll('.swatch').forEach(sw => {
+  sw.addEventListener('click', () => {
+    currentColor = sw.dataset.color;
+    if (currentMark && currentMark.classList.contains('hl-user')) {
+      applyColorToMark(currentMark, currentColor);
+      saveHighlights();
+      toast('Color changed');
+      closePopup();
+    } else {
+      hlPopup.querySelectorAll('.swatch').forEach(s => {
+        s.style.borderColor = s.dataset.color === currentColor ? '#fff' : 'transparent';
+        s.style.transform = s.dataset.color === currentColor ? 'scale(1.15)' : 'scale(1)';
+      });
+    }
+  });
+});
+
+function applyColorToMark(mark, color) {
+  mark.classList.remove('hl-green','hl-blue','hl-pink');
+  if (color === 'green') mark.classList.add('hl-green');
+  else if (color === 'blue') mark.classList.add('hl-blue');
+  else if (color === 'pink') mark.classList.add('hl-pink');
+}
+
+document.getElementById('hl-highlight').addEventListener('click', () => {
+  if (currentMark) { closePopup(); return; }
+  if (!savedRange) { toast('Select text first'); return; }
+  try {
+    const m = document.createElement('mark');
+    m.className = 'hl-user';
+    applyColorToMark(m, currentColor);
+    m.appendChild(savedRange.extractContents());
+    savedRange.insertNode(m);
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlighted');
+  } catch (err) { console.warn(err); toast('Could not highlight'); }
+});
+
+document.getElementById('hl-dehighlight').addEventListener('click', () => {
+  if (currentMark) {
+    unwrapMark(currentMark);
+    currentMark = null;
+    closePopup();
+    saveHighlights();
+    toast('Highlight removed');
+    return;
+  }
+  if (savedRange) {
+    const c = savedRange.commonAncestorContainer;
+    const root = c.nodeType === 1 ? c : (c.parentElement || c.parentNode);
+    if (root && root.querySelectorAll) {
+      root.querySelectorAll('mark.hl-user').forEach(m => {
+        try { if (savedRange.intersectsNode(m)) unwrapMark(m); } catch (err) {}
+      });
+    }
+    window.getSelection().removeAllRanges();
+    closePopup();
+    saveHighlights();
+    toast('Highlights removed');
+  } else { closePopup(); }
+});
+
+function unwrapMark(mark) {
+  const p = mark.parentNode;
+  if (!p) return;
+  while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+  p.removeChild(mark);
+  if (p.normalize) p.normalize();
+}
+
+document.getElementById('hl-note').addEventListener('click', () => {
+  if (!savedRange) { toast('Select text first'); return; }
+  pendingNoteRange = savedRange.cloneRange();
+  noteSaveTarget = null;
+  document.getElementById('note-text').value = '';
+  notePopup.classList.add('show');
+  closePopup();
+  window.getSelection().removeAllRanges();
+});
+
+document.getElementById('note-cancel').addEventListener('click', () => {
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+  noteSaveTarget = null;
+});
+
+document.getElementById('note-save').addEventListener('click', () => {
+  const nt = document.getElementById('note-text').value.trim();
+  if (noteSaveTarget) {
+    if (nt) {
+      noteSaveTarget.dataset.note = nt;
+      noteSaveTarget.title = 'Note: ' + nt;
+      toast('Note updated');
+    } else {
+      unwrapMark(noteSaveTarget);
+      toast('Note removed');
+    }
+    noteSaveTarget = null;
+    notePopup.classList.remove('show');
+    document.getElementById('note-text').value = '';
+    saveHighlights();
+    return;
+  }
+  if (!nt || !pendingNoteRange) { notePopup.classList.remove('show'); return; }
+  try {
+    const sp = document.createElement('span');
+    sp.className = 'hl-note';
+    sp.title = 'Note: ' + nt;
+    sp.dataset.note = nt;
+    sp.appendChild(pendingNoteRange.extractContents());
+    pendingNoteRange.insertNode(sp);
+    toast('Note saved');
+    saveHighlights();
+  } catch (err) { console.warn(err); }
+  document.getElementById('note-text').value = '';
+  notePopup.classList.remove('show');
+  pendingNoteRange = null;
+});
+
+/* ============================================================
+   SAVE / RESTORE USER HIGHLIGHTS
+   ============================================================ */
+function saveHighlights() {
+  try {
+    const data = [];
+    passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => {
+      const isNote = el.classList.contains('hl-note');
+      data.push({
+        type: isNote ? 'note' : 'highlight',
+        color: el.classList.contains('hl-green') ? 'green'
+             : el.classList.contains('hl-blue') ? 'blue'
+             : el.classList.contains('hl-pink') ? 'pink' : 'yellow',
+        text: el.textContent,
+        note: el.dataset.note || ''
+      });
+    });
+    localStorage.setItem(HIGHLIGHT_STORAGE_KEY, JSON.stringify(data));
+  } catch (e) {}
+}
+
+function restoreHighlights() {
+  try {
+    const raw = localStorage.getItem(HIGHLIGHT_STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (!Array.isArray(data) || !data.length) return;
+    const walker = document.createTreeWalker(passagesEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => {
+        if (node.parentElement && node.parentElement.closest('mark.hl-user, .hl-note')) return NodeFilter.FILTER_REJECT;
+        return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    let combined = '';
+    let n;
+    while ((n = walker.nextNode())) {
+      nodes.push({node: n, start: combined.length, len: n.textContent.length});
+      combined += n.textContent;
+    }
+    const sorted = data
+      .map(d => ({...d, idx: combined.indexOf(d.text)}))
+      .filter(d => d.idx !== -1)
+      .sort((a,b) => b.idx - a.idx);
+    sorted.forEach(d => {
+      const start = d.idx;
+      const end = start + d.text.length;
+      const startEntry = nodes.find(e => start >= e.start && start < e.start + e.len);
+      const endEntry = nodes.find(e => end > e.start && end <= e.start + e.len);
+      if (!startEntry || !endEntry) return;
+      try {
+        const range = document.createRange();
+        range.setStart(startEntry.node, start - startEntry.start);
+        range.setEnd(endEntry.node, end - endEntry.start);
+        const el = document.createElement(d.type === 'note' ? 'span' : 'mark');
+        el.className = d.type === 'note' ? 'hl-note' : 'hl-user';
+        if (d.type === 'note') { el.dataset.note = d.note || ''; el.title = 'Note: ' + (d.note||''); }
+        else applyColorToMark(el, d.color || 'yellow');
+        el.appendChild(range.extractContents());
+        range.insertNode(el);
+      } catch (e) {}
+    });
+  } catch (e) {}
+}
+
+document.getElementById('clearHighlightsLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Remove all your highlights and notes?')) return;
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  toast('Highlights cleared');
+});
+
+/* ============================================================
+   EVIDENCE HIGHLIGHTING
+   ============================================================ */
+function highlightEvidence(text, qNum){
+  if (!text) return;
+  const root = document.getElementById('passagesPane');
+  if (!root) return;
+  if (root.querySelector(`mark.evidence-mark[data-q="${qNum}"]`)) return;
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) => {
+      if (node.parentElement && node.parentElement.tagName === 'MARK') return NodeFilter.FILTER_REJECT;
+      if (node.parentElement && node.parentElement.closest('mark.evidence-mark')) return NodeFilter.FILTER_REJECT;
+      return node.textContent.indexOf(text) !== -1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  let targetNode = null, idx = -1;
+  while ((targetNode = walker.nextNode())) {
+    idx = targetNode.textContent.indexOf(text);
+    if (idx !== -1) break;
+  }
+  if (!targetNode || idx === -1) return;
+  try {
+    const range = document.createRange();
+    range.setStart(targetNode, idx);
+    range.setEnd(targetNode, idx + text.length);
+    const mark = document.createElement('mark');
+    mark.className = 'evidence-mark';
+    mark.dataset.q = qNum;
+    mark.title = 'Evidence for Q' + qNum + ' — click to jump';
+    mark.addEventListener('click', () => goToQuestion(qNum));
+    range.surroundContents(mark);
+  } catch(e) { console.warn('Could not highlight Q' + qNum, e); }
+}
+function clearEvidenceMarks(){
+  document.querySelectorAll('mark.evidence-mark').forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m);
+  });
+  const pp = document.getElementById('passagesPane');
+  if (pp && pp.normalize) pp.normalize();
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  let score = 0, answered = 0;
+  document.body.classList.add('graded');
+  clearEvidenceMarks();
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.match-tr').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.match-matrix td').forEach(td => td.classList.remove('selected-correct', 'selected-wrong'));
+  document.querySelectorAll('.ct-opt').forEach(l => l.classList.remove('correct', 'wrong'));
+
+  const rows = [];
+
+  // Q14-20 matrix
+  MATCH_QUESTIONS.forEach(item => {
+    const n = item.q;
+    const rowEl = document.querySelector(`[data-q="${n}"]`);
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    const d = QDATA[n];
+    rowEl.classList.add(ok ? 'correct' : 'wrong');
+    const checked = rowEl.querySelector(`input[name="q${n}"]:checked`);
+    if (checked) {
+      const td = checked.closest('td');
+      if (td) td.classList.add(ok ? 'selected-correct' : 'selected-wrong');
+    }
+    if (d && d.evidence) highlightEvidence(d.evidence, n);
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+    rows.push({n, ua: ua.trim() || '—', key: d.answer, ok, explanation: d.explanation, evidence: d.evidence});
+  });
+
+  // Q21-22
+  const checked21 = Array.from(document.querySelectorAll('input[name="q21_22"]:checked')).map(c => c.value);
+  const hasB = checked21.includes('B');
+  const hasD = checked21.includes('D');
+  const ua21 = hasB ? 'B' : (checked21[0] || '—');
+  const ua22 = hasD ? 'D' : (checked21[1] || checked21[0] || '—');
+  const ok21 = hasB, ok22 = hasD;
+  if (hasB || hasD) answered += (hasB ? 1 : 0) + (hasD ? 1 : 0);
+  if (hasB) score++;
+  if (hasD) score++;
+  // mark labels
+  document.querySelectorAll('.ct-opt').forEach(lbl => {
+    const v = lbl.dataset.v;
+    if (v === 'B' && hasB) lbl.classList.add('correct');
+    else if (v === 'D' && hasD) lbl.classList.add('correct');
+    else if ((v === 'B' || v === 'D') && !hasB && !hasD) lbl.classList.add('wrong');
+    else if (v === 'B' && !hasB && checked21.length > 0) lbl.classList.add('wrong');
+    else if (v === 'D' && !hasD && checked21.length > 0) lbl.classList.add('wrong');
+  });
+  document.querySelectorAll('.evidence-line[data-q="21"]').forEach(el => {
+    el.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${QDATA[21].evidence}"</em>`;
+  });
+  document.querySelectorAll('.evidence-line[data-q="22"]').forEach(el => {
+    el.innerHTML = `<span class="lbl">📖 Evidence</span> <em>"${QDATA[22].evidence}"</em>`;
+  });
+  highlightEvidence(QDATA[21].evidence, 21);
+  highlightEvidence(QDATA[22].evidence, 22);
+
+  const pal21 = document.querySelector(`.palette-item[data-q="21"]`);
+  if (pal21) pal21.classList.add(ok21 ? 'correct' : 'wrong');
+  const pal22 = document.querySelector(`.palette-item[data-q="22"]`);
+  if (pal22) pal22.classList.add(ok22 ? 'correct' : 'wrong');
+
+  rows.push({n:21, ua: ua21 || '—', key:'B', ok: ok21, explanation: QDATA[21].explanation, evidence: QDATA[21].evidence});
+  rows.push({n:22, ua: ua22 || '—', key:'D', ok: ok22, explanation: QDATA[22].explanation, evidence: QDATA[22].evidence});
+
+  // Q23-26 completion
+  [23,24,25,26].forEach(n => {
+    const ua = getUserAnswer(n);
+    if (ua.trim() !== '') answered++;
+    const ok = isCorrect(n, ua);
+    if (ok) score++;
+    const d = QDATA[n];
+    const input = document.querySelector(`.gap[name="q${n}"]`);
+    if (input) input.classList.add(ok ? 'correct' : 'wrong');
+    const ev = document.querySelector(`.evidence-line[data-q="${n}"]`);
+    if (ev && d) {
+      ev.innerHTML = `${ok ? '✓' : '✗ ' + (ua.trim() || '(no answer)') + ' — Correct: ' + d.answer} &nbsp;|&nbsp; <span class="lbl">📖 Evidence</span> <em>"${d.evidence}"</em>`;
+    }
+    if (d && d.evidence) highlightEvidence(d.evidence, n);
+    const pal = document.querySelector(`.palette-item[data-q="${n}"]`);
+    if (pal) pal.classList.add(ok ? 'correct' : 'wrong');
+    rows.push({n, ua: ua.trim() || '—', key: d.answer, ok, explanation: d.explanation, evidence: d.evidence});
+  });
+
+  // sort by n
+  rows.sort((a,b) => a.n - b.n);
+
+  document.getElementById('resultScore').textContent = `${score} / ${TOTAL}`;
+  document.getElementById('resultSub').textContent = `Score: ${score}/${TOTAL} · Answered: ${answered}/${TOTAL}`;
+
+  const tbody = document.getElementById('resultBody');
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.n}</td><td class="${r.ok ? 'correct' : 'wrong'}">${r.ua}</td><td>${r.key}</td><td class="evidence-cell">${r.evidence ? r.evidence.substring(0, 100) + (r.evidence.length > 100 ? '…' : '') : ''}</td>`;
+    tr.title = 'Click to jump to evidence in passage';
+    tr.addEventListener('click', () => {
+      const mark = document.querySelector(`mark.evidence-mark[data-q="${r.n}"]`);
+      if (mark) { mark.scrollIntoView({behavior:'smooth', block:'center'}); mark.classList.remove('flash'); void mark.offsetWidth; mark.classList.add('flash'); }
+      else toast('No passage highlight for Q' + r.n);
+    });
+    tbody.appendChild(tr);
+  });
+
+  const de = document.getElementById('detailedExplanations');
+  de.innerHTML = '';
+  rows.forEach(r => {
+    const box = document.createElement('div');
+    box.className = 'explanation-box';
+    box.innerHTML = `<h4>Q${r.n} — ${r.key} ${r.ok ? '✅' : '❌'}</h4>
+      <p>${r.explanation}</p>
+      ${r.evidence ? `<div class="ev">📖 Passage: "${r.evidence}"</div>` : ''}`;
+    de.appendChild(box);
+  });
+
+  const chip = document.getElementById('bandChip');
+  chip.textContent = `${score}/${TOTAL}`;
+  chip.classList.add('show');
+  document.getElementById('resultOverlay').classList.add('show');
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
+
+/* ============================================================
+   REVIEW
+   ============================================================ */
+document.getElementById('reviewBtn').addEventListener('click', () => {
+  const tbody = document.getElementById('previewBody');
+  tbody.innerHTML = '';
+  ALL_QUESTIONS.forEach(n => {
+    let ua = '';
+    if (n === 21 || n === 22) {
+      const checked = Array.from(document.querySelectorAll('input[name="q21_22"]:checked')).map(c => c.value);
+      ua = checked.length ? checked.join(', ') : '';
+    } else {
+      ua = getUserAnswer(n);
+    }
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${n}</td><td>${ua.trim() || '—'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('previewOverlay').classList.add('show');
+});
+
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => document.getElementById(b.dataset.close).classList.remove('show')));
+document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) o.classList.remove('show'); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('show'));
+    closePopup();
+    notePopup.classList.remove('show');
+  }
+});
+
+/* ============================================================
+   MENU / RESET / EXPORT
+   ============================================================ */
+const menuPop = document.getElementById('menuPop');
+document.getElementById('menuBtn').addEventListener('click', e => { e.stopPropagation(); menuPop.classList.toggle('show'); });
+document.addEventListener('click', () => menuPop.classList.remove('show'));
+menuPop.addEventListener('click', e => e.stopPropagation());
+
+document.getElementById('exportLink').addEventListener('click', e => { e.preventDefault(); window.print(); });
+document.getElementById('gotoTop').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.getElementById('passagesPane').scrollTop = 0;
+  document.getElementById('questionsPane').scrollTop = 0;
+});
+
+document.getElementById('resetLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (!confirm('Clear all answers, highlights and reset the test?')) return;
+  document.getElementById('quiz').reset();
+  document.body.classList.remove('graded');
+  clearEvidenceMarks();
+  passagesEl.querySelectorAll('mark.hl-user, .hl-note').forEach(el => unwrapMark(el));
+  try { localStorage.removeItem(HIGHLIGHT_STORAGE_KEY); } catch(err) {}
+  document.querySelectorAll('.feedback').forEach(f => { f.textContent = ''; f.classList.remove('no', 'ok'); });
+  document.querySelectorAll('.evidence-line').forEach(el => el.innerHTML = '');
+  document.querySelectorAll('.match-tr').forEach(r => r.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.gap').forEach(i => i.classList.remove('correct', 'wrong'));
+  document.querySelectorAll('.palette-item').forEach(b => b.classList.remove('correct', 'wrong', 'answered'));
+  document.querySelectorAll('.match-matrix td').forEach(td => td.classList.remove('selected-correct', 'selected-wrong'));
+  document.querySelectorAll('.ct-opt').forEach(l => l.classList.remove('correct', 'wrong', 'checked'));
+  document.getElementById('ct-count').textContent = '0';
+  document.getElementById('match-feedback').innerHTML = '';
+  document.getElementById('bandChip').textContent = '--';
+  document.getElementById('bandChip').classList.remove('show');
+  document.getElementById('resultOverlay').classList.remove('show');
+  document.getElementById('previewOverlay').classList.remove('show');
+  currentQuestion = 14; updateCurrent(); updateNav();
+  secondsLeft = 20 * 60;
+  startTimer();
+  toast('Test reset. Good luck!');
+});
+
+/* ============================================================
+   FULLSCREEN
+   ============================================================ */
+document.getElementById('fullscreenBtn').addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch (err) { toast('Fullscreen not supported'); }
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+refreshPaletteAnswered();
+updateCurrent();
+updateNav();
+renderTimer();
+startTimer();
+setTimeout(() => { restoreHighlights(); }, 50);
+</script>
+    </body>
+</html>

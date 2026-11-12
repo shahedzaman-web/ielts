@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Speaking Evaluation – Cambridge 21 Test 4 (Shahed)</title>
+        <title>Speaking Evaluation – Technology, Learning &amp; Decision-making (Shahed)</title>
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kalam:wght@400&family=Inter:wght@400;600;700&display=swap');
 
@@ -26,11 +26,7 @@
             padding: 18mm 18mm 15mm;
             margin: 12mm auto;
             background: #fff;
-            box-shadow: 0 6px 28px rgba(20, 40, 80, .16);
-            border-radius: 8px;
             position: relative;
-            page-break-after: always;
-            break-after: page;
             overflow: hidden;
             box-shadow: none !important;
             border-radius: 0 !important;
@@ -73,7 +69,6 @@
         .tight th, .tight td { padding: 2mm 2.4mm; }
         .tiny th, .tiny td { padding: 1.8mm 2.2mm; font-size: 8.6pt; }
 
-        /* MARKING GUIDE */
         .marking-table {
             border-collapse: collapse;
             width: 100%;
@@ -168,7 +163,6 @@
             margin-left: 5px;
         }
 
-        /* SCRIPT LAYOUT */
         .script-layout { display: flex; width: 100%; }
         .script-text-col { flex: 1.4; padding-right: 5mm; }
         .script-comment-col { flex: 0.6; padding-left: 5mm; border-left: 1px solid #fca5a5; }
@@ -199,15 +193,6 @@
             text-decoration-color: #dc2626;
             text-decoration-thickness: 1.5px;
         }
-        .red-wavy {
-            text-decoration: underline wavy #dc2626;
-            text-decoration-thickness: 1.5px;
-        }
-        .green-underline {
-            text-decoration: underline;
-            text-decoration-color: #16a34a;
-            text-decoration-thickness: 1.5px;
-        }
         .red-circle {
             display: inline-flex;
             align-items: center;
@@ -223,12 +208,7 @@
             vertical-align: super;
             line-height: 1;
         }
-        .correction-text {
-            font-family: 'Caveat', 'Comic Sans MS', cursive;
-            color: #dc2626;
-            font-size: 15pt;
-        }
-        .floating-text { position: relative; white-space: nowrap; }
+        .floating-text { position: relative; white-space: nowrap; display: inline-block; }
         .floating-text .above {
             position: absolute;
             bottom: 100%;
@@ -240,9 +220,7 @@
             margin-bottom: 2px;
             white-space: nowrap;
         }
-        .arrow-red { color: #dc2626; font-weight: bold; margin: 0 4px; }
 
-        /* PRONUNCIATION MARKS */
         .pron-mark {
             text-decoration: underline wavy #7c3aed;
             text-decoration-thickness: 1.5px;
@@ -277,12 +255,6 @@
             line-height: 1;
         }
 
-        /* FLUENCY MARKS */
-        .fluency-mark {
-            background: #fef3c7;
-            border-bottom: 2px dotted #f59e0b;
-            padding: 0 1px;
-        }
         .filler {
             background: #fef9c3;
             color: #854d0e;
@@ -290,7 +262,6 @@
             padding: 0 1px;
         }
 
-        /* BOXES */
         .comment-box {
             background: #fff;
             border: 2px solid #dc2626;
@@ -301,12 +272,6 @@
             line-height: 1.6;
         }
         .comment-box h4 { color: #dc2626; margin: 0 0 3mm; font-size: 10pt; text-transform: uppercase; font-family: 'Inter', sans-serif;}
-        .comment-box .handwritten-text {
-            font-family: 'Caveat', 'Comic Sans MS', cursive;
-            color: #dc2626;
-            font-size: 15pt;
-            line-height: 1.4;
-        }
         .good-box {
             background: #f0fdf4;
             border: 1.5px solid #22c55e;
@@ -317,7 +282,6 @@
         }
         .good-box h4 { color: #166534; margin: 0 0 2mm; font-size: 10pt; text-transform: uppercase; }
 
-        /* BAND SCORE UI */
         .main-band-header {
             background: #b91c1c;
             color: white;
@@ -384,18 +348,7 @@
         }
         .why-not-lower h5 { color: #166534; margin: 0 0 2mm 0; font-size: 10.5pt; }
         .why-not-lower p { margin: 0; font-size: 9.5pt; color: #14532d; }
-        .calc-box {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 2mm 4mm;
-            font-size: 10pt;
-            color: #92400e;
-            font-weight: 600;
-            margin-top: 3mm;
-            border-radius: 0 4px 4px 0;
-        }
 
-        /* SIGNATURE */
         .signature-font {
             font-family: 'Caveat', 'Comic Sans MS', cursive;
             font-size: 18pt;
@@ -421,7 +374,6 @@
         }
         .page-number::before { content: "Page "; }
 
-        /* PRINT */
         @media print {
             @page { size: A4 portrait; margin: 0; }
             html, body { width: 210mm; margin: 0 !important; padding: 0 !important; background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -436,8 +388,6 @@
                 box-sizing: border-box;
                 overflow: hidden !important;
                 background: #fff;
-                box-shadow: none !important;
-                border-radius: 0 !important;
                 page-break-inside: avoid;
                 break-inside: avoid;
                 page-break-after: always;
@@ -458,40 +408,32 @@
             .script-text { line-height: 2.2; font-size: 10.5pt; }
             .band-card { page-break-inside: avoid; break-inside: avoid; }
             tr, .good-box, .comment-box, .script-layout { page-break-inside: avoid; break-inside: avoid; }
-            .marking-table { border: 1px solid #cbd5e1; }
-            .marking-table td { padding: 3mm; }
         }
         </style>
     </head>
     <body>
 
-        <!-- PAGE 1: RESULTS SUMMARY -->
+        <!-- ============ PAGE 1: RESULTS SUMMARY ============ -->
         <div class="page">
-            <h1
-                style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your
-                Speaking Evaluation in Detail</h1>
-            <p
-                style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">IELTS
-                Speaking · Full Mock Test · Marked against the official IELTS
-                Speaking Band Descriptors (May 2023)</p>
+            <h1 style="color: #1e293b; font-size: 24pt; margin-top: 0; margin-bottom: 3mm; line-height: 1.1;">Your Speaking Evaluation in Detail</h1>
+            <p style="color: #475569; font-size: 10.5pt; margin-bottom: 6mm;">IELTS Speaking · Full Mock Test · Marked against the official IELTS Speaking Band Descriptors (May 2023)</p>
 
             <table class="tight" style="font-size: 9.5pt;">
                 <tr>
                     <th style="background: #e2e8f0; width: 15%;">Candidate</th>
                     <td style="width: 35%;"><strong>Shahed</strong></td>
                     <th style="background: #e2e8f0; width: 15%;">Test</th>
-                    <td style="width: 35%;">Cambridge IELTS 21<br>Test 4 · Full
-                        Speaking Mock (Parts 1–3)</td>
+                    <td style="width: 35%;">Technology · Learning · Decision-making<br>Full Speaking Mock (Parts 1–3)</td>
                 </tr>
                 <tr>
                     <th style="background: #e2e8f0;">Started</th>
                     <td>02 Nov 2026, 17:00:00 (Bangladesh time)</td>
                     <th style="background: #e2e8f0;">Submitted</th>
-                    <td>02 Nov 2026, 17:14:00 (Bangladesh time)</td>
+                    <td>02 Nov 2026, 17:22:00 (Bangladesh time)</td>
                 </tr>
                 <tr>
                     <th style="background: #e2e8f0;">Duration</th>
-                    <td>14 min (Parts 1–3)</td>
+                    <td>22 min (Parts 1–3)</td>
                     <th style="background: #e2e8f0;">Date marked</th>
                     <td>02 November 2026</td>
                 </tr>
@@ -515,987 +457,428 @@
                     <th>Part 2 length</th>
                 </tr>
                 <tr>
-                    <td
-                        style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Speaking</td>
+                    <td style="text-align: left; font-size: 10pt; font-weight: bold; color: #1e293b;">Speaking</td>
                     <td>5.5</td>
                     <td>5.0</td>
                     <td>5.0</td>
                     <td>5.0</td>
                     <td class="band-cell">5.0</td>
-                    <td>1 min 48 s ✓</td>
+                    <td>~1 min 50 s ✓</td>
                 </tr>
             </table>
-            <p
-                style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Speaking
-                band = (5.5 + 5.0 + 5.0 + 5.0) ÷ 4 = 5.125, reported as
-                <strong>5.0</strong>. All three parts were completed. Part 2
-                length requirement met (1 min 48 s, within 1–2 minutes). <span
-                    style="color: #b91c1c; font-weight: bold;">Several long
-                    pauses and requests for repetition affected
-                    fluency.</span></p>
+            <p style="font-size: 9.5pt; color: #475569; margin-bottom: 6mm;">Speaking band = (5.5 + 5.0 + 5.0 + 5.0) ÷ 4 = 5.125, reported as <strong>5.0</strong>. All three parts were completed. Part 2 length was within the 1–2 minute requirement. <span style="color: #b91c1c; font-weight: bold;">Two requests for repetition and several meaning-changing word confusions reduced clarity.</span></p>
 
             <div class="good-box">
-                <h4>✓ WHAT SHAHED DOES WELL</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Speaks at length without one-word answers; Part 2 was
-                        fully developed with a clear story about Shagor.</li>
-                    <li>Uses a range of connectives (<em>So, But, Even though,
-                            If I remember correctly, For example, I would
-                            say</em>) to link ideas.</li>
-                    <li>Provides personal examples and cultural context
-                        (university tournament, football match, cricket culture,
-                        <em>Notun Kuri</em> TV show).</li>
-                    <li>Occasionally self-corrects when noticing errors
-                        ("He was trying to competitive... he tried to be competitive"),
-                        showing some awareness.</li>
+                <h4>✓ WHAT Shahed DOES WELL</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Speaks at length in every part and gives extended personal examples (ChatGPT usage, leaving a job, career struggle).</li>
+                    <li>Attempts abstract discussion in Part 3 (logic vs emotion, government restriction, value of mistakes) — a strong sign for Part 3.</li>
+                    <li>Provides a well-developed narrative in Part 2 with clear causal structure (reason → risk → struggle → outcome → reflection).</li>
+                    <li>Shows real self-awareness: <em>“sometimes they are biased by the AI responses”</em>, <em>“making a wrong decision sometimes really help a person”</em>.</li>
                 </ul>
             </div>
 
             <div class="comment-box" style="border-color: #2563eb;">
-                <h4 style="color: #2563eb;">THE ONE CHANGE THAT WOULD REACH BAND
-                    6.0+</h4>
-                <p
-                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Reduce
-                    fillers and hesitation (<em>uh, like, you know</em>) and
-                    increase grammatical accuracy. You have strong ideas and
-                    good topic development. However, the frequent <em>uh /
-                        like</em> fillers, occasional incoherent sentences
-                    (<em>"Christian mind", "boiled boilers, Russia",
-                        "public opposition"</em>) and numerous grammatical slips
-                    (verb forms, articles, word order) hold you at Band 5.0.
-                    Focused practice on pausing naturally and checking verb
-                    forms will immediately push you towards Band 6.0+.</p>
+                <h4 style="color: #2563eb;">THE ONE CHANGE THAT WOULD REACH BAND 6.0+</h4>
+                <p style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430; font-family: 'Inter', sans-serif;">Fix the meaning-changing word errors. Your ideas are strong and organised, but you repeatedly say a different word from the one you mean: <em>lift</em> → <em>leave</em> (job), <em>live</em> → <em>leave</em>, <em>rabbit job</em> → <em>right job</em>, <em>car job</em> → <em>current job</em>, <em>carn academy</em> → <em>Khan Academy</em>, <em>10 meeting school</em> → <em>10 Minute School</em>, <em>equate</em> → <em>accurate</em>, <em>disponses</em> → <em>responses</em>, <em>commandment</em> → <em>government</em>, <em>strain him</em> → <em>restrain him</em>. A native listener hears a different meaning, not just an accent. Fix these twelve words and your score will rise to Band 6.0+.</p>
             </div>
 
             <div class="page-number">1</div>
         </div>
 
-        <!-- PAGE 2: HOW TO READ THE MARKING -->
+        <!-- ============ PAGE 2: HOW TO READ THE MARKING ============ -->
         <div class="page">
             <h2>How to read the marking</h2>
             <table class="marking-table">
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
-                            <span class="handwritten-red"
-                                style="color:#7c3aed;">/bred/</span>
-                            <span class="circled-word">breed<span
-                                    class="red-number-badge">1</span></span>
+                            <span class="handwritten-red" style="color:#7c3aed;">/bred/</span>
+                            <span class="circled-word">breed<span class="red-number-badge">1</span></span>
                         </div>
                     </td>
-                    <td><strong>Circled (purple above):</strong> a pronunciation
-                        error, with the phonetic correction written above.</td>
+                    <td><strong>Circled (purple above):</strong> a pronunciation error, with the phonetic correction written above.</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
                             <span class="handwritten-red">met</span>
-                            <span class="underlined-word">made<span
-                                    class="red-number-badge">2</span></span>
+                            <span class="underlined-word">made<span class="red-number-badge">2</span></span>
                         </div>
                     </td>
-                    <td><strong>Underlined:</strong> a grammar or word-choice
-                        error, with the correction above or after the
-                        arrow.</td>
+                    <td><strong>Underlined:</strong> a grammar or word-choice error, with the correction above.</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
-                            <span class="wavy-word">Christian mind<span
-                                    class="red-number-badge">3</span></span>
+                            <span class="wavy-word">Christian mind<span class="red-number-badge">3</span></span>
                         </div>
                     </td>
-                    <td><strong>Wavy underline:</strong> a Fluency &amp;
-                        Coherence issue — an unclear, rambling, or incoherent
-                        moment.</td>
+                    <td><strong>Wavy underline:</strong> a Fluency &amp; Coherence issue — an unclear or incoherent moment.</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
-                            <span
-                                style="font-weight:bold; font-size:11pt; color:#1c2430;">be</span>
-                            <span
-                                style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span
-                                class="red-number-badge"
-                                style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
+                            <span style="font-weight:bold; font-size:11pt; color:#1c2430;">be</span>
+                            <span style="color:#dc2626; font-size:16pt; vertical-align:middle; position:relative; top:-2px;">^</span><span class="red-number-badge" style="position:relative; top:-5px; right:auto; margin-left:8px;">4</span>
                         </div>
                     </td>
-                    <td><strong>Caret ^:</strong> something is missing (a word,
-                        article, or linking phrase).</td>
+                    <td><strong>Caret ^:</strong> something is missing (a word, article, or linking phrase).</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
-                            <span class="green-tick-word">competitive
-                                attitude</span><span
-                                class="green-tick-symbol">✓</span>
+                            <span class="green-tick-word">competitive attitude</span><span class="green-tick-symbol">✓</span>
                         </div>
                     </td>
-                    <td><strong>Green tick:</strong> good language or a strong
-                        idea, credited by the examiner.</td>
+                    <td><strong>Green tick:</strong> good language or a strong idea, credited by the examiner.</td>
                 </tr>
                 <tr>
                     <td>
                         <div class="marking-example-wrapper">
-                            <span
-                                style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt;">uh</span>
-                            <span
-                                style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt; margin-left:4px;">like</span>
+                            <span style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt;">uh</span>
+                            <span style="background:#fef9c3; color:#854d0e; font-style:italic; padding:2px 6px; border-radius:3px; font-size:11pt; margin-left:4px;">like</span>
                         </div>
                     </td>
-                    <td><strong>Yellow highlight:</strong> a filler / hesitation
-                        marker that reduces Fluency &amp; Coherence.</td>
+                    <td><strong>Yellow highlight:</strong> a filler / hesitation marker that reduces Fluency &amp; Coherence.</td>
                 </tr>
             </table>
 
             <h2>Speaking criteria covered</h2>
             <ul style="font-size: 10pt;">
-                <li><strong>Fluency &amp; Coherence (FC):</strong> how smoothly
-                    you speak, how well ideas connect, and how much you
-                    hesitate.</li>
-                <li><strong>Lexical Resource (LR):</strong> the range and
-                    accuracy of your vocabulary.</li>
-                <li><strong>Grammatical Range &amp; Accuracy (GRA):</strong> the
-                    variety and correctness of your sentence structures.</li>
-                <li><strong>Pronunciation (P):</strong> how clear and
-                    intelligible your speech is, including individual sounds,
-                    stress, and intonation.</li>
+                <li><strong>Fluency &amp; Coherence (FC):</strong> how smoothly you speak, how well ideas connect, and how much you hesitate.</li>
+                <li><strong>Lexical Resource (LR):</strong> the range and accuracy of your vocabulary.</li>
+                <li><strong>Grammatical Range &amp; Accuracy (GRA):</strong> the variety and correctness of your sentence structures.</li>
+                <li><strong>Pronunciation (P):</strong> how clear and intelligible your speech is, including individual sounds, stress, and intonation.</li>
             </ul>
 
             <div class="page-number">2</div>
         </div>
 
-        <!-- PAGE 3: PART 1 MARKED SCRIPT Q1-Q3 -->
+        <!-- ============ PAGE 3: PART 1 TOPIC 1 Q1-Q3 ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                1 · BREAD · MARKED SCRIPT (Q1–Q3)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>3 min 10 s</strong> · Errors marked:
-                <strong>13</strong> · Good points credited: <strong>2</strong> ·
-                Fillers: <strong>16</strong>
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 1 · TECHNOLOGY &amp; DAILY LIFE · MARKED SCRIPT (Q1–Q3)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>3 min 10 s</strong> · Errors marked: <strong>9</strong> · Good points credited: <strong>2</strong> · Fillers: <strong>14</strong>
             </div>
 
-            <h3>Q1. When do you usually eat bread?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Q1. How important is technology in your daily life?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, I think most of the time
-                        we usually <span class="floating-text"><span
-                                class="above">eat</span><span
-                                class="red-underline">bring</span></span><span
-                            class="red-circle">1</span> during the morning. And
-                        <span class="filler">sometime</span> when I was <span
-                            class="floating-text"><span
-                                class="above">living</span><span
-                                class="red-underline">leaving</span></span><span
-                            class="red-circle">2</span> alone, in my university,
-                        so I used to eat bread and egg. I try to, <span
-                            class="filler">uh</span>, use the, <span
-                            class="filler">uh</span>, egg and <span
-                            class="filler">uh</span>, <span
-                            class="floating-text"><span
-                                class="above">mix</span><span
-                                class="red-underline">mixed</span></span><span
-                            class="red-circle">3</span> it with bread and then
-                        <span class="floating-text"><span
-                                class="above">fry</span><span
-                                class="red-underline">fried</span></span><span
-                            class="red-circle">4</span> it. So I try to eat
-                        bread most of the time.
+                        <span class="filler">Yeah</span>, I'm ready. <span class="filler">Uh</span>, in my daily life technology is very important because <span class="filler">uh</span>, most of the time when I start with anything, I try to use ChatGPT or other <span class="floating-text"><span class="above">GPT platforms</span><span class="red-underline">GPT platform</span></span><span class="red-circle">1</span> to get help from that, and most of the time they really help me to solve any problem. So it's really important for me in my daily life.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good personal example, but
-                            tense consistency slips (<em>mixed/fried</em> should
-                            be <em>mix/fry</em>) and <em>bring</em> is a
-                            word-choice error for <em>eat</em>. <em>leaving</em>
-                            → <em>living</em> is pronunciation.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Personal
-                        example)</div>
+                    <div class="comment-text"><p>Clear, relevant answer with a concrete example. Minor error: <em>other GPT platform</em> → other GPT platforms (plural).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Concrete example: ChatGPT)</div>
                 </div>
             </div>
 
-            <h3>Q2. How important is bread in your culture?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Q2. What technological device do you use most frequently?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, I would say <span
-                            class="pron-mark"><span
-                                class="pron-above">/bred/</span>bed</span><span
-                            class="purple-badge">P1</span><span
-                            class="red-circle">5</span> is not very important in
-                        my culture, because in our culture, people prefer <span
-                            class="floating-text"><span
-                                class="above">roti</span><span
-                                class="pron-mark"><span
-                                    class="pron-above">/ˈrɔːti/</span>rooting</span></span><span
-                            class="purple-badge">P2</span><span
-                            class="red-circle">6</span>, <span
-                            class="filler">used up</span><span
-                            class="red-circle">7</span>, <span
-                            class="filler">uh</span>, <span
-                            class="wavy-word">You said dish that made with
-                            flowers</span><span class="red-circle">8</span>, and
-                        some with some <span class="wavy-word">boiled boilers,
-                            Russia</span><span class="red-circle">9</span>, and
-                        then they make a <span class="floating-text"><span
-                                class="above">dough</span><span
-                                class="red-underline">tour</span></span><span
-                            class="red-circle">10</span>, and then with just
-                        people will just use some tools to make up local <span
-                            class="pron-mark"><span
-                                class="pron-above">/bred/</span>breed</span><span
-                            class="purple-badge">P3</span><span
-                            class="red-circle">11</span>. And yeah, most of the
-                        time people usually prefer that instead of bread.
+                        Most frequently, I use my smartphone and also my laptop, and currently, as I'm preparing for my <span class="floating-text"><span class="above">IELTS</span><span class="pron-mark"><span class="pron-above">/ˈaɪelts/</span>eyes</span></span><span class="purple-badge">P1</span><span class="red-circle">2</span>. So it's really important to use my laptop daily and nowadays everyone <span class="floating-text"><span class="above">uses smartphones</span><span class="red-underline">use smartphone</span></span><span class="red-circle">3</span>. So, it's also convenient for me to carry on a <span class="wavy-word">spot phone</span><span class="red-circle">4</span>.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Very difficult to follow.
-                            <em>flour</em> → <em>flowers</em>, <em>dough</em> →
-                            <em>tour</em>, and the
-                            <em>"boiled boilers, Russia"</em> phrase is
-                            unintelligible. This is a significant Fluency &amp;
-                            Coherence issue and also affects
-                            Pronunciation.</p></div>
-                    <div class="comment-tick">✗ No credit — coherence lost</div>
+                    <div class="comment-text"><p>Clear content (smartphone + laptop, IELTS prep). Errors: <em>eyes</em> → IELTS; <em>everyone use smartphone</em> → everyone uses smartphones; <em>spot phone</em> → smartphone (pronunciation).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear devices named)</div>
                 </div>
             </div>
 
-            <h3>Q3. Have you tried any kinds of bread from other countries?</h3>
+            <h3>Q3. Do you think people have become too dependent on technology?</h3>
             <div class="script-layout">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, I don't think so. In the
-                        country, like bread is not very popular. And most of the
-                        local <span class="floating-text"><span
-                                class="above">shops</span><span
-                                class="red-underline">show</span></span><span
-                            class="red-circle">12</span> don't have like other
-                        countries, right? So I <span class="floating-text"><span
-                                class="above">didn't</span><span
-                                class="red-underline">did
-                                don't</span></span><span
-                            class="red-circle">13</span> have any chance to try
-                        them.
+                        <span class="wavy-word">Are you definitely say that</span><span class="red-circle">5</span> people had <span class="floating-text"><span class="above">technologically</span><span class="red-underline">technically</span></span><span class="red-circle">6</span> depended on smartphone because nowadays without smartphone, people are left behind. Most of the time when a person is doing anything, and they have to use online and <span class="floating-text"><span class="above">online platform</span><span class="red-underline">online platform</span></span><span class="red-circle">7</span>, even if you just have to open a bank account or create a passport, everything is only nowadays, so it's really important to use technology.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Answer is clear and relevant.
-                            Minor errors: <em>show</em> → <em>shops</em>,
-                            <em>did don't</em> → <em>didn't</em>.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Clear
-                        answer)</div>
+                    <div class="comment-text"><p>Good point about digital-by-default services. Errors: <em>Are you definitely say that</em> → I would definitely say that; <em>technically depended</em> → become dependent; <em>online platform</em> → online platforms; <em>everything is only nowadays</em> — unclear phrase.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Relevant example: banking/passport)</div>
                 </div>
             </div>
 
             <div class="page-number">3</div>
         </div>
 
-        <!-- PAGE 4: PART 1 Q4 + OVERALL COMMENTS -->
+        <!-- ============ PAGE 4: PART 1 Q4-Q5 ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                1 · BREAD · MARKED SCRIPT (Q4)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>0 min 40 s</strong> · Errors marked:
-                <strong>2</strong> · Good points credited: <strong>1</strong> ·
-                Fillers: <strong>6</strong>
-            </div>
-
-            <h3>Q4. Would you be interested in learning how to make bread?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 6mm;">
+            <h3>Q4. Is there any technology that you find difficult to use?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, I don't think so. Like,
-                        <span class="filler">uh</span>, I think, <span
-                            class="filler">uh</span>, as I said earlier, in my
-                        culture, <span class="pron-mark"><span
-                                class="pron-above">/bred/</span>bait</span><span
-                            class="purple-badge">P4</span><span
-                            class="red-circle">14</span> is not very common. And
-                        bread can be easily found in local groceries. So, I
-                        don't have any <span class="wavy-word">platform for
-                            people</span><span class="red-circle">15</span>.
-                        Okay.
+                        I wouldn't say that <span class="wavy-word">is there is a technology</span><span class="red-circle">8</span> I will find difficult to use. <span class="filler">Um</span>, but yes, and <span class="filler">uh, uh</span>, <span class="wavy-word">new uh, AI platform is come</span><span class="red-circle">9</span>. So I was facing some different difficulties because most of the time their answer was not very <span class="floating-text"><span class="above">accurate</span><span class="pron-mark"><span class="pron-above">/ˈækjərət/</span>equate</span></span><span class="purple-badge">P2</span><span class="red-circle">10</span>. But I didn't find anything <span class="wavy-word">like I wasn't struggling to use the technology</span><span class="red-circle">11</span>.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p><em>"Platform for people"</em>
-                            is unclear — likely meant "opportunity" or "reason."
-                            Otherwise, the answer is coherent. Pronunciation of
-                            <em>bread</em> is inconsistent.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Coherent
-                        answer)</div>
+                    <div class="comment-text"><p>Honest answer with a nuance (AI accuracy rather than usability). Errors: <em>is there is a technology</em> → there is a technology; <em>new AI platform is come</em> → a new AI platform has arrived; <em>equate</em> → accurate; <em>like I wasn't struggling</em> — unclear.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Nuanced answer: accuracy not usability)</div>
                 </div>
             </div>
 
-            <div class="comment-box" style="border-color: #2563eb;">
-                <h4 style="color: #2563eb;">PART 1 OVERALL COMMENTS</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Good personal content — clear opinions and cultural
-                        context.</li>
-                    <li>Frequent fillers (<em>uh, like, sometime</em>) and
-                        repetition (<em>"I try to... I try to"</em>).</li>
-                    <li>Pronunciation of key vocabulary is inconsistent:
-                        <em>bread, roti, flour, dough</em>.</li>
-                    <li>Some phrases are unintelligible
-                        (<em>"boiled boilers, Russia"</em>,
-                        <em>"platform for people"</em>), which causes strain for
-                        the listener.</li>
-                    <li>Verb forms slip after <em>"try to"</em> (<em>mixed,
-                            fried</em> instead of <em>mix, fry</em>).</li>
-                </ul>
+            <h3>Q5. Do you prefer communicating with people face-to-face or through digital platforms? Why?</h3>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        Most of the time it depends because whenever I am <span class="floating-text"><span class="above">at</span><span class="red-underline">in</span></span><span class="red-circle">12</span> my home, I had to communicate with my friends or family or maybe <span class="floating-text"><span class="above">for</span><span class="red-underline">of</span></span><span class="red-circle">13</span> a job related <span class="floating-text"><span class="above">task</span><span class="red-underline">tax</span></span><span class="red-circle">14</span>. It's easy to use. <span class="filler">Uh</span>, communicating devices. But whenever I'm feeling like I want to share my personal moment between friends, family, I would prefer face to face interaction. <span class="wavy-word">Sorry, can you repeat that question? You voice is not very clear.</span><span class="red-circle">15</span>
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Good nuanced answer (depends on purpose). Errors: <em>in my home</em> → at home; <em>of a job related tax</em> → for a job-related task; <em>communicating devices</em> → communication devices. <strong>Asked for repetition — voice was unclear.</strong></p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear distinction: work vs personal)</div>
+                </div>
             </div>
 
-            <div class="comment-box" style="border-color: #7c3aed;">
-                <h4 style="color: #7c3aed;">HOW TO IMPROVE PART 1</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Use short silent pauses instead of <em>uh / like</em>.
-                        Aim for fewer than 5 fillers per minute.</li>
-                    <li>Practise pronouncing food vocabulary clearly: <em>bread,
-                            roti, flour, dough, grocery</em>.</li>
-                    <li>Master base verb after <em>"try to"</em> (<em>try to
-                            mix, try to fry</em>).</li>
-                    <li>If you cannot think of the exact word, paraphrase with a
-                        simpler one instead of using an unclear phrase.</li>
-                </ul>
+            <div class="comment-box" style="border-color: #7c3aed; margin-top: 4mm;">
+                <h4 style="color: #7c3aed;">NOTE</h4>
+                <p style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">You asked the examiner to repeat Q5 because the audio was unclear. This is not a fluency problem in itself, but it does cost you the chance to keep the conversation flowing. If audio fails again, you can say <em>“Could you say that again, please?”</em> — short and clear.</p>
             </div>
 
             <div class="page-number">4</div>
         </div>
 
-        <!-- PAGE 5: PART 2 MARKED SCRIPT (PART 1) -->
+        <!-- ============ PAGE 5: PART 1 TOPIC 2 Q6-Q7 ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                2 · COMPETITIVE PERSON · MARKED SCRIPT (PART 1 OF 2)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>1 min 48 s</strong> · Errors marked:
-                <strong>19</strong> · Good points credited: <strong>4</strong> ·
-                Fillers: <strong>22</strong>
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 1 · LEARNING &amp; KNOWLEDGE · MARKED SCRIPT (Q6–Q7)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 6mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>2 min 40 s</strong> · Errors marked: <strong>7</strong> · Good points credited: <strong>2</strong> · Fillers: <strong>12</strong>
             </div>
 
-            <h3>Question card</h3>
-            <div
-                style="background:#f8fafc; border:1px solid #cbd5e1; padding:3mm 4mm; margin-bottom:4mm; font-size:9.5pt;">
-                <strong>Describe a person you know who is very
-                    competitive.</strong><br>
-                You should say: who this person is · what this person is
-                competitive about · how successful this person is · and explain
-                why you think this person is so competitive.
-            </div>
-
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Q6. Do you think people learn more effectively today than they did in the past?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        So today, I like to talk about a <span
-                            class="floating-text"><span
-                                class="above">competitive</span><span
-                                class="pron-mark"><span
-                                    class="pron-above">/kəmˈpetɪtɪv/</span>computer</span></span><span
-                            class="purple-badge">P5</span><span
-                            class="red-circle">16</span> person that I know. And
-                        I think <span class="filler">he's his name</span><span
-                            class="red-circle">17</span> is <span
-                            class="pron-mark"><span
-                                class="pron-above">/ˈʃaɡɔːr/</span>Shago</span><span
-                            class="purple-badge">P6</span><span
-                            class="red-circle">18</span>. I <span
-                            class="floating-text"><span
-                                class="above">met</span><span
-                                class="red-underline">made</span></span><span
-                            class="red-circle">19</span> him during my
-                        university, he's my <span class="red-underline">one of
-                            my</span> university friends.
-                    </p>
-                    <p class="script-text">
-                        So what I found that he, <span class="wavy-word">when is
-                            what the situation is</span><span
-                            class="red-circle">20</span>, he tried to <span
-                            class="floating-text"><span
-                                class="above">be</span><span
-                                class="red-underline">^</span></span><span
-                            class="red-circle">21</span> competitive in every
-                        situation. He's very hard-working, and he tried to,
-                        <span class="filler">uh, uh</span>, try to be a very
-                        optimistic, <span class="filler">uh</span>, mind, <span
-                            class="filler">uh</span>, try to mention our <span
-                            class="wavy-word">Christian mind</span><span
-                            class="red-circle">22</span>.
+                        <span class="filler">Yeah</span>. <span class="filler">Uh</span>, yeah, it's <span class="filler">uh</span>, definitely say that that's true, right now. Because learning anything is really easier nowadays because if a person should learn anything, there are lots of academic platforms. For example, YouTube is <span class="floating-text"><span class="above">a</span><span class="red-underline">^</span></span><span class="red-circle">16</span> very good platform to learn anything and like there is other platform, like <span class="floating-text"><span class="above">Khan Academy</span><span class="pron-mark"><span class="pron-above">/kɑːn əˈkædəmi/</span>carn academy</span></span><span class="purple-badge">P3</span><span class="red-circle">17</span>, <span class="filler">uh</span>, in our local, <span class="filler">uh</span>, country. <span class="filler">Uh</span>, <span class="floating-text"><span class="above">10 Minute School</span><span class="pron-mark"><span class="pron-above">/ten ˈmɪnɪt skuːl/</span>10 meeting school</span></span><span class="purple-badge">P4</span><span class="red-circle">18</span> is also very popular. So a person <span class="floating-text"><span class="above">who</span><span class="red-underline">wants</span></span><span class="red-circle">19</span> to learn anything, online platform is really helpful. And it's easier to learn from those <span class="floating-text"><span class="above">platforms</span><span class="red-underline">platform</span></span><span class="red-circle">20</span>. <span class="wavy-word">Can you repeat that question? Your voice was not clear.</span><span class="red-circle">21</span>
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good opening and clear
-                            description of Shagor. However, <em>"computer"</em>
-                            for <em>competitive</em>, <em>"Christian mind"</em>
-                            for <em>competitive mindset</em>, and
-                            <em>"when is what the situation is"</em> are
-                            unclear. These cause significant strain for the
-                            listener.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Clear introduction
-                        &amp; personality)</div>
+                    <div class="comment-text"><p>Good answer with specific examples. Errors: missing article <em>a</em>; <em>carn academy</em> → Khan Academy; <em>10 meeting school</em> → 10 Minute School; <em>wants</em> → who wants; <em>platform</em> → platforms. <strong>Asked for repetition again.</strong></p></div>
+                    <div class="comment-tick">✓ 1 good point (Relevant examples: YouTube, Khan Academy)</div>
+                    <div class="comment-tick">✓ 1 good point (Local example: 10 Minute School)</div>
                 </div>
             </div>
 
+            <h3>Q7. What skills do you think young people should develop to succeed in the future?</h3>
             <div class="script-layout">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, like <span
-                            class="filler">uh</span>, during our 2nd year
-                        examination. So, <span class="filler">uh, uh</span>, for
-                        some reason, <span class="floating-text"><span
-                                class="above">everyone</span><span
-                                class="red-underline">every</span></span><span
-                            class="red-circle">23</span> was, <span
-                            class="filler">uh</span>, <span
-                            class="floating-text"><span
-                                class="above">performing</span><span
-                                class="pron-mark"><span
-                                    class="pron-above">/pəˈfɔːmɪŋ/</span>string</span></span><span
-                            class="purple-badge">P7</span><span
-                            class="red-circle">24</span> poorly in the
-                        academics. So my friend Shagor, he also, <span
-                            class="floating-text"><span class="above">was
-                                facing</span><span
-                                class="red-underline">facing</span></span><span
-                            class="red-circle">25</span> same situation. But
-                        instead of <span class="floating-text"><span
-                                class="above">being frustrated</span><span
-                                class="red-underline">frustrated</span></span><span
-                            class="red-circle">26</span>, he was trying to find
-                        some solution, <span class="wavy-word">what part of what
-                            course he was doing for you</span><span
-                            class="red-circle">27</span>. So, <span
-                            class="filler">uh</span>, he marked down all his
-                        mistakes, <span class="filler">uh</span>, for next,
-                        <span class="filler">your</span> exam, and here to next
-                        year <span class="wavy-word">is a man</span><span
-                            class="red-circle">28</span>, his improvement exam,
-                        he was trying to <span class="filler">uh</span> solve
-                        those issues and he was <span
-                            class="floating-text"><span
-                                class="above">doing</span><span
-                                class="red-underline">dream</span></span><span
-                            class="red-circle">29</span> better.
+                        <span class="filler">Yeah</span>. <span class="filler">Uh</span>, in my opinion, right now, <span class="filler">uh</span>, people should learn the basic stuff like <span class="filler">uh, uh</span>, other than academic stuff, they should learn, <span class="filler">uh</span>, how to <span class="floating-text"><span class="above">self-defence</span><span class="red-underline">Self-defense</span></span><span class="red-circle">22</span>, <span class="filler">uh, uh</span>, or do some <span class="floating-text"><span class="above">basic first aid</span><span class="red-underline">medical uh, uh, initial medical examination</span></span><span class="red-circle">23</span>. CPR, like, if I talk about <span class="filler">for</span> a technological perspective, everyone should learn programming, because nowadays, programming is very useful for everyone. So, those things are really, <span class="filler">uh</span>, young children should learn. <span class="filler">Uh</span>, in, <span class="filler">uh</span>, our modern day perspective. <span class="wavy-word">Okay. Hey, hey, hey, hey, hey, hey, hey. Nobody, I don't know who's there.</span><span class="red-circle">24</span>
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good example of Shagor's
-                            competitive nature. Several unclear phrases
-                            (<em>"what part of what course he was doing for you,"
-                                "is a man"</em>) break the flow. <em>dream
-                                better</em> → <em>doing better</em> is a
-                            word-choice error.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Development of
-                        example)</div>
+                    <div class="comment-text"><p>Good content (self-defence, first aid, CPR, programming). Errors: <em>Self-defense</em> (capitalisation) → self-defence; <em>medical initial medical examination</em> → basic first aid. <strong>Strange interruption</strong> — “Hey, hey, hey, hey, hey, hey, hey. Nobody, I don't know who's there.” — highly disruptive.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Practical skills: CPR, programming)</div>
                 </div>
             </div>
 
-            <div class="comment-box"
-                style="border-color: #7c3aed; margin-top: 4mm;">
-                <h4 style="color: #7c3aed;">(CONTINUED ON NEXT PAGE)</h4>
-                <p
-                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">The
-                    final section of your Part 2 answer (the football story and
-                    conclusion) continues on the next page.</p>
+            <div class="comment-box" style="border-color: #7c3aed; margin-top: 4mm;">
+                <h4 style="color: #7c3aed;">PART 1 OVERALL COMMENTS</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Strong content in all answers — ChatGPT, banking digitalisation, Khan Academy, 10 Minute School, CPR, programming.</li>
+                    <li>Two requests for repetition and one strange interruption interrupted flow — these cost you marks in FC.</li>
+                    <li>Meaning-changing pronunciation errors: <em>eyes</em> → IELTS, <em>carn academy</em> → Khan Academy, <em>10 meeting school</em> → 10 Minute School, <em>equate</em> → accurate.</li>
+                    <li>SVA errors: <em>everyone use</em> → everyone uses; <em>a person have</em> → has.</li>
+                </ul>
             </div>
 
             <div class="page-number">5</div>
         </div>
 
-        <!-- PAGE 6: PART 2 MARKED SCRIPT (PART 2) -->
+        <!-- ============ PAGE 6: PART 2 MARKED (1 of 2) ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                2 · COMPETITIVE PERSON · MARKED SCRIPT (PART 2 OF 2)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
-                Continued from previous page.
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 2 · DIFFICULT DECISION · MARKED SCRIPT (PART 1 OF 2)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>~1 min 50 s</strong> · Errors marked: <strong>18</strong> · Good points credited: <strong>3</strong> · Fillers: <strong>22</strong>
             </div>
 
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Question card</h3>
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:3mm 4mm; margin-bottom:4mm; font-size:9.5pt;">
+                <strong>Describe a situation when you had to make an important decision that was difficult for you.</strong><br>
+                You should say: what the decision was about · when you had to make this decision · what factors you considered before making it · and explain why it was difficult for you.
+            </div>
+
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        So I and also I found that he was very passionate about
-                        sports. So in our university tournament, he was very
-                        hard-working. So something when you were a match is very
-                        difficult and everyone has to score good, like if you
-                        talk about like, <span class="filler">uh</span>, during
-                        football tournament. So the opponent team <span
-                            class="wavy-word">was I hate like 2
-                            goals</span><span class="red-circle">30</span>. So
-                        he was a... <span class="filler">Uh</span>, he was a
-                        striker, so he was <span class="filler">uh</span>, very
-                        <span class="filler">uh</span>, working very hard and
-                        trying to score a goal and and he was successful and
-                        even though on that match, <span class="filler">uh,
-                            uh</span>, we didn't <span
-                            class="floating-text"><span
-                                class="above">win</span><span
-                                class="red-underline">own</span></span><span
-                            class="red-circle">31</span>. But, <span
-                            class="filler">uh</span>, <span
-                            class="floating-text"><span
-                                class="above">through</span><span
-                                class="red-underline">throw</span></span><span
-                            class="red-circle">32</span> his effort, our team
-                        was able to do better.
-                    </p>
-                    <p class="script-text">
-                        So I think that competitive attitude <span
-                            class="floating-text"><span
-                                class="above">makes</span><span
-                                class="red-underline">make</span></span><span
-                            class="red-circle">33</span> him... I wish him that
-                        in his competitive attitude will help him to improve
-                        <span class="wavy-word">to better</span><span
-                            class="red-circle">34</span> in his life. So, Okay.
+                        Okay, today I like to talk about a difficult decision I have made in my career, and the decision was to <span class="floating-text"><span class="above">leave</span><span class="pron-mark"><span class="pron-above">/liːv/</span>lift</span></span><span class="purple-badge">P5</span><span class="red-circle">25</span> a job. I had to <span class="floating-text"><span class="above">leave</span><span class="red-underline">lift</span></span><span class="red-circle">26</span> that job because I thought it was holding back <span class="floating-text"><span class="above">my progress</span><span class="red-underline">for progressing</span></span><span class="red-circle">27</span> my career, and there was some other management issue that was really difficult for me to <span class="floating-text"><span class="above">handle</span><span class="red-underline">hand it</span></span><span class="red-circle">28</span>. So, <span class="filler">uh</span>, I had to <span class="floating-text"><span class="above">leave</span><span class="red-underline">left</span></span><span class="red-circle">29</span> the job when I, when I decided, <span class="filler">uh</span>, I will <span class="floating-text"><span class="above">leave</span><span class="red-underline">live</span></span><span class="red-circle">30</span>, <span class="filler">um</span>, when, <span class="filler">uh</span>, I decided that I will <span class="floating-text"><span class="above">leave</span><span class="red-underline">live</span></span><span class="red-circle">31</span> that job, and <span class="filler">uh</span>, I was calculating some <span class="floating-text"><span class="above">factors</span><span class="red-underline">factor</span></span><span class="red-circle">32</span>, like, <span class="filler">uh</span>, I, I didn't have any other <span class="floating-text"><span class="above">job offer</span><span class="red-underline">job off or</span></span><span class="red-circle">33</span> at that time.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good use of the football story.
-                            Errors: <em>own</em> → <em>win</em>, <em>throw</em>
-                            → <em>through</em>, <em>to better</em> is unclear.
-                            The story is well-told but the language slips affect
-                            clarity.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Concrete example
-                        of competitiveness)</div>
+                    <div class="comment-text"><p>Clear story and strong topic. Errors: <em>lift</em> → leave (×2); <em>holding back for progressing</em> → holding back my progress; <em>hand it</em> → handle it; <em>I had to left</em> → I had to leave; <em>live</em> → leave (×2); <em>factor</em> → factors; <em>job off or</em> → job offer. These are meaning-changing.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear, relevant personal decision)</div>
                 </div>
             </div>
 
-            <div class="comment-box" style="border-color: #2563eb;">
-                <h4 style="color: #2563eb;">PART 2 OVERALL COMMENTS</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Good structure: clear introduction → academic example →
-                        sports example → conclusion.</li>
-                    <li>Personal detail is strong (university friend, exams,
-                        football match).</li>
-                    <li>Frequent fillers and unclear phrases
-                        (<em>"Christian mind"</em>,
-                        <em>"when is what the situation is"</em>,
-                        <em>"is a man"</em>) interrupt the flow.</li>
-                    <li>Pronunciation errors on key words: <em>competitive</em>
-                        → <em>computer</em>, <em>performing</em> →
-                        <em>string</em>.</li>
-                    <li>Verb form slip: <em>make</em> → <em>makes</em>
-                        (subject-verb agreement).</li>
-                </ul>
+            <div class="script-layout">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        And I didn't have my savings also. I had to <span class="filler">uh, uh</span>, pay my home rent and other utility bills. So I was calculating the <span class="floating-text"><span class="above">factors</span><span class="red-underline">factor</span></span><span class="red-circle">34</span>, but eventually, I have, I decided that I will, <span class="filler">uh</span>, <span class="floating-text"><span class="above">leave</span><span class="red-underline">left</span></span><span class="red-circle">35</span> the job, and I was struggling for 2 months to <span class="floating-text"><span class="above">get</span><span class="red-underline">getting</span></span><span class="red-circle">36</span> a job, and I was <span class="floating-text"><span class="above">attending some</span><span class="red-underline">attending for some</span></span><span class="red-circle">37</span> job <span class="floating-text"><span class="above">interviews</span><span class="red-underline">interview</span></span><span class="red-circle">38</span>. And for 2 months, I got a <span class="floating-text"><span class="above">right job</span><span class="pron-mark"><span class="pron-above">/raɪt dʒɒb/</span>rabbit job</span></span><span class="purple-badge">P6</span><span class="red-circle">39</span>. But <span class="floating-text"><span class="above">at</span><span class="red-underline">on</span></span><span class="red-circle">40</span> the time it was really hard for me to decide.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Excellent detail — rent, savings, two months of interviews. Errors: <em>factor</em> → factors; <em>left</em> → leave; <em>to getting</em> → to get; <em>attending for some</em> → attending some; <em>interview</em> → interviews; <em>rabbit job</em> → right job (meaning-changing); <em>on the time</em> → at the time.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Concrete financial factors)</div>
+                    <div class="comment-tick">✓ 1 good point (Clear outcome: 2 months of interviews)</div>
+                </div>
             </div>
 
-            <div class="comment-box" style="border-color: #7c3aed;">
-                <h4 style="color: #7c3aed;">HOW TO IMPROVE PART 2</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Use the 1-minute preparation to note key vocabulary
-                        (e.g. <em>competitive, mindset, exam, striker, opponent,
-                            effort</em>).</li>
-                    <li>Practise telling the story aloud 2–3 times to reduce
-                        fillers and self-correction.</li>
-                    <li>Focus on pronouncing topic-specific words clearly:
-                        <em>competitive, performing, opponent,
-                            striker</em>.</li>
-                    <li>Slow down slightly and pause at the end of each example
-                        — it helps the listener follow your ideas.</li>
-                </ul>
+            <div class="comment-box" style="border-color: #7c3aed; margin-top: 4mm;">
+                <h4 style="color: #7c3aed;">(CONTINUED ON NEXT PAGE)</h4>
+                <p style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">Your final section — the cultural pressure, the current positive outcome, and your reflection — is marked on the next page.</p>
             </div>
 
             <div class="page-number">6</div>
         </div>
 
-        <!-- PAGE 7: PART 3 Q1-Q2 -->
+        <!-- ============ PAGE 7: PART 2 MARKED (2 of 2) ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                3 · COMPETITIONS · MARKED SCRIPT (Q1–Q2)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>2 min 40 s</strong> · Errors marked:
-                <strong>16</strong> · Good points credited: <strong>2</strong> ·
-                Fillers: <strong>18</strong>
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 2 · DIFFICULT DECISION · MARKED SCRIPT (PART 2 OF 2)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Continued from previous page.
             </div>
 
-            <h3>Q1. What kinds of competitions do people like to enter in your
-                country?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
-                <div class="script-text-col">
-                    <p class="script-text">
-                        <span class="filler">Uh</span>, I think in my country,
-                        like there are some sports <span
-                            class="floating-text"><span
-                                class="above">competitions</span><span
-                                class="red-underline">competition</span></span><span
-                            class="red-circle">35</span> and cultural <span
-                            class="red-underline">competition</span><span
-                            class="red-circle">36</span>. If I talk about sports
-                        competition, like in my country, cricket is very famous,
-                        like most of the school, college, university, <span
-                            class="floating-text"><span
-                                class="above">institutions</span><span
-                                class="red-underline">at the
-                                institution</span></span><span
-                            class="red-circle">37</span>, try to organize at
-                        least one or 2 tournaments in a year. And those <span
-                            class="floating-text"><span
-                                class="above">competitions are</span><span
-                                class="red-underline">competition
-                                is</span></span><span
-                            class="red-circle">38</span> very common. And if I
-                        talk about cultural programs, then there are some
-                        various types of programs, like some people are <span
-                            class="floating-text"><span class="above">interested
-                                in</span><span
-                                class="red-underline">interesting</span></span><span
-                            class="red-circle">39</span> music and others are
-                        acting, so, so those <span class="floating-text"><span
-                                class="above">programs</span><span
-                                class="red-underline">programmers</span></span><span
-                            class="red-circle">40</span> also affect <span
-                            class="floating-text"><span
-                                class="above">academics</span><span
-                                class="red-underline">in
-                                academics</span></span><span
-                            class="red-circle">41</span>, <span
-                            class="filler">uh</span>, academic <span
-                            class="floating-text"><span
-                                class="above">institutions</span><span
-                                class="red-underline">institution</span></span><span
-                            class="red-circle">42</span> are also like in <span
-                            class="wavy-word">public opposition</span><span
-                            class="red-circle">43</span> and also like in
-                        national television shows, like those programs also
-                        occur. If I remember correctly, like there was a show
-                        called <span class="pron-mark"><span
-                                class="pron-above">/ˈnɔːtʊn kʊri/</span>Nutul
-                            Kui</span><span class="purple-badge">P8</span><span
-                            class="red-circle">44</span> in our national
-                        television, right? That was very popular. So I think
-                        those 2 <span
-                            class="wavy-word">comp-education</span><span
-                            class="red-circle">45</span> are really popular in
-                        the country.
-                    </p>
-                </div>
-                <div class="script-comment-col">
-                    <div class="comment-text"><p>Good topic development and
-                            cultural content (<em>cricket, Notun Kuri</em>). But
-                            there are many plural/SVA errors (<em>competition
-                                is, programmers, in academics</em>) and one
-                            unclear phrase (<em>"public opposition"</em>). The
-                            interruption
-                            ("Sorry, can you repeat that question?") also
-                            affected the flow.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Cultural
-                        context)</div>
-                </div>
-            </div>
-
-            <h3>Q2. What do you think is the best kind of prize to win in a
-                competition?</h3>
             <div class="script-layout">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="wavy-word">Can you repeat that question?
-                            Sometimes, part of Family Zone, it was like
-                            breaking. Some part of some world, I didn't hit
-                            Cripe you.</span><span class="red-circle">46</span>
-                        <span class="filler">Yeah</span>. <span
-                            class="filler">Uh</span>, I think, <span
-                            class="filler">uh, uh</span>, actually, a
-                        competition is more important other than just <span
-                            class="floating-text"><span class="above">winning a
-                                prize</span><span class="red-underline">win your
-                                price</span></span><span
-                            class="red-circle">47</span>. But yeah, <span
-                            class="filler">something giving a price</span> is
-                        motivating a person, and in my country, like <span
-                            class="filler">sometime, organizer, key, some, Money
-                            as a price</span><span class="red-circle">48</span>,
-                        and other than that, sometimes they offer some <span
-                            class="filler">key</span>, like, like, <span
-                            class="filler">uh</span>, really good. <span
-                            class="wavy-word">self-improving books</span> and
-                        also like some trophies. Yeah, I <span
-                            class="filler">used among them</span>, like, some...
-                        <span class="filler">uh, sell proving book</span><span
-                            class="red-circle">49</span> at the best price for
-                        winning a competition. And also like <span
-                            class="filler">uh, uh, uh, the, if the price is
-                            given from and uh, uh, respected
-                            touchstone</span><span class="red-circle">50</span>,
-                        that will also be a great experience for the winner.
+                        <span class="filler">Uh</span>, Because in our country's perspective, <span class="filler">uh</span>, <span class="wavy-word">job life 1st is not valued</span><span class="red-circle">41</span>, and <span class="filler">uh</span>, and most of the time they are criticized. So, it was a bit <span class="wavy-word">hard decision</span><span class="red-circle">42</span> for me. But I think I have made the right decision because, <span class="filler">uh</span>, for my <span class="floating-text"><span class="above">current</span><span class="pron-mark"><span class="pron-above">/ˈkʌrənt/</span>car</span></span><span class="purple-badge">P7</span><span class="red-circle">43</span> job, <span class="filler">uh</span>, I'm feeling the <span class="floating-text"><span class="above">environment</span><span class="red-underline">energy</span></span><span class="red-circle">44</span> is much more friendly for me and, <span class="filler">um, uh</span>, progressing <span class="floating-text"><span class="above">well</span><span class="red-underline">enough</span></span><span class="red-circle">45</span> in my career. So, <span class="filler">uh</span>, that was a perfect decision for my, <span class="filler">uh</span>, life.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>The opening is very difficult
-                            to follow ("part of Family Zone... hit Cripe you").
-                            The rest has good ideas (<em>money, trophies,
-                                self-improvement books</em>) but is disrupted by
-                            fillers and unclear phrases
-                            ("respected touchstone").</p></div>
-                    <div class="comment-tick">✓ 1 good point (Relevant prize
-                        examples)</div>
+                    <div class="comment-text"><p>Excellent cultural insight (job-leaving not valued in Bangladesh). Errors: <em>job life 1st</em> — unclear; <em>hard decision</em> → difficult decision; <em>car job</em> → current job; <em>energy is much more friendly</em> → environment is more friendly; <em>progressing enough</em> → progressing well.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Cultural insight)</div>
+                    <div class="comment-tick">✓ 1 good point (Positive outcome)</div>
                 </div>
+            </div>
+
+            <div class="comment-box" style="border-color: #2563eb; margin-top: 6mm;">
+                <h4 style="color: #2563eb;">PART 2 OVERALL COMMENTS</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Excellent topic and a genuinely well-structured narrative — you covered all four bullet points clearly.</li>
+                    <li>The story has a strong arc: reason → risk → struggle → outcome → reflection.</li>
+                    <li>Cultural insight (<em>“in our country, job-leaving is not valued”</em>) is a standout moment — strong Band 7 material.</li>
+                    <li>However, there are ~18 errors, with the most damaging being <em>lift</em> → <em>leave</em> (×2) and <em>live</em> → <em>leave</em> (×2) — these change the meaning completely.</li>
+                    <li><em>Rabbit job</em> → <em>right job</em> and <em>car job</em> → <em>current job</em> also confuse the listener.</li>
+                </ul>
+            </div>
+
+            <div class="comment-box" style="border-color: #7c3aed;">
+                <h4 style="color: #7c3aed;">HOW TO IMPROVE PART 2</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li>Drill the pair <em>leave / lift</em> aloud until the difference is automatic — <em>I left the job</em>, <em>I lifted the box</em>.</li>
+                    <li>Drill <em>current / car</em> — <em>my current job</em>, <em>my car is red</em>.</li>
+                    <li>Practise saying <em>right job</em> slowly — <em>right</em> /raɪt/ has a long /aɪ/ and a final /t/.</li>
+                    <li>Keep this narrative style — it is clear, personal and engaging. Just fix the words.</li>
+                </ul>
             </div>
 
             <div class="page-number">7</div>
         </div>
 
-        <!-- PAGE 8: PART 3 Q3-Q4 -->
+        <!-- ============ PAGE 8: PART 3 Q1-Q3 ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                3 · COMPETITIONS · MARKED SCRIPT (Q3–Q4)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>2 min 20 s</strong> · Errors marked:
-                <strong>12</strong> · Good points credited: <strong>2</strong> ·
-                Fillers: <strong>16</strong>
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 3 · DECISION-MAKING · MARKED SCRIPT (Q1–Q3)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>2 min 50 s</strong> · Errors marked: <strong>10</strong> · Good points credited: <strong>3</strong> · Fillers: <strong>18</strong>
             </div>
 
-            <h3>Q3. Why do people like watching quiz shows and other
-                competitions on TV?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Q1. Why do some people find it more difficult to make decisions than others?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Ah</span>, I think, <span
-                            class="filler">uh</span>, this is because, like,
-                        <span class="filler">uh, uh</span>, competition are
-                        really entertaining, and <span class="wavy-word">people
-                            finding that finding is very, uh,
-                            anything</span><span class="red-circle">51</span>, I
-                        think or, like, <span class="filler">uh</span>, the,
-                        like, you're using the, <span class="filler">uh</span>,
-                        problem solving ability, and <span class="filler">I take
-                            the ability</span><span class="red-circle">52</span>
-                        and, like, the general knowledge, and whenever a person
-                        <span class="filler">uh</span>, know that as that, so
-                        that's really <span class="floating-text"><span
-                                class="above">intrigues</span><span
-                                class="red-underline">intrigued</span></span><span
-                            class="red-circle">53</span> them <span
-                            class="wavy-word">if I in the
-                            competition</span><span
-                            class="red-circle">54</span>, maybe I could answer
-                        that question. I think those might be one of the reasons
-                        that some people find it. And find it competitive.
+                        I think some people are <span class="floating-text"><span class="above">find</span><span class="red-underline">are</span></span><span class="red-circle">46</span> it very difficult because they calculate too much and they just think about the outcome. But sometimes a person <span class="floating-text"><span class="above">has</span><span class="red-underline">have</span></span><span class="red-circle">47</span> to be bold and they have to figure out, they have to make a decision, tough decision, and stick <span class="floating-text"><span class="above">to it</span><span class="red-underline">on that</span></span><span class="red-circle">48</span>. But some people are not like that. They are not brave enough to make a decision and stick to it. So maybe that's why some people find it difficult to make a decision.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good idea (problem-solving,
-                            general knowledge) but the expression is very
-                            unclear.
-                            <em>"people finding that finding is very, uh, anything"</em>
-                            and <em>"if I in the competition"</em> break
-                            coherence significantly.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Problem-solving
-                        idea)</div>
+                    <div class="comment-text"><p>Good reasoning (over-thinking + lack of bravery). Errors: <em>are find</em> → find; <em>a person have</em> → a person has; <em>stick on that</em> → stick to it.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Two clear reasons: over-thinking, boldness)</div>
                 </div>
             </div>
 
-            <h3>Q4. How important is it to be very competitive at sport?</h3>
+            <h3>Q2. Do you think people should make decisions based on logic or emotions?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        I think most of the time a person should make <span class="floating-text"><span class="above">decisions</span><span class="red-underline">decision</span></span><span class="red-circle">49</span> with logic, <span class="filler">uh, uh</span>, because <span class="filler">uh</span>, logic has the high ground, <span class="filler">uh</span>, most of the time. Emotion <span class="floating-text"><span class="above">drives</span><span class="red-underline">drive</span></span><span class="red-circle">50</span> a person to make a bad choice, but logic always <span class="floating-text"><span class="above">dictates</span><span class="red-underline">dictate</span></span><span class="red-circle">51</span> to make a good decision. So a person should always try to find logic to make a decision.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Clear opinion with a memorable phrase (<em>“logic has the high ground”</em>). Errors: <em>decision</em> → decisions; <em>drive</em> → drives (SVA); <em>dictate</em> → dictates (SVA).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear stance: logic over emotion)</div>
+                </div>
+            </div>
+
+            <h3>Q3. How has technology changed the way people make important decisions?</h3>
             <div class="script-layout">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Uh</span>, I think competitive
-                        attitude is very important for a <span
-                            class="floating-text"><span class="above">sports
-                                person</span><span
-                                class="red-underline">spokesperson</span></span><span
-                            class="red-circle">55</span> because if a sports
-                        person don't want to improve <span class="wavy-word">or
-                            kind to improve</span><span
-                            class="red-circle">56</span> themselves, then it's
-                        really difficult because those sports programs are
-                        really competitive. So if they want to hold their
-                        position in the <span class="floating-text"><span
-                                class="above">team</span><span
-                                class="red-underline">king</span></span><span
-                            class="red-circle">57</span>, they have to be very
-                        <span class="filler">uh</span>, strategic and also
-                        maintain their position. So they always have to maintain
-                        their <span class="floating-text"><span
-                                class="above">competitive</span><span
-                                class="red-underline">confident</span></span><span
-                            class="red-circle">58</span> attitude. If they can't
-                        maintain it, they will be out of that team. So they have
-                        <span class="wavy-word">dollars made in that</span><span
-                            class="red-circle">59</span>.
+                        <span class="filler">Hmm</span>. I think technology is affecting a lot nowadays, because everyone, whenever they start, they try to use <span class="filler">uh</span>, AI to find a solution and sometimes they are biased by the AI <span class="floating-text"><span class="above">responses</span><span class="pron-mark"><span class="pron-above">/rɪˈspɒnsɪz/</span>disponses</span></span><span class="purple-badge">P8</span><span class="red-circle">52</span>. So, yeah, it's also affecting a person <span class="floating-text"><span class="above">decision-making</span><span class="red-underline">making a decision</span></span><span class="red-circle">53</span>.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good idea (competitiveness
-                            needed to hold a place in the team). Errors:
-                            <em>spokesperson</em> → <em>sports person</em>,
-                            <em>king</em> → <em>team</em>, <em>confident</em> →
-                            <em>competitive</em>,
-                            <em>"dollars made in that"</em> unclear.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Clear stance on
-                        sports competitiveness)</div>
+                    <div class="comment-text"><p>Good insight — AI bias affects decisions. Errors: <em>disponses</em> → responses; <em>affecting a person making a decision</em> → affecting a person's decision-making.</p></div>
+                    <div class="comment-tick">✓ 1 good point (AI bias insight)</div>
                 </div>
             </div>
 
             <div class="page-number">8</div>
         </div>
 
-        <!-- PAGE 9: PART 3 Q5-Q6 -->
+        <!-- ============ PAGE 9: PART 3 Q4-Q6 ============ -->
         <div class="page">
-            <div
-                style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART
-                3 · COMPETITIONS · MARKED SCRIPT (Q5–Q6)</div>
-            <div
-                style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
-                Duration: <strong>2 min 40 s</strong> · Errors marked:
-                <strong>14</strong> · Good points credited: <strong>2</strong> ·
-                Fillers: <strong>18</strong>
+            <div style="background: #b91c1c; color: white; padding: 3mm 4mm; font-weight: bold; font-size: 10pt; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0;">PART 3 · DECISION-MAKING · MARKED SCRIPT (Q4–Q6)</div>
+            <div style="border: 1px solid #cbd5e1; border-top: none; padding: 2mm 3mm; font-size: 9pt; margin-bottom: 4mm; color: #1c2430; background: #f8fafc;">
+                Duration: <strong>3 min 10 s</strong> · Errors marked: <strong>13</strong> · Good points credited: <strong>3</strong> · Fillers: <strong>20</strong>
             </div>
 
-            <h3>Q5. Do you think sportspeople perform better when they play
-                against competitors who are stronger than they are?</h3>
-            <div class="script-layout"
-                style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+            <h3>Q4. Is it better to make decisions independently or seek advice from others?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
                 <div class="script-text-col">
                     <p class="script-text">
-                        <span class="filler">Yeah</span>, I would say that
-                        that's true for, for some reason, because if the
-                        opponent team is very, <span class="filler">uh</span>,
-                        very, <span class="filler">uh</span>, pretty stronger,
-                        then <span class="wavy-word">he gave them, uh, the team,
-                            a boost</span><span class="red-circle">60</span>,
-                        that, that we also have to do better, you know, game.
-                        So, yeah, it's something they always have to <span
-                            class="floating-text"><span class="above">put into
-                                effect</span><span class="red-underline">put
-                                into food</span></span><span
-                            class="red-circle">61</span>. They always have to
-                        make a lot of effort to <span
-                            class="floating-text"><span class="above">cope
-                                with</span><span class="red-underline">cope up
-                                with</span></span><span
-                            class="red-circle">62</span> the other teams. So,
-                        yeah, I would say that is really true. For example, like
-                        if I talk about like one of my games, but I am not very
-                        good at playing <span class="floating-text"><span
-                                class="above">outdoor sports</span><span
-                                class="red-underline">wooded
-                                sports</span></span><span
-                            class="red-circle">63</span>, but I watch some <span
-                            class="wavy-word">sports gym university</span><span
-                            class="red-circle">64</span>. So what I found that,
-                        like <span class="wavy-word">there, I watched 2
-                            minutes</span><span class="red-circle">65</span>. In
-                        the 1st minutes, like <span class="wavy-word">the
-                            opening, he was not saying good at
-                            playing</span><span class="red-circle">66</span>. So
-                        <span class="wavy-word">the our team, we don't have to
-                            put a lot of effort to him that make</span><span
-                            class="red-circle">67</span>. But like when there
-                        were the other team arrived, so they were very stronger,
-                        and most of the players are really <span
-                            class="floating-text"><span
-                                class="above">athletic</span><span
-                                class="red-underline">athletics</span></span><span
-                            class="red-circle">68</span>, and they are really
-                        good at running. So our team has to really make a lot of
-                        effort to cope up with them. So I would say it's really
-                        important to, <span class="filler">uh</span>, I would
-                        say like a stronger team, <span
-                            class="filler">uh</span>, also affect the opponent
-                        team to <span class="floating-text"><span
-                                class="above">do their best</span><span
-                                class="red-underline">do their
-                                trip</span></span><span
-                            class="red-circle">69</span>.
+                        <span class="filler">Uh</span>, I think, <span class="filler">uh</span>, it's really wise to <span class="filler">uh</span>, seek advice from <span class="floating-text"><span class="above">others</span><span class="red-underline">other</span></span><span class="red-circle">54</span>, but <span class="filler">uh</span>, in the end, a person should decide on their <span class="floating-text"><span class="above">own</span><span class="red-underline">homes</span></span><span class="red-circle">55</span> <span class="filler">that uh</span>, how <span class="filler">uh</span>, they are going to face that problem. And they should definitely seek advice, but they shouldn't just take the advice and follow that. They should use their own judgment to make a decision.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good ideas but many unclear
-                            phrases:
-                            <em>"he gave them, uh, the team, a boost"</em>,
-                            <em>"sports gym university"</em>,
-                            <em>"there, I watched 2 minutes"</em>,
-                            <em>"the opening, he was not saying good at playing"</em>,
-                            <em>"the our team, we don't have to put a lot of effort to him that make"</em>.
-                            <em>athletics</em> → <em>athletic</em>, <em>do their
-                                trip</em> → <em>do their best</em>.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Explains
-                        competitive boost)</div>
+                    <div class="comment-text"><p>Clear, balanced position. Errors: <em>other</em> → others; <em>their homes</em> → their own (word confusion).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Balanced answer: advice + own judgment)</div>
                 </div>
             </div>
 
-            <h3>Q6. Why do some people think that taking part in sport is more
-                important than winning?</h3>
+            <h3>Q5. Should governments be allowed to make decisions that restrict individual freedom for the benefit of society?</h3>
+            <div class="script-layout" style="border-bottom: 1px solid #fca5a5; padding-bottom: 4mm; margin-bottom: 4mm;">
+                <div class="script-text-col">
+                    <p class="script-text">
+                        In my perspective, <span class="floating-text"><span class="above">to</span><span class="red-underline">in</span></span><span class="red-circle">56</span> some extent that can be done, but most of <span class="wavy-word">that</span><span class="red-circle">57</span>, it's really <span class="floating-text"><span class="above">depends</span><span class="red-underline">depend</span></span><span class="red-circle">58</span> on the context. But I think a person shouldn't be restricted by <span class="floating-text"><span class="above">government</span><span class="red-underline">commandment</span></span><span class="red-circle">59</span> to make a decision in most cases. But as I said earlier, it should be really dependent on a context like <span class="wavy-word">a personi is warranting to suicide</span><span class="red-circle">60</span>, the government has the authority to <span class="floating-text"><span class="above">restrain</span><span class="pron-mark"><span class="pron-above">/rɪˈstreɪn/</span>strain</span></span><span class="purple-badge">P9</span><span class="red-circle">61</span> him. and <span class="filler">uh, uh</span>, make <span class="filler">uh</span>, make sure that they didn't commit suicide. But most of <span class="floating-text"><span class="above">the</span><span class="red-underline">their</span></span><span class="red-circle">62</span> cases, a person should have freedom to make any decision.
+                    </p>
+                </div>
+                <div class="script-comment-col">
+                    <div class="comment-text"><p>Nuanced, thoughtful answer with a specific example. Errors: <em>in some extent</em> → to some extent; <em>it's depend</em> → it depends; <em>commandment</em> → government; <em>a personi is warranting to suicide</em> → a person wants to commit suicide; <em>strain</em> → restrain; <em>their cases</em> → the cases; <em>most of that</em> — unclear.</p></div>
+                    <div class="comment-tick">✓ 1 good point (Nuanced stance: freedom + safety exception)</div>
+                </div>
+            </div>
+
+            <h3>Q6. Can making a wrong decision sometimes be more valuable than making the right one? Why?</h3>
             <div class="script-layout">
                 <div class="script-text-col">
                     <p class="script-text">
-                        I think, most of the time, some people really think
-                        that, because I think <span class="wavy-word">most
-                            important things participate in a team</span><span
-                            class="red-circle">70</span>, and <span
-                            class="wavy-word">they are whether they are injuring
-                            or it or not</span><span
-                            class="red-circle">71</span>. Like, <span
-                            class="filler">uh, uh</span>, if I, if I share one
-                        of my stories, like, whenever I was watching <span
-                            class="wavy-word">my newer city program</span><span
-                            class="red-circle">72</span>, so I found that even
-                        though, like, <span class="floating-text"><span
-                                class="above">some</span><span
-                                class="red-underline">a SAM</span></span><span
-                            class="red-circle">73</span> team won the match,
-                        <span class="filler">uh</span>, final, but the other
-                        team was also, also enjoyed all the environment and
-                        <span class="filler">uh, uh</span>, game. So <span
-                            class="wavy-word">we straight up winning</span><span
-                            class="red-circle">74</span>, everyone was
-                        participating <span class="floating-text"><span
-                                class="above">in the</span><span
-                                class="red-underline">on the</span></span><span
-                            class="red-circle">75</span> program. So I think
-                        that's the most important thing to participate <span
-                            class="filler">in okay</span>, other than that we.
+                        <span class="filler">Uh</span>, I think <span class="filler">uh</span>, making a wrong decision sometimes really <span class="floating-text"><span class="above">helps</span><span class="red-underline">help</span></span><span class="red-circle">63</span> a person because <span class="filler">uh</span>, the person <span class="floating-text"><span class="above">knows</span><span class="red-underline">know</span></span><span class="red-circle">64</span> that <span class="filler">uh, uh</span>, how <span class="filler">uh</span>, wrong decision can affect <span class="filler">uh</span>, them in the later, and they will understand that making <span class="filler">uh</span>, wrong decision can really affect not only that person, and also their <span class="wavy-word">ceremonies</span><span class="red-circle">65</span>. So sometimes making a wrong decision and learn from it is really helpful for a person, instead of always making a right decision.
                     </p>
                 </div>
                 <div class="script-comment-col">
-                    <div class="comment-text"><p>Good idea (enjoyment of taking
-                            part). Errors:
-                            <em>"most important things participate in a team"</em>
-                            unclear,
-                            <em>"they are whether they are injuring or it or not"</em>
-                            unclear, <em>"my newer city program"</em> unclear,
-                            <em>a SAM</em> → <em>some</em>,
-                            <em>"we straight up winning"</em> → <em>despite
-                                winning</em>, <em>on the program</em> → <em>in
-                                the program</em>.</p></div>
-                    <div class="comment-tick">✓ 1 good point (Emphasises
-                        participation over winning)</div>
+                    <div class="comment-text"><p>Strong, philosophical closing answer. Errors: <em>help</em> → helps; <em>know</em> → knows; <em>their ceremonies</em> — unclear (likely “their near ones” or “their family”).</p></div>
+                    <div class="comment-tick">✓ 1 good point (Clear stance: mistakes teach lessons)</div>
                 </div>
             </div>
 
             <div class="page-number">9</div>
         </div>
 
-        <!-- PAGE 10: BAND ANALYSIS - FLUENCY & COHERENCE -->
+        <!-- ============ PAGE 10: BAND ANALYSIS – FC ============ -->
         <div class="page">
             <div class="main-band-header">WHY THIS BAND SCORE</div>
-            <p style="margin-bottom: 6mm; font-size: 10pt;">Each criterion is
-                matched to the official Speaking descriptor. Numbers in coloured
-                badges refer to the marked errors.</p>
+            <p style="margin-bottom: 6mm; font-size: 10pt;">Each criterion is matched to the official Speaking descriptor. Numbers in coloured badges refer to the marked errors.</p>
 
             <div class="band-card">
                 <div class="band-card-header">
@@ -1505,72 +888,39 @@
                 <div class="band-card-body">
                     <h4>WHY BAND 5.5: THE DESCRIPTOR FITS</h4>
                     <ul>
-                        <li><em>"Usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going"</em>
-                            — You often repeat words (<em>interesting,
-                                interesting</em>), self-correct (<em>we have
-                                rented, had rented</em>), and use slow speech
-                            with many fillers.</li>
-                        <li><em>"May produce long pauses and hesitations"</em> —
-                            Noticeable pauses and fillers (<em>uh, like, you
-                                know</em>) throughout. You also asked for
-                            repetition
-                            ("Sorry, can you repeat that question again?").</li>
-                        <li><em>"Uses simple connectives but not always appropriately"</em>
-                            — You use <em>and, but, so, because</em>, but
-                            sometimes the connections are unclear or
-                            repetitive.</li>
-                        <li><em>"Some coherence is maintained but there may be some loss of coherence"</em>
-                            — Many phrases are unintelligible
-                            ("transport patient", "personities", "Cape",
-                            "cocker field in Apple", "sweet proposal",
-                            "healthcare", "HST movie"), which causes significant
-                            loss of coherence.</li>
+                        <li><em>"Usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going"</em> — You keep going with clear ideas and a logical structure, especially in Part 2.</li>
+                        <li><em>"May produce long pauses and hesitations"</em> — Fillers are frequent (<em>uh, most of the time</em>) but do not completely block the message.</li>
+                        <li><em>"Uses simple connectives but not always appropriately"</em> — Mostly <em>like, so, but, and, because</em>; some variety (<em>eventually, sometimes, in my perspective</em>) but not extensive.</li>
+                        <li><em>"Some coherence is maintained but there may be some loss of coherence"</em> — Two requests for repetition and one strange interruption caused loss of coherence. A few phrases (<em>everything is only nowadays, job life 1st, most of that</em>) are unclear.</li>
                     </ul>
 
                     <div class="why-not-higher">
                         <h5>↑ WHY NOT BAND 6?</h5>
-                        <p>Band 6 requires
-                            <em>"is willing to speak at length, though may lose coherence at times due to occasional repetition, self-correction or hesitation"</em>
-                            and
-                            <em>"uses a range of connectives and discourse markers but not always appropriately."</em>
-                            Your frequent fillers and the high number of unclear
-                            phrases prevent a comfortable Band 6.</p>
+                        <p>Band 6 requires <em>"is willing to speak at length, though may lose coherence at times due to occasional repetition, self-correction or hesitation"</em> and <em>"uses a range of connectives and discourse markers but not always appropriately."</em> Your fillers are more than occasional, and the two repetition requests plus one interruption are enough to prevent Band 6.</p>
                     </div>
 
                     <div class="why-not-lower">
                         <h5>↓ WHY NOT BAND 5?</h5>
-                        <p>Band 5 describes
-                            <em>"usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going"</em>
-                            and
-                            <em>"may produce long pauses and hesitations."</em>
-                            You are at the upper end of Band 5 because you do
-                            speak at length and attempt complex answers.</p>
+                        <p>Band 5 describes <em>"usually maintains flow of speech but uses repetition, self-correction and/or slow speech to keep going"</em> and <em>"may produce long pauses and hesitations."</em> You are above Band 5 because your ideas are well organised and your Part 2 narrative is clear and developed.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="comment-box"
-                style="border-color: #2563eb; margin-top: 0;">
+            <div class="comment-box" style="border-color: #2563eb; margin-top: 0;">
                 <h4 style="color: #2563eb;">HOW TO IMPROVE FLUENCY</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Replace <em>uh</em> and <em>like</em> with short silent
-                        pauses. Silence is better than fillers.</li>
-                    <li>Plan your answer for 2–3 seconds before speaking. Think
-                        of one main idea and one example.</li>
-                    <li>Practise speaking for 1 minute on a familiar topic
-                        without stopping. Record yourself and count
-                        fillers.</li>
-                    <li>Learn and use a wider range of linking phrases:
-                        <em>What's more, On top of that, The thing is, In fact,
-                            As far as I'm concerned, To be honest.</em></li>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li><strong>Reduce “most of the time”.</strong> This phrase appears at least 6 times. Replace with alternatives: <em>usually, generally, in most cases, as a rule</em>.</li>
+                    <li><strong>Reduce fillers.</strong> Pause silently for one second before each new sentence — a pause is better than <em>uh</em>.</li>
+                    <li><strong>If audio is unclear, say “Could you say that again, please?”</strong> — short and clear. Avoid “You voice is not very clear” which is slightly rude in English.</li>
+                    <li><strong>Do not talk to other people in the room.</strong> The “Hey, hey, hey, hey, hey, hey, hey. Nobody, I don't know who's there.” interruption disrupted your answer completely.</li>
+                    <li>Record 60 seconds a day and count fillers. Aim for under 5 per minute.</li>
                 </ul>
             </div>
 
             <div class="page-number">10</div>
         </div>
 
-        <!-- PAGE 11: BAND ANALYSIS - LEXICAL RESOURCE -->
+        <!-- ============ PAGE 11: BAND ANALYSIS – LR ============ -->
         <div class="page">
             <div class="band-card" style="margin-top: 0;">
                 <div class="band-card-header">
@@ -1580,65 +930,52 @@
                 <div class="band-card-body">
                     <h4>WHY BAND 5.0: THE DESCRIPTOR FITS</h4>
                     <ul>
-                        <li><em>"Uses vocabulary resource sufficient to talk about familiar topics but with limited flexibility"</em>
-                            — You can discuss bread, competitive people, and
-                            competitions, but with limited variation.</li>
-                        <li><em>"Attempts less common vocabulary but with some inaccuracy"</em>
-                            — You tried <em>transportation, facilities,
-                                competitive, hospitable, traditional</em>, but
-                            many were inaccurate or unclear (<em>transport
-                                patient, personities, cocker field in Apple,
-                                sweet proposal, healthcare, HST
-                                movie</em>).</li>
-                        <li><em>"Errors in word choice may cause difficulty for the listener"</em>
-                            — Many phrases are unintelligible, which impedes
-                            communication.</li>
+                        <li><em>"Uses vocabulary resource sufficient to talk about familiar topics but with limited flexibility"</em> — You can discuss technology, learning and decision-making, but with a small repeated set (<em>most of the time, really, like, good</em>).</li>
+                        <li><em>"Attempts less common vocabulary but with some inaccuracy"</em> — You tried <em>AI platform, biased, responses, judgment, individual freedom, authority, restrain, self-defence, CPR, programming, utility bills, job offer</em> — but produced <em>carn academy, rabbit job, car job, equate, disponses, commandment, strain, ceremonies</em>.</li>
+                        <li><em>"Errors in word choice may cause difficulty for the listener"</em> — Here they go beyond difficulty and <strong>change meaning entirely</strong>:
+                            <ul style="margin-top:1mm; font-size:9.5pt;">
+                                <li><em>lift a job</em> (×3) → <em>leave a job</em></li>
+                                <li><em>live that job</em> (×2) → <em>leave that job</em></li>
+                                <li><em>rabbit job</em> → <em>right job</em></li>
+                                <li><em>car job</em> → <em>current job</em></li>
+                                <li><em>carn academy</em> → <em>Khan Academy</em></li>
+                                <li><em>10 meeting school</em> → <em>10 Minute School</em></li>
+                                <li><em>equate</em> → <em>accurate</em></li>
+                                <li><em>disponses</em> → <em>responses</em></li>
+                                <li><em>commandment</em> → <em>government</em></li>
+                                <li><em>strain</em> → <em>restrain</em></li>
+                                <li><em>ceremonies</em> → <em>near ones / family</em></li>
+                            </ul>
+                        </li>
+                        <li><em>"Limited flexibility"</em> — You rarely paraphrase. When a word fails, you repeat the unclear one rather than describing the idea another way.</li>
                     </ul>
 
                     <div class="why-not-higher">
                         <h5>↑ WHY NOT BAND 5.5?</h5>
-                        <p>Band 5.5 requires
-                            <em>"uses vocabulary resource sufficient to talk about familiar and unfamiliar topics but with limited flexibility"</em>
-                            and
-                            <em>"attempts less common vocabulary but with some inaccuracy."</em>
-                            Your errors are frequent and often severe enough to
-                            cause real difficulty for the listener.</p>
+                        <p>Band 5.5 requires <em>"uses vocabulary resource sufficient to talk about familiar and unfamiliar topics but with limited flexibility"</em> and <em>"attempts less common vocabulary but with some inaccuracy."</em> Your less-common vocabulary is attempted but inaccurately produced so often that meaning breaks down — that goes beyond "some inaccuracy."</p>
                     </div>
 
                     <div class="why-not-lower">
                         <h5>↓ WHY NOT BAND 4?</h5>
-                        <p>Band 4 describes
-                            <em>"uses vocabulary resource sufficient only to talk about familiar topics"</em>
-                            and
-                            <em>"errors in word choice may cause difficulty for the listener."</em>
-                            You exceed this because you attempt a range of
-                            topics and some vocabulary is adequate.</p>
+                        <p>Band 4 describes <em>"uses vocabulary resource sufficient only to talk about familiar topics"</em> and <em>"errors in word choice may cause difficulty."</em> You exceed this because you actively reach for abstract vocabulary (<em>biased, judgment, individual freedom, authority, restrain</em>) — the issue is accuracy, not range.</p>
                     </div>
                 </div>
             </div>
 
             <div class="comment-box" style="border-color: #2563eb;">
                 <h4 style="color: #2563eb;">HOW TO IMPROVE VOCABULARY</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Learn topic-specific collocations: <em>public transport,
-                            local amenities, competitive mindset, tourist
-                            attraction, cultural heritage, hospitable locals,
-                            affordable tickets.</em></li>
-                    <li>When unsure of a word, paraphrase with a simpler word
-                        rather than using an unclear one.</li>
-                    <li>Record 5 new words per topic and use them in speaking
-                        practice.</li>
-                    <li>Focus on pronunciation of key vocabulary:
-                        <em>transportation, facilities, museums, galleries,
-                            hospitality, traditional.</em></li>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li><strong>Fix meaning-changing pairs first:</strong> <em>leave/lift, current/car, right/rabbit, accurate/equate, responses/disponses, government/commandment, restrain/strain</em>.</li>
+                    <li><strong>Learn collocations, not single words:</strong> <em>AI platform, biased response, individual freedom, government authority, restrain a person, self-defence training, first aid, utility bills, job offer</em>.</li>
+                    <li><strong>Build topic word lists.</strong> Technology: <em>AI, platform, biased, algorithm, digital literacy, dependence</em>. Decision-making: <em>logic, emotion, judgment, outcome, freedom, consequence</em>.</li>
+                    <li><strong>Paraphrase instead of freezing.</strong> If you forget <em>“accurate”</em>, say <em>“not always correct”</em>.</li>
                 </ul>
             </div>
 
             <div class="page-number">11</div>
         </div>
 
-        <!-- PAGE 12: BAND ANALYSIS - GRAMMATICAL RANGE & ACCURACY -->
+        <!-- ============ PAGE 12: BAND ANALYSIS – GRA ============ -->
         <div class="page">
             <div class="band-card" style="margin-top: 0;">
                 <div class="band-card-header">
@@ -1648,65 +985,46 @@
                 <div class="band-card-body">
                     <h4>WHY BAND 5.0: THE DESCRIPTOR FITS</h4>
                     <ul>
-                        <li><em>"Produces basic sentence forms with reasonable accuracy"</em>
-                            — Some simple sentences are correct
-                            (<em>"I think my hometown is a good place to be"</em>).</li>
-                        <li><em>"Uses some complex structures but these usually contain errors"</em>
-                            — You attempt relative clauses
-                            (<em>"places that were really popular"</em>) and
-                            conditionals
-                            (<em>"if anyone have to go visit"</em>), but errors
-                            are frequent.</li>
-                        <li><em>"Makes frequent errors which may cause some difficulty for the listener"</em>
-                            — Errors include subject-verb agreement
-                            (<em>"some countries is"</em>), tense
-                            (<em>"I have business visited"</em>), missing verbs
-                            (<em>"if I in the competition"</em>), articles, and
-                            prepositions.</li>
+                        <li><em>"Produces basic sentence forms with reasonable accuracy"</em> — Simple sentences are often correct (<em>"I use my smartphone most frequently"</em>, <em>"I don't find technology difficult"</em>), but not consistently.</li>
+                        <li><em>"Uses some complex structures but these usually contain errors"</em> — You attempt relative clauses (<em>"a platform that…"</em>), conditionals (<em>"if a person wants to learn…"</em>) and past narratives, but errors appear in most.</li>
+                        <li><em>"Makes frequent errors which may cause some difficulty for the listener"</em> — Recurring error types:
+                            <ul style="margin-top:1mm; font-size:9.5pt;">
+                                <li><strong>Subject–verb agreement:</strong> <em>a person have → has; emotion drive → drives; logic dictate → dictates; making a wrong decision help → helps; a person know → knows</em></li>
+                                <li><strong>Verb form after prepositions:</strong> <em>struggling to getting a job → to get a job</em></li>
+                                <li><strong>Articles:</strong> <em>very good platform → a very good platform; new AI platform is come → a new AI platform has arrived</em></li>
+                                <li><strong>Prepositions:</strong> <em>in my home → at home; stick on that → stick to it; in some extent → to some extent; on the time → at the time</em></li>
+                                <li><strong>Word order in "there is":</strong> <em>is there is a technology → is there a technology</em></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <div class="why-not-higher">
                         <h5>↑ WHY NOT BAND 5.5?</h5>
-                        <p>Band 5.5 requires
-                            <em>"produces basic sentence forms with reasonable accuracy"</em>
-                            and
-                            <em>"uses some complex structures but these usually contain errors."</em>
-                            Your error rate is high, and several sentences
-                            contain multiple errors in a row.</p>
+                        <p>Band 5.5 requires <em>"produces basic sentence forms with reasonable accuracy"</em> and <em>"uses some complex structures but these usually contain errors."</em> Your basic forms are not consistently accurate — SVA and articles fail in most answers — so you sit at 5.0.</p>
                     </div>
 
                     <div class="why-not-lower">
-                        <h5>↓ WHY NOT BAND 4?</h5>
-                        <p>Band 4 describes
-                            <em>"produces basic sentence forms and some correct simple sentences but subordinate structures are rare"</em>
-                            and
-                            <em>"errors are frequent and may lead to misunderstanding."</em>
-                            You attempt more complex forms, and most errors are
-                            understandable in context.</p>
+                        <h5>↓ WHY NOT BAND 4.0?</h5>
+                        <p>Band 4.0 describes <em>"produces basic sentence forms and some correct simple sentences but subordinate structures are rare."</em> You do attempt complex structures, and the listener can usually recover meaning from context, so you are at the upper end of 5.0.</p>
                     </div>
                 </div>
             </div>
 
             <div class="comment-box" style="border-color: #2563eb;">
                 <h4 style="color: #2563eb;">HOW TO IMPROVE GRAMMAR</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Master subject-verb agreement (<em>everyone was,
-                            countries are, he doesn't</em>).</li>
-                    <li>Use the correct verb form after "trying to" (base verb:
-                        <em>trying to be competitive</em>).</li>
-                    <li>Practise articles (<em>a / an / the</em>) and
-                        prepositions (<em>interested in, affect academics,
-                            through his effort, live in</em>).</li>
-                    <li>Record yourself and transcribe 1 minute of speech —
-                        identify and correct errors.</li>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li><strong>Drill SVA aloud.</strong> Say 10 sentences with <em>a person + has</em>, <em>emotion + drives</em>, <em>logic + dictates</em>, <em>making + helps</em>.</li>
+                    <li><strong>Fix the past narrative frame.</strong> For stories use: <em>I decided… / I was struggling… / I finally got… / I realised…</em></li>
+                    <li><strong>Learn 10 preposition phrases:</strong> <em>at home, stick to it, to some extent, at the time, at that moment, on time, in some cases, depend on</em>.</li>
+                    <li><strong>Say shorter sentences.</strong> Long sentences are where your SVA and articles fail.</li>
+                    <li>Transcribe 60 seconds of your own speech weekly and correct every error.</li>
                 </ul>
             </div>
 
             <div class="page-number">12</div>
         </div>
 
-        <!-- PAGE 13: BAND ANALYSIS - PRONUNCIATION -->
+        <!-- ============ PAGE 13: BAND ANALYSIS – PRONUNCIATION ============ -->
         <div class="page">
             <div class="band-card" style="margin-top: 0;">
                 <div class="band-card-header">
@@ -1716,628 +1034,324 @@
                 <div class="band-card-body">
                     <h4>WHY BAND 5.0: THE DESCRIPTOR FITS</h4>
                     <ul>
-                        <li><em>"Shows some effective use of features but this is not sustained"</em>
-                            — Some words are clear, but many are not.</li>
-                        <li><em>"Can generally be understood, though mispronunciation of individual words or sounds reduces clarity at times"</em>
-                            — Many words and phrases are mispronounced or
-                            unintelligible: <em>Parker</em> (Dhaka?),
-                            <em>transport patient</em>, <em>personities</em>,
-                            <em>Cape</em>, <em>cocker field in Apple</em>,
-                            <em>open feet</em>, <em>sweet proposal</em>,
-                            <em>healthcare</em>, <em>HST movie</em>, <em>San
-                                Martin Pilot</em>, <em>Techno point</em>,
-                            <em>whose sheet</em>, <em>I'm afraid Hindu</em>,
-                            <em>devotion</em>, <em>elevant</em>, <em>work</em>
-                            (walk?), <em>don't say against</em>, <em>3 strategy
-                                toothplaces</em>, <em>pays a whole common for
-                                police to use it</em>, <em>food tribe</em>,
-                            <em>old haka</em>, <em>HGPI</em>, <em>carbo</em>,
-                            <em>student combo</em>, <em>tourist profession</em>,
-                            <em>Harbor</em>, <em>grocery organism</em>,
-                            <em>possibility</em>, <em>visual is not paying
-                                name</em>, <em>maintaining use</em>,
-                            <em>tribe</em>, <em>pair</em>, <em>heard
-                                accordingly</em>, <em>modern places</em>,
-                            <em>Hagi and Kissing</em>, <em>department</em>,
-                            <em>restake</em>, <em>station, teacher</em>,
-                            <em>work with you from home</em>, <em>escape</em>,
-                            <em>costs me</em>, <em>shots</em>, <em>stock
-                                shops</em>, <em>charging the police</em>,
-                            <em>paperwork</em>, <em>take and local culture</em>,
-                            <em>local linguists</em>, <em>personal vision</em>,
-                            <em>integrated</em>, <em>immigrant country</em>,
-                            <em>arguing from India</em>, <em>No
-                                condition</em>.</li>
+                        <li><em>"Shows some effective use of features but this is not sustained"</em> — Some words are clear and you use some sentence stress, but control drops whenever you speak quickly.</li>
+                        <li><em>"Can generally be understood, though mispronunciation of individual words or sounds reduces clarity at times"</em> — The listener can follow the drift, but many words repeatedly fail — often producing a <em>different word</em>, not just a different accent:</li>
                     </ul>
 
+                    <table class="tiny" style="margin-top: 0;">
+                        <tr><th>You said</th><th>Target</th><th>Issue</th></tr>
+                        <tr><td>eyes</td><td>IELTS /ˈaɪelts/</td><td>Meaning-changing</td></tr>
+                        <tr><td>spot phone</td><td>smartphone /ˈsmɑːtfəʊn/</td><td>Word confusion</td></tr>
+                        <tr><td>carn academy</td><td>Khan Academy /kɑːn əˈkædəmi/</td><td>Word confusion</td></tr>
+                        <tr><td>10 meeting school</td><td>10 Minute School</td><td>Word confusion</td></tr>
+                        <tr><td>equate</td><td>accurate /ˈækjərət/</td><td>Meaning-changing</td></tr>
+                        <tr><td>lift (×3)</td><td>leave /liːv/</td><td>Meaning-changing</td></tr>
+                        <tr><td>live that job</td><td>leave that job</td><td>Meaning-changing</td></tr>
+                        <tr><td>rabbit job</td><td>right job /raɪt dʒɒb/</td><td>Meaning-changing</td></tr>
+                        <tr><td>car job</td><td>current job /ˈkʌrənt/</td><td>Meaning-changing</td></tr>
+                        <tr><td>disponses</td><td>responses /rɪˈspɒnsɪz/</td><td>Meaning-changing</td></tr>
+                        <tr><td>commandment</td><td>government /ˈɡʌvənmənt/</td><td>Meaning-changing</td></tr>
+                        <tr><td>strain</td><td>restrain /rɪˈstreɪn/</td><td>Meaning-changing</td></tr>
+                        <tr><td>ceremonies</td><td>near ones / family</td><td>Meaning-changing</td></tr>
+                    </table>
+
                     <div class="why-not-higher">
-                        <h5>↑ WHY NOT BAND 6?</h5>
-                        <p>Band 6 requires
-                            <em>"mispronunciation of individual words or sounds reduces clarity at times"</em>
-                            but generally
-                            <em>"can be understood throughout."</em> Your
-                            mispronunciations are frequent and often affect
-                            whole phrases, making understanding difficult.</p>
+                        <h5>↑ WHY NOT BAND 5.5?</h5>
+                        <p>Band 5.5 requires <em>"mispronunciation reduces clarity at times"</em> but with overall intelligibility. Here the confusions (<em>lift/leave, rabbit/right, car/current, commandment/government</em>) repeatedly change the meaning of whole sentences, going beyond "reduces clarity at times."</p>
                     </div>
 
                     <div class="why-not-lower">
                         <h5>↓ WHY NOT BAND 4?</h5>
-                        <p>Band 4 describes
-                            <em>"mispronunciations are frequent and cause some difficulty for the listener."</em>
-                            You are at the lower end of Band 5 because some
-                            parts are clear and you attempt a range of
-                            pronunciation features.</p>
+                        <p>Band 4 describes <em>"mispronunciations are frequent and cause some difficulty for the listener."</em> You are at the upper end of Band 5 because your overall rhythm and intonation are reasonable, and stretches of speech are perfectly clear.</p>
                     </div>
                 </div>
             </div>
 
             <div class="comment-box" style="border-color: #7c3aed;">
                 <h4 style="color: #7c3aed;">HOW TO IMPROVE PRONUNCIATION</h4>
-                <ul
-                    style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
-                    <li>Practise minimal pairs: <em>bread/bred, bed/bad,
-                            breed/bread, tour/dough, flour/flower,
-                            walk/work.</em></li>
-                    <li>Record yourself and compare with a native speaker (BBC
-                        Learning English, YouGlish).</li>
-                    <li>Focus on word stress: <em>com-PET-i-tive, per-FORM-ing,
-                            op-TI-mis-tic, hos-PI-ta-ble,
-                            tra-DI-tion-al.</em></li>
-                    <li>Slow down slightly when using less familiar words. Break
-                        long words into syllables.</li>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li><strong>Priority 1 — fix meaning-changing confusions:</strong> <em>leave (not lift), right (not rabbit), current (not car), accurate (not equate), government (not commandment), restrain (not strain)</em>.</li>
+                    <li><strong>Minimal pairs:</strong> <em>leave / lift, right / rabbit, car / current, government / commandment</em> — practise aloud slowly, then quickly.</li>
+                    <li><strong>Place/proper names:</strong> <em>Khan Academy, 10 Minute School, IELTS</em>.</li>
+                    <li><strong>Final consonants:</strong> <em>leave /liːv/</em> ends in /v/; <em>lift /lɪft/</em> ends in /ft/ — the endings change meaning.</li>
+                    <li>Use YouGlish to hear each target word in context, then record yourself and compare.</li>
                 </ul>
             </div>
 
             <div class="page-number">13</div>
         </div>
 
-        <!-- PAGE 14: ERROR LOG (Entries 1-35) -->
+        <!-- ============ PAGE 14: ERROR LOG 1–35 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
-                LOG (FULL LIST) — PAGE 1 OF 3</h2>
-            <p style="margin-bottom: 4mm;">Every numbered mark from Parts 1–3,
-                with the correction, the reason, and the relevant speaking rule.
-                (Entries 1–35)</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR LOG (FULL LIST) — PAGE 1 OF 2</h2>
+            <p style="margin-bottom: 4mm;">Every numbered mark from Parts 1–3, with the correction, the reason, and the relevant speaking rule. (Entries 1–35)</p>
 
             <table class="tiny" style="margin-top: 0;">
-                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule
-                        / Explanation</th></tr>
-                <tr><td>1</td><td>bring</td><td>eat</td><td>Word
-                        choice</td><td>You meant "eat" not "bring."</td></tr>
-                <tr><td>2</td><td>leaving</td><td>living</td><td>Pronunciation</td><td>/ˈlɪvɪŋ/
-                        not /ˈliːvɪŋ/.</td></tr>
-                <tr><td>3</td><td>mixed</td><td>mix</td><td>Verb
-                        form</td><td>Base verb after "try to."</td></tr>
-                <tr><td>4</td><td>fried</td><td>fry</td><td>Verb
-                        form</td><td>Base verb after "and then."</td></tr>
-                <tr><td>5</td><td>flowers</td><td>flour</td><td>Word
-                        choice</td><td>Flour is used in cooking; flowers are
-                        plants.</td></tr>
-                <tr><td>6</td><td>boiled boilers,
-                        Russia</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase — ask for clarification or paraphrase.</td></tr>
-                <tr><td>7</td><td>tour</td><td>dough</td><td>Word
-                        choice</td><td>Dough = mixture used to make
-                        bread.</td></tr>
-                <tr><td>8</td><td>show</td><td>shops</td><td>Word
-                        choice</td><td>Local shops sell bread.</td></tr>
-                <tr><td>9</td><td>did
-                        don't</td><td>didn't</td><td>Grammar</td><td>Past simple
-                        negative: <em>didn't have</em>.</td></tr>
-                <tr><td>10</td><td>platform for people</td><td>opportunity /
-                        reason</td><td>Word choice</td><td>Unclear
-                        collocation.</td></tr>
-                <tr><td>11</td><td>made him</td><td>met him</td><td>Word
-                        choice</td><td>Meet a person; make a thing.</td></tr>
-                <tr><td>12</td><td>one of my</td><td>one of
-                        my</td><td>Correct</td><td>Correct as written (no
-                        error).</td></tr>
-                <tr><td>13</td><td>when is what the situation
-                        is</td><td>whatever the situation
-                        was</td><td>Fluency</td><td>Confused sentence
-                        structure.</td></tr>
-                <tr><td>14</td><td>tried to competitive</td><td>tried to be
-                        competitive</td><td>Grammar</td><td>Missing "be" after
-                        "tried to."</td></tr>
-                <tr><td>15</td><td>Christian mind</td><td>competitive
-                        mindset</td><td>Word choice</td><td>Unclear phrase —
-                        likely mispronunciation of "competitive."</td></tr>
-                <tr><td>16</td><td>computer</td><td>competitive</td><td>Pronunciation</td><td>/kəmˈpetɪtɪv/
-                        — unclear pronunciation.</td></tr>
-                <tr><td>17</td><td>he's his name</td><td>his
-                        name</td><td>Fluency</td><td>Self-correction; can be
-                        cleaned up.</td></tr>
-                <tr><td>18</td><td>Shago</td><td>Shagor</td><td>Pronunciation</td><td>/ˈʃaɡɔːr/.</td></tr>
-                <tr><td>19</td><td>made him</td><td>met him</td><td>Word
-                        choice</td><td>Meet a person; make a thing.</td></tr>
-                <tr><td>20</td><td>when is what the situation
-                        is</td><td>whatever the situation
-                        is</td><td>Fluency</td><td>Confused structure.</td></tr>
-                <tr><td>21</td><td>tried to competitive</td><td>tried to be
-                        competitive</td><td>Grammar</td><td>Missing
-                        "be."</td></tr>
-                <tr><td>22</td><td>Christian mind</td><td>competitive
-                        mindset</td><td>Word choice</td><td>Unclear
-                        phrase.</td></tr>
-                <tr><td>23</td><td>every</td><td>everyone</td><td>Grammar</td><td>Need
-                        pronoun "everyone" as subject.</td></tr>
-                <tr><td>24</td><td>string</td><td>performing</td><td>Pronunciation</td><td>/pəˈfɔːmɪŋ/
-                        — unclear pronunciation.</td></tr>
-                <tr><td>25</td><td>facing</td><td>was facing</td><td>Verb
-                        form</td><td>Past continuous required.</td></tr>
-                <tr><td>26</td><td>instead of frustrated</td><td>instead of
-                        being frustrated</td><td>Grammar</td><td>Preposition +
-                        gerund.</td></tr>
-                <tr><td>27</td><td>what part of what course he was doing for
-                        you</td><td>(unclear)</td><td>Fluency</td><td>Confused
-                        phrase.</td></tr>
-                <tr><td>28</td><td>is a
-                        man</td><td>(unclear)</td><td>Fluency</td><td>Unclear
-                        phrase.</td></tr>
-                <tr><td>29</td><td>dream better</td><td>doing
-                        better</td><td>Word choice</td><td>Unclear — likely
-                        mispronunciation.</td></tr>
-                <tr><td>30</td><td>was I hate like 2 goals</td><td>was ahead by
-                        2 goals</td><td>Fluency</td><td>Confused
-                        phrase.</td></tr>
-                <tr><td>31</td><td>own</td><td>win</td><td>Word
-                        choice</td><td>Win a match.</td></tr>
-                <tr><td>32</td><td>throw</td><td>through</td><td>Word
-                        choice</td><td>Through his effort = because of his
-                        effort.</td></tr>
-                <tr><td>33</td><td>make</td><td>makes</td><td>SVA</td><td>Singular
-                        subject "attitude."</td></tr>
-                <tr><td>34</td><td>to better</td><td>for the better</td><td>Word
-                        choice</td><td>Standard phrase.</td></tr>
-                <tr><td>35</td><td>competition</td><td>competitions</td><td>Plural</td><td>Multiple
-                        sports.</td></tr>
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule / Explanation</th></tr>
+                <tr><td>1</td><td>other GPT platform</td><td>other GPT platforms</td><td>Plural</td><td>“Other” + plural noun.</td></tr>
+                <tr><td>2</td><td>eyes</td><td>IELTS</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>3</td><td>everyone use smartphone</td><td>everyone uses smartphones</td><td>SVA · Plural</td><td>Third person singular + plural noun.</td></tr>
+                <tr><td>4</td><td>spot phone</td><td>smartphone</td><td>Pronunciation</td><td>Word confusion.</td></tr>
+                <tr><td>5</td><td>Are you definitely say that</td><td>I would definitely say that</td><td>Grammar</td><td>Missing subject “I”.</td></tr>
+                <tr><td>6</td><td>technically depended</td><td>become dependent</td><td>Word choice</td><td>“Technically” ≠ “technologically”.</td></tr>
+                <tr><td>7</td><td>online platform</td><td>online platforms</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>8</td><td>is there is a technology</td><td>is there a technology</td><td>Grammar</td><td>Double “is”.</td></tr>
+                <tr><td>9</td><td>new AI platform is come</td><td>a new AI platform has arrived</td><td>Grammar</td><td>Present perfect.</td></tr>
+                <tr><td>10</td><td>equate</td><td>accurate</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>11</td><td>like I wasn't struggling to use the technology</td><td>(unclear)</td><td>Fluency</td><td>Confused phrase.</td></tr>
+                <tr><td>12</td><td>in my home</td><td>at home</td><td>Preposition</td><td>At home, not in home.</td></tr>
+                <tr><td>13</td><td>of a job related tax</td><td>for a job-related task</td><td>Word choice</td><td>Task, not tax.</td></tr>
+                <tr><td>14</td><td>tax</td><td>task</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>15</td><td>Sorry, can you repeat that question? You voice is not very clear.</td><td>Could you say that again, please?</td><td>Fluency</td><td>Asked for repetition; “You voice” → “Your voice”.</td></tr>
+                <tr><td>16</td><td>very good platform</td><td>a very good platform</td><td>Article</td><td>Missing article “a”.</td></tr>
+                <tr><td>17</td><td>carn academy</td><td>Khan Academy</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>18</td><td>10 meeting school</td><td>10 Minute School</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>19</td><td>wants</td><td>who wants</td><td>Grammar</td><td>Relative clause.</td></tr>
+                <tr><td>20</td><td>platform</td><td>platforms</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>21</td><td>Can you repeat that question? Your voice was not clear.</td><td>Could you say that again, please?</td><td>Fluency</td><td>Asked for repetition a second time.</td></tr>
+                <tr><td>22</td><td>Self-defense</td><td>self-defence</td><td>Capitalisation</td><td>No capital needed.</td></tr>
+                <tr><td>23</td><td>medical initial medical examination</td><td>basic first aid</td><td>Word choice</td><td>You meant first aid.</td></tr>
+                <tr><td>24</td><td>Hey, hey, hey, hey, hey, hey, hey. Nobody, I don't know who's there.</td><td>(delete)</td><td>Fluency</td><td>Strange interruption — disrupted the answer.</td></tr>
+                <tr><td>25</td><td>lift a job</td><td>leave a job</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>26</td><td>lift</td><td>leave</td><td>Pronunciation</td><td>Repeated error.</td></tr>
+                <tr><td>27</td><td>holding back for progressing</td><td>holding back my progress</td><td>Word choice</td><td>Preposition + noun.</td></tr>
+                <tr><td>28</td><td>hand it</td><td>handle it</td><td>Word choice</td><td>Verb form.</td></tr>
+                <tr><td>29</td><td>left</td><td>leave</td><td>Verb form</td><td>“Had to” + base verb.</td></tr>
+                <tr><td>30</td><td>live</td><td>leave</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>31</td><td>live</td><td>leave</td><td>Pronunciation</td><td>Repeated error.</td></tr>
+                <tr><td>32</td><td>factor</td><td>factors</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>33</td><td>job off or</td><td>job offer</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>34</td><td>factor</td><td>factors</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>35</td><td>left</td><td>leave</td><td>Verb form</td><td>“Will” + base verb.</td></tr>
             </table>
 
             <div class="page-number">14</div>
         </div>
 
-        <!-- PAGE 15: ERROR LOG (Entries 36-70) -->
+        <!-- ============ PAGE 15: ERROR LOG 36–65 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
-                LOG (FULL LIST) — PAGE 2 OF 3</h2>
-            <p style="margin-bottom: 4mm;">Continued from the previous page.
-                (Entries 36–70)</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR LOG (FULL LIST) — PAGE 2 OF 2</h2>
+            <p style="margin-bottom: 4mm;">Continued from the previous page. (Entries 36–65)</p>
 
             <table class="tiny" style="margin-top: 0;">
-                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule
-                        / Explanation</th></tr>
-                <tr><td>36</td><td>competition</td><td>competitions</td><td>Plural</td><td>Multiple
-                        cultural events.</td></tr>
-                <tr><td>37</td><td>at the
-                        institution</td><td>institutions</td><td>Grammar</td><td>List
-                        of institutions.</td></tr>
-                <tr><td>38</td><td>competition is</td><td>competitions
-                        are</td><td>SVA</td><td>Plural subject.</td></tr>
-                <tr><td>39</td><td>interesting</td><td>interested
-                        in</td><td>Word form</td><td>People are interested in
-                        music.</td></tr>
-                <tr><td>40</td><td>programmers</td><td>programs</td><td>Word
-                        choice</td><td>Programmers = software
-                        developers.</td></tr>
-                <tr><td>41</td><td>affect in academics</td><td>affect
-                        academics</td><td>Preposition</td><td>No "in"
-                        needed.</td></tr>
-                <tr><td>42</td><td>institution</td><td>institutions</td><td>Plural</td><td>Multiple
-                        institutions.</td></tr>
-                <tr><td>43</td><td>public
-                        opposition</td><td>(unclear)</td><td>Fluency</td><td>Unclear
-                        phrase — likely "public competition."</td></tr>
-                <tr><td>44</td><td>comp-education</td><td>competitions</td><td>Fluency</td><td>Self-correction
-                        mid-word.</td></tr>
-                <tr><td>45</td><td>part of Family Zone... hit Cripe
-                        you</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        — request repetition.</td></tr>
-                <tr><td>46</td><td>win your price</td><td>winning a
-                        prize</td><td>Word form</td><td>Prize = reward; price =
-                        cost.</td></tr>
-                <tr><td>47</td><td>something giving a price is
-                        motivating</td><td>giving a prize
-                        motivates</td><td>Grammar</td><td>Cleaner subject-verb
-                        phrasing.</td></tr>
-                <tr><td>48</td><td>organizer, key, some, Money as a
-                        price</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>49</td><td>sell proving book</td><td>self-improving
-                        book</td><td>Unclear</td><td>Unclear; likely
-                        "self-improvement book."</td></tr>
-                <tr><td>50</td><td>respected touchstone</td><td>respected person
-                        / figure</td><td>Word choice</td><td>Touchstone =
-                        standard; unclear here.</td></tr>
-                <tr><td>51</td><td>people finding that finding is very, uh,
-                        anything</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        — probably "people find it interesting."</td></tr>
-                <tr><td>52</td><td>I take the
-                        ability</td><td>(unclear)</td><td>Fluency</td><td>Unclear
-                        — probably "general knowledge ability."</td></tr>
-                <tr><td>53</td><td>intrigued</td><td>intrigues</td><td>SVA</td><td>Singular
-                        subject "that."</td></tr>
-                <tr><td>54</td><td>if I in the competition</td><td>if I were in
-                        the competition</td><td>Grammar</td><td>Missing verb
-                        "were."</td></tr>
-                <tr><td>55</td><td>spokesperson</td><td>sports
-                        person</td><td>Word choice</td><td>You meant sports
-                        person.</td></tr>
-                <tr><td>56</td><td>or kind to improve</td><td>or keen to
-                        improve</td><td>Pronunciation</td><td>/kiːn/ not
-                        /kaɪnd/.</td></tr>
-                <tr><td>57</td><td>king</td><td>team</td><td>Unclear</td><td>You
-                        meant "team."</td></tr>
-                <tr><td>58</td><td>confident attitude</td><td>competitive
-                        attitude</td><td>Word choice</td><td>You meant
-                        competitive.</td></tr>
-                <tr><td>59</td><td>dollars made in
-                        that</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>60</td><td>he gave them, uh, the team, a
-                        boost</td><td>it gives the team a
-                        boost</td><td>Fluency</td><td>Confused
-                        structure.</td></tr>
-                <tr><td>61</td><td>put into food</td><td>put into
-                        effect</td><td>Word choice</td><td>Unclear; meant
-                        "put into effect."</td></tr>
-                <tr><td>62</td><td>cope up with</td><td>cope with</td><td>Word
-                        choice</td><td>Standard phrase: cope with.</td></tr>
-                <tr><td>63</td><td>wooded sports</td><td>outdoor
-                        sports</td><td>Pronunciation</td><td>Unclear; meant
-                        outdoor sports.</td></tr>
-                <tr><td>64</td><td>sports gym
-                        university</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>65</td><td>there, I watched 2
-                        minutes</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>66</td><td>the opening, he was not saying good at
-                        playing</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>67</td><td>the our team, we don't have to put a lot of
-                        effort to him that
-                        make</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>68</td><td>athletics</td><td>athletic</td><td>Word
-                        form</td><td>Adjective: athletic.</td></tr>
-                <tr><td>69</td><td>do their trip</td><td>do their
-                        best</td><td>Word choice</td><td>Standard phrase: do
-                        their best.</td></tr>
-                <tr><td>70</td><td>most important things participate in a
-                        team</td><td>the most important thing is participating
-                        in a team</td><td>Grammar</td><td>Clause
-                        structure.</td></tr>
+                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule / Explanation</th></tr>
+                <tr><td>36</td><td>to getting</td><td>to get</td><td>Verb form</td><td>“Struggling to” + base verb.</td></tr>
+                <tr><td>37</td><td>attending for some</td><td>attending some</td><td>Preposition</td><td>Attend (no “for”).</td></tr>
+                <tr><td>38</td><td>interview</td><td>interviews</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>39</td><td>rabbit job</td><td>right job</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>40</td><td>on the time</td><td>at the time</td><td>Preposition</td><td>At the time.</td></tr>
+                <tr><td>41</td><td>job life 1st</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible phrase.</td></tr>
+                <tr><td>42</td><td>hard decision</td><td>difficult decision</td><td>Word choice</td><td>“Difficult” is more precise.</td></tr>
+                <tr><td>43</td><td>car job</td><td>current job</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>44</td><td>energy</td><td>environment</td><td>Word choice</td><td>You meant environment.</td></tr>
+                <tr><td>45</td><td>progressing enough</td><td>progressing well</td><td>Word choice</td><td>“Well”, not “enough”.</td></tr>
+                <tr><td>46</td><td>are find</td><td>find</td><td>Grammar</td><td>No “are” before verb.</td></tr>
+                <tr><td>47</td><td>a person have</td><td>a person has</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>48</td><td>stick on that</td><td>stick to it</td><td>Preposition</td><td>Stick to it.</td></tr>
+                <tr><td>49</td><td>decision</td><td>decisions</td><td>Plural</td><td>Plural needed.</td></tr>
+                <tr><td>50</td><td>drive</td><td>drives</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>51</td><td>dictate</td><td>dictates</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>52</td><td>disponses</td><td>responses</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>53</td><td>affecting a person making a decision</td><td>affecting a person's decision-making</td><td>Word form</td><td>Noun form.</td></tr>
+                <tr><td>54</td><td>other</td><td>others</td><td>Word form</td><td>Pronoun “others”.</td></tr>
+                <tr><td>55</td><td>their homes</td><td>their own</td><td>Word choice</td><td>You meant “their own”.</td></tr>
+                <tr><td>56</td><td>in some extent</td><td>to some extent</td><td>Preposition</td><td>Standard phrase.</td></tr>
+                <tr><td>57</td><td>most of that</td><td>(unclear)</td><td>Fluency</td><td>Unclear phrase.</td></tr>
+                <tr><td>58</td><td>it's really depend</td><td>it depends</td><td>Grammar</td><td>No “is” after “it”.</td></tr>
+                <tr><td>59</td><td>commandment</td><td>government</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>60</td><td>a personi is warranting to suicide</td><td>a person wants to commit suicide</td><td>Fluency</td><td>Confused phrase.</td></tr>
+                <tr><td>61</td><td>strain</td><td>restrain</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
+                <tr><td>62</td><td>their cases</td><td>the cases</td><td>Article</td><td>Definite article.</td></tr>
+                <tr><td>63</td><td>help</td><td>helps</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>64</td><td>know</td><td>knows</td><td>SVA</td><td>Third person singular.</td></tr>
+                <tr><td>65</td><td>ceremonies</td><td>near ones / family</td><td>Pronunciation</td><td>Meaning-changing.</td></tr>
             </table>
+
+            <div class="comment-box" style="border-color: #2563eb; margin-top: 8mm;">
+                <h4 style="color: #2563eb;">NOTE</h4>
+                <p style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">You have <strong>65 numbered error points</strong> across the three parts. Of these, <strong>roughly 20 are meaning-changing pronunciation errors</strong> (<em>lift/leave, live/leave, rabbit/right, car/current, equate/accurate, disponses/responses, commandment/government, strain/restrain, carn/Khan, 10 meeting/10 Minute</em>). Fixing those twenty alone would have a bigger effect on your band than fixing all the grammar errors combined, because they stop the listener understanding what you are saying.</p>
+            </div>
 
             <div class="page-number">15</div>
         </div>
 
-        <!-- PAGE 16: ERROR LOG (Entries 71-75) -->
+        <!-- ============ PAGE 16: TARGETS ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">ERROR
-                LOG (FULL LIST) — PAGE 3 OF 3</h2>
-            <p style="margin-bottom: 4mm;">Continued from the previous page.
-                (Entries 71–75)</p>
+            <h2>Targets for the next speaking test</h2>
+            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
+                <li><strong>Fix meaning-changing pronunciation first:</strong> <em>leave (not lift), right (not rabbit), current (not car), accurate (not equate), government (not commandment), restrain (not strain), responses (not disponses)</em>.</li>
+                <li><strong>Reduce “most of the time”.</strong> Replace with alternatives: <em>usually, generally, in most cases, as a rule</em>.</li>
+                <li><strong>Reduce fillers.</strong> Pause silently for one second before each new sentence — a pause is better than <em>uh</em>.</li>
+                <li><strong>Fix SVA:</strong> <em>a person has, emotion drives, logic dictates, making a decision helps, a person knows</em>.</li>
+                <li><strong>Fix verb form after prepositions:</strong> <em>to get (not to getting), stick to it (not stick on that), at home (not in my home)</em>.</li>
+                <li><strong>If audio is unclear, say “Could you say that again, please?”</strong> — short and clear.</li>
+                <li><strong>Do not talk to other people in the room</strong> — the “Hey, hey, hey” interruption disrupted your answer completely.</li>
+                <li><strong>Structure Part 2 answers:</strong> clear intro → what the decision was → factors → why it was difficult → outcome. No repeated <em>“most of the time”</em>.</li>
+            </ol>
 
-            <table class="tiny" style="margin-top: 0;">
-                <tr><th>#</th><th>Mistake</th><th>Corrected</th><th>Why</th><th>Rule
-                        / Explanation</th></tr>
-                <tr><td>71</td><td>they are whether they are injuring or it or
-                        not</td><td>whether they win or
-                        lose</td><td>Fluency</td><td>Unintelligible — meant win
-                        or lose.</td></tr>
-                <tr><td>72</td><td>my newer city
-                        program</td><td>(unclear)</td><td>Fluency</td><td>Unintelligible
-                        phrase.</td></tr>
-                <tr><td>73</td><td>a
-                        SAM</td><td>some</td><td>Unclear</td><td>You meant
-                        "some."</td></tr>
-                <tr><td>74</td><td>we straight up winning</td><td>despite
-                        winning</td><td>Unclear</td><td>Unintelligible; meant
-                        "despite winning."</td></tr>
-                <tr><td>75</td><td>participate in
-                        okay</td><td>participate</td><td>Fluency</td><td>Filler
-                        + trailing phrase; can be simplified.</td></tr>
-            </table>
-
-            <div class="comment-box"
-                style="border-color: #2563eb; margin-top: 8mm;">
-                <h4 style="color: #2563eb;">NOTE</h4>
-                <p
-                    style="margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">You
-                    have 75 numbered error points across the three parts. Many
-                    of these are fluency/coherence issues (unclear phrases)
-                    rather than pure grammar mistakes — but both affect your
-                    overall speaking score. Focus on the grammar/word-choice
-                    items first (verb forms, articles, prepositions) because
-                    these are easier to fix with practice and give a quicker
-                    score boost.</p>
+            <div class="comment-box" style="border-color: #7c3aed;">
+                <h4 style="color: #7c3aed;">QUICK WINS (next 7 days)</h4>
+                <ul style="margin-left: 5mm; margin-bottom: 0; font-size: 9.5pt; color: #1c2430;">
+                    <li><strong>Day 1–2:</strong> Record yourself saying the 20 meaning-changing words until each is clear.</li>
+                    <li><strong>Day 3–4:</strong> Read 10 sentences aloud with SVA (a person has, emotion drives, logic dictates) and record.</li>
+                    <li><strong>Day 5–6:</strong> Answer 5 Part 1 questions, each in exactly 4 sentences, with no filler.</li>
+                    <li><strong>Day 7:</strong> Record a full Part 2 on a new topic — 90 seconds, no filler.</li>
+                </ul>
             </div>
 
             <div class="page-number">16</div>
         </div>
 
-        <!-- PAGE 17: TARGETS & PRACTICE -->
+        <!-- ============ PAGE 17: PRACTICE ============ -->
         <div class="page">
-            <h2>Targets for the next speaking test</h2>
-            <ol style="margin-left: 5mm; font-size: 10pt; margin-bottom: 8mm;">
-                <li><strong>Reduce fillers:</strong> Replace <em>uh / like / you
-                        know</em> with natural silent pauses. Aim for fewer than
-                    5 fillers per minute.</li>
-                <li><strong>Improve clarity:</strong> Focus on pronouncing key
-                    words clearly: <em>competitive, sports person, team,
-                        athletic, cope with, put into effect</em>.</li>
-                <li><strong>Use simpler, accurate vocabulary:</strong> If you
-                    are unsure of a word, use a simpler word you know well.
-                    Avoid long, unclear phrases.</li>
-                <li><strong>Master basic grammar:</strong> Subject-verb
-                    agreement, past tense, articles, prepositions. Practise
-                    sentences aloud.</li>
-                <li><strong>Structure Part 2 answers:</strong> Use a clear
-                    4-step structure (who → what → how successful → why
-                    competitive).</li>
-                <li><strong>Slow down slightly</strong> when using less familiar
-                    words to improve clarity.</li>
-            </ol>
-
             <h2>Practice · Fix it yourself</h2>
-            <div
-                style="border: 1px solid #cbd5e1; padding: 4mm; font-size: 10pt; margin-bottom: 6mm;">
-                <p>Each sentence is taken from your speaking. Rewrite it
-                    correctly <strong>before</strong> looking at the answer
-                    key.</p>
+            <div style="border: 1px solid #cbd5e1; padding: 4mm; font-size: 10pt; margin-bottom: 6mm;">
+                <p>Each sentence is taken from your speaking. Rewrite it correctly <strong>before</strong> looking at the answer key.</p>
                 <ol class="practice-list">
-                    <li><span class="num">1</span>
-                        "The transport patient is really good."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Word choice</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
-                    <li><span class="num">2</span>
-                        "There are lots of other personities who like school, colleges, and hospitals."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Word choice</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
-                    <li><span class="num">3</span>
-                        "I think it's a good history."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Word choice</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
-                    <li><span class="num">4</span> "We are leaving abroad."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Pronunciation · Word choice</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
-                    <li><span class="num">5</span>
-                        "I have business visited was cinema hall."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Grammar · Fluency</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
-                    <li><span class="num">6</span>
-                        "I prefer to watch back home."<br>
-                        <span
-                            style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look
-                            for: Word choice</span><br>
-                        <div class="practice-line"
-                            style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">1</span> “I had to lift the job because it was holding back my career.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Pronunciation — leave / lift</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">2</span> “For 2 months, I got a rabbit job.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Pronunciation — right / rabbit</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">3</span> “For my car job, the energy is much more friendly.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Pronunciation ×2 — current, environment</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">4</span> “A person have to be bold.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: SVA</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">5</span> “Emotion drive a person to make a bad choice, but logic always dictate to make a good decision.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: SVA ×2</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
+                    <li><span class="num">6</span> “A person shouldn't be restricted by commandment to make a decision.”<br>
+                        <span style="font-size: 8.5pt; color: #64748b; margin-left: 8mm;">Look for: Pronunciation — government / commandment</span><br>
+                        <div class="practice-line" style="margin-left: 8mm;"></div></li>
                 </ol>
             </div>
 
             <h2>Answer key</h2>
-            <div class="good-box"
-                style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
+            <div class="good-box" style="background: #fff; border: 1px solid #cbd5e1; padding: 5mm;">
                 <ol style="margin-left: 5mm; font-size: 10pt; color: #1c2430;">
-                    <li>The <strong>transportation</strong> is really good.</li>
-                    <li>There are lots of other <strong>facilities</strong> such
-                        as schools, colleges, and hospitals.</li>
-                    <li>I think it's a <strong>good place</strong> to live.</li>
-                    <li>We are <strong>living abroad</strong>.</li>
-                    <li>I have <strong>visited a cinema hall about three or four
-                            times</strong>.</li>
-                    <li>I prefer to watch <strong>at home</strong>.</li>
+                    <li>I had to <strong>leave</strong> the job because it was holding back my career.</li>
+                    <li>For 2 months, I got a <strong>right</strong> job.</li>
+                    <li>For my <strong>current</strong> job, the <strong>environment</strong> is much more friendly.</li>
+                    <li>A person <strong>has</strong> to be bold.</li>
+                    <li>Emotion <strong>drives</strong> a person to make a bad choice, but logic always <strong>dictates</strong> to make a good decision.</li>
+                    <li>A person shouldn't be restricted by <strong>the government</strong> to make a decision.</li>
                 </ol>
             </div>
 
             <div class="page-number">17</div>
         </div>
 
-        <!-- PAGE 18: SAMPLE ANSWERS PART 1 Q1-Q4 -->
+        <!-- ============ PAGE 18: SAMPLE ANSWERS – P1 Q1–Q4 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE
-                ANSWERS – PART 1 (Q1–Q4)</h2>
-            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at
-                Band 7+ level. Notice the clear structure, natural linking, and
-                accurate vocabulary.</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 1 (Q1–Q4)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
 
-            <h3>Q1. When do you usually eat bread?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I usually eat bread in the morning, especially for breakfast.
-                When I was living alone at university, I often had bread with
-                egg — I'd mix the egg with bread and then fry it. So I eat bread
-                most days, mostly in the morning.
+            <h3>Q1. How important is technology in your daily life?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Technology is essential in my daily life. I use ChatGPT to help with research and writing, and it saves me a lot of time. I also rely on my smartphone for messaging, banking, and navigation. Without technology, most of my daily tasks would take much longer.
             </p>
 
-            <h3>Q2. How important is bread in your culture?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                Bread isn't very important in my culture. In Bangladesh, people
-                prefer roti, which is a flatbread made from flour. We also have
-                dishes made with rice, and dough is used to make local breads.
-                So most people prefer those instead of Western-style bread.
+            <h3>Q2. What technological device do you use most frequently?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I use my smartphone most often — for messaging, social media, and banking. But my laptop is also essential, especially now that I’m preparing for IELTS, because I need it for online practice and writing. So between the two, I’d say the smartphone is the one I use constantly.
             </p>
 
-            <h3>Q3. Have you tried any kinds of bread from other countries?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                No, I don't think so. Bread isn't very popular in my country,
-                and most local shops don't stock foreign breads. So I haven't
-                had the chance to try them.
+            <h3>Q3. Do you think people have become too dependent on technology?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Yes, I think people have become too dependent on it. Many people can’t function without their phones — even opening a bank account or booking a ticket now requires online access. It’s convenient, of course, but we’ve become very reliant on it, and that can be a problem if the technology fails.
             </p>
 
-            <h3>Q4. Would you be interested in learning how to make bread?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I don't think so. As I said, bread isn't very common in my
-                culture, and it's easily available in local groceries. So I
-                don't really have a reason to learn how to make it.
+            <h3>Q4. Is there any technology that you find difficult to use?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I don’t find any technology particularly difficult to use. However, new AI platforms can be tricky because the answers aren’t always accurate. So the challenge isn’t using them — it’s knowing when to trust them.
             </p>
 
             <div class="page-number">18</div>
         </div>
 
-        <!-- PAGE 19: SAMPLE ANSWER PART 2 -->
+        <!-- ============ PAGE 19: SAMPLE ANSWERS – P1 Q5–Q7 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE
-                ANSWER – PART 2</h2>
-            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at
-                Band 7+ level. Notice the clear structure, natural linking, and
-                accurate vocabulary.</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 1 (Q5–Q7)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
 
-            <h3>Describe a person you know who is very competitive.</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I'd like to talk about a friend of mine called Shagor, who I met
-                during my university years. He's one of my closest university
-                friends.<br><br>
-                What I noticed about him is that he tries to be competitive in
-                every situation. He's very hard-working and always tries to have
-                an optimistic, competitive mindset. For example, during our
-                second-year exams, everyone was performing poorly academically.
-                Instead of getting frustrated, Shagor looked for solutions. He
-                noted down all his mistakes, and in his improvement exam the
-                following year, he worked hard to solve those issues and did
-                much better.<br><br>
-                He's also very passionate about sports. In our university
-                football tournament, the opponent team was ahead by two goals.
-                Shagor, who was a striker, worked extremely hard to score a
-                goal, and although we didn't win the match, through his effort
-                our team was able to perform better.<br><br>
-                I think his competitive attitude is what drives him, and I hope
-                it continues to help him improve in life.
+            <h3>Q5. Do you prefer communicating with people face-to-face or through digital platforms? Why?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                It depends on the situation. For everyday communication — work tasks or quick updates — digital platforms are more efficient. But for sharing personal moments with close friends or family, I prefer face-to-face interaction because it feels more genuine and you can read the other person’s emotions.
+            </p>
+
+            <h3>Q6. Do you think people learn more effectively today than they did in the past?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Yes, learning is much easier today. There are countless online platforms — YouTube, Khan Academy, and local ones like 10 Minute School. You can learn almost anything from home, at your own pace, which wasn’t possible in the past. So overall, people have far more opportunities to learn effectively now.
+            </p>
+
+            <h3>Q7. What skills do you think young people should develop to succeed in the future?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I think young people should develop practical skills like self-defence, basic first aid, and CPR — these are life-saving skills. From a career perspective, programming is increasingly important because technology is part of almost every industry. So a mix of life skills and digital skills would be ideal for the future.
             </p>
 
             <div class="page-number">19</div>
         </div>
 
-        <!-- PAGE 20: SAMPLE ANSWERS PART 3 Q1-Q2 -->
+        <!-- ============ PAGE 20: SAMPLE ANSWER – PART 2 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE
-                ANSWERS – PART 3 (Q1–Q2)</h2>
-            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at
-                Band 7+ level. Notice the clear structure, natural linking, and
-                accurate vocabulary.</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWER – PART 2</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
 
-            <h3>Q1. What kinds of competitions do people like to enter in your
-                country?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                In my country, there are sports competitions and cultural
-                competitions. Cricket is very popular — most schools, colleges,
-                and universities organise at least one or two tournaments a
-                year. There are also cultural programmes, like music and acting
-                competitions, which take place in academic institutions, public
-                venues, and on national television. A famous example was a TV
-                show called Notun Kuri, which was very popular.
-            </p>
-
-            <h3>Q2. What do you think is the best kind of prize to win in a
-                competition?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I think the competition itself is more important than just
-                winning a prize. But prizes do motivate people. In my country,
-                organisers sometimes offer money, and other times they give
-                trophies or self-improvement books. If the prize comes from a
-                respected figure, that's also a great experience for the winner.
+            <h3>Describe a situation when you had to make an important decision that was difficult for you.</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I’d like to talk about a difficult decision I made about a year ago — I decided to leave my job.<br><br>
+                I had been working at a company for some time, but I felt the job was holding back my progress. There were also management issues that I found difficult to handle. So, after a lot of thought, I decided to resign.<br><br>
+                Before making the decision, I considered several factors. First, I didn’t have another job offer at the time, so I knew there would be financial risk. Second, I had no savings, and I still had to pay rent and utility bills. Third, in my country, leaving a job without another one lined up isn’t really valued — people tend to criticise it.<br><br>
+                In the end, I decided to leave anyway. I struggled for two months to find a new job and attended several interviews, but eventually I found the right one. Looking back, I think I made the right choice. My current job has a much friendlier environment and I’m progressing well in my career. So, although it was hard at the time, it turned out to be the right decision for me.
             </p>
 
             <div class="page-number">20</div>
         </div>
 
-        <!-- PAGE 21: SAMPLE ANSWERS PART 3 Q3-Q4 -->
+        <!-- ============ PAGE 21: SAMPLE ANSWERS – PART 3 Q1–Q3 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE
-                ANSWERS – PART 3 (Q3–Q4)</h2>
-            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at
-                Band 7+ level. Notice the clear structure, natural linking, and
-                accurate vocabulary.</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 3 (Q1–Q3)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
 
-            <h3>Q3. Why do people like watching quiz shows and other
-                competitions on TV?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I think competitions are really entertaining. People enjoy
-                testing their problem-solving ability and general knowledge.
-                When someone watches a quiz show, they think
-                'If I were in the competition, maybe I could answer that question,'
-                and that intrigues them. So that's one of the reasons people
-                find competitions so engaging.
+            <h3>Q1. Why do some people find it more difficult to make decisions than others?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Some people find decisions difficult because they overthink. They calculate every possible outcome and worry about making a mistake. Others are less bold — they’re afraid to commit and stick to a choice. So the difficulty is often psychological rather than practical.
             </p>
 
-            <h3>Q4. How important is it to be very competitive at sport?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I think a competitive attitude is very important for a
-                sportsperson. If they don't want to improve, it's really
-                difficult because sports are very competitive. To hold their
-                position in the team, they have to be strategic and maintain a
-                confident, competitive attitude. If they can't, they might be
-                dropped from the team.
+            <h3>Q2. Do you think people should make decisions based on logic or emotions?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                I think logic should lead, with emotion as a secondary guide. Emotion can push us toward quick, regrettable choices, while logic helps us see the bigger picture. That said, completely ignoring emotion isn’t wise either — the best decisions usually balance both.
+            </p>
+
+            <h3>Q3. How has technology changed the way people make important decisions?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Technology, especially AI, has changed decision-making significantly. People now turn to AI for advice, which can be helpful but also biased — the AI only knows what it’s been trained on. So we have to be careful not to outsource our judgment entirely to technology.
             </p>
 
             <div class="page-number">21</div>
         </div>
 
-        <!-- PAGE 22: SAMPLE ANSWERS PART 3 Q5-Q6 -->
+        <!-- ============ PAGE 22: SAMPLE ANSWERS – PART 3 Q4–Q6 ============ -->
         <div class="page">
-            <h2
-                style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE
-                ANSWERS – PART 3 (Q5–Q6)</h2>
-            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at
-                Band 7+ level. Notice the clear structure, natural linking, and
-                accurate vocabulary.</p>
+            <h2 style="background: #1e293b; color: white; border-left: none; border-radius: 4px; padding: 2mm 4mm;">SAMPLE ANSWERS – PART 3 (Q4–Q6)</h2>
+            <p style="margin-bottom: 4mm; font-size: 9.5pt;">Model answers at Band 7+ level. Notice the clear structure, natural linking, and accurate vocabulary.</p>
 
-            <h3>Q5. Do you think sportspeople perform better when they play
-                against competitors who are stronger than they are?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                Yes, I think that's true. When the opponent team is stronger, it
-                gives the team a boost — they know they have to do better. They
-                have to put in more effort to cope with the other team. For
-                example, I watched a match where our team's opening wasn't very
-                good. But when the other, stronger team arrived — with really
-                athletic players who were good at running — our team had to work
-                much harder to keep up. So I'd say a stronger opponent does push
-                you to do your best.
+            <h3>Q4. Is it better to make decisions independently or seek advice from others?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                It’s better to do both — seek advice but make the final decision yourself. Other people can offer perspective and experience you might lack, but the decision has to be yours because only you know your priorities and values. So: listen, then decide independently.
             </p>
 
-            <h3>Q6. Why do some people think that taking part in sport is more
-                important than winning?</h3>
-            <p
-                style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
-                I think some people value participation because the most
-                important thing is being part of a team, whether you win or not.
-                For example, I remember watching a local city programme where
-                one team won the final, but the other team also enjoyed the
-                whole environment and the game. Despite not winning, everyone
-                participated and had a good time. So I think participating is
-                the most important thing.
+            <h3>Q5. Should governments be allowed to make decisions that restrict individual freedom for the benefit of society?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                In rare cases, yes — for example, when someone is a danger to themselves or others, the government should intervene. But in general, personal freedom should be protected, and restrictions should only happen when there’s a clear and serious risk to society. So the answer depends on the context, but the default should be freedom.
+            </p>
+
+            <h3>Q6. Can making a wrong decision sometimes be more valuable than making the right one? Why?</h3>
+            <p style="font-size: 9.5pt; background: #f8fafc; padding: 3mm; border-left: 3px solid #2563eb;">
+                Yes, I think wrong decisions can be valuable. They teach lessons that success can’t — you learn what doesn’t work and why. A person who always makes the right choice may not develop resilience or judgment. So mistakes, provided we learn from them, can be more useful than easy successes.
             </p>
 
             <div class="page-number">22</div>
